@@ -1,3 +1,83 @@
+/* --- IMPORTED FROM pages-shorts.css --- */
+/* --- Primary Shorts Shelves & Global Renderers --- */
+
+/* Pure CSS Hiding Rules for Content Control */
+
+/* Mixes */
+
+/* Playlists */
+
+/* Podcasts */
+
+/* Posts (Community Posts) */
+
+/* Container Cleanup - Sections that only contain Shorts */
+
+/* Watched Badge */
+
+.ypp-watched-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    background: var(--ypp-success-color, rgba(16, 185, 129, 0.9));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--ypp-z-card-hover);
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+    animation: ypp-pulse-badge 2s infinite ease-in-out;
+}
+
+@keyframes ypp-pulse-badge {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Dim mode for watched videos */
+
+[data-ypp-hidden="watched"] {
+    transition: opacity 0.2s ease, filter 0.2s ease;
+    filter: grayscale(0.85) opacity(0.4) !important;
+}
+
+/* =========================================================================
+   SHORTS PAGE PREMIUM STYLING (FULL-BLEED EDGE-TO-EDGE)
+   ========================================================================= */
+
+/* Remove the black bar scrim (cinematic scrim) */
+
+/* Shorts Container background */
+
+/* Make the video player and its thumbnail background look elegant */
+
+/* Floating Action Bar (Like/Dislike/Share) */
+
+/* Adjust Action Buttons */
+
+/* Video Information Overlay (Title, Channel) */
+
+/* Channel Avatar */
+
+/* Subscribe Button */
+
+/* Progress bar redesign */
+
+/* =========================================================================
+   SHORTS PLAYER CONTROLS (Floating Bottom Bar)
+   ========================================================================= */
+
+/* Speed Controls inside Shorts Bar */
+
+/* FIX for Duration Badge missing z-index */
+
+
+
+/* --- IMPORTED FROM shorts-ast.css --- */
 
 body.ypp-nuke-shorts ytd-rich-section-renderer[is-shorts],
 body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
@@ -50,13 +130,11 @@ body.ypp-shorts-page .reel-video-in-sequence-thumbnail {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer {
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important;
+    background: var(--ypp-surface-bg) !important;
+    border-radius: var(--ypp-border-radius-base, 20px) !important;
     padding: 12px 8px !important;
     margin-right: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border: var(--ypp-surface-border) !important;
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-toggle-button-renderer,
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
@@ -80,11 +158,9 @@ body.ypp-shorts-page #avatar:hover yt-img-shadow {
     border-color: var(--ypp-text-primary, #fff) !important;
 }
 body.ypp-shorts-page ytd-reel-player-header-renderer #subscribe-button yt-button-shape button {
-  -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: var(--ypp-surface-bg-hover) !important;
     color: var(--ypp-text-primary, #fff) !important;
-    border-radius: 20px !important;
+    border-radius: var(--ypp-border-radius-base, 20px) !important;
     font-weight: 600 !important;
     transition: background 0.2s ease !important;
 }
@@ -97,8 +173,6 @@ body.ypp-shorts-page #progress-bar {
     background: rgba(255, 255, 255, 0.2) !important;
 }
 body.ypp-shorts-page .ypp-shorts-controls {
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
     position: absolute;
     bottom: 80px; /* Above the title/channel overlay */
     left: 50%;
@@ -107,12 +181,12 @@ body.ypp-shorts-page .ypp-shorts-controls {
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.15) !important;
-    border-radius: 20px !important;
+    background: var(--ypp-surface-bg-hover) !important;
+    border-radius: var(--ypp-border-radius-base, 20px) !important;
     padding: 8px 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: var(--ypp-surface-border) !important;
     z-index: var(--ypp-z-card-hover);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: var(--ypp-shadow-card) !important;
     opacity: 0.2;
     transition: opacity 0.3s ease;
 }
@@ -133,7 +207,7 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-action-btn {
     transition: background 0.2s, transform 0.2s;
 }
 body.ypp-shorts-page .ypp-shorts-controls .ypp-action-btn:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: var(--ypp-surface-bg-active) !important;
     transform: scale(1.1);
 }
 body.ypp-shorts-page .ypp-shorts-controls svg {
@@ -160,10 +234,12 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn {
     transition: background 0.2s, color 0.2s;
 }
 body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--ypp-surface-bg-hover);
     color: var(--ypp-text-primary, #fff);
 }
 body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn.active {
-    background: rgba(255, 255, 255, 0.25);
+    background: var(--ypp-surface-bg-active);
     color: var(--ypp-text-primary, #fff);
 }
+
+

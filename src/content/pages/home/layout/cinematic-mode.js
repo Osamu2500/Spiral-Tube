@@ -2,7 +2,7 @@
  * Cinematic Mode — Netflix-style home feed overlay.
  * Monolithic file combining ObserverManager, HoverSimulator, HeroManager, CinematicController, and CinematicMode.
  */
-import cinematicThemeCSS from '../styles/cinematic-theme.css?raw';
+
 
 const CONFIG = {
     HOME_PATHS: ['/', '/index.html', '/feed/subscriptions'],

@@ -1,3 +1,4 @@
+/* --- IMPORTED FROM pages-history.css --- */
 /* ===================================================================================
    XX. HISTORY PAGE REDESIGN
    =================================================================================== */
@@ -79,23 +80,23 @@
     gap: 10px;
     padding: 9px 12px;
     border-radius: 7px;
-    color: rgba(255,255,255,0.8);
+    color: var(--ypp-text-primary);
     font-size: 13px;
     cursor: pointer;
     transition: background 0.12s;
 }
 
 .ypp-ctx-item:hover {
-    background: rgba(255,255,255,0.07);
+    background: var(--ypp-surface-bg-hover);
     color: white;
 }
 
 .ypp-ctx-danger {
-    color: rgba(255,90,80,0.8);
+    color: var(--ypp-danger-color, #ff6b6b);
 }
 
 .ypp-ctx-danger:hover {
-    background: rgba(255,78,69,0.1);
+    background: var(--ypp-danger-bg, rgba(255,78,69,0.1));
     color: #ff6b6b;
 }
 
@@ -106,3 +107,35 @@
 /* ═══════════════════════════════════════════════
 
 */
+
+
+/* --- IMPORTED FROM history-ast.css --- */
+.yt-spiral-tube-theme ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #secondary,
+.yt-spiral-tube-theme #history-analytics-renderer {
+  background: var(--ypp-surface-bg) !important;  
+  border: var(--ypp-surface-border) !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
+  box-shadow: var(--ypp-shadow-card) !important;
+  padding: 16px !important;
+}
+.yt-spiral-tube-theme ytd-browse[page-subtype="history"] .analytics-card,
+.yt-spiral-tube-theme ytd-browse[page-subtype="history"] .stat-card {
+  background: var(--ypp-surface-bg) !important;
+  border: var(--ypp-surface-border) !important;
+  border-radius: var(--ypp-border-radius-base, 8px) !important;
+}
+.yt-spiral-tube-theme ytd-browse[page-subtype="history"] ytd-video-renderer {
+  margin-left: 16px !important;
+  padding: 0 !important;
+}
+.yt-spiral-tube-theme ytd-browse[page-subtype="history"] #title.ytd-item-section-renderer {
+  font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: var(--yt-spec-text-primary) !important;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: capitalize !important;
+}
+

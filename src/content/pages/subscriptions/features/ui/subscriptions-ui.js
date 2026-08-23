@@ -1,4 +1,4 @@
-import '../../styles/subscriptions.css';
+
 import { SubsUIFilter } from './subs-ui-filter.js';
 import { SubsUISidebar } from './subs-ui-sidebar.js';
 import { SubsUIModal } from './subs-ui-modal.js';

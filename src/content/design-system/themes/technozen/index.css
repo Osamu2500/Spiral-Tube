@@ -1,5 +1,6 @@
 @import "../../ui-styles/shared/timeline-visibility.css";
---ypp-bg-base: #dff4e8;
+[data-ypp-theme="technozen"] {
+    --ypp-bg-base: #dff4e8;
     --ypp-bg-surface: #e2f8e0;
     --ypp-bg-glass: rgba(228, 248, 218, 0.92);
     --ypp-glass-border: rgba(255, 255, 255, 0.75);
@@ -21,6 +22,7 @@
 
 
   /* Global AI-generated missing variable fallbacks */
+}
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
   --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));

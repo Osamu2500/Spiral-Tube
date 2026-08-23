@@ -1,14 +1,15 @@
 @import "../../ui-styles/shared/timeline-visibility.css";
 
 html[data-ypp-theme='minimalism'] {
+[data-ypp-theme="minimalism"] {
     --ypp-bg-base: #fafafa;
     --ypp-bg-surface: #ffffff;
     --ypp-bg-glass: rgba(255, 255, 255, 0.9);
     --ypp-glass-border: rgba(0, 0, 0, 0.08);
-    
+
     --ypp-text-primary: #111111;
     --ypp-text-secondary: #666666;
-    
+
     --ypp-accent: #000000;
     --ypp-accent-hover: #333333;
     --ypp-accent-glow: rgba(0, 0, 0, 0.1);
@@ -21,6 +22,7 @@ html[data-ypp-theme='minimalism'] {
 
 
   /* Global AI-generated missing variable fallbacks */
+}
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
   --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));

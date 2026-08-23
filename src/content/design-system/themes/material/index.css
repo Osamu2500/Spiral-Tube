@@ -1,14 +1,15 @@
 @import "../../ui-styles/shared/timeline-visibility.css";
 
 html[data-ypp-theme='material'] {
+[data-ypp-theme="material"] {
     --ypp-bg-base: #1f1f1f;
     --ypp-bg-surface: #444746;
     --ypp-bg-glass: rgba(31, 31, 31, 0.9);
     --ypp-glass-border: #8e918f;
-    
+
     --ypp-text-primary: #e3e3e3;
     --ypp-text-secondary: #c4c7c5;
-    
+
     --ypp-accent: #a8c7fa;
     --ypp-accent-hover: #d3e3fd;
     --ypp-accent-glow: rgba(168, 199, 250, 0.3);
@@ -21,6 +22,7 @@ html[data-ypp-theme='material'] {
 
 
   /* Global AI-generated missing variable fallbacks */
+}
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
   --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));

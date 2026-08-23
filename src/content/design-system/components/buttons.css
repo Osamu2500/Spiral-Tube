@@ -1,4 +1,4 @@
-/* src/content/themes/ui-styles/nature/components/buttons.css */
+/* src/content/design-system/components/buttons.css */
 
 .ytLikeButtonViewModelHost {
   margin-right: 5px;
@@ -26,7 +26,7 @@
 }
 ytd-alert-with-button-renderer[type=INFO] {
   box-shadow: var(--ypp-shadow-base) !important;
-  border-radius: 20px;
+  border-radius: var(--ypp-shape-lg, 16px);
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
 }
 ytd-thumbnail-overlay-toggle-button-renderer {
@@ -91,6 +91,9 @@ yt-download-button-view-model button:active {
   box-shadow: var(--ypp-shadow-base) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
   overflow: hidden !important;
+  /* Override YouTube's own border-radius CSS variable used inside yt-button-shape */
+  --yt-button-border-radius: var(--ypp-button-radius, 12px) !important;
+  --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
 }
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover {
   box-shadow: var(--ypp-shadow-hover) !important;
@@ -100,18 +103,24 @@ yt-download-button-view-model button:active {
   transform: scale(0.97) !important;
   box-shadow: var(--ypp-shadow-active) !important;
 }
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+/* Inner segmented buttons — squircle only the outer corners, leave the divider flat */
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
+  border-radius: var(--ypp-button-radius, 12px) 0 0 var(--ypp-button-radius, 12px) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: 0 var(--ypp-button-radius, 12px) var(--ypp-button-radius, 12px) 0 !important;
   background: transparent !important;
   box-shadow: none !important;
 }
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
 }
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.15)) !important;
 }
 button.ytSpecButtonShapeNextText {
   border-radius: var(--ypp-button-radius, 12px) !important;
@@ -152,7 +161,7 @@ button.ytSpecButtonShapeNextText:active {
 }
 .ypp-pill-toggle {
   border-radius: var(--ypp-button-radius, 12px) !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: var(--ypp-surface-bg, rgba(255, 255, 255, 0.1)) !important;
   border: var(--ypp-surface-border) !important;
   transition:
     transform var(--ypp-transition-bounce),
@@ -160,7 +169,7 @@ button.ytSpecButtonShapeNextText:active {
     background var(--ypp-transition-bounce) !important;
 }
 .ypp-pill-toggle:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.2)) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.05) !important;
 }
@@ -195,7 +204,7 @@ html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-download-button-vi
 html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
     background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
     border: none !important;
-    border-radius: 100px !important;
+    border-radius: var(--ypp-shape-lg, 16px) !important;
     box-shadow: none !important;
 }
 

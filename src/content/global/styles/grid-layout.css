@@ -26,11 +26,11 @@ html[style*='--ypp-dynamic-cols'] yt-rich-grid-view-model {
 }
 
 body.yt-spiral-tube-theme ytd-playlist-renderer:hover ytd-thumbnail-overlay-side-panel-renderer {
-  background: rgba(99, 102, 241, 0.75) !important;
-  box-shadow: -8px 0 24px rgba(99, 102, 241, 0.5) !important;
+  background: var(--ypp-accent-glow, rgba(99, 102, 241, 0.75)) !important;
+  box-shadow: -8px 0 24px var(--ypp-accent-glow, rgba(99, 102, 241, 0.5)) !important;
 }
 body.yt-spiral-tube-theme ytd-radio-renderer:hover ytd-thumbnail-overlay-bottom-panel-renderer {
-  background: linear-gradient(to top, rgba(168, 85, 247, 0.9), transparent) !important;
+  background: linear-gradient(to top, var(--ypp-accent-glow, rgba(168, 85, 247, 0.9)), transparent) !important;
 }
 .ypp-grid-container {
   display: grid !important;
@@ -108,7 +108,7 @@ body.yt-spiral-tube-theme ytd-compact-video-renderer {
 }
 body.yt-spiral-tube-theme ytd-compact-video-renderer:hover {
   transform: translateX(8px) !important;
-  background-color: rgba(255, 255, 255, 0.05) !important;
+  background-color: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.05)) !important;
 }
 .ypp-grid-item {
   width: 100% !important;

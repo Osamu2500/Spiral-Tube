@@ -14,21 +14,9 @@ import '../core/events/event-delegator.js';
 import '../core/system/feature-manager.js';
 
 // CSS Imports
-import '../global/styles/core-styles.css';
 import '../design-system/index.css';
-import '../global/styles/grid-layout.css';
-import '../pages/watch/player/player.css';
-import '../global/styles/header-ast.css';
-import '../global/styles/sidebar-ast.css';
-import '../pages/watch/styles/comments.css';
-import '../pages/search/styles/search-grid.css';
-import '../pages/playlist/styles/playlist-ast.css';
-import '../pages/history/styles/history-ast.css';
-import '../pages/subscriptions/styles/subscriptions-ast.css';
-import '../pages/home/styles/home-ast.css';
-import '../pages/shorts/styles/shorts-ast.css';
-import '../global/styles/header-nav.css';
-import '../pages/home/styles/cards.css';
+
+
 
 // Managers (Phase 4.5)
 import '../global/features/hotkeys-manager.js';
@@ -47,7 +35,7 @@ import '../design-system/components/components/panel.js';
 
 // Base feature class
 import '../core/system/base-feature.js';
-import { BaseFilterFeature } from '../global/declutter/base-filter-feature.js';
+import { BaseFilterFeature } from '../global/filters/base-filter-feature.js';
 window.YPP.FeatureManager.register(BaseFilterFeature);
 
 import { SplitScrolling } from '../pages/watch/player/enhancements/split-scrolling.js';
@@ -65,7 +53,7 @@ window.YPP.FeatureManager.register(HeaderButton);
 import { GridAnimator } from '../global/layout/grid-animator.js';
 window.YPP.FeatureManager.register(GridAnimator);
 // Toggles handled by GlobalLayoutManager
-import { ScreenFilters } from '../global/declutter/screen-filters.js';
+import { ScreenFilters } from '../global/filters/screen-filters.js';
 window.YPP.FeatureManager.register(ScreenFilters);
 import { CustomCursor } from '../global/features/custom-cursor.js';
 window.YPP.FeatureManager.register(CustomCursor);
@@ -73,33 +61,31 @@ window.YPP.FeatureManager.register(CustomCursor);
 import '../global/features/watched-store.js';
 import { MultiSelect } from '../global/features/multi-select.js';
 window.YPP.FeatureManager.register(MultiSelect);
-import '../global/styles/multi-select.css';
 
-import { HideWatched } from '../global/declutter/hide-watched.js';
+import { HideWatched } from '../global/filters/hide-watched.js';
 window.YPP.FeatureManager.register(HideWatched);
-import { HideMetrics } from '../global/declutter/hide-metrics.js';
+import { HideMetrics } from '../global/filters/hide-metrics.js';
 window.YPP.FeatureManager.register(HideMetrics);
 import { CopyLinkButton } from '../global/features/copy-link.js';
 window.YPP.FeatureManager.register(CopyLinkButton);
 import { KeyboardShortcuts } from '../global/features/keyboard-shortcuts.js';
 window.YPP.FeatureManager.register(KeyboardShortcuts);
-import '../global/declutter/filter-ui-interactions.js';
-import '../global/styles/filters.css';
-import { DurationFilter } from '../global/declutter/duration-filter.js';
+import '../global/filters/filter-ui-interactions.js';
+import { DurationFilter } from '../global/filters/duration-filter.js';
 window.YPP.FeatureManager.register(DurationFilter);
-import { BlocklistFilter } from '../global/declutter/blocklist-filter.js';
+import { BlocklistFilter } from '../global/filters/blocklist-filter.js';
 window.YPP.FeatureManager.register(BlocklistFilter);
-import { FeedFilter } from '../global/declutter/feed-filter.js';
+import { FeedFilter } from '../global/filters/feed-filter.js';
 window.YPP.FeatureManager.register(FeedFilter);
-import { FiltersManager } from '../global/declutter/filters-manager.js';
+import { FiltersManager } from '../global/filters/filters-manager.js';
 window.YPP.FeatureManager.register(FiltersManager);
 import { CardPipeline } from '../global/features/card-pipeline.js';
 window.YPP.FeatureManager.register(CardPipeline);
-import { ViewsFilter } from '../global/declutter/views-filter.js';
+import { ViewsFilter } from '../global/filters/views-filter.js';
 window.YPP.FeatureManager.register(ViewsFilter);
-import { UploadDateFilter } from '../global/declutter/upload-date-filter.js';
+import { UploadDateFilter } from '../global/filters/upload-date-filter.js';
 window.YPP.FeatureManager.register(UploadDateFilter);
-import { ClickbaitFilter } from '../global/declutter/clickbait-filter.js';
+import { ClickbaitFilter } from '../global/filters/clickbait-filter.js';
 window.YPP.FeatureManager.register(ClickbaitFilter);
 import { ChannelBlacklist } from '../global/features/channel-blacklist.js';
 window.YPP.FeatureManager.register(ChannelBlacklist);
@@ -122,7 +108,7 @@ import { CinematicMode } from '../pages/home/layout/cinematic-mode.js';
 window.YPP.FeatureManager.register(CinematicMode);
 
 // Shorts features
-import { HideShorts } from '../pages/shorts/declutter/hide-shorts.js';
+import { HideShorts } from '../pages/shorts/features/hide-shorts.js';
 window.YPP.FeatureManager.register(HideShorts);
 import { RedirectShorts } from '../pages/shorts/features/redirect-shorts.js';
 window.YPP.FeatureManager.register(RedirectShorts);
@@ -198,7 +184,7 @@ import { FocusMode } from '../pages/watch/layout/focus-mode.js';
 window.YPP.FeatureManager.register(FocusMode);
 import { StudyMode } from '../pages/watch/layout/study-mode.js';
 window.YPP.FeatureManager.register(StudyMode);
-import { CommentFilter } from '../pages/watch/declutter/comment-filter.js';
+import { CommentFilter } from '../pages/watch/features/comment-filter.js';
 window.YPP.FeatureManager.register(CommentFilter);
 import { WatchRedesign } from '../pages/watch/layout/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
@@ -313,7 +299,7 @@ import { TabviewSidebar } from '../global/layout/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
 import { StarTubeLayout } from '../global/layout/startube-layout.js';
 window.YPP.FeatureManager.register(StarTubeLayout);
-import '../pages/watch/player/controls/sidebar-layout.css';
+
 
 // Main entry
 import './main.js';

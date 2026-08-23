@@ -46,10 +46,10 @@ html.yt-spiral-tube-theme[dark="true"],
   --ypp-grid-gap: 24px;
 
   /* Shape & Motion */
-  --ypp-radius-lg: 20px;
-  --ypp-radius-md: 14px;
-  --ypp-radius-sm: 8px;
-  --ypp-radius-pill: 100px;
+  --ypp-radius-lg: var(--ypp-shape-lg, 16px);
+  --ypp-radius-md: var(--ypp-shape-md, 12px);
+  --ypp-radius-sm: var(--ypp-shape-sm, 8px);
+  --ypp-radius-pill: var(--ypp-shape-lg, 16px); /* Force pills to squircles */
   --ypp-blur-subtle: blur(8px);
   --ypp-blur-med: blur(20px);
   --ypp-blur-high: blur(32px);
@@ -130,10 +130,10 @@ html.yt-spiral-tube-theme[dark="true"],
   --ypp-glass-blur-active: var(--ypp-glass-blur, var(--ypp-glass-blur-default));
   --ypp-glass-border-active: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08));
   
-  --ypp-radius-sm: 6px;
-  --ypp-radius-md: 10px;
-  --ypp-radius-lg: 14px;
-  --ypp-radius-xl: 18px;
+  --ypp-radius-sm: var(--ypp-shape-sm, 8px);
+  --ypp-radius-md: var(--ypp-shape-md, 12px);
+  --ypp-radius-lg: var(--ypp-shape-lg, 16px);
+  --ypp-radius-xl: var(--ypp-shape-lg, 16px);
   --ypp-accent: #3ea6ff;
   --ypp-accent-hover: #65b8ff;
 
@@ -343,31 +343,7 @@ html.yt-spiral-tube-theme .ytd-thumbnail {
 
 /* ── BENTO STYLE ── */
 
-/* ── NEON STYLE ── */
 
-@keyframes ypp-neon-pulse {
-  0% { box-shadow: 0 0 10px rgba(108,99,255,0.2), inset 0 0 10px rgba(108,99,255,0.05); }
-  50% { box-shadow: 0 0 25px rgba(108,99,255,0.5), inset 0 0 15px rgba(108,99,255,0.1); }
-  100% { box-shadow: 0 0 10px rgba(108,99,255,0.2), inset 0 0 10px rgba(108,99,255,0.05); }
-}
-
-/* ── COMPACT STYLE ── */
-
-/* ── POLAROID STYLE ── */
-
-/* ── NEUMORPHIC STYLE (NEW) ── */
-
-/* ── CYBERPUNK STYLE (NEW) ── */
-
-/* ── HOLOGRAPHIC STYLE (NEW) ── */
-
-@keyframes ypp-holo-sweep {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ── MINIMALIST STYLE (NEW) ── */
 
 /* YouTube Dropdowns & Custom Popups */
 
@@ -376,10 +352,9 @@ html.yt-spiral-tube-theme .ytd-thumbnail {
    Also needs border-radius applied to inner content, not the wrapper. */
 
 html.yt-spiral-tube-theme tp-yt-iron-dropdown {
-  border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;
-
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.08)) !important;
+  box-shadow: var(--ypp-shadow-float, 0 16px 48px rgba(0,0,0,0.6)) !important;
 }
 
 html.yt-spiral-tube-theme tp-yt-paper-listbox,
@@ -406,7 +381,7 @@ html.yt-spiral-tube-theme ytd-active-account-header-renderer #header {
 
 html.yt-spiral-tube-theme ytd-multi-page-menu-renderer #separator,
 html.yt-spiral-tube-theme ytd-menu-popup-renderer ytd-menu-service-item-renderer[has-separator] {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+  background-color: var(--ypp-surface-border, rgba(255, 255, 255, 0.05)) !important;
   margin: 4px 16px !important;
   height: 1px !important;
 }

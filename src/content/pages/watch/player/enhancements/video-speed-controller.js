@@ -1,5 +1,5 @@
 // f:\Youtube 2.0\src\content\features\player\enhancements\video-speed-controller.js
-import './video-speed-controller.css';
+
 
 
 
@@ -182,15 +182,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
 
         const controller = document.createElement('ypp-vsc-controller');
         
-        // Inject CSS natively into the document head
-        const styleId = 'ypp-vsc-style';
-        if (!document.getElementById(styleId)) {
-            const link = document.createElement('link');
-            link.id = styleId;
-            link.rel = 'stylesheet';
-            link.href = chrome.runtime.getURL('src/content/features/player/enhancements/video-speed-controller.css');
-            document.head.appendChild(link);
-        }
+
 
         // UI Container
         const container = document.createElement('div');

@@ -3,8 +3,11 @@
 
 /* vaporwave/theme/base/tokens.css */
 @import "../../ui-styles/shared/timeline-visibility.css";
---ypp-bg-base: #1a0a2e; --ypp-bg-surface: #200e38;
-  --ypp-accent: #ff71ce; --ypp-text-primary: #f0e6ff;
-  --ypp-text-secondary: #c8a0e0;
+[data-ypp-theme="vaporwave"] {
+    --ypp-bg-base: #1a0a2e; --ypp-bg-surface: #200e38;
+    --ypp-accent: #ff71ce; --ypp-text-primary: #f0e6ff;
+    --ypp-text-secondary: #c8a0e0;
 
 
+
+}

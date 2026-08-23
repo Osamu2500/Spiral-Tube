@@ -1,5 +1,8 @@
 /* Theme: autumn */--ypp-bg-base: #b5541b !important;
-  --ypp-bg-surface: #d0601f !important;
-  --ypp-text-primary: #ffffff !important;
-  --ypp-text-secondary: rgba(255,255,255,0.7) !important;
+[data-ypp-theme="autumn"] {
+    --ypp-bg-surface: #d0601f !important;
+    --ypp-text-primary: #ffffff !important;
+    --ypp-text-secondary: rgba(255,255,255,0.7) !important;
 
+
+}

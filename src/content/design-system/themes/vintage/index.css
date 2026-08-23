@@ -1,5 +1,6 @@
 @import "../../ui-styles/shared/timeline-visibility.css";
---ypp-bg-base: #e8d5b5;
+[data-ypp-theme="vintage"] {
+    --ypp-bg-base: #e8d5b5;
     --ypp-bg-surface: #f4ecd8;
     --ypp-bg-glass: rgba(244, 236, 216, 0.92);
     --ypp-glass-border: rgba(62, 53, 47, 0.18);
@@ -20,6 +21,7 @@
     --ypp-shadow-accent-glow: 0 0 24px var(--ypp-accent-glow);
 
     /* COMPONENT OVERRIDES */
+}
     --ytd-searchbox-background: rgba(255, 252, 245, 0.8);
     --ytd-searchbox-text-color: #2c1f14;
     --ytd-searchbox-legacy-button-color: rgba(193, 58, 58, 0.12);

@@ -31,7 +31,7 @@ yt-icon-button#guide-button:active {
   transform: scale(0.95) !important;
   box-shadow: var(--ypp-shadow-active) !important;
 }
-/* src/content/themes/ui-styles/nature/pages/home.css */
+/* src/content/design-system/pages/home.css */
 #description.ytd-watch-metadata,
 ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
   position: relative !important;
@@ -128,18 +128,18 @@ ytd-feed-filter-chip-bar-renderer {
 }
 yt-chip-cloud-chip-renderer {
   border-radius: var(--chip-radius, 8px) !important;
-  border: var(--chip-border, 1px solid transparent) !important;
-  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
+  border: var(--chip-border, var(--ypp-surface-border)) !important;
+  background: var(--chip-bg, var(--ypp-surface-bg)) !important;
   box-shadow: var(--chip-shadow, none) !important;
   transition: all 0.2s ease !important;
 }
 yt-chip-cloud-chip-renderer:hover {
-  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
+  background: var(--chip-bg-hover, var(--ypp-surface-bg-hover)) !important;
 }
 yt-chip-cloud-chip-renderer[selected] {
-  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
-  color: var(--chip-color-selected, black) !important;
-  border: var(--chip-border-selected, 1px solid transparent) !important;
+  background: var(--chip-bg-selected, var(--ypp-text-primary)) !important;
+  color: var(--chip-color-selected, var(--ypp-bg-primary)) !important;
+  border: var(--chip-border-selected, var(--ypp-surface-border)) !important;
 }
 yt-chip-cloud-chip-renderer {
   --chip-radius: 16px 4px 16px 4px;
@@ -154,6 +154,404 @@ yt-chip-cloud-chip-renderer[selected] {
 #ypp-pl-root .ypp-pl-sidebar {
   background: var(--ypp-surface-bg) !important;
   border: var(--ypp-surface-border) !important;
-  border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
+  border-top: var(--ypp-surface-border) !important;
   box-shadow: var(--ypp-shadow-base) !important;
 }
+
+/* --- IMPORTED FROM pages-home.css --- */
+/* ===================================================================================
+   4X4 GRID LAYOUT - ENHANCED STYLING
+   =================================================================================== */
+
+/* Force 4-column CSS Grid on home feed */
+
+/* Hide row wrappers to allow direct grid children */
+
+/* Style individual video cards for grid */
+
+/* Hide parent section of Shorts shelves to prevent gaps */
+
+/* Ensure video thumbnails scale properly */
+
+/* Video metadata styling */
+
+/* Card hover effects for grid items */
+
+/* -----------------------------------------------------------------------------------
+   CHANNEL TAGS (Injected by Home Organizer)
+   ----------------------------------------------------------------------------------- */
+
+.ypp-tag-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--ypp-bg-surface);
+  color: var(--ypp-text-secondary);
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: var(--ypp-radius-sm);
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: var(--ypp-z-card-hover);
+  opacity: 0;
+  transition: var(--ypp-transition);
+  box-shadow: var(--ypp-shadow-card);
+  text-transform: uppercase;
+}
+
+.ypp-tag-btn:hover {
+  background: var(--ypp-glass-highlight);
+  color: var(--ypp-text-primary);
+  border-color: var(--ypp-primary-accent);
+}
+
+.ypp-tag-btn.tagged {
+  opacity: 1;
+  background: var(--ypp-surface-bg-active);
+  color: var(--ypp-accent-blue);
+  border-color: var(--ypp-primary-accent);
+}
+
+.ypp-tag-popover {
+  position: absolute;
+  background: var(--ypp-bg-glass);
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: var(--ypp-radius-md);
+  box-shadow: var(--ypp-shadow-float);
+  padding: 8px 0;
+  z-index: var(--ypp-z-popup);
+  min-width: 140px;
+  overflow: hidden;
+  animation: ypp-fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-tag-option {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--ypp-text-primary);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ypp-tag-option:hover {
+  background: var(--ypp-surface-bg-hover);
+}
+
+/* ===================================================================================
+   11. HOME ORGANIZER & TAGGING
+   =================================================================================== */
+
+.ypp-feed-separator {
+  grid-column: 1 / -1; /* Span full width of grid */
+  padding: 24px 0 12px 0;
+  margin-top: 24px;
+  border-bottom: 1px solid var(--ypp-glass-border);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ypp-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.ypp-feed-separator:hover {
+  color: var(--ypp-accent);
+}
+
+.ypp-feed-separator::after {
+  content: "";
+  display: block;
+  margin-left: 12px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.ypp-feed-separator.collapsed::after {
+  transform: rotate(-45deg);
+}
+
+.ypp-section-hidden {
+  display: none !important;
+}
+
+/* Tag Button on Thumbnail */
+
+.yt-spiral-tube-theme ytd-thumbnail .ypp-tag-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ypp-border-radius-base, 8px); /* Squircle */
+  background: var(--ypp-surface-bg);
+  border: var(--ypp-surface-border);
+  color: var(--ypp-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px) translateZ(0); /* Hardware Acceleration */
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  will-change: opacity, transform, background-color, box-shadow;
+  z-index: var(--ypp-z-card-hover);
+}
+
+.ypp-tag-btn:hover {
+  background: var(--ypp-accent);
+  color: var(--ypp-text-primary, #fff);
+  box-shadow: var(--ypp-shadow-hover);
+}
+
+.ypp-tag-btn.tagged {
+  background: var(--ypp-accent-glow);
+  color: var(--ypp-accent);
+  border-color: var(--ypp-accent);
+}
+
+/* Tag Popover */
+
+.ypp-tag-popover {
+  position: absolute;
+  background: var(--ypp-bg-surface);
+  border: var(--ypp-surface-border);
+  border-radius: var(--ypp-border-radius-base, 12px);
+  padding: 8px;
+  box-shadow: var(--ypp-shadow-float);
+  z-index: var(--ypp-z-popup);
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: ypp-fade-in 0.15s ease-out;
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, opacity;
+}
+
+.ypp-tag-option {
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--ypp-text-secondary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  
+}
+
+.ypp-tag-option:hover {
+  background: var(--ypp-surface-bg-hover);
+  color: var(--ypp-text-primary);
+}
+
+@keyframes ypp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+/* --- IMPORTED FROM home-ast.css --- */
+
+html.yt-spiral-tube-theme body:not(.cinematic-home) :is(
+ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer,
+  ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer,
+  ytd-grid-video-renderer, ytd-grid-channel-renderer,
+  ytd-grid-playlist-renderer, ytd-grid-radio-renderer
+) {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+body.yt-spiral-tube-theme ytd-video-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-playlist-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-radio-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-compact-video-renderer ytd-menu-renderer {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+body.yt-spiral-tube-theme ytd-video-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-playlist-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-radio-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-compact-video-renderer:hover ytd-menu-renderer {
+  opacity: 1;
+}
+body.yt-spiral-tube-theme ytd-video-renderer ytd-menu-renderer yt-icon-button,
+body.yt-spiral-tube-theme
+  ytd-playlist-renderer
+  ytd-menu-renderer
+  yt-icon-button,
+body.yt-spiral-tube-theme ytd-radio-renderer ytd-menu-renderer yt-icon-button,
+body.yt-spiral-tube-theme:not(.cinematic-home) ytd-rich-item-renderer
+  ytd-menu-renderer
+  yt-icon-button {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 4px !important;
+  background: var(--ypp-bg-overlay) !important;
+  border-radius: 50% !important;
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
+  animation: ypp-fade-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+  display: grid !important;
+  grid-template-columns: repeat(var(--ypp-active-columns, 4), 1fr) !important;
+  gap: 24px 16px !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-row {
+  display: contents !important;
+}
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-item-renderer {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: auto !important;
+  margin: 0 !important;
+  flex: none !important;
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-thumbnail {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: var(--ypp-radius-md) !important;
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #details {
+  margin-top: 12px;
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  will-change: transform, box-shadow, border-color;
+  transform: translateZ(0);
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--ypp-shadow-hover);
+  border-color: var(--ypp-primary-accent);
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn {
+  opacity: 1;
+}
+body.yt-spiral-tube-theme ytd-video-renderer #metadata-line,
+body.yt-spiral-tube-theme ytd-playlist-renderer #metadata-line,
+body.yt-spiral-tube-theme ytd-radio-renderer #metadata-line,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #metadata-line,
+body.yt-spiral-tube-theme ytd-compact-video-renderer #metadata-line {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: var(--ypp-text-secondary) !important;
+  margin-top: 4px !important;
+  line-height: 1.4 !important;
+}
+@media (max-width: 1600px) {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 20px 14px !important;
+  }
+}
+@media (max-width: 1200px) {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 18px 12px !important;
+  }
+}
+@media (max-width: 900px) {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 16px 10px !important;
+  }
+}
+@media (max-width: 640px) {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 16px !important;
+  }
+}
+body:not(.cinematic-home) .ypp-grid-container > ytd-rich-grid-row {
+  display: contents !important;
+}
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn,
+.yt-spiral-tube-theme ytd-thumbnail:hover .ypp-tag-btn,
+.ypp-tag-btn.tagged {
+  opacity: 1;
+  transform: translateY(0);
+}
+body:not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-ms-checkbox,
+ytd-video-renderer:hover .ypp-ms-checkbox,
+ytd-compact-video-renderer:hover .ypp-ms-checkbox,
+ytd-playlist-video-renderer:hover .ypp-ms-checkbox,
+ytd-grid-video-renderer:hover .ypp-ms-checkbox,
+.ypp-ms-selected .ypp-ms-checkbox {
+    opacity: 1 !important;
+}
+body.cinematic-home yt-chip-cloud-chip-renderer {
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-icon-inactive-color: rgba(255,255,255,0.7) !important;
+}
+body.cinematic-home yt-chip-cloud-chip-renderer[selected],
+body.cinematic-home yt-chip-cloud-chip-renderer.iron-selected {
+  --yt-spec-badge-chip-background: rgba(255,255,255,0.15) !important;
+  --yt-spec-button-chip-background-hover: rgba(255,255,255,0.2) !important;
+  background: rgba(255,255,255,0.15) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+body.cinematic-home ytd-masthead .yt-spec-button-shape-next--filled {
+  --yt-spec-button-shape-button-filled-background: transparent !important;
+  background: transparent !important;
+}
+body.cinematic-home ytd-masthead .yt-spec-button-shape-next--mono {
+  background: transparent !important;
+  --yt-spec-static-overlay-background-medium: transparent !important;
+}
+body.cinematic-home ytd-masthead .yt-spec-button-shape-next:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+body.cinematic-home ytd-masthead yt-button-shape,
+body.cinematic-home ytd-masthead button.yt-icon-button {
+  background: transparent !important;
+}
+body.cinematic-home ytd-masthead #container {
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-base-background: transparent !important;
+}
+
+

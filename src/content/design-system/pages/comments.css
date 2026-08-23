@@ -41,11 +41,11 @@ ytd-comment-renderer button {
 }
 ytd-comment-view-model button:hover,
 ytd-comment-renderer button:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  background: var(--ypp-surface-bg-hover, var(--yt-spec-10-percent-layer)) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
   transform: none !important;
 }
-/* src/content/themes/ui-styles/nature/pages/comments.css */
+/* src/content/design-system/pages/comments.css */
 ytd-comments-header-renderer[engagement-panel] {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   margin: 10px !important;
@@ -62,12 +62,12 @@ ytd-comment-renderer yt-interaction .fill {
 }
 ytd-comment-thread-renderer,
 ytd-comment-view-model {
-  background: var(--yt-spec-10-percent-layer, rgba(128, 128, 128, 0.05)) !important;
+  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
   border-radius: var(--ypp-border-radius-base, 12px) !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
-  box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.05)) !important;
-  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+  box-shadow: var(--ypp-shadow-card) !important;
+  border: var(--ypp-surface-border) !important;
   transition:
     transform var(--ypp-transition-bounce),
     box-shadow var(--ypp-transition-bounce),
@@ -75,15 +75,15 @@ ytd-comment-view-model {
 }
 ytd-comment-thread-renderer:hover,
 ytd-comment-view-model:hover {
-  box-shadow: var(--ypp-shadow-hover, 0 8px 24px rgba(0, 0, 0, 0.1)) !important;
-  background: var(--yt-spec-20-percent-layer, rgba(128, 128, 128, 0.09)) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+  background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
 }
 ytd-comment-simplebox-renderer {
-  background: var(--yt-spec-20-percent-layer, rgba(128, 128, 128, 0.08)) !important;
+  background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
   border-radius: var(--ypp-border-radius-base, 12px) !important;
   padding: 15px !important;
-  box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.05)) !important;
-  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+  box-shadow: var(--ypp-shadow-card) !important;
+  border: var(--ypp-surface-border) !important;
 }
 #placeholder-area.ytd-comment-simplebox-renderer {
   border: var(--ypp-surface-border) !important;

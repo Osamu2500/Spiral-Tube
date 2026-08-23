@@ -4,7 +4,7 @@
  * Seamlessly integrates with Seamless Mode to orchestrate DOM swapping and Grid layouts.
  */
 
-import '../styles/tabview-sidebar.css';
+
 
 export class TabviewSidebar extends window.YPP.features.BaseFeature {
     static featureId = 'tabviewSidebar';

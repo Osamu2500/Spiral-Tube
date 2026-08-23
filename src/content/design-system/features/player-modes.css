@@ -1,3 +1,4 @@
+/* --- IMPORTED FROM player-modes.css --- */
 /* ===========================================================================
    CINEMATIC MODE — CONFLICT RESOLUTION OVERRIDES
    Overrides the extension's own YPP theme variables that fight cinematic mode.
@@ -311,7 +312,7 @@ body.ypp-compact-player-ui .ypp-player-controls:not(.ypp-floating-action-bar) {
   vertical-align: middle !important;
 }
 body.ypp-compact-player-ui .ypp-action-btn:not([hidden]):not([style*="none"]) {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-sm, 8px) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -332,7 +333,7 @@ body.ypp-compact-player-ui .ypp-speed-btn {
   margin: 0 !important;
   font-size: 11px !important;
   font-weight: 500 !important;
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-xs, 4px) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -340,7 +341,7 @@ body.ypp-compact-player-ui .ypp-speed-btn {
 body.ypp-compact-player-ui .ypp-floating-action-bar {
   gap: 6px !important;
   padding: 8px 6px !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
 }
 body.ypp-compact-player-ui .ypp-floating-action-bar .ypp-action-btn:not([hidden]):not([style*="none"]) {
   width: var(--ypp-compact-btn-width, 34px) !important;
@@ -409,4 +410,6 @@ body.ypp-compact-player-ui .ytp-gradient-bottom {
 :is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #masthead-container:hover {
   opacity: 1 !important;
 }
+
+
 

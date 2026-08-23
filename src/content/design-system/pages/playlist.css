@@ -1,3 +1,199 @@
+/* --- IMPORTED FROM pages-playlists.css --- */
+/* ===================================================================================
+   ENHANCED HOVER EFFECTS
+   =================================================================================== */
+
+/* Unified Card Hover Effect */
+
+/* Button Hover Pattern */
+
+.ypp-nav-btn,
+.ypp-player-controls button {
+  transition:
+    background-color var(--ypp-transition-fast),
+    transform var(--ypp-transition-fast);
+  transform: translateZ(0); /* Hardware Acceleration */
+  
+}
+
+.ypp-nav-btn:hover,
+.ypp-player-controls button:hover {
+  background: var(--ypp-surface-bg-hover);
+  transform: scale(1.05);
+}
+
+.ypp-nav-btn:active,
+.ypp-player-controls button:active {
+  transform: scale(0.98);
+}
+
+/* Active Navigation Item with Accent */
+
+.ypp-nav-btn.active {
+  color: var(--yt-spec-text-primary, #fff) !important;
+  background: var(--ypp-surface-bg-active) !important;
+  border-color: var(--ypp-primary-accent);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Smooth Focus Indicators for Accessibility */
+
+.ypp-nav-btn:focus-visible,
+.ypp-player-controls button:focus-visible,
+ytd-searchbox input:focus-visible {
+  outline: 2px solid var(--ypp-accent-blue);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(62, 166, 255, 0.2);
+}
+
+/* Hide 'Top Recommendations' Heading */
+
+body.yt-spiral-tube-theme:not(.ypp-channel-page) ytd-rich-section-renderer #title-container,
+body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
+  display: none !important;
+}
+
+/* ===================================================================================
+   13. PLAYLIST PAGE NATIVE OVERRIDES
+   Note: Custom playlist UI is handled by PlaylistRedesign JS. 
+   These legacy CSS rules were breaking the native layout and have been removed.
+   =================================================================================== */
+
+/* Playlist Panel on Watch Page (Queue) */
+
+body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer {
+  margin: 8px;
+  border-radius: var(--ypp-radius-sm);
+  padding: 8px;
+  transition: background-color 0.15s;
+}
+
+body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer:hover {
+  background-color: var(--ypp-surface-bg-hover);
+}
+
+body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer[selected] {
+  background-color: var(--ypp-surface-bg-active);
+  border-left: 3px solid var(--ypp-accent-blue);
+}
+
+/* ===================================================================================
+   12. YOUTUBE REFINED ENHANCEMENTS (PHASE 10)
+   =================================================================================== */
+
+/* 1. Continue Watching UI */
+
+/* ============================================================
+   PLAYLIST & RADIO CARDS - UNIFIED SQUARE GRID DESIGN
+   ============================================================ */
+
+/* Ensure the outer wrapper acts as a flex column card */
+
+/* Force internal structural wrappers to also be column flex containers using bulletproof :has selector */
+
+/* ============================================================
+   PLAYLIST FEED PAGE ENHANCEMENTS
+   ============================================================ */
+body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header h1,
+body.yt-spiral-tube-theme.ypp-feed-playlists-page .ytd-page-header-renderer .title {
+  font-size: 2.8rem !important;
+  background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  font-weight: 700 !important;
+  letter-spacing: -0.5px;
+  padding-bottom: 4px;
+}
+body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chip-renderer {
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.25s ease !important;
+}
+body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chip-renderer:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   LOCKUP VIEW MODEL (NEW YOUTUBE PLAYLIST/MIX ARCHITECTURE)
+   ============================================================ */
+
+/* 1. Force the main card and its direct child (the internal wrapper) to be a vertical column */
+
+/* 2. Target the clickable thumbnail (anchor containing yt-image or img) perfectly, ignoring all class names */
+
+/* 3. Ensure the image inside stretches to fill the 16:9 box completely */
+
+/* 4. METADATA BLOCK */
+
+/* Format the title properly */
+
+/* Format the channel/metadata secondary text */
+
+/* Hide tertiary text to keep the card square (e.g., list of songs) */
+
+/**
+ * Floating Player Styles
+ * Applied when the user scrolls past the video player and the `floatingPlayer` setting is active.
+ */
+
+body.ypp-floating-player-active #ytd-player,
+body.ypp-floating-player-active ytd-player[id="ytd-player"] {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 400px !important;
+    height: 225px !important; /* 16:9 ratio */
+    z-index: var(--ypp-z-popup) !important; /* Highest possible */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--ypp-thumb-radius, 12px) !important;
+    overflow: hidden !important;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transform: translateZ(0) !important; /* Force hardware acceleration */
+}
+
+/* Ensure the video itself fills the new container */
+
+body.ypp-floating-player-active video.html5-main-video {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* Ensure the controls adapt to the small size */
+
+/* Hide some unnecessary controls in mini mode */
+
+/* Ensure background of player is dark */
+
+/* Show a small placeholder where the video used to be so layout doesn't jump */
+
+/* ytd-watch-flexy handles the placeholder space automatically in most cases, 
+   but we can ensure #player-container-outer maintains aspect ratio */
+
+body.ypp-floating-player-active #player-container-outer {
+    /* The outer container stays in the DOM, so it acts as a placeholder */
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: var(--ypp-thumb-radius, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.ypp-floating-player-active #player-container-outer::after {
+    content: "Video is floating";
+    color: var(--yt-spec-text-secondary, #aaa);
+    font-size: 1.2rem;
+    font-family: var(--ypp-font-family, inherit);
+}
+
+
+
+/* --- IMPORTED FROM playlist-ast.css --- */
 
 body.yt-spiral-tube-theme ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--ypp-blur-high);
@@ -110,8 +306,6 @@ body.ypp-playlist-redesign ytd-masthead {
 }
 
 #ypp-pl-root .ypp-pl-sidebar {
-  -webkit-backdrop-filter: var(--ypp-glass-blur-active, blur(48px) saturate(1.2));
-  backdrop-filter: var(--ypp-glass-blur-active, blur(48px) saturate(1.2));
     position: fixed;
     top: 64px;
     left: 24px;
@@ -122,11 +316,10 @@ body.ypp-playlist-redesign ytd-masthead {
     height: calc(100vh - 88px); /* 64px top + 24px bottom */
     z-index: var(--ypp-z-content);
     /* Background (Premium Glassmorphism) */
-    background: var(--ypp-bg-surface, linear-gradient(135deg, rgba(20, 20, 24, 0.45), rgba(20, 20, 24, 0.25)));
-    border: var(--ypp-glass-border-active, 1px solid rgba(255, 255, 255, 0.08));
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    background: var(--ypp-bg-surface);
+    border: var(--ypp-surface-border);
+    border-radius: var(--ypp-border-radius-base, 24px);
+    box-shadow: var(--ypp-shadow-card);
     /* Layout */
     display: flex;
     flex-direction: column;
@@ -428,15 +621,13 @@ body.ypp-playlist-redesign ytd-masthead {
 }
 
 #ypp-pl-root .ypp-pl-toolbar {
-  -webkit-backdrop-filter: blur(24px);
-  backdrop-filter: blur(24px);
     position: fixed;
     top: 80px;
     left: 408px;
     right: 24px;
     z-index: var(--ypp-z-card-hover);
     /* Use theme surface variable — falls back to a neutral dark glass for default dark mode */
-    background: var(--sf, rgba(10, 10, 12, 0.55));
+    background: var(--ypp-surface-bg);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -616,8 +807,6 @@ body.ypp-playlist-redesign ytd-masthead {
 #ypp-pl-root .ypp-pl-card:hover .ypp-pl-card-thumb img { transform: scale(1.04); }
 
 #ypp-pl-root .ypp-pl-card-index {
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
     position: absolute;
     top: 6px;
     left: 7px;
@@ -632,8 +821,6 @@ body.ypp-playlist-redesign ytd-masthead {
 }
 
 #ypp-pl-root .ypp-pl-card-duration {
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
     position: absolute;
     bottom: 6px;
     right: 7px;
@@ -719,9 +906,7 @@ body.ypp-playlist-redesign ytd-masthead {
 }
 
 .ypp-pl-card-context-menu {
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-    background: rgba(22,22,22,0.97);
+    background: var(--ypp-bg-surface);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 6px;
@@ -825,3 +1010,4 @@ body.ypp-playlist-redesign ytd-masthead {
 }
 
 #ypp-pl-root .ypp-pl-card-thumb-placeholder svg { width: 36px; height: 36px; }
+

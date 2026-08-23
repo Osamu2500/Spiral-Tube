@@ -3,8 +3,11 @@
 
 /* gothic/theme/base/tokens.css */
 @import "../../ui-styles/shared/timeline-visibility.css";
---ypp-bg-base: #121212; --ypp-bg-surface: #1c1c1c;
-  --ypp-accent: #cc0000; --ypp-text-primary: #d3d3d3;
-  --ypp-text-secondary: #888;
+[data-ypp-theme="gothic"] {
+    --ypp-bg-base: #121212; --ypp-bg-surface: #1c1c1c;
+    --ypp-accent: #cc0000; --ypp-text-primary: #d3d3d3;
+    --ypp-text-secondary: #888;
 
 
+
+}

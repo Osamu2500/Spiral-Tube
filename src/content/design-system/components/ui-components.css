@@ -133,7 +133,7 @@ body.ypp-floating-guide ytd-page-manager {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  border-radius: var(--ypp-radius-full, 50%);
+  border-radius: var(--ypp-shape-md, 12px);
   color: var(--yt-spec-text-primary, #fff);
   transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -284,7 +284,7 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
 }
 
 /* Profile Icon Squircle */
@@ -292,7 +292,7 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
 .yt-spiral-tube-theme #avatar-btn,
 .yt-spiral-tube-theme #avatar-btn yt-img-shadow,
 .yt-spiral-tube-theme #avatar-btn img {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
 }
 
 /* Header Navigation Group (Header Nav Feature) */
@@ -310,7 +310,7 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
 .ypp-nav-btn {
   width: 40px;
   height: 40px;
-  border-radius: 14px !important; /* Premium Squircle */
+  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -557,7 +557,7 @@ body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
   border: none;
   color: rgba(255, 255, 255, 0.5);
   padding: 6px;
-  border-radius: 50%;
+  border-radius: var(--ypp-shape-md, 12px);
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -838,16 +838,17 @@ body.yt-spiral-tube-theme ytd-watch-metadata #top-row {
   gap: 16px !important;
 }
 
-/* Channel Owner Section Pill */
+/* Channel Owner Section — Squircle Card */
 
 body.yt-spiral-tube-theme ytd-watch-metadata #owner {
   background: rgba(255, 255, 255, 0.05) !important;
-
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 100px !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
   padding: 4px 16px 4px 4px !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
   transition:
     background 0.2s ease,
@@ -861,33 +862,27 @@ body.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
 
 /* Subscribe Button Container & Positioning */
 
-body.yt-spiral-tube-theme ytd-watch-metadata #owner {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
-
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button {
-  margin-left: 20px !important;
+body.yt-spiral-tube-theme #subscribe-button {
+  margin-left: auto !important;
   display: flex !important;
   align-items: center !important;
 }
 
 /* Subscribe Button */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+body.yt-spiral-tube-theme #subscribe-button
   > ytd-subscribe-button-renderer
   > yt-smartimation
   > div
   > yt-button-shape
   > button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+body.yt-spiral-tube-theme #subscribe-button
   :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
   color: var(--yt-spec-text-primary, #fff) !important;
-  border-radius: 100px !important;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;  padding: 0 20px !important;
   height: 40px !important;
   font-weight: 600 !important;
@@ -897,13 +892,13 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+body.yt-spiral-tube-theme #subscribe-button
   > ytd-subscribe-button-renderer
   > yt-smartimation
   > div
   > yt-button-shape
   > button:hover,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+body.yt-spiral-tube-theme #subscribe-button
   :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button:hover {
@@ -915,22 +910,22 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
 
 /* Subscribed State */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button {
+body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
+body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button {
   background: rgba(255, 255, 255, 0.02) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
   color: var(--ypp-text-secondary, #aaa) !important;
   box-shadow: none !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button:hover {
+body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
+body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--ypp-text-primary, #fff) !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+body.yt-spiral-tube-theme #subscribe-button
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content {
@@ -939,10 +934,10 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
 
 /* Actions Menu Container */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions.ytd-watch-metadata,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #top-level-buttons-computed,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #flexible-item-buttons {
+body.yt-spiral-tube-theme #actions.ytd-watch-metadata,
+body.yt-spiral-tube-theme #actions-inner,
+body.yt-spiral-tube-theme #top-level-buttons-computed,
+body.yt-spiral-tube-theme #flexible-item-buttons {
   display: flex !important;
   gap: 8px !important;
   align-items: center !important;
@@ -953,44 +948,44 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #flexible-item-buttons {
 
 /* Base button container fixes (remove native YouTube backgrounds that cause double layering) */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
   border: none !important; /* Will be overridden by above specific rules if subscribe */
 }
 
 /* Hide native ripple and dark mode overlay pseudo-elements responsible for the "double view" */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
+body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
+body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
+body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
+body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
   display: none !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button
@@ -1000,26 +995,25 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
 
 /* Individual Action Pills (Share, Download, Save, etc.) applying glassmorphism to the outer button structure */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   > button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape-with-explainer
   yt-button-shape
   > button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   > button {
-  border-radius: 100px !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
   background: rgba(255, 255, 255, 0.08) !important;
-
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   padding: 0 16px !important;
   height: 36px !important;
@@ -1035,15 +1029,15 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
     box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button:hover,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   > button:hover,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button:hover {
@@ -1056,48 +1050,51 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
 
 /* Reset background on the container so we can style the inner buttons */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
+body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
+body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   background: rgba(255, 255, 255, 0.08) !important;
-
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-radius: 100px !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
   display: flex !important;
   align-items: center !important;
   height: 36px !important;
+  overflow: hidden !important;
+  /* Override YouTube's own internal border-radius CSS variables */
+  --yt-button-border-radius: var(--ypp-shape-md, 12px) !important;
+  --yt-spec-button-shape-next-border-radius: var(--ypp-shape-md, 12px) !important;
   transition:
     transform 0.2s ease,
     background 0.2s ease,
     box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper):hover {
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper):hover {
   background: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Like button side */
+/* Like button side — squircle left corners, flat right */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
   yt-button-shape:first-child
   button {
-  border-radius: 100px 0 0 100px !important;
+  border-radius: var(--ypp-shape-md, 12px) 0 0 var(--ypp-shape-md, 12px) !important;
   padding: 0 16px !important;
   height: 100% !important;
 }
 
-/* Dislike button side */
+/* Dislike button side — flat left, squircle right corners */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
   yt-button-shape:last-child
   button {
-  border-radius: 0 100px 100px 0 !important;
+  border-radius: 0 var(--ypp-shape-md, 12px) var(--ypp-shape-md, 12px) 0 !important;
   padding: 0 16px !important;
   height: 100% !important;
   border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -1105,10 +1102,46 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislik
 
 /* Adjust icons inside buttons */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-icon {
+body.yt-spiral-tube-theme #actions-inner yt-icon {
   width: 20px !important;
   height: 20px !important;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   SQUIRCLE: yt-light-shape visual overlay fix
+   YouTube renders yt-light-shape as the VISIBLE rim/background of buttons.
+   The button element's border-radius was already correct (12px) but this
+   visual overlay layer was still 20px (tonal variant uses a different var).
+   Direct targeting is the only reliable fix.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Like/Dislike segmented group — the outer rim yt-light-shape */
+body.yt-spiral-tube-theme .ytSegmentedLikeDislikeButtonViewModelLightShape,
+body.yt-spiral-tube-theme yt-segmented-like-dislike-button-view-model yt-light-shape {
+  border-radius: 12px !important;
+}
+
+/* Like/Dislike inner button touch-feedback shape (hover/focus ring) */
+body.yt-spiral-tube-theme .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper yt-touch-feedback-shape {
+  border-radius: 12px !important;
+}
+
+/* Action buttons row (Share, Ask, Download, ⋯) yt-light-shape overlay */
+body.yt-spiral-tube-theme #actions-inner yt-button-shape yt-light-shape,
+body.yt-spiral-tube-theme #actions-inner yt-button-shape yt-touch-feedback-shape,
+body.yt-spiral-tube-theme #flexible-item-buttons yt-button-shape yt-light-shape,
+body.yt-spiral-tube-theme #flexible-item-buttons yt-button-shape yt-touch-feedback-shape {
+  border-radius: 12px !important;
+}
+
+/* Subscribe button yt-light-shape overlay */
+body.yt-spiral-tube-theme #subscribe-button yt-light-shape,
+body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape,
+body.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-light-shape,
+body.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-touch-feedback-shape {
+  border-radius: 12px !important;
+}
+
 
 /* 3. Pop-up Menus Redesign (3-dot menus) */
 

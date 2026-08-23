@@ -26,8 +26,16 @@
   --ypp-letter-spacing: normal;
   
   /* --- Geometry & Shapes --- */
+  --ypp-shape-sm: 8px;
+  --ypp-shape-md: 12px;
+  --ypp-shape-lg: 16px;
+  
+  /* Named semantic alias — use this for all interactive button border-radius */
+  --ypp-button-radius: var(--ypp-shape-md); /* Squircle / Rounded Square */
+  --ypp-shape-primary: var(--ypp-shape-md); /* Alias kept for compat */
+  
   --ypp-border-radius-base: 12px;
-  --ypp-border-radius-pill: 24px;
+  --ypp-border-radius-pill: var(--ypp-shape-lg); /* Force pills to be squircles */
   --ypp-border-radius-sharp: 4px;
 }
 
@@ -72,6 +80,10 @@ html.yt-spiral-tube-theme[dark] {
   --yt-spec-call-to-action: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #3ea6ff))) !important;
   --yt-spec-wordmark-text: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
   --ytd-searchbox-text-color: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+
+  /* Override YouTube's own button border-radius CSS variables — squircle globally */
+  --yt-button-border-radius: var(--ypp-button-radius, 12px) !important;
+  --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
 }
 
 /* === DEFAULT THEME TOKENS === */
@@ -105,9 +117,9 @@ html[data-ypp-theme="default"] {
     /* COMPONENT OVERRIDES */
     --ytd-searchbox-background: #121212;
     --ytd-searchbox-text-color: #f1f1f1;
-    --ytd-searchbox-border-radius: 40px;
+    --ytd-searchbox-border-radius: var(--ypp-shape-lg, 16px);
     --ytd-searchbox-height: 40px;
-    --ytd-searchbox-legacy-button-border-radius: 0 40px 40px 0;
+    --ytd-searchbox-legacy-button-border-radius: 0 var(--ypp-shape-lg, 16px) var(--ypp-shape-lg, 16px) 0;
     --ytd-searchbox-legacy-button-width: 64px;
     --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.08);
 }

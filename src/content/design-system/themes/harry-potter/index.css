@@ -3,25 +3,27 @@
 /* Hogwarts Magic (Harry Potter) Color Theme Bundle — Antique Gold & Parchment */
 
 @import "../../ui-styles/shared/timeline-visibility.css";
---ypp-bg-base: #0b0c10;
-  --ypp-bg-surface: #14151f;
-  --ypp-bg-glass: rgba(20, 21, 31, 0.92);
-  --ypp-glass-border: rgba(211, 166, 37, 0.35);
-  --ypp-glass-highlight: rgba(212, 175, 55, 0.15);
-  --ypp-glass-shine: linear-gradient(135deg, rgba(211, 166, 37, 0.12) 0%, rgba(116, 0, 1, 0.1) 50%, transparent 100%);
-  
-  --ypp-text-primary: #f5e6cc;
-  --ypp-text-secondary: #c8b69b;
-  
-  --ypp-accent: #d4af37;
-  --ypp-accent-hover: #e6c280;
-  --ypp-accent-glow: rgba(212, 175, 55, 0.45);
-  
-  --ypp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 10px rgba(211, 166, 37, 0.15);
-  --ypp-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.85), 0 0 20px rgba(211, 166, 37, 0.25);
-  --ypp-shadow-glow: 0 0 24px rgba(212, 175, 55, 0.35);
-  --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
-  
+[data-ypp-theme="harry-potter"] {
+    --ypp-bg-base: #0b0c10;
+    --ypp-bg-surface: #14151f;
+    --ypp-bg-glass: rgba(20, 21, 31, 0.92);
+    --ypp-glass-border: rgba(211, 166, 37, 0.35);
+    --ypp-glass-highlight: rgba(212, 175, 55, 0.15);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(211, 166, 37, 0.12) 0%, rgba(116, 0, 1, 0.1) 50%, transparent 100%);
+
+    --ypp-text-primary: #f5e6cc;
+    --ypp-text-secondary: #c8b69b;
+
+    --ypp-accent: #d4af37;
+    --ypp-accent-hover: #e6c280;
+    --ypp-accent-glow: rgba(212, 175, 55, 0.45);
+
+    --ypp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 10px rgba(211, 166, 37, 0.15);
+    --ypp-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.85), 0 0 20px rgba(211, 166, 37, 0.25);
+    --ypp-shadow-glow: 0 0 24px rgba(212, 175, 55, 0.35);
+    --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
+
+}
   --ytd-searchbox-background: rgba(20, 21, 31, 0.85);
   --ytd-searchbox-text-color: #f5e6cc;
   --ytd-searchbox-legacy-button-color: rgba(211, 166, 37, 0.15);

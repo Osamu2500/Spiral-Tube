@@ -1,12 +1,12 @@
-
-
 /* POLAROID CARD STYLE — V10
    Refactored to use the expanded core-framework token system.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
 
-/* ── 1. FRAMEWORK VARIABLES ─────────────────────────────────────────────── */--ypp-card-pad: 12px 12px 45px 12px !important;
+/* ── 1. FRAMEWORK VARIABLES ─────────────────────────────────────────────── */
+html[data-ypp-card-style="polaroid"] {
+  --ypp-card-pad: 12px 12px 45px 12px !important;
   --ypp-card-radius: 2px !important;
   --ypp-card-border: 1px solid rgba(0, 0, 0, 0.15) !important;
   --ypp-card-border-hover: 1px solid rgba(0, 0, 0, 0.15) !important;
@@ -19,7 +19,7 @@
 
   --ypp-card-title-font: 'Caveat', cursive, sans-serif !important;
   --ypp-card-meta-color: #222222 !important;
-
+}
 
 /* Structural Additions */
 html[data-ypp-card-style="polaroid"] :is(

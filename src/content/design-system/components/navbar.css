@@ -71,7 +71,7 @@ yt-button-view-model button[title*="Download" i]:hover,
 :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
 yt-download-button-view-model button:hover {
   background: var(--ypp-surface-bg-hover) !important;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1), var(--ypp-shadow-hover) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.08) !important;
 }
 ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
@@ -107,3 +107,445 @@ html:not([data-ypp-ui-design]) body #buttons ytd-topbar-menu-button-renderer yt-
 html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-icon-button {
     border-radius: var(--ypp-shape-primary, 12px) !important;
 }
+
+
+/* --- IMPORTED FROM header-nav.css --- */
+/* ===================================================================================
+   4. HEADER & NAVIGATION
+   =================================================================================== */
+
+/* Header Container - Fixed Position */
+.yt-spiral-tube-theme #masthead-container {
+  position: fixed;
+  top: 0;
+  z-index: var(--ypp-z-header);
+  background: transparent;
+  box-shadow: none;
+  width: 100%;
+}
+
+/* Push Page Content Down (60px total header space + 4px gap) */
+.yt-spiral-tube-theme ytd-page-manager#page-manager {
+  margin-top: 64px !important;
+}
+
+
+/* Inner Masthead - The Floating Pill */
+.yt-spiral-tube-theme ytd-masthead {
+  position: absolute;
+  top: 4px;
+  left: var(--ypp-header-margin);
+  right: var(--ypp-header-margin);
+  height: var(--ypp-header-height);
+  width: auto;
+  background: transparent;
+  padding: 0;
+  pointer-events: none;
+}
+
+/* The Navbar Container — Always-On Structural Layout */
+.yt-spiral-tube-theme ytd-masthead #container {
+  pointer-events: auto;
+  border-radius: var(--ypp-radius-pill);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box !important;
+  transition:
+    box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.4s ease,
+    background 0.4s ease;
+  transform: translateZ(0); /* Hardware Acceleration */
+  /* Default: transparent — matches native YouTube look */
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* Glass Aesthetics — ONLY activates when a UI Design is selected */
+html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) .yt-spiral-tube-theme ytd-masthead #container {
+  -webkit-backdrop-filter: var(--ypp-blur-subtle, blur(8px));
+  backdrop-filter: var(--ypp-blur-subtle, blur(8px));
+  background: var(--ypp-surface-bg, rgba(255, 255, 255, 0.06)) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.08)) !important;
+  box-shadow: var(--ypp-shadow-float, 0 8px 32px rgba(0, 0, 0, 0.3)) !important;
+}
+
+html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) .yt-spiral-tube-theme ytd-masthead #container:hover {
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+  border-color: var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
+  box-shadow: var(--ypp-shadow-float, 0 12px 48px rgba(0, 0, 0, 0.5)) !important;
+}
+
+.yt-spiral-tube-theme ytd-masthead #background {
+  display: none;
+}
+
+/* Search Bar Styling */
+
+/* Search Bar Styling - Premium Upgrade */
+.yt-spiral-tube-theme ytd-searchbox {
+  margin: 0 16px;
+  height: 40px; /* Sleeker height */
+  --ytd-searchbox-background: transparent !important;
+  --ytd-searchbox-border-radius: var(--ypp-shape-lg, 16px) !important;
+  --ytd-searchbox-text-color: var(--ypp-text-primary) !important;
+  overflow: visible !important; /* Allow pop-out shadows */
+}
+
+.yt-spiral-tube-theme ytd-searchbox #container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.yt-spiral-tube-theme ytd-searchbox #search-form {
+  display: flex;
+  height: 100%;
+  max-width: 800px;
+  flex: 1 1 auto;
+  margin-left: 0;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1) !important;
+  overflow: visible !important; /* Changed from hidden so inner shadows can bleed if needed */
+}
+
+.yt-spiral-tube-theme ytd-searchbox #search-form:focus-within {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,255,255,0.05), 0 4px 16px rgba(0,0,0,0.2) !important;
+}
+
+.yt-spiral-tube-theme ytd-searchbox input#search {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 24px !important;
+  color: var(--ypp-text-primary) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  height: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy {
+  background: transparent !important;
+  border: none !important;
+  width: 64px !important;
+  height: 100% !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  color: rgba(255,255,255,0.6) !important;
+  border-radius: 0 var(--ypp-shape-lg, 16px) var(--ypp-shape-lg, 16px) 0 !important;
+}
+
+.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+
+/* Voice Search Button */
+body #voice-search-button {
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
+  margin-left: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+body #voice-search-button yt-icon,
+body #voice-search-button svg {
+  fill: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+
+body #voice-search-button:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Center Section Alignment */
+.yt-spiral-tube-theme #center.ytd-masthead {
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: flex-start;
+  flex: 1;
+  max-width: none;
+  display: flex;
+}
+
+/* TopBar Buttons (Notifications, Create, etc) */
+body ytd-notification-topbar-button-renderer,
+body ytd-masthead #buttons yt-button-shape > button,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
+  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+/* Ensure the Create button keeps its auto width for text */
+body ytd-notification-topbar-button-renderer {
+  width: 40px !important;
+  height: 40px !important;
+  margin-left: 8px !important;
+  overflow: hidden !important;
+}
+
+body ytd-notification-topbar-button-renderer yt-icon,
+body ytd-notification-topbar-button-renderer svg,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) yt-icon,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) svg,
+body ytd-masthead #buttons yt-button-shape yt-icon,
+body ytd-masthead #buttons yt-button-shape * {
+  fill: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+
+body ytd-notification-topbar-button-renderer:hover,
+body ytd-masthead #buttons yt-button-shape > button:hover,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)):hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Fix inner button of notification to be transparent/full size */
+body ytd-notification-topbar-button-renderer #button,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) #button {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Profile Avatar Outer Container */
+body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img) {
+  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  margin-left: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):hover {
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Make inner profile button transparent and full size */
+body #avatar-btn {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important; /* Let container handle shape */
+}
+
+/* Ensure Image Fills */
+body #avatar-btn yt-img-shadow,
+body #avatar-btn img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important; /* Let container handle shape */
+  object-fit: cover !important;
+  margin: 0 !important;
+}
+
+/* Header Navigation Buttons */
+.ypp-nav-group {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+  pointer-events: auto !important; /* Ensure clickability - override masthead */
+  z-index: var(--ypp-z-popup) !important; /* Above all header elements and zen mode */
+  position: relative;
+  visibility: visible !important; /* Force visibility */
+  opacity: 1 !important; /* Force opacity */
+  order: -1; /* Visually prepend without DOM shifting */
+}
+
+/* Extra specificity for individual buttons */
+.ypp-nav-group .ypp-nav-btn {
+  pointer-events: auto !important;
+  visibility: visible !important;
+  display: flex !important;
+}
+
+.ypp-nav-btn {
+  -webkit-backdrop-filter: blur(4px);
+  transition: border-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: visible;
+  z-index: var(--ypp-z-popup); /* Ensure above other elements */
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, box-shadow, background-color, border-color, color;
+}
+
+.ypp-nav-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ypp-accent), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  border-color: var(--ypp-accent);
+}
+
+.ypp-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--ypp-text-primary, #fff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ypp-nav-btn:active {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ypp-nav-btn.active {
+  color: var(--yt-spec-text-primary, #fff) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.ypp-nav-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.ypp-nav-btn:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+/* Nav Icon Styling */
+.ypp-nav-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  pointer-events: none;
+  display: block;
+}
+
+
+
+/* --- IMPORTED FROM header-ast.css --- */
+
+.yt-spiral-tube-theme #guide-button,
+.yt-spiral-tube-theme ytd-masthead #buttons :is(ytd-button-renderer, yt-button-view-model),
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
+  display: none;
+}
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):not([hidden]) {
+  display: flex;
+}
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer[aria-label*="Create"],
+.yt-spiral-tube-theme :is(ytd-button-renderer, yt-button-view-model):has(a[href*="/upload"]),
+.yt-spiral-tube-theme ytd-masthead #buttons ytd-topbar-model-builder-renderer,
+.yt-spiral-tube-theme
+  ytd-topbar-menu-button-renderer:has([aria-label*="Create"]),
+.yt-spiral-tube-theme ytd-masthead #buttons #create-button,
+.yt-spiral-tube-theme ytd-masthead #buttons :is(ytd-button-renderer, yt-button-view-model):has([aria-label="Create"]),
+.yt-spiral-tube-theme ytd-masthead #buttons :is(ytd-button-renderer, yt-button-view-model) {
+  /* The big pill button for create is often a generic button renderer in #buttons. 
+     Be careful not to hide Sign In if it's there, but we assume signed in. 
+     Better to target by icon or specific attributes if possible. */
+  display: none !important;
+}
+.yt-spiral-tube-theme
+  ytd-masthead
+  #end
+  #buttons
+  :is(ytd-button-renderer, yt-button-view-model):has(yt-icon[icon="icons:plus"]),
+.yt-spiral-tube-theme
+  ytd-masthead
+  #end
+  #buttons
+  :is(ytd-button-renderer, yt-button-view-model):has(path[d*="M20 12h-8v8h-2v-8H2v-2h8V2h2v8h8v2z"]) {
+  display: none !important;
+}
+.yt-spiral-tube-theme ytd-topbar-logo-renderer {
+  padding: 0 16px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  margin-right: 16px;
+}
+.ypp-cinema-mode ytd-masthead {
+    opacity: 0.4;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.ypp-cinema-idle ytd-masthead {
+    opacity: 0 !important;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+.ypp-minimal-mode #masthead-container {
+    opacity: 0.15;
+    transition: opacity 0.3s;
+}
+.ypp-minimal-mode #masthead-container:hover {
+    opacity: 1;
+}
+body.ypp-dopamine-detox ytd-topbar-logo-renderer,
+body.ypp-dopamine-detox ytd-subscribe-button-renderer,
+body.ypp-dopamine-detox yt-icon,
+body.ypp-dopamine-detox .yt-spec-button-shape-next,
+body.ypp-dopamine-detox ytd-badge-supported-renderer {
+    filter: grayscale(100%) !important;
+}
+
+

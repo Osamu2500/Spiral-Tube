@@ -20,7 +20,7 @@ ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
     background var(--ypp-transition-bounce) !important;
 }
 .ytSearchboxComponentSearchButton:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: var(--ypp-surface-bg-hover, var(--yt-spec-10-percent-layer)) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.1);
 }
@@ -77,7 +77,7 @@ ytd-searchbox #search-icon-legacy {
   border-radius: 0 var(--ypp-shape-secondary, 12px) var(--ypp-shape-secondary, 12px) 0 !important;
 }
 ytd-search-filter-group-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
+  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   padding: 15px !important;
   box-shadow: var(--ypp-shadow-base) !important;

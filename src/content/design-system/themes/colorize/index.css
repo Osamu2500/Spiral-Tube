@@ -1,5 +1,8 @@
 /* Theme: colorize */--ypp-bg-base: #0f0f0f !important;
-  --ypp-bg-surface: #111111 !important;
-  --ypp-text-primary: #ffffff !important;
-  --ypp-text-secondary: rgba(255,255,255,0.7) !important;
+[data-ypp-theme="colorize"] {
+    --ypp-bg-surface: #111111 !important;
+    --ypp-text-primary: #ffffff !important;
+    --ypp-text-secondary: rgba(255,255,255,0.7) !important;
 
+
+}

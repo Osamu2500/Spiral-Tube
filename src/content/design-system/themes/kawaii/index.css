@@ -1,9 +1,11 @@
 /* Theme: kawaii */--ypp-bg-base: #ffb6c1 !important;
-  --ypp-bg-surface: #e5a3ad !important;
-  --ypp-text-primary: #0f0f0f !important;
-  --ypp-text-secondary: rgba(0,0,0,0.7) !important;
+[data-ypp-theme="kawaii"] {
+    --ypp-bg-surface: #e5a3ad !important;
+    --ypp-text-primary: #0f0f0f !important;
+    --ypp-text-secondary: rgba(0,0,0,0.7) !important;
 
   /* Critical YouTube Overrides for Light Themes */
+}
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;

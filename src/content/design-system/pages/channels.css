@@ -18,7 +18,7 @@ ytd-video-renderer,
 ytd-channel-renderer,
 ytd-playlist-renderer,
 ytd-radio-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
+  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
@@ -32,7 +32,7 @@ ytd-playlist-renderer:hover,
 ytd-radio-renderer:hover {
   transform: scale(1.02) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
-  background: rgba(128, 128, 128, 0.09) !important;
+  background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
 }
 #tabs-inner-container.ytd-c4-tabbed-header-renderer {
   background: transparent !important;

@@ -3,11 +3,13 @@
 
 /* neo-brutalism/theme/base/tokens.css */
 @import "../../ui-styles/shared/timeline-visibility.css";
---ypp-bg-base: #fff; --ypp-bg-surface: #fffbf0;
-  --ypp-accent: #000; --ypp-text-primary: #000;
-  --ypp-text-secondary: #333;
+[data-ypp-theme="neo-brutalism"] {
+    --ypp-bg-base: #fff; --ypp-bg-surface: #fffbf0;
+    --ypp-accent: #000; --ypp-text-primary: #000;
+    --ypp-text-secondary: #333;
 
   /* Critical YouTube Overrides for Light Themes */
+}
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
