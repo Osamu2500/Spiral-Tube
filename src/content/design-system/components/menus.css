@@ -290,3 +290,25 @@ body.ypp-small-settings-menu .ytp-menuitem-label {
 }
 
 
+
+
+/* Dropdown animation for menu items */
+.ypp-more-items {
+    display: none;
+    overflow: hidden;
+    animation: ypp-fade-down 0.2s ease forwards;
+}
+
+.ypp-more-items.open {
+    display: block;
+}
+
+.ypp-chevron {
+    transition: transform 0.2s ease;
+    margin-left: auto;
+}
+
+@keyframes ypp-fade-down {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
