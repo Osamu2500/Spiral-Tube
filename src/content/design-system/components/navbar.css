@@ -1,4 +1,10 @@
 /* src/content/themes/ui-styles/nature/components/navbar.css */
+
+/* ==========================================================================
+   TOPBAR / MASTHEAD — Glassmorphic Navbar
+   These rules use :root fallback tokens so the topbar is styled immediately
+   on CSS inject, BEFORE ThemeManager adds the yt-spiral-tube-theme class.
+   ========================================================================== */
 ytd-app,
 ytd-masthead,
 #page-manager.ytd-app,
@@ -14,11 +20,11 @@ ytd-masthead,
 ytd-masthead #container,
 #container.ytd-masthead {
   border-radius: var(--ypp-shape-primary, 12px) !important;
-  background: var(--ypp-surface-bg) !important;
-  background-color: var(--ypp-surface-bg) !important;
+  background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.88)) !important;
+  background-color: var(--ypp-surface-bg, rgba(20, 20, 20, 0.88)) !important;
   margin: 1px !important;
-  box-shadow: var(--ypp-shadow-active) !important;
-  border: var(--ypp-surface-border) !important;
+  box-shadow: var(--ypp-shadow-active, 0 1px 4px rgba(0, 0, 0, 0.6)) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
 }
 #background.ytd-masthead {
   background: transparent !important;

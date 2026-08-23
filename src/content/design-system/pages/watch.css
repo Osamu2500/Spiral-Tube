@@ -48,7 +48,7 @@
   filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
   -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
   backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
-  }
+}
 
 /* Extension Specific Overrides (EQ, Cinema, etc) */
 .ypp-eq-preset-btn,
@@ -114,106 +114,35 @@
   border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
 
-/* --- IMPORTED FROM pages-watch.css --- */
-/* --- Smart Layout Collapsing for ytd-watch-metadata --- */
-/* Removes padding if elements are hidden */
-
-/* Completely collapse ytd-watch-metadata if all major children are hidden */
-
-/* Hide Comments */
-
-/* Hide Live Chat */
-
-/* Hide Related Feed (Watch Page Sidebar) */
-
-/* Expand Primary Column when Related is hidden (and no Live Chat) */
-
-/* If Live Chat is active, we cannot completely hide secondary or expand primary fully without overlapping */
-
-/* Hide Merch Shelf */
-
-/* Hide Fundraiser / Donations */
-
-/* Hide End Screens */
-
-/* Hide Memberships */
-
-/* Hide Fundraiser / Donations */
-
-/* Hide End Screens */
-
-/* Hide Memberships */
-
-/* Hide Upload Button */
-
-/* ========================================================================== */
-
-/* Hide Mixes & Playlists */
-
-/* V7 Zero-JS Declutter Architecture */
-
-/* Mixes */
-
-/* Playlists */
-
-/* Posts */
-
-/* Podcasts */
-
-/* Channel Cards (only on search page) */
-
-/* Search Music (only on search page) */
-
-/* Promos */
-
-/* Explore Topics (Chips) */
-
-/* Player Page Topics */
-
-/* Aggressive Shorts Block (CSS) */
-
-/* Duration Filter */
-
-/* ===================================================================================
-   WATCH PAGE COMPONENT CARDS (Glassmorphic Containers)
-   =================================================================================== */
-
-html.yt-spiral-tube-theme ytd-watch-metadata #owner {
-  background: var(--ypp-surface-bg);
-  border: var(--ypp-surface-border);
-  border-radius: var(--ypp-border-radius-base, 12px);
-  padding: 8px 16px;
-  box-shadow: var(--ypp-shadow-card);
-  margin-right: 12px;
+/* ────────────────────────────────────────────────────────────────── */
+body.ypp-ui-extra-rounded ytd-thumbnail,
+body.ypp-ui-extra-rounded ytd-thumbnail img,
+body.ypp-ui-extra-rounded ytd-playlist-thumbnail,
+body.ypp-ui-extra-rounded ytd-macro-markers-list-item-renderer {
+    border-radius: 24px !important;
 }
 
-html.yt-spiral-tube-theme ytd-watch-metadata #actions {
-  background: var(--ypp-surface-bg);
-  border: var(--ypp-surface-border);
-  border-radius: var(--ypp-border-radius-base, 12px);
-  padding: 4px 8px;
-  box-shadow: var(--ypp-shadow-card);
-  display: flex;
-  align-items: center;
+body.ypp-ui-extra-rounded .ytp-videowall-still-image,
+body.ypp-ui-extra-rounded .ytp-videowall-still-info-content {
+    border-radius: 24px !important;
 }
 
-html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button,
-html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
-  background: transparent !important;
-  color: var(--ypp-text-primary, #fff) !important;
-  transition: all 0.2s ease;
+body.ypp-ui-extra-rounded ytd-rich-grid-media,
+body.ypp-ui-extra-rounded ytd-compact-video-renderer {
+    border-radius: 24px !important;
 }
 
-html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
-  background: var(--ypp-surface-bg-hover) !important;
-  color: var(--ypp-primary-accent) !important;
+body.ypp-ui-extra-rounded #avatar {
+    border-radius: 50% !important;
 }
 
-
-
+body.ypp-ui-extra-rounded :is(ytd-button-renderer, yt-button-view-model),
+body.ypp-ui-extra-rounded yt-button-view-model,
+body.ypp-ui-extra-rounded yt-segmented-like-dislike-button-view-model,
+body.ypp-ui-extra-rounded .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+body.ypp-ui-extra-rounded .yt-spec-button-shape-next {
+    border-radius: 32px !important;
+}
 
 /* Full Video Titles - Marquee Scroll */
 body.ypp-smooth-title-scroll :is(
@@ -247,61 +176,12 @@ body.ypp-smooth-title-scroll :is(
   100% { transform: translateX(calc(-100% + 200px)); }
 }
 
-
-/* ────────────────────────────────────────────────────────────────── */
-/* UI Shapes - Square Corners                                         */
-/* ────────────────────────────────────────────────────────────────── */
-body.ypp-ui-square-corners * {
-    border-radius: 0 !important;
-}
-
-/* ────────────────────────────────────────────────────────────────── */
-/* UI Shapes - Extra Rounded UI                                       */
-/* ────────────────────────────────────────────────────────────────── */
-body.ypp-ui-extra-rounded ytd-thumbnail,
-body.ypp-ui-extra-rounded ytd-thumbnail img,
-body.ypp-ui-extra-rounded ytd-playlist-thumbnail,
-body.ypp-ui-extra-rounded ytd-macro-markers-list-item-renderer {
-    border-radius: 24px !important;
-}
-
-body.ypp-ui-extra-rounded .ytp-videowall-still-image,
-body.ypp-ui-extra-rounded .ytp-videowall-still-info-content {
-    border-radius: 24px !important;
-}
-
-body.ypp-ui-extra-rounded ytd-rich-grid-media,
-body.ypp-ui-extra-rounded ytd-compact-video-renderer {
-    border-radius: 24px !important;
-}
-
-body.ypp-ui-extra-rounded #avatar {
-    border-radius: 50% !important;
-}
-
-body.ypp-ui-extra-rounded :is(ytd-button-renderer, yt-button-view-model),
-body.ypp-ui-extra-rounded yt-button-view-model,
-body.ypp-ui-extra-rounded yt-segmented-like-dislike-button-view-model,
-body.ypp-ui-extra-rounded .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
-body.ypp-ui-extra-rounded .yt-spec-button-shape-next {
-    border-radius: 32px !important;
-}
-
 /* Fix for squished buttons in action bar (e.g. Download) */
 #top-level-buttons-computed > *,
 #top-level-buttons-computed yt-button-view-model,
 #top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) {
     flex-shrink: 0 !important;
 }
-
-/* HARD OVERRIDE FOR PIPELINE HIDE */
-
-
-
-
-
-
-
 
 /* Normalize YouTube Native "Call to Action" Download Button to match standard tonal buttons */
 html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i],
@@ -354,8 +234,6 @@ html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[ti
     color: var(--yt-spec-text-primary) !important;
 }
 
-
-
 /* Fix huge gaps in Action Bar */
 html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata,
 html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
@@ -371,6 +249,45 @@ html[data-ypp-ui-design] body ytd-watch-metadata #flexible-item-buttons {
     justify-content: flex-end !important;
 }
 
+/* ===================================================================================
+   WATCH PAGE COMPONENT CARDS (Glassmorphic Containers)
+   =================================================================================== */
+
+html.yt-spiral-tube-theme ytd-watch-metadata #owner {
+  background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.88));
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1));
+  border-radius: var(--ypp-border-radius-base, 12px);
+  padding: 8px 16px;
+  box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.3));
+  margin-right: 12px;
+}
+
+html.yt-spiral-tube-theme ytd-watch-metadata #actions {
+  background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.88));
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1));
+  border-radius: var(--ypp-border-radius-base, 12px);
+  padding: 4px 8px;
+  box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: flex-end !important;
+  margin-left: auto !important;
+}
+
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
+  background: transparent !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition: all 0.2s ease;
+}
+
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+  color: var(--ypp-primary-accent, #3ea6ff) !important;
+}
 
 /* Universal Action Bar Layout Fix */
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner {
@@ -393,9 +310,17 @@ html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner > div:empty {
 
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
 
-
-
-
+/* Ensure top-row keeps channel info LEFT and action buttons RIGHT,
+   matching YouTube's native layout. Our flex override on #actions must not
+   accidentally collapse the space-between arrangement. */
+html.yt-spiral-tube-theme ytd-watch-metadata #top-row,
+html.yt-spiral-tube-theme ytd-watch-metadata ytd-watch-metadata-renderer #top-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+}
 
 /* --- IMPORTED FROM comments.css --- */
 body.yt-spiral-tube-theme ytd-comment-thread-renderer,
@@ -415,4 +340,3 @@ body.yt-spiral-tube-theme
   padding: 12px 0 0 0 !important;
   border-top: var(--ypp-surface-border) !important;
 }
-
