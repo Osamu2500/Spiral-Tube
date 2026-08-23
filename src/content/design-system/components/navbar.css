@@ -417,6 +417,7 @@ body #avatar-btn img {
 
 .ypp-nav-btn {
   -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   transition: border-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
     color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   cursor: pointer;
