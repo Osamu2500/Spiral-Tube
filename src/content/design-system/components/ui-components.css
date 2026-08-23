@@ -40,132 +40,13 @@ html.yt-spiral-tube-theme #guide-content {
 
 /* Nuke Shorts — Aggressive removal from all pages */
 
-/* ==========================================================================
-   FLOATING GLASSMORPHIC GUIDE DOCK
-   body.ypp-floating-guide — floats the left nav as a peekable glass panel.
-   ========================================================================== */
-
-/* Break YouTube's normal layout so the guide can float freely */
-
-body.ypp-floating-guide ytd-app {
-  --ytd-nav-drawer-width: 0px !important; /* collapse the space the guide would normally take */
-}
-
-/* Float the guide container */
-
-body.ypp-floating-guide #guide {
-  position: fixed !important;
-  top: calc(var(--ytd-masthead-height, 56px) + 12px) !important;
-  left: 0 !important;
-  z-index: var(--ypp-z-popup) !important;
-  pointer-events: all !important;
-  transform: translateX(calc(-100% + 8px)) !important; /* 8px peeks out so you can hover */
-  transition:
-    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.32s ease,
-    opacity 0.32s ease !important;
-  opacity: 0.85 !important;
-  will-change: transform !important;
-}
-
-/* Slide fully open on hover */
-
-body.ypp-floating-guide #guide:hover {
-  transform: translateX(0) !important;
-  opacity: 1 !important;
-  box-shadow:
-    0 8px 40px rgba(0,0,0,0.6),
-    0 2px 12px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.12) !important;
-}
-
-/* Glass panel on the guide renderer */
-
-/* Peek strip — the 8px visible sliver on the left edge */
-
-body.ypp-floating-guide #guide::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important; right: 0 !important;
-  width: 8px !important;
-  height: 100% !important;
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.18) 0%,
-    rgba(255,255,255,0.06) 50%,
-    rgba(255,255,255,0.18) 100%
-  ) !important;
-  border-radius: 0 4px 4px 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease !important;
-}
-
-/* Hide the peek strip once fully open */
-
-body.ypp-floating-guide #guide:hover::before {
-  opacity: 0 !important;
-}
-
-/* Custom scrollbar inside the floating guide */
-
-/* Guide entry items — glass-friendly */
-
-/* Section dividers inside the guide */
-
-/* Expand main page content to fill the vacated guide space */
-
-body.ypp-floating-guide #content.ytd-app,
-body.ypp-floating-guide ytd-page-manager {
-  margin-left: 0 !important;
-}
+/* Floating Guide logic moved to sidebar.css */
 
 /* ==========================================================================
    YPP UI Component Frame (Phase 6 UI Consistency)
    ========================================================================== */
 
-/* Button Components */
-
-.ypp-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border-radius: var(--ypp-shape-md, 12px);
-  color: var(--yt-spec-text-primary, #fff);
-  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ypp-btn:hover {
-  background-color: var(--ypp-bg-hover);
-}
-
-/* Nav buttons manage their own hover — don't let base .ypp-btn:hover override */
-
-.ypp-nav-btn.ypp-btn:hover {
-  background-color: transparent;
-}
-
-.ypp-btn:active {
-  background-color: var(--ypp-bg-active);
-}
-
-.ypp-btn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-}
-
-.ypp-btn-icon svg {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
-  pointer-events: none;
-}
+/* Base button components moved to buttons.css */
 
 /* Header Navigation Group */
 
@@ -276,107 +157,7 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
 
 /* Specific targetting for the "Pill" styled Create button */
 
-/* Topbar Polish (Dynamic Injection from HeaderNav) */
-
-/* Center Mic Icon */
-
-.yt-spiral-tube-theme #voice-search-button {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  border-radius: var(--ypp-shape-md, 12px) !important;
-}
-
-/* Profile Icon Squircle */
-
-.yt-spiral-tube-theme #avatar-btn,
-.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
-.yt-spiral-tube-theme #avatar-btn img {
-  border-radius: var(--ypp-shape-md, 12px) !important;
-}
-
-/* Header Navigation Group (Header Nav Feature) */
-
-.ypp-nav-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 16px;
-  margin-right: 16px;
-  height: 40px;
-  order: -1;
-}
-
-.ypp-nav-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--yt-spec-text-primary);
-  background: rgba(0, 0, 0, 0.2) !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
-  position: relative;
-}
-
-.ypp-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  transform: translateY(-1px) scale(1.05) !important;
-  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: var(--ypp-text-primary, #fff) !important;
-}
-
-.ypp-nav-btn.active {
-  /* Active = accent-coloured icon + underline dot only — no background fill */
-  color: var(--ypp-accent, #fff) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  box-shadow: none !important;
-}
-
-.ypp-nav-btn svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
-}
-
-.ypp-nav-btn:hover svg {
-  transform: scale(1.1);
-}
-
-/* Tooltip integration (simple title for now) */
-
-.ypp-nav-btn::after {
-  content: attr(title);
-  position: absolute;
-  bottom: -36px;
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.2s cubic-bezier(0.2,0.8,0.2,1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: var(--ypp-z-popup);
-}
-
-.ypp-nav-btn:hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Logo Area */
+/* Topbar Polish & Header Nav moved to navbar.css */
 
 /* Sidebar Scrolling */
 
@@ -582,19 +363,7 @@ body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
-.yt-spiral-tube-theme ytd-simple-menu-header-renderer,
-.yt-spiral-tube-theme ytd-active-account-header-renderer,
-.yt-spiral-tube-theme ytd-voice-search-dialog-renderer {
-  background: rgba(30, 30, 30, 0.95);
-  border: 1px solid var(--ypp-glass-border);
-  border-radius: var(--ypp-radius-lg);
-  box-shadow: var(--ypp-shadow-float);
-}
 
-.yt-spiral-tube-theme ytd-popup-container {
-  z-index: var(--ypp-z-popup);
-}
 
 /* [Unused Filter Drawer Styles Removed] */
 
@@ -615,74 +384,6 @@ body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
    style selectors. These rules re-apply each card style specifically for
    .ypp-grid-item so search results stay in sync with the home/feed cards.
    ────────────────────────────────────────────────────────────────────────── */
-
-/* FLAT ── search */
-
-/* ELEVATED ── search */
-
-/* GLASS ── search */
-
-/* FOLDER ── search */
-
-/* BENTO ── search */
-
-/* NEON ── search */
-
-/* COMPACT ── search */
-
-/* POLAROID ── search */
-
-/* NEUMORPHIC ── search (NEW) */
-
-/* CYBERPUNK ── search (NEW) */
-
-/* HOLOGRAPHIC ── search (NEW) */
-
-/* MINIMALIST ── search (NEW) */
-
-/* RETRO ── search (NEW) */
-
-/* BRUTALISM ── search (NEW) */
-
-/* SKEUOMORPHIC ── search (NEW) */
-
-/* FROSTED ── search (NEW) */
-
-/* SUMMER ── search (NEW) */
-
-@keyframes ypp-summer-heat {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes ypp-sun-pulse {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(1.5); opacity: 1; }
-}
-
-/* WINTER ── search (NEW) */
-
-@keyframes ypp-winter-shimmer {
-  0% { transform: rotate(45deg) translateY(-200%); }
-  20% { transform: rotate(45deg) translateY(200%); }
-  100% { transform: rotate(45deg) translateY(200%); }
-}
-
-/* SPRING ── search (NEW) */
-
-@keyframes ypp-spring-bloom {
-  0% { box-shadow: 0 8px 24px rgba(255, 150, 180, 0.1), inset 0 0 10px rgba(255, 180, 200, 0); }
-  100% { box-shadow: 0 8px 24px rgba(255, 150, 180, 0.2), inset 0 0 20px rgba(255, 180, 200, 0.2); }
-}
-
-/* AUTUMN ── search (NEW) */
-
-@keyframes ypp-autumn-leaves {
-  0% { background-position: 0% 0%; border-left-color: rgba(220, 120, 40, 0.7); }
-  50% { background-position: 100% 50%; border-left-color: rgba(200, 60, 20, 0.8); }
-  100% { background-position: 0% 100%; border-left-color: rgba(180, 140, 30, 0.7); }
-}
 
 /* Zen Mode Shadow */
 
@@ -729,67 +430,7 @@ body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
   }
 }
 
-/* ===================================================================================
-   14. PRO MAX UI ENHANCEMENTS (Left Guide, Buttons, Inputs)
-   =================================================================================== */
-
-/* Left Sidebar (Guide) Glassmorphism */
-
-/* Global Buttons & Searchbox Tactile Enhancements */
-
-body.yt-spiral-tube-theme yt-button-shape {
-  transition:
-    transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.2s ease !important;
-}
-
-body.yt-spiral-tube-theme yt-button-shape:hover {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-}
-
-body.yt-spiral-tube-theme #container.ytd-searchbox {
-  background: rgba(20, 20, 20, 0.8) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease !important;
-}
-
-body.yt-spiral-tube-theme #container.ytd-searchbox[has-focus] {
-  border-color: var(--ypp-accent) !important;
-  box-shadow:
-    0 0 12px var(--ypp-accent-glow),
-    inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* 2. Slide-out Hover Animation for Related Videos */
-
-/* 3. Pro Max Rounding for Core Elements */
-
-#container.ytd-searchbox {
-  border-radius: var(--ypp-radius-md) 0 0 var(--ypp-radius-md) !important;
-}
-
-#search-icon-legacy.ytd-searchbox {
-  border-radius: 0 var(--ypp-radius-md) var(--ypp-radius-md) 0 !important;
-}
-
-/* 4. Segmented Comments Cards */
-
-/* 5. Live Badge Red Voids */
-
-body.yt-spiral-tube-theme
-  .badge-style-type-live-now.ytd-badge-supported-renderer,
-body.yt-spiral-tube-theme
-  .badge-style-type-starting-soon.ytd-badge-supported-renderer {
-  padding: 4px 6px !important;
-  background-color: #cc0000 !important;
-  color: white !important;
-  border-radius: var(--ypp-radius-sm) !important;
-  font-weight: bold !important;
-}
+/* PRO MAX UI logic removed/consolidated */
 
 /* ===================================================================================
    16. REDESIGNED UI ELEMENTS (PREMIUM GLASSMORPHIC AESTHETIC)

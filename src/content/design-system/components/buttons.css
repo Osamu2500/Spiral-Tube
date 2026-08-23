@@ -178,150 +178,84 @@ button.ytSpecButtonShapeNextText:active {
    Normalize YouTube Native "Call to Action" Download Button
    Match standard tonal buttons when in default UI design
    ========================================================================== */
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i],
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[title*="Download" i],
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[title*="Download" i],
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[title*="Download" i],
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[title*="Download" i],
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) button,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons :is(ytd-download-button-renderer, yt-button-view-model) button,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model) button,
-html:not([data-ypp-ui-design]) body #actions-inner yt-download-button-view-model button,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-download-button-view-model button,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-download-button-view-model button,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i],
+    yt-button-shape button[title*="Download" i],
+    yt-button-view-model button[aria-label*="Download" i],
+    yt-button-view-model button[title*="Download" i],
+    ytd-download-button-renderer button,
+    yt-download-button-view-model button
+) {
     background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
     border: none !important;
-    border-radius: var(--ypp-shape-lg, 16px) !important;
+    border-radius: var(--ypp-button-radius, 12px) !important;
     box-shadow: none !important;
 }
 
 /* Hover State */
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[title*="Download" i]:hover,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html:not([data-ypp-ui-design]) body #actions-inner yt-download-button-view-model button:hover,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-download-button-view-model button:hover,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-download-button-view-model button:hover,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button:hover {
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i]:hover,
+    yt-button-shape button[title*="Download" i]:hover,
+    yt-button-view-model button[aria-label*="Download" i]:hover,
+    yt-button-view-model button[title*="Download" i]:hover,
+    ytd-download-button-renderer button:hover,
+    yt-download-button-view-model button:hover
+) {
     background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important;
     box-shadow: none !important;
     transform: none !important;
 }
 
 /* Icon Color */
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button .yt-core-image,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) button .yt-core-image,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons :is(ytd-download-button-renderer, yt-button-view-model) button .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model) button .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner yt-download-button-view-model button .yt-core-image,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-download-button-view-model button .yt-core-image,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-download-button-view-model button .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button .yt-core-image {
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i],
+    yt-button-shape button[title*="Download" i],
+    yt-button-view-model button[aria-label*="Download" i],
+    yt-button-view-model button[title*="Download" i],
+    ytd-download-button-renderer button,
+    yt-download-button-view-model button
+) .yt-core-image {
     fill: var(--yt-spec-text-primary) !important;
 }
 
 /* Text Color */
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner yt-button-view-model button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-view-model button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-view-model button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-view-model button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons :is(ytd-download-button-renderer, yt-button-view-model) button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model) button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner yt-download-button-view-model button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-download-button-view-model button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-download-button-view-model button .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button .yt-spec-button-shape-next__button-text-content {
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i],
+    yt-button-shape button[title*="Download" i],
+    yt-button-view-model button[aria-label*="Download" i],
+    yt-button-view-model button[title*="Download" i],
+    ytd-download-button-renderer button,
+    yt-download-button-view-model button
+) .yt-spec-button-shape-next__button-text-content {
     color: var(--yt-spec-text-primary) !important;
 }
 
 /* Fix native YouTube hover turning action buttons blue */
-html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata #top-level-buttons-computed .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button:hover .yt-core-image {
+html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(#actions-inner, #top-level-buttons-computed) .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
+html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover .yt-core-image {
     fill: var(--yt-spec-text-primary) !important;
 }
 
-html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata #top-level-buttons-computed .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button:hover .yt-spec-button-shape-next__button-text-content {
+html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(#actions-inner, #top-level-buttons-computed) .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover .yt-spec-button-shape-next__button-text-content {
     color: var(--yt-spec-text-primary) !important;
 }
 
 /* Force circle-square shapes across default UI */
 html:not([data-ypp-ui-design]) body {
-    --yt-spec-button-shape-next-border-radius: var(--ypp-shape-primary, 12px) !important;
+    --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
 }
 
 /* Subscribe button shape override */
 html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer button,
 html:not([data-ypp-ui-design]) body yt-button-shape#subscribe-button button,
 html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer yt-button-shape button {
-    border-radius: var(--ypp-shape-primary, 12px) !important;
+    border-radius: var(--ypp-button-radius, 12px) !important;
 }
 
 /* Fix download button specifically overriding its hardcoded pill radius */
 html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
-    border-radius: var(--ypp-shape-primary, 12px) !important;
+    border-radius: var(--ypp-button-radius, 12px) !important;
 }
 
 /* Explicitly force action buttons to circle-square because native 100px overrides might exist */
@@ -330,5 +264,51 @@ html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-
 html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
 html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
-    border-radius: var(--ypp-shape-primary, 12px) !important;
+    border-radius: var(--ypp-button-radius, 12px) !important;
 }
+
+
+/* Button Components */
+
+.ypp-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: var(--ypp-button-radius, 12px);
+  color: var(--yt-spec-text-primary, #fff);
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-btn:hover {
+  background-color: var(--ypp-bg-hover);
+}
+
+/* Nav buttons manage their own hover — don't let base .ypp-btn:hover override */
+
+.ypp-nav-btn.ypp-btn:hover {
+  background-color: transparent;
+}
+
+.ypp-btn:active {
+  background-color: var(--ypp-bg-active);
+}
+
+.ypp-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.ypp-btn-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  pointer-events: none;
+}
+
