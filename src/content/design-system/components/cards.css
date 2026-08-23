@@ -1,6 +1,6 @@
 /* 
    ==========================================================================
-   UNIVERSAL CARDS COMPONENT
+   1. CARD AESTHETICS & UNIVERSAL SHAPES
    This applies the core structure for all video cards across YouTube.
    Card Styles and Color Themes will supply the variables.
    ========================================================================== 
@@ -116,9 +116,8 @@ body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image,
   border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
 
-/* --- IMPORTED FROM cards.css --- */
 /* ===================================================================================
-   5. VIDEO GRID & CARDS
+   2. GRID LAYOUT (Home / Subscriptions)
    =================================================================================== */
 
 /* Main Grid Container - Full Width, Edge-to-Edge

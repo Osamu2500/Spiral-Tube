@@ -1,7 +1,7 @@
 /* 
    ==========================================================================
-   UNIVERSAL MENUS COMPONENT
-   This applies the core structure for menus, dropdowns, and tooltips.
+   1. POPUPS, DROPDOWNS & TOOLTIPS
+   This applies the core structure for standard popup menus.
    ========================================================================== 
 */
 
@@ -161,10 +161,9 @@ tp-yt-paper-toast {
   backdrop-filter: var(--ypp-dialog-backdrop-filter, none) !important;
   }
 
-/* --- IMPORTED FROM account-menu.css --- */
-/*
-   ACCOUNT MENU — Orbital Layout
-   ═══════════════════════════════════════════════
+/* ==========================================================================
+   3. ACCOUNT MENU — Orbital Layout
+   ==========================================================================
    All styles scoped to the custom .ypp-account-menu panel
    and the dropdown host overrides needed to display it.
    Feature-specific CSS (multi-select, cinematic, intentional delay,
