@@ -1,115 +1,87 @@
 /* 
    ==========================================================================
-   NATIVE ACCOUNT & MULTI-PAGE MENUS
-   Specific styling for YouTube's native ytd-multi-page-menu-renderer,
-   Switch Account panels, and profile popups.
-   
-   Using extremely high specificity to defeat native YouTube styles and 
-   core theme base overrides (like html[data-ypp-theme] #background).
-   ========================================================================== 
-*/
+   NUCLEAR ACCOUNT MENU OVERRIDES
+   Complete redesign of the default Switch Account menu.
+   This strips ALL default YouTube backgrounds from every single structural 
+   element inside the menu and re-applies our custom glassmorphism.
+   ========================================================================== */
 
-/* 1. Ensure the outer container and all structural layers are perfectly transparent 
-   so the frosted glass from our base ui (`menus.css`) can shine through. */
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer > #background,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer > #container,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections > *,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections > div,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections ytd-multi-page-menu-section-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections ytd-account-section-list-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections ytd-account-section-list-renderer > *,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections ytd-active-account-header-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-simple-menu-header-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #contentcontainer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #contentWrapper,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-listbox,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-item,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-iron-dropdown,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-account-item-section-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-compact-link-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-menu-service-item-renderer {
+/* 1. STRIP EVERYTHING: Nuke all backgrounds, borders, and shadows from every 
+   descendant of the multi-page menu to guarantee a clean slate. */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer *,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer * {
     background: transparent !important;
     background-color: transparent !important;
     background-image: none !important;
     border: none !important;
+    box-shadow: none !important;
 }
 
-/* Force specific wrappers that YouTube sometimes uses to be transparent */
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer div,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-multi-page-menu-section-renderer > div {
-    background-color: transparent !important;
+/* 2. REBUILD BASE: Apply the frosted glass to the main containers */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer > #container,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer > #container,
+html[data-ypp-theme] body tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer,
+html.yt-spiral-tube-theme body tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
+    background: var(--ypp-menu-bg, var(--ypp-bg-surface, linear-gradient(135deg, rgba(22, 22, 26, 0.85), rgba(14, 14, 18, 0.95)))) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 18px)) !important;
+    box-shadow: var(--ypp-shadow-elevation-3, 0 12px 32px rgba(0, 0, 0, 0.4)) !important;
+    border: 1px solid var(--ypp-border-color, rgba(255, 255, 255, 0.08)) !important;
+    padding: 8px 0 !important;
+    overflow: hidden !important;
 }
 
-/* 2. Sub-menus (like Switch Account) Header Area */
-html.yt-spiral-tube-theme body ytd-simple-menu-header-renderer {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-html.yt-spiral-tube-theme body ytd-simple-menu-header-renderer h2,
-html.yt-spiral-tube-theme body ytd-simple-menu-header-renderer yt-icon {
-    color: var(--ypp-text-primary, #ffffff) !important;
-}
-
-/* 3. Account Items (Active and Inactive) */
-html.yt-spiral-tube-theme body ytd-account-item-renderer,
-html.yt-spiral-tube-theme body ytd-compact-link-renderer {
-    background: transparent !important;
-    background-color: transparent !important;
-    border-radius: var(--ypp-radius-btn, 12px) !important;
-    margin: 4px 8px !important;
-    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    border: 1px solid transparent !important;
+/* 3. REBUILD ITEMS: Style the actual clickable account items with premium padding, radius, and hover */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-account-item-renderer,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-compact-link-renderer,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-navigation-item-renderer,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-service-item-renderer,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer tp-yt-paper-item,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-account-item-renderer,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-compact-link-renderer,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-item {
+    margin: 4px 12px !important;
+    width: calc(100% - 24px) !important;
+    border-radius: 10px !important;
+    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s ease !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
 }
 
-html.yt-spiral-tube-theme body ytd-account-item-renderer:hover,
-html.yt-spiral-tube-theme body ytd-compact-link-renderer:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    transform: scale(1.02) !important;
+/* Active Account Header padding */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-active-account-header-renderer {
+    padding: 8px 16px !important;
+    margin-bottom: 8px !important;
 }
 
-html.yt-spiral-tube-theme body ytd-account-item-renderer:active,
-html.yt-spiral-tube-theme body ytd-compact-link-renderer:active {
-    transform: scale(0.98) !important;
-    background: rgba(255, 255, 255, 0.15) !important;
-    background-color: rgba(255, 255, 255, 0.15) !important;
+/* 4. HOVER STATES: Re-apply the glassy hover effect */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-account-item-renderer:hover,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-compact-link-renderer:hover,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-service-item-renderer:hover,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer tp-yt-paper-item:hover,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-account-item-renderer:hover,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-compact-link-renderer:hover,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-item:hover {
+    background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+    background-color: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+    transform: translateX(4px) !important;
 }
 
-/* Ensure text inside the account rows stays crisp */
-html.yt-spiral-tube-theme body ytd-account-item-renderer #account-name,
-html.yt-spiral-tube-theme body ytd-account-item-renderer #email,
-html.yt-spiral-tube-theme body ytd-account-item-renderer #channel-title,
-html.yt-spiral-tube-theme body ytd-compact-link-renderer yt-formatted-string {
-    color: var(--ypp-text-primary, #ffffff) !important;
+/* 5. DIVIDERS: Premium subtle borders instead of solid black blocks */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer yt-multi-page-menu-section-renderer {
+    border-bottom: 1px solid var(--ypp-border-color, rgba(255, 255, 255, 0.05)) !important;
 }
-
-html.yt-spiral-tube-theme body ytd-account-item-renderer #subscriber-count {
-    color: var(--ypp-text-secondary, rgba(255, 255, 255, 0.7)) !important;
-}
-
-/* Avatar inside account list */
-html.yt-spiral-tube-theme body ytd-account-item-renderer yt-img-shadow {
-    border-radius: var(--ypp-radius-btn, 12px) !important;
-}
-
-/* 4. Separators inside the multi-page menu */
-html.yt-spiral-tube-theme body ytd-multi-page-menu-section-renderer {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-html.yt-spiral-tube-theme body ytd-multi-page-menu-section-renderer:last-child {
+html[data-ypp-theme] body ytd-multi-page-menu-renderer yt-multi-page-menu-section-renderer:last-child {
     border-bottom: none !important;
 }
 
-/* 5. Switch Account section header ("Other accounts") */
-html.yt-spiral-tube-theme body ytd-multi-page-menu-section-renderer #title {
-    color: var(--ypp-text-secondary, rgba(255, 255, 255, 0.6)) !important;
-    font-weight: 600 !important;
-}
-
-/* 6. Remove native paper-item padding and backgrounds */
-html.yt-spiral-tube-theme body tp-yt-paper-item.ytd-account-item-renderer,
-html.yt-spiral-tube-theme body tp-yt-paper-item.ytd-compact-link-renderer {
-    background: transparent !important;
+/* Exceptions: Make sure SVGs and Avatars are visible */
+html[data-ypp-theme] body ytd-multi-page-menu-renderer svg,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer img,
+html[data-ypp-theme] body ytd-multi-page-menu-renderer yt-img-shadow {
     background-color: transparent !important;
 }
