@@ -125,3 +125,13 @@ ytd-browse[page-subtype=home] #chips {
   backdrop-filter: var(--ypp-chip-bar-backdrop-filter, none) !important;
   transition: background 0.3s ease !important;
 }
+
+/* Fix the filter chips globally */
+
+html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer[selected],
+html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer.iron-selected {
+  --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.15) !important;
+  --yt-spec-button-chip-background-hover: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview
+ * Shorts Volume Normalizer
+ * 
+ * Target: /shorts route.
+ * Purpose: Syncs the volume of Shorts players with the user's global YouTube volume setting.
+ * Solves the issue where Shorts randomly play at 100% volume.
+ */
 export class ShortsVolumeNormalizer extends window.YPP.features.BaseFeature {
     static featureId = 'shortsVolumeNormalizer';
     static executionPhase = 'idle';
@@ -114,4 +122,3 @@ export class ShortsVolumeNormalizer extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.ShortsVolumeNormalizer = ShortsVolumeNormalizer;

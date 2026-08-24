@@ -3,7 +3,7 @@
  * Manages the Web Audio API graph for the active HTML5 video element.
  */
 
-
+import { VolumeBoosterUI } from './volume-booster-ui.js';
 
 export class VolumeBooster extends window.YPP.features.BaseFeature {
     static featureId = 'volumeBoost';
@@ -303,11 +303,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                 handled = true;
             }
             
-            if (handled && this._volumePopup && window.VolumeBoosterUI) {
+            if (handled && this._volumePopup && VolumeBoosterUI) {
                 const anchorBtn = document.querySelector(`#ypp-volume-boost-btn[data-vb-id="${this._id}"]`);
                 if (anchorBtn) {
-                    window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn);
-                    setTimeout(() => window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn), 10);
+                    VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn);
+                    setTimeout(() => VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn), 10);
                 }
             }
         });
@@ -510,11 +510,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                     this.applyPreset(presetName);
                     this.utils?.log?.(`[YPP:VolumeBooster] Auto-applied preset "${presetName}" for channel "${channel}"`, 'VolumeBooster');
                     // Sync UI if open
-                    if (this._volumePopup && window.VolumeBoosterUI) {
+                    if (this._volumePopup && VolumeBoosterUI) {
                         const anchorBtn = document.querySelector(`#ypp-volume-boost-btn[data-vb-id="${this._id}"]`);
                         if (anchorBtn) {
-                            window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn);
-                            setTimeout(() => window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn), 10);
+                            VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn);
+                            setTimeout(() => VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn), 10);
                         }
                     }
                 }
@@ -999,7 +999,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         btn.dataset.vbId = this._id;
         this.addListener(btn, 'click', (e) => {
             e.stopPropagation();
-            if (window.YPP.features.VolumeBoosterUI) {
+            if (VolumeBoosterUI) {
                 const activeVideo = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
                 // Synchronously initialize AudioContext during a guaranteed user gesture (click)
                 // This prevents the AudioContext from being created in a 'suspended' state,
@@ -1008,12 +1008,10 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                     this.initAudioContext(activeVideo);
                 }
                 
-                window.YPP.features.VolumeBoosterUI.toggleEQPanel(this, activeVideo, btn);
+                VolumeBoosterUI.toggleEQPanel(this, activeVideo, btn);
             }
         });
 
         return btn;
     }
 };
-
-window.YPP.features.VolumeBooster = VolumeBooster;

@@ -1,4 +1,4 @@
-import { PlaylistRedesign } from './layout/playlist-redesign.js';
+import { PlaylistRedesign } from './layout/playlist-redesign/playlist-redesign.js';
 window.YPP.FeatureManager.register(PlaylistRedesign);
 
 import { PlaylistDuration } from './features/duration-calculator.js';

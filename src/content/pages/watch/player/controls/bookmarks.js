@@ -129,4 +129,3 @@ export class BookmarksManager extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.BookmarksManager = BookmarksManager;

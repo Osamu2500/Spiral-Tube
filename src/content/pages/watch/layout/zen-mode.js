@@ -1,10 +1,13 @@
 /**
+ * @fileoverview
  * Zen Mode Feature
- * Reduces distractions on the Watch Page and adds an ambient glow effect.
+ * 
+ * Target: /watch route.
+ * Purpose: Reduces distractions on the Watch Page and adds an ambient glow effect
+ * and spatial audio.
+ * 
  * Refactored for performance: Cached DOM elements, optimized canvas operations.
  */
-
-
 
 export class ZenMode extends window.YPP.features.BaseFeature {
     static featureId = 'zenMode';
@@ -296,5 +299,3 @@ export class ZenMode extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.ZenMode = ZenMode;

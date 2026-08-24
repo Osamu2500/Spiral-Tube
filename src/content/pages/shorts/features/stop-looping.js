@@ -1,3 +1,11 @@
+/**
+ * @fileoverview
+ * Stop Shorts Looping
+ * 
+ * Target: /shorts route.
+ * Purpose: Monitors Shorts videos and removes the 'loop' attribute to prevent infinite playback.
+ * Automatically attaches to new active reels as the user scrolls.
+ */
 export class StopShortsLooping extends window.YPP.features.BaseFeature {
     static featureId = 'stopShortsLooping';
     static executionPhase = 'idle';
@@ -89,4 +97,3 @@ export class StopShortsLooping extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.StopShortsLooping = StopShortsLooping;

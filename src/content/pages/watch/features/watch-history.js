@@ -1,11 +1,11 @@
 /**
+ * @fileoverview
  * Feature: Real-Time Playback Tracker
- * Tracks actual watch time on video pages via <video> events.
+ * 
+ * Target: /watch route.
+ * Purpose: Tracks actual watch time on video pages via <video> events.
  * Source of truth for all "Personal Analytics".
  */
-
-
-
 export class WatchHistoryTracker extends window.YPP.features.BaseFeature {
     static featureId = 'watchHistory';
     static executionPhase = 'idle';
@@ -239,5 +239,3 @@ export class WatchHistoryTracker extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.WatchHistoryTracker = WatchHistoryTracker;

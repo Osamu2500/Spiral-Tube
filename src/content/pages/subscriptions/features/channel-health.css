@@ -1,0 +1,257 @@
+/* 
+ * Channel Health Dashboard Styles
+ */
+
+/* Modal Overlay & Base Content */
+.ypp-health-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+    pointer-events: auto !important;
+}
+
+.ypp-health-modal-content {
+    font-family: 'Inter', 'Outfit', sans-serif;
+    width: 90vw;
+    height: 90vh;
+    max-width: 1200px;
+    max-height: 800px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    color: #f1f5f9;
+}
+
+/* Header */
+.ypp-health-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px 24px 0 0;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ypp-health-header-icon {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+.ypp-health-btn-scan {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    padding: 8px 24px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.ypp-health-btn-scan:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ypp-health-btn-unsub {
+    background: rgba(255, 78, 69, 0.1);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 78, 69, 0.25);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    padding: 8px 20px;
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 78, 69, 0.1);
+}
+.ypp-health-btn-unsub:hover {
+    background: rgba(255, 78, 69, 0.15);
+    border-color: rgba(255, 78, 69, 0.4);
+    transform: translateY(-1px);
+}
+
+.ypp-health-btn-close {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    line-height: 1;
+}
+.ypp-health-btn-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Stats */
+.ypp-health-stat {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    border-radius: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-health-stat[data-filter="active"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(46, 213, 115, 0.15);
+    border-color: rgba(46, 213, 115, 0.3);
+}
+.ypp-health-stat[data-filter="warning"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 179, 64, 0.15);
+    border-color: rgba(255, 179, 64, 0.3);
+}
+.ypp-health-stat[data-filter="dead"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 78, 69, 0.15);
+    border-color: rgba(255, 78, 69, 0.3);
+}
+
+.ypp-health-stat-label {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ypp-health-stat-value {
+    color: #f1f5f9;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+/* Inputs & Selects */
+.ypp-health-input {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    outline: none;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+.ypp-health-input:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.ypp-health-select {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    appearance: none;
+    padding-right: 32px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+.ypp-health-select:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.ypp-health-select option {
+    background: rgba(20, 20, 30, 0.9);
+    color: white;
+}
+
+/* Channel Row */
+.ypp-channel-health-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: ypp-fade-in 0.3s ease;
+    cursor: grab;
+}
+.ypp-channel-health-row:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(4px);
+}
+
+.ypp-health-row-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ypp-indiv-unsub-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ypp-indiv-unsub-btn:not(:disabled):hover {
+    background: linear-gradient(135deg, rgba(255, 78, 69, 0.15), rgba(255, 179, 64, 0.15));
+    border-color: rgba(255, 78, 69, 0.4);
+    color: #ff6b6b;
+    transform: translateY(-1px);
+}

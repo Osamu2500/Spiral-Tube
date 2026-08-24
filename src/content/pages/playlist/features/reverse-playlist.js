@@ -1,10 +1,10 @@
 /**
+ * @fileoverview
  * Reverse Playlist Feature
- * Adds an elegant SVG button to reverse the order of videos in the playlist panel.
+ * 
+ * Target: /playlist route.
+ * Purpose: Adds an elegant SVG button to reverse the order of videos in the playlist panel.
  */
-
-
-
 export class ReversePlaylist extends window.YPP.features.BaseFeature {
     static featureId = 'reversePlaylist';
     static executionPhase = 'idle';
@@ -126,4 +126,3 @@ export class ReversePlaylist extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.ReversePlaylist = ReversePlaylist;

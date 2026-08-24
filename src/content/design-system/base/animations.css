@@ -109,3 +109,42 @@ body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::after {
   scroll-behavior: auto !important;
 }
 
+/* Fade Up Animation */
+
+@keyframes ypp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Zen Mode Shadow */
+
+.ypp-zen-shadow {
+  transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+@keyframes ypp-fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+

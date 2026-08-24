@@ -349,8 +349,5 @@ export const FILTERS = [
 ];
 
 if (typeof window !== 'undefined') {
-    window.YPP = window.YPP || {};
-    window.YPP.features = window.YPP.features || {};
-    window.YPP.features.VideoFiltersPresets = { FILTERS };
-}
+    window.YPP = window.YPP || {};}
 

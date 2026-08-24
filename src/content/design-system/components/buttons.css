@@ -312,3 +312,296 @@ html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-m
   pointer-events: none;
 }
 
+/* ==========================================================================
+   VIEW MODE TOGGLE BUTTON STYLES
+   ========================================================================== */
+
+#ypp-view-toggle,
+.ypp-view-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, box-shadow, background-color, color;
+}
+
+.ypp-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ypp-text-primary, #fff);
+}
+
+.ypp-toggle-btn.active {
+  background: rgba(62, 166, 255, 0.2);
+  color: #3ea6ff;
+  border: 1px solid rgba(62, 166, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   SUBSCRIBE BUTTON
+   ========================================================================== */
+
+body.yt-spiral-tube-theme #subscribe-button {
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+body.yt-spiral-tube-theme #subscribe-button
+  > ytd-subscribe-button-renderer
+  > yt-smartimation
+  > div
+  > yt-button-shape
+  > button,
+body.yt-spiral-tube-theme #subscribe-button
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  padding: 0 20px !important;
+  height: 40px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+body.yt-spiral-tube-theme #subscribe-button
+  > ytd-subscribe-button-renderer
+  > yt-smartimation
+  > div
+  > yt-button-shape
+  > button:hover,
+body.yt-spiral-tube-theme #subscribe-button
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
+body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--ypp-text-secondary, #aaa) !important;
+  box-shadow: none !important;
+}
+
+body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
+body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+
+body.yt-spiral-tube-theme #subscribe-button
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content {
+  color: inherit !important;
+}
+
+/* ==========================================================================
+   ACTION PILLS (SHARE, DOWNLOAD, SAVE)
+   ========================================================================== */
+
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button,
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button,
+body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
+  border: none !important; 
+}
+
+/* Hide native ripple and dark mode overlay pseudo-elements */
+body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
+body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
+body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
+body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
+  display: none !important;
+}
+
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content,
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content,
+body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content {
+  margin: 0 !important;
+}
+
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button,
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button,
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape-with-explainer
+  yt-button-shape
+  > button,
+body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  > button {
+  border-radius: var(--ypp-shape-md, 12px) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-weight: 500 !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button:hover,
+body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button:hover,
+body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ==========================================================================
+   SEGMENTED LIKE/DISLIKE BUTTON FIXES
+   ========================================================================== */
+
+body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
+body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 36px !important;
+  overflow: hidden !important;
+  --yt-button-border-radius: var(--ypp-shape-md, 12px) !important;
+  --yt-spec-button-shape-next-border-radius: var(--ypp-shape-md, 12px) !important;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper):hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
+  yt-button-shape:first-child
+  button {
+  border-radius: var(--ypp-shape-md, 12px) 0 0 var(--ypp-shape-md, 12px) !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+}
+
+body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
+  yt-button-shape:last-child
+  button {
+  border-radius: 0 var(--ypp-shape-md, 12px) var(--ypp-shape-md, 12px) 0 !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.yt-spiral-tube-theme #actions-inner yt-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* SQUIRCLE yt-light-shape visual overlay fixes */
+body.yt-spiral-tube-theme .ytSegmentedLikeDislikeButtonViewModelLightShape,
+body.yt-spiral-tube-theme yt-segmented-like-dislike-button-view-model yt-light-shape {
+  border-radius: 12px !important;
+}
+body.yt-spiral-tube-theme .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper yt-touch-feedback-shape {
+  border-radius: 12px !important;
+}
+body.yt-spiral-tube-theme #actions-inner yt-button-shape yt-light-shape,
+body.yt-spiral-tube-theme #actions-inner yt-button-shape yt-touch-feedback-shape,
+body.yt-spiral-tube-theme #flexible-item-buttons yt-button-shape yt-light-shape,
+body.yt-spiral-tube-theme #flexible-item-buttons yt-button-shape yt-touch-feedback-shape {
+  border-radius: 12px !important;
+}
+body.yt-spiral-tube-theme #subscribe-button yt-light-shape,
+body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape,
+body.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-light-shape,
+body.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-touch-feedback-shape {
+  border-radius: 12px !important;
+}
+

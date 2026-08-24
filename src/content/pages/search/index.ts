@@ -1,4 +1,3 @@
-import './search-manager.js';
 
 import { SearchViewMode } from './layout/search-view-mode.js';
 window.YPP.FeatureManager.register(SearchViewMode);

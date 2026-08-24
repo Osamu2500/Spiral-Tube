@@ -38,7 +38,6 @@ import '../pages/home/index.js';
 import '../pages/shorts/index.js';
 import '../pages/subscriptions/index.js';
 import '../pages/search/index.js';
-import '../pages/history/index.js';
 import '../pages/playlist/index.js';
 import '../pages/watch/index.js';
 

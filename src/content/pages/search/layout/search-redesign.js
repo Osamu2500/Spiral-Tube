@@ -1,6 +1,9 @@
 /**
+ * @fileoverview
  * Search Redesign — Orchestrator
- * Owns: enable/disable lifecycle, SPA navigation handling, and view-mode toggle.
+ * 
+ * Target: /results route.
+ * Purpose: Owns: enable/disable lifecycle, SPA navigation handling, and view-mode toggle.
  * Delegates observation/processing to SearchObserver and filter logic to SearchFilter.
  *
  * Architecture:
@@ -360,6 +363,3 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     }
 }
 
-// Expose to global namespace for FeatureManager
-
-window.YPP.features.SearchRedesign = SearchRedesign;

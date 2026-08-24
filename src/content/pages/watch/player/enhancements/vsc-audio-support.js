@@ -12,4 +12,3 @@ export class VSCAudioSupport extends window.YPP.features.BaseFeature {
     constructor() { super('VSCAudioSupport'); }
 }
 
-window.YPP.features.VSCAudioSupport = VSCAudioSupport;

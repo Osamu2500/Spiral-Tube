@@ -1,12 +1,12 @@
 /**
+ * @fileoverview
  * Search Observer
- * Owns: MutationObserver, monitor interval, debounce, processAll / processNode.
+ * 
+ * Target: /results route.
+ * Purpose: Owns: MutationObserver, monitor interval, debounce, processAll / processNode.
  * Stateless w.r.t. settings — caller syncs via sync() before use.
  */
-
-
-
-export class SearchObserver {
+export class SearchObserver extends window.YPP.features.BaseFeature {
     static featureId = 'searchObserver';
     static executionPhase = 'idle';
     static priority = 999;
@@ -66,6 +66,7 @@ export class SearchObserver {
     // -------------------------------------------------------------------------
 
     constructor() {
+        super('searchObserver');
         this._processedNodes  = new WeakSet();
 
         /** Injected by SearchRedesign via sync() */
@@ -515,4 +516,3 @@ export class SearchObserver {
 
 };
 
-window.YPP.features.SearchObserver = SearchObserver;

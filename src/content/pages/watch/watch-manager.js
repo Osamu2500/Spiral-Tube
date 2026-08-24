@@ -1,3 +1,15 @@
+/**
+ * @fileoverview
+ * Watch Page Manager for Spiral Tube
+ * 
+ * Target: /watch and /shorts routes.
+ * Purpose: Manages the lifecycle, DOM updates, layout modes (Zen, Cinema, etc.), 
+ * and Player Bar UI injection for the YouTube watch page.
+ * 
+ * This file acts as the coordinator for all watch-related features and styles.
+ * It is completely isolated to the watch page and does not affect other routes.
+ */
+
 class WatchPageManager extends window.YPP.BasePageManager {
   constructor(utils, settings) {
     super(utils, settings);

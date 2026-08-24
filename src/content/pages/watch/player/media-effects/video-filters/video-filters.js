@@ -2,6 +2,10 @@
  * Video Filters Feature Orchestrator
  */
 
+import { VideoFiltersOverlay } from './video-filters-overlay.js';
+import { VideoFiltersUI } from './video-filters-ui.js';
+import { FILTERS } from './video-filters-presets.js';
+
 export class VideoFilters extends window.YPP.features.BaseFeature {
     static featureId = 'videoFilters';
     static executionPhase = 'sequential-ui';
@@ -56,7 +60,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         try {
-            window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+            VideoFiltersOverlay.removeOverlay(this);
             this._removeFilterPanel();
             if (this._filterBtn) {
                 this._filterBtn.remove();
@@ -103,7 +107,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             this._removeFilterPanel();
             return;
         }
-        window.YPP.features.VideoFiltersUI.createFilterPanel(this, video, btn);
+        VideoFiltersUI.createFilterPanel(this, video, btn);
     }
 
     _removeFilterPanel() {
@@ -132,7 +136,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         video = video || this._getVideo();
         if (!video) return;
 
-        window.YPP?.features?.VideoFiltersUI?._injectStyles?.();
+        VideoFiltersUI?._injectStyles?.();
         
         if (!this._rafPendingForVideo) {
             this._rafPendingForVideo = new WeakSet();
@@ -183,7 +187,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             return;
         }
 
-        const preset = window.YPP.features.VideoFiltersPresets.FILTERS[this.currentFilterIndex];
+        const preset = FILTERS[this.currentFilterIndex];
         const adj = this.filterAdjustments;
         const inst = this.filterIntensity / 100;
         
@@ -193,25 +197,25 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         
         if (adj.sharpness !== 0) {
             if (video._proxy) video.injectSVGSharpness(adj.sharpness);
-            else window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
+            else VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
             finalFilter += ` url(#ypp-svg-sharpness)`;
         }
 
         if (adj.aberration > 0) {
-            if (!video._proxy) window.YPP.features.VideoFiltersOverlay.injectSVGAberration(adj.aberration);
+            if (!video._proxy) VideoFiltersOverlay.injectSVGAberration(adj.aberration);
             finalFilter += ` url(#ypp-svg-aberration)`;
         }
         if (adj.bloom > 0) {
-            if (!video._proxy) window.YPP.features.VideoFiltersOverlay.injectSVGBloom(adj.bloom);
+            if (!video._proxy) VideoFiltersOverlay.injectSVGBloom(adj.bloom);
             finalFilter += ` url(#ypp-svg-bloom)`;
         }
         if (adj.vhs > 0) {
-            if (!video._proxy) window.YPP.features.VideoFiltersOverlay.injectSVGVHS(adj.vhs);
+            if (!video._proxy) VideoFiltersOverlay.injectSVGVHS(adj.vhs);
             finalFilter += ` url(#ypp-svg-vhs)`;
         }
 
         if (video._proxy) video.manageSVGFilters(finalFilter);
-        else window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
+        else VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
         // Hardware-accelerated CSS variable pipeline + Inline fallback immunity
         video.classList.add('ypp-cinema-active');
@@ -269,10 +273,10 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 }
             }
             if (needsReapply) {
-                window.YPP?.features?.VideoFiltersUI?._injectStyles?.();
+                VideoFiltersUI?._injectStyles?.();
                 video.classList.add('ypp-cinema-active');
                 
-                const preset = window.YPP.features.VideoFiltersPresets.FILTERS[this.currentFilterIndex];
+                const preset = FILTERS[this.currentFilterIndex];
                 const adj = this.filterAdjustments;
                 const inst = this.filterIntensity / 100;
                 const baseValues = this._calculateBaseValues(adj);
@@ -330,7 +334,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         video.style.setProperty('opacity', '1', 'important');
         video.style.removeProperty('clip-path');
         video.style.removeProperty('--ypp-video-clip');
-        window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+        VideoFiltersOverlay.removeOverlay(this);
     }
 
     _calculateBaseValues(adj) {
@@ -353,8 +357,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                             adj.exposure !== 0 || adj.tint !== 0 || adj.fade !== 0;
                             
         if (needsCurves) {
-            window.YPP.features.VideoFiltersOverlay.setupDynamicSVGFilter();
-            window.YPP.features.VideoFiltersOverlay.updateDynamicSVGFilter({
+            VideoFiltersOverlay.setupDynamicSVGFilter();
+            VideoFiltersOverlay.updateDynamicSVGFilter({
                 brightness: baseValues.brightness,
                 contrast: baseValues.contrast,
                 shadows: adj.shadows || 0,
@@ -407,14 +411,14 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
 
         if (!needsOverlay) {
             if (video && video._proxy) video.removeOverlay();
-            else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+            else VideoFiltersOverlay.removeOverlay(this);
             this._lastOverlayKey = null;
         } else if (overlayChanged) {
             if (video && video._proxy) video.removeOverlay();
-            else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+            else VideoFiltersOverlay.removeOverlay(this);
             
             if (video && video._proxy) video.applyOverlay(preset.overlay, adj.grain);
-            else window.YPP.features.VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain, adj.scanlines, adj.vignette);
+            else VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain, adj.scanlines, adj.vignette);
             
             this._lastOverlayKey = overlayKey;
         }
@@ -499,6 +503,4 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             }
         }
     }
-};
-
-window.YPP.features.VideoFilters = VideoFilters;
+}

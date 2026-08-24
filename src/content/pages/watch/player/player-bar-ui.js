@@ -1,6 +1,9 @@
 /**
+ * @fileoverview
  * Player Bar UI
- * Owns: Generating the custom player bar DOM, injecting it into the YouTube watch page player,
+ * 
+ * Target: /watch route (and shorts).
+ * Purpose: Generating the custom player bar DOM, injecting it into the YouTube watch page player,
  * and handling the visibility/styling of native YouTube buttons based on settings.
  */
 export class PlayerBarUI {
@@ -654,5 +657,3 @@ export class PlayerBarUI {
         if (legacyVis) legacyVis.remove();
     }
 };
-
-window.YPP.features.PlayerBarUI = PlayerBarUI;

@@ -12,4 +12,3 @@ export class VSCHideByDefault extends window.YPP.features.BaseFeature {
     constructor() { super('VSCHideByDefault'); }
 }
 
-window.YPP.features.VSCHideByDefault = VSCHideByDefault;

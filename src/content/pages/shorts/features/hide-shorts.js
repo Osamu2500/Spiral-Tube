@@ -1,3 +1,12 @@
+/**
+ * @fileoverview
+ * Hide Shorts
+ * 
+ * Target: /shorts route.
+ * Purpose: Identifies and hides YouTube Shorts from the DOM across the platform.
+ * Targets: search results, shelves, feed, and recommended videos.
+ * Utilizes MutationObserver and robust selector heuristics.
+ */
 export class HideShorts extends window.YPP.features.BaseFeature {
     static featureId = 'hideShorts';
     static executionPhase = 'idle';
@@ -304,4 +313,3 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.HideShorts = HideShorts;

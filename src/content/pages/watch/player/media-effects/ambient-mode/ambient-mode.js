@@ -109,6 +109,3 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
 }
 
 window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-window.YPP.features.AmbientMode = AmbientMode;
-

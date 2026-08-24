@@ -11,5 +11,3 @@ export class FilterBar extends window.YPP.features.BaseFeature {
     getConfigKey() { return 'enableFilterBar'; }
     constructor() { super('FilterBar'); }
 }
-
-window.YPP.features.FilterBar = FilterBar;

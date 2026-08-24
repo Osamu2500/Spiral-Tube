@@ -1,4 +1,5 @@
 /**
+ * @fileoverview
  * Player Controls Helper
  * Handles creation and interactions of custom player buttons (Speed, PiP).
  */
@@ -139,5 +140,3 @@ export class PlayerControls {
         });
     }
 };
-
-window.YPP.features.PlayerControls = PlayerControls;

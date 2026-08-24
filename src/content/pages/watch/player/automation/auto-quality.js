@@ -1,6 +1,9 @@
 /**
+ * @fileoverview
  * Auto Quality feature
- * Automatically forces high playback quality and prevents YouTube from dynamically downgrading.
+ * 
+ * Target: /watch route.
+ * Purpose: Automatically forces high playback quality and prevents YouTube from dynamically downgrading.
  */
 
 export class AutoQuality extends window.YPP.features.BaseFeature {
@@ -239,5 +242,3 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
         return currentQuality;
     }
 };
-
-window.YPP.features.AutoQuality = AutoQuality;

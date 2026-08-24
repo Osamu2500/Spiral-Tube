@@ -207,4 +207,3 @@ export class PlayerTools extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.PlayerTools = PlayerTools;

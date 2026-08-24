@@ -1,11 +1,10 @@
-// @ts-nocheck
 /**
+ * @fileoverview
  * Feature: Continue Watching Label & Prompt
- * Tags previously watched videos in the related sidebar and prompts the user.
+ * 
+ * Target: /watch route.
+ * Purpose: Tags previously watched videos in the related sidebar and prompts the user.
  */
-
-
-
 export class ContinueWatching extends window.YPP.features.BaseFeature {
     static featureId = 'continueWatching';
     static executionPhase = 'idle';
@@ -130,5 +129,3 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.ContinueWatching = ContinueWatching;

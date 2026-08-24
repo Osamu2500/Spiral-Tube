@@ -236,6 +236,52 @@ html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-styl
 /* Retro OS (Win 95) Card Style */
 
 /* ============================================================
+   RESPONSIVE GRID VARIABLES
+   ============================================================ */
+:root {
+  --ypp-grid-column-min: 280px;
+  --ypp-card-padding: 12px;
+  --ypp-card-radius: 12px;
+}
+
+@media (max-width: 1600px) {
+  :root {
+    --ypp-grid-column-min: 260px;
+    --ypp-grid-gap: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --ypp-grid-column-min: 240px;
+    --ypp-grid-gap: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --ypp-grid-column-min: 220px;
+    --ypp-grid-gap: 12px;
+    --ypp-header-height: 56px;
+    --ypp-radius-lg: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --ypp-grid-column-min: 100%;
+    --ypp-card-padding: 10px;
+    --ypp-radius-lg: 12px;
+    --ypp-radius-md: 10px;
+  }
+}
+
+/* Layout Density Grid Gap Override */
+html.yt-spiral-tube-theme {
+  --ytd-rich-grid-item-margin: var(--ypp-density-gap, 16px) !important;
+}
+
+/* ============================================================
    TECHNOZEN CARD STYLE (Eco-Tech / Frutiger Aero)
    ============================================================ */
 html[data-ypp-card-style='technozen']
@@ -335,6 +381,8 @@ html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbn
 :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon {
   color: var(--ypp-text-primary, #fff) !important;
 }
+
+
 
 /* ==========================================================================
    SHORTS SAFETY RESET: Protect Shorts & Reel items from proportional grid styling

@@ -1,6 +1,9 @@
 /**
+ * @fileoverview
  * Player Settings Menu Helper
- * Handles injecting custom options into the native YouTube player settings menu.
+ * 
+ * Target: /watch route.
+ * Purpose: Handles injecting custom options into the native YouTube player settings menu.
  */
 const CONSTANTS = {
     ICONS: {
@@ -132,5 +135,3 @@ export class PlayerSettingsMenu {
         return;
     }
 }
-
-window.YPP.features.PlayerSettingsMenu = PlayerSettingsMenu;

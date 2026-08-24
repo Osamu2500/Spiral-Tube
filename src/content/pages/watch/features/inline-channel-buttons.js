@@ -1,12 +1,13 @@
 /**
+ * @fileoverview
  * InlineChannelButtons
- * --------------------
- * Injects "Whitelist" and "Blacklist" pill buttons next to the Subscribe button
- * on watch pages and channel pages. Mirrors the reference extension's
- * channel-whitelist-button.js / channel-blacklist-button.js approach.
- *
+ * 
+ * Target: /watch route and channel pages.
+ * Purpose: Injects "Whitelist" and "Blacklist" pill buttons next to the Subscribe button.
+ * Mirrors the reference extension's channel-whitelist-button.js / channel-blacklist-button.js approach.
+ * 
  * Placement: immediately after ytd-subscribe-button-renderer
- * Trigger:   page:changed event + sharedObserver for subscribe button
+ * Trigger: page:changed event + sharedObserver for subscribe button
  */
 export class InlineChannelButtons extends window.YPP.features.BaseFeature {
     static featureId = 'inlineChannelButtons';
@@ -254,5 +255,3 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         }
     }
 }
-
-window.YPP.features.InlineChannelButtons = InlineChannelButtons;

@@ -1,3 +1,10 @@
+/**
+ * @fileoverview
+ * Feature: Smart History
+ * 
+ * Target: /watch route.
+ * Purpose: Tracks video watch history locally utilizing chrome.storage.local.
+ */
 export class SmartHistory extends window.YPP.features.BaseFeature {
     static featureId = 'smartHistory';
     static executionPhase = 'idle';
@@ -247,5 +254,3 @@ export class SmartHistory extends window.YPP.features.BaseFeature {
         await new Promise(resolve => chrome.storage.local.set({ [this.STORAGE_KEY]: history }, resolve));
     }
 };
-
-window.YPP.features.SmartHistory = SmartHistory;

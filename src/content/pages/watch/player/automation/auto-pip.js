@@ -1,11 +1,11 @@
 /**
+ * @fileoverview
  * Auto PiP — Spiral Tube
- * Enters Picture-in-Picture automatically when the user switches tabs,
+ * 
+ * Target: /watch route.
+ * Purpose: Enters Picture-in-Picture automatically when the user switches tabs,
  * and exits PiP when the user comes back.
  */
-
-
-
 export class AutoPiP extends window.YPP.features.BaseFeature {
     static featureId = 'autoPiP';
     static executionPhase = 'idle';
@@ -357,5 +357,3 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.AutoPiP = AutoPiP;

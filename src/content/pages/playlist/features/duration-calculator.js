@@ -1,9 +1,11 @@
-// Attach to features namespace
-
-
-export class PlaylistDuration extends (
-  window.YPP.features.BaseFeature
-) {
+/**
+ * @fileoverview
+ * Playlist Duration Calculator
+ * 
+ * Target: /playlist route.
+ * Purpose: Calculates and displays the total duration of videos in a playlist.
+ */
+export class PlaylistDuration extends window.YPP.features.BaseFeature {
     static featureId = 'playlistDuration';
     static executionPhase = 'idle';
     static priority = 999;
@@ -511,4 +513,3 @@ export class PlaylistDuration extends (
   }
 };
 
-window.YPP.features.PlaylistDuration = PlaylistDuration;

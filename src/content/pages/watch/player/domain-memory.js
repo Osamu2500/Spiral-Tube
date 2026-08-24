@@ -1,16 +1,14 @@
 /**
- * domain-memory.js
- * ────────────────
- * Rock-Solid Domain Analyzer & Episode Memory Engine for the Global Player Bar.
- *
- * Capabilities:
- * - Cross-Origin Iframe Attribution: Automatically links third-party embedded video iframes
- *   (e.g., megacloud, rapid-cloud) back to the parent streaming site domain (e.g., itachi.tv).
- * - Multi-Scope Support: Switch between Domain-Wide (itachi.tv) and Series-Level
- *   scoping (itachi.tv/watch/185736) for independent audio/visual presets per show.
- * - Player Lifecycle Re-Binding: Monitors DOM video replacement and automatically reconnects
- *   Web Audio API gain nodes and CSS/WebGL filters when servers or episodes switch.
- * - JSON Import/Export: Backup and share your custom equalizer, filter, and speed presets.
+ * @fileoverview
+ * Domain Memory Engine
+ * 
+ * Target: /watch route (or global player context).
+ * Purpose: Analyzes domain/series scope and remembers custom playback settings per domain.
+ * Features:
+ * - Cross-Origin Iframe Attribution
+ * - Multi-Scope Support (Domain vs Series)
+ * - Player Lifecycle Re-Binding
+ * - JSON Import/Export
  */
 
 export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { constructor(n) { this.name = n; } }) {
@@ -842,7 +840,3 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         }
     }
 }
-
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-window.YPP.features.DomainMemory = DomainMemory;

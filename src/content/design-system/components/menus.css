@@ -395,3 +395,30 @@ html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
+/* 3. Pop-up Menus Redesign (3-dot menus) */
+
+body.yt-spiral-tube-theme tp-yt-paper-listbox {
+  border-radius: 16px !important;
+  background: rgba(25, 25, 25, 0.8) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Added micro-animations on hovering menu items */
+
+body.yt-spiral-tube-theme ytd-menu-service-item-renderer,
+body.yt-spiral-tube-theme ytd-menu-navigation-item-renderer {
+  border-radius: 8px !important;
+  margin: 4px 8px !important;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
+body.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  transform: translateX(4px) !important;
+}
+

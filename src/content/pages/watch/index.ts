@@ -1,3 +1,14 @@
+/**
+ * @fileoverview
+ * Watch Page Features Index
+ * 
+ * Target: /watch route.
+ * Purpose: Registers all watch-specific features, layouts, and player components 
+ * with the FeatureManager so they can be instantiated when needed.
+ * 
+ * This file is purely for registration and does not execute standalone logic.
+ */
+
 import './watch-manager.js';
 
 import { SplitScrolling } from './player/enhancements/split-scrolling.js';
@@ -24,7 +35,7 @@ window.YPP.FeatureManager.register(ZenMode);
 import { FocusMode } from './layout/focus-mode.js';
 window.YPP.FeatureManager.register(FocusMode);
 
-import { StudyMode } from './layout/study-mode.js';
+import { StudyMode } from './layout/study/study-mode.js';
 window.YPP.FeatureManager.register(StudyMode);
 
 import { CommentFilter } from './features/comment-filter.js';
@@ -36,7 +47,7 @@ window.YPP.FeatureManager.register(WatchRedesign);
 import { InlineChannelButtons } from './features/inline-channel-buttons.js';
 window.YPP.FeatureManager.register(InlineChannelButtons);
 
-import { SeamlessMode } from './layout/seamless-mode.js';
+import { SeamlessMode } from './layout/seamless/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
 
 import './player/player-bar-ui.js';

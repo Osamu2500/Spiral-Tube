@@ -98,4 +98,3 @@ export class VSCForceSpeed extends window.YPP.features.BaseFeature {
     }
 }
 
-window.YPP.features.VSCForceSpeed = VSCForceSpeed;

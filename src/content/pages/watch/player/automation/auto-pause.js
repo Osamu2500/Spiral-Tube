@@ -1,11 +1,11 @@
 /**
+ * @fileoverview
  * Auto Pause Feature
- * Automatically pauses the video when the tab loses visibility and resumes it when focused.
+ * 
+ * Target: /watch route.
+ * Purpose: Automatically pauses the video when the tab loses visibility and resumes it when focused.
  * Intelligent enough to ignore Picture-in-Picture mode and wait for the SPA player to initialize.
  */
-
-
-
 export class AutoPause extends window.YPP.features.BaseFeature {
     static featureId = 'autoPause';
     static executionPhase = 'idle';
@@ -333,5 +333,3 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     
     // PAUSE-BUG-5: Removed dead _setupMediaSession code
 };
-
-window.YPP.features.AutoPause = AutoPause;

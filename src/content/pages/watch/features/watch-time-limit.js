@@ -1,5 +1,9 @@
 /**
- * Dummy config sync feature for the Watch Time Limit slider.
+ * @fileoverview
+ * Watch Time Limit Config
+ * 
+ * Target: Configuration sync.
+ * Purpose: Dummy config sync feature for the Watch Time Limit slider.
  * The actual limit enforcement is handled by WatchTimeAlert.
  */
 export class WatchTimeLimit extends window.YPP.features.BaseFeature {
@@ -24,5 +28,3 @@ export class WatchTimeLimit extends window.YPP.features.BaseFeature {
         await super.disable();
     }
 };
-
-window.YPP.features.WatchTimeLimit = WatchTimeLimit;

@@ -1,3 +1,10 @@
+/**
+ * @fileoverview
+ * Ad Skipper Automation
+ * 
+ * Target: /watch route.
+ * Purpose: Automatically skips unskippable and skippable ads, banners, and promos.
+ */
 export class AdSkipper extends window.YPP.features.BaseFeature {
     static featureId = 'adSkipper';
     static executionPhase = 'idle';
@@ -133,5 +140,3 @@ export class AdSkipper extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.AdSkipper = AdSkipper;

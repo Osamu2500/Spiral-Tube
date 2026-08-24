@@ -1,11 +1,11 @@
 /**
+ * @fileoverview
  * Feature: Comment Spam Filter
- * Autodetects and dims/hides suspicious spam comments (crypto, telegram, whatsapp bots).
+ * 
+ * Target: /watch route.
+ * Purpose: Autodetects and dims/hides suspicious spam comments (crypto, telegram, whatsapp bots).
  * Users can add custom keywords and choose dim vs hide in settings.
  */
-
-
-
 export class CommentFilter extends window.YPP.features.BaseFeature {
     static featureId = 'commentFilter';
     static executionPhase = 'idle';
@@ -140,5 +140,3 @@ export class CommentFilter extends window.YPP.features.BaseFeature {
         });
     }
 };
-
-window.YPP.features.CommentFilter = CommentFilter;

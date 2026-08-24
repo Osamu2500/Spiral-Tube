@@ -1,6 +1,9 @@
 /**
+ * @fileoverview
  * Watch Redesign Feature
- * Handles Glassmorphic Player UI and Sidebar Comments
+ * 
+ * Target: /watch route.
+ * Purpose: Handles Glassmorphic Player UI and Sidebar Comments layout.
  */
 
 
@@ -247,5 +250,3 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
         // Removed.
     }
 }
-
-window.YPP.features.WatchRedesign = WatchRedesign;

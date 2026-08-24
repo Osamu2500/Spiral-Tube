@@ -3,6 +3,7 @@
  * Owns: DOM rendering, scanning, animations, and modal dialog for the Channel Health Dashboard.
  */
 import anime from 'animejs/lib/anime.es.js';
+import { CustomDialog } from './ui/custom-dialog.js';
 
 // CHANNEL HEALTH DASHBOARD
 // =========================================================================
@@ -12,26 +13,26 @@ export class ChannelHealthUI {
     static executionPhase = 'idle';
     static priority = 999;
 
-    static openModal(folderUI) {
+    static openModal() {
         if (document.getElementById('ypp-health-modal')) return;
 
         const overlay = document.createElement('div');
-        overlay.className = 'ypp-modal-overlay open';
+        overlay.className = 'ypp-health-modal-overlay open';
         overlay.id = 'ypp-health-modal';
-        overlay.style.cssText = 'position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; z-index: 2147483647 !important; display: flex !important; justify-content: center !important; align-items: center !important; background: transparent !important; pointer-events: auto !important;'; document.documentElement.appendChild(overlay);
+        document.documentElement.appendChild(overlay);
 
         overlay.innerHTML = String.raw`
-            <div class="ypp-modal-content ypp-organizer-modal" style="font-family: 'Inter', 'Outfit', sans-serif; width: 90vw; height: 90vh; max-width: 1200px; max-height: 800px; border-radius: 24px; display: flex; flex-direction: column; background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; overflow: hidden; color: #f1f5f9;">
-                <div class="ypp-modal-header" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); border-bottom: 1px solid rgba(255,255,255,0.1); border-radius: 24px 24px 0 0; padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; z-index: 10; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);">
+            <div class="ypp-health-modal-content ypp-organizer-modal">
+                <div class="ypp-health-header">
                     <div style="display: flex; align-items: center; gap: 16px;">
-                        <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
+                        <div class="ypp-health-header-icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                         </div>
                         <span class="ypp-modal-title" style="font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.5px;">Channel Health Dashboard</span>
                     </div>
                     <div style="display: flex; gap: 12px; align-items: center;">
                         <div style="display: flex; align-items: center; gap: 8px;">
-                            <button id="ypp-health-scan-btn" class="ypp-btn-primary" style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); padding: 8px 24px; border-radius: 24px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);" onmouseover="this.style.transform='translateY(-1px)'; this.style.background='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)';">Start Scan</button>
+                            <button id="ypp-health-scan-btn" class="ypp-health-btn-scan">Start Scan</button>
                             <div id="ypp-scan-progress-wrapper" style="display: none; width: 32px; height: 32px; position: relative;">
                                 <svg viewBox="0 0 100 100" style="transform:rotate(-90deg); width:100%; height:100%;">
                                     <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.1)" stroke-width="12"></circle>
@@ -40,28 +41,28 @@ export class ChannelHealthUI {
                                 <div id="ypp-circular-text" style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:bold; color:#fff;">0%</div>
                             </div>
                         </div>
-                        <button id="ypp-health-unsub-btn" class="ypp-btn-primary" style="background: rgba(255, 78, 69, 0.1); color: #ff6b6b; border: 1px solid rgba(255, 78, 69, 0.25); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); padding: 8px 20px; border-radius: 24px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 78, 69, 0.1);" onmouseover="this.style.background='rgba(255, 78, 69, 0.15)'; this.style.borderColor='rgba(255, 78, 69, 0.4)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 78, 69, 0.1)'; this.style.borderColor='rgba(255, 78, 69, 0.25)'; this.style.transform='translateY(0)';">Unsubscribe Selected</button>
+                        <button id="ypp-health-unsub-btn" class="ypp-health-btn-unsub" style="display: none;">Unsubscribe Selected</button>
                         
                         
                         <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1); margin: 0 8px;"></div>
-                        <button class="ypp-modal-close" style="background: transparent; border: none; color: #94a3b8; font-size: 28px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; line-height: 1;" onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8';">&times;</button>
+                        <button class="ypp-modal-close ypp-health-btn-close">&times;</button>
                     </div>
                 </div>
                 <div class="ypp-organizer-body" style="flex-direction: row; padding: 32px; overflow: hidden; display: flex; flex: 1; background: transparent; gap: 32px;">
                     <!-- RIGHT PANE: Channels -->
                     <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
                         <div style="display: flex; gap: 24px; margin-bottom: 24px;">
-                            <div class="ypp-health-stat" data-filter="active" style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 24px; border-radius: 16px; text-align: left; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(46, 213, 115, 0.15)'; this.style.borderColor='rgba(46, 213, 115, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">
-                                <div style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;"><div style="width:6px; height:6px; border-radius:50%; background:#2ed573;"></div> Active (< 30 days)</div>
-                                <div style="color: #f1f5f9; font-size: 42px; font-weight: 600; line-height: 1; letter-spacing: -1px;" id="ypp-health-active">0</div>
+                            <div class="ypp-health-stat" data-filter="active">
+                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#2ed573;"></div> Active (< 30 days)</div>
+                                <div class="ypp-health-stat-value" id="ypp-health-active">0</div>
                             </div>
-                            <div class="ypp-health-stat" data-filter="warning" style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 24px; border-radius: 16px; text-align: left; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255, 179, 64, 0.15)'; this.style.borderColor='rgba(255, 179, 64, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">
-                                <div style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;"><div style="width:6px; height:6px; border-radius:50%; background:#ffb340;"></div> Inactive (> 1 month)</div>
-                                <div style="color: rgba(241, 245, 249, 0.8); font-size: 42px; font-weight: 600; line-height: 1; letter-spacing: -1px;" id="ypp-health-warning">0</div>
+                            <div class="ypp-health-stat" data-filter="warning">
+                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#ffb340;"></div> Inactive (> 1 month)</div>
+                                <div class="ypp-health-stat-value" style="color: rgba(241, 245, 249, 0.8);" id="ypp-health-warning">0</div>
                             </div>
-                            <div class="ypp-health-stat" data-filter="dead" style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 24px; border-radius: 16px; text-align: left; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255, 78, 69, 0.15)'; this.style.borderColor='rgba(255, 78, 69, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">
-                                <div style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;"><div style="width:6px; height:6px; border-radius:50%; background:#ff4e45;"></div> Dead (> 3 months)</div>
-                                <div style="color: rgba(241, 245, 249, 0.5); font-size: 42px; font-weight: 600; line-height: 1; letter-spacing: -1px;" id="ypp-health-dead">0</div>
+                            <div class="ypp-health-stat" data-filter="dead">
+                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#ff4e45;"></div> Dead (> 3 months)</div>
+                                <div class="ypp-health-stat-value" style="color: rgba(241, 245, 249, 0.5);" id="ypp-health-dead">0</div>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: flex-end; gap: 16px; margin-bottom: 16px; align-items: center;">
@@ -71,18 +72,18 @@ export class ChannelHealthUI {
                             </div>
                             <div style="position: relative; flex: 1; max-width: 280px; display: flex; align-items: center;">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" style="position: absolute; left: 14px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <input type="text" id="ypp-health-search-input" placeholder="Search channels..." style="width: 100%; background: rgba(255, 255, 255, 0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 10px 16px 10px 38px; border-radius: 12px; outline: none; font-size: 13px; transition: all 0.2s;" onfocus="this.style.borderColor='rgba(99, 102, 241, 0.5)'; this.style.boxShadow='0 0 0 2px rgba(99, 102, 241, 0.2)';" onblur="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='none';"/>
+                                <input type="text" class="ypp-health-input" id="ypp-health-search-input" placeholder="Search channels..." style="width: 100%; padding: 10px 16px 10px 38px;"/>
                             </div>
-                            <select id="ypp-health-filter-dropdown" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 10px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: all 0.2s; appearance: none; padding-right: 32px; background-image: url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
-                                <option value="all" style="background:rgba(20,20,30,0.9); color: white;">All Statuses</option>
-                                <option value="active" style="background:rgba(20,20,30,0.9); color: white;">Active</option>
-                                <option value="warning" style="background:rgba(20,20,30,0.9); color: white;">Inactive</option>
-                                <option value="dead" style="background:rgba(20,20,30,0.9); color: white;">Dead</option>
+                            <select id="ypp-health-filter-dropdown" class="ypp-health-select">
+                                <option value="all">All Statuses</option>
+                                <option value="active">Active</option>
+                                <option value="warning">Inactive</option>
+                                <option value="dead">Dead</option>
                             </select>
-                            <select id="ypp-health-sort-dropdown" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 10px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: all 0.2s; appearance: none; padding-right: 32px; background-image: url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
-                                <option value="latest" style="background:rgba(20,20,30,0.9); color: white;">Latest First</option>
-                                <option value="oldest" style="background:rgba(20,20,30,0.9); color: white;">Oldest First</option>
-                                <option value="az" style="background:rgba(20,20,30,0.9); color: white;">Alphabetical</option>
+                            <select id="ypp-health-sort-dropdown" class="ypp-health-select">
+                                <option value="latest">Latest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="az">Alphabetical</option>
                             </select>
                         </div>
                         <div id="ypp-health-results" class="ypp-scroll-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 8px;">
@@ -111,22 +112,11 @@ export class ChannelHealthUI {
         });
 
         // Hover effects — using addEventListener instead of inline handlers for CSP compliance.
-        const closeBtn     = overlay.querySelector('.ypp-modal-close');
-        const scanBtn      = overlay.querySelector('#ypp-health-scan-btn');
-        const unsubBtn     = overlay.querySelector('#ypp-health-unsub-btn');
-        const filterSel    = overlay.querySelector('#ypp-health-filter-dropdown');
-        const sortSel      = overlay.querySelector('#ypp-health-sort-dropdown');
+        // Remove JS hover listeners for elements that now have CSS classes
+        const closeBtn = overlay.querySelector('.ypp-modal-close');
+        
+        // No inline handlers left for CSS hover effects!
 
-        closeBtn?.addEventListener('mouseover', () => { closeBtn.style.background  = 'rgba(255,255,255,0.1)'; });
-        closeBtn?.addEventListener('mouseout',  () => { closeBtn.style.background  = 'rgba(255,255,255,0.05)'; });
-        scanBtn?.addEventListener('mouseover',  () => { scanBtn.style.filter       = 'brightness(1.1)'; });
-        scanBtn?.addEventListener('mouseout',   () => { scanBtn.style.filter       = 'brightness(1)'; });
-        unsubBtn?.addEventListener('mouseover', () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.25)'; });
-        unsubBtn?.addEventListener('mouseout',  () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.15)'; });
-        filterSel?.addEventListener('mouseover',() => { filterSel.style.background = 'rgba(255,255,255,0.12)'; });
-        filterSel?.addEventListener('mouseout', () => { filterSel.style.background = 'rgba(255,255,255,0.08)'; });
-        sortSel?.addEventListener('mouseover',  () => { sortSel.style.background   = 'rgba(255,255,255,0.12)'; });
-        sortSel?.addEventListener('mouseout',   () => { sortSel.style.background   = 'rgba(255,255,255,0.08)'; });
 
         const selectAllBtn = overlay.querySelector('#ypp-health-select-all-btn');
         const unselectAllBtn = overlay.querySelector('#ypp-health-unselect-all-btn');
@@ -157,7 +147,7 @@ export class ChannelHealthUI {
         });
 
         overlay.querySelector('#ypp-health-scan-btn')?.addEventListener('click', () => {
-            this.runScan(overlay, folderUI);
+            this.runScan(overlay);
         });
 
         overlay.querySelector('#ypp-health-unsub-btn')?.addEventListener('click', () => {
@@ -218,9 +208,6 @@ export class ChannelHealthUI {
                 filterSel.value = filterSel.value === stat.dataset.filter ? 'all' : stat.dataset.filter;
                 updateView();
             });
-            
-            stat.addEventListener('mouseover', () => { if (filterSel.value !== stat.dataset.filter) stat.style.background = 'rgba(255,255,255,0.1)'; });
-            stat.addEventListener('mouseout', () => { if (filterSel.value !== stat.dataset.filter) stat.style.background = 'rgba(255,255,255,0.05)'; });
         });
 
         filterSel?.addEventListener('change', updateView);
@@ -253,7 +240,7 @@ export class ChannelHealthUI {
         return null;
     }
 
-    static async runScan(overlay, folderUI, skipFetch = false) {
+    static async runScan(overlay, skipFetch = false) {
         const btn = overlay.querySelector('#ypp-health-scan-btn');
         const resultsEl = overlay.querySelector('#ypp-health-results');
         
@@ -401,20 +388,11 @@ export class ChannelHealthUI {
 
                 if (deadCount > 0) {
                     const unsubBtn = overlay.querySelector('#ypp-health-unsub-btn');
-                    const addFolderBtn = overlay.querySelector('#ypp-health-add-folder-btn');
                     if (unsubBtn) unsubBtn.style.display = 'inline-block';
-                    if (addFolderBtn) addFolderBtn.style.display = 'inline-block';
                 }
             };
 
             const buildRow = (c) => {
-                const channelFolders = [];
-                if (folderUI && folderUI.storage && (folderUI?.storage?.folders || {})) {
-                    for (const [fName, list] of Object.entries((folderUI?.storage?.folders || {}))) {
-                        if (list.includes(c.name)) channelFolders.push(fName);
-                    }
-                }
-
                 const colorMap = { active: '#2ed573', warning: '#ffb340', dead: '#ff4e45' };
                 const color = colorMap[c.status] || '#94a3b8';
 
@@ -423,12 +401,8 @@ export class ChannelHealthUI {
                 row.dataset.status     = c.status;
                 row.dataset.name       = c.name;
                 row.dataset.uploadTime = c.lastUpload != null ? c.lastUpload : Infinity;
-                row.dataset.folders    = channelFolders.join(',');
                 row.setAttribute('draggable', 'true');
-                row.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(255, 255, 255, 0.1);border-radius:16px;border-left:4px solid ' + color + ';transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);animation:ypp-fade-in 0.3s ease;cursor:grab;';
-
-                row.addEventListener('mouseover', () => { row.style.background = 'rgba(255, 255, 255, 0.1)'; row.style.transform = 'translateX(4px)'; row.style.borderColor = 'rgba(255,255,255,0.1)'; });
-                row.addEventListener('mouseout',  () => { row.style.background = 'rgba(255, 255, 255, 0.05)';  row.style.transform = 'translateX(0)'; row.style.borderColor = 'rgba(255, 255, 255, 0.1)'; });
+                row.style.borderLeft = '4px solid ' + color;
                 row.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', c.name);
                     e.dataTransfer.effectAllowed = 'copyMove';
@@ -443,7 +417,7 @@ export class ChannelHealthUI {
                 // Build inner DOM safely without template literals (avoids Vite JSX parse errors)
                 const img = document.createElement('img');
                 img.src = c.icon || '';
-                img.style.cssText = 'width:36px;height:36px;border-radius:50%;margin-right:14px;flex-shrink:0;';
+                img.className = 'ypp-health-row-avatar';
                 img.onerror = function() { this.style.display = 'none'; };
                 row.appendChild(img);
 
@@ -464,17 +438,6 @@ export class ChannelHealthUI {
                 uploadDiv.appendChild(uploadSpan);
                 infoDiv.appendChild(uploadDiv);
 
-                if (channelFolders.length > 0) {
-                    const badgesDiv = document.createElement('div');
-                    badgesDiv.style.marginTop = '4px';
-                    channelFolders.forEach(f => {
-                        const badge = document.createElement('span');
-                        badge.style.cssText = 'background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.05);padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;margin-right:4px;color:#cbd5e1;display:inline-block;margin-bottom:2px;';
-                        badge.textContent = f;
-                        badgesDiv.appendChild(badge);
-                    });
-                    infoDiv.appendChild(badgesDiv);
-                }
                 row.appendChild(infoDiv);
 
                 const actionsDiv = document.createElement('div');
@@ -496,26 +459,13 @@ export class ChannelHealthUI {
                 cb.className = 'ypp-unsub-checkbox';
                 cb.value = c.id;
                 cb.dataset.params = c.unsubParams || '';
-                cb.style.cssText = 'width:16px;height:16px;cursor:pointer;accent-color:#6366f1;';
                 label.appendChild(cb);
                 label.appendChild(document.createTextNode('Select'));
                 actionsDiv.appendChild(label);
 
-                const folderBtn = document.createElement('button'); folderBtn.style.display = 'none !important;';
-                folderBtn.className = 'ypp-indiv-folder-btn';
-                folderBtn.style.cssText = 'background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);';
-                folderBtn.textContent = 'Folders';
-                folderBtn.addEventListener('mouseover', () => { folderBtn.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25))'; folderBtn.style.borderColor = 'rgba(168, 85, 247, 0.4)'; folderBtn.style.transform = 'translateY(-1px)'; });
-                folderBtn.addEventListener('mouseout',  () => { folderBtn.style.background = 'rgba(255,255,255,0.05)'; folderBtn.style.borderColor = 'rgba(255,255,255,0.1)'; folderBtn.style.transform = 'translateY(0)'; });
-                folderBtn.addEventListener('click', (e) => { e.stopPropagation(); if (folderUI) folderUI.renderChannelPopover(folderBtn, c.name); });
-                actionsDiv.appendChild(folderBtn);
-
                 const indivBtn = document.createElement('button');
                 indivBtn.className = 'ypp-indiv-unsub-btn';
-                indivBtn.style.cssText = 'background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);';
-                indivBtn.textContent = 'Unsub';
-                indivBtn.addEventListener('mouseover', () => { indivBtn.style.background = 'rgba(255,78,69,0.2)'; indivBtn.style.color = '#ff6b6b'; indivBtn.style.borderColor = 'rgba(255,78,69,0.3)'; indivBtn.style.transform = 'translateY(-1px)'; });
-                indivBtn.addEventListener('mouseout',  () => { indivBtn.style.background = 'rgba(255,255,255,0.05)'; indivBtn.style.color = 'rgba(255,255,255,0.8)'; indivBtn.style.borderColor = 'rgba(255,255,255,0.1)'; indivBtn.style.transform = 'translateY(0)'; });
+                indivBtn.textContent = 'Unsubscribe';
                 indivBtn.addEventListener('click', () => this.individualUnsubscribe(c.id, c.unsubParams, c.name, row, indivBtn));
                 actionsDiv.appendChild(indivBtn);
 
@@ -530,19 +480,10 @@ export class ChannelHealthUI {
                 
                 // Directly apply current filter without triggering a full re-sort
                 const filterSel = overlay.querySelector('#ypp-health-filter-dropdown');
-                const folderSel = overlay.querySelector('#ypp-health-folder-dropdown');
                 const searchInput = overlay.querySelector('#ypp-health-search-input');
                 
                 let show = true;
                 if (filterSel && filterSel.value !== 'all' && c.status !== filterSel.value) show = false;
-                if (show && folderSel && folderSel.value !== 'all') {
-                    if (folderSel.value === '__no_folder__') {
-                        if (row.dataset.folders !== '') show = false;
-                    } else {
-                        const folders = row.dataset.folders ? row.dataset.folders.split(',') : [];
-                        if (!folders.includes(folderSel.value)) show = false;
-                    }
-                }
                 if (show && searchInput && searchInput.value) {
                     if (!c.name.toLowerCase().includes(searchInput.value.toLowerCase())) show = false;
                 }
@@ -659,24 +600,11 @@ export class ChannelHealthUI {
                 resultsEl.addEventListener('change', (e) => {
                     if (!e.target.classList.contains('ypp-unsub-checkbox')) return;
                     const n = resultsEl.querySelectorAll('.ypp-unsub-checkbox:checked').length;
-                    const unsubBtn    = overlay.querySelector('#ypp-health-unsub-btn');
-                    const addFolderBtn = overlay.querySelector('#ypp-health-add-folder-btn');
-                    const removeFolderBtn = overlay.querySelector('#ypp-health-remove-folder-btn');
-                    const folderFilter = "all";
+                    const unsubBtn = overlay.querySelector('#ypp-health-unsub-btn');
 
-                    unsubBtn.textContent     = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
-                    addFolderBtn.textContent = n > 0 ? `Add to Folder (${n})`        : 'Add to Folder';
-                    unsubBtn.disabled     = n === 0;
-                    addFolderBtn.disabled = n === 0;
-
-                    if (removeFolderBtn) {
-                        removeFolderBtn.textContent = n > 0 ? `Remove from Folder (${n})` : 'Remove from Folder';
-                        removeFolderBtn.disabled = n === 0;
-                        if (folderFilter !== 'all' && folderFilter !== '__no_folder__') {
-                            removeFolderBtn.style.display = n > 0 ? 'inline-block' : 'none';
-                        } else {
-                            removeFolderBtn.style.display = 'none';
-                        }
+                    if (unsubBtn) {
+                        unsubBtn.textContent = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
+                        unsubBtn.disabled = n === 0;
                     }
                 });
             }
@@ -1021,7 +949,7 @@ export class ChannelHealthUI {
         const config = await this._getYoutubeConfig();
 
         if (!config.apiKey || !config.context) {
-            await window.YPP.features.CustomDialog.alert(
+            await CustomDialog.alert(
                 'Auth Error',
                 'Could not retrieve YouTube session credentials.\nPlease refresh the page and try again.'
             );
@@ -1064,7 +992,7 @@ export class ChannelHealthUI {
         if (failedChannels.length > 0) {
             const preview = failedChannels.slice(0, 5).join(', ');
             const extra = failedChannels.length > 5 ? ` and ${failedChannels.length - 5} more` : '';
-            await window.YPP.features.CustomDialog.alert(
+            await CustomDialog.alert(
                 `${failedChannels.length} Unsubscribe(s) Failed`,
                 `Could not unsubscribe from:\n${preview}${extra}.\n\nYouTube may have rate-limited the request. Try again in a moment or visit those channel pages directly.`
             );
@@ -1075,7 +1003,7 @@ export class ChannelHealthUI {
 
     static async individualUnsubscribe(channelId, params, channelName, rowEl, btnEl) {
         // Confirm before acting
-        const confirmed = await window.YPP.features.CustomDialog.confirm(
+        const confirmed = await CustomDialog.confirm(
             'Unsubscribe',
             `Unsubscribe from ${channelName}?`,
             'Unsubscribe',
@@ -1102,7 +1030,7 @@ export class ChannelHealthUI {
 
             if (!config.apiKey || !config.context) {
                 resetBtn(originalText, null);
-                await window.YPP.features.CustomDialog.alert('Auth Error', 'Could not get YouTube credentials. Please refresh and try again.');
+                await CustomDialog.alert('Auth Error', 'Could not get YouTube credentials. Please refresh and try again.');
                 return;
             }
 
@@ -1151,7 +1079,7 @@ export class ChannelHealthUI {
                 // Reset button and show error
                 resetBtn(originalText, 'rgba(255, 255, 255, 0.8)');
                 setTimeout(() => resetBtn(originalText, null), 3000);
-                await window.YPP.features.CustomDialog.alert(
+                await CustomDialog.alert(
                     'Unsubscribe Failed',
                     `Could not unsubscribe from ${channelName}.\n\nYouTube may have blocked the request. Try visiting the channel page directly.`
                 );
@@ -1166,7 +1094,7 @@ export class ChannelHealthUI {
         const checkboxes = overlay.querySelectorAll('.ypp-unsub-checkbox:checked');
         if (checkboxes.length === 0) return;
 
-        if (!(await window.YPP.features.CustomDialog.confirm('Bulk Unsubscribe', `Are you sure you want to permanently unsubscribe from ${checkboxes.length} channels?`, 'Unsubscribe', true))) return;
+        if (!(await CustomDialog.confirm('Bulk Unsubscribe', `Are you sure you want to permanently unsubscribe from ${checkboxes.length} channels?`, 'Unsubscribe', true))) return;
 
         const btn = overlay.querySelector('#ypp-health-unsub-btn');
         btn.textContent = 'Unsubscribing...';
@@ -1196,158 +1124,4 @@ export class ChannelHealthUI {
             btn.style.display = 'none';
         }, 2000);
     }
-
-    static async bulkRemoveFromFolder(overlay, folderUI, folderName) {
-        const checkboxes = overlay.querySelectorAll('.ypp-unsub-checkbox:checked');
-        if (checkboxes.length === 0) return;
-
-        const btn = overlay.querySelector('#ypp-health-remove-folder-btn');
-        const oldText = btn.textContent;
-        btn.textContent = 'Removing...';
-        btn.disabled = true;
-
-        const channels = Array.from(checkboxes).map(cb => ({
-            id: cb.value,
-            name: cb.closest('.ypp-channel-health-row').dataset.name
-        }));
-
-        let removedCount = 0;
-        channels.forEach(c => {
-            if (folderUI.storage.removeChannelFromFolder(c.name, folderName)) {
-                removedCount++;
-            }
-        });
-
-        if (removedCount > 0) {
-            folderUI.storage.save();
-            ChannelHealthUI.runScan(overlay, folderUI, true);
-        } else {
-            btn.textContent = oldText;
-            btn.disabled = false;
-        }
-    }
-
-    static async bulkAddToFolder(overlay, folderUI) {
-        const checkboxes = overlay.querySelectorAll('.ypp-unsub-checkbox:checked');
-        if (checkboxes.length === 0) return;
-
-        const btn = overlay.querySelector('#ypp-health-add-folder-btn');
-        
-        // Prevent duplicate popups
-        const existingPopup = document.getElementById('ypp-health-folder-popup');
-        if (existingPopup) existingPopup.remove();
-
-        const folderNames = Object.keys((folderUI?.storage?.folders || {}));
-        if (folderNames.length === 0) {
-            await window.YPP.features.CustomDialog.alert('No Folders', 'You have not created any folders yet. Please create one from the subscriptions feed.');
-            return;
-        }
-
-        const popup = document.createElement('div');
-        popup.id = 'ypp-health-folder-popup';
-        popup.style.cssText = `
-            position: absolute;
-            top: ${btn.offsetTop + btn.offsetHeight + 8}px;
-            left: ${btn.offsetLeft}px;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 8px 0;
-            min-width: 200px;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-            z-index: 10000;
-            animation: ypp-fade-in 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        `;
-
-        folderNames.forEach(folder => {
-            const item = document.createElement('div');
-            item.style.cssText = 'padding: 10px 16px; color: #fff; cursor: pointer; transition: 0.2s; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;';
-            item.innerHTML = String.raw`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> ${folder}`;
-            
-            item.addEventListener('mouseover', () => item.style.background = 'rgba(255,255,255,0.1)');
-            item.addEventListener('mouseout', () => item.style.background = 'transparent');
-            
-            item.addEventListener('click', () => {
-                const channels = Array.from(checkboxes).map(cb => ({
-                    id: cb.value,
-                    name: cb.closest('.ypp-channel-health-row').dataset.name
-                }));
-
-                let addedCount = 0;
-                let needFeedRefresh = false;
-                const activeFolder = folderUI.orchestrator.getActiveFolder();
-
-                channels.forEach(c => {
-                    if (folderUI.storage.addChannelToFolder(c.name, folder)) {
-                        addedCount++;
-                        
-                        if (activeFolder === folder || activeFolder === '__no_folder__') {
-                            needFeedRefresh = true;
-                        }
-
-                        // Update dataset on the modal row for UI syncing
-                        const row = document.querySelector(`.ypp-channel-health-row[data-name="${CSS.escape(c.name)}"]`);
-                        if (row) {
-                            let folders = row.dataset.folders ? row.dataset.folders.split(',').filter(f => f) : [];
-                            if (!folders.includes(folder)) {
-                                folders.push(folder);
-                                row.dataset.folders = folders.join(',');
-                            }
-                            
-                            // Uncheck the checkbox since it was processed
-                            const cb = row.querySelector('.ypp-unsub-checkbox');
-                            if (cb) cb.checked = false;
-                        }
-                    }
-                });
-
-                if (needFeedRefresh) {
-                    folderUI.orchestrator.forceRefreshFeed();
-                }
-
-                // Trigger UI update in the modal via the dropdown's change event
-                const folderSel = document.getElementById('ypp-health-folder-filter-dropdown');
-                if (folderSel) folderSel.dispatchEvent(new Event('change'));
-
-                // Re-render sidebar/header filters to reflect new counts
-                if (folderUI.renderGuideFolders) folderUI.renderGuideFolders();
-                if (folderUI.renderFilterChips) folderUI.renderFilterChips();
-
-                // Re-render the modal's side pane to update folder numbers
-                ChannelHealthUI.runScan(overlay, folderUI, true);
-
-                popup.remove();
-                
-                const oldText = btn.textContent;
-                btn.textContent = `Added ${addedCount} to ${folder}`;
-                btn.style.background = 'rgba(76, 175, 80, 0.15)';
-                btn.style.color = '#4caf50';
-                btn.style.borderColor = 'rgba(76, 175, 80, 0.3)';
-                
-                setTimeout(() => {
-                    btn.textContent = oldText;
-                    btn.style.background = 'rgba(255, 255, 255, 0.1)';
-                    btn.style.color = '#fff';
-                    btn.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                }, 3000);
-            });
-            popup.appendChild(item);
-        });
-
-        // Add popup to the same relative parent as the button (the header actions container)
-        btn.parentNode.appendChild(popup);
-
-        // Click outside to close
-        const closeListener = (e) => {
-            if (!popup.contains(e.target) && e.target !== btn) {
-                popup.remove();
-                document.removeEventListener('click', closeListener);
-            }
-        };
-        setTimeout(() => document.addEventListener('click', closeListener), 0);
-    }
 };
-
-window.YPP.features.ChannelHealthUI = ChannelHealthUI;

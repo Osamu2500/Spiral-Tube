@@ -1,12 +1,12 @@
 /**
+ * @fileoverview
  * Search View Mode
- * Owns the state and logic for toggling between "Grid" and "List"
+ * 
+ * Target: /results route.
+ * Purpose: Owns the state and logic for toggling between "Grid" and "List"
  * layout views on the search results page.
  */
-
-
-
-export class SearchViewMode {
+export class SearchViewMode extends window.YPP.features.BaseFeature {
     static featureId = 'searchViewMode';
     static executionPhase = 'idle';
     static priority = 999;
@@ -23,6 +23,7 @@ export class SearchViewMode {
     };
 
     constructor() {
+        super('searchViewMode');
         this._settings = {};
         this._isEnabled = false;
         this._logFn = ((msg, level) => console[level]?.(`[SearchViewMode] ${msg}`));
@@ -70,4 +71,3 @@ export class SearchViewMode {
     }
 };
 
-window.YPP.features.SearchViewMode = SearchViewMode;

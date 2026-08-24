@@ -1,9 +1,11 @@
 /**
+ * @fileoverview
  * Auto Like Feature
- * Automatically likes a video after a configurable delay or percentage of playback.
+ * 
+ * Target: /watch route.
+ * Purpose: Automatically likes a video after a configurable delay or percentage of playback.
  * Respects subscription status, active ads, and previous user actions.
  */
-
 // ── Selectors ────────────────────────────────────────────────────────────────
 
 const SELECTORS = {
@@ -374,5 +376,3 @@ export class AutoLike extends window.YPP.features.BaseFeature {
         this._progressCheckHandler = null;
     }
 }
-
-window.YPP.features.AutoLike = AutoLike;

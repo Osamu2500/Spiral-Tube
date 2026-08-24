@@ -1,3 +1,10 @@
+/**
+ * @fileoverview
+ * Watch Time Alert
+ * 
+ * Target: /watch route.
+ * Purpose: Provides a visual alert when the user exceeds their daily watch time limit.
+ */
 export class WatchTimeAlert extends window.YPP.features.BaseFeature {
     static featureId = 'watchTimeAlert';
     static executionPhase = 'idle';
@@ -144,5 +151,3 @@ export class WatchTimeAlert extends window.YPP.features.BaseFeature {
         document.head.appendChild(style);
     }
 };
-
-window.YPP.features.WatchTimeAlert = WatchTimeAlert;

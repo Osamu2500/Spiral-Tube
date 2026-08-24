@@ -1,3 +1,11 @@
+/**
+ * @fileoverview
+ * Redirect Shorts
+ * 
+ * Target: /shorts route.
+ * Purpose: Intercepts /shorts/ URLs and redirects them to the standard /watch?v= player.
+ * Uses SPA navigation when possible to avoid full page reloads.
+ */
 export class RedirectShorts extends window.YPP.features.BaseFeature {
     static featureId = 'redirectShorts';
     static executionPhase = 'idle';
@@ -54,4 +62,3 @@ export class RedirectShorts extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.RedirectShorts = RedirectShorts;

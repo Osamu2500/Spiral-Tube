@@ -12,4 +12,3 @@ export class VSCRememberSpeed extends window.YPP.features.BaseFeature {
     constructor() { super('VSCRememberSpeed'); }
 }
 
-window.YPP.features.VSCRememberSpeed = VSCRememberSpeed;

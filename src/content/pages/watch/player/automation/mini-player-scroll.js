@@ -1,6 +1,9 @@
 /**
+ * @fileoverview
  * Mini Player Scroll — Spiral Tube
- * Auto-activates YouTube's native miniplayer when the video scrolls out of view,
+ * 
+ * Target: /watch route.
+ * Purpose: Auto-activates YouTube's native miniplayer when the video scrolls out of view,
  * and restores the full player when the user scrolls back up.
  *
  * V2 Fixes:
@@ -117,5 +120,3 @@ export class MiniPlayerScroll extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.MiniPlayerScroll = MiniPlayerScroll;

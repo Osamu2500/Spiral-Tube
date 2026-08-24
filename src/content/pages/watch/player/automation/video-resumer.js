@@ -1,11 +1,11 @@
 /**
+ * @fileoverview
  * Feature: Smart Video Resumer
- * Remembers exact playback position locally utilizing localStorage.
+ * 
+ * Target: /watch route.
+ * Purpose: Remembers exact playback position locally utilizing localStorage.
  * Automatically seeks to saved position on load.
  */
-
-
-
 export class VideoResumer extends window.YPP.features.BaseFeature {
     static featureId = 'videoResumer';
     static executionPhase = 'idle';
@@ -633,5 +633,3 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         }
     }
 };
-
-window.YPP.features.VideoResumer = VideoResumer;

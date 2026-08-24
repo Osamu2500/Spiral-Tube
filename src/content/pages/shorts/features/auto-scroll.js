@@ -1,3 +1,12 @@
+/**
+ * @fileoverview
+ * Shorts Auto Scroll
+ * 
+ * Target: /shorts route.
+ * Purpose: Automatically scrolls to the next Shorts video when the current one finishes.
+ * Targets: /shorts/ paths and ytd-reel-video-renderer elements.
+ * Encapsulated logic, does not affect unrelated YouTube navigation.
+ */
 export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
     static featureId = 'shortsAutoScroll';
     static executionPhase = 'idle';
@@ -15,7 +24,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         this._skipCountByCreator = new Map();
         this._currentVideoStartTime = null;
         
-        // V2 State
+        // State variables
         this._loopCount = 0;
         this._lastTime = 0;
     }
@@ -79,7 +88,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
             this._timeupdateHandler = null;
         }
         
-        // V4: Restore playback speed when disabled
+        // Restore playback speed when disabled
         const activeReel = document.querySelector('ytd-reel-video-renderer[is-active]');
         if (activeReel) {
             const video = activeReel.querySelector('video');
@@ -100,7 +109,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         
         const nextButton = document.querySelector('#navigation-button-down :is(ytd-button-renderer, yt-button-view-model) button, .navigation-button.down button');
 
-        // V4: Variable Speed Playback (Attention-Span Optimizer)
+        // Variable Speed Playback (Attention-Span Optimizer)
         let targetSpeed = this.settings?.shortsPlaybackSpeed || 1.0;
         
         if (this.settings?.variableSpeed !== false && video.duration > 30) {
@@ -138,7 +147,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
             const creator = channelNameEl ? channelNameEl.textContent.trim() : '';
             const titleText = titleEl ? titleEl.textContent.trim() : '';
             
-            // V2: Topic Banning
+            // Topic Banning
             if (this._isBannedTopic(creator, titleText)) {
                 this.utils?.log(`Auto-skipping banned topic: ${titleText}`, 'AutoScroll', 'info');
                 if (nextButton) nextButton.click();
@@ -162,7 +171,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
             if (wasNearEnd) {
                 this._loopCount++;
                 
-                // V2: Auto-Bookmark
+                // Auto-Bookmark
                 if (this._loopCount === 3 && this.settings?.shortsAutoBookmark) {
                     this.utils?.log('Short looped 3 times! Bookmarking...', 'AutoScroll', 'info');
                     this._autoBookmark(activeReel);
@@ -195,7 +204,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         }
     }
     
-    // --- V2 Features ---
+    // --- Features ---
     
     _isBannedTopic(creator, title) {
         const bannedWords = this.settings?.shortsBannedWords || [];
@@ -234,4 +243,3 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.ShortsAutoScroll = ShortsAutoScroll;

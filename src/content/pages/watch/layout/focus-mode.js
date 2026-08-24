@@ -1,9 +1,10 @@
 /**
- * Focus Mode Feature - Reduces visual distractions and enhances concentration
- * Uses centralized constants for configuration
+ * @fileoverview
+ * Focus Mode Feature
+ * 
+ * Target: /watch route.
+ * Purpose: Reduces visual distractions, manages strict-mode timers, and handles dopamine detox grayscale modes.
  */
-
-
 
 // Helpers
 const waitForElement = (selector, timeout = 5000) => {
@@ -243,12 +244,7 @@ export class FocusMode extends window.YPP.features.BaseFeature {
                 }
                 this._toggleFocus(enable);
                 break;
-            case 'cinemaMode':
-                // this._toggleCinemaMode(enable);
-                break;
-            case 'minimalMode':
-                // this._toggleMinimalMode(enable);
-                break;
+
         }
     }
 
@@ -387,5 +383,3 @@ export class FocusMode extends window.YPP.features.BaseFeature {
         };
     }
 };
-
-window.YPP.features.FocusMode = FocusMode;

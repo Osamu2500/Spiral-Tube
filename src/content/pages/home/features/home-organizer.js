@@ -205,6 +205,12 @@ export class HomeOrganizer extends window.YPP.features.BaseFeature {
      */
     organizeFeed() {
         if (!this.isActive) return;
+        
+        // Only run on the home page (replacing the routing previously handled by HomePageManager)
+        const path = window.location.pathname;
+        if (path !== '/' && path !== '/index.html' && !path.startsWith('/?')) {
+            return;
+        }
 
         const contents = /** @type {HTMLElement} */ (document.querySelector(this.CONSTANTS.SELECTORS.GRID_CONTENTS));
         if (!contents) return;
