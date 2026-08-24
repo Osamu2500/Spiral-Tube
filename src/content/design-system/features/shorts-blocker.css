@@ -1,0 +1,41 @@
+/* 
+ * Shorts Blocker Component
+ * Toggles for aggressively hiding Shorts from feeds and sidebars
+ */
+
+body.ypp-nuke-shorts ytd-rich-section-renderer[is-shorts],
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-item-renderer),
+body.ypp-nuke-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
+body.ypp-nuke-shorts ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
+body.ypp-nuke-shorts ytd-rich-item-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts yt-lockup-view-model:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts yt-lockup-view-model:has(ytd-rich-grid-slim-media),
+body.ypp-nuke-shorts ytd-reel-shelf-renderer,
+body.ypp-nuke-shorts ytd-guide-entry-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts ytd-mini-guide-entry-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts [is-shorts],
+body.ypp-nuke-shorts ytd-video-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]) {
+  display: none !important;
+}
+
+.ypp-aggressive-shorts-block ytd-rich-item-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
+.ypp-aggressive-shorts-block ytd-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-grid-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-compact-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-playlist-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block yt-lockup-view-model:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block yt-lockup-view-model:has(ytd-rich-grid-slim-media),
+.ypp-aggressive-shorts-block ytd-reel-shelf-renderer,
+.ypp-aggressive-shorts-block ytd-rich-shelf-renderer[is-shorts],
+.ypp-aggressive-shorts-block ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
+.ypp-aggressive-shorts-block ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
+.ypp-aggressive-shorts-block ytm-reel-shelf-renderer,
+.ypp-aggressive-shorts-block ytd-guide-entry-renderer:has(a[title="Shorts"]),
+.ypp-aggressive-shorts-block ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+.ypp-aggressive-shorts-block yt-tab-shape[tab-title="Shorts"] {
+  display: none !important;
+}

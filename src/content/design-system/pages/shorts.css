@@ -1,119 +1,8 @@
-/* --- IMPORTED FROM pages-shorts.css --- */
-/* --- Primary Shorts Shelves & Global Renderers --- */
-
-/* Pure CSS Hiding Rules for Content Control */
-
-/* Mixes */
-
-/* Playlists */
-
-/* Podcasts */
-
-/* Posts (Community Posts) */
-
-/* Container Cleanup - Sections that only contain Shorts */
-
-/* Watched Badge */
-
-.ypp-watched-badge {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    width: 24px;
-    height: 24px;
-    background: var(--ypp-success-color, rgba(16, 185, 129, 0.9));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: var(--ypp-z-card-hover);
-    pointer-events: none;
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
-    animation: ypp-pulse-badge 2s infinite ease-in-out;
-}
-
-@keyframes ypp-pulse-badge {
-    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-/* Dim mode for watched videos */
-
-[data-ypp-hidden="watched"] {
-    transition: opacity 0.2s ease, filter 0.2s ease;
-    filter: grayscale(0.85) opacity(0.4) !important;
-}
-
-/* =========================================================================
-   SHORTS PAGE PREMIUM STYLING (FULL-BLEED EDGE-TO-EDGE)
-   ========================================================================= */
-
-/* Remove the black bar scrim (cinematic scrim) */
-
-/* Shorts Container background */
-
-/* Make the video player and its thumbnail background look elegant */
-
-/* Floating Action Bar (Like/Dislike/Share) */
-
-/* Adjust Action Buttons */
-
-/* Video Information Overlay (Title, Channel) */
-
-/* Channel Avatar */
-
-/* Subscribe Button */
-
-/* Progress bar redesign */
-
-/* =========================================================================
-   SHORTS PLAYER CONTROLS (Floating Bottom Bar)
-   ========================================================================= */
-
-/* Speed Controls inside Shorts Bar */
-
-/* FIX for Duration Badge missing z-index */
-
-
-
-/* --- IMPORTED FROM shorts-ast.css --- */
-
-body.ypp-nuke-shorts ytd-rich-section-renderer[is-shorts],
-body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
-body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
-body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-item-renderer),
-body.ypp-nuke-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
-body.ypp-nuke-shorts ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
-body.ypp-nuke-shorts ytd-rich-item-renderer:has(a[href*="/shorts"]),
-body.ypp-nuke-shorts yt-lockup-view-model:has(a[href*="/shorts"]),
-body.ypp-nuke-shorts yt-lockup-view-model:has(ytd-rich-grid-slim-media),
-body.ypp-nuke-shorts ytd-reel-shelf-renderer,
-body.ypp-nuke-shorts ytd-guide-entry-renderer:has(a[href*="/shorts"]),
-body.ypp-nuke-shorts ytd-mini-guide-entry-renderer:has(a[href*="/shorts"]),
-body.ypp-nuke-shorts [is-shorts],
-body.ypp-nuke-shorts ytd-video-renderer:has(a[href*="/shorts"]),
-body.ypp-nuke-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]) {
-  display: none !important;
-}
-.ypp-aggressive-shorts-block ytd-rich-item-renderer:has(a[href*="/shorts"]),
-.ypp-aggressive-shorts-block ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
-.ypp-aggressive-shorts-block ytd-video-renderer:has(a[href*="/shorts"]),
-.ypp-aggressive-shorts-block ytd-grid-video-renderer:has(a[href*="/shorts"]),
-.ypp-aggressive-shorts-block ytd-compact-video-renderer:has(a[href*="/shorts"]),
-.ypp-aggressive-shorts-block ytd-playlist-video-renderer:has(a[href*="/shorts"]),
-.ypp-aggressive-shorts-block yt-lockup-view-model:has(a[href*="/shorts"]),
-.ypp-aggressive-shorts-block yt-lockup-view-model:has(ytd-rich-grid-slim-media),
-.ypp-aggressive-shorts-block ytd-reel-shelf-renderer,
-.ypp-aggressive-shorts-block ytd-rich-shelf-renderer[is-shorts],
-.ypp-aggressive-shorts-block ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
-.ypp-aggressive-shorts-block ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
-.ypp-aggressive-shorts-block ytm-reel-shelf-renderer,
-.ypp-aggressive-shorts-block ytd-guide-entry-renderer:has(a[title="Shorts"]),
-.ypp-aggressive-shorts-block ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
-.ypp-aggressive-shorts-block yt-tab-shape[tab-title="Shorts"] {
-  display: none !important;
-}
+/*
+ * ==========================================================================
+ * SHORTS PAGE COMPONENT
+ * ==========================================================================
+ */
 
 body.ypp-shorts-page #cinematic-shorts-scrim,
 body.yt-spiral-tube-theme #cinematic-shorts-scrim {
@@ -241,5 +130,6 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn.active {
     background: var(--ypp-surface-bg-active);
     color: var(--ypp-text-primary, #fff);
 }
+
 
 

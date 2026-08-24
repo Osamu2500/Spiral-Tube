@@ -1,0 +1,3 @@
+# Project Rules for AI Assistants
+
+1. **Rebuilding is Mandatory:** Whenever you edit or create CSS, JS, or TS files in the `src/` directory, you **MUST** run `npm run build` using the terminal before asking the user to test your changes. The Chrome extension loads the compiled code from the `dist/` directory, so modifying the `src/` directory without building will result in no visible changes for the user. 

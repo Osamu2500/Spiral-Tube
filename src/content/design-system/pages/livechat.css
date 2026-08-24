@@ -1,11 +1,19 @@
+/* 
+   ==========================================================================
+   LIVE CHAT PAGE
+   Styles for the live chat panel (docked and popout).
+   ========================================================================== 
+*/
+
 yt-live-chat-app,
 yt-live-chat-renderer {
-  background: var(--ypp-bg-surface, var(--yt-spec-base-background)) !important;
+  background: var(--ypp-surface-bg, var(--yt-spec-base-background)) !important;
   border-radius: var(--ypp-border-radius-base, 12px) !important;
   box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.1)) !important;
   border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
   overflow: hidden !important;
 }
+
 yt-live-chat-text-message-renderer,
 yt-live-chat-paid-message-renderer,
 yt-live-chat-membership-item-renderer {
@@ -13,15 +21,18 @@ yt-live-chat-membership-item-renderer {
   border-radius: var(--ypp-border-radius-base, 12px) !important;
   margin: 4px 8px !important;
   padding: 8px !important;
-  transition: transform 0.2s, background 0.2s !important;
+  transition: transform var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
 }
+
 yt-live-chat-text-message-renderer:hover {
   background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
   transform: scale(1.02) !important;
 }
+
 #ticker.yt-live-chat-renderer {
   background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
 }
+
 #message-input.yt-live-chat-text-input-field-renderer {
   background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
   border-radius: var(--ypp-border-radius-base, 12px) !important;

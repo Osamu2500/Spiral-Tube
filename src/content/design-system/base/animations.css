@@ -73,4 +73,39 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
     0 0 15px red,
     0 0 30px red !important;
   animation: youtubeRedPulse 5s ease-in-out infinite !important;
-}
+}/* Animations & Reduced Motion */
+html.ypp-no-animations *,
+html.ypp-no-animations *::before,
+html.ypp-no-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.ypp-reduced-motion *,
+html.ypp-reduced-motion *::before,
+html.ypp-reduced-motion *::after {
+  animation-duration: 0.1s !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: linear !important;
+}
+
+/* Reduce Animations: Balanced mode */
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.15s !important;
+  transition-duration: 0.15s !important;
+}
+
+/* Reduce Animations: Minimal mode */
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+

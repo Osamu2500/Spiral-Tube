@@ -34,6 +34,7 @@ window.YPP.SettingsSchema = {
 
         // --- Layout ---
         autoScaleLayout:     { type: 'boolean', default: true },
+        enableDeckMode:      { type: 'boolean', default: false },
         useSquareCorners:    { type: 'boolean', default: false },
         grid4x4:             { type: 'boolean', default: false },
         homeColumns:         { type: 'number',  default: 4, min: 0, max: 10 },
@@ -97,6 +98,7 @@ window.YPP.SettingsSchema = {
         // --- Player ---
         netflixSubtitles:    { type: 'boolean', default: false },
         autoCinema:          { type: 'boolean', default: false },
+        enableSmoothTitleScroll: { type: 'boolean', default: false },
         enablePiP:           { type: 'boolean', default: true },
         enableTranscript:    { type: 'boolean', default: true },
         enableSnapshot:      { type: 'boolean', default: true },

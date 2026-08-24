@@ -1,4 +1,4 @@
-﻿// @ts-check
+// @ts-check
 import { ICONS } from './popup-icons.js';
 /**
  * popup-schema.js  — v3.1 Architecture
@@ -44,6 +44,13 @@ export const getPopupSchema = (t) => [
         title: t('section_feed_layout'),
         icon: ICONS.grid,
         items: [
+          {
+            type: 'toggle',
+            id: 'enableDeckMode',
+            label: 'Deck Mode',
+            desc: 'Multi-column grid for Subscriptions',
+            icon: ICONS.grid,
+          },
           {
             type: 'toggle',
             id: 'autoScaleLayout',
@@ -213,6 +220,13 @@ export const getPopupSchema = (t) => [
         title: t('player_ui_components'),
         icon: ICONS.uiComponents,
         items: [
+          {
+            type: 'toggle',
+            id: 'enableSmoothTitleScroll',
+            label: 'Smooth Title Scroll',
+            desc: 'Marquee scrolling for long video titles',
+            icon: ICONS.play,
+          },
           {
             type: 'toggle',
             id: 'reduceAnimations',

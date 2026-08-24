@@ -23,6 +23,7 @@ export const DEFAULT_SETTINGS = {
   layout: true,
   grid4x4: false,
   autoScaleLayout: true,
+  enableDeckMode: false,
   homeColumns: 0, // 0 = auto (driven by AutoScaleGrid), 1–10 = manual override
   searchColumns: 4,
   channelColumns: 4,
@@ -109,6 +110,7 @@ export const DEFAULT_SETTINGS = {
 
   // Player
   autoCinema: false,
+  enableSmoothTitleScroll: false,
   autoQuality: 'highres',
   enablePiP: true,
   enableTranscript: true,

@@ -1,60 +1,17 @@
-/* --- IMPORTED FROM pages-playlists.css --- */
-/* ===================================================================================
-   ENHANCED HOVER EFFECTS
-   =================================================================================== */
+/* 
+   ==========================================================================
+   PLAYLIST PAGE COMPONENT
+   ========================================================================== 
+*/
 
-/* Unified Card Hover Effect */
-
-/* Button Hover Pattern */
-
-.ypp-nav-btn,
-.ypp-player-controls button {
-  transition:
-    background-color var(--ypp-transition-fast),
-    transform var(--ypp-transition-fast);
-  transform: translateZ(0); /* Hardware Acceleration */
-  
-}
-
-.ypp-nav-btn:hover,
-.ypp-player-controls button:hover {
-  background: var(--ypp-surface-bg-hover);
-  transform: scale(1.05);
-}
-
-.ypp-nav-btn:active,
-.ypp-player-controls button:active {
-  transform: scale(0.98);
-}
-
-/* Active Navigation Item with Accent */
-
-.ypp-nav-btn.active {
-  color: var(--yt-spec-text-primary, #fff) !important;
-  background: var(--ypp-surface-bg-active) !important;
-  border-color: var(--ypp-primary-accent);
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-/* Smooth Focus Indicators for Accessibility */
-
-.ypp-nav-btn:focus-visible,
-.ypp-player-controls button:focus-visible,
-ytd-searchbox input:focus-visible {
-  outline: 2px solid var(--ypp-accent-blue);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(62, 166, 255, 0.2);
-}
-
-/* Hide 'Top Recommendations' Heading */
-
+/* Hide 'Top Recommendations' Heading (Global feed fix) */
 body.yt-spiral-tube-theme:not(.ypp-channel-page) ytd-rich-section-renderer #title-container,
 body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
   display: none !important;
 }
 
 /* ===================================================================================
-   13. PLAYLIST PAGE NATIVE OVERRIDES
+   PLAYLIST PAGE NATIVE OVERRIDES
    Note: Custom playlist UI is handled by PlaylistRedesign JS. 
    These legacy CSS rules were breaking the native layout and have been removed.
    =================================================================================== */
@@ -76,20 +33,6 @@ body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer[selected] {
   background-color: var(--ypp-surface-bg-active);
   border-left: 3px solid var(--ypp-accent-blue);
 }
-
-/* ===================================================================================
-   12. YOUTUBE REFINED ENHANCEMENTS (PHASE 10)
-   =================================================================================== */
-
-/* 1. Continue Watching UI */
-
-/* ============================================================
-   PLAYLIST & RADIO CARDS - UNIFIED SQUARE GRID DESIGN
-   ============================================================ */
-
-/* Ensure the outer wrapper acts as a flex column card */
-
-/* Force internal structural wrappers to also be column flex containers using bulletproof :has selector */
 
 /* ============================================================
    PLAYLIST FEED PAGE ENHANCEMENTS
@@ -118,82 +61,8 @@ body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chi
 }
 
 /* ============================================================
-   LOCKUP VIEW MODEL (NEW YOUTUBE PLAYLIST/MIX ARCHITECTURE)
+   CUSTOM PLAYLIST UI RENDERING OVERRIDES
    ============================================================ */
-
-/* 1. Force the main card and its direct child (the internal wrapper) to be a vertical column */
-
-/* 2. Target the clickable thumbnail (anchor containing yt-image or img) perfectly, ignoring all class names */
-
-/* 3. Ensure the image inside stretches to fill the 16:9 box completely */
-
-/* 4. METADATA BLOCK */
-
-/* Format the title properly */
-
-/* Format the channel/metadata secondary text */
-
-/* Hide tertiary text to keep the card square (e.g., list of songs) */
-
-/**
- * Floating Player Styles
- * Applied when the user scrolls past the video player and the `floatingPlayer` setting is active.
- */
-
-body.ypp-floating-player-active #ytd-player,
-body.ypp-floating-player-active ytd-player[id="ytd-player"] {
-    position: fixed !important;
-    bottom: 20px !important;
-    right: 20px !important;
-    width: 400px !important;
-    height: 225px !important; /* 16:9 ratio */
-    z-index: var(--ypp-z-popup) !important; /* Highest possible */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
-    border-radius: var(--ypp-thumb-radius, 12px) !important;
-    overflow: hidden !important;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    transform: translateZ(0) !important; /* Force hardware acceleration */
-}
-
-/* Ensure the video itself fills the new container */
-
-body.ypp-floating-player-active video.html5-main-video {
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
-    left: 0 !important;
-}
-
-/* Ensure the controls adapt to the small size */
-
-/* Hide some unnecessary controls in mini mode */
-
-/* Ensure background of player is dark */
-
-/* Show a small placeholder where the video used to be so layout doesn't jump */
-
-/* ytd-watch-flexy handles the placeholder space automatically in most cases, 
-   but we can ensure #player-container-outer maintains aspect ratio */
-
-body.ypp-floating-player-active #player-container-outer {
-    /* The outer container stays in the DOM, so it acts as a placeholder */
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: var(--ypp-thumb-radius, 12px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-body.ypp-floating-player-active #player-container-outer::after {
-    content: "Video is floating";
-    color: var(--yt-spec-text-secondary, #aaa);
-    font-size: 1.2rem;
-    font-family: var(--ypp-font-family, inherit);
-}
-
-
-
-/* --- IMPORTED FROM playlist-ast.css --- */
 
 body.yt-spiral-tube-theme ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--ypp-blur-high);

@@ -1170,3 +1170,42 @@ body.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
 
 
 
+
+
+/* ==========================================================================
+   MOVE SAVE / DOWNLOAD / ASK TO OVERFLOW MENU
+   body.ypp-move-to-overflow — hides these from top-level row and forces
+   them to appear inside the three-dots overflow menu instead.
+   ========================================================================== */
+
+/* 1. Hide from top-level row */
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Save" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Save" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Save" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Save" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Download" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Download" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Download" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Download" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Ask" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Ask" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Ask" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Ask" i]),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-download-button-renderer, yt-button-view-model),
+body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-download-button-view-model {
+    display: none !important;
+}
+
+/* 2. Force items to appear in the overflow menu */
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Save" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Save" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Download" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Download" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Ask" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Ask" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-download-renderer,
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Save" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Download" i]),
+body.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Ask" i]) {
+    display: flex !important;
+}

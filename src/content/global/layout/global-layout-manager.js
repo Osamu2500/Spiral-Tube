@@ -49,6 +49,8 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             realCinemaMode:        'ypp-real-cinema-mode', // Explicit theater real cinema mode
             showLiveStreamTime:    'ypp-live-stream-time', // Live stream time counter
             twoColumnSubscriptions:'ypp-two-column-subs',  // Two rows in subs feed
+            enableDeckMode:        'ypp-deck-mode',
+            enableSmoothTitleScroll:'ypp-smooth-title-scroll',
             hideCountryCode:       'ypp-hide-country-code',
             hideThanksDonate:      'ypp-hide-thanks-donate',
             hidePlayerBranding:    'ypp-hide-player-branding',
@@ -64,7 +66,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             customScrollbar:       'ypp-custom-scrollbar',
             grayscaleThumbnails:   'ypp-grayscale-thumbs',
             useSquareCorners:      'ypp-square-ui', /* Fixed from ypp-use-square-corners */
-            extraRoundedUI:        'ypp-extra-rounded-ui',
+            extraRoundedUI:        'ypp-ui-extra-rounded',
             retroLogo:             'ypp-retro-logo',
             netflixSubtitles:      'ypp-netflix-subtitles',
             saveSupremeUI:         'ypp-save-supreme-ui',

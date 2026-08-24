@@ -18,6 +18,13 @@
 @import "./features/player-modes.css";
 @import "./features/cinematic-mode.css";
 @import "./features/integrations.css";
+@import "./features/sidebar-layout.css";
+@import "./features/video-speed-controller.css";
+@import "./features/watched-indicator.css";
+@import "./features/shorts-blocker.css";
+@import "./features/deck-mode.css";
+@import "./features/extra-rounded-ui.css";
+@import "./features/smooth-title-scroll.css";
 
 /* --- COMPONENTS --- */
 @import "./components/ui-components.css";
@@ -48,5 +55,6 @@
 @import "./pages/watch.css";
 
 /* --- LAYOUT / GRIDS (Connected to Design System) --- */
-@import "../global/styles/core-styles.css";
+@import "../global/styles/layout-grid.css";
+@import "../global/styles/search-grid.css";
 @import "../global/styles/grid-layout.css";

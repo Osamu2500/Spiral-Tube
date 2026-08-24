@@ -1,115 +1,11 @@
-/* --- IMPORTED FROM pages-history.css --- */
-/* ===================================================================================
-   XX. HISTORY PAGE REDESIGN
-   =================================================================================== */
+/* src/content/design-system/pages/history.css */
 
-/* --- History Page Items (Horizontal Glass Cards) --- */
+/* 
+ * HISTORY PAGE STYLING
+ * Focuses on the history analytics dashboard and page-specific layout.
+ * Note: Generic lists, cards, and context menus are handled by core components.
+ */
 
-/* Target History Analytics Dashboard */
-
-/* History Analytics Inner Cards */
-
-/* History List Items */
-
-/* Realign thumbnail and content in history cards */
-
-/* History Subheadings (Dates like "Today", "Yesterday") */
-
-/* ══════════════════════════════════════════════════════════════
-   PLAYLIST REDESIGN — Custom UI Component Styles
-   All scoped to #ypp-pl-root to avoid leaking to native YouTube
-   ══════════════════════════════════════════════════════════════ */
-
-/* Hide native playlist elements dynamically without removing them from DOM */
-
-/* Aggressively strip YouTube's native page-manager margins so we span full width */
-
-/* Remove centering cap on browse wrapper */
-
-/* Root wrapper */
-
-/* Layout container: sidebar is fixed so layout is just a block context */
-
-/* Ensure YouTube masthead always sits above our fixed sidebar */
-
-/* Ambient background */
-
-/* ── Sidebar ─────────────────────────────────────────────────────── */
-
-/* Cover image */
-
-/* Meta text */
-
-/* ── Buttons ─────────────────────────────────────────────────────── */
-
-/* Tools Grid */
-
-/* Remove Watched button */
-
-/* ── Duration card ────────────────────────────────────────────────── */
-
-/* ── Main content area ────────────────────────────────────────────── */
-
-/* ── Toolbar ──────────────────────────────────────────────────────── */
-
-/* Column switcher pill */
-
-/* Filter input */
-
-/* ── Grid ─────────────────────────────────────────────────────────── */
-
-/* ── Video card ───────────────────────────────────────────────────── */
-
-/* Thumbnail area */
-
-/* Index badge */
-
-/* Duration badge */
-
-/* Progress bar */
-
-/* Card info */
-
-/* Card Menu Button */
-
-/* Context Menu */
-
-.ypp-ctx-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 12px;
-    border-radius: 7px;
-    color: var(--ypp-text-primary);
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.12s;
-}
-
-.ypp-ctx-item:hover {
-    background: var(--ypp-surface-bg-hover);
-    color: white;
-}
-
-.ypp-ctx-danger {
-    color: var(--ypp-danger-color, #ff6b6b);
-}
-
-.ypp-ctx-danger:hover {
-    background: var(--ypp-danger-bg, rgba(255,78,69,0.1));
-    color: #ff6b6b;
-}
-
-/* ── 1-col horizontal card override ──────────────────────────────── */
-
-/* Placeholder thumbnail */
-
-/* ═══════════════════════════════════════════════
-
-*/
-
-
-/* --- IMPORTED FROM history-ast.css --- */
 .yt-spiral-tube-theme ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #secondary,
 .yt-spiral-tube-theme #history-analytics-renderer {
   background: var(--ypp-surface-bg) !important;  
@@ -118,12 +14,14 @@
   box-shadow: var(--ypp-shadow-card) !important;
   padding: 16px !important;
 }
+
 .yt-spiral-tube-theme ytd-browse[page-subtype="history"] .analytics-card,
 .yt-spiral-tube-theme ytd-browse[page-subtype="history"] .stat-card {
   background: var(--ypp-surface-bg) !important;
   border: var(--ypp-surface-border) !important;
   border-radius: var(--ypp-border-radius-base, 8px) !important;
 }
+
 .yt-spiral-tube-theme ytd-browse[page-subtype="history"] ytd-video-renderer {
   margin-left: 16px !important;
   padding: 0 !important;

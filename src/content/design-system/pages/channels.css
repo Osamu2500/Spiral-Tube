@@ -1,11 +1,16 @@
+/* src/content/design-system/pages/channels.css */
+
+/* 
+ * CHANNELS PAGE STYLING
+ * Focuses on the channel header, avatar, and banner.
+ * Note: Video renderers, channel lists, and generic cards are styled in components/cards.css.
+ */
+
 #wrapper.ytd-channel-avatar-editor {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
 }
-.ytd-channel-name,
-.ytd-video-meta-block {
-  color: var(--ypp-primary-accent, var(--yt-spec-text-primary)) !important;
-}
+
 ytd-c4-tabbed-header-renderer {
   background: var(--ypp-surface-bg) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
@@ -14,26 +19,7 @@ ytd-c4-tabbed-header-renderer {
   border: var(--ypp-surface-border) !important;
   border-top: none !important;
 }
-ytd-video-renderer,
-ytd-channel-renderer,
-ytd-playlist-renderer,
-ytd-radio-renderer {
-  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
-  padding: 15px !important;
-  margin-bottom: 15px !important;
-  box-shadow: var(--ypp-shadow-base) !important;
-  border: var(--ypp-surface-border) !important;
-  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
-}
-ytd-video-renderer:hover,
-ytd-channel-renderer:hover,
-ytd-playlist-renderer:hover,
-ytd-radio-renderer:hover {
-  transform: scale(1.02) !important;
-  box-shadow: var(--ypp-shadow-hover) !important;
-  background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
-}
+
 #tabs-inner-container.ytd-c4-tabbed-header-renderer {
   background: transparent !important;
 }
