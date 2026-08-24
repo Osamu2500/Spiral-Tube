@@ -1,5 +1,5 @@
 // popup-components.js — Specialized component initializers
-import { t } from '../../shared/i18n.js';
+import { t } from '../../shared/locales/i18n.js';
 
 const escapeHTML = (str) => {
   if (!str) return '';

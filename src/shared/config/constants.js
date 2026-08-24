@@ -1,4 +1,4 @@
-import { DEFAULT_SETTINGS } from '../../shared/default-settings.js';
+import { DEFAULT_SETTINGS } from './default-settings.js';
 
 /**
  * Constants for Spiral Tube

@@ -193,8 +193,8 @@
     // ── 2. Load feature modules AFTER namespace is ready ─────────────────────
     // Dynamic imports are inlined by Rollup but execute after the awaits,
     // so BaseFeature above is guaranteed to exist when the modules run.
-    await import('../global/global-bar/global-bar-ui.js');
-    await import('../global/global-bar/global-bar.js');
+    await import('../global/ui/global-bar/global-bar-ui.js');
+    await import('../global/ui/global-bar/global-bar.js');
 
     // Load custom cursor
     await import('../global/features/custom-cursor.js');
@@ -214,7 +214,7 @@
     let settings = {};
     let blocklist = [];
     try {
-        const { DEFAULT_SETTINGS } = await import('../../shared/default-settings.js');
+        const { DEFAULT_SETTINGS } = await import('../../shared/config/default-settings.js');
         settings = { ...DEFAULT_SETTINGS };
         const data = await chrome.storage.local.get(['settings', 'globalPlayerBarBlocklist']);
         Object.assign(settings, data.settings || {});

@@ -1,14 +1,14 @@
 window.addEventListener("error", (e) => { alert("JS Error: " + e.message + " at " + e.filename + ":" + e.lineno); });
-import '../../content/config/constants.js';
-import '../../content/config/settings-schema.js';
-import '../../content/config/utils.js';
+import '../../shared/config/constants.js';
+import '../../shared/config/settings-schema.js';
+import '../../shared/utils/utils.js';
 
 import { initStorage, loadSettings, state, saveSettings, updateSetting, notifyThemeChange } from './popup-state.js';
 import * as UI from './popup-ui.js';
 import { initComponents } from './popup-components.js';
 import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerBarOrganizer, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist } from './popup-extras.js';
 import { renderSchema, registerSlot, convertStaticDescriptionsToHelpButtons } from './popup-renderer.js';
-import { initI18n, t } from '../../shared/i18n.js';
+import { initI18n, t } from '../../shared/locales/i18n.js';
 
 // Detect if we are running outside a native popup (e.g. Edge extension options modal, full tab)
 // A native Chrome popup never exceeds 800x600 and is never an iframe.

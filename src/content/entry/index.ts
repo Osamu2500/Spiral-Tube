@@ -1,10 +1,10 @@
 // Core dependencies
-import '../config/constants.js';
-import '../config/settings-schema.js';
+import '../../shared/config/constants.js';
+import '../../shared/config/settings-schema.js';
 import '../core/system/error-handler.js';
 import '../core/dom/element-cache.js';
-import '../config/utils.js';
-import '../config/youtube-parsers.js';
+import '../../shared/utils/utils.js';
+import '../core/utils/youtube-parsers.js';
 
 import '../core/events/event-bus.js';
 import '../core/dom/dom-api.js';
@@ -32,7 +32,7 @@ import '../core/system/base-feature.js';
 import '../global/filters/index.js';
 import '../global/features/index.js';
 import '../global/layout/index.js';
-import '../global/global-bar/index.js';
+import '../global/ui/global-bar/index.js';
 
 import '../pages/home/index.js';
 import '../pages/shorts/index.js';

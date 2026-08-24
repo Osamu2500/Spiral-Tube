@@ -1,4 +1,4 @@
-import { DEFAULT_SETTINGS } from '../../shared/default-settings.js';
+import { DEFAULT_SETTINGS } from '../../shared/config/default-settings.js';
 
 const BACKUP_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours
 

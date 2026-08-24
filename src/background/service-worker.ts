@@ -1,6 +1,6 @@
 import { initContextMenu } from './context-menu.js';
 import { setupMessageRouter } from './message-router.js';
-import { DEFAULT_SETTINGS } from '../shared/default-settings.js';
+import { DEFAULT_SETTINGS } from '../shared/config/default-settings.js';
 import { handleAlarm } from './handlers/timer-handler.js';
 
 // Setup message routing for all background tasks
