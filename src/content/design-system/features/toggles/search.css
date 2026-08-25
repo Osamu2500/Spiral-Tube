@@ -1,0 +1,59 @@
+/* Search Toggles */
+
+/* --- 6. SEARCH REDESIGN --- */
+/* ── 0. SEARCH PAGE: MINI-GUIDE & LAYOUT MARGIN FIX ──────────────── */
+
+/* Reinforces the global mini-guide rule with a search-scoped, higher-specificity
+   selector. This prevents the blank left gutter that appears on /results when
+   YouTube's own search-page stylesheet overrides the generic rule. */
+
+/* Stretch the search container edge-to-edge (applied for ALL search page
+   layouts, not just grid mode, so the fix survives a grid toggle). */
+
+/* Hide the secondary sidebar column (watch-next / ads) on the search page —
+   keeps the layout single-column and prevents a gap on the right. */
+
+/* ── 1. CONTAINER RESETS ──────────────────────────────────────────── */
+
+/* ── 2. MASTER GRID — lives on the section-list, not the item section ─── */
+
+/* Architecture:
+     ytd-section-list-renderer > #contents   ← CSS GRID (this rule)
+       ytd-item-section-renderer             ← display:contents (transparent)
+         ytd-item-section-renderer > #contents ← display:contents (transparent)
+           ytd-video-renderer                ← GRID CELL
+*/
+
+/* Bulletproof shelf grids in case JS fallback misses the container */
+
+/* Flatten item-section wrappers so video cards land directly in master grid */
+
+/* BUG 3: Staggered/misaligned middle cards (Image 3) */
+
+/* BUG 4 & OPTION B: Force full width for shelf renderers */
+
+/* FIX 4c: Convert shelf inner lists to grids so items inside them (like playlists) form grid cards! */
+
+/* OPTION A: Hide completely if clean search or hide search shelves is on */
+
+/* ── 4. FULL-WIDTH ITEMS (ads, continuation, non-card types) ─────── */
+
+/* --- SEARCH GRID — TARGETED BUG FIXES --- */
+/* FIX 1: Circular avatar in search results — match homepage style */
+
+/* FIX 2: Duration badge visible in search grid */
+
+/* FIX 3: Remove gap caused by continuation loader spanning a full tall row */
+
+/* FIX 4: Playlist cards in grid — treat same as video cards, not full-width */
+
+/* FIX 4b: Playlist thumbnail overlay — video count badge */
+
+/* FIX 5: Mix/radio cards — same grid treatment as videos */
+
+/* FIX 6: Remove the large left gap on first load (image 2) —
+   caused by YouTube injecting a wide promo in column 1-2 before results load */
+
+/* FIX 7: Bracket/bracket artifacts (image 3 purple markers) —
+   these are ytd-search-refinement-card-renderer elements leaking into grid */
+

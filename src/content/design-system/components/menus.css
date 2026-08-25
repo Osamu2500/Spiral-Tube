@@ -1,9 +1,7 @@
 /* 
-   ==========================================================================
-   1. POPUPS, DROPDOWNS & TOOLTIPS
-   This applies the core structure for standard popup menus.
-   ========================================================================== 
-*/
+ * Menus Component - Handles standard popup menus and dropdowns.
+ * Does not affect outside scope. 
+ */
 
 ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
   background-color: var(--ypp-menu-bg, black) !important;

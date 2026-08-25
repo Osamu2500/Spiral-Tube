@@ -1,0 +1,985 @@
+/* Component Overrides */
+
+/* --- YPP UI Component Frame (Phase 6 UI Consistency) --- */
+/* Button Components */
+
+.ypp-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: var(--ypp-radius-full, 50%);
+  color: var(--yt-spec-text-primary, #fff);
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-btn:hover {
+  background-color: var(--ypp-bg-hover);
+}
+
+/* Nav buttons manage their own hover — don't let base .ypp-btn:hover override */
+
+.ypp-nav-btn.ypp-btn:hover {
+  background-color: transparent;
+}
+
+.ypp-btn:active {
+  background-color: var(--ypp-bg-active);
+}
+
+.ypp-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.ypp-btn-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  pointer-events: none;
+}
+
+/* Specific component tweaks */
+
+.ypp-speed-input {
+  width: 44px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--ypp-radius-sm);
+  padding: 4px 6px;
+  margin-right: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  font-family: inherit;
+  pointer-events: auto;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-speed-input:focus {
+  outline: none;
+  border-color: var(--ypp-accent);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.2);
+}
+
+/* Hide arrows on number input */
+
+.ypp-speed-input::-webkit-outer-spin-button,
+.ypp-speed-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Display Full Video Titles */
+
+/* Hide Scrollbar */
+
+/* Hide Scrollbar Globally (Highest Specificity over all UI Styles & Themes) */
+
+/* --- PREMIUM VERIFIED BADGE --- */
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist {
+    background: var(--ypp-accent, #3ea6ff) !important;
+    border-radius: 50% !important;
+    width: 14px !important;
+    height: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 0 8px var(--ypp-accent, #3ea6ff) !important;
+    margin-left: 4px !important;
+    transition: all 0.3s ease;
+    padding: 0 !important;
+}
+
+/* Ensure the checkmark path is white/dark based on contrast, but let's force white with the accent color */
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon {
+    width: 10px !important;
+    height: 10px !important;
+    color: var(--ypp-text-primary, #fff) !important;
+    fill: #fff !important;
+}
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon svg,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg {
+    fill: #fff !important;
+    color: var(--ypp-text-primary, #fff) !important;
+}
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon svg path,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg path {
+    fill: #fff !important;
+}
+
+/* Hover glow effect for the verified badge */
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist,
+html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist {
+    box-shadow: 0 0 12px var(--ypp-accent, #3ea6ff) !important;
+    transform: scale(1.15);
+}
+
+/* --- 3. GLOBAL UI ELEMENTS --- */
+/* Custom Scrollbar */
+
+body.ypp-custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+body.ypp-custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.ypp-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide Default Elements */
+
+/* Ensure Profile Button Visible */
+
+/* Hide Create Button */
+
+/* Hide Create Button (All variants) */
+
+/* Specific targetting for the "Pill" styled Create button */
+
+/* Topbar Polish (Dynamic Injection from HeaderNav) */
+
+/* Center Mic Icon */
+
+.yt-spiral-tube-theme #voice-search-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 50% !important;
+}
+
+/* Profile Icon Squircle */
+
+.yt-spiral-tube-theme #avatar-btn,
+.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
+.yt-spiral-tube-theme #avatar-btn img {
+  border-radius: 12px !important;
+}
+
+/* Logo Area */
+
+/* Sidebar Scrolling */
+
+/* Watch Page: Hide Sidebar by Default */
+
+/* Sidebar No-Mini Mode - Full Width without margin gaps (Except Watch Page) */
+
+ytd-app[mini-guide-visible]:not([is-watch-page]) ytd-page-manager,
+ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
+  margin-left: 0 !important;
+  --ytd-mini-guide-width: 0px !important;
+}
+
+/* Full Video Titles - Always */
+body.ypp-full-title-always :is(
+  #video-title,
+  yt-formatted-string[id="video-title"],
+  .yt-lockup-metadata-view-model-wiz__title,
+  #video-title .yt-core-attributed-string,
+  .yt-lockup-metadata-view-model-wiz__title .yt-core-attributed-string
+) {
+  -webkit-line-clamp: initial !important;
+  line-clamp: initial !important;
+  max-height: none !important;
+  white-space: normal !important;
+  display: block !important;
+}
+
+@keyframes yppExpandTitleHoverDelay {
+  100% {
+    -webkit-line-clamp: initial !important;
+    line-clamp: initial !important;
+    max-height: none !important;
+    white-space: normal !important;
+    display: block !important;
+  }
+}
+
+/* Full Video Titles - On Hover (V2 Premium Pop-up & Shorts Protection) */
+body.ypp-full-title-hover :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*="/shorts"])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon="yt-icons:shorts"])) {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-radius 0.2s ease;
+}
+
+body.ypp-full-title-hover :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*="/shorts"])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon="yt-icons:shorts"])):hover {
+  transform: scale(1.06);
+  background-color: var(--yt-spec-base-background, #0f0f0f);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+  z-index: 99;
+  position: relative;
+  border-radius: 12px;
+}
+
+/* Delay title expansion to sync with pop-up animation */
+body.ypp-full-title-hover :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*="/shorts"])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon="yt-icons:shorts"])):hover :is(
+  #video-title,
+  yt-formatted-string[id="video-title"],
+  .yt-lockup-metadata-view-model-wiz__title,
+  #video-title .yt-core-attributed-string,
+  .yt-lockup-metadata-view-model-wiz__title .yt-core-attributed-string
+) {
+  animation: yppExpandTitleHoverDelay 0s 0.15s forwards;
+}
+
+/* Auto Scale Grid */
+
+/* Full Video Titles - Legacy Support */
+body.ypp-full-title #video-title,
+body.ypp-full-title yt-formatted-string[id="video-title"],
+body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
+  -webkit-line-clamp: 4 !important;
+  line-clamp: 4 !important;
+  max-height: none !important;
+}
+
+/* --- VIEW MODE TOGGLE BUTTON STYLES --- */
+.ypp-view-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.ypp-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ypp-text-primary, #fff);
+}
+
+.ypp-toggle-btn.active {
+  background: rgba(62, 166, 255, 0.2);
+  color: #3ea6ff;
+  border: 1px solid rgba(62, 166, 255, 0.3);
+}
+
+/* --- 6. View Toggle Button --- */
+#ypp-view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, box-shadow, background-color, color;
+}
+
+.ypp-toggle-btn:hover {
+  color: var(--ypp-text-primary, #fff);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--ypp-text-primary, #fff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
+.yt-spiral-tube-theme ytd-simple-menu-header-renderer,
+.yt-spiral-tube-theme ytd-active-account-header-renderer,
+.yt-spiral-tube-theme ytd-voice-search-dialog-renderer {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: var(--ypp-radius-lg);
+  box-shadow: var(--ypp-shadow-float);
+}
+
+.yt-spiral-tube-theme ytd-popup-container {
+  z-index: var(--ypp-z-popup);
+}
+
+/* [Unused Filter Drawer Styles Removed] */
+
+/* Ad Hiding & Grid Protection */
+
+/* --- 14. PRO MAX UI ENHANCEMENTS (Left Guide, Buttons, Inputs) --- */
+/* Left Sidebar (Guide) Glassmorphism */
+
+/* Global Buttons & Searchbox Tactile Enhancements */
+
+body.yt-spiral-tube-theme yt-button-shape {
+  transition:
+    transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme yt-button-shape:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.yt-spiral-tube-theme #container.ytd-searchbox {
+  background: rgba(20, 20, 20, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme #container.ytd-searchbox[has-focus] {
+  border-color: var(--ypp-accent) !important;
+  box-shadow:
+    0 0 12px var(--ypp-accent-glow),
+    inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 2. Slide-out Hover Animation for Related Videos */
+
+/* 3. Pro Max Rounding for Core Elements */
+
+#container.ytd-searchbox {
+  border-radius: var(--ypp-radius-md) 0 0 var(--ypp-radius-md) !important;
+}
+
+#search-icon-legacy.ytd-searchbox {
+  border-radius: 0 var(--ypp-radius-md) var(--ypp-radius-md) 0 !important;
+}
+
+/* 4. Segmented Comments Cards */
+
+/* 5. Live Badge Red Voids */
+
+body.yt-spiral-tube-theme
+  .badge-style-type-live-now.ytd-badge-supported-renderer,
+body.yt-spiral-tube-theme
+  .badge-style-type-starting-soon.ytd-badge-supported-renderer {
+  padding: 4px 6px !important;
+  background-color: #cc0000 !important;
+  color: white !important;
+  border-radius: var(--ypp-radius-sm) !important;
+  font-weight: bold !important;
+}
+
+/* --- 16. REDESIGNED UI ELEMENTS (PREMIUM GLASSMORPHIC AESTHETIC) --- */
+/* ── 1. Detached Glass Control Bar (ytp-chrome-bottom) [DISABLED DUE TO RENDERING BUG] ── */
+
+/* ── Glowing Progress Bar [DISABLED DUE TO RENDERING BUG] ── */
+
+/* ── Player Control Buttons ── */
+
+/* Remove default gradients to ensure pure transparency */
+
+/* ── 8. Settings / quality popup ── */
+
+/* --- NEW FEATURES (Premium Logo & Resume Badges) --- */
+/* Expand primary column */
+
+.ypp-cinema-mode #primary {
+    max-width: 100% !important;
+}
+
+/* Darken the page background for immersion */
+
+.ypp-cinema-mode ytd-page-manager {
+    background: #050505 !important;
+}
+
+/* Dim masthead by default, hide completely on idle */
+
+/* Ultra-Dark Contrast for Video */
+
+.ypp-cinema-mode video {
+    filter: contrast(1.1) brightness(0.95) !important;
+}
+
+/* Letterbox Subtitle Repositioning */
+
+/* Vignette Overlay */
+
+.ypp-cinema-mode #player-container-outer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 130%);
+    z-index: 10;
+    opacity: 1;
+    animation: yppFadeInVignette 2s ease forwards;
+}
+
+@keyframes yppFadeInVignette {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Curtain Animation */
+
+@keyframes yppOpenCurtains {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}
+
+.ypp-cinema-mode::before, .ypp-cinema-mode::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    pointer-events: none;
+    animation: yppOpenCurtains 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.ypp-cinema-mode::before {
+    left: 0;
+    transform-origin: left;
+    box-shadow: inset -10px 0 30px rgba(0,0,0,0.8);
+}
+
+.ypp-cinema-mode::after {
+    right: 0;
+    transform-origin: right;
+    box-shadow: inset 10px 0 30px rgba(0,0,0,0.8);
+}
+
+/* Minimal Mode — strip non-essentials */
+
+/* Hide action buttons row (Like/Share/Save/…) */
+
+.ypp-minimal-mode ytd-watch-metadata #top-level-buttons-computed,
+.ypp-minimal-mode ytd-watch-metadata #flexible-item-buttons {
+    opacity: 0.2;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.ypp-minimal-mode ytd-watch-metadata #top-level-buttons-computed:hover,
+.ypp-minimal-mode ytd-watch-metadata #flexible-item-buttons:hover {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Fade subscriptions/channel row */
+
+.ypp-minimal-mode #owner {
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.ypp-minimal-mode #owner:hover { opacity: 1; }
+
+/* Collapse comments section */
+
+.ypp-minimal-mode #comments {
+    opacity: 0.08;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    max-height: 60px;
+    overflow: hidden;
+}
+body.ypp-study-mode #ypp-study-notes {
+    width: var(--ytd-watch-flexy-sidebar-width, 402px);
+    margin-left: 24px;
+    flex-shrink: 0;
+    margin-top: 24px;
+}
+
+@media (max-width: 1000px) {
+    body.ypp-study-mode #ypp-study-notes {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * YOUTUBE UI AESTHETIC SYNC
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+/* --- PREMIUM LOGO --- */
+body.ypp-premium-logo ytd-topbar-logo-renderer { margin-left: 16px !important; display: flex !important; align-items: center !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo { display: flex !important; align-items: center !important; text-decoration: none !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo > * { display: none !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo::before { content: ""; display: block !important; width: 34px !important; height: 24px !important; background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==") !important; background-size: contain !important; background-repeat: no-repeat !important; background-position: center !important; margin-right: 2px !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo::after { content: "Premium"; display: block !important; font-family: "YouTube Sans", "Roboto", "Segoe UI", Arial, sans-serif !important; font-size: 22px !important; font-weight: 500 !important; color: var(--yt-spec-text-primary, #FFFFFF) !important; margin-left: 2px !important; letter-spacing: -0.5px !important; line-height: 22px !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer #country-code { position: relative !important; display: block !important; margin-left: 2px !important; top: -8px !important; color: var(--yt-spec-text-secondary, #aaaaaa) !important; font-size: 11px !important; font-family: "Roboto", sans-serif !important; font-weight: 500 !important; }
+
+/* --- RESUME BADGES --- */
+.yt-pro-pbar-wrap { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(0,0,0,0.5); z-index: 100; pointer-events: none; }
+.yt-pro-pbar { height: 100%; background: #3ea6ff; transition: width 0.2s ease; }
+.yt-pro-resume-badge {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.ypp-account-menu {
+    width: 100%;
+}
+
+.ypp-more-items {
+    display: none;
+    overflow: hidden;
+    animation: ypp-fade-down 0.2s ease forwards;
+}
+
+.ypp-more-items.open {
+    display: block;
+}
+
+.ypp-chevron {
+    transition: transform 0.2s ease;
+    margin-left: auto;
+}
+
+@keyframes ypp-fade-down {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
+ytd-thumbnail-overlay-toggle-button-renderer,
+ytd-thumbnail-overlay-button-renderer {
+  display: none !important;
+}
+
+/* --- RETRO 2011 LOGO (From 5285) --- */
+body.ypp-retro-logo #logo .style-scope.yt-icon {
+    display: none !important;
+}
+body.ypp-retro-logo #logo-container .logo {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2011.svg/320px-YouTube_Logo_2011.svg.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+    min-width: 100px !important;
+    min-height: 30px !important;
+}
+
+/* --- EXTRA ROUNDED UI (From 8064) --- */
+body.ypp-extra-rounded-ui,
+body.ypp-extra-rounded-ui *,
+body.ypp-extra-rounded-ui *::before,
+body.ypp-extra-rounded-ui *::after {
+    --ytd-thumbnail-border-radius: 24px !important;
+    --yt-button-border-radius: 24px !important;
+    --yt-spec-menu-border-radius: 24px !important;
+    --yt-spec-badge-border-radius: 24px !important;
+    --yt-spec-avatar-border-radius: 24px !important;
+    --yt-spec-button-shape-border-radius: 24px !important;
+}
+
+body.ypp-extra-rounded-ui ytd-thumbnail,
+body.ypp-extra-rounded-ui ytd-thumbnail img,
+body.ypp-extra-rounded-ui ytd-playlist-panel-renderer,
+body.ypp-extra-rounded-ui .yt-spec-avatar-shape__image,
+body.ypp-extra-rounded-ui tp-yt-paper-button,
+body.ypp-extra-rounded-ui .yt-spec-button-shape-next,
+body.ypp-extra-rounded-ui #search-form {
+    border-radius: 24px !important;
+}
+
+/* --- SAVE SUPREME UI (From 25092) --- */
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 90vw !important;
+    width: 500px !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.75) !important;
+    border-radius: 12px !important;
+    height: 705px !important;
+    max-height: 80vh !important;
+    width: 100% !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHost {
+    background: rgba(0, 0, 0, 0.65) !important;
+
+    max-width: 100% !important;
+    border-radius: 12px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHeaderContainer { 
+    display: none !important; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutContentContainer {
+    padding: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) yt-list-item-view-model[aria-pressed="true"] {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__container--has-subtitle {
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__image-container {
+    height: 58px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionThumbnailViewModelHost {
+    width: 104px !important;
+    height: 60px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackSpacer, 
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackCollectionStack1Small { 
+    display: none !important; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytThumbnailViewModelSmall {
+    border-radius: 6px !important;
+    margin: unset !important;
+    border: 1px solid rgba(255, 255, 255, 0.41) !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__title { 
+    font-size: 1.9rem !important; 
+    font-weight: 500 !important; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__subtitle-container { 
+    display: none !important; 
+}
+
+/* --- WATCH PAGE COMPONENT CARDS (Glassmorphic Containers) --- */
+html.yt-spiral-tube-theme ytd-watch-metadata #owner {
+  background: var(--ypp-bg-glass, rgba(20, 20, 20, 0.8));
+  border: var(--ypp-glass-border, 1px solid rgba(255, 255, 255, 0.1));
+  border-radius: var(--ypp-radius-lg, 20px);
+  padding: 8px 16px;
+  box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.2));
+  -webkit-backdrop-filter: var(--ypp-glass-blur-default, blur(16px));
+  backdrop-filter: var(--ypp-glass-blur-default, blur(16px));
+  margin-right: 12px;
+}
+
+html.yt-spiral-tube-theme ytd-watch-metadata #actions {
+  background: var(--ypp-bg-glass, rgba(20, 20, 20, 0.8));
+  border: var(--ypp-glass-border, 1px solid rgba(255, 255, 255, 0.1));
+  border-radius: var(--ypp-radius-pill, 100px);
+  padding: 4px 8px;
+  box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.2));
+  -webkit-backdrop-filter: var(--ypp-glass-blur-default, blur(16px));
+  backdrop-filter: var(--ypp-glass-blur-default, blur(16px));
+  display: flex;
+  align-items: center;
+}
+
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
+  background: transparent !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition: all 0.2s ease;
+}
+
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
+  background: var(--ypp-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+  color: var(--ypp-accent, #3ea6ff) !important;
+}
+
+
+
+
+/* Full Video Titles - Marquee Scroll */
+body.ypp-smooth-title-scroll :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*='/shorts'])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon='yt-icons:shorts'])):hover :is(
+  #video-title,
+  yt-formatted-string[id='video-title'],
+  .yt-lockup-metadata-view-model-wiz__title,
+  #video-title .yt-core-attributed-string,
+  .yt-lockup-metadata-view-model-wiz__title .yt-core-attributed-string
+) {
+  -webkit-line-clamp: initial !important;
+  line-clamp: initial !important;
+  max-height: none !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  animation: yppMarqueeScroll 6s linear infinite alternate;
+  animation-delay: 0.5s;
+}
+
+@keyframes yppMarqueeScroll {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(0); }
+  90% { transform: translateX(calc(-100% + 200px)); }
+  100% { transform: translateX(calc(-100% + 200px)); }
+}
+
+
+/* ────────────────────────────────────────────────────────────────── */
+/* UI Shapes - Square Corners                                         */
+/* ────────────────────────────────────────────────────────────────── */
+body.ypp-ui-square-corners * {
+    border-radius: 0 !important;
+}
+
+/* ────────────────────────────────────────────────────────────────── */
+/* UI Shapes - Extra Rounded UI                                       */
+/* ────────────────────────────────────────────────────────────────── */
+body.ypp-ui-extra-rounded ytd-thumbnail,
+body.ypp-ui-extra-rounded ytd-thumbnail img,
+body.ypp-ui-extra-rounded ytd-playlist-thumbnail,
+body.ypp-ui-extra-rounded ytd-macro-markers-list-item-renderer {
+    border-radius: 24px !important;
+}
+
+body.ypp-ui-extra-rounded .ytp-videowall-still-image,
+body.ypp-ui-extra-rounded .ytp-videowall-still-info-content {
+    border-radius: 24px !important;
+}
+
+body.ypp-ui-extra-rounded ytd-rich-grid-media,
+body.ypp-ui-extra-rounded ytd-compact-video-renderer {
+    border-radius: 24px !important;
+}
+
+body.ypp-ui-extra-rounded #avatar {
+    border-radius: 50% !important;
+}
+
+body.ypp-ui-extra-rounded :is(ytd-button-renderer, yt-button-view-model),
+body.ypp-ui-extra-rounded yt-button-view-model,
+body.ypp-ui-extra-rounded yt-segmented-like-dislike-button-view-model,
+body.ypp-ui-extra-rounded .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+body.ypp-ui-extra-rounded .yt-spec-button-shape-next {
+    border-radius: 32px !important;
+}
+
+/* Fix for squished buttons in action bar (e.g. Download) */
+#top-level-buttons-computed > *,
+#top-level-buttons-computed yt-button-view-model,
+#top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) {
+    flex-shrink: 0 !important;
+}
+
+/* HARD OVERRIDE FOR PIPELINE HIDE */
+
+
+
+
+
+
+
+
+/* Normalize YouTube Native "Call to Action" Download Button to match standard tonal buttons */
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i],
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i],
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i],
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] {
+    background-color: var(--yt-spec-button-chip-background-inactive, rgba(255, 255, 255, 0.1)) !important;
+    color: var(--yt-spec-text-primary) !important;
+    border: none !important;
+    border-radius: 100px !important;
+}
+
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i]:hover {
+    background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important;
+    color: var(--yt-spec-text-primary) !important;
+}
+
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-core-image {
+    fill: var(--yt-spec-text-primary) !important;
+}
+
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content {
+    color: var(--yt-spec-text-primary) !important;
+}
+
+
+
+/* Fix huge gaps in Action Bar */
+html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata,
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
+    justify-content: flex-end !important;
+    flex-grow: 1 !important;
+    width: auto !important;
+}
+html[data-ypp-ui-design] body ytd-watch-metadata #top-level-buttons-computed,
+html[data-ypp-ui-design] body ytd-watch-metadata #flexible-item-buttons {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    justify-content: flex-end !important;
+}
+
+
+/* Universal Action Bar Layout Fix */
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+}
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > * {
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+}
+/* Hide YouTube's native spacer that separates buttons */
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner .spacer,
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > div:empty {
+    display: none !important;
+    width: 0 !important;
+    flex: 0 !important;
+}
+
+
+html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
+
+/* --- 10. EXTENDED COMPONENT COVERAGE --- */
+/* Shorts Shelves */
+html.yt-spiral-tube-theme ytd-reel-shelf-renderer {
+    background-color: transparent !important;
+}
+html.yt-spiral-tube-theme ytd-reel-item-renderer,
+html.yt-spiral-tube-theme ytd-reel-video-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-md) !important;
+    box-shadow: var(--ypp-shadow-base) !important;
+}
+
+/* Live Chat */
+html.yt-spiral-tube-theme ytd-live-chat-frame,
+html.yt-spiral-tube-theme yt-live-chat-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    overflow: hidden !important;
+}
+
+/* Playlist Panels */
+html.yt-spiral-tube-theme ytd-playlist-panel-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+}
+
+/* Community Posts */
+html.yt-spiral-tube-theme ytd-backstage-post-thread-renderer,
+html.yt-spiral-tube-theme ytd-backstage-post-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    padding: 16px !important;
+    box-shadow: var(--ypp-shadow-base) !important;
+}
+
+/* Comment Inputs */
+html.yt-spiral-tube-theme ytd-commentbox,
+html.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    padding: 12px !important;
+}
+
+/* Hide AI Logo/Altered Content Badges */
+/* Catch-all for AI/Altered content badges on Player Page and elsewhere */
+

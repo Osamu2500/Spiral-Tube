@@ -1,0 +1,218 @@
+/* 
+ * ==========================================================================
+ * COMPACT PLAYER UI
+ * ========================================================================== 
+ */
+
+/* --- Compact Player Controls --- */
+body.ypp-compact-player-ui #movie_player,
+body.ypp-compact-player-ui .html5-video-player {
+  --ypp-compact-bar-height: 36px;
+  --ypp-compact-btn-width: 34px;
+  --ypp-compact-icon-scale: 0.85;
+  --ypp-compact-progress-bottom: 34px;
+  --ypp-compact-time-font: 12px;
+  --ypp-compact-chapter-max-width: 240px;
+}
+
+/* Never show hidden elements or empty containers! */
+body.ypp-compact-player-ui [hidden],
+body.ypp-compact-player-ui [style*="display: none"],
+body.ypp-compact-player-ui [style*="display:none"],
+body.ypp-compact-player-ui [style*="display : none"],
+body.ypp-compact-player-ui .ytp-button[hidden],
+body.ypp-compact-player-ui .ytp-button[style*="display: none"],
+body.ypp-compact-player-ui .ytp-button[style*="display:none"],
+body.ypp-compact-player-ui .ytp-button[style*="display : none"],
+body.ypp-compact-player-ui .ytp-button[class*="-hidden"],
+body.ypp-compact-player-ui .ytp-button[class*="hidden"],
+body.ypp-compact-player-ui .ytp-button[aria-hidden="true"],
+body.ypp-compact-player-ui .ytp-button[aria-disabled="true"],
+body.ypp-compact-player-ui .ytp-autonav-toggle-button-container[hidden],
+body.ypp-compact-player-ui .ytp-autonav-toggle-button-container[style*="none"],
+body.ypp-compact-player-ui .ytp-remote-button-container[hidden],
+body.ypp-compact-player-ui .ytp-remote-button-container[style*="none"],
+body.ypp-compact-player-ui .ypp-action-btn[hidden],
+body.ypp-compact-player-ui .ypp-action-btn[style*="display: none"],
+body.ypp-compact-player-ui .ypp-action-btn[style*="display:none"],
+body.ypp-compact-player-ui .ypp-action-btn[style*="display : none"],
+body.ypp-compact-player-ui .ypp-action-btn[aria-hidden="true"],
+body.ypp-compact-player-ui .ypp-player-controls [hidden],
+body.ypp-compact-player-ui .ypp-player-controls [style*="display: none"],
+body.ypp-compact-player-ui .ypp-player-controls [style*="display:none"],
+body.ypp-compact-player-ui .ypp-player-controls:empty {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+/* 1. Control Bar Height & Smooth Hover Transition */
+body.ypp-compact-player-ui .ytp-chrome-bottom {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  padding-bottom: 2px !important;
+  opacity: 0.88;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), height 0.2s ease !important;
+}
+
+body.ypp-compact-player-ui .ytp-chrome-bottom:hover {
+  opacity: 1;
+}
+
+/* 2. Controls Flex Layout */
+body.ypp-compact-player-ui .ytp-chrome-controls {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+body.ypp-compact-player-ui .ytp-left-controls,
+body.ypp-compact-player-ui .ytp-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+/* 3. Ergonomic Button Dimensions & Icon Scale (Only for visible buttons without overriding display!) */
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]):not([aria-disabled="true"]),
+body.ypp-compact-player-ui .ytp-left-controls .ytp-button:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]):not([aria-disabled="true"]),
+body.ypp-compact-player-ui .ytp-right-controls .ytp-button:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]):not([aria-disabled="true"]),
+body.ypp-compact-player-ui .ypp-action-btn:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]) {
+  width: var(--ypp-compact-btn-width, 34px) !important;
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+}
+
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button svg,
+body.ypp-compact-player-ui .ypp-action-btn svg,
+body.ypp-compact-player-ui .ypp-gpb-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  margin: auto !important;
+  display: block !important;
+  transform: scale(var(--ypp-compact-icon-scale, 1)) !important;
+  transform-origin: center center !important;
+  transition: transform 0.15s ease !important;
+  pointer-events: none !important;
+}
+
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button:hover svg,
+body.ypp-compact-player-ui .ypp-action-btn:hover svg,
+body.ypp-compact-player-ui .ypp-gpb-btn:hover svg {
+  transform: scale(calc(var(--ypp-compact-icon-scale, 1) * 1.1)) !important;
+}
+
+/* 4. Custom Player Bar & Buttons Compact Adaptation */
+body.ypp-compact-player-ui .ypp-player-controls:not(.ypp-floating-action-bar) {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 2px !important;
+  gap: 2px !important;
+  margin: 0 4px 0 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+
+body.ypp-compact-player-ui .ypp-action-btn:not([hidden]):not([style*="none"]) {
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.ypp-compact-player-ui .ypp-speed-controls {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 2px !important;
+  gap: 2px !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+
+body.ypp-compact-player-ui .ypp-speed-btn {
+  height: calc(var(--ypp-compact-bar-height, 36px) - 10px) !important;
+  line-height: 1 !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.ypp-compact-player-ui .ypp-floating-action-bar {
+  gap: 6px !important;
+  padding: 8px 6px !important;
+  border-radius: 20px !important;
+}
+
+body.ypp-compact-player-ui .ypp-floating-action-bar .ypp-action-btn:not([hidden]):not([style*="none"]) {
+  width: var(--ypp-compact-btn-width, 34px) !important;
+  height: var(--ypp-compact-btn-width, 34px) !important;
+}
+
+/* 5. Progress Bar Alignment */
+body.ypp-compact-player-ui .ytp-progress-bar-container {
+  bottom: var(--ypp-compact-progress-bottom, 34px) !important;
+  height: 5px !important;
+  transition: bottom 0.2s ease, height 0.15s ease !important;
+}
+
+body.ypp-compact-player-ui .ytp-progress-bar-container:hover {
+  height: 7px !important;
+}
+
+body.ypp-compact-player-ui .ytp-scrubber-button {
+  transform: scale(0.8) !important;
+}
+
+/* 6. Time Display & Dynamic Chapter Truncation */
+body.ypp-compact-player-ui .ytp-time-display {
+  font-size: var(--ypp-compact-time-font, 12px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+body.ypp-compact-player-ui .ytp-chapter-container {
+  max-width: var(--ypp-compact-chapter-max-width, 240px) !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+body.ypp-compact-player-ui .ytp-chapter-title-content {
+  font-size: var(--ypp-compact-time-font, 12px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 7. Volume Slider Spacing */
+body.ypp-compact-player-ui .ytp-volume-panel {
+  margin-right: 4px !important;
+}
+
+/* 8. Shorter Gradient Footprint */
+body.ypp-compact-player-ui .ytp-gradient-bottom {
+  height: 52px !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+}

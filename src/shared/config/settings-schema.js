@@ -178,7 +178,7 @@ window.YPP.SettingsSchema = {
         extraRoundedUI:      { type: 'boolean', default: false },
         saveSupremeUI:       { type: 'boolean', default: false },
         smallSettingsMenu:   { type: 'boolean', default: false },
-        useLightsaberProgress: { type: 'boolean', default: false },
+
         retroLogo:           { type: 'boolean', default: false },
         ambientMode:         { type: 'boolean', default: false },
         ambientIntensity:    { type: 'number',  default: 0.6, min: 0.1, max: 1.0 },

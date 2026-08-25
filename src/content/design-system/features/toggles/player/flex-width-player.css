@@ -1,0 +1,24 @@
+/* 
+ * ==========================================================================
+ * FLEX WIDTH PLAYER
+ * ========================================================================== 
+ */
+
+/* ==========================================================================
+   USERSTYLE INTEGRATIONS: Flex Width, Compact Player, Customization & Ads
+   ========================================================================== */
+
+/* --- Flex Width Player --- */
+body.ypp-flex-width-player #columns.ytd-watch-flexy {
+  max-width: 100% !important;
+}
+
+body.ypp-flex-width-player ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+  max-width: calc(100% - var(--ytd-watch-flexy-sidebar-width, 400px) - 3*var(--ytd-margin-6x, 24px)) !important;
+  min-width: 0 !important;
+}
+
+body.ypp-flex-width-player ytd-watch-flexy[flexy][theater] #primary.ytd-watch-flexy,
+body.ypp-flex-width-player ytd-watch-flexy[flexy][fullscreen] #primary.ytd-watch-flexy {
+  max-width: 100% !important;
+}

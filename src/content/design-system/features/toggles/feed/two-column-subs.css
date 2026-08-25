@@ -1,0 +1,17 @@
+/* 
+ * ==========================================================================
+ * TWO COLUMN SUBS
+ * ========================================================================== 
+ */
+
+/* --- Two Rows/Columns in Subscriptions Feed --- */
+:is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 2 !important;
+  --ytd-rich-grid-posts-per-row: 2 !important;
+}
+
+:is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] #contents.ytd-rich-grid-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}

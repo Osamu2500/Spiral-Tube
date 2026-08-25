@@ -21,9 +21,9 @@ import '../core/system/base-page-manager.js';
 import '../design-system/color/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
-import '../design-system/components/managers/ui-manager.js';
-import '../design-system/components/components/button.js';
-import '../design-system/components/components/panel.js';
+import '../design-system/managers/ui-manager.js';
+import '../design-system/components/button.js';
+import '../design-system/components/panel.js';
 
 // Base feature class
 import '../core/system/base-feature.js';

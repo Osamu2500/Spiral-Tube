@@ -1,10 +1,7 @@
 /* 
-   ==========================================================================
-   1. CARD AESTHETICS & UNIVERSAL SHAPES
-   This applies the core structure for all video cards across YouTube.
-   Card Styles and Color Themes will supply the variables.
-   ========================================================================== 
-*/
+ * Cards Component - Handles universal video card aesthetics, layout and grid logic.
+ * Does not affect outside scope. 
+ */
 
 :is(
   ytd-rich-item-renderer,
@@ -506,3 +503,22 @@ body.ypp-library-page ytd-video-renderer #video-title {
 
 
 
+
+/* =========================================================================
+   GRAYSCALE THUMBNAILS (Moved from badges.css)
+   ========================================================================= */
+body.ypp-grayscale-thumbs ytd-thumbnail img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
+    filter: grayscale(100%) !important;
+    transition: filter 0.3s ease !important;
+}
+body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
+    filter: grayscale(0%) !important;
+}
+
+/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
+ytd-thumbnail-overlay-toggle-button-renderer,
+ytd-thumbnail-overlay-button-renderer {
+  display: none !important;
+}

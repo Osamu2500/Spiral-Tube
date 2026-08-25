@@ -71,7 +71,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             netflixSubtitles:      'ypp-netflix-subtitles',
             saveSupremeUI:         'ypp-save-supreme-ui',
             smallSettingsMenu:     'ypp-small-settings-menu',
-            useLightsaberProgress: 'ypp-lightsaber-progress',
+
         };
     }
 

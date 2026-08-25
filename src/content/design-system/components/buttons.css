@@ -1,4 +1,7 @@
-/* src/content/design-system/components/buttons.css */
+/* 
+ * Buttons Component - Handles universal button styling, toggles, and action buttons. 
+ * Does not affect outside scope. 
+ */
 
 .ytLikeButtonViewModelHost {
   margin-right: 5px;
@@ -605,3 +608,45 @@ body.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-touch-feedback-shape 
   border-radius: 12px !important;
 }
 
+
+/* =========================================================================
+   Inline channel buttons (Whitelist / Blacklist next to Subscribe) (Moved from badges.css)
+   ========================================================================= */
+.ypp-inline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', Arial, sans-serif;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.85);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1;
+}
+.ypp-inline-btn:hover {
+    background: rgba(255,255,255,0.16);
+    color: var(--ypp-text-primary, #fff);
+}
+.ypp-inline-btn--active {
+    background: rgba(34,197,94,0.18);
+    border-color: rgba(34,197,94,0.45);
+    color: #4ade80;
+}
+.ypp-inline-btn--active:hover {
+    background: rgba(34,197,94,0.28);
+}
+.ypp-inline-btn--danger {
+    background: rgba(239,68,68,0.16);
+    border-color: rgba(239,68,68,0.4);
+    color: #f87171;
+}
+.ypp-inline-btn--danger:hover {
+    background: rgba(239,68,68,0.26);
+}

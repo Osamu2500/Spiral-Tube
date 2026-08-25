@@ -1,18 +1,7 @@
 /* 
-   ==========================================================================
-   ACCOUNT MENU — NATIVE ELEMENT SUPPRESSION
-   
-   The AccountMenu JS feature (account-menu.js) completely replaces YouTube's
-   native account popup with our custom .ypp-account-menu panel.
-   
-   The native children are cloaked via inline styles (position:fixed, top:-9999px,
-   visibility:hidden) but this CSS acts as a hard safety net — ensuring that even
-   if any native child somehow escapes the JS cloaking, it is invisible and clipped.
-   
-   We also handle the case where the "Switch Account" sub-page is rendered inside
-   the same ytd-multi-page-menu-renderer. The MutationObserver in account-menu.js
-   cloak new children, but this CSS provides the backup.
-   ========================================================================== */
+ * Account Menus Component - Handles account menu styling and cloaking. 
+ * Does not affect outside scope. 
+ */
 
 /* 
    HARD CONTAINMENT: When our menu is active (cloaked or redesigned), the root
@@ -68,12 +57,7 @@ ytd-multi-page-menu-renderer .ypp-account-menu {
    DROPDOWN HOST TRANSPARENCY: Make the iron-dropdown wrapper and popup
    container fully transparent so only our panel's background shows.
 */
-html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
-html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
-html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
-html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
-html[data-ypp-theme] tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
-html[data-ypp-theme] tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {
+:is(html.yt-spiral-tube-theme, html[data-ypp-theme]) :is(tp-yt-iron-dropdown, ytd-popup-container):has(ytd-multi-page-menu-renderer:is([data-ypp-cloaked], [data-ypp-redesigned])) {
     overflow: visible !important;
     background: transparent !important;
     background-color: transparent !important;

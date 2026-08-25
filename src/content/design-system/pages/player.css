@@ -50,7 +50,7 @@
    initial render (before its own JS color-init runs), causing a blue flash.
    Fix: force red unconditionally here — no JS-added class needed, so this
    applies the moment the stylesheet is parsed, eliminating the flash.
-   Theme-specific overrides (ui-styles/*/overrides.css) use higher-specificity
+   Theme-specific overrides (ui-styles/<theme>/overrides.css) use higher-specificity
    data-ypp-ui-design selectors and will still correctly override this.
    ─────────────────────────────────────────────────────────────────────── */
 .ytp-play-progress,

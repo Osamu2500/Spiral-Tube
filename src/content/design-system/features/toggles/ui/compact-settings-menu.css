@@ -1,0 +1,25 @@
+/* 
+ * ==========================================================================
+ * COMPACT SETTINGS MENU
+ * ========================================================================== 
+ */
+
+/* --- Compact Settings Menu --- */
+body.ypp-small-settings-menu #contentContainer.tp-yt-app-drawer[swipe-open]::after {
+    display: none !important;
+}
+
+body.ypp-small-settings-menu .ytp-panel-menu {
+    display: block !important;
+}
+
+body.ypp-small-settings-menu .ytp-menuitem:not(.ytp-menuitem-with-footer) {
+    display: flex !important;
+    align-items: center !important;
+    height: 30px !important;
+    border-radius: 4px !important;
+}
+
+body.ypp-small-settings-menu .ytp-menuitem-label {
+    flex: 1 !important;
+}

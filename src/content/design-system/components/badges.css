@@ -1,3 +1,8 @@
+/* 
+ * Badges Component - Handles verified badges, watched indicators, and dim mode tags. 
+ * Does not affect outside scope. 
+ */
+
 /* ===================================================================================
    PREMIUM VERIFIED BADGE
    =================================================================================== */
@@ -107,77 +112,9 @@ ytd-thumbnail:hover .ypp-watched-icon {
   display: none;
 }
 
-/* ==========================================================================
-   KEYBOARD SHORTCUT TOAST
-   Small action label that fades in at the bottom of the screen on keypress.
-   ========================================================================== */
-
-.ypp-shortcut-toast {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%) translateY(12px);
-  background: rgba(20, 20, 30, 0.88);
-
-  color: var(--ypp-text-primary, #fff);
-  font-family: "Roboto", "Inter", sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 7px 18px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-  opacity: 0;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  z-index: var(--ypp-z-popup);
-  white-space: nowrap;
-}
-
-.ypp-shortcut-toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ==========================================================================
-   WATCH TIME ALERT OVERLAY
-   Dismissible reminder banner that slides in from the top-right.
-   ========================================================================== */
-
 /* =========================================================================
-   NEW FEATURES (Premium Logo & Resume Badges)
+   RESUME BADGES
    ========================================================================= */
-
-/* =========================================================================
-   GRAYSCALE THUMBNAILS (Re-implemented via Global Layout)
-   ========================================================================= */
-
-body.ypp-grayscale-thumbs ytd-thumbnail img,
-body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
-    filter: grayscale(100%) !important;
-    transition: filter 0.3s ease !important;
-}
-
-body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
-body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
-    filter: grayscale(0%) !important;
-}
-
-/* =========================================================================
-   NEW FEATURES (Premium Logo & Resume Badges)
-   ========================================================================= */
-
-/* --- PREMIUM LOGO --- */
-body.ypp-premium-logo ytd-topbar-logo-renderer { margin-left: 16px !important; display: flex !important; align-items: center !important; }
-body.ypp-premium-logo ytd-topbar-logo-renderer a#logo { display: flex !important; align-items: center !important; text-decoration: none !important; }
-body.ypp-premium-logo ytd-topbar-logo-renderer a#logo > * { display: none !important; }
-body.ypp-premium-logo ytd-topbar-logo-renderer a#logo::before { content: ""; display: block !important; width: 34px !important; height: 24px !important; background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==") !important; background-size: contain !important; background-repeat: no-repeat !important; background-position: center !important; margin-right: 2px !important; }
-body.ypp-premium-logo ytd-topbar-logo-renderer a#logo::after { content: "Premium"; display: block !important; font-family: "YouTube Sans", "Roboto", "Segoe UI", Arial, sans-serif !important; font-size: 22px !important; font-weight: 500 !important; color: var(--yt-spec-text-primary, #FFFFFF) !important; margin-left: 2px !important; letter-spacing: -0.5px !important; line-height: 22px !important; }
-body.ypp-premium-logo ytd-topbar-logo-renderer #country-code { position: relative !important; display: block !important; margin-left: 2px !important; top: -8px !important; color: var(--yt-spec-text-secondary, #aaaaaa) !important; font-size: 11px !important; font-family: "Roboto", sans-serif !important; font-weight: 500 !important; }
-
-/* --- RESUME BADGES --- */
 .yt-pro-pbar-wrap { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(0,0,0,0.5); z-index: 100; pointer-events: none; }
 .yt-pro-pbar { height: 100%; background: #3ea6ff; transition: width 0.2s ease; }
 .yt-pro-resume-badge {
@@ -185,19 +122,9 @@ body.ypp-premium-logo ytd-topbar-logo-renderer #country-code { position: relativ
   backdrop-filter: blur(4px);
 }
 
-
-/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
-ytd-thumbnail-overlay-toggle-button-renderer,
-ytd-thumbnail-overlay-button-renderer {
-  display: none !important;
-}
-
-
-
-
-
-/* --- IMPORTED FROM filters.css --- */
-/* Dim Mode & Badges */
+/* =========================================================================
+   DIM MODE & BADGES
+   ========================================================================= */
 [data-ypp-badge-target] {
     position: relative !important;
 }
@@ -327,122 +254,3 @@ ytd-thumbnail-overlay-button-renderer {
     from { stroke-dashoffset: 0; }
     to { stroke-dashoffset: var(--yt-hider-countdown-circumference); }
 }
-
-/* Inline channel buttons (Whitelist / Blacklist next to Subscribe) */
-.ypp-inline-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    height: 36px;
-    padding: 0 16px;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: 'Roboto', Arial, sans-serif;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 18px;
-    cursor: pointer;
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.85);
-    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    white-space: nowrap;
-    line-height: 1;
-}
-.ypp-inline-btn:hover {
-    background: rgba(255,255,255,0.16);
-    color: var(--ypp-text-primary, #fff);
-}
-.ypp-inline-btn--active {
-    background: rgba(34,197,94,0.18);
-    border-color: rgba(34,197,94,0.45);
-    color: #4ade80;
-}
-.ypp-inline-btn--active:hover {
-    background: rgba(34,197,94,0.28);
-}
-.ypp-inline-btn--danger {
-    background: rgba(239,68,68,0.16);
-    border-color: rgba(239,68,68,0.4);
-    color: #f87171;
-}
-.ypp-inline-btn--danger:hover {
-    background: rgba(239,68,68,0.26);
-}
-
-/* Channel chip styles (popup whitelist/blacklist chip UI) */
-.ypp-chip-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    min-height: 32px;
-    padding: 4px 0;
-}
-.ypp-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 99px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
-    font-size: 12px;
-    color: rgba(255,255,255,0.85);
-    max-width: 200px;
-    font-family: 'Roboto', Arial, sans-serif;
-}
-.ypp-chip span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.ypp-chip-remove {
-    background: none;
-    border: none;
-    cursor: pointer;
-    opacity: 0.55;
-    color: inherit;
-    padding: 0;
-    font-size: 14px;
-    line-height: 1;
-    flex-shrink: 0;
-}
-.ypp-chip-remove:hover {
-    opacity: 1;
-}
-.ypp-chip-add-row {
-    display: flex;
-    gap: 6px;
-    margin-top: 6px;
-    align-items: center;
-}
-.ypp-chip-add-input {
-    flex: 1;
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.07);
-    color: rgba(255,255,255,0.9);
-    font-size: 12px;
-    font-family: 'Roboto', Arial, sans-serif;
-    outline: none;
-}
-.ypp-chip-add-input:focus {
-    border-color: rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.1);
-}
-.ypp-chip-add-btn {
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.85);
-    font-size: 12px;
-    font-family: 'Roboto', Arial, sans-serif;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.15s;
-}
-.ypp-chip-add-btn:hover {
-    background: rgba(255,255,255,0.18);
-}
-
-

@@ -1,0 +1,16 @@
+/* 
+ * ==========================================================================
+ * GRAYSCALE THUMBNAILS
+ * ========================================================================== 
+ */
+
+/* --- Grayscale Thumbnails --- */
+
+body.ypp-grayscale-thumbnails ytd-thumbnail img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+body.ypp-grayscale-thumbnails ytd-thumbnail:hover img {
+    filter: grayscale(0%);
+}

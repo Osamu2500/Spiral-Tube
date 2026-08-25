@@ -1,0 +1,12 @@
+/* 
+ * ==========================================================================
+ * LIVE STREAM TIME
+ * ========================================================================== 
+ */
+
+/* --- Show Live Stream Elapsed Time --- */
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-current,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-separator,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-duration {
+  display: inline-block !important;
+}

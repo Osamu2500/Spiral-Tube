@@ -1,0 +1,26 @@
+/* 
+ * ==========================================================================
+ * REAL CINEMA MODE
+ * ========================================================================== 
+ */
+
+/* --- Customize Your YouTube --- */
+
+/* --- Hide Paid Promotion Banner --- */
+
+/* --- Real Cinema Mode (100vw Theater Mode & Auto-hide Header) --- */
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #player-theater-container.ytd-watch-flexy,
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #full-bleed-container.ytd-watch-flexy {
+  width: 100vw !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+}
+
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #masthead-container {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #masthead-container:hover {
+  opacity: 1 !important;
+}

@@ -1,0 +1,195 @@
+/* 
+ * ==========================================================================
+ * SHORTS DECLUTTER
+ * ========================================================================== 
+ */
+
+/* --- New Renderer Types (2024+) --- */
+body.ypp-hide-shorts reels-video-with-pill-title-renderer,
+body.ypp-hide-shorts ytd-reel-video-renderer,
+body.ypp-hide-shorts grid-shelf-view-model,
+body.ypp-hide-shorts ytd-reel-item-renderer,
+body.ypp-hide-shorts ytd-rich-grid-slim-media,
+body.ypp-hide-shorts ytd-shorts,
+
+/* --- Individual Shorts Videos (URL Match & Slim Media) --- */
+body.ypp-hide-shorts ytd-rich-item-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(ytm-reel-item-renderer),
+body.ypp-hide-shorts yt-lockup-view-model:has(a[href*="/shorts"]),
+body.ypp-hide-shorts yt-lockup-view-model:has(ytd-rich-grid-slim-media),
+body.ypp-hide-shorts yt-lockup-view-model:has(ytd-reel-item-renderer),
+body.ypp-hide-shorts yt-lockup-view-model:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts yt-lockup-view-model:has(yt-icon-shape[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-video-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-grid-video-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-playlist-video-renderer:has(a[href*="/shorts"]),
+
+/* --- Shorts Badge/Label Detection --- */
+body.ypp-hide-shorts ytd-grid-video-renderer:has(span#text[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-compact-video-renderer:has(span[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-video-renderer:has(span[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(span[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-rich-item-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
+
+/* --- Navigation (Sidebar & Guide) --- */
+body.ypp-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+body.ypp-hide-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+
+/* --- Channel Page Tabs --- */
+body.ypp-hide-shorts tp-yt-paper-tab[aria-label="Shorts"],
+body.ypp-hide-shorts tp-yt-paper-tab[tab-title="Shorts"],
+body.ypp-hide-shorts yt-tab-shape[tab-title="Shorts"],
+
+/* --- Search & Chip Filters --- */
+body.ypp-hide-shorts yt-chip-cloud-chip-renderer:has(a[href*="/shorts"]),
+
+/* --- Shelf Title Detection --- */
+body.ypp-hide-shorts ytd-shelf-renderer:has(span#title[aria-label*="Shorts"]),
+body.ypp-hide-shorts ytd-shelf-renderer:has(div#title-container h2 span[aria-label*="Shorts"]),
+body.ypp-hide-shorts ytd-shelf-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-shelf-renderer:has(ytd-icon-button-renderer[aria-label="Shorts"]),
+
+/* --- Watch Page (Secondary Results) --- */
+body.ypp-hide-shorts #related ytd-reel-shelf-renderer,
+body.ypp-hide-shorts #related ytd-compact-video-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
+
+/* --- Subscription Feed --- */
+body.ypp-hide-shorts ytd-rich-section-renderer:has([is-shorts]),
+body.ypp-hide-shorts #grid-container ytd-rich-item-renderer:has(a[href*="/shorts"]),
+
+/* --- Stamped Heuristic Shorts --- */
+body.ypp-hide-shorts [data-ypp-is-short="true"] {
+  display: none !important;
+}
+body.ypp-hide-shorts
+  ytd-item-section-renderer:has(ytd-reel-shelf-renderer):not(
+    :has(*:not(ytd-reel-shelf-renderer))
+  ),
+body.ypp-hide-shorts
+  ytd-item-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]):not(
+    :has(*:not(ytd-rich-shelf-renderer[is-shorts]))
+  ),
+body.ypp-hide-shorts
+  ytd-section-list-renderer:has([is-shorts]):not(:has(*:not([is-shorts]))) {
+  display: none !important;
+}
+body.ypp-hide-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+body.ypp-hide-shorts
+  ytd-item-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+body.ypp-hide-shorts
+  ytd-item-section-renderer:has(ytd-shelf-renderer[is-shorts]),
+body.ypp-hide-shorts
+  ytd-item-section-renderer:has(
+    ytd-shelf-renderer span#title[aria-label*="Shorts"]
+  ) {
+  display: none !important;
+}
+body.ypp-hide-shorts ytd-rich-section-renderer[is-shorts],
+body.ypp-hide-shorts ytd-reel-shelf-renderer,
+body.ypp-hide-shorts ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+body.ypp-hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
+body.ypp-hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+body.ypp-hide-shorts ytd-compact-video-renderer:has(a[href^="/shorts/"]) {
+    display: none !important;
+}
+body.ypp-hide-metrics #count.ytd-comments-header-renderer {
+    display: none !important;
+}
+body.ypp-hide-upload-button #buttons ytd-topbar-menu-button-renderer:has(svg path[d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"]),
+body.ypp-hide-upload-button ytd-masthead #buttons ytd-topbar-menu-button-renderer:nth-child(1),
+body.ypp-hide-upload-button ytd-masthead [aria-label="Create"],
+body.ypp-hide-upload-button ytd-masthead a[href*="/upload"] {
+  display: none !important;
+}
+body.ypp-hide-mixes ytd-rich-item-renderer:has(a[href*="start_radio=1"]),
+body.ypp-hide-mixes ytd-rich-item-renderer:has([class*="content-id-RD"]),
+body.ypp-hide-mixes yt-lockup-view-model:has(a[href*="start_radio=1"]),
+body.ypp-hide-mixes yt-lockup-view-model:has([class*="content-id-RD"]),
+body.ypp-hide-mixes ytd-radio-renderer,
+body.ypp-hide-mixes ytd-compact-radio-renderer,
+body.ypp-hide-mixes ytm-rich-item-renderer:has(a[href*="start_radio=1"]),
+body.ypp-hide-mixes ytm-video-with-context-renderer:has(a[href*="start_radio=1"]) {
+    display: none !important;
+}
+body.ypp-hide-playlists ytd-rich-item-renderer:has([class*="content-id-PL"]),
+body.ypp-hide-playlists yt-lockup-view-model:has([class*="content-id-PL"]),
+body.ypp-hide-playlists ytd-playlist-renderer,
+body.ypp-hide-playlists ytd-compact-playlist-renderer,
+body.ypp-hide-playlists ytm-rich-item-renderer:has([class*="content-id-PL"]) {
+    display: none !important;
+}
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(a[href^="/podcast?"]),
+body.ypp-hide-podcasts ytd-video-renderer:has(a[href^="/podcast?"]),
+body.ypp-hide-podcasts ytd-playlist-renderer:has(a[href^="/podcast?"]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(a[href^="/podcast?"]),
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Podcast" i]),
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Podcasts" i]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-supported-renderer[aria-label="Podcast" i]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-supported-renderer[aria-label="Podcasts" i]) {
+    display: none !important;
+}
+.ypp-hidden-duration {
+  display: none !important;
+}
+html body .ypp-hidden,
+html body .ypp-hidden-by-pipeline {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+
+/* --- Nuke Shorts (From shorts-blocker.css) --- */
+/* 
+ * Shorts Blocker Component
+ * Toggles for aggressively hiding Shorts from feeds and sidebars
+ */
+
+body.ypp-nuke-shorts ytd-rich-section-renderer[is-shorts],
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-item-renderer),
+body.ypp-nuke-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
+body.ypp-nuke-shorts ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
+body.ypp-nuke-shorts ytd-rich-item-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts yt-lockup-view-model:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts yt-lockup-view-model:has(ytd-rich-grid-slim-media),
+body.ypp-nuke-shorts ytd-reel-shelf-renderer,
+body.ypp-nuke-shorts ytd-guide-entry-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts ytd-mini-guide-entry-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts [is-shorts],
+body.ypp-nuke-shorts ytd-video-renderer:has(a[href*="/shorts"]),
+body.ypp-nuke-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]) {
+  display: none !important;
+}
+
+.ypp-aggressive-shorts-block ytd-rich-item-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
+.ypp-aggressive-shorts-block ytd-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-grid-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-compact-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block ytd-playlist-video-renderer:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block yt-lockup-view-model:has(a[href*="/shorts"]),
+.ypp-aggressive-shorts-block yt-lockup-view-model:has(ytd-rich-grid-slim-media),
+.ypp-aggressive-shorts-block ytd-reel-shelf-renderer,
+.ypp-aggressive-shorts-block ytd-rich-shelf-renderer[is-shorts],
+.ypp-aggressive-shorts-block ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
+.ypp-aggressive-shorts-block ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
+.ypp-aggressive-shorts-block ytm-reel-shelf-renderer,
+.ypp-aggressive-shorts-block ytd-guide-entry-renderer:has(a[title="Shorts"]),
+.ypp-aggressive-shorts-block ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+.ypp-aggressive-shorts-block yt-tab-shape[tab-title="Shorts"] {
+  display: none !important;
+}

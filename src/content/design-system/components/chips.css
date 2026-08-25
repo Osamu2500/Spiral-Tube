@@ -1,11 +1,7 @@
-/*
-   ==========================================================================
-   CORE FRAMEWORK — CHIPS COMPONENT
-   Wires --ypp-chip-* tokens to YouTube's filter chip bar and all chip/tag
-   pill elements across the site. This is the single source of truth —
-   overrides.css files should NOT duplicate these selectors.
-   ========================================================================== 
-*/
+/* 
+ * Chips Component - Handles styling for filter chips, tags, and chip lists.
+ * Does not affect outside scope. 
+ */
 
 /* ── Chip Cloud Bar (the "All / Gaming / Music" filter row) ─────────────── */
 yt-chip-cloud-renderer,
@@ -135,3 +131,83 @@ html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer.iron-selected {
   background: rgba(255, 255, 255, 0.15) !important;
   color: var(--ypp-text-primary, #fff) !important;
 }
+
+/* =========================================================================
+   Channel chip styles (popup whitelist/blacklist chip UI) (Moved from badges.css)
+   ========================================================================= */
+.ypp-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 32px;
+    padding: 4px 0;
+}
+.ypp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    max-width: 200px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+.ypp-chip span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ypp-chip-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.55;
+    color: inherit;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.ypp-chip-remove:hover {
+    opacity: 1;
+}
+.ypp-chip-add-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    align-items: center;
+}
+.ypp-chip-add-input {
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-family: 'Roboto', Arial, sans-serif;
+    outline: none;
+}
+.ypp-chip-add-input:focus {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+}
+.ypp-chip-add-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    font-family: 'Roboto', Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+.ypp-chip-add-btn:hover {
+    background: rgba(255,255,255,0.18);
+}
+

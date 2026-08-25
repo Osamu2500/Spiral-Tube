@@ -12,20 +12,46 @@
 @import "./base/tokens.css";
 @import "./base/animations.css";
 
+/* --- DECLUTTER --- */
+@import "./features/declutter/global.css";
+@import "./features/declutter/home.css";
+@import "./features/declutter/search.css";
+@import "./features/declutter/watch.css";
+@import "./features/declutter/shorts.css";
+
+/* --- TOGGLES & LAYOUTS --- */
+@import "./features/toggles/layout.css";
+@import "./features/toggles/player.css";
+@import "./features/toggles/components.css";
+@import "./features/toggles/search.css";
+@import "./features/toggles/misc.css";
+
 /* --- FEATURES --- */
-@import "./features/declutter.css";
-@import "./features/toggles.css";
-@import "./features/player-modes.css";
-@import "./features/cinematic-mode.css";
+@import "./features/toggles/ui/premium-logo.css";
+@import "./features/toggles/ui/retro-logo.css";
+@import "./features/toggles/ui/save-supreme-ui.css";
+@import "./features/toggles/ui/compact-settings-menu.css";
+@import "./features/toggles/player/netflix-subtitles.css";
+@import "./features/toggles/player/flex-width-player.css";
+@import "./features/toggles/player/compact-player.css";
+@import "./features/modes/real-cinema-mode.css";
+@import "./features/toggles/player/live-stream-time.css";
+@import "./features/toggles/feed/two-column-subs.css";
+@import "./features/toggles/ui/square-corners.css";
+@import "./features/toggles/ui/extra-rounded-ui.css";
+@import "./features/toggles/ui/grayscale-thumbnails.css";
+@import "./features/toggles/feed/resume-badges.css";
+@import "./features/toggles/ui/custom-scrollbar.css";
+
+@import "./features/modes/player-modes.css";
+@import "./features/modes/cinematic-mode.css";
 @import "./features/integrations.css";
-@import "./features/sidebar-layout.css";
-@import "./features/video-speed-controller.css";
-@import "./features/watched-indicator.css";
-@import "./features/shorts-blocker.css";
-@import "./features/deck-mode.css";
-@import "./features/extra-rounded-ui.css";
-@import "./features/smooth-title-scroll.css";
-@import "./features/full-video-titles.css";
+@import "./features/modes/sidebar-mode.css";
+@import "./features/toggles/player/video-speed-controller.css";
+@import "./features/toggles/feed/watched-indicator.css";
+@import "./features/modes/deck-mode.css";
+@import "./features/toggles/feed/smooth-title-scroll.css";
+@import "./features/toggles/feed/full-video-titles.css";
 /* --- COMPONENTS --- */
 @import "./components/badges.css";
 @import "./components/buttons.css";
