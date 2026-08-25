@@ -1,0 +1,100 @@
+/* 
+ * ==========================================================================
+ * SHORTS SHELF COMPONENT
+ * Handles the display of the Shorts Shelf in the main feed and channels.
+ * Extracts Shorts-specific logic from grid-layout.css for better organization.
+ * ==========================================================================
+ */
+
+/* Ensure Shorts Shelf properly spans the grid */
+.ypp-grid-container ytd-rich-section-renderer,
+.ypp-grid-container ytd-rich-shelf-renderer {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 24px 0 !important;
+}
+
+/* Container Spacing & Gap */
+#page-manager ytd-rich-shelf-renderer #contents {
+  display: flex !important;
+  gap: 16px !important;
+  padding-bottom: 8px !important; /* For hover shadow clearance */
+}
+
+/* Force Shorts Items to maintain proper size in the shelf */
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer {
+  /* Calculate width to account for 16px gaps between items */
+  width: calc((100% - (16px * (var(--ypp-active-columns, 5) - 1))) / var(--ypp-active-columns, 5)) !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 0 0 calc((100% - (16px * (var(--ypp-active-columns, 5) - 1))) / var(--ypp-active-columns, 5)) !important;
+  margin: 0 !important;
+}
+
+/* Fix Aspect Ratio and Layout of the Shorts Thumbnail */
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer ytd-thumbnail,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer ytd-thumbnail,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer ytd-thumbnail,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  border-radius: var(--ypp-radius-md, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer:hover ytd-thumbnail,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer:hover ytd-thumbnail {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure the image scales properly within the 9:16 aspect ratio */
+#page-manager ytd-rich-section-renderer ytd-thumbnail img,
+#page-manager ytd-rich-shelf-renderer ytd-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: var(--ypp-radius-md, 12px) !important;
+}
+
+/* Title Area Styling */
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer #video-title,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer #video-title,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer #video-title,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #video-title {
+  font-size: 1.4rem !important;
+  line-height: 2rem !important;
+  font-weight: 600 !important;
+  margin-top: 12px !important;
+  color: var(--yt-spec-text-primary) !important;
+  text-transform: none !important;
+  -webkit-line-clamp: 2 !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* Metadata Styling (Views & Time) */
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer #metadata-line,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer #metadata-line,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer #metadata-line,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #metadata-line {
+  font-size: 1.2rem !important;
+  color: var(--yt-spec-text-secondary) !important;
+  margin-top: 4px !important;
+}
+
+/* Hide Unnecessary Elements from Shorts */
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer #avatar-link,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer #avatar-link,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer #avatar-link,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #avatar-link {
+  display: none !important;
+}
