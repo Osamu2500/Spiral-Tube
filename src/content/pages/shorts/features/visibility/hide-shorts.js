@@ -19,7 +19,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         this._isMonitoringShorts = false;
     }
 
-    getConfigKey() { return null; } // Controlled by multiple keys (hideShorts, hideSearchShorts)
+    getConfigKey() { return null; } // Controlled purely by the .ypp-nuke-shorts body class
 
     async enable() {
         await super.enable();
@@ -90,7 +90,6 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     }
 
     _cleanupDOM() {
-        document.body.classList.remove('ypp-hide-shorts', 'ypp-hide-search-shorts');
         document.querySelectorAll('[data-ypp-is-short]').forEach(el => {
             el.removeAttribute('data-ypp-is-short');
             el.style.removeProperty('display');
@@ -133,7 +132,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             });
             
             // Search specific shorts videos if enabled
-            if (this.settings.hideSearchShorts && window.location.pathname === '/results') {
+            if (window.location.pathname === '/results') {
                 document.querySelectorAll('a[href^="/shorts/"]').forEach(link => {
                     const videoEl = link.closest('ytd-video-renderer, ytd-compact-video-renderer, ytm-video-with-context-renderer');
                     if (videoEl && this._hideShortsContainer(videoEl)) {
@@ -208,7 +207,6 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     }
 
     _removeShortsByHeuristics() {
-        if (window.location.pathname === '/results' && !this.settings.hideSearchShorts) return;
         
         const elementsToCheck = document.querySelectorAll(
             'ytd-shelf-renderer, ytd-rich-shelf-renderer, yt-collection-shelf-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytm-video-with-context-renderer, ytm-compact-video-renderer'
@@ -267,7 +265,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             if (!el) return;
             
             // Search specific shorts videos if enabled
-            if (this.settings.hideSearchShorts && window.location.pathname === '/results' && el.tagName?.toLowerCase() === 'ytd-video-renderer') {
+            if (window.location.pathname === '/results' && el.tagName?.toLowerCase() === 'ytd-video-renderer') {
                 if (el.querySelector('a[href^="/shorts/"]')) {
                     if (this._hideShortsContainer(el)) {
                         el.setAttribute('is-search', 'true');
@@ -275,8 +273,6 @@ export class HideShorts extends window.YPP.features.BaseFeature {
                     }
                 }
             }
-
-            if (window.location.pathname === '/results' && !this.settings.hideSearchShorts) return; // Do not hide real results
 
             if (this._isShortsElement(el)) {
                 if (this._hideShortsContainer(el)) {

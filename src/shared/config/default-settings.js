@@ -32,8 +32,7 @@ export const DEFAULT_SETTINGS = {
   cinematicMode: false,
 
   // Visibility
-  hideShorts: false,
-  hideSearchShorts: false,
+  // (Removed hideShorts and hideSearchShorts - combined into aggressiveShortsBlock)
   hideMixes: false,
   hideExploreTopics: false,
   hidePromoShelves: false,

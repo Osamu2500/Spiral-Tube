@@ -5,14 +5,7 @@ export const getDeclutterTab = (t) => ({
     label: t('tab_filters'),
     icon: ICONS.filter,
     sections: [
-      {
-        title: 'Content Blocking',
-        icon: ICONS.filter,
-        items: [
-          { type: 'toggle', id: 'hideShorts', label: 'Hide Shorts Globally', desc: 'Remove YouTube Shorts from all feeds', icon: ICONS.shorts },
-          { type: 'toggle', id: 'hideSearchShorts', label: 'Hide Shorts in Search', desc: 'Remove Shorts from search results', icon: ICONS.search },
-        ],
-      },
+
       {
         title: 'Watched Videos',
         icon: ICONS.eyeSlash,

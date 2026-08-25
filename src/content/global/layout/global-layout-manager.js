@@ -17,7 +17,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hidePodcasts:          'ypp-hide-podcasts',
             hidePosts:             'ypp-hide-posts',
             hidePromoShelves:      'ypp-hide-promos',
-            hideShorts:            'ypp-hide-shorts',
+
             hideLiveChat:          'ypp-hide-live-chat',   // Fixed: was ypp-hide-livechat
             hideEndScreens:        'ypp-hide-endscreens',
             hideChannelCards:      'ypp-hide-channel-cards',
@@ -42,7 +42,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideVideoDescription:  'ypp-hide-video-description',
             hideActionButtons:     'ypp-hide-action-buttons',
             hideFeed:              'ypp-hide-feed',              // Moved from HomePageManager
-            hideSearchShorts:      'ypp-hide-search-shorts',
+
             cleanSearch:           'ypp-clean-search',
 
 
