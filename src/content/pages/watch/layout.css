@@ -135,7 +135,7 @@ body.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
    Layout (flex-grow, width, justify-content) is handled by toggles.css
    to ensure it runs at the correct specificity level. */
 html.yt-spiral-tube-theme ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button,
 html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
   background: transparent !important;
   color: var(--ypp-text-primary, #fff) !important;
@@ -143,7 +143,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-butt
 }
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
   background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
   color: var(--ypp-primary-accent, #3ea6ff) !important;

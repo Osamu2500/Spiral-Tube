@@ -470,7 +470,7 @@ body.yt-spiral-tube-theme #actions-inner
   button
   .yt-spec-button-shape-next__button-text-content,
 body.yt-spiral-tube-theme #actions-inner
-  :is(ytd-download-button-renderer, yt-button-view-model)
+  :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model)
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
@@ -487,11 +487,11 @@ body.yt-spiral-tube-theme #actions-inner
   yt-button-shape
   > button,
 body.yt-spiral-tube-theme #actions-inner
-  :is(ytd-download-button-renderer, yt-button-view-model)
+  :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model)
   yt-button-shape
   > button,
 body.yt-spiral-tube-theme #actions-inner
-  :is(ytd-download-button-renderer, yt-button-view-model)
+  :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model)
   yt-button-shape-with-explainer
   yt-button-shape
   > button,
@@ -521,7 +521,7 @@ body.yt-spiral-tube-theme #actions-inner
   yt-button-shape
   > button:hover,
 body.yt-spiral-tube-theme #actions-inner
-  :is(ytd-download-button-renderer, yt-button-view-model)
+  :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model)
   yt-button-shape
   > button:hover,
 body.yt-spiral-tube-theme #actions-inner
