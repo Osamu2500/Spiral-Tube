@@ -2,6 +2,7 @@
  * Theme Manager - Handles visual theming and content visibility features
  * Uses centralized constants for configuration
  */
+import '../../../core/system/base-feature.js';
 
 
 
