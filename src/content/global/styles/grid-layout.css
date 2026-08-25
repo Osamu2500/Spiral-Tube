@@ -478,3 +478,22 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avata
   margin: 16px 0 !important;
 }
 
+
+/* Force Shorts Items to maintain proper size in the shelf */
+ytd-rich-section-renderer ytd-rich-item-renderer,
+ytd-rich-shelf-renderer ytd-rich-item-renderer {
+  width: calc(100% / var(--ypp-active-columns, 5)) !important;
+  min-width: 0 !important;
+  max-width: calc(100% / var(--ypp-active-columns, 5)) !important;
+  flex: 1 1 auto !important;
+}
+
+
+ytd-rich-section-renderer ytd-reel-item-renderer,
+ytd-rich-shelf-renderer ytd-reel-item-renderer {
+  width: calc(100% / var(--ypp-active-columns, 5)) !important;
+  min-width: 0 !important;
+  max-width: calc(100% / var(--ypp-active-columns, 5)) !important;
+  flex: 1 1 auto !important;
+}
+
