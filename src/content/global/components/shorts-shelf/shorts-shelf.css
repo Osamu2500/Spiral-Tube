@@ -22,16 +22,20 @@
   padding-bottom: 8px !important; /* For hover shadow clearance */
 }
 
-/* Force Shorts Items to maintain proper size in the shelf */
+/* 
+ * Force Shorts Items to maintain a consistent, fixed size.
+ * This completely decouples them from the main grid columns and 
+ * prevents them from becoming massive or tiny. It also restores
+ * YouTube's native horizontal carousel scrolling behavior.
+ */
 #page-manager ytd-rich-section-renderer ytd-rich-item-renderer,
 #page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer,
 #page-manager ytd-rich-section-renderer ytd-reel-item-renderer,
 #page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer {
-  /* Calculate width to account for 16px gaps between items */
-  width: calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  flex: 0 0 calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
+  width: 230px !important;
+  min-width: 230px !important;
+  max-width: 230px !important;
+  flex: 0 0 230px !important;
   margin: 0 !important;
 }
 
@@ -98,11 +102,3 @@
 #page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #avatar-link {
   display: none !important;
 }
-
-/* Responsive Shorts Columns (Decoupled from main feed) */
-:root { --ypp-shorts-columns: 6; }
-@media (max-width: 1600px) { :root { --ypp-shorts-columns: 5; } }
-@media (max-width: 1200px) { :root { --ypp-shorts-columns: 4; } }
-@media (max-width: 900px) { :root { --ypp-shorts-columns: 3; } }
-@media (max-width: 640px) { :root { --ypp-shorts-columns: 2; } }
-
