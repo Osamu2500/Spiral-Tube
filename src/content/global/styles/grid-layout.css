@@ -404,7 +404,8 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-
 html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) :is(ytd-thumbnail, #details, .yt-lockup-view-model-wiz__image, yt-image) {
   grid-column: auto !important;
   grid-row: auto !important;
-  width: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   position: static !important;
@@ -467,3 +468,13 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avata
   /* Elevate consecutive avatars so they overlap cleanly */
   position: relative !important;
 }
+
+/* Ensure Shorts Shelf properly spans the grid */
+.ypp-grid-container ytd-rich-section-renderer,
+.ypp-grid-container ytd-rich-shelf-renderer {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 16px 0 !important;
+}
+
