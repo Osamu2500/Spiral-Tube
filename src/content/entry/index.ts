@@ -11,7 +11,7 @@ import '../core/dom/dom-api.js';
 import '../core/dom/dom-observer.js';
 import '../core/system/storage-manager.js';
 import '../core/events/event-delegator.js';
-import '../core/system/feature-manager.js';
+import '../core/system/feature-manager.ts';
 
 // CSS Imports
 import '../styles/index.css';
@@ -278,4 +278,4 @@ import '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
 
 
 // Main entry
-import './main.js';
+import './main.ts';

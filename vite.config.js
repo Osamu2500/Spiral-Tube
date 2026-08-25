@@ -25,6 +25,7 @@ export default defineConfig({
       }
     },
     emptyOutDir: false,
+    chunkSizeWarningLimit: 2000,
     minify: 'terser',
     terserOptions: {
       mangle: {
