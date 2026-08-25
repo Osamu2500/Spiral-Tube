@@ -286,12 +286,15 @@ export class HeaderNav extends window.YPP.features.BaseFeature {
 
   _navigateTo(url) {
     // Modern YouTube SPA routing:
-    // Create an invisible anchor tag and click it so YouTube's global 
-    // click listeners naturally intercept and route the navigation.
+    // Create an invisible anchor tag with yt-simple-endpoint class 
+    // and append it INSIDE ytd-app so YouTube's global click listeners 
+    // naturally intercept and route the navigation without a hard reload.
     const a = document.createElement('a');
     a.href = url;
+    a.className = 'yt-simple-endpoint';
     a.style.display = 'none';
-    document.body.appendChild(a);
+    const container = document.querySelector('ytd-app') || document.body;
+    container.appendChild(a);
     a.click();
     a.remove();
   }
