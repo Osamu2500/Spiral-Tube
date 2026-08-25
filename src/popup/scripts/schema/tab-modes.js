@@ -1,0 +1,123 @@
+import { ICONS, P } from '../ui/popup-icons.js';
+
+export const getModesTab = (t) => ({
+    id: 'modes',
+    label: t('modes'),
+    icon: ICONS.wheel,
+    sections: [
+      {
+        title: t('home_page'),
+        subtitle: 'Immersive experiences for the home feed',
+        icon: ICONS.secModesHome,
+        items: [
+          {
+            type: 'toggle',
+            id: 'cinematicMode',
+            label: t('cinematic_home'),
+            desc: t('cinematic_styling_for_homepage'),
+            icon: ICONS.cinematic,
+          },
+          {
+            type: 'toggle',
+            id: 'premiumTheme',
+            label: 'Premium Theme',
+            desc: 'Custom colors and styling',
+            icon: ICONS.cinema,
+          },
+          {
+            type: 'toggle',
+            id: 'enableTabviewSidebar',
+            label: t('tabview_sidebar'),
+            desc: t('tabview_sidebar_desc'),
+            icon: ICONS.sidebar,
+          },
+        ],
+      },
+      {
+        title: t('player_page'),
+        subtitle: 'Immersive experiences for the video player',
+        icon: ICONS.secModesPlayer,
+        items: [
+          {
+            type: 'toggle',
+            id: 'zenMode',
+            label: t('zen_mode'),
+            desc: t('dim_everything_but_video'),
+            icon: ICONS.zen,
+          },
+          {
+            type: 'toggle',
+            id: 'cinemaMode',
+            label: t('cinema_mode'),
+            desc: t('theater_like_fullscreen_viewing'),
+            icon: ICONS.cinema,
+          },
+          {
+            type: 'toggle',
+            id: 'realCinemaMode',
+            label: t('real_cinema_mode'),
+            desc: t('real_cinema_mode_desc'),
+            icon: ICONS.cinema,
+          },
+          {
+            type: 'toggle',
+            id: 'enableStarTubeLayout',
+            label: t('startube_layout'),
+            desc: t('startube_layout_desc'),
+            icon: ICONS.autoCinema,
+          },
+          {
+            type: 'toggle',
+            id: 'playlistRedesign',
+            label: 'Playlist Redesign',
+            desc: 'Immersive playlist UI',
+            icon: ICONS.cinema,
+          },
+          {
+            type: 'toggle',
+            id: 'ambientMode',
+            label: t('ambient_theater'),
+            desc: t('giant_canvas_ambilight_effect'),
+            icon: ICONS.ambient,
+            slot: 'ambientModeOptions',
+          },
+          {
+            type: 'toggle',
+            id: 'studyMode',
+            label: t('study_mode'),
+            desc: t('focus_mode_1_25_playback_speed'),
+            icon: ICONS.study,
+          },
+          {
+            type: 'toggle',
+            id: 'enableFocusMode',
+            label: t('focus_mode'),
+            desc: t('hide_all_distractions_on_page'),
+            icon: ICONS.focus,
+          },
+          {
+            type: 'toggle',
+            id: 'minimalMode',
+            label: t('minimalist_chrome'),
+            desc: t('strip_non_essential_page_chrome'),
+            icon: ICONS.minimal,
+          },
+          {
+            type: 'toggle',
+            id: 'seamlessMode',
+            label: t('seamless_mode'),
+            desc: t('sidebar_comments'),
+            icon: ICONS.sidebar,
+            inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="seamlessModeGridColsUI" min="1" max="10" step="1" style="width:100%;"><span id="seamlessModeGridColsValue" style="font-size:10px; min-width:20px; opacity:0.7;">4</span></div><input type="hidden" id="seamlessModeGridCols" value="4" />`,
+          },
+          {
+            type: 'toggle',
+            id: 'audioModeEnabled',
+            label: t('audio_only_mode'),
+            desc: t('listen_only_hide_the_video'),
+            icon: ICONS.audioOnly,
+          },
+        ],
+      },
+    ],
+  });

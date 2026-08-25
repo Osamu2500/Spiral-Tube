@@ -1,0 +1,54 @@
+/* 
+ * base-ui-index.css
+ * Central index for all structural base UI components and layout modifications 
+ * that form the core default extension design on YouTube.
+ * Note: Extension features (speed controller, cinema mode, etc.) are excluded.
+ */
+
+/* =========================================
+   GLOBAL COMPONENTS (Reusable UI Elements)
+   ========================================= */
+@import "../global/components/account-menus/account-menus.css";
+@import "../global/components/badges/badges.css";
+@import "../global/components/buttons/buttons.css";
+@import "../global/components/cards/cards.css";
+@import "../global/components/chips/chips.css";
+@import "../global/components/dialogs/dialogs.css";
+@import "../global/components/icons/icons.css";
+@import "../global/components/menus/menus.css";
+@import "../global/components/multi-select/multi-select.css";
+@import "../global/components/navbar/navbar.css";
+@import "../global/components/panels/panels.css";
+@import "../global/components/sidebar/sidebar.css";
+@import "../global/components/toasts/toasts.css";
+
+/* =========================================
+   PAGE STRUCTURAL LAYOUTS
+   ========================================= */
+/* Home & Shared Feeds */
+@import "../pages/home/layout.css";
+@import "../pages/shared-feed/scrolling/smooth-title-scroll.css";
+@import "../pages/shared-feed/typography/full-video-titles.css";
+
+/* Search & Playlists */
+@import "../pages/search/layout.css";
+@import "../pages/playlist/layout.css";
+
+/* Subscriptions & Channels */
+@import "../pages/subscriptions/layout.css";
+@import "../pages/channels/layout.css";
+
+/* Shorts & History */
+@import "../pages/shorts/layout.css";
+@import "../pages/history/layout.css";
+
+/* =========================================
+   WATCH PAGE & PLAYER BASE UI
+   ========================================= */
+@import "../pages/watch/layout.css";
+@import "../pages/watch/comments/comments.css";
+@import "../pages/watch/livechat/livechat.css";
+
+/* Core Player Structural CSS */
+@import "../pages/watch/player/layout.css";
+@import "../pages/watch/player/player.css";
