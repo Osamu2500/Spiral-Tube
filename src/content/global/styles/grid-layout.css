@@ -51,7 +51,7 @@ body.yt-spiral-tube-theme ytd-radio-renderer:hover ytd-thumbnail-overlay-bottom-
   align-items: start !important;
 }
 .ypp-grid-item,
-.ypp-grid-container ytd-rich-item-renderer:not(ytd-rich-shelf-renderer ytd-rich-item-renderer):not(ytd-rich-section-renderer ytd-rich-item-renderer),
+.ypp-grid-container ytd-rich-item-renderer:not(#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer):not(ytd-rich-section-renderer ytd-rich-item-renderer),
 .ypp-grid-container ytd-video-renderer,
 .ypp-grid-container ytd-compact-video-renderer,
 .ypp-grid-container ytd-grid-video-renderer,
@@ -480,8 +480,8 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avata
 
 
 /* Force Shorts Items to maintain proper size in the shelf */
-ytd-rich-section-renderer ytd-rich-item-renderer,
-ytd-rich-shelf-renderer ytd-rich-item-renderer {
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer {
   width: calc(100% / var(--ypp-active-columns, 5)) !important;
   min-width: 0 !important;
   max-width: calc(100% / var(--ypp-active-columns, 5)) !important;
@@ -489,11 +489,20 @@ ytd-rich-shelf-renderer ytd-rich-item-renderer {
 }
 
 
-ytd-rich-section-renderer ytd-reel-item-renderer,
-ytd-rich-shelf-renderer ytd-reel-item-renderer {
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer {
   width: calc(100% / var(--ypp-active-columns, 5)) !important;
   min-width: 0 !important;
   max-width: calc(100% / var(--ypp-active-columns, 5)) !important;
   flex: 0 0 calc(100% / var(--ypp-active-columns, 5)) !important;
+}
+
+
+#page-manager ytd-rich-section-renderer ytd-rich-item-renderer ytd-thumbnail,
+#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer ytd-thumbnail,
+#page-manager ytd-rich-section-renderer ytd-reel-item-renderer ytd-thumbnail,
+#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
 }
 
