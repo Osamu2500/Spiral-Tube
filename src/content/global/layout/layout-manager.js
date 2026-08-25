@@ -274,7 +274,11 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
         // Apply ypp-grid-item to newly loaded items
         const items = contents.querySelectorAll(GridLayoutManager.SELECTORS.GRID_ITEMS);
         items.forEach(item => {
-            // Skip nested renderers
+            // Skip nested renderers or items inside a shelf
+            if (item.closest('ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-reel-shelf-renderer')) {
+                item.classList.remove('ypp-grid-item');
+                return;
+            }
             if (item.parentElement && item.parentElement.closest('.ypp-grid-item')) {
                 item.classList.remove('ypp-grid-item');
                 return;

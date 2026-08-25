@@ -51,11 +51,11 @@ body.yt-spiral-tube-theme ytd-radio-renderer:hover ytd-thumbnail-overlay-bottom-
   align-items: start !important;
 }
 .ypp-grid-item,
-.ypp-grid-container ytd-rich-item-renderer,
+.ypp-grid-container ytd-rich-item-renderer:not(ytd-rich-shelf-renderer ytd-rich-item-renderer):not(ytd-rich-section-renderer ytd-rich-item-renderer),
 .ypp-grid-container ytd-video-renderer,
 .ypp-grid-container ytd-compact-video-renderer,
 .ypp-grid-container ytd-grid-video-renderer,
-.ypp-grid-container yt-lockup-view-model {
+.ypp-grid-container yt-lockup-view-model:not(ytd-rich-shelf-renderer yt-lockup-view-model):not(ytd-rich-section-renderer yt-lockup-view-model) {
   width: 100% !important;
   max-width: 100% !important;
   min-width: auto !important;
