@@ -2234,7 +2234,12 @@ body.ypp-small-settings-menu .ytp-menuitem-label {
 
 /* User Request: Remove gray containers from Watch Metadata and Actions */
 ytd-watch-metadata { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; backdrop-filter: none !important; }
-ytd-watch-metadata #actions, ytd-watch-metadata #actions-inner, ytd-watch-metadata #actions yt-button-shape > button, ytd-watch-metadata #actions :is(ytd-button-renderer, ytd-toggle-button-renderer, yt-button-view-model) button { background: transparent !important; border: none !important; box-shadow: none !important; }
+/* Unify all action button backgrounds to match the Like button container */
+html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal,
+html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button.ytSpecButtonShapeNext--tonal,
+html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+    background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
+}
 
 
 ytd-watch-flexy > .box { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; backdrop-filter: none !important; }
@@ -2253,4 +2258,7 @@ html[data-ypp-ui-design] body #page-manager #columns #primary ytd-watch-metadata
     padding: 0 !important; 
     margin: 0 !important; 
 }
+
+
+html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal:hover, html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button.ytSpecButtonShapeNext--tonal:hover, html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover { background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important; }
 
