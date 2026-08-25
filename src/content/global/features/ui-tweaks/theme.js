@@ -44,33 +44,71 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
     _initState() {
         this._isActive = false;
         this._settings = null;
-        this._startBodyObserver();
+        this._startObservers();
     }
     
     /**
-     * Start observing for the body tag to be created
+     * Start observing for the body tag to be created and enforce root attributes
      * @private
      */
-    _startBodyObserver() {
-        if (this._bodyObserver) return;
-        this._bodyObserver = new MutationObserver((mutations) => {
+    _startObservers() {
+        if (this._rootObserver) return;
+        this._rootObserver = new MutationObserver((mutations) => {
+            let attributesWiped = false;
+            
             for (const mutation of mutations) {
                 if (mutation.type === 'childList') {
                     for (const node of mutation.addedNodes) {
                         if (node.nodeName === 'BODY' || node === document.body) {
                             // Re-run theme manager when body is created/replaced
                             this.onUpdate();
-                            // Disconnect once body is processed if we only need it once
-                            // But SPA navigations might replace body entirely, so we keep it.
+                        }
+                    }
+                } else if (mutation.type === 'attributes') {
+                    // Check if our critical class was removed
+                    if (mutation.attributeName === 'class' && this._isActive) {
+                        if (!document.documentElement.classList.contains(this._CSS_CLASSES.THEME_ENABLED)) {
+                            attributesWiped = true;
+                        }
+                    }
+                    // Check if our custom data attributes were removed
+                    if (mutation.attributeName.startsWith('data-ypp-') && this._isActive) {
+                        if (!document.documentElement.hasAttribute(mutation.attributeName)) {
+                            attributesWiped = true;
                         }
                     }
                 }
+            }
+            
+            if (attributesWiped && !this._isRestoringAttributes) {
+                this._Utils.log('YouTube wiped theme attributes. Restoring...', 'THEME', 'debug');
+                this._isRestoringAttributes = true;
+                
+                // Re-apply theme state
+                try {
+                    if (this._settings) {
+                        this._toggleTheme(true);
+                        this._applyUiStyle(this._settings.youtubePageTheme);
+                        if (this._currentThemeKey) {
+                            document.documentElement.setAttribute('data-ypp-theme', this._currentThemeKey);
+                        }
+                    }
+                } catch(e) {}
+                
+                // Allow the browser to process mutations before listening again
+                setTimeout(() => {
+                    this._isRestoringAttributes = false;
+                }, 50);
             }
         });
         
         // Ensure document.documentElement exists before observing
         if (document.documentElement) {
-            this._bodyObserver.observe(document.documentElement, { childList: true });
+            this._rootObserver.observe(document.documentElement, { 
+                childList: true,
+                attributes: true,
+                attributeFilter: ['class', 'data-ypp-theme', 'data-ypp-ui-design', 'data-ypp-ui-style']
+            });
         }
     }
 
