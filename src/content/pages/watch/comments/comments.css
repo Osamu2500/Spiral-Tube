@@ -38,26 +38,14 @@ ytd-comment-renderer yt-interaction .fill {
 
 ytd-comment-thread-renderer,
 ytd-comment-view-model {
-  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
-  border-radius: var(--ypp-border-radius-base, 12px) !important;
+  /* Design overrides inherited centrally from watch/layout.css universal card component */
   padding: 15px !important;
   margin-bottom: 15px !important;
-  box-shadow: var(--ypp-shadow-card) !important;
-  border: var(--ypp-surface-border) !important;
-  transition:
-    transform var(--ypp-transition-bounce),
-    box-shadow var(--ypp-transition-bounce),
-    background var(--ypp-transition-bounce) !important;
-}
-
-ytd-comment-thread-renderer:hover,
-ytd-comment-view-model:hover {
-  box-shadow: var(--ypp-shadow-hover) !important;
-  background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
 }
 
 ytd-comment-simplebox-renderer {
   background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
   border-radius: var(--ypp-border-radius-base, 12px) !important;
   padding: 15px !important;
   box-shadow: var(--ypp-shadow-card) !important;
