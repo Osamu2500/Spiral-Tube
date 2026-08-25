@@ -1,0 +1,812 @@
+
+
+
+
+@keyframes sky-soar {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes sky-subscribe-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(0, 191, 255, 0.4),
+      0 0 40px rgba(135, 206, 250, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(0, 191, 255, 0.7),
+      0 0 60px rgba(135, 206, 250, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes sky-fade-in {
+  from {
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}/* Unique Shapes and Patterns for blue-sky */
+
+/* ── Card soar: upward float on hover ── */
+
+
+/* ── Subscribe pulse: sunlight glow ── */
+
+
+/* ── Fade-in for cards on load ── */
+
+
+/* Apply fade-in to cards on load */
+html[data-ypp-theme="blue-sky"] :is(
+  ytd-rich-item-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-video-renderer
+) {
+  animation: sky-fade-in 0.5s var(--sky-ease) both;
+}
+
+/* Stagger cards using nth-child */
+html[data-ypp-theme="blue-sky"] :is(ytd-rich-item-renderer):nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+html[data-ypp-theme="blue-sky"] :is(ytd-rich-item-renderer):nth-child(2) {
+  animation-delay: 0.10s;
+}
+
+html[data-ypp-theme="blue-sky"] :is(ytd-rich-item-renderer):nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+html[data-ypp-theme="blue-sky"] :is(ytd-rich-item-renderer):nth-child(4) {
+  animation-delay: 0.20s;
+}
+
+html[data-ypp-theme="blue-sky"] :is(ytd-rich-item-renderer):nth-child(n+5) {
+  animation-delay: 0.25s;
+}
+
+html[data-ypp-theme="blue-sky"] :is(
+  ytd-rich-item-renderer,
+  ytd-compact-video-renderer,
+  ytd-video-renderer
+):hover::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  ) !important;
+  animation: sky-shimmer 0.7s var(--sky-ease) forwards !important;
+}
+
+/* Subscribe button pulse animation */
+html[data-ypp-theme="blue-sky"] #subscribe-button button,
+html[data-ypp-theme="blue-sky"] #subscribe-button [class*="ytSpecButtonShapeNext"] {
+  animation: sky-subscribe-pulse 4s ease-in-out infinite !important;
+}
+
+html[data-ypp-theme="blue-sky"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 99px) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 99px) !important;
+}
+
+/* ── Progress bar: vapor trail ── */
+html[data-ypp-theme="blue-sky"] .ytp-play-progress,
+html[data-ypp-theme="blue-sky"] .ytp-play-progress::before {
+  background: linear-gradient(
+    90deg,
+    #87CEFA,
+    #00BFFF,
+    #f7c948,
+    #00BFFF,
+    #87CEFA
+  ) !important;
+  animation: sky-vapor 3s linear infinite !important;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.6) !important;
+}
+
+/* ── Global text: dark for readability on light glass ── */
+html[data-ypp-theme="blue-sky"] #video-title,
+html[data-ypp-theme="blue-sky"] yt-formatted-string.ytd-video-primary-info-renderer,
+html[data-ypp-theme="blue-sky"] h1,
+html[data-ypp-theme="blue-sky"] h2,
+html[data-ypp-theme="blue-sky"] h3 {
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ── Modals & Overlays ── */
+html[data-ypp-theme="blue-sky"] .ypp-organizer-modal,
+html[data-ypp-theme="blue-sky"] .ypp-modal-content,
+html[data-ypp-theme="blue-sky"] ytd-unified-share-panel-renderer,
+html[data-ypp-theme="blue-sky"] ytd-add-to-playlist-renderer {
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-modal)) !important;
+  box-shadow:
+    0 32px 80px rgba(0, 100, 180, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ── YPP Extension Elements ── */
+html[data-ypp-theme="blue-sky"] .ypp-adjust-card,
+html[data-ypp-theme="blue-sky"] .ypp-filter-card {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ypp-adjust-card:hover,
+html[data-ypp-theme="blue-sky"] .ypp-filter-card:hover {
+  box-shadow: var(--sky-shadow-hover) !important;
+  transform: translateY(-3px) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ypp-badge,
+html[data-ypp-theme="blue-sky"] .ypp-value-display {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ypp-slider,
+html[data-ypp-theme="blue-sky"] .ypp-gpb-vol-slider {
+  border-radius: var(--ypp-shape-primary, 99px) !important;
+}
+
+/* ── Filter dropdown ── */
+html[data-ypp-theme="blue-sky"] .ypp-filter-dropdown {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ypp-filter-dropdown:hover {
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+/* ── Search suggestion chips ── */
+html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.02) translateY(-1px) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+/* ── Playlist panel ── */
+html[data-ypp-theme="blue-sky"] ytd-playlist-panel-renderer {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+}
+
+html[data-ypp-theme="blue-sky"] tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+}
+
+/* ── Channel tabs ── */
+html[data-ypp-theme="blue-sky"] .tab-content.tp-yt-paper-tab {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .tab-content.tp-yt-paper-tab:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Comment box ── */
+html[data-ypp-theme="blue-sky"] #simplebox-placeholder,
+html[data-ypp-theme="blue-sky"] ytd-commentbox {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-commentbox:focus-within {
+  box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.2) !important;
+}
+
+/* ── Player controls area ── */
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+html[data-ypp-theme="blue-sky"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(220%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+}
+
+html[data-ypp-theme="blue-sky"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  border-radius: var(--sky-shape-chip);
+  box-shadow: 0 24px 64px rgba(0, 100, 200, 0.35), 0 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ── YPP Extension Buttons ── */
+html[data-ypp-theme="blue-sky"] .ypp-gpb-btn,
+html[data-ypp-theme="blue-sky"] .ypp-action-btn,
+html[data-ypp-theme="blue-sky"] .ypp-icon-btn,
+html[data-ypp-theme="blue-sky"] .ypp-video-controls,
+html[data-ypp-theme="blue-sky"] .ypp-shadow-panel {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ypp-gpb-btn:hover,
+html[data-ypp-theme="blue-sky"] .ypp-action-btn:hover,
+html[data-ypp-theme="blue-sky"] .ypp-icon-btn:hover,
+html[data-ypp-theme="blue-sky"] .ypp-video-controls:hover,
+html[data-ypp-theme="blue-sky"] .ypp-shadow-panel:hover {
+  box-shadow: var(--sky-shadow-hover) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ypp-gpb-btn:active,
+html[data-ypp-theme="blue-sky"] .ypp-action-btn:active,
+html[data-ypp-theme="blue-sky"] .ypp-icon-btn:active {
+  transform: scale(0.96) !important;
+  box-shadow: var(--sky-shadow-active) !important;
+}
+
+/* ── Settings ── */
+html[data-ypp-theme="blue-sky"] ytd-settings-options-renderer,
+html[data-ypp-theme="blue-sky"] ytd-account-settings-renderer {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Reel videos ── */
+html[data-ypp-theme="blue-sky"] ytd-reel-video-renderer {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-reel-player-overlay-renderer {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+}
+
+/* Dialogs for blue-sky */
+html[data-ypp-ui-design="blue-sky"] tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 30px) !important;
+  box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5) !important;
+}
+
+html[data-ypp-ui-design="blue-sky"] yt-icon:hover {
+  transform: scale(1.1);
+}
+
+html[data-ypp-card-style="blue-sky"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="blue-sky"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="blue-sky"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="blue-sky"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="blue-sky"] h1, html[data-ypp-card-style="blue-sky"] h2, html[data-ypp-card-style="blue-sky"] h3, html[data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="blue-sky"] h1, html[data-ypp-ui-design="blue-sky"] h2, html[data-ypp-ui-design="blue-sky"] h3, html[data-ypp-ui-design="blue-sky"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="blue-sky"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="blue-sky"] ytd-thumbnail, html[data-ypp-card-style="blue-sky"] yt-image, html[data-ypp-ui-design="blue-sky"] ytd-thumbnail, html[data-ypp-ui-design="blue-sky"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="blue-sky"] yt-img-shadow, html[data-ypp-card-style="blue-sky"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="blue-sky"] yt-img-shadow, html[data-ypp-ui-design="blue-sky"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="blue-sky"] ytd-masthead, html[data-ypp-ui-design="blue-sky"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="blue-sky"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="blue-sky"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="blue-sky"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="blue-sky"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="blue-sky"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="blue-sky"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="blue-sky"] #simplebox-placeholder, html[data-ypp-ui-design="blue-sky"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="blue-sky"] .ytp-scrubber-button,
+html[data-ypp-ui-design="blue-sky"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="blue-sky"] .ytp-tooltip, html[data-ypp-ui-design="blue-sky"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="blue-sky"] tp-yt-paper-dialog, html[data-ypp-card-style="blue-sky"] ytd-menu-popup-renderer, html[data-ypp-ui-design="blue-sky"] tp-yt-paper-dialog, html[data-ypp-ui-design="blue-sky"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="blue-sky"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="blue-sky"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="blue-sky"] #channel-header,
+html[data-ypp-ui-design="blue-sky"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="blue-sky"] yt-live-chat-renderer,
+html[data-ypp-ui-design="blue-sky"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="blue-sky"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="blue-sky"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="blue-sky"] ytd-notification-renderer, html[data-ypp-ui-design="blue-sky"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="blue-sky"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="blue-sky"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="blue-sky"] ytd-skeleton, html[data-ypp-ui-design="blue-sky"] ytd-skeleton, html[data-ypp-card-style="blue-sky"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="blue-sky"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="blue-sky"] yt-icon, html[data-ypp-ui-design="blue-sky"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="blue-sky"] yt-icon:hover, html[data-ypp-ui-design="blue-sky"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* =========================================================
+   BLUE SKY — MENUS & DROPDOWNS
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Dropdown / Context Menus ── */
+html[data-ypp-theme="blue-sky"] ytd-menu-popup-renderer,
+html[data-ypp-theme="blue-sky"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-dialog {
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow:
+    0 32px 80px rgba(0, 100, 200, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+}
+
+/* ── Menu items ── */
+html[data-ypp-theme="blue-sky"] ytd-menu-service-item-renderer,
+html[data-ypp-theme="blue-sky"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-theme="blue-sky"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
+}
+
+/* ── Multi-page menu items ── */
+html[data-ypp-theme="blue-sky"] #items.yt-multi-page-menu-section-renderer > *:not([compact-link-style*="disclaimer"]):not(ytd-message-renderer) {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] #items.yt-multi-page-menu-section-renderer > *:not([compact-link-style*="disclaimer"]):not(ytd-message-renderer):hover {
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
+}
+
+/* ── Menu trigger button ── */
+html[data-ypp-theme="blue-sky"] #trigger.tp-yt-paper-menu-button {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] #trigger.tp-yt-paper-menu-button:hover {
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: scale(1.08) !important;
+}
+
+/* ── Tooltip ── */
+html[data-ypp-theme="blue-sky"] .tp-yt-paper-tooltip[style-target=tooltip] {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Listbox & Dropdown ── */
+html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox.yt-dropdown-menu {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button:hover {
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Toast notifications ── */
+html[data-ypp-theme="blue-sky"] tp-yt-paper-toast {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+/* ── YPP Account Menu ── */
+html[data-ypp-theme="blue-sky"] .ypp-account-menu,
+html[data-ypp-theme="blue-sky"] #ypp-top-bar {
+  -webkit-backdrop-filter: var(--sky-blur-nav) !important;
+  backdrop-filter: var(--sky-blur-nav) !important;
+  box-shadow: var(--sky-shadow-nav) !important;
+}
+
+/* Navbar UI for blue-sky */
+html[data-ypp-ui-design="blue-sky"] ytd-masthead {
+  box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5);
+}
+
+html[data-ypp-ui-design="blue-sky"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 30px 0 0 30px) !important;
+}
+
+html[data-ypp-ui-design="blue-sky"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
+}
+
+html[data-ypp-ui-design="blue-sky"] #voice-search-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+/* Panels for blue-sky */
+
+html[data-ypp-ui-design="blue-sky"] ytd-live-chat-frame {
+  border-radius: var(--ypp-shape-primary, 30px) !important;
+}
+
+/* Sidebar for blue-sky */
+
+/* Channels for blue-sky */
+html[data-ypp-ui-design="blue-sky"] #channel-header-banner {
+  border-radius: 30px 30px 0 0;
+}
+
+/* ── Individual comment threads ── */
+html[data-ypp-theme="blue-sky"] ytd-comment-thread-renderer {
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Pinned comment ── */
+html[data-ypp-theme="blue-sky"] ytd-comment-renderer[is-pinned] {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow:
+    0 0 0 2px rgba(135, 206, 250, 0.25),
+    var(--sky-shadow-card) !important;
+}
+
+/* ── Comment input ── */
+html[data-ypp-theme="blue-sky"] #placeholder-area,
+html[data-ypp-theme="blue-sky"] ytd-commentbox {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] #placeholder-area:focus,
+html[data-ypp-theme="blue-sky"] ytd-commentbox:focus-within {
+  box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.25), var(--sky-shadow-hover) !important;
+}
+
+/* ── Comment author avatar ── */
+html[data-ypp-theme="blue-sky"] ytd-comment-renderer #author-thumbnail img {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 2px 8px rgba(135, 206, 250, 0.30) !important;
+}
+
+/* Home for blue-sky */
+
+/* =========================================================
+   BLUE SKY — LIVE CHAT
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Chat container ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-renderer,
+html[data-ypp-theme="blue-sky"] ytd-live-chat-frame {
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Chat header ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-header-renderer {
+  -webkit-backdrop-filter: blur(15px) !important;
+  backdrop-filter: blur(15px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip) var(--sky-shape-chip) 0 0) !important;
+}
+
+/* ── Chat messages ── */
+
+/* ── Chat input area ── */
+html[data-ypp-theme="blue-sky"] #input-container,
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-input-field-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+html[data-ypp-theme="blue-sky"] #input-container:focus-within,
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-input-field-renderer:focus-within {
+  box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.25), var(--sky-shadow-hover) !important;
+}
+
+/* ── Superchat messages ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  background: linear-gradient(135deg, rgba(247, 201, 72, 0.30), rgba(255, 220, 100, 0.20)) !important;
+  box-shadow:
+    0 0 0 1px rgba(247, 201, 72, 0.20),
+    0 6px 20px rgba(247, 201, 72, 0.20) !important;
+}
+
+/* ── Member chat messages ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-membership-item-renderer {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15) !important;
+}
+
+/* =========================================================
+   BLUE SKY — PLAYER
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Player container ── */
+html[data-ypp-theme="blue-sky"] video.video-stream.html5-main-video,
+html[data-ypp-theme="blue-sky"] .html5-video-player {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+}
+
+/* ── Player chrome controls ── */
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: var(--sky-shadow-hover) !important;
+  transform: scale(1.02) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98) !important;
+  box-shadow: var(--sky-shadow-active) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: scale(1.06) !important;
+}
+
+/* ── Progress / Vapor trail bar ── */
+html[data-ypp-theme="blue-sky"] .ytp-play-progress {
+  background: linear-gradient(
+    90deg,
+    #87CEFA 0%,
+    #00BFFF 35%,
+    #f7c948 60%,
+    #00BFFF 80%,
+    #87CEFA 100%
+  ) !important;
+  animation: sky-vapor 3s linear infinite !important;
+  box-shadow: 0 0 14px rgba(0, 191, 255, 0.75) !important;
+}
+
+/* ── Scrubber knob ── */
+html[data-ypp-theme="blue-sky"] .ytp-scrubber-button {
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.5) !important;
+}
+
+/* ── Control buttons (play, skip, settings etc.) ── */
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button), html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *) {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover, html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: scale(1.08) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active, html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--sky-shadow-active) !important;
+}
+
+/* ── Fullscreen expand ── */
+html[data-ypp-theme="blue-sky"] .ytp-fullscreen-grid-expand-button {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-fullscreen-grid-expand-button:hover {
+  box-shadow: var(--sky-shadow-hover) !important;
+  transform: scale(1.06) !important;
+}
+
+/* ── Settings / Quality panel ── */
+html[data-ypp-theme="blue-sky"] .ytp-panel,
+html[data-ypp-theme="blue-sky"] .ytp-popup.ytp-settings-menu {
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-menuitem:not([aria-disabled=true]) {
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .ytp-menuitem:not([aria-disabled=true]):hover {
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Context menu ── */
+html[data-ypp-theme="blue-sky"] .ytp-popup.ytp-delhi-modern-contextmenu {
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+/* Search for blue-sky */
+
+html[data-ypp-ui-design="blue-sky"] ytd-toggle-button-renderer a {
+  border-radius: 30px;
+}
+
+/* Watch for blue-sky */
+html[data-ypp-ui-design="blue-sky"] #ytd-player {
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5);
+}
+
+html[data-ypp-ui-design="blue-sky"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+html[data-ypp-ui-design="blue-sky"]::before {
+  background: linear-gradient(
+    90deg,
+    #87CEFA,
+    #00BFFF,
+    #f7c948,
+    #00BFFF,
+    #87CEFA
+  ) !important;
+  background-size: 300% 100% !important;
+  animation: sky-vapor 3s linear infinite !important;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.6) !important;
+}
+

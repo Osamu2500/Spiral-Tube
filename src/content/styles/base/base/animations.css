@@ -1,0 +1,150 @@
+/* src/content/themes/ui-styles/nature/base/animations.css */
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  transform: scale(1.1);
+  color: white !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite;
+}
+@keyframes youtubeRedPulse {
+  0% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+  }
+  50% {
+    box-shadow:
+      inset 0 0 25px #f06,
+      inset 0 0 50px #f06,
+      0 0 15px #f06,
+      0 0 30px #f06;
+  }
+  100% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+  }
+}
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after ,
+yt-button-shape button[aria-label*="Download" i]:hover::after,
+yt-button-shape button[title*="Download" i]:hover::after {
+  background: none !important;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
+  transition: background var(--ypp-transition-bounce) !important;
+}
+body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+  content: "";
+  display: block !important;
+  width: 34px !important;
+  height: var(--ypp-shape-secondary, 12px) !important;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-right: 2px !important;
+}
+body.yt-pro-premium ytd-topbar-logo-renderer a#logo::after {
+  content: "Premium";
+  display: block !important;
+  font-family:
+    "YouTube Sans",
+    "Roboto",
+    "Segoe UI",
+    Arial,
+    sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  margin-left: 2px !important;
+  letter-spacing: -0.5px !important;
+  line-height: 22px !important;
+}
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important;
+  color: white !important;
+  box-shadow:
+    inset 0 0 25px red,
+    inset 0 0 50px red,
+    0 0 15px red,
+    0 0 30px red !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite !important;
+}/* Animations & Reduced Motion */
+html.ypp-no-animations *,
+html.ypp-no-animations *::before,
+html.ypp-no-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.ypp-reduced-motion *,
+html.ypp-reduced-motion *::before,
+html.ypp-reduced-motion *::after {
+  animation-duration: 0.1s !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: linear !important;
+}
+
+/* Reduce Animations: Balanced mode */
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.15s !important;
+  transition-duration: 0.15s !important;
+}
+
+/* Reduce Animations: Minimal mode */
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Fade Up Animation */
+
+@keyframes ypp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Zen Mode Shadow */
+
+.ypp-zen-shadow {
+  transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+@keyframes ypp-fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+

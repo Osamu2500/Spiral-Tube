@@ -1,0 +1,122 @@
+@import "../../ui-styles/shared/timeline-visibility.css";
+[data-ypp-theme="retro"] {
+    --ypp-bg-base: #008080;
+    --ypp-bg-surface: #c0c0c0;
+    --ypp-bg-glass: rgba(192, 192, 192, 0.97);
+    --ypp-glass-border: rgba(0, 0, 0, 0.6);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.9);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, transparent 60%);
+
+    /* ALL text must be black for readability on grey surfaces */
+    --ypp-text-primary: #000000;
+    --ypp-text-secondary: #333333;
+
+    --ypp-accent: #000080;
+    --ypp-accent-hover: #0000cc;
+    --ypp-accent-glow: rgba(0, 0, 128, 0.35);
+
+    /* Classic Win95 flat hard shadows (no blur) */
+    --ypp-shadow-card: inset -1px -1px 0 #000, inset 1px 1px 0 #fff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
+    --ypp-shadow-float: inset -1px -1px 0 #000, inset 1px 1px 0 #fff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
+    --ypp-shadow-glow: none;
+    --ypp-shadow-accent-glow: none;
+
+    /* COMPONENT OVERRIDES */
+
+    --ytd-searchbox-background: #ffffff;
+    --ytd-searchbox-text-color: #000000;
+    --ytd-searchbox-legacy-button-color: #c0c0c0;
+
+
+/* No animations — Win95 never had animations! */
+html[data-ypp-theme="retro"].ypp-theme-effects::before,
+html[data-ypp-theme="retro"].ypp-theme-effects::after {
+    content: "";
+    pointer-events: none;
+}
+html[data-ypp-theme="retro"].ypp-theme-effects::before {
+    /* Tiled desktop checker pattern */
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='4' height='4' fill='rgba(0,0,0,0.06)'/%3E%3Crect x='4' y='4' width='4' height='4' fill='rgba(0,0,0,0.06)'/%3E%3C/svg%3E");
+    background-size: 8px 8px;
+}
+html[data-ypp-theme="retro"].ypp-theme-effects::after {
+}
+
+/* =========================================== */
+/* TEXT READABILITY FIX — Retro OS UI Theme   */
+/* All card/metadata text forced to black      */
+/* =========================================== */
+
+/* Video title text */
+html[data-ypp-theme="retro"] #video-title,
+html[data-ypp-theme="retro"] #video-title.ytd-rich-grid-media,
+html[data-ypp-theme="retro"] #video-title.ytd-compact-video-renderer,
+html[data-ypp-theme="retro"] ytd-rich-grid-media #video-title,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #video-title,
+html[data-ypp-theme="retro"] ytd-video-renderer #video-title,
+html[data-ypp-theme="retro"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-theme="retro"] .title.ytd-rich-grid-media,
+html[data-ypp-theme="retro"] #title-wrapper h3 a,
+html[data-ypp-theme="retro"] ytd-rich-grid-media #metadata-line,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #metadata-line,
+html[data-ypp-theme="retro"] ytd-video-renderer #metadata-line,
+html[data-ypp-theme="retro"] ytd-rich-grid-media #byline-container,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #byline-container,
+html[data-ypp-theme="retro"] ytd-rich-grid-media .yt-simple-endpoint,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer .yt-simple-endpoint,
+html[data-ypp-theme="retro"] ytd-rich-grid-media yt-formatted-string,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer yt-formatted-string,
+html[data-ypp-theme="retro"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-theme="retro"] #channel-name .yt-simple-endpoint,
+html[data-ypp-theme="retro"] ytd-channel-name yt-formatted-string,
+html[data-ypp-theme="retro"] ytd-channel-name a,
+html[data-ypp-theme="retro"] #metadata-line span,
+html[data-ypp-theme="retro"] .inline-metadata-item {
+  color: #333333 !important;
+  text-shadow: none !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+/* View count, date metadata */
+html[data-ypp-theme="retro"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="retro"] ytd-video-renderer #metadata-line span {
+  color: #555555 !important;
+}
+
+/* Video card container — force black text */
+html[data-ypp-theme="retro"] ytd-rich-grid-media,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer,
+html[data-ypp-theme="retro"] ytd-video-renderer,
+html[data-ypp-theme="retro"] ytd-playlist-video-renderer,
+html[data-ypp-theme="retro"] ytd-grid-video-renderer {
+  color: #000000 !important;
+}
+
+/* Description text */
+html[data-ypp-theme="retro"] #description-text,
+
+/* Watch page title */
+
+html[data-ypp-theme="retro"] {
+  /* Global AI-generated missing variable fallbacks */
+  --sf: var(--ypp-bg-surface, #1e1e1e);
+  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
+  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
+  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
+  --blur: var(--ypp-glass-blur, blur(10px));
+
+  --retro-title-bar: #000080;
+  --retro-border-light: #dfdfdf;
+  --retro-border-dark: #808080;
+  --retro-font: 'MS Sans Serif', Tahoma, sans-serif;
+  --retro-primary: var(--ypp-accent, #000080);
+  --win95-raise: inset 1px 1px 0 #fff, inset -1px -1px 0 #0a0a0a, inset 2px 2px 0 #dfdfdf, inset -2px -2px 0 #808080;
+  --win95-sink: inset 1px 1px 0 #0a0a0a, inset -1px -1px 0 #fff, inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf;
+  --win95-flat: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+
+}
+
+
+
+}

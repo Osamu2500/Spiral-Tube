@@ -1,0 +1,961 @@
+
+
+
+
+@keyframes faero-shine-sweep {
+  0% { transform: translateX(-100%) skewX(-30deg); }
+
+50%, 100% { transform: translateX(250%) skewX(-30deg); }
+
+}
+
+@keyframes faero-lime-pulse {
+  0% { box-shadow: 0 0 8px rgba(159,225,30,0.4), inset 0 0 5px rgba(255,255,255,0.8); }
+
+50% { box-shadow: 0 0 18px rgba(159,225,30,0.7), inset 0 0 8px rgba(255,255,255,0.9); }
+
+100% { box-shadow: 0 0 8px rgba(159,225,30,0.4), inset 0 0 5px rgba(255,255,255,0.8); }
+
+}
+
+@keyframes faero-pop-in {
+  0% { transform: scale(0.94) translateY(-6px); }
+  60% { transform: scale(1.02) translateY(1px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes faero-card-in {
+  0% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes faero-focus-pulse {
+  0% { box-shadow: 0 0 0 2px var(--faero-lime); }
+
+50% { box-shadow: 0 0 10px 5px var(--faero-lime); }
+
+100% { box-shadow: 0 0 0 2px var(--faero-lime); }
+
+}/* Unique Shapes and Patterns for frutiger-aero */
+
+/* =========================================================
+   FRUTIGER AERO — ANIMATIONS & EFFECTS
+   base/animations.css
+   
+   Water ripples, gloss shines, springy bounces, and lime glows.
+   ========================================================= */
+
+/* ── Aero Gloss Shine Sweep ─────────────────────────────── */
+
+
+/* Apply shine sweep to all blue pill buttons on hover */
+html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *::before,
+html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action::before,
+html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer[selected]::before,
+html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i]::before,
+html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i]::before {
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
+  border-radius: inherit;
+  animation: faero-shine-sweep 3s ease-in-out infinite;
+}
+
+/* ── Lime Glow Pulse on Active Buttons ──────────────────── */
+
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *[aria-pressed="true"] {
+  animation: faero-lime-pulse 2.5s ease-in-out infinite !important;
+}
+
+/* ── Menu Pop-in Spring ─────────────────────────────────── */
+
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="frutiger-aero"] .ytp-popup {
+  animation: faero-pop-in var(--faero-transition-spring) forwards !important;
+}
+
+/* ── Card Reveal (page load feel) ───────────────────────── */
+
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer {
+  animation: faero-card-in 0.35s ease-out both;
+}
+
+/* Stagger effect for cards */
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(1) {
+  animation-delay: 0.00s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(2) {
+  animation-delay: 0.04s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(3) {
+  animation-delay: 0.08s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(4) {
+  animation-delay: 0.12s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(5) {
+  animation-delay: 0.16s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(6) {
+  animation-delay: 0.20s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(7) {
+  animation-delay: 0.24s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(8) {
+  animation-delay: 0.28s;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(n+9) {
+  animation-delay: 0.32s;
+}
+
+/* ── Focus Ring Pulse ───────────────────────────────────── */
+
+
+html[data-ypp-ui-design="frutiger-aero"] *:focus-visible {
+  animation: faero-focus-pulse 2s ease-in-out infinite !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-track {
+  border-radius: var(--faero-radius-pill);
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8ac3e9, #3498db);
+  border-radius: var(--faero-radius-pill);
+  box-shadow: 0 0 4px rgba(52,152,219,0.4);
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #9cd4f5, #5bb0f0);
+  box-shadow: 0 0 8px rgba(159,225,30,0.4);
+}
+
+/* =========================================================
+   FRUTIGER AERO — BACKGROUND
+   base/background.css
+   
+   Blueprint Rule 2: Theme Background Enforcement
+   ========================================================= */
+
+/* ── BLUEPRINT RULE 2: Override YouTube Dark Mode ───────── */
+html[data-ypp-ui-design="frutiger-aero"],
+html[data-ypp-ui-design="frutiger-aero"] body,
+html[data-ypp-ui-design="frutiger-aero"] ytd-app,
+html[data-ypp-ui-design="frutiger-aero"] #background {
+  /* Using the authentic Sky-to-Grass gradient from references */
+  background: linear-gradient(to bottom, 
+    var(--faero-sky-light) 0%, 
+    var(--faero-sky-mid) 25%, 
+    var(--faero-sky-deep) 50%, 
+    var(--faero-green-mid) 75%, 
+    var(--faero-green-lt) 100%
+  ) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — BUTTONS & CHIPS
+   components/buttons.css
+   
+   Authentic glossy 4-stop buttons with blue base and white highlights.
+   ========================================================= */
+
+/* ── Base Button Styles ─────────────────────────────────── */
+/* Target all action buttons under the video (Like, Share, Download, Subscribe) using the child of yt-button-shape to catch buttons, anchors, and divs */
+html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *,
+html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > *,
+html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-design="frutiger-aero"] button.ytp-button,
+html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: var(--faero-shadow-btn) !important;
+  text-shadow: var(--faero-text-shadow-btn) !important;
+}
+
+/* Force icons and text inside these buttons to be white */
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > * .yt-core-attributed-string,
+html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > * .yt-core-attributed-string,
+html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action .yt-core-attributed-string,
+html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i] .yt-core-attributed-string,
+html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i] .yt-core-attributed-string {
+  text-shadow: var(--faero-text-shadow-btn) !important;
+}
+
+/* Hover state */
+
+/* Segmented Like/Dislike Tweaks */
+html[data-ypp-ui-design="frutiger-aero"] yt-segmented-like-dislike-button-view-model yt-button-shape > * {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+}
+
+/* ── Active / Toggled Glow (Like button, etc.) ──────────────── */
+
+/* Subscribed / Toggled State (Specific to Subscribe) */
+html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer[subscribed] yt-button-shape > * {
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer[subscribed] yt-button-shape > *:hover {
+  transform: none;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer[subscribed] yt-button-shape > * .yt-core-attributed-string {
+  text-shadow: none !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer[subscribed] yt-button-shape > * yt-icon {
+  filter: none !important;
+}
+
+/* ── Filter Chips (Home/Search) ─────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,1), 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer[selected] {
+  box-shadow: 0 4px 10px rgba(52,152,219,0.4), inset 0 2px 4px rgba(255,255,255,0.6) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead yt-icon {
+  filter: none !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — CARDS & THUMBNAILS
+   components/cards.css
+   
+   Layered inset shadows, blue/glass base, glossy hover.
+   Green lime glow on hover for that signature Aero energy.
+   ========================================================= */
+
+/* ── Base Video Card ────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-video-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  /* Critical to prevent YouTube grid JS from miscalculating dimensions */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── Thumbnails ─────────────────────────────────────────── */
+
+/* Authentic Aero Glass Reflection on Thumbnail Hover */
+
+/* ── Time Status / Overlays ─────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail-overlay-time-status-renderer {
+  -webkit-backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(6px) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── "New" Badge ────────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer .badge-style-type-simple {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: 0 0 6px rgba(159,225,30,0.35) !important;
+}
+
+/* ── Avatar / Channel Icons ─────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #avatar img,
+html[data-ypp-ui-design="frutiger-aero"] #author-thumbnail img {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 0 0 1px rgba(159,225,30,0.2) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] #avatar:hover img,
+html[data-ypp-ui-design="frutiger-aero"] #author-thumbnail:hover img {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 0 2px rgba(159,225,30,0.5) !important;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   FRUTIGER AERO — DIALOGS & SCRIMS
+   ========================================================= */
+
+/* Scrim / Backdrop */
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-iron-overlay-backdrop {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Base Dialog Modals */
+html[data-ypp-ui-design="frutiger-aero"] ytd-dialog-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-confirm-dialog-renderer,
+html[data-ypp-ui-design="frutiger-aero"] yt-dialog-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-super-thanks-dialog-renderer,
+html[data-ypp-ui-design="frutiger-aero"] yt-share-panel-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-unified-share-panel-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  /* Glossy top edge */
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Radio Buttons (Report Menu) */
+html[data-ypp-ui-design="frutiger-aero"] ytd-report-form-modal-renderer yt-radio-button-view-model {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* URL Copy Box (Share Menu) */
+html[data-ypp-ui-design="frutiger-aero"] yt-share-panel-renderer #copyLink,
+html[data-ypp-ui-design="frutiger-aero"] yt-copy-link-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — ICONS & BADGES
+   components/icons.css
+   ========================================================= */
+
+/* ── Base SVG Icons ─────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] yt-icon,
+html[data-ypp-ui-design="frutiger-aero"] .yt-icon-container,
+html[data-ypp-ui-design="frutiger-aero"] .yt-spec-icon-shape {
+  /* Add a very subtle dark drop shadow for high contrast like Windows Vista icons */
+  filter: drop-shadow(0 1px 1px rgba(255,255,255,0.8)) !important;
+}
+
+/* ── Notification Badge (Number indicator) ──────────────── */
+html[data-ypp-ui-design="frutiger-aero"] .yt-spec-icon-badge-shape__badge {
+  background: linear-gradient(180deg, #ff7675 0%, #d63031 100%) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: 0 2px 5px rgba(214, 48, 49, 0.4), inset 0 1px 2px rgba(255,255,255,0.8) !important;
+}
+
+/* ── LIVE badges ────────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer {
+  background: linear-gradient(180deg, #ff7675 0%, #d63031 100%) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: 0 2px 5px rgba(214, 48, 49, 0.4), inset 0 1px 2px rgba(255,255,255,0.8) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="frutiger-aero"] h1, html[data-ypp-card-style="frutiger-aero"] h2, html[data-ypp-card-style="frutiger-aero"] h3, html[data-ypp-card-style="frutiger-aero"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="frutiger-aero"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="frutiger-aero"] h1, html[data-ypp-ui-design="frutiger-aero"] h2, html[data-ypp-ui-design="frutiger-aero"] h3, html[data-ypp-ui-design="frutiger-aero"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="frutiger-aero"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="frutiger-aero"] ytd-thumbnail, html[data-ypp-card-style="frutiger-aero"] yt-image, html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail, html[data-ypp-ui-design="frutiger-aero"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="frutiger-aero"] yt-img-shadow, html[data-ypp-card-style="frutiger-aero"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="frutiger-aero"] yt-img-shadow, html[data-ypp-ui-design="frutiger-aero"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="frutiger-aero"] ytd-masthead, html[data-ypp-ui-design="frutiger-aero"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="frutiger-aero"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="frutiger-aero"] #simplebox-placeholder, html[data-ypp-ui-design="frutiger-aero"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="frutiger-aero"] .ytp-scrubber-button,
+html[data-ypp-ui-design="frutiger-aero"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] .ytp-tooltip, html[data-ypp-ui-design="frutiger-aero"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-card-style="frutiger-aero"] ytd-menu-popup-renderer, html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="frutiger-aero"] #channel-header,
+html[data-ypp-ui-design="frutiger-aero"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="frutiger-aero"] yt-live-chat-renderer,
+html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="frutiger-aero"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] ytd-notification-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="frutiger-aero"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="frutiger-aero"] ytd-skeleton, html[data-ypp-ui-design="frutiger-aero"] ytd-skeleton, html[data-ypp-card-style="frutiger-aero"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="frutiger-aero"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="frutiger-aero"] yt-icon, html[data-ypp-ui-design="frutiger-aero"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] yt-icon:hover, html[data-ypp-ui-design="frutiger-aero"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* =========================================================
+   FRUTIGER AERO — MENUS & DROPDOWNS
+   components/menus.css
+   
+   Dropdowns with frosted glass, layered blue shadows, and 
+   glossy hover states.
+   ========================================================= */
+
+/* ── Base Menu Containers ───────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-iron-dropdown,
+html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-listbox,
+html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentSuggestionsContainer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: var(--faero-shadow-menu) !important;
+}
+
+/* Prevent double boundaries on nested menus */
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Menu List Items ────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-compact-link-renderer,
+html[data-ypp-ui-design="frutiger-aero"] .ytp-menuitem,
+html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-add-to-option-renderer,
+html[data-ypp-ui-design="frutiger-aero"] .ytSuggestionComponentSuggestion {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
+}
+
+/* ── Menu Item Hover (The 4PDA pink/blue shift) ─────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="frutiger-aero"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-design="frutiger-aero"] ytd-compact-link-renderer:hover,
+html[data-ypp-ui-design="frutiger-aero"] .ytp-menuitem:hover,
+html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-add-to-option-renderer:hover,
+html[data-ypp-ui-design="frutiger-aero"] .ytSuggestionComponentSuggestion:hover {
+  box-shadow: inset 0 0 10px rgba(74, 134, 176, 0.8), 0 3px 3px rgba(84, 116, 157, 0.5) !important;
+}
+
+/* ── Notifications Panel ────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-notification-renderer:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 0 8px rgba(159,225,30,0.15) !important;
+}
+
+/* Unread notification — lime accent */
+html[data-ypp-ui-design="frutiger-aero"] ytd-notification-renderer[is-new] {
+  box-shadow:
+    inset 0 2px 6px rgba(135,206,250,0.3),
+    0 0 10px rgba(159,225,30,0.2) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #container.ytd-masthead {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  box-shadow: var(--faero-shadow-navbar) !important;
+}
+
+/* Masthead Text / Icons should be white due to dark blue gradient */
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #container.ytd-masthead yt-icon {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)) !important;
+}
+
+/* ── Search Box Container (Old & New) ───────────────────── */
+/* Container */
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox,
+html[data-ypp-ui-design="frutiger-aero"] yt-searchbox {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+}
+
+/* The actual input pill background */
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentInputBox {
+  /* depth */
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill) 0 0 var(--faero-radius-pill)) !important;
+  box-shadow: var(--faero-shadow-search-inset) !important;
+}
+
+/* Focus State */
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox[has-focus] #container.ytd-searchbox,
+html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentInputBox:focus-within {
+  box-shadow: 0 0 10px var(--faero-lime), var(--faero-shadow-search-focus) !important;
+}
+
+/* Search Button (Old & New) */
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentSearchButton {
+  border-radius: var(--ypp-shape-primary, 0 var(--faero-radius-pill) var(--faero-radius-pill) 0) !important;
+  box-shadow: inset 1px 0 0 rgba(255,255,255,1) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #search-icon-legacy yt-icon,
+html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentSearchButton yt-icon {
+  filter: none !important;
+}
+
+/* ── Masthead Icon Buttons (Voice Search, Notifications, Create) ── */
+/* 1. Reset the wrapper elements so they don't cause double-layering */
+html[data-ypp-ui-design="frutiger-aero"] #voice-search-button yt-icon-button,
+html[data-ypp-ui-design="frutiger-aero"] #voice-search-button yt-button-shape,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer yt-button-shape,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-icon-button,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-button-shape {
+  box-shadow: none !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* 2. Apply the actual Frutiger Aero pill styling only to the inner button */
+html[data-ypp-ui-design="frutiger-aero"] #voice-search-button button,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer button,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.9) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] #voice-search-button button:hover,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer button:hover,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer button:hover {
+  box-shadow: 0 4px 10px rgba(159,225,30,0.3), inset 0 2px 4px rgba(255,255,255,1) !important;
+  transform: translateY(-1px) scale(1.05);
+}
+
+html[data-ypp-ui-design="frutiger-aero"] #voice-search-button yt-icon,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer yt-icon,
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-icon {
+  filter: none !important;
+}
+
+/* Explicitly protect the avatar image from being squished */
+html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer img {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — PANELS & SIDEBARS
+   components/panels.css
+   
+   Green gradients and glass effects.
+   ========================================================= */
+
+/* ── Left Navigation Guide ──────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #guide-wrapper.ytd-app,
+html[data-ypp-ui-design="frutiger-aero"] ytd-mini-guide-renderer,
+html[data-ypp-ui-design="frutiger-aero"] app-drawer#guide-inner-content {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.06), inset -1px 0 0 rgba(255,255,255,0.8) !important;
+}
+
+/* ── Guide Links / Endpoints ────────────────────────────── */
+
+/* Guide Link Hover — subtle glass with lime tint */
+
+/* Active Guide Link — uses green gradient */
+
+/* Active guide icon gets lime tint */
+
+html[data-ypp-ui-design="frutiger-aero"] #guide-wrapper::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: 0 0 4px rgba(159,225,30,0.3) !important;
+}
+
+/* ── Extension Side Panels (Playlist/Stats organizers) ──── */
+html[data-ypp-ui-design="frutiger-aero"] .ypp-organizer-modal,
+html[data-ypp-ui-design="frutiger-aero"] #ypp-eq-panel,
+html[data-ypp-ui-design="frutiger-aero"] .ypp-account-menu {
+  -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
+  backdrop-filter: var(--faero-blur-heavy) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.18),
+    0 0 0 1px rgba(159,225,30,0.15),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — CHANNELS PAGE
+   pages/channels.css
+   ========================================================= */
+
+/* ── Channel Header ─────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* Banner gradient overlay */
+html[data-ypp-ui-design="frutiger-aero"] .ytd-banner-image::after {
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+}
+
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-tabs .selection-bar {
+  box-shadow: 0 0 8px var(--faero-lime) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — COMMENTS PAGE
+   pages/comments.css
+   
+   Glass panels and rich gradient thread lines.
+   ========================================================= */
+
+/* ── Comment Container Header ───────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-comments-header-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* ── Individual Comment Thread ──────────────────────────── */
+
+/* ── Comment Input Box ──────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+/* ── Owner / Creator Badge ──────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-author-comment-badge-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — HOME PAGE
+   pages/home.css
+   ========================================================= */
+
+/* ── Top filter bar container ───────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-feed-filter-chip-bar-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--faero-radius-lg) var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── Left / Right scroll arrows ─────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #left-arrow button,
+html[data-ypp-ui-design="frutiger-aero"] #right-arrow button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: var(--faero-shadow-btn) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] #left-arrow button:hover,
+html[data-ypp-ui-design="frutiger-aero"] #right-arrow button:hover {
+  box-shadow: 0 0 10px rgba(159,225,30,0.4), var(--faero-shadow-btn) !important;
+  transform: scale(1.08);
+}
+
+/* ── Home Page Sections / Shelves ───────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-rich-shelf-renderer {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── Masthead Banner / Promo ─────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-statement-banner-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important;
+}
+
+/* ── Notification / Toast ───────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-toast,
+html[data-ypp-ui-design="frutiger-aero"] #toast {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 12px rgba(159,225,30,0.2) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — LIVE CHAT
+   pages/livechat.css
+   
+   Specific targeting for the iframe live chat.
+   ========================================================= */
+
+/* ── Iframe container ───────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-live-chat-frame {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* Paid Message / Super Chat */
+html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.6) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — PLAYER UI
+   pages/player.css
+   
+   Aero bezel, glass controls, glossy progress bar.
+   ========================================================= */
+
+/* ── Only the actual player shell gets the glass bezel ──── */
+html[data-ypp-ui-design="frutiger-aero"] #ytd-player {
+  -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
+  backdrop-filter: var(--faero-blur-heavy) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+}
+
+/* ── Base Video Player ──────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] .html5-video-player {
+  border-radius: var(--ypp-shape-primary, calc(var(--faero-radius-lg) - 8px)) !important;
+}
+
+/* ── Play/Pause Large Center Icon Animation ─────────────── */
+html[data-ypp-ui-design="frutiger-aero"] .ytp-bezel {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.9) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] .ytp-bezel-icon {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
+}
+
+/* ── Settings Menu inside Player ────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] .ytp-popup {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — PLAYLIST PAGE
+   pages/playlist.css
+   ========================================================= */
+
+/* ── Left Sidebar (Playlist metadata) ───────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-header-renderer {
+  -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
+  backdrop-filter: var(--faero-blur-heavy) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-video-renderer:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* Currently Playing indicator */
+html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-video-renderer[selected] {
+  box-shadow: inset 0 0 10px rgba(135,206,250,0.5) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — SEARCH RESULTS
+   pages/search.css
+   ========================================================= */
+
+/* ── Search Filters ─────────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-search-filter-group-renderer {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+}
+
+/* ── Search Video Card Row ──────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] ytd-video-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* =========================================================
+   FRUTIGER AERO — WATCH PAGE
+   pages/watch.css
+   
+   Specific adjustments for the watch metadata and related vids.
+   ========================================================= */
+
+/* ── Video Metadata Panel ───────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #above-the-fold {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* Title text */
+html[data-ypp-ui-design="frutiger-aero"] h1.ytd-watch-metadata {
+  text-shadow: 0 1px 2px rgba(255,255,255,0.6) !important;
+}
+
+/* ── Description Box (Expander) ─────────────────────────── */
+
+/* ── Channel Info Row ───────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #owner {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 2px 6px rgba(0,0,0,0.04) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-watch-next-secondary-results-renderer {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── Chapters / Heatmap Row ─────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #progress.ytd-macro-markers-list-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
+  box-shadow: 0 0 6px rgba(159,225,30,0.4) !important;
+}
+
+/* ── Comments Section ───────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #comments {
+  -webkit-backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* ── Comment Input Box ──────────────────────────────────── */
+html[data-ypp-ui-design="frutiger-aero"] #simple-box.ytd-comment-simplebox-renderer,
+html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer:focus-within {
+  box-shadow: 0 0 10px rgba(159,225,30,0.3), inset 0 2px 4px rgba(0,0,0,0.04) !important;
+}

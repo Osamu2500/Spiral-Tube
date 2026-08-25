@@ -1,0 +1,28 @@
+/* Merged tokens.css */
+
+
+
+
+
+
+@import "./overrides.css";
+/* Token Overrides for blood-moon */
+:root[data-ypp-ui-design="blood-moon"],
+html[data-ypp-ui-design="blood-moon"] {
+  --ypp-bg-surface: rgba(0, 0, 0, 0.5) !important;
+
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid transparent !important;
+  --ypp-card-border-hover:          1px solid transparent !important;
+  --ypp-card-shadow:                none !important;
+  --ypp-card-shadow-hover:          none !important;
+  --ypp-card--webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+
+

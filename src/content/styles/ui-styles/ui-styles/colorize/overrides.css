@@ -1,0 +1,722 @@
+
+
+
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes rainbowSpin {
+  0% { transform: rotate(0deg) scale(1);
+}
+
+50% {
+  transform: rotate(180deg) scale(1.2);
+}
+
+100% {
+  transform: rotate(360deg) scale(1);
+}
+
+}
+
+@keyframes rainbowSpinInner {
+  0% { transform: scale(0.5);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes rainbowSpinEntrance {
+  0% { transform: translateY(20px);
+}
+
+100% {
+  transform: translateY(0);
+}
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9);
+}
+
+100% {
+  transform: translateY(0) scale(1);
+}
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px);
+}
+
+100% {
+  transform: translateX(0);
+}
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px linear-gradient(to right, red, yellow, green, blue);
+}
+
+100% {
+  box-shadow: 0 0 20px linear-gradient(to right, red, yellow, green, blue);
+}
+}/* Unique Shapes and Patterns for colorize */
+
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb {
+  animation: rgbBg 10s infinite linear !important;
+  border-radius: var(--ypp-shape-primary, 5px) !important;
+}
+
+/* COLORIZE CORE ARCHITECTURE PAYLOAD V9 */
+
+/* =========================================
+   1. MASTHEAD OVERHAUL
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-masthead,
+html[data-ypp-ui-design="colorize"] ytd-masthead {
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1;
+}
+
+/* =========================================
+   2. SEARCH AUTOCOMPLETE & INPUT
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-searchbox,
+html[data-ypp-ui-design="colorize"] ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-searchbox > #container,
+html[data-ypp-ui-design="colorize"] ytd-searchbox > #container {
+  border-radius: var(--ypp-shape-primary, 10px 0 0 10px) !important;
+}
+
+html[data-ypp-card-style="colorize"] #search-icon-legacy.ytd-searchbox,
+html[data-ypp-ui-design="colorize"] #search-icon-legacy.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0 10px 10px 0) !important;
+}
+
+/* Autocomplete Dropdown Box */
+html[data-ypp-card-style="colorize"] .sbsb_a,
+html[data-ypp-ui-design="colorize"] .sbsb_a,
+html[data-ypp-card-style="colorize"] .gstl_50.sbdd_a,
+html[data-ypp-ui-design="colorize"] .gstl_50.sbdd_a {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+}
+
+/* =========================================
+   3. AVATAR GEOMETRY (Hexagons, Squares, Squircles)
+========================================= */
+
+/* Comment cards geometry */
+
+/* =========================================
+   5. SHORTS INTERFACE Overhaul
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-reel-video-renderer,
+html[data-ypp-ui-design="colorize"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* Shorts Floating Actions (Like, Dislike, Share) */
+html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* COLORIZE ECOSYSTEM PAYLOAD V10 */
+
+/* =========================================
+   1. LIVE CHAT ENGINE
+========================================= */
+html[data-ypp-card-style="colorize"] yt-live-chat-renderer,
+html[data-ypp-ui-design="colorize"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* =========================================
+   2. CHANNEL PAGE & BANNERS
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-design="colorize"] ytd-c4-tabbed-header-renderer {
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1 !important;
+}
+
+/* =========================================
+   3. CONTEXT MENUS & SETTINGS
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="colorize"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="colorize"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="colorize"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+  animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  transform-origin: top right !important;
+}
+
+
+
+html[data-ypp-card-style="colorize"] ytd-compact-link-renderer,
+html[data-ypp-ui-design="colorize"] ytd-compact-link-renderer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* =========================================
+   4. THE FLOATING MINIPLAYER
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-miniplayer,
+html[data-ypp-ui-design="colorize"] ytd-miniplayer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* =========================================
+   5. YOUTUBE STUDIO / CREATOR BACKEND
+========================================= */
+html[data-ypp-card-style="colorize"] ytcp-header,
+html[data-ypp-ui-design="colorize"] ytcp-header {
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1 !important;
+}
+
+html[data-ypp-card-style="colorize"] ytcp-navigation,
+html[data-ypp-ui-design="colorize"] ytcp-navigation {
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1 !important;
+}
+
+html[data-ypp-card-style="colorize"] ytcp-navigation-drawer,
+html[data-ypp-ui-design="colorize"] ytcp-navigation-drawer {
+  border-radius: var(--ypp-shape-primary, 0 10px 10px 0) !important;
+}
+
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-track,
+html[data-ypp-ui-design="colorize"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb,
+html[data-ypp-ui-design="colorize"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb:hover,
+html[data-ypp-ui-design="colorize"] ::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2) !important;
+}
+
+/* =========================================
+   2. CUSTOM VIDEO PLAYER SCRUBBER
+========================================= */
+html[data-ypp-card-style="colorize"] .ytp-swatch-background-color,
+html[data-ypp-ui-design="colorize"] .ytp-swatch-background-color,
+html[data-ypp-card-style="colorize"] .ytp-play-progress,
+html[data-ypp-ui-design="colorize"] .ytp-play-progress {
+  background: linear-gradient(to right, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytp-scrubber-button,
+html[data-ypp-ui-design="colorize"] .ytp-scrubber-button {
+  background: linear-gradient(to bottom, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytp-spinner,
+html[data-ypp-ui-design="colorize"] .ytp-spinner {
+  border: 4px solid linear-gradient(to bottom, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  animation: rainbowSpin 1.5s infinite ease-in-out !important;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytp-spinner::after,
+html[data-ypp-ui-design="colorize"] .ytp-spinner::after {
+  background: linear-gradient(to right, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  animation: rainbowSpinInner 1s infinite alternate !important;
+}
+
+
+
+
+/* =========================================
+   4. DIALOGS & TOOLTIPS
+========================================= */
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-dialog,
+html[data-ypp-card-style="colorize"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="colorize"] ytd-unified-share-panel-renderer {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  border: 2px solid linear-gradient(to bottom, red, yellow, green, blue) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  animation: rainbowSpinEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+  background: linear-gradient(to bottom, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  animation: rainbowSpinEntrance 0.3s ease forwards !important;
+}
+
+
+/* Colorize Forms */
+html[data-ypp-card-style="colorize"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 20px 0 0 20px) !important;
+  animation: rgbBorder 10s infinite linear !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
+  animation: rgbBorder 10s infinite linear !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="colorize"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="colorize"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="colorize"] yt-button-shape button[title*="Download" i] {
+  animation: rgbBg 5s infinite linear !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  text-transform: uppercase !important;
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="colorize"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="colorize"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="colorize"] h1, html[data-ypp-card-style="colorize"] h2, html[data-ypp-card-style="colorize"] h3, html[data-ypp-card-style="colorize"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="colorize"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="colorize"] h1, html[data-ypp-ui-design="colorize"] h2, html[data-ypp-ui-design="colorize"] h3, html[data-ypp-ui-design="colorize"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="colorize"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="colorize"] ytd-thumbnail, html[data-ypp-card-style="colorize"] yt-image, html[data-ypp-ui-design="colorize"] ytd-thumbnail, html[data-ypp-ui-design="colorize"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="colorize"] yt-img-shadow, html[data-ypp-card-style="colorize"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="colorize"] yt-img-shadow, html[data-ypp-ui-design="colorize"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="colorize"] ytd-masthead, html[data-ypp-ui-design="colorize"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="colorize"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="colorize"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="colorize"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="colorize"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="colorize"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="colorize"] #simplebox-placeholder, html[data-ypp-ui-design="colorize"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="colorize"] .ytp-scrubber-button,
+html[data-ypp-ui-design="colorize"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytp-tooltip, html[data-ypp-ui-design="colorize"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog, html[data-ypp-card-style="colorize"] ytd-menu-popup-renderer, html[data-ypp-ui-design="colorize"] tp-yt-paper-dialog, html[data-ypp-ui-design="colorize"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="colorize"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="colorize"] #channel-header,
+html[data-ypp-ui-design="colorize"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="colorize"] yt-live-chat-renderer,
+html[data-ypp-ui-design="colorize"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-notification-renderer, html[data-ypp-ui-design="colorize"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="colorize"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="colorize"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="colorize"] ytd-skeleton, html[data-ypp-ui-design="colorize"] ytd-skeleton, html[data-ypp-card-style="colorize"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="colorize"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="colorize"] yt-icon, html[data-ypp-ui-design="colorize"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="colorize"] yt-icon:hover, html[data-ypp-ui-design="colorize"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* Colorize Menus */
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog,
+html[data-ypp-card-style="colorize"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="colorize"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="colorize"] ytd-masthead {
+  border-radius: var(--ypp-shape-primary, var(--col-radius)) !important;
+  animation: rgbBorder 10s infinite linear !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-masthead {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* COLORIZE MICRO-INTERACTIONS PAYLOAD V12 */
+
+/* =========================================
+   1. DIALOGS & OVERLAYS
+========================================= */
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-dialog,
+html[data-ypp-card-style="colorize"] ytd-popup-container,
+html[data-ypp-ui-design="colorize"] ytd-popup-container {
+  border-radius: var(--ypp-shape-primary, 16px) !important;
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1 !important;
+  animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+
+
+
+/* =========================================
+   2. TOOLTIPS & TOASTS
+========================================= */
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="colorize"] tp-yt-paper-toast,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-toast {
+  border-radius: var(--ypp-shape-primary, 16px) !important;
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1 !important;
+}
+
+/* =========================================
+   3. SEARCH FILTERS
+========================================= */
+
+html[data-ypp-card-style="colorize"] ytd-search-filter-renderer:hover,
+html[data-ypp-ui-design="colorize"] ytd-search-filter-renderer:hover {
+  text-shadow: none !important;
+}
+
+/* =========================================
+   4. EMPTY STATES & ERROR PAGES
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-background-promo-renderer,
+html[data-ypp-ui-design="colorize"] ytd-background-promo-renderer,
+html[data-ypp-card-style="colorize"] #error-page,
+html[data-ypp-ui-design="colorize"] #error-page {
+  border-radius: var(--ypp-shape-primary, 16px) !important;
+}
+
+/* Empty state icon geometry override */
+html[data-ypp-card-style="colorize"] ytd-background-promo-renderer yt-icon,
+html[data-ypp-ui-design="colorize"] ytd-background-promo-renderer yt-icon {
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  transform: scale(1.5) !important;
+}
+
+/* =========================================
+   5. THE MINI-GUIDE
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-mini-guide-renderer,
+html[data-ypp-ui-design="colorize"] ytd-mini-guide-renderer {
+  border-image: linear-gradient(to right, red, yellow, green, blue) 1 !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="colorize"] ytd-mini-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, 8px) !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* Navbar Overhaul for colorize */
+html[data-ypp-ui-design="colorize"] #masthead-container,
+html[data-ypp-ui-design="colorize"] ytd-masthead {
+  background: linear-gradient(to right, rgba(0,0,0,0.9), hsl(207, 80%, 55%)88) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-ui-design="colorize"] ytd-topbar-logo-renderer {
+  filter: drop-shadow(2px 2px 4px hsl(207, 80%, 55%)) hue-rotate(27deg) saturate(2) !important;
+  transition: transform 0.3s !important;
+}
+
+html[data-ypp-ui-design="colorize"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.08) rotate(2deg) !important;
+}
+
+html[data-ypp-ui-design="colorize"] #container.ytd-searchbox,
+html[data-ypp-ui-design="colorize"] ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  box-shadow: inset 0 0 10px hsl(354, 70%, 45%)66 !important;
+}
+
+html[data-ypp-ui-design="colorize"] #search-input input {
+  text-shadow: 1px 1px 2px hsl(354, 70%, 45%)88 !important;
+}
+
+html[data-ypp-ui-design="colorize"] #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 50% 10% 50% 10% 50% 10% 50% 10% 0) !important;
+}
+
+html[data-ypp-ui-design="colorize"] #search-icon-legacy:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-ui-design="colorize"] #search-icon-legacy yt-icon {
+  filter: drop-shadow(0 0 2px hsl(207, 80%, 55%)) !important;
+}
+
+html[data-ypp-ui-design="colorize"] #voice-search-button {
+  border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  box-shadow: 0 0 8px hsl(207, 80%, 55%)88 !important;
+  transition: transform 0.2s !important;
+}
+
+html[data-ypp-ui-design="colorize"] #voice-search-button:hover {
+  transform: scale(1.1) !important;
+}
+
+html[data-ypp-ui-design="colorize"] .sbdd_b,
+html[data-ypp-ui-design="colorize"] .sbsb_a {
+  border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-ui-design="colorize"] .sbsb_c:hover {
+  box-shadow: inset 4px 0 0 hsl(207, 80%, 55%) !important;
+}
+
+html[data-ypp-ui-design="colorize"] ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-design="colorize"] ytd-notification-topbar-button-renderer yt-icon-button {
+  border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+}
+
+html[data-ypp-ui-design="colorize"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
+html[data-ypp-ui-design="colorize"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
+  transform: translateY(-4px) scale(1.1) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-ui-design="colorize"] #avatar-btn yt-img-shadow {
+  border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  transition: transform 0.4s !important;
+}
+
+html[data-ypp-ui-design="colorize"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  backdrop-filter: blur(25px) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+/* COLORIZE SUB-SYSTEMS PAYLOAD V11 */
+
+/* =========================================
+   1. PLAYLIST INTERFACE
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="colorize"] ytd-playlist-panel-renderer {
+  border-image: linear-gradient(to bottom, red, yellow, green, blue) 1;
+  animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+
+/* =========================================
+   2. COMMUNITY POSTS & POLLS
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-backstage-post-renderer,
+html[data-ypp-ui-design="colorize"] ytd-backstage-post-renderer {
+  border-radius: var(--ypp-shape-primary, 8px) !important;
+}
+
+/* Community Poll Progress Bars */
+html[data-ypp-card-style="colorize"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-ui-design="colorize"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-card-style="colorize"] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-ui-design="colorize"] .progress-bar.ytd-backstage-poll-renderer {
+  background: linear-gradient(to right, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
+  box-shadow: 0 0 10px linear-gradient(to right, red, yellow, green, blue) !important;
+}
+
+/* =========================================
+   3. MERCH & SHOPPING SHELVES
+========================================= */
+html[data-ypp-card-style="colorize"] ytd-merch-shelf-renderer,
+html[data-ypp-ui-design="colorize"] ytd-merch-shelf-renderer {
+  border-radius: var(--ypp-shape-primary, 8px) !important;
+}
+
+/* Product Image Geometry Override */
+html[data-ypp-card-style="colorize"] .ytd-shopping-carousel-item-renderer img,
+html[data-ypp-ui-design="colorize"] .ytd-shopping-carousel-item-renderer img,
+html[data-ypp-card-style="colorize"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
+html[data-ypp-ui-design="colorize"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytd-shopping-carousel-item-renderer:hover img,
+html[data-ypp-ui-design="colorize"] .ytd-shopping-carousel-item-renderer:hover img {
+  transform: scale(1.1) !important;
+}
+
+/* Buy Buttons */
+html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+  background: linear-gradient(to right, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+  filter: brightness(1.2) !important;
+}
+
+html[data-ypp-card-style="colorize"] .badge-style-type-live-now-alternate,
+html[data-ypp-ui-design="colorize"] .badge-style-type-live-now-alternate {
+  background: linear-gradient(to right, red, yellow, green, blue) !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
+  animation: pulseBadge 1.5s infinite alternate !important;
+}
+
+
+/* Colorize Player */
+html[data-ypp-card-style="colorize"] .ytp-chrome-bottom {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  animation: rgbBorder 5s infinite linear !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytp-play-progress {
+  animation: rgbBg 5s infinite linear !important;
+}
+
+html[data-ypp-card-style="colorize"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  animation: rgbBorder 5s infinite linear !important;
+}
+

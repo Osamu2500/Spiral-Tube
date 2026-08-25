@@ -1,0 +1,861 @@
+/* Unique Shapes and Patterns for crystal-glass */
+
+/* Global Border overrides */
+html[data-ypp-ui-design="crystal-glass"] * {
+  /* Force a transition on all elements for smooth hover states */
+  transition: background-color var(--cglass-transition), 
+              box-shadow var(--cglass-transition), 
+              border-color var(--cglass-transition),
+              transform var(--cglass-transition) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-thumb {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Extension Header/Folders (Using Glass) */
+html[data-ypp-ui-design="crystal-glass"] .ypp-vcp-header,
+html[data-ypp-ui-design="crystal-glass"] .ypp-folder-header {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+}
+
+/* Extension Sliders */
+html[data-ypp-ui-design="crystal-glass"] .ypp-slider,
+html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-vol-slider {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] .ypp-slider::-webkit-slider-thumb,
+html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+  transition: transform var(--cglass-transition) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] .ypp-slider::-webkit-slider-thumb:hover,
+html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2) !important;
+}
+
+/* Filter Dropdowns */
+html[data-ypp-ui-design="crystal-glass"] .ypp-filter-dropdown {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] .ypp-filter-dropdown:hover {
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Player Controls Group (Right side) - make them glass pills */
+html[data-ypp-ui-design="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+/* Volume Area */
+html[data-ypp-ui-design="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+/* Progress bar drag container */
+html[data-ypp-ui-design="crystal-glass"] .ytPlayerProgressBarDragContainer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+/* Progress Bar Filled State */
+html[data-ypp-ui-design="crystal-glass"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-design="crystal-glass"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-design="crystal-glass"] .ytp-play-progress {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5) !important;
+}
+
+/* Extension Navigation Button Active State */
+html[data-ypp-ui-design="crystal-glass"] .ypp-nav-btn.active {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+}
+
+/* Primary/Filled Buttons (Like Subscribe) */
+html[data-ypp-ui-design="crystal-glass"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-design="crystal-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="crystal-glass"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
+html[data-ypp-ui-design="crystal-glass"] #subscribe-button button,
+html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[title*="Download" i] {
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4), inset 0 2px 10px rgba(255, 255, 255, 1) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Primary Button Hover */
+
+/* Icon Buttons */
+html[data-ypp-ui-design="crystal-glass"] yt-icon-button button {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] yt-icon-button button:hover {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+/* Extension Action Buttons */
+html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-btn,
+html[data-ypp-ui-design="crystal-glass"] .ypp-action-btn,
+html[data-ypp-ui-design="crystal-glass"] .ypp-pill-toggle {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="crystal-glass"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="crystal-glass"] .ypp-pill-toggle:hover {
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — CARDS (Thumbnails & Grids)
+   ========================================================= */
+
+/* Main Card Wrapper */
+html[data-ypp-card-style="crystal-glass"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item
+  ) *)
+) {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Card Hover State */
+
+/* Thumbnails */
+
+/* Time Status Badge (e.g., 10:05) */
+html[data-ypp-card-style="crystal-glass"] ytd-thumbnail-overlay-time-status-renderer {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+/* Channel Avatar next to metadata */
+
+/* =========================================================
+   CRYSTAL GLASS — DIALOGS & SCRIMS
+   ========================================================= */
+
+/* Scrim / Backdrop */
+html[data-ypp-ui-design="crystal-glass"] tp-yt-iron-overlay-backdrop {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Base Dialog Modals */
+html[data-ypp-ui-design="crystal-glass"] ytd-dialog-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-confirm-dialog-renderer,
+html[data-ypp-ui-design="crystal-glass"] yt-dialog-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-super-thanks-dialog-renderer,
+html[data-ypp-ui-design="crystal-glass"] yt-share-panel-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-unified-share-panel-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* Radio Buttons (Report Menu) */
+html[data-ypp-ui-design="crystal-glass"] ytd-report-form-modal-renderer yt-radio-button-view-model {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* URL Copy Box (Share Menu) */
+html[data-ypp-ui-design="crystal-glass"] yt-share-panel-renderer #copyLink,
+html[data-ypp-ui-design="crystal-glass"] yt-copy-link-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — ICONS & BADGES
+   ========================================================= */
+
+/* Base SVG Icons */
+html[data-ypp-ui-design="crystal-glass"] yt-icon,
+html[data-ypp-ui-design="crystal-glass"] .yt-icon-container,
+html[data-ypp-ui-design="crystal-glass"] .yt-spec-icon-shape {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
+}
+
+/* Notification Badge (Number indicator) */
+html[data-ypp-ui-design="crystal-glass"] .yt-spec-icon-badge-shape__badge {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: 0 2px 10px rgba(255,0,0,0.4) !important;
+}
+
+/* LIVE badges */
+html[data-ypp-ui-design="crystal-glass"] ytd-badge-supported-renderer {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.2) !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="crystal-glass"] h1, html[data-ypp-card-style="crystal-glass"] h2, html[data-ypp-card-style="crystal-glass"] h3, html[data-ypp-card-style="crystal-glass"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="crystal-glass"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="crystal-glass"] h1, html[data-ypp-ui-design="crystal-glass"] h2, html[data-ypp-ui-design="crystal-glass"] h3, html[data-ypp-ui-design="crystal-glass"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="crystal-glass"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+html[data-ypp-card-style="crystal-glass"] ytd-rich-item-renderer,
+html[data-ypp-card-style="crystal-glass"] ytd-video-renderer,
+html[data-ypp-card-style="crystal-glass"] ytd-playlist-renderer,
+html[data-ypp-card-style="crystal-glass"] ytd-grid-video-renderer,
+html[data-ypp-card-style="crystal-glass"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-video-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-playlist-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-compact-video-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="crystal-glass"] ytd-thumbnail, html[data-ypp-card-style="crystal-glass"] yt-image, html[data-ypp-ui-design="crystal-glass"] ytd-thumbnail, html[data-ypp-ui-design="crystal-glass"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="crystal-glass"] yt-img-shadow, html[data-ypp-card-style="crystal-glass"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="crystal-glass"] yt-img-shadow, html[data-ypp-ui-design="crystal-glass"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="crystal-glass"] ytd-masthead, html[data-ypp-ui-design="crystal-glass"] ytd-masthead {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="crystal-glass"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 20px 0 0 20px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="crystal-glass"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+html[data-ypp-card-style="crystal-glass"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-comment-thread-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+html[data-ypp-card-style="crystal-glass"] #simplebox-placeholder, html[data-ypp-ui-design="crystal-glass"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+html[data-ypp-card-style="crystal-glass"] .ytp-chrome-bottom,
+html[data-ypp-ui-design="crystal-glass"] .ytp-chrome-bottom {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+html[data-ypp-card-style="crystal-glass"] .ytp-scrubber-button,
+html[data-ypp-ui-design="crystal-glass"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] .ytp-tooltip, html[data-ypp-ui-design="crystal-glass"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="crystal-glass"] ytd-menu-popup-renderer, html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="crystal-glass"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+html[data-ypp-card-style="crystal-glass"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="crystal-glass"] #channel-header,
+html[data-ypp-ui-design="crystal-glass"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="crystal-glass"] yt-live-chat-renderer,
+html[data-ypp-ui-design="crystal-glass"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="crystal-glass"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] ytd-notification-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="crystal-glass"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="crystal-glass"] ytd-skeleton, html[data-ypp-ui-design="crystal-glass"] ytd-skeleton, html[data-ypp-card-style="crystal-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="crystal-glass"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+html[data-ypp-card-style="crystal-glass"] ytd-watch-metadata, html[data-ypp-ui-design="crystal-glass"] ytd-watch-metadata {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="crystal-glass"] yt-icon, html[data-ypp-ui-design="crystal-glass"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] yt-icon:hover, html[data-ypp-ui-design="crystal-glass"] yt-icon:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+html[data-ypp-card-style="crystal-glass"] ytd-miniplayer, html[data-ypp-ui-design="crystal-glass"] ytd-miniplayer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 25. Settings Gear & Dropdowns */
+html[data-ypp-card-style="crystal-glass"] .ytp-settings-menu, html[data-ypp-ui-design="crystal-glass"] .ytp-settings-menu {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* =========================================================
+   CRYSTAL GLASS — MENUS & DROPDOWNS
+   ========================================================= */
+
+/* Dropdowns / Menus base */
+html[data-ypp-ui-design="crystal-glass"] tp-yt-iron-dropdown,
+html[data-ypp-ui-design="crystal-glass"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-listbox,
+html[data-ypp-ui-design="crystal-glass"] .ytSearchboxComponentSuggestionsContainer {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* Prevent double borders on nested menus */
+html[data-ypp-ui-design="crystal-glass"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-design="crystal-glass"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Menu List Items */
+html[data-ypp-ui-design="crystal-glass"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-design="crystal-glass"] ytd-compact-link-renderer,
+html[data-ypp-ui-design="crystal-glass"] .ytp-menuitem,
+html[data-ypp-ui-design="crystal-glass"] ytd-playlist-add-to-option-renderer,
+html[data-ypp-ui-design="crystal-glass"] .ytSuggestionComponentSuggestion {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
+}
+
+/* Menu Item Hover */
+html[data-ypp-ui-design="crystal-glass"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="crystal-glass"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-design="crystal-glass"] ytd-compact-link-renderer:hover,
+html[data-ypp-ui-design="crystal-glass"] .ytp-menuitem:hover,
+html[data-ypp-ui-design="crystal-glass"] ytd-playlist-add-to-option-renderer:hover,
+html[data-ypp-ui-design="crystal-glass"] .ytSuggestionComponentSuggestion:hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
+}
+
+/* Notifications */
+html[data-ypp-ui-design="crystal-glass"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-notification-renderer:hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-masthead #container.ytd-masthead {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Search Box Container */
+html[data-ypp-ui-design="crystal-glass"] ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Focus State for Search Box */
+html[data-ypp-ui-design="crystal-glass"] ytd-searchbox[has-focus] {
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* The actual text input */
+html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #container.ytd-searchbox {
+  box-shadow: none !important;
+}
+
+/* Search Button */
+html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 var(--cglass-radius-pill) var(--cglass-radius-pill) 0) !important;
+}
+
+/* Voice Search Button */
+html[data-ypp-ui-design="crystal-glass"] #voice-search-button yt-icon-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] #voice-search-button yt-icon-button:hover {
+  box-shadow: var(--cglass-shadow-hover) !important;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CRYSTAL GLASS — PANELS (Sidebars, Menus)
+   ========================================================= */
+
+/* Left Navigation Guide (Mini & Expanded) */
+html[data-ypp-ui-design="crystal-glass"] #guide-wrapper.ytd-app,
+html[data-ypp-ui-design="crystal-glass"] ytd-mini-guide-renderer,
+html[data-ypp-ui-design="crystal-glass"] app-drawer#guide-inner-content {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Guide Links / Endpoints */
+
+/* Guide Link Hover */
+
+/* Active Guide Link */
+
+/* Extension Side Panels (Playlist/Stats organizers) */
+html[data-ypp-ui-design="crystal-glass"] .ypp-organizer-modal,
+html[data-ypp-ui-design="crystal-glass"] #ypp-eq-panel,
+html[data-ypp-ui-design="crystal-glass"] .ypp-account-menu {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — CHANNELS
+   ========================================================= */
+
+/* Channel Banner Base Area */
+html[data-ypp-ui-design="crystal-glass"] #page-header.ytd-tabbed-page-layout-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg)) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+}
+
+/* Channel Avatar */
+
+/* Channel Banner Image */
+
+/* Navigation Tabs */
+html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tab {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+/* Selected Tab (Solid white highlight) */
+html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tab.iron-selected {
+  box-shadow: 0 4px 10px rgba(255,255,255,0.4) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tab:not(.iron-selected):hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Channel specific search box */
+html[data-ypp-ui-design="crystal-glass"] ytd-expandable-tab-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.2) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-expandable-tab-renderer:focus-within {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Links in About section */
+html[data-ypp-ui-design="crystal-glass"] ytd-channel-about-metadata-renderer #links-section a {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-channel-about-metadata-renderer #links-section a:hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — COMMENTS
+   ========================================================= */
+
+/* Main Comment Input Box */
+html[data-ypp-ui-design="crystal-glass"] ytd-comment-simplebox-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Individual Comment Renderer */
+html[data-ypp-ui-design="crystal-glass"] ytd-comment-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-comment-renderer:hover {
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Creator Highlighted / Pinned Comment */
+html[data-ypp-ui-design="crystal-glass"] ytd-comment-renderer[is-highlighted] {
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — HOME PAGE
+   ========================================================= */
+
+/* Filter Chips (e.g. "All", "Music") */
+html[data-ypp-ui-design="crystal-glass"] yt-chip-cloud-chip-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.2) !important;
+}
+
+/* Hover on Filter Chip */
+
+/* Selected Filter Chip */
+
+/* Top filter bar container */
+html[data-ypp-ui-design="crystal-glass"] ytd-feed-filter-chip-bar-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg)) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Left / Right scroll arrows */
+html[data-ypp-ui-design="crystal-glass"] #left-arrow button,
+html[data-ypp-ui-design="crystal-glass"] #right-arrow button {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* Home Page Sections / Shelves */
+html[data-ypp-ui-design="crystal-glass"] ytd-rich-shelf-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — LIVE CHAT
+   ========================================================= */
+
+/* The entire chat frame */
+html[data-ypp-ui-design="crystal-glass"] ytd-live-chat-frame {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Individual Standard Messages */
+
+/* Super Chats (Glowing glass blocks) */
+html[data-ypp-ui-design="crystal-glass"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="crystal-glass"] yt-live-chat-membership-item-renderer {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Chat Avatars */
+
+/* The text input field */
+html[data-ypp-ui-design="crystal-glass"] #input-panel yt-live-chat-text-input-field-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] #input-panel yt-live-chat-text-input-field-renderer:focus-within {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — PLAYER UI
+   ========================================================= */
+
+/* The outer player container */
+html[data-ypp-ui-design="crystal-glass"] #player-container.ytd-watch-flexy,
+html[data-ypp-ui-design="crystal-glass"] #ytd-player {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Base Video Player */
+html[data-ypp-ui-design="crystal-glass"] .html5-video-player {
+  border-radius: var(--ypp-shape-primary, calc(var(--cglass-radius-lg) - 4px)) !important;
+}
+
+/* Play/Pause Large Center Icon Animation */
+html[data-ypp-ui-design="crystal-glass"] .ytp-bezel {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] .ytp-bezel-icon {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)) !important;
+}
+
+/* Settings Menu inside Player */
+html[data-ypp-ui-design="crystal-glass"] .ytp-popup {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.2) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer:hover {
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Expansion Panel for Search Filters */
+html[data-ypp-ui-design="crystal-glass"] ytd-search-sub-menu-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}
+
+/* Individual filter options */
+
+/* Channel blocks in search results */
+html[data-ypp-ui-design="crystal-glass"] ytd-channel-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Playlist blocks in search results */
+html[data-ypp-ui-design="crystal-glass"] ytd-playlist-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* "People also watched" shelf */
+html[data-ypp-ui-design="crystal-glass"] ytd-horizontal-card-list-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* =========================================================
+   CRYSTAL GLASS — WATCH PAGE
+   ========================================================= */
+
+/* Description Box */
+html[data-ypp-ui-design="crystal-glass"] #description-inner,
+html[data-ypp-ui-design="crystal-glass"] #description.ytd-watch-metadata {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Sidebar Recommendation Cards */
+html[data-ypp-ui-design="crystal-glass"] ytd-compact-video-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* Key Moments / Chapter Markers */
+html[data-ypp-ui-design="crystal-glass"] ytd-macro-markers-list-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+}
+
+/* Transcript Panel */
+html[data-ypp-ui-design="crystal-glass"] ytd-transcript-renderer {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-transcript-segment-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
+}
+
+html[data-ypp-ui-design="crystal-glass"] ytd-transcript-segment-renderer[is-highlighted] {
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* ==========================================================================
+   CRYSTAL GLASS — PLAYER PAGE COMPONENT UPGRADES
+   Channel Bar & Comments Section Crystal Cards
+   ========================================================================== */
+
+/* 1. Channel Bar (#owner) */
+html[data-ypp-ui-design="crystal-glass"] #owner {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}
+
+/* 2. Description Box Hover Crystal Glow */
+
+/* 3. Comments Section (Crystal Glass Cards) */
+html[data-ypp-ui-design="crystal-glass"] #comments {
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
+  box-shadow: var(--cglass-shadow) !important;
+}

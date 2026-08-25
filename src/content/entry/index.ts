@@ -14,16 +14,16 @@ import '../core/events/event-delegator.js';
 import '../core/system/feature-manager.js';
 
 // CSS Imports
-import '../design-system/index.css';
+import '../styles/index.css';
 
 // Managers (Phase 4.5)
 import '../core/system/base-page-manager.js';
-import '../design-system/color/thumbnail-color-manager.js';
+import '../styles/color/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
-import '../design-system/managers/ui-manager.js';
-import '../design-system/components/button.js';
-import '../design-system/components/panel.js';
+import '../styles/managers/ui-manager.js';
+import '../global/components/buttons/button.js';
+import '../global/components/panels/panel.js';
 
 // Base feature class
 import '../core/system/base-feature.js';

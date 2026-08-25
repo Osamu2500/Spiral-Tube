@@ -1,0 +1,17 @@
+/* Unique Shapes and Patterns for shared */
+
+/* ==========================================================================
+   YouTube: Better timeline and text visibility (UserStyle #4708)
+   ========================================================================== */
+
+html[data-ypp-ui-design="shared"] .ytp-time-current,
+html[data-ypp-ui-design="shared"] .ytp-time-separator,
+html[data-ypp-ui-design="shared"] .ytp-time-duration,
+html[data-ypp-ui-design="shared"] .ytp-chapter-title-content,
+html[data-ypp-ui-design="shared"] .ytp-tooltip-title > span {
+  text-shadow: 1px 1px 2px black, 0 0 5px black !important;
+}
+
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent) !important;
+}

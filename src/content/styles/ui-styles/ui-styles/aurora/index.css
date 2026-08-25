@@ -1,0 +1,41 @@
+/* Merged tokens.css *//* Token Overrides for aurora */
+:root[data-ypp-ui-design="aurora"],
+html[data-ypp-ui-design="aurora"] {
+  --ypp-bg-surface: rgba(0, 0, 0, 0.2) !important;
+  --ypp-surface-bg-hover: rgba(0, 0, 0, 0.4) !important;
+  --ypp-surface-bg-active: rgba(0, 0, 0, 0.6) !important;
+  --ypp-surface-border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  
+  --ypp-primary-accent: #00f2fe !important;
+  --ypp-text-primary: rgba(255, 255, 255, 0.9) !important;
+  
+  --ypp-shadow-base: 0 4px 12px rgba(0, 242, 254, 0.1) !important;
+  --ypp-shadow-hover: 0 8px 24px rgba(240, 147, 251, 0.2) !important;
+  
+  /* Aurora Structural Tokens */
+  --ypp-menu--webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  --ypp-dialog--webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  --ypp-card--webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  --ypp-card-backdrop-filter-hover: blur(12px) !important;
+  
+  --ypp-card-bg: rgba(0, 0, 0, 0.15) !important;
+  --ypp-card-bg-hover: rgba(0, 0, 0, 0.3) !important;
+  --ypp-card-border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  --ypp-card-border-hover: 1px solid rgba(0, 242, 254, 0.3) !important;
+  --ypp-card-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+  --ypp-card-shadow-hover: 0 8px 25px rgba(0, 242, 254, 0.15) !important;
+}
+
+html[data-ypp-theme="aurora"] {
+  /* Global Background Overrides */
+  --ypp-bg-global-color: #0b0f19 !important;
+  --ypp-bg-global-image: radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.15), transparent 40%),
+                    radial-gradient(circle at 85% 30%, rgba(240, 147, 251, 0.15), transparent 40%) !important;
+  --ypp-bg-global-attachment: fixed !important;
+}
+
+
+

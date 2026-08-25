@@ -1,0 +1,63 @@
+html.yt-spiral-tube-theme[data-ypp-theme="frutiger-aero"] {
+/* Theme: frutiger-aero */
+--ypp-bg-base: #bfe6ff !important;
+[data-ypp-theme="frutiger-aero"] {
+    --ypp-bg-surface: #abcfe5 !important;
+    --ypp-text-primary: #0f0f0f !important;
+    --ypp-text-secondary: rgba(0,0,0,0.7) !important;
+
+  /* Critical YouTube Overrides for Light Themes */
+
+  --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
+  --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
+
+
+/* --- TEXT READABILITY FIX --- */
+/* Enforce dark text color globally for this light theme */
+html[data-ypp-theme="frutiger-aero"] body,
+html[data-ypp-theme="frutiger-aero"] yt-formatted-string,
+html[data-ypp-theme="frutiger-aero"] span,
+html[data-ypp-theme="frutiger-aero"] div,
+html[data-ypp-theme="frutiger-aero"] a,
+html[data-ypp-theme="frutiger-aero"] h1,
+html[data-ypp-theme="frutiger-aero"] h2,
+html[data-ypp-theme="frutiger-aero"] h3,
+html[data-ypp-theme="frutiger-aero"] #video-title,
+html[data-ypp-theme="frutiger-aero"] .title,
+html[data-ypp-theme="frutiger-aero"] ytd-guide-entry-renderer *,
+html[data-ypp-theme="frutiger-aero"] ytd-mini-guide-entry-renderer * {
+  color: var(--ypp-text-primary) !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-theme="frutiger-aero"] svg {
+  fill: var(--ypp-text-primary) !important;
+}
+
+/* Secondary text overrides */
+html[data-ypp-theme="frutiger-aero"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="frutiger-aero"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="frutiger-aero"] ytd-video-renderer #metadata-line span,
+html[data-ypp-theme="frutiger-aero"] #metadata-line span,
+html[data-ypp-theme="frutiger-aero"] .inline-metadata-item,
+html[data-ypp-theme="frutiger-aero"] #byline-container yt-formatted-string,
+html[data-ypp-theme="frutiger-aero"] #byline-container span,
+html[data-ypp-theme="frutiger-aero"] #byline-container a,
+html[data-ypp-theme="frutiger-aero"] #description-text {
+  color: var(--ypp-text-secondary) !important;
+}
+
+/* Exempt Buttons to preserve contrast */
+html[data-ypp-theme="frutiger-aero"] ytd-button-renderer yt-formatted-string,
+html[data-ypp-theme="frutiger-aero"] yt-button-shape *,
+html[data-ypp-theme="frutiger-aero"] ytd-subscribe-button-renderer *,
+html[data-ypp-theme="frutiger-aero"] ytd-badge-supported-renderer * {
+  color: inherit !important;
+}
+
+}
+}

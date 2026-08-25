@@ -1,0 +1,257 @@
+/* Unique Shapes and Patterns for cairo-red */
+
+/* Remove default YouTube curve, force sharp corners */
+
+/* Dialogs for cairo-red */
+html[data-ypp-ui-design="cairo-red"] tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 8px) !important;
+  box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3) !important;
+}
+
+html[data-ypp-ui-design="cairo-red"] yt-icon:hover {
+  transform: scale(1.1);
+}
+
+html[data-ypp-card-style="cairo-red"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="cairo-red"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="cairo-red"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="cairo-red"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="cairo-red"] h1, html[data-ypp-card-style="cairo-red"] h2, html[data-ypp-card-style="cairo-red"] h3, html[data-ypp-card-style="cairo-red"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="cairo-red"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="cairo-red"] h1, html[data-ypp-ui-design="cairo-red"] h2, html[data-ypp-ui-design="cairo-red"] h3, html[data-ypp-ui-design="cairo-red"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="cairo-red"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="cairo-red"] ytd-thumbnail, html[data-ypp-card-style="cairo-red"] yt-image, html[data-ypp-ui-design="cairo-red"] ytd-thumbnail, html[data-ypp-ui-design="cairo-red"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="cairo-red"] yt-img-shadow, html[data-ypp-card-style="cairo-red"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="cairo-red"] yt-img-shadow, html[data-ypp-ui-design="cairo-red"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="cairo-red"] ytd-masthead, html[data-ypp-ui-design="cairo-red"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="cairo-red"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="cairo-red"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="cairo-red"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="cairo-red"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="cairo-red"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="cairo-red"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="cairo-red"] #simplebox-placeholder, html[data-ypp-ui-design="cairo-red"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="cairo-red"] .ytp-scrubber-button,
+html[data-ypp-ui-design="cairo-red"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="cairo-red"] .ytp-tooltip, html[data-ypp-ui-design="cairo-red"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="cairo-red"] tp-yt-paper-dialog, html[data-ypp-card-style="cairo-red"] ytd-menu-popup-renderer, html[data-ypp-ui-design="cairo-red"] tp-yt-paper-dialog, html[data-ypp-ui-design="cairo-red"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="cairo-red"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="cairo-red"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="cairo-red"] #channel-header,
+html[data-ypp-ui-design="cairo-red"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="cairo-red"] yt-live-chat-renderer,
+html[data-ypp-ui-design="cairo-red"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="cairo-red"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="cairo-red"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="cairo-red"] ytd-notification-renderer, html[data-ypp-ui-design="cairo-red"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="cairo-red"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="cairo-red"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="cairo-red"] ytd-skeleton, html[data-ypp-ui-design="cairo-red"] ytd-skeleton, html[data-ypp-card-style="cairo-red"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cairo-red"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="cairo-red"] yt-icon, html[data-ypp-ui-design="cairo-red"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="cairo-red"] yt-icon:hover, html[data-ypp-ui-design="cairo-red"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* =========================================================
+   CAIRO RED — MENUS
+   ========================================================= */
+
+html[data-ypp-ui-design="cairo-red"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="cairo-red"] tp-yt-paper-listbox,
+html[data-ypp-ui-design="cairo-red"] .ytp-popup {
+  border-radius: var(--ypp-shape-primary, var(--cairo-radius)) !important;
+  box-shadow: var(--cairo-shadow-base) !important;
+}
+
+/* Navbar UI for cairo-red */
+html[data-ypp-ui-design="cairo-red"] ytd-masthead {
+  box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3);
+}
+
+html[data-ypp-ui-design="cairo-red"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 8px 0 0 8px) !important;
+}
+
+html[data-ypp-ui-design="cairo-red"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0 8px 8px 0) !important;
+}
+
+html[data-ypp-ui-design="cairo-red"] #voice-search-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+/* Panels for cairo-red */
+
+html[data-ypp-ui-design="cairo-red"] ytd-live-chat-frame {
+  border-radius: var(--ypp-shape-primary, 8px) !important;
+}
+
+/* Sidebar for cairo-red */
+
+/* Channels for cairo-red */
+html[data-ypp-ui-design="cairo-red"] #channel-header-banner {
+  border-radius: 8px 8px 0 0;
+}
+
+/* =========================================================
+   CAIRO RED — COMMENTS
+   ========================================================= */
+
+html[data-ypp-ui-design="cairo-red"] ytd-comment-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cairo-radius)) !important;
+}
+
+html[data-ypp-ui-design="cairo-red"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cairo-radius)) !important;
+}
+
+/* Home for cairo-red */
+
+/* =========================================================
+   CAIRO RED — LIVE CHAT
+   ========================================================= */
+
+html[data-ypp-ui-design="cairo-red"] yt-live-chat-renderer,
+html[data-ypp-ui-design="cairo-red"] yt-live-chat-header-renderer {
+  border-radius: var(--ypp-shape-primary, var(--cairo-radius)) !important;
+}
+
+/* =========================================================
+   CAIRO RED — PLAYER
+   ========================================================= */
+
+html[data-ypp-ui-design="cairo-red"] .html5-video-player {
+  border-radius: var(--ypp-shape-primary, var(--cairo-radius)) !important;
+}
+
+html[data-ypp-ui-design="cairo-red"] .ytp-volume-slider-handle,
+html[data-ypp-ui-design="cairo-red"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+/* Search for cairo-red */
+
+html[data-ypp-ui-design="cairo-red"] ytd-toggle-button-renderer a {
+  border-radius: 8px;
+}
+
+/* Watch for cairo-red */
+html[data-ypp-ui-design="cairo-red"] #ytd-player {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3);
+}
+
+html[data-ypp-ui-design="cairo-red"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+

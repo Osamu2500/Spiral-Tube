@@ -1,0 +1,133 @@
+@import "../../ui-styles/shared/timeline-visibility.css";
+[data-ypp-theme="abyss"] {
+    --ypp-bg-base: var(--abyss-bg);
+    --ypp-bg-surface: var(--abyss-card);
+    --ypp-bg-glass: rgba(244, 236, 216, 0.92);
+    --ypp-glass-border: rgba(62, 53, 47, 0.18);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.3);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+
+    --ypp-text-primary: var(--abyss-secondary);
+    --ypp-text-secondary: var(--abyss-secondary);
+
+    --ypp-accent: var(--abyss-primary);
+    --ypp-accent-hover: #a32e2e;
+    --ypp-accent-glow: rgba(193, 58, 58, 0.28);
+
+    /* SHADOWS */
+    --ypp-shadow-card: 5px 5px 0px rgba(62, 53, 47, 0.3);
+    --ypp-shadow-float: 8px 8px 0px rgba(193, 58, 58, 0.4);
+    --ypp-shadow-glow: 0 0 20px rgba(193, 58, 58, 0.15);
+    --ypp-shadow-accent-glow: 0 0 24px var(--ypp-accent-glow);
+
+    /* COMPONENT OVERRIDES */
+
+    --ytd-searchbox-background: rgba(255, 252, 245, 0.8);
+    --ytd-searchbox-text-color: var(--abyss-secondary);
+    --ytd-searchbox-legacy-button-color: rgba(193, 58, 58, 0.12);
+
+
+}
+/* Film grain texture overlay */
+@keyframes ypp-vintage-flicker {
+    0%   { opacity: 0.06; }
+    25%  { opacity: 0.04; }
+    50%  { opacity: 0.07; }
+    75%  { opacity: 0.03; }
+    100% { opacity: 0.06; }
+}
+@keyframes ypp-vintage-vignette {
+    0%   { opacity: 0.55; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 0.55; }
+}
+
+html[data-ypp-theme="abyss"].ypp-theme-effects::before,
+html[data-ypp-theme="abyss"].ypp-theme-effects::after {
+    content: "";
+    pointer-events: none;
+    will-change: opacity;
+}
+html[data-ypp-theme="abyss"].ypp-theme-effects::before {
+    /* Film grain noise */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: ypp-vintage-flicker 0.15s steps(1) infinite;
+    mix-blend-mode: overlay;
+}
+html[data-ypp-theme="abyss"].ypp-theme-effects::after {
+    /* Dark vignette edges */
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(62, 40, 20, 0.5) 100%);
+    animation: ypp-vintage-vignette 4s ease-in-out infinite;
+}
+
+/* =========================================== */
+/* TEXT READABILITY FIX — Vintage UI Theme     */
+/* All card/metadata text forced to dark brown */
+/* =========================================== */
+
+/* Video title text */
+html[data-ypp-theme="abyss"] #video-title,
+html[data-ypp-theme="abyss"] #video-title.ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] #video-title.ytd-compact-video-renderer,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #video-title,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #video-title,
+html[data-ypp-theme="abyss"] ytd-video-renderer #video-title,
+html[data-ypp-theme="abyss"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] .title.ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] #title-wrapper h3 a,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #metadata-line,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #metadata-line,
+html[data-ypp-theme="abyss"] ytd-video-renderer #metadata-line,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #byline-container,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #byline-container,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media .yt-simple-endpoint,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer .yt-simple-endpoint,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media yt-formatted-string,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer yt-formatted-string,
+html[data-ypp-theme="abyss"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-theme="abyss"] #channel-name .yt-simple-endpoint,
+html[data-ypp-theme="abyss"] ytd-channel-name yt-formatted-string,
+html[data-ypp-theme="abyss"] ytd-channel-name a,
+html[data-ypp-theme="abyss"] #metadata-line span,
+html[data-ypp-theme="abyss"] .inline-metadata-item {
+  color: var(--abyss-secondary) !important;
+  text-shadow: none !important;
+}
+
+/* View count, date metadata */
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="abyss"] ytd-video-renderer #metadata-line span {
+  color: #7a5c45 !important;
+}
+
+/* Video card background */
+html[data-ypp-theme="abyss"] ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer,
+html[data-ypp-theme="abyss"] ytd-video-renderer,
+html[data-ypp-theme="abyss"] ytd-playlist-video-renderer,
+html[data-ypp-theme="abyss"] ytd-grid-video-renderer {
+  color: var(--abyss-secondary) !important;
+}
+
+/* Description text */
+html[data-ypp-theme="abyss"] #description-text,
+
+html[data-ypp-theme="abyss"] {
+  /* Global AI-generated missing variable fallbacks */
+  --sf: var(--ypp-bg-surface, #1e1e1e);
+  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
+  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
+  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
+  --blur: var(--ypp-glass-blur, blur(10px));
+
+  --abyss-bg: var(--ypp-bg-base, var(--abyss-bg));
+  --abyss-primary: var(--ypp-accent, var(--abyss-primary));
+  --abyss-secondary: var(--ypp-text-secondary, var(--abyss-secondary));
+  --abyss-border: var(--ypp-glass-border, 1px solid rgba(62,53,47,0.18));
+  --abyss-border-hover: var(--ypp-glass-highlight, 1px solid rgba(62,53,47,0.4));
+
+}
+
+

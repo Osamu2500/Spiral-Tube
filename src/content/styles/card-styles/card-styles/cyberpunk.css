@@ -1,0 +1,104 @@
+/* Cyberpunk Cards */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] :is(
+  ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+ ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--cyb-panel) !important;
+    border: none !important;
+    border-left: 3px solid var(--cyb-tertiary) !important;
+    border-bottom: 1px solid var(--cyb-secondary) !important;
+    padding: 12px !important;
+    border-radius: 0 40px 0 40px !important;
+    
+    box-shadow: 4px 4px 0px rgba(0, 240, 255, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] :is(
+  ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+ ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    background: var(--ypp-bg-surface, #111) !important;
+    border-left: 3px solid var(--cyb-secondary) !important;
+    border-bottom: 1px solid var(--cyb-primary) !important;
+    
+    transform: translate(-3px, -3px) !important;
+    box-shadow: 7px 7px 0px rgba(255, 0, 60, 0.4) !important;
+}
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] #video-title,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: var(--ypp-text-primary, #fff) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] .ytd-channel-name,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] #metadata,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] #metadata-line span {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] yt-icon.ytd-badge-supported-renderer {
+    color: rgba(255,255,255,0.7) !important;
+    fill: rgba(255,255,255,0.7) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - cyberpunk */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] #video-title,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] .yt-core-attributed-string,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] #metadata-line span,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] .ytd-channel-name,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] ytd-video-meta-block span { 
+  color: #00ffff !important; 
+  text-shadow: none !important;
+}
+
+/* GLOBAL REDESIGN V3 INJECT - cyberpunk */
+/* GPU Acceleration & Base Transitions for Smooth Morphing */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
+  will-change: transform, clip-path, background-color, border-radius;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Hover Interaction: 3D Tilt & Glows */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
+  box-shadow: 0 0 25px var(--ypp-accent, #0ff), 0 0 45px var(--ypp-accent, #0ff) !important;
+  z-index: 10;
+}
+
+/* Thematic Typography */
+
+/* Thematic Thumbnail Filters */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  filter: brightness(1.1) saturate(1.4) !important;
+  transition: filter 0.4s ease !important;
+}
+
+/* Clear filters on thumbnail hover */
+
+/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
+/* V4 Glassmorphic Container */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
+  background: rgba(243, 230, 0, 0.1) !important;
+  border-radius: 0 40px 0 40px !important;
+  border: 1px solid rgba(0, 255, 255, 0.5) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
+  clip-path: none !important;
+}
+
+/* V4 Glassmorphic Hover State */
+html[data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"][data-ypp-card-style="cyberpunk"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
+  background: rgba(243, 230, 0, 0.1) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  backdrop-filter: blur(15px) !important;
+  }
+
+/* V4 Border Radius on Thumbnails */

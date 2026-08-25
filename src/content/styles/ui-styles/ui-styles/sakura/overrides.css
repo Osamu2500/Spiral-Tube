@@ -1,0 +1,1268 @@
+
+
+
+
+@keyframes youtubeRedPulse {
+  0% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+}
+
+50% {
+  box-shadow:
+      inset 0 0 25px #f06,
+      inset 0 0 50px #f06,
+      0 0 15px #f06,
+      0 0 30px #f06;
+}
+
+100% {
+  box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+}
+}
+
+@keyframes sepia-bloom {
+  0% {
+    filter: sepia(0) contrast(1);
+}
+
+100% {
+  filter: sepia(0.4) contrast(1.1);
+}
+
+}
+
+@keyframes ypp-fade-down {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+html[data-ypp-ui-design="sakura"] {
+/* Unique Shapes and Patterns for sakura */
+
+/* src/content/themes/ui-styles/vintage/base/animations.css */
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i]:hover {
+  transform: scale(1.1);
+  animation: youtubeRedPulse 5s ease-in-out infinite;
+}
+
+
+html[data-ypp-ui-design="sakura"] body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+  /* Removed broken SVG background */
+}
+
+html[data-ypp-ui-design="sakura"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important;
+  box-shadow:
+    inset 0 0 25px red,
+    inset 0 0 50px red,
+    0 0 15px red,
+    0 0 30px red !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite !important;
+}
+
+
+
+html[data-ypp-ui-design="sakura"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="sakura"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-grid-video-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  animation: sepia-bloom 0.3s forwards !important;
+}
+
+html[data-ypp-ui-design="sakura"] html,
+html[data-ypp-ui-design="sakura"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-slider,
+html[data-ypp-ui-design="sakura"] .ypp-gpb-vol-slider {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-badge,
+html[data-ypp-ui-design="sakura"] .ypp-value-display {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-organizer-modal,
+html[data-ypp-ui-design="sakura"] .ypp-modal-content {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-modal-header {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab {
+  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab:hover {
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-track {
+  border-radius: 20px;
+}
+
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-nav-btn.active {
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-filter-dropdown {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-filter-dropdown:hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-video-controls,
+html[data-ypp-ui-design="sakura"] .ypp-shadow-panel {
+  box-shadow: var(--shadow-base) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-col-switcher {
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-tool:hover {
+  transform: scale(1.02) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.02);
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+
+html[data-ypp-ui-design="sakura"] .ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+@media (width: 1920px) {
+  html[data-ypp-ui-design="sakura"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
+}
+
+}
+/* @media (width: 1280px) { */
+  html[data-ypp-ui-design="sakura"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] html, html[data-ypp-ui-design="sakura"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-slider,
+html[data-ypp-ui-design="sakura"] .ypp-gpb-vol-slider {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-badge,
+html[data-ypp-ui-design="sakura"] .ypp-value-display {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* --- Subscriptions Sidebar / Modals --- */
+html[data-ypp-ui-design="sakura"] .ypp-organizer-modal,
+html[data-ypp-ui-design="sakura"] .ypp-modal-content {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-modal-header {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] #wrapper.ytd-channel-avatar-editor {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab {
+  transition:
+    transform var(--bounce),
+    background var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Titles and Text */
+html[data-ypp-ui-design="sakura"] #video-title {
+  text-transform: uppercase !important;
+}
+
+/* Progress Bar */
+html[data-ypp-ui-design="sakura"] .ytp-play-progress {
+  border-radius: 0px;
+}
+
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-track {
+  border-radius: 20px;
+}
+
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* Added for HeaderNav active state */
+html[data-ypp-ui-design="sakura"] .ypp-nav-btn.active {
+  box-shadow: var(--shadow-active) !important;
+}
+
+/* src/content/themes/ui-styles/vintage/components/badges.css */
+/* Chips and Filters */
+html[data-ypp-ui-design="sakura"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 2px 2px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-design="sakura"] .badge-style-type-live-now,
+html[data-ypp-ui-design="sakura"] .badge-style-type-premiere {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  text-transform: uppercase !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i]:hover {
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
+  box-shadow: var(--shadow-active) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: var(--shadow-base) !important;
+  border-radius: 20px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-thumbnail-overlay-toggle-button-renderer {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.06);
+}
+
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.06);
+}
+
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextText {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextText:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.05);
+}
+
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextText:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-btn-primary,
+html[data-ypp-ui-design="sakura"] .ypp-play-all-btn,
+html[data-ypp-ui-design="sakura"] .ypp-health-btn {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-btn-primary:hover,
+html[data-ypp-ui-design="sakura"] .ypp-play-all-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-health-btn:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-btn-primary:active,
+html[data-ypp-ui-design="sakura"] .ypp-play-all-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-health-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-pill-toggle {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-pill-toggle:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ── REPLY button in comments: single border only ── */
+/* The double border comes from the outer renderer AND the button both having borders.
+   Keep only the button's border, strip the wrapper. */
+html[data-ypp-ui-design="sakura"] ytd-comment-action-buttons-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-design="sakura"] #reply-button-end .yt-spec-button-shape-next,
+html[data-ypp-ui-design="sakura"] ytd-comment-replies-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-design="sakura"] ytd-comment-action-buttons-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] ytd-comment-action-buttons-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] #reply-button-end yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] #reply-button-end yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] ytd-comment-replies-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] ytd-comment-replies-renderer yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
+  text-transform: uppercase !important;
+}
+
+/* src/content/themes/ui-styles/vintage/components/cards.css */
+html[data-ypp-ui-design="sakura"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-ui-design="sakura"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-active) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-expandable-metadata-renderer:not([is-expanded]) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-expandable-metadata-renderer:not([is-expanded]):hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-expandable-metadata-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-design="sakura"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-badge-shape--thumbnail-default {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .immersive-header-container.ytd-playlist-header-renderer {
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:not(.dragging) {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:not(.dragging):hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-macro-markers-list-item-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-topbar-logo-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-ui-design="sakura"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-design="sakura"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-settings-options-renderer,
+html[data-ypp-ui-design="sakura"] ytd-account-settings-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .overlay-dir.ytd-reel-video-renderer {
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6) 0%,
+      transparent 40%) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-add-to-playlist-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="sakura"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-video-renderer:hover {
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: var(--ypp-shape-primary, 44% 56% 38% 62% / 50% 50% 50% 50%) !important;
+  transform: translateY(-3px) scale(1.015) !important;
+  animation: sakura-glow-pulse 2s ease-in-out infinite !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 6px 8px 0px rgba(220, 100, 140, 0.22) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-commentbox #creation-box {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #trigger.tp-yt-paper-menu-button {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #trigger.tp-yt-paper-menu-button:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytLockupMetadataViewModelMenuButton button-view-model,
+html[data-ypp-ui-design="sakura"] .ytLockupMetadataViewModelMenuButton button {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: background var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytLockupMetadataViewModelMenuButton button:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+  transform: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="sakura"] ytd-video-preview,
+html[data-ypp-ui-design="sakura"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
+  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
+}
+
+html[data-ypp-ui-design="sakura"] .tp-yt-paper-tooltip[style-target=tooltip] {
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="sakura"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="sakura"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  transform: scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-account-menu,
+html[data-ypp-ui-design="sakura"] #ypp-top-bar {
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] tp-yt-paper-toast {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* Account Menu Inline Drawers & Satellites */
+
+
+html[data-ypp-ui-design="sakura"] .ypp-inline-drawer {
+  animation: ypp-fade-down 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-theme-opt:hover,
+html[data-ypp-ui-design="sakura"] .ypp-lang-opt:hover,
+html[data-ypp-ui-design="sakura"] .ypp-loc-opt:hover {
+  transform: translateY(-1px);
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-quick-sat:hover > div {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 78, 69, 0.4) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-toggle-restricted-btn {
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-toggle-restricted-btn:hover {
+  transform: scale(1.05);
+}
+
+html[data-ypp-ui-design="sakura"] .tp-yt-paper-tooltip[style-target=tooltip] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 4px 4px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-masthead #container {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-design="sakura"] .ypp-nav-btn,
+html[data-ypp-ui-design="sakura"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="sakura"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+
+/* Sakura Search Box */
+html[data-ypp-ui-design="sakura"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-searchbox #container.ytd-searchbox[has-focus] {
+  box-shadow: inset 3px 3px 6px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-ui-design="sakura"] button#search-icon-legacy.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 2px 2px #0000001a !important;
+}
+
+/* Sakura Search Dropdown — force vintage beige for entire Google autocomplete panel */
+html[data-ypp-ui-design="sakura"] .sbdd_b,
+html[data-ypp-ui-design="sakura"] .sbsb_a,
+html[data-ypp-ui-design="sakura"] .sbdd_a,
+html[data-ypp-ui-design="sakura"] .gsib_a,
+html[data-ypp-ui-design="sakura"] .gstl_50,
+html[data-ypp-ui-design="sakura"] .gsfs,
+html[data-ypp-ui-design="sakura"] .gsq_a,
+html[data-ypp-ui-design="sakura"] ul.sbsb_a,
+html[data-ypp-ui-design="sakura"] form[action*="search"] + div,
+html[data-ypp-ui-design="sakura"] ytd-searchbox ~ * {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 4px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Popup menus / context menus — dashed border consistent with vintage */
+html[data-ypp-ui-design="sakura"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-listbox,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="sakura"] #contentWrapper.tp-yt-iron-dropdown > * {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .anchored-panel.ytd-shorts {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #wrapper.ytd-channel-avatar-editor {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-video-renderer,
+html[data-ypp-ui-design="sakura"] ytd-channel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-playlist-renderer,
+html[data-ypp-ui-design="sakura"] ytd-radio-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+/* Channel Banner Sepia */
+
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="sakura"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button),
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model button,
+html[data-ypp-ui-design="sakura"] ytd-comment-renderer button {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: background 0.15s ease, box-shadow 0.15s ease !important;
+  transform: none !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model button:hover,
+html[data-ypp-ui-design="sakura"] ytd-comment-renderer button:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  transform: none !important;
+}
+
+/* src/content/themes/ui-styles/vintage/pages/comments.css */
+html[data-ypp-ui-design="sakura"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #guide-wrapper.ytd-app {
+  border-radius: var(--ypp-shape-primary, calc(20px * 1.15) / 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] yt-icon-button#guide-button {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] yt-icon-button#guide-button:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+
+html[data-ypp-ui-design="sakura"] yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .yt-chip-shape,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+
+html[data-ypp-ui-design="sakura"] #description.ytd-watch-metadata,
+html[data-ypp-ui-design="sakura"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-design="sakura"] ytd-browse[page-subtype=home] #chips {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-active) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  box-shadow: none !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce),
+    border-radius var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-mini-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytChipShapeChip {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-settings-sidebar-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-sidebar {
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] yt-live-chat-app,
+html[data-ypp-ui-design="sakura"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="sakura"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="sakura"] yt-live-chat-membership-item-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform 0.2s, background 0.2s !important;
+}
+
+html[data-ypp-ui-design="sakura"] #message-input.yt-live-chat-text-input-field-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* Sakura Superchat & Members */
+html[data-ypp-ui-design="sakura"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="sakura"] yt-live-chat-membership-item-renderer,
+html[data-ypp-ui-design="sakura"] yt-live-chat-paid-sticker-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.02);
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+
+/* Scrubber Button (Diamond Shape) */
+html[data-ypp-ui-design="sakura"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transform: rotate(45deg) scale(0.8) !important;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+  transition: transform 0.1s ease !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytp-scrubber-button:hover {
+  transform: rotate(45deg) scale(1) !important;
+}
+
+/* Player Typography */
+html[data-ypp-ui-design="sakura"] .ytp-time-display,
+html[data-ypp-ui-design="sakura"] .ytp-chapter-title-content {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Player Tooltips (Hovering over progress bar) */
+html[data-ypp-ui-design="sakura"] .ytp-tooltip-text {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  text-shadow: none !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2) !important;
+}
+
+/* Player Menus */
+
+/* Base video radius override */
+html[data-ypp-ui-design="sakura"] video.video-stream.html5-main-video,
+html[data-ypp-ui-design="sakura"] .html5-video-player {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* src/content/themes/ui-styles/vintage/pages/playlists.css */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PLAYLIST FEED PAGE (/feed/playlists) + WATCH HISTORY (/feed/history)
+   TITLE BAR — single border on outermost wrapper only
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Single border ONLY on the outer page header wrapper */
+html[data-ypp-ui-design="sakura"] ytd-tabbed-page-header {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 4px 4px rgba(0,0,0,0.08) !important;
+}
+
+/* Strip border from ALL inner elements of the header — prevents layering */
+html[data-ypp-ui-design="sakura"] ytd-tabbed-page-header *,
+html[data-ypp-ui-design="sakura"] ytd-tabbed-page-header ytd-page-header-renderer,
+html[data-ypp-ui-design="sakura"] ytd-tabbed-page-header ytd-page-header-view-model,
+html[data-ypp-ui-design="sakura"] ytd-tabbed-page-header yt-page-header-renderer,
+html[data-ypp-ui-design="sakura"] ytd-page-header-renderer,
+html[data-ypp-ui-design="sakura"] ytd-page-header-view-model,
+html[data-ypp-ui-design="sakura"] yt-page-header-renderer {
+  box-shadow: none !important;
+}
+
+/* Buttons inside the title bar — re-add border here (not on the wrapper) */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INDIVIDUAL PLAYLIST PAGE — Left sidebar panel
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Playlist Video Items in the grid */
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:hover {
+  transform: translate(-2px,-2px) !important;
+  box-shadow: 4px 4px rgba(0,0,0,0.2) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GLOBAL POPUP / CONTEXT MENUS / DIALOGS
+   ═══════════════════════════════════════════════════════════════════════ */
+html[data-ypp-ui-design="sakura"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-toast,
+html[data-ypp-ui-design="sakura"] ytd-add-to-playlist-renderer,
+html[data-ypp-ui-design="sakura"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-share-panel-renderer,
+html[data-ypp-ui-design="sakura"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-listbox {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 6px 6px rgba(0,0,0,0.2) !important;
+}
+
+/* Buttons inside popups (share, copy link etc.) */
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBox {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-active) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-design="sakura"] ytd-multi-page-menu-renderer {
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-searchbox #container {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+html[data-ypp-ui-design="sakura"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBox {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.2), 4px 4px 0px rgba(62, 53, 47, 0.2) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBox:focus-within {
+  box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.1), 6px 6px 0px rgba(193, 58, 58, 0.4) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] ytd-search-filter-group-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* Video Player */
+html[data-ypp-ui-design="sakura"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.3) !important;
+}
+
+/* Channel info in shorts */
+html[data-ypp-ui-design="sakura"] .ytd-reel-player-overlay-renderer #channel-name *,
+html[data-ypp-ui-design="sakura"] .ytd-reel-player-overlay-renderer .title * {
+  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000 !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-eq-preset-btn,
+html[data-ypp-ui-design="sakura"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-design="sakura"] .ypp-vcp-compare-toggle {
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-eq-preset-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-cinema-tab-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-vcp-compare-toggle:hover {
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-global-player-bar,
+html[data-ypp-ui-design="sakura"] .ypp-global-bar {
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design="sakura"] #ypp-eq-panel,
+html[data-ypp-ui-design="sakura"] #ypp-cinema-panel {
+  box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-global-player-bar,
+html[data-ypp-ui-design="sakura"] #ypp-global-player-bar {
+  box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-ypp-ui-design="sakura"] .ypp-eq-canvas {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+}

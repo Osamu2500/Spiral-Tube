@@ -1,59 +1,59 @@
-import './hotkeys-manager.js';
+import './navigation/hotkeys-manager.js';
 
-import { ThemeManager } from './theme.js';
+import { ThemeManager } from './ui-tweaks/theme.js';
 window.YPP.FeatureManager.register(ThemeManager);
 
-import './account-menu-data.js';
-import './account-menu-ui.js';
-import { AccountMenu } from './account-menu.js';
+import './account-menu/account-menu-data.js';
+import './account-menu/account-menu-ui.js';
+import { AccountMenu } from './account-menu/account-menu.js';
 window.YPP.FeatureManager.register(AccountMenu);
 
-import { HeaderButton } from './header-button.js';
+import { HeaderButton } from './navigation/header-button.js';
 window.YPP.FeatureManager.register(HeaderButton);
 
-import { CustomCursor } from './custom-cursor.js';
+import { CustomCursor } from './misc/custom-cursor.js';
 window.YPP.FeatureManager.register(CustomCursor);
 
-import './watched-store.js';
+import './data/watched-store.js';
 
-import { MultiSelect } from './multi-select.js';
+import { MultiSelect } from './misc/multi-select.js';
 window.YPP.FeatureManager.register(MultiSelect);
 
-import { CopyLinkButton } from './copy-link.js';
+import { CopyLinkButton } from './video-cards/copy-link.js';
 window.YPP.FeatureManager.register(CopyLinkButton);
 
-import { KeyboardShortcuts } from './keyboard-shortcuts.js';
+import { KeyboardShortcuts } from './navigation/keyboard-shortcuts.js';
 window.YPP.FeatureManager.register(KeyboardShortcuts);
 
-import { CardPipeline } from './card-pipeline.js';
+import { CardPipeline } from './video-cards/card-pipeline.js';
 window.YPP.FeatureManager.register(CardPipeline);
 
-import { ChannelBlacklist } from './channel-blacklist.js';
+import { ChannelBlacklist } from './channel-filters/channel-blacklist.js';
 window.YPP.FeatureManager.register(ChannelBlacklist);
 
-import { ChannelWhitelist } from './channel-whitelist.js';
+import { ChannelWhitelist } from './channel-filters/channel-whitelist.js';
 window.YPP.FeatureManager.register(ChannelWhitelist);
 
-import { HeaderNav } from './header-nav.js';
+import { HeaderNav } from './navigation/header-nav.js';
 window.YPP.FeatureManager.register(HeaderNav);
 
-import { ChannelColumns } from './channel-columns.js';
+import { ChannelColumns } from './video-cards/channel-columns.js';
 window.YPP.FeatureManager.register(ChannelColumns);
 
-import { PremiumLogo } from './premium-logo.js';
+import { PremiumLogo } from './ui-tweaks/premium-logo.js';
 window.YPP.FeatureManager.register(PremiumLogo);
 
-import { ResumeBadges } from './resume-badges.js';
+import { ResumeBadges } from '../../pages/shared-feed/tracking/resume-badges.js';
 window.YPP.FeatureManager.register(ResumeBadges);
 
-import { SaveSupremeUI } from './save-supreme-ui.js';
+import { SaveSupremeUI } from './ui-tweaks/save-supreme-ui.js';
 window.YPP.FeatureManager.register(SaveSupremeUI);
 
-import { CustomizeYouTubeUI } from './customize-youtube-ui.js';
+import { CustomizeYouTubeUI } from './ui-tweaks/customize-youtube-ui.js';
 window.YPP.FeatureManager.register(CustomizeYouTubeUI);
 
-import { CPUTamer } from './cpu-tamer.js';
+import { CPUTamer } from './performance/cpu-tamer.js';
 window.YPP.FeatureManager.register(CPUTamer);
 
-import { ReduceAnimations } from './reduce-animations.js';
+import { ReduceAnimations } from './performance/reduce-animations.js';
 window.YPP.FeatureManager.register(ReduceAnimations);

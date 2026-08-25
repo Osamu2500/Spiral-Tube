@@ -14,19 +14,19 @@ import './watch-manager.js';
 import { SplitScrolling } from './player/enhancements/split-scrolling.js';
 window.YPP.FeatureManager.register(SplitScrolling);
 
-import { WatchHistoryTracker } from './features/watch-history.js';
+import { WatchHistoryTracker } from './features/history/watch-history.js';
 window.YPP.FeatureManager.register(WatchHistoryTracker);
 
-import { SmartHistory } from './features/smart-history.js';
+import { SmartHistory } from './features/history/smart-history.js';
 window.YPP.FeatureManager.register(SmartHistory);
 
-import { WatchTimeAlert } from './features/watch-time-alert.js';
+import { WatchTimeAlert } from './features/time-management/watch-time-alert.js';
 window.YPP.FeatureManager.register(WatchTimeAlert);
 
-import { WatchTimeLimit } from './features/watch-time-limit.js';
+import { WatchTimeLimit } from './features/time-management/watch-time-limit.js';
 window.YPP.FeatureManager.register(WatchTimeLimit);
 
-import { ContinueWatching } from './features/continue-watching.js';
+import { ContinueWatching } from './features/history/continue-watching.js';
 window.YPP.FeatureManager.register(ContinueWatching);
 
 import { ZenMode } from './layout/zen-mode.js';
@@ -38,13 +38,13 @@ window.YPP.FeatureManager.register(FocusMode);
 import { StudyMode } from './layout/study/study-mode.js';
 window.YPP.FeatureManager.register(StudyMode);
 
-import { CommentFilter } from './features/comment-filter.js';
+import { CommentFilter } from './comments/comment-filter.js';
 window.YPP.FeatureManager.register(CommentFilter);
 
 import { WatchRedesign } from './layout/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
 
-import { InlineChannelButtons } from './features/inline-channel-buttons.js';
+import { InlineChannelButtons } from './features/ui-elements/inline-channel-buttons.js';
 window.YPP.FeatureManager.register(InlineChannelButtons);
 
 import { SeamlessMode } from './layout/seamless/seamless-mode.js';
@@ -70,7 +70,7 @@ import './player/filter-presets.js';
 import { PlayerTools } from './player/controls/player-tools.js';
 window.YPP.FeatureManager.register(PlayerTools);
 
-import { AutoLike } from './player/automation/auto-like.js';
+import { AutoLike } from './player/automation/auto-like/auto-like.js';
 window.YPP.FeatureManager.register(AutoLike);
 
 import { BookmarksManager } from './player/controls/bookmarks.js';
@@ -79,32 +79,32 @@ window.YPP.FeatureManager.register(BookmarksManager);
 import { IntentionalDelay } from './player/enhancements/intentional-delay.js';
 window.YPP.FeatureManager.register(IntentionalDelay);
 
-import { VideoSpeedController } from './player/enhancements/video-speed-controller.js';
+import { VideoSpeedController } from './player/enhancements/video-speed-controller/video-speed-controller.js';
 window.YPP.FeatureManager.register(VideoSpeedController);
 
 import { AudioEQ } from './player/media-effects/audio-eq.js';
 window.YPP.FeatureManager.register(AudioEQ);
 
-import { AutoSubtitles } from './player/automation/auto-subtitles.js';
+import { AutoSubtitles } from './player/automation/auto-subtitles/auto-subtitles.js';
 AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
 
-import { AutoTranscript } from './player/automation/auto-transcript.js';
+import { AutoTranscript } from './player/automation/auto-transcript/auto-transcript.js';
 window.YPP.FeatureManager.register(AutoTranscript);
 
-import { MiniPlayerScroll } from './player/automation/mini-player-scroll.js';
+import { MiniPlayerScroll } from './player/automation/mini-player-scroll/mini-player-scroll.js';
 window.YPP.FeatureManager.register(MiniPlayerScroll);
 
-import { VSCAudioSupport } from './player/enhancements/vsc-audio-support.js';
+import { VSCAudioSupport } from './player/enhancements/video-speed-controller/vsc-audio-support.js';
 window.YPP.FeatureManager.register(VSCAudioSupport);
 
-import { VSCHideByDefault } from './player/enhancements/vsc-hide-by-default.js';
+import { VSCHideByDefault } from './player/enhancements/video-speed-controller/vsc-hide-by-default.js';
 window.YPP.FeatureManager.register(VSCHideByDefault);
 
-import { VSCForceSpeed } from './player/enhancements/vsc-force-speed.js';
+import { VSCForceSpeed } from './player/enhancements/video-speed-controller/vsc-force-speed.js';
 window.YPP.FeatureManager.register(VSCForceSpeed);
 
-import { VSCRememberSpeed } from './player/enhancements/vsc-remember-speed.js';
+import { VSCRememberSpeed } from './player/enhancements/video-speed-controller/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
 
 import './player/media-effects/video-filters/video-filters-presets.js';
@@ -122,13 +122,13 @@ import './player/domain-memory-ui.js';
 import { DomainMemory } from './player/domain-memory.js';
 window.YPP.FeatureManager.register(DomainMemory);
 
-import { AutoQuality } from './player/automation/auto-quality.js';
+import { AutoQuality } from './player/automation/auto-quality/auto-quality.js';
 window.YPP.FeatureManager.register(AutoQuality);
 
 import { TimeDisplay } from './player/enhancements/time-display.js';
 window.YPP.FeatureManager.register(TimeDisplay);
 
-import { AdSkipper } from './player/automation/ad-skipper.js';
+import { AdSkipper } from './player/automation/ad-skipper/ad-skipper.js';
 window.YPP.FeatureManager.register(AdSkipper);
 
 import { AmbientMode } from './player/media-effects/ambient-mode/ambient-mode.js';
@@ -140,16 +140,16 @@ window.YPP.FeatureManager.register(AudioMode);
 import { ClassicProgressBar } from './player/controls/classic-progress-bar.js';
 window.YPP.FeatureManager.register(ClassicProgressBar);
 
-import { VideoResumer } from './player/automation/video-resumer.js';
+import { VideoResumer } from './player/automation/video-resumer/video-resumer.js';
 window.YPP.FeatureManager.register(VideoResumer);
 
-import { AutoPause } from './player/automation/auto-pause.js';
+import { AutoPause } from './player/automation/auto-pause/auto-pause.js';
 window.YPP.FeatureManager.register(AutoPause);
 
-import { AutoCinema } from './player/automation/auto-cinema.js';
+import { AutoCinema } from './player/automation/auto-cinema/auto-cinema.js';
 window.YPP.FeatureManager.register(AutoCinema);
 
-import { AutoPiP } from './player/automation/auto-pip.js';
+import { AutoPiP } from './player/automation/auto-pip/auto-pip.js';
 window.YPP.FeatureManager.register(AutoPiP);
 
 import { RealCinemaMode } from './player/enhancements/real-cinema-mode.js';

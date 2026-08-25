@@ -1,0 +1,25 @@
+/* src/content/styles/pages/channels.css */
+
+/* 
+ * CHANNELS PAGE STYLING
+ * Focuses on the channel header, avatar, and banner.
+ * Note: Video renderers, channel lists, and generic cards are styled in components/cards.css.
+ */
+
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+}
+
+ytd-c4-tabbed-header-renderer {
+  background: var(--ypp-surface-bg) !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: var(--ypp-shadow-base) !important;
+  margin-bottom: 20px !important;
+  border: var(--ypp-surface-border) !important;
+  border-top: none !important;
+}
+
+#tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}

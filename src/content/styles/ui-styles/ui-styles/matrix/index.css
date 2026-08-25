@@ -1,0 +1,45 @@
+/* Merged tokens.css */
+
+
+
+
+
+
+@import "./overrides.css";
+/* Token Overrides for matrix */
+:root[data-ypp-ui-design="matrix"],
+html[data-ypp-ui-design="matrix"] {
+  --ypp-bg-surface: #000 !important;
+  --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #002200 !important;
+  --ypp-text-primary: #003300 !important;
+  
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #00220040) !important;
+  --ypp-shadow-base: 0 4px 12px #00220020 !important;
+  --ypp-shadow-hover: 0 8px 24px #00220040 !important;
+  
+  --yt-font-family: var(--ypp-font-primary, "Share Tech Mono","Courier New",monospace) !important;
+
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    #000 !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #00220040) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #00220040) !important;
+  --ypp-card-shadow:                0 4px 12px #00220020 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #00220040 !important;
+  --ypp-card--webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+html[data-ypp-ui-design="matrix"] * {
+  font-family: var(--ypp-font-primary, "Share Tech Mono","Courier New",monospace) !important;
+}
+
+
+
+
+

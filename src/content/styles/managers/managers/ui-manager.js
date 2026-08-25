@@ -1,0 +1,122 @@
+/**
+ * UIManager - Global UI Layer Architecture
+ * 
+ * Manages mount points, component injection, and lifecycle healing.
+ * Prevents direct DOM manipulation by features to protect against
+ * YouTube's aggressive Polymer rerenders and A/B tests.
+ */
+window.YPP = window.YPP || {};
+window.YPP.ui = window.YPP.ui || {};
+
+class UIManager {
+    constructor() {
+        this.components = new Map();
+        
+        // Listen to core SPA navigation events to heal UI
+        if (window.YPP.events) {
+            window.YPP.events.on('app:pageChange', () => this.heal());
+            // app:videoChange can sometimes be too early/late for DOM elements,
+            // we rely on the MutationObserver emitting app:domUpdate for specific mounts
+        }
+    }
+
+    /**
+     * Map logical mount points to their current DOM selectors.
+     * Functions ensure we always grab the freshest element in the DOM.
+     */
+    mountPoints = {
+        playerControls: () => window.YPP.DomAPI?.getVideoControls(),
+        customPlayerControls: () => document.querySelector('.ypp-player-controls'),
+        headerRight: () => window.YPP.DomAPI?.getMasthead()?.querySelector('#end'),
+        sidebar: () => window.YPP.DomAPI?.getSecondary(), // We need to add this to DomAPI
+        related: () => window.YPP.DomAPI?.getRelatedItems(),
+        watchPage: () => window.YPP.DomAPI?.getWatchFlexy(),
+        homePageTop: () => document.querySelector('ytd-browse[page-subtype="home"] #contents'),
+        searchPageTop: () => document.querySelector('ytd-search #contents'),
+        watchPageTop: () => document.querySelector(window.YPP.CONSTANTS.SELECTORS.SIDEBAR[1]) || document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]),
+        subsPageTop: () => document.querySelector('ytd-browse[page-subtype="subscriptions"] #contents')
+    };
+
+    /**
+     * Mounts a component to a designated point.
+     * @param {string} pointKey - Key from this.mountPoints
+     * @param {Object} component - The component object { id, el }
+     * @param {string} position - 'append' or 'prepend'
+     */
+    mount(pointKey, component, position = 'append') {
+        const id = component.id;
+
+        // Prevent duplicate registration — if already tracked AND still in DOM, bail out
+        if (this.components.has(id) && document.contains(this.components.get(id).el)) {
+            return;
+        }
+
+        // Register/update so heal() can always find it
+        component.el.dataset.yppId = id;
+        component.mountPoint = pointKey;
+        component.position = position;
+        this.components.set(id, component);
+
+        const target = this.mountPoints[pointKey]?.();
+        if (!target) return; // Target not in DOM yet — heal() will remount when it appears
+
+        // Prevent duplicate DOM insertion
+        if (target.querySelector(`[data-ypp-id="${id}"]`)) {
+            return;
+        }
+
+        if (position === 'prepend') {
+            target.prepend(component.el);
+        } else {
+            target.appendChild(component.el);
+        }
+    }
+
+    /**
+     * Removes a component by ID from the DOM and registry.
+     */
+    remove(id) {
+        const comp = this.components.get(id);
+        if (!comp) return;
+
+        comp.el.remove();
+        this.components.delete(id);
+    }
+
+    /**
+     * Re-mounts any components that were wiped away by YouTube rerenders.
+     * Batches all DOM reads before any DOM writes to prevent Layout Thrashing.
+     */
+    heal() {
+        if (this._healPending) return;
+        this._healPending = true;
+
+        requestAnimationFrame(() => {
+            this._healPending = false;
+            
+            // Phase 1: Reads (Determine which components need remounting)
+            const toRemount = [];
+            this.components.forEach(comp => {
+                if (!document.contains(comp.el)) {
+                    toRemount.push(comp);
+                }
+            });
+
+            // Phase 2: Writes (Remount them)
+            toRemount.forEach(comp => {
+                this.components.delete(comp.id);
+                this.mount(comp.mountPoint, comp, comp.position);
+            });
+        });
+    }
+
+    /**
+     * Completely destroys the UI layer (useful for full extension disable).
+     */
+    destroy() {
+        this.components.forEach(comp => comp.el.remove());
+        this.components.clear();
+    }
+}
+
+window.YPP.ui.manager = new UIManager();

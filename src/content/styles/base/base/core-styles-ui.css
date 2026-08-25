@@ -1,0 +1,179 @@
+/* 
+=======================================================================================
+   Spiral Tube - Base UI Core Overrides
+=======================================================================================
+   Generic, layout-agnostic component and structural overrides that apply globally.
+=======================================================================================
+*/
+
+/* Force YouTube background to respect theme variables - Deep DOM Targeting */
+html[data-ypp-theme],
+html[data-ypp-theme]:root,
+html[data-ypp-theme]:root[dark],
+html[data-ypp-theme]:root[dark="true"],
+html[data-ypp-theme]:root[system-icons],
+html[data-ypp-theme] body,
+html[data-ypp-theme] ytd-app,
+html[data-ypp-theme] #background,
+html[data-ypp-theme] #contentcontainer,
+html[data-ypp-theme] tp-yt-app-header,
+html[data-ypp-theme] #page-manager,
+html[data-ypp-theme] #contents,
+html[data-ypp-theme] #primary,
+html[data-ypp-theme] #secondary,
+html[data-ypp-theme] ytd-watch-flexy,
+html[data-ypp-theme] ytd-two-column-watch-layout {
+  background-color: var(--ypp-bg-global-color, var(--ypp-bg-base, #0f0f0f)) !important;
+  background-image: var(--ypp-bg-global-image, none) !important;
+  background-attachment: var(--ypp-bg-global-attachment, fixed) !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Force YouTube's native opaque layout wrappers to be transparent globally */
+html.yt-spiral-tube-theme body,
+html.yt-spiral-tube-theme:root body,
+html.yt-spiral-tube-theme:root[dark] body {
+  background-color: transparent !important;
+  overflow-x: hidden !important;
+}
+
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #page-manager,
+html.yt-spiral-tube-theme ytd-masthead,
+html.yt-spiral-tube-theme #masthead-container,
+html.yt-spiral-tube-theme tp-yt-app-header,
+html.yt-spiral-tube-theme tp-yt-app-header-layout,
+html.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer,
+html.yt-spiral-tube-theme #chips-wrapper,
+html.yt-spiral-tube-theme ytd-guide-renderer,
+html.yt-spiral-tube-theme ytd-mini-guide-renderer,
+html.yt-spiral-tube-theme tp-yt-app-drawer,
+html.yt-spiral-tube-theme #guide-content {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Force restore video thumbnail images - override all backgrounds */
+html[data-ypp-theme] ytd-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-grid-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-rich-item-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-compact-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-playlist-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail-renderer,
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a,
+html[data-ypp-theme] .ytd-thumbnail a img {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a img,
+html[data-ypp-theme] .ytd-thumbnail-renderer img,
+html[data-ypp-theme] .ytd-thumbnail-renderer a img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Typography */
+html.yt-spiral-tube-theme, 
+html.yt-spiral-tube-theme body, 
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #content-text {
+  font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+}
+
+html.yt-spiral-tube-theme {
+    --yt-spec-font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+}
+
+html.yt-spiral-tube-theme tp-yt-paper-button,
+html.yt-spiral-tube-theme :is(ytd-button-renderer, yt-button-view-model) {
+  font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+}
+
+/* Accent Color Overrides via injected variables */
+html.yt-spiral-tube-theme {
+  --ypp-accent: var(--ypp-accent-primary, #3ea6ff) !important;
+  --ypp-accent-hover: var(--ypp-accent-glow, #65b8ff) !important;
+  --yt-spec-static-brand-red: var(--ypp-accent-primary, #f00) !important;
+  --yt-spec-icon-active-other: var(--ypp-accent-primary, #3ea6ff) !important;
+  --yt-spec-brand-icon-active: var(--ypp-accent-primary, #3ea6ff) !important;
+  --paper-toggle-button-checked-bar-color: var(--ypp-accent-primary, #3ea6ff) !important;
+  --paper-toggle-button-checked-button-color: var(--ypp-accent-primary, #3ea6ff) !important;
+}
+
+/* Remove the weird blue color from YouTube Native Progress Bar */
+yt-page-navigation-progress, 
+#progress.yt-page-navigation-progress {
+  display: none !important;
+}
+
+/* Dual Accent Gradient Enhancements */
+body.ypp-dual-accent-enabled .ytp-play-progress,
+body.ypp-dual-accent-enabled .ytp-swatch-background-color,
+body.ypp-dual-accent-enabled tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button,
+body.ypp-dual-accent-enabled #progress.ytd-thumbnail-overlay-resume-playback-renderer {
+    background: var(--ypp-accent-gradient) !important;
+    background-color: transparent !important;
+}
+
+body.ypp-dual-accent-enabled .ytp-scrubber-button {
+    background: var(--ypp-accent-gradient) !important;
+    border-color: transparent !important;
+}
+
+/* ===================================================================================
+   GENERIC UI FIXES (Migrated from tokens.css)
+   =================================================================================== */
+
+/* Ensure consistent border radius on thumbnails (Merged duplicates) */
+html.yt-spiral-tube-theme yt-image, 
+html.yt-spiral-tube-theme .ytd-thumbnail,
+ytd-thumbnail {
+  border-radius: var(--ypp-thumbnail-radius, 12px) !important;
+  overflow: hidden;
+}
+
+/* Fix dropdown z-indexes to ensure they stay above custom UI */
+ytd-popup-container {
+    z-index: 2147483647 !important;
+}
+
+/* Fix scrolling on some native popups */
+.tp-yt-iron-dropdown {
+    max-height: 90vh !important;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better Scrollbar for YouTube Default */
+html[data-ypp-theme="default"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+html[data-ypp-theme="default"] ::-webkit-scrollbar-track {
+    background: transparent;
+}
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb {
+    background: var(--ypp-text-secondary, #aaa);
+    border-radius: 4px;
+}
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--ypp-text-primary, #fff);
+}
+
+/* Animated Default Pulse Effect - Kept clean for native feel */
+html[data-ypp-theme="default"].ypp-theme-effects::before,
+html[data-ypp-theme="default"].ypp-theme-effects::after {
+    display: none; 
+}
