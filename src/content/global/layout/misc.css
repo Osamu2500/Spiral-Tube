@@ -2239,3 +2239,7 @@ ytd-watch-metadata #actions, ytd-watch-metadata #actions-inner, ytd-watch-metada
 
 ytd-watch-flexy > .box { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; backdrop-filter: none !important; }
 
+
+/* Ultra-high specificity to defeat YouTube's !important if any */
+html body ytd-app ytd-watch-flexy ytd-watch-metadata, html body ytd-app ytd-watch-flexy ytd-watch-metadata[is-watch-flexy], html body ytd-app ytd-watch-flexy .box ytd-watch-metadata { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; margin: 0 !important; }
+
