@@ -485,7 +485,7 @@ ytd-rich-shelf-renderer ytd-rich-item-renderer {
   width: calc(100% / var(--ypp-active-columns, 5)) !important;
   min-width: 0 !important;
   max-width: calc(100% / var(--ypp-active-columns, 5)) !important;
-  flex: 1 1 auto !important;
+  flex: 0 0 calc(100% / var(--ypp-active-columns, 5)) !important;
 }
 
 
@@ -494,6 +494,6 @@ ytd-rich-shelf-renderer ytd-reel-item-renderer {
   width: calc(100% / var(--ypp-active-columns, 5)) !important;
   min-width: 0 !important;
   max-width: calc(100% / var(--ypp-active-columns, 5)) !important;
-  flex: 1 1 auto !important;
+  flex: 0 0 calc(100% / var(--ypp-active-columns, 5)) !important;
 }
 
