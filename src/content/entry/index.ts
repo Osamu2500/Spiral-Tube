@@ -8,7 +8,7 @@ import '../core/utils/youtube-parsers.js';
 
 import '../core/events/event-bus.js';
 import '../core/dom/dom-api.js';
-import '../core/dom/dom-observer.js';
+import '../core/dom/dom-observer.ts';
 import '../core/system/storage-manager.js';
 import '../core/events/event-delegator.js';
 import '../core/system/feature-manager.ts';

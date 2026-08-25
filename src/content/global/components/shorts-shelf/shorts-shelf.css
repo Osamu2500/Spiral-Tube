@@ -16,7 +16,7 @@
 }
 
 /* Container Spacing & Gap */
-#page-manager ytd-rich-shelf-renderer #contents {
+.ypp-grid-container ytd-rich-shelf-renderer #contents {
   display: flex !important;
   gap: 16px !important;
   padding-bottom: 8px !important; /* For hover shadow clearance */
@@ -36,10 +36,10 @@
  * Now that the grid-layout.css conflict is removed, this will correctly
  * calculate the exact width needed to fit all shorts without clipping.
  */
-#page-manager ytd-rich-section-renderer ytd-rich-item-renderer,
-#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer,
-#page-manager ytd-rich-section-renderer ytd-reel-item-renderer,
-#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer {
+.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer,
+.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer {
   width: calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
   min-width: 0 !important;
   max-width: none !important;
@@ -48,10 +48,10 @@
 }
 
 /* Fix Aspect Ratio and Layout of the Shorts Thumbnail */
-#page-manager ytd-rich-section-renderer ytd-rich-item-renderer ytd-thumbnail,
-#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer ytd-thumbnail,
-#page-manager ytd-rich-section-renderer ytd-reel-item-renderer ytd-thumbnail,
-#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
+.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer ytd-thumbnail,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer ytd-thumbnail,
+.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer ytd-thumbnail,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
   aspect-ratio: 9 / 16 !important;
   height: auto !important;
   border-radius: var(--ypp-radius-md, 12px) !important;
@@ -59,17 +59,17 @@
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
-#page-manager ytd-rich-section-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
-#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
-#page-manager ytd-rich-section-renderer ytd-reel-item-renderer:hover ytd-thumbnail,
-#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer:hover ytd-thumbnail {
+.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
+.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer:hover ytd-thumbnail,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer:hover ytd-thumbnail {
   transform: translateY(-4px) !important;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Ensure the image scales properly within the 9:16 aspect ratio */
-#page-manager ytd-rich-section-renderer ytd-thumbnail img,
-#page-manager ytd-rich-shelf-renderer ytd-thumbnail img {
+.ypp-grid-container ytd-rich-section-renderer ytd-thumbnail img,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-thumbnail img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -77,10 +77,10 @@
 }
 
 /* Title Area Styling */
-#page-manager ytd-rich-section-renderer ytd-rich-item-renderer #video-title,
-#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer #video-title,
-#page-manager ytd-rich-section-renderer ytd-reel-item-renderer #video-title,
-#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #video-title {
+.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer #video-title,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer #video-title,
+.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer #video-title,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer #video-title {
   font-size: 1.4rem !important;
   line-height: 2rem !important;
   font-weight: 600 !important;
@@ -94,19 +94,19 @@
 }
 
 /* Metadata Styling (Views & Time) */
-#page-manager ytd-rich-section-renderer ytd-rich-item-renderer #metadata-line,
-#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer #metadata-line,
-#page-manager ytd-rich-section-renderer ytd-reel-item-renderer #metadata-line,
-#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #metadata-line {
+.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer #metadata-line,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer #metadata-line,
+.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer #metadata-line,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer #metadata-line {
   font-size: 1.2rem !important;
   color: var(--yt-spec-text-secondary) !important;
   margin-top: 4px !important;
 }
 
 /* Hide Unnecessary Elements from Shorts */
-#page-manager ytd-rich-section-renderer ytd-rich-item-renderer #avatar-link,
-#page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer #avatar-link,
-#page-manager ytd-rich-section-renderer ytd-reel-item-renderer #avatar-link,
-#page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer #avatar-link {
+.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer #avatar-link,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer #avatar-link,
+.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer #avatar-link,
+.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer #avatar-link {
   display: none !important;
 }

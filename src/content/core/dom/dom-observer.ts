@@ -22,7 +22,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
         // --- Coalescing state ---
         /** @type {Element[]} Accumulated added element nodes not yet processed */
         this._pendingNodes = [];
-        this._maxPendingNodes = 100;
+        this._maxPendingNodes = 2500; // Increased to prevent synchronous locking during massive DOM injections
         /** @type {boolean} Whether a rAF flush is already scheduled */
         this._rafPending = false;
         /** @type {boolean} Whether dom:mutated has any subscribers (lazy-checked) */
