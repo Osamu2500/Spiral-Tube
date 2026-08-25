@@ -8,16 +8,11 @@
 :is(
   ytd-watch-metadata,
   ytd-comment-thread-renderer,
-  ytd-comment-view-model,
   ytd-live-chat-renderer,
   ytd-playlist-panel-renderer,
   #channel-header,
   ytd-c4-tabbed-header-renderer,
-  ytd-search-filter-renderer,
-  ytd-macro-markers-list-item-renderer,
-  ytd-account-item-renderer,
-  ytd-guide-entry-renderer,
-  ytd-mini-guide-entry-renderer
+  ytd-search-filter-renderer
 ) {
   background: var(--ypp-card-bg, transparent) !important;
   border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
@@ -33,16 +28,11 @@
 :is(
   ytd-watch-metadata,
   ytd-comment-thread-renderer,
-  ytd-comment-view-model,
   ytd-live-chat-renderer,
   ytd-playlist-panel-renderer,
   #channel-header,
   ytd-c4-tabbed-header-renderer,
-  ytd-search-filter-renderer,
-  ytd-macro-markers-list-item-renderer,
-  ytd-account-item-renderer,
-  ytd-guide-entry-renderer,
-  ytd-mini-guide-entry-renderer
+  ytd-search-filter-renderer
 ):hover {
   background: var(--ypp-card-bg-hover, var(--ypp-card-bg, transparent)) !important;
   border: var(--ypp-card-border-hover, var(--ypp-card-border, 1px solid transparent)) !important;

@@ -28,7 +28,7 @@
    GLOBAL GLASSMORPHISM APPLICATION
    Applies the blur effect to all major overlays, menus, and panels
    ========================================= */
-html:not([data-ypp-ui-design]) body :is(
+html.yt-spiral-tube-theme body :is(
   ytd-menu-popup-renderer,
   tp-yt-iron-dropdown,
   ytd-engagement-panel-section-list-renderer,
@@ -42,8 +42,11 @@ html:not([data-ypp-ui-design]) body :is(
   #guide-wrapper,
   .ypp-toast
 ) {
+  background: var(--ypp-glass-bg) !important;
   backdrop-filter: var(--ypp-glass-blur) !important;
   -webkit-backdrop-filter: var(--ypp-glass-blur) !important;
+  border: var(--ypp-glass-border) !important;
+  border-radius: var(--ypp-squircle-md) !important;
 }
 
 
