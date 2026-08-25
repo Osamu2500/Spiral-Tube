@@ -5,102 +5,102 @@
  */
 
 /* --- watch-declutter.css --- */
-body.ypp-hide-video-title ytd-watch-metadata #title,
-body.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
-body.ypp-hide-video-title ytd-video-primary-info-renderer #title,
-body.ypp-hide-video-title ytd-video-primary-info-renderer h1 { display:none!important; }
-body.ypp-hide-channel-bar ytd-watch-metadata #owner,
-body.ypp-hide-channel-bar ytd-video-secondary-info-renderer #owner,
-body.ypp-hide-channel-bar ytd-watch-metadata ytd-video-owner-renderer,
-body.ypp-hide-channel-bar ytd-video-secondary-info-renderer ytd-video-owner-renderer { display:none!important; }
-body.ypp-hide-video-description ytd-watch-metadata #description,
-body.ypp-hide-video-description ytd-watch-metadata ytd-text-inline-expander,
-body.ypp-hide-video-description ytd-video-secondary-info-renderer #description,
-body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-text-inline-expander,
-body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-expander { display:none!important; }
-body.ypp-hide-action-buttons ytd-watch-metadata #actions,
-body.ypp-hide-action-buttons ytd-watch-metadata #top-level-buttons-computed,
-body.ypp-hide-action-buttons ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper),
-body.ypp-hide-action-buttons ytd-video-primary-info-renderer #actions,
-body.ypp-hide-action-buttons ytd-video-primary-info-renderer #top-level-buttons-computed,
-body.ypp-hide-action-buttons ytd-video-primary-info-renderer ytd-menu-renderer { display:none!important; }
-body.ypp-zen-mode ytd-watch-metadata #title,
-body.ypp-zen-mode ytd-watch-metadata h1.ytd-watch-metadata,
-body.ypp-zen-mode ytd-watch-metadata #owner,
-body.ypp-zen-mode ytd-watch-metadata ytd-video-owner-renderer,
-body.ypp-zen-mode ytd-watch-metadata #actions,
-body.ypp-zen-mode ytd-watch-metadata #top-level-buttons-computed,
-body.ypp-zen-mode ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper),
-body.ypp-zen-mode ytd-watch-metadata #description,
-body.ypp-zen-mode ytd-watch-metadata ytd-text-inline-expander,
-body.ypp-zen-mode #below { display:none!important; }
-body.ypp-hide-video-title ytd-watch-metadata { margin-top: 0 !important; }
-body.ypp-hide-video-description ytd-watch-metadata { padding-bottom: 0 !important; border-bottom: none !important; }
-body.ypp-hide-video-title.ypp-hide-channel-bar.ypp-hide-video-description.ypp-hide-action-buttons ytd-watch-metadata,
-body.ypp-zen-mode ytd-watch-metadata {
+body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata #title,
+body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
+body.ypp-watch-page.ypp-hide-video-title ytd-video-primary-info-renderer #title,
+body.ypp-watch-page.ypp-hide-video-title ytd-video-primary-info-renderer h1 { display:none!important; }
+body.ypp-watch-page.ypp-hide-channel-bar ytd-watch-metadata #owner,
+body.ypp-watch-page.ypp-hide-channel-bar ytd-video-secondary-info-renderer #owner,
+body.ypp-watch-page.ypp-hide-channel-bar ytd-watch-metadata ytd-video-owner-renderer,
+body.ypp-watch-page.ypp-hide-channel-bar ytd-video-secondary-info-renderer ytd-video-owner-renderer { display:none!important; }
+body.ypp-watch-page.ypp-hide-video-description ytd-watch-metadata #description,
+body.ypp-watch-page.ypp-hide-video-description ytd-watch-metadata ytd-text-inline-expander,
+body.ypp-watch-page.ypp-hide-video-description ytd-video-secondary-info-renderer #description,
+body.ypp-watch-page.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-text-inline-expander,
+body.ypp-watch-page.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-expander { display:none!important; }
+body.ypp-watch-page.ypp-hide-action-buttons ytd-watch-metadata #actions,
+body.ypp-watch-page.ypp-hide-action-buttons ytd-watch-metadata #top-level-buttons-computed,
+body.ypp-watch-page.ypp-hide-action-buttons ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper),
+body.ypp-watch-page.ypp-hide-action-buttons ytd-video-primary-info-renderer #actions,
+body.ypp-watch-page.ypp-hide-action-buttons ytd-video-primary-info-renderer #top-level-buttons-computed,
+body.ypp-watch-page.ypp-hide-action-buttons ytd-video-primary-info-renderer ytd-menu-renderer { display:none!important; }
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #title,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata h1.ytd-watch-metadata,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #owner,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata ytd-video-owner-renderer,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #actions,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #top-level-buttons-computed,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper),
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #description,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata ytd-text-inline-expander,
+body.ypp-watch-page.ypp-zen-mode #below { display:none!important; }
+body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata { margin-top: 0 !important; }
+body.ypp-watch-page.ypp-hide-video-description ytd-watch-metadata { padding-bottom: 0 !important; border-bottom: none !important; }
+body.ypp-watch-page.ypp-hide-video-title.ypp-hide-channel-bar.ypp-hide-video-description.ypp-hide-action-buttons ytd-watch-metadata,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata {
     display: none !important;
     margin: 0 !important;
     padding: 0 !important;
     height: 0 !important;
 }
-body.ypp-hide-comments #comments {
+body.ypp-watch-page.ypp-hide-comments #comments {
   display: none !important;
 }
-body.ypp-hide-live-chat ytd-live-chat-frame,
-body.ypp-hide-live-chat #chat {
+body.ypp-watch-page.ypp-hide-live-chat ytd-live-chat-frame,
+body.ypp-watch-page.ypp-hide-live-chat #chat {
   display: none !important;
 }
-body.ypp-hide-related #related,
-body.ypp-hide-related ytd-watch-next-secondary-results-renderer,
-body.ypp-hide-related ytd-watch-grid.ytd-page-manager #bottom-grid {
+body.ypp-watch-page.ypp-hide-related #related,
+body.ypp-watch-page.ypp-hide-related ytd-watch-next-secondary-results-renderer,
+body.ypp-watch-page.ypp-hide-related ytd-watch-grid.ytd-page-manager #bottom-grid {
   display: none !important;
 }
-body.ypp-hide-related ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+body.ypp-watch-page.ypp-hide-related ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
     max-width: 100% !important;
     min-width: 0 !important;
 }
-body.ypp-hide-related.ypp-hide-live-chat ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+body.ypp-watch-page.ypp-hide-related.ypp-hide-live-chat ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
     display: none !important;
 }
-body.ypp-hide-merch #merch-shelf,
+body.ypp-watch-page.ypp-hide-merch #merch-shelf,
 
-body.ypp-hide-merch ytd-merch-shelf-renderer {
+body.ypp-watch-page.ypp-hide-merch ytd-merch-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-fundraiser ytd-donation-shelf-renderer {
+body.ypp-watch-page.ypp-hide-fundraiser ytd-donation-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-endscreens #movie_player .ytp-ce-channel,
-body.ypp-hide-endscreens #movie_player .ytp-ce-video,
-body.ypp-hide-endscreens .ytp-endscreen-content {
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-channel,
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-video,
+body.ypp-watch-page.ypp-hide-endscreens .ytp-endscreen-content {
   display: none !important;
 }
-body.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
-body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
+body.ypp-watch-page.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
+body.ypp-watch-page.ypp-hide-memberships ytd-sponsorships-offer-renderer {
   display: none !important;
 }
-body.ypp-hide-merch ytd-merch-shelf-renderer {
+body.ypp-watch-page.ypp-hide-merch ytd-merch-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-fundraiser ytd-donation-shelf-renderer {
+body.ypp-watch-page.ypp-hide-fundraiser ytd-donation-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-endscreens #movie_player .ytp-ce-channel,
-body.ypp-hide-endscreens #movie_player .ytp-ce-video,
-body.ypp-hide-endscreens .ytp-endscreen-content {
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-channel,
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-video,
+body.ypp-watch-page.ypp-hide-endscreens .ytp-endscreen-content {
   display: none !important;
 }
-body.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
-body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
+body.ypp-watch-page.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
+body.ypp-watch-page.ypp-hide-memberships ytd-sponsorships-offer-renderer {
   display: none !important;
 }
-body.ypp-hide-player-topics ytd-watch-flexy ytd-feed-filter-chip-bar-renderer,
-body.ypp-hide-player-topics ytd-watch-flexy yt-related-chip-cloud-renderer,
-body.ypp-hide-player-topics ytd-watch-flexy yt-chip-cloud-renderer,
-body.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy ytd-feed-filter-chip-bar-renderer,
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy yt-related-chip-cloud-renderer,
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy yt-chip-cloud-renderer,
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
     display: none !important;
 }
-body.ypp-zen-mode #secondary {
+body.ypp-watch-page.ypp-zen-mode #secondary {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -109,7 +109,7 @@ body.ypp-zen-mode #secondary {
   flex: 0 !important;
   min-width: 0 !important;
 }
-body.ypp-zen-mode ytd-watch-metadata #title h1 {
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #title h1 {
   font-size: 2.6rem;
   background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
   -webkit-background-clip: text;
@@ -118,190 +118,190 @@ body.ypp-zen-mode ytd-watch-metadata #title h1 {
   filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
   text-align: left;
 }
-body.ypp-zen-mode ytd-watch-metadata #top-row {
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata #top-row {
   justify-content: space-between;
 }
-body.ypp-zen-mode #columns {
+body.ypp-watch-page.ypp-zen-mode #columns {
   max-width: 1400px;
 }
-body.ypp-hide-thanks-donate button[aria-label="Thanks"],
-body.ypp-hide-thanks-donate #sponsor-button,
-body.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
-body.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
-body.ypp-hide-thanks-donate a[title="Patreon"] {
+body.ypp-watch-page.ypp-hide-thanks-donate button[aria-label="Thanks"],
+body.ypp-watch-page.ypp-hide-thanks-donate #sponsor-button,
+body.ypp-watch-page.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
+body.ypp-watch-page.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
+body.ypp-watch-page.ypp-hide-thanks-donate a[title="Patreon"] {
   display: none !important;
 }
-body.ypp-hide-player-branding .iv-branding,
-body.ypp-hide-player-branding .annotation-shape {
+body.ypp-watch-page.ypp-hide-player-branding .iv-branding,
+body.ypp-watch-page.ypp-hide-player-branding .annotation-shape {
   display: none !important;
 }
-body.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
-body.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
-body.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
-body.ypp-hide-paid-promotion .ytp-paid-content-overlay,
-body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
+body.ypp-watch-page.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytp-paid-content-overlay,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
   display: none !important;
 }
-body.ypp-hide-ai-logo ytd-thumbnail-overlay-altered-content-renderer,
-body.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='altered'],
-body.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='synthetic'],
-body.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='ai'] {
+body.ypp-watch-page.ypp-hide-ai-logo ytd-thumbnail-overlay-altered-content-renderer,
+body.ypp-watch-page.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='altered'],
+body.ypp-watch-page.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='synthetic'],
+body.ypp-watch-page.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='ai'] {
   display: none !important;
 }
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label*='Altered' i]),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label*='Synthetic' i]),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label='AI']),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([title*='AI' i]),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([title*='Altered' i]),
-body.ypp-hide-ai-logo [badge-style*='altered' i],
-body.ypp-hide-ai-logo [badge-style*='synthetic' i],
-body.ypp-hide-ai-logo [class*='altered-content' i],
-body.ypp-hide-ai-logo ytd-badge-supported-renderer:has([aria-label='AI' i]),
-body.ypp-hide-ai-logo ytd-badge-supported-renderer:has([aria-label*='Altered' i]) {
+body.ypp-watch-page.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label*='Altered' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label*='Synthetic' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label='AI']),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([title*='AI' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([title*='Altered' i]),
+body.ypp-watch-page.ypp-hide-ai-logo [badge-style*='altered' i],
+body.ypp-watch-page.ypp-hide-ai-logo [badge-style*='synthetic' i],
+body.ypp-watch-page.ypp-hide-ai-logo [class*='altered-content' i],
+body.ypp-watch-page.ypp-hide-ai-logo ytd-badge-supported-renderer:has([aria-label='AI' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-badge-supported-renderer:has([aria-label*='Altered' i]) {
   display: none !important;
 }
-body.ypp-hide-ai-logo [aria-label*='Content was made with AI' i],
-body.ypp-hide-ai-logo [aria-label*='Altered or synthetic content' i],
-body.ypp-hide-ai-logo [aria-label*='Altered content' i],
-body.ypp-hide-ai-logo *:has(> [aria-label*='Content was made with AI' i]),
-body.ypp-hide-ai-logo *:has(> [aria-label*='Altered or synthetic' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata [class*='altered-content' i],
-body.ypp-hide-ai-logo ytd-watch-metadata [class*='badge-style-type-altered' i],
-body.ypp-hide-ai-logo ytd-watch-metadata [badge-style*='altered' i],
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-metadata-badge-renderer:has([aria-label='AI' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-badge-supported-renderer:has([aria-label='AI' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-metadata-badge-renderer:has([title='AI' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-badge-supported-renderer:has([title='AI' i]) {
+body.ypp-watch-page.ypp-hide-ai-logo [aria-label*='Content was made with AI' i],
+body.ypp-watch-page.ypp-hide-ai-logo [aria-label*='Altered or synthetic content' i],
+body.ypp-watch-page.ypp-hide-ai-logo [aria-label*='Altered content' i],
+body.ypp-watch-page.ypp-hide-ai-logo *:has(> [aria-label*='Content was made with AI' i]),
+body.ypp-watch-page.ypp-hide-ai-logo *:has(> [aria-label*='Altered or synthetic' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata [class*='altered-content' i],
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata [class*='badge-style-type-altered' i],
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata [badge-style*='altered' i],
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata ytd-metadata-badge-renderer:has([aria-label='AI' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata ytd-badge-supported-renderer:has([aria-label='AI' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata ytd-metadata-badge-renderer:has([title='AI' i]),
+body.ypp-watch-page.ypp-hide-ai-logo ytd-watch-metadata ytd-badge-supported-renderer:has([title='AI' i]) {
   display: none !important;
 }
-body.ypp-zen-mode #masthead-container,
-body.ypp-zen-mode ytd-mini-guide-renderer,
-body.ypp-zen-mode ytd-guide-renderer,
-body.ypp-zen-mode #related,
-body.ypp-zen-mode #comments,
-body.ypp-zen-mode #merch-shelf {
+body.ypp-watch-page.ypp-zen-mode #masthead-container,
+body.ypp-watch-page.ypp-zen-mode ytd-mini-guide-renderer,
+body.ypp-watch-page.ypp-zen-mode ytd-guide-renderer,
+body.ypp-watch-page.ypp-zen-mode #related,
+body.ypp-watch-page.ypp-zen-mode #comments,
+body.ypp-watch-page.ypp-zen-mode #merch-shelf {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
 }
-body.ypp-hide-thanks-donate button[aria-label="Thanks"],
-body.ypp-hide-thanks-donate #sponsor-button,
-body.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
-body.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
-body.ypp-hide-thanks-donate a[title="Patreon"] {
+body.ypp-watch-page.ypp-hide-thanks-donate button[aria-label="Thanks"],
+body.ypp-watch-page.ypp-hide-thanks-donate #sponsor-button,
+body.ypp-watch-page.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
+body.ypp-watch-page.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
+body.ypp-watch-page.ypp-hide-thanks-donate a[title="Patreon"] {
   display: none !important;
 }
-body.ypp-hide-player-branding .iv-branding,
-body.ypp-hide-player-branding .annotation-shape {
+body.ypp-watch-page.ypp-hide-player-branding .iv-branding,
+body.ypp-watch-page.ypp-hide-player-branding .annotation-shape {
   display: none !important;
 }
-body.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
-body.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
-body.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
-body.ypp-hide-paid-promotion .ytp-paid-content-overlay,
-body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
+body.ypp-watch-page.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytp-paid-content-overlay,
+body.ypp-watch-page.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
   display: none !important;
 }
-body.ypp-hide-annotations .ytp-ce-element,
-body.ypp-hide-annotations .ytp-ce-shadow {
+body.ypp-watch-page.ypp-hide-annotations .ytp-ce-element,
+body.ypp-watch-page.ypp-hide-annotations .ytp-ce-shadow {
   display: none !important;
 }
-body.ypp-hide-video-cards .ytp-cards-button,
-body.ypp-hide-video-cards .ytp-cards-teaser,
-body.ypp-hide-video-cards .iv-drawer {
+body.ypp-watch-page.ypp-hide-video-cards .ytp-cards-button,
+body.ypp-watch-page.ypp-hide-video-cards .ytp-cards-teaser,
+body.ypp-watch-page.ypp-hide-video-cards .iv-drawer {
   display: none !important;
 }
-body.ypp-hide-endscreens .ytp-ce-element,
-body.ypp-hide-endscreens .ytp-endscreen-content {
+body.ypp-watch-page.ypp-hide-endscreens .ytp-ce-element,
+body.ypp-watch-page.ypp-hide-endscreens .ytp-endscreen-content {
   display: none !important;
 }
-body.ypp-zen-mode:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
+body.ypp-watch-page.ypp-zen-mode:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
   --ytd-watch-flexy-sidebar-width: 0px !important;
 }
-body.ypp-zen-mode .html5-video-player.playing-mode .ytp-chrome-bottom,
-body.ypp-zen-mode .html5-video-player.playing-mode .ytp-chrome-top,
-body.ypp-zen-mode .html5-video-player.playing-mode .ytp-gradient-bottom,
-body.ypp-zen-mode .html5-video-player.playing-mode .ytp-gradient-top {
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.playing-mode .ytp-chrome-bottom,
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.playing-mode .ytp-chrome-top,
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.playing-mode .ytp-gradient-bottom,
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.playing-mode .ytp-gradient-top {
   opacity: 0 !important;
   pointer-events: none !important;
   transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
-body.ypp-zen-mode .html5-video-player.paused-mode .ytp-chrome-bottom,
-body.ypp-zen-mode .html5-video-player.paused-mode .ytp-chrome-top,
-body.ypp-zen-mode .html5-video-player.paused-mode .ytp-gradient-bottom,
-body.ypp-zen-mode .html5-video-player.paused-mode .ytp-gradient-top {
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.paused-mode .ytp-chrome-bottom,
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.paused-mode .ytp-chrome-top,
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.paused-mode .ytp-gradient-bottom,
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.paused-mode .ytp-gradient-top {
   opacity: 1 !important;
   pointer-events: auto !important;
   transition: opacity 0.5s ease !important;
 }
-body.ypp-zen-mode .html5-video-player.paused-mode video {
+body.ypp-watch-page.ypp-zen-mode .html5-video-player.paused-mode video {
   filter: brightness(0.4) saturate(0.6) blur(2px) !important;
   animation: zenBreathing 8s infinite ease-in-out !important;
 }
-body.ypp-hide-video-title ytd-watch-metadata { margin-top: 0 !important; }
-body.ypp-hide-video-description ytd-watch-metadata { padding-bottom: 0 !important; border-bottom: none !important; }
-body.ypp-hide-video-title.ypp-hide-channel-bar.ypp-hide-video-description.ypp-hide-action-buttons ytd-watch-metadata,
-body.ypp-zen-mode ytd-watch-metadata {
+body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata { margin-top: 0 !important; }
+body.ypp-watch-page.ypp-hide-video-description ytd-watch-metadata { padding-bottom: 0 !important; border-bottom: none !important; }
+body.ypp-watch-page.ypp-hide-video-title.ypp-hide-channel-bar.ypp-hide-video-description.ypp-hide-action-buttons ytd-watch-metadata,
+body.ypp-watch-page.ypp-zen-mode ytd-watch-metadata {
     display: none !important;
     margin: 0 !important;
     padding: 0 !important;
     height: 0 !important;
 }
-body.ypp-hide-comments #comments {
+body.ypp-watch-page.ypp-hide-comments #comments {
   display: none !important;
 }
-body.ypp-hide-live-chat ytd-live-chat-frame,
-body.ypp-hide-live-chat #chat {
+body.ypp-watch-page.ypp-hide-live-chat ytd-live-chat-frame,
+body.ypp-watch-page.ypp-hide-live-chat #chat {
   display: none !important;
 }
-body.ypp-hide-related #related,
-body.ypp-hide-related ytd-watch-next-secondary-results-renderer,
-body.ypp-hide-related ytd-watch-grid.ytd-page-manager #bottom-grid {
+body.ypp-watch-page.ypp-hide-related #related,
+body.ypp-watch-page.ypp-hide-related ytd-watch-next-secondary-results-renderer,
+body.ypp-watch-page.ypp-hide-related ytd-watch-grid.ytd-page-manager #bottom-grid {
   display: none !important;
 }
-body.ypp-hide-related ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+body.ypp-watch-page.ypp-hide-related ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
     max-width: 100% !important;
     min-width: 0 !important;
 }
-body.ypp-hide-related.ypp-hide-live-chat ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+body.ypp-watch-page.ypp-hide-related.ypp-hide-live-chat ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
     display: none !important;
 }
-body.ypp-hide-merch #merch-shelf,
+body.ypp-watch-page.ypp-hide-merch #merch-shelf,
 
-body.ypp-hide-merch ytd-merch-shelf-renderer {
+body.ypp-watch-page.ypp-hide-merch ytd-merch-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-fundraiser ytd-donation-shelf-renderer {
+body.ypp-watch-page.ypp-hide-fundraiser ytd-donation-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-endscreens #movie_player .ytp-ce-channel,
-body.ypp-hide-endscreens #movie_player .ytp-ce-video,
-body.ypp-hide-endscreens .ytp-endscreen-content {
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-channel,
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-video,
+body.ypp-watch-page.ypp-hide-endscreens .ytp-endscreen-content {
   display: none !important;
 }
-body.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
-body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
+body.ypp-watch-page.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
+body.ypp-watch-page.ypp-hide-memberships ytd-sponsorships-offer-renderer {
   display: none !important;
 }
-body.ypp-hide-merch ytd-merch-shelf-renderer {
+body.ypp-watch-page.ypp-hide-merch ytd-merch-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-fundraiser ytd-donation-shelf-renderer {
+body.ypp-watch-page.ypp-hide-fundraiser ytd-donation-shelf-renderer {
   display: none !important;
 }
-body.ypp-hide-endscreens #movie_player .ytp-ce-channel,
-body.ypp-hide-endscreens #movie_player .ytp-ce-video,
-body.ypp-hide-endscreens .ytp-endscreen-content {
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-channel,
+body.ypp-watch-page.ypp-hide-endscreens #movie_player .ytp-ce-video,
+body.ypp-watch-page.ypp-hide-endscreens .ytp-endscreen-content {
   display: none !important;
 }
-body.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
-body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
+body.ypp-watch-page.ypp-hide-memberships ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model)#sponsor-button,
+body.ypp-watch-page.ypp-hide-memberships ytd-sponsorships-offer-renderer {
   display: none !important;
 }
-body.ypp-hide-player-topics ytd-watch-flexy ytd-feed-filter-chip-bar-renderer,
-body.ypp-hide-player-topics ytd-watch-flexy yt-related-chip-cloud-renderer,
-body.ypp-hide-player-topics ytd-watch-flexy yt-chip-cloud-renderer,
-body.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy ytd-feed-filter-chip-bar-renderer,
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy yt-related-chip-cloud-renderer,
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy yt-chip-cloud-renderer,
+body.ypp-watch-page.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
     display: none !important;
 }
 
@@ -311,39 +311,39 @@ body.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
 
 /* ==========================================================================
    MOVE SAVE / DOWNLOAD / ASK TO OVERFLOW MENU
-   body.ypp-move-to-overflow — hides these from top-level row and forces
+   body.ypp-watch-page.ypp-move-to-overflow — hides these from top-level row and forces
    them to appear inside the three-dots overflow menu instead.
    ========================================================================== */
 
 /* 1. Hide from top-level row */
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Save" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Save" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Save" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Save" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Download" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Download" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Download" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Download" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Ask" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Ask" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Ask" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Ask" i]),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-download-button-renderer, yt-button-view-model),
-body.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-download-button-view-model {
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Ask" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Ask" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Ask" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Ask" i]),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > :is(ytd-download-button-renderer, yt-button-view-model),
+body.ypp-watch-page.ypp-move-to-overflow ytd-watch-metadata #top-level-buttons-computed > yt-download-button-view-model {
     display: none !important;
 }
 
 /* 2. Force items to appear in the overflow menu */
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Save" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Save" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Download" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Download" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Ask" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Ask" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-download-renderer,
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Save" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Download" i]),
-body.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Ask" i]) {
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Ask" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Ask" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > ytd-menu-service-item-download-renderer,
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Save" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Download" i]),
+body.ypp-watch-page.ypp-move-to-overflow tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Ask" i]) {
     display: flex !important;
 }
 
