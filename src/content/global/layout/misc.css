@@ -2234,11 +2234,27 @@ body.ypp-small-settings-menu .ytp-menuitem-label {
 
 /* User Request: Remove gray containers from Watch Metadata and Actions */
 ytd-watch-metadata { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; backdrop-filter: none !important; }
-/* Unify all action button backgrounds to match the Like button container */
+/* Make sure all container wrappers for owner and actions are fully transparent */
+html body ytd-app ytd-watch-metadata #actions,
+html body ytd-app ytd-watch-metadata #actions-inner,
+html body ytd-app ytd-watch-metadata #owner,
+html body ytd-app ytd-watch-metadata ytd-video-owner-renderer,
+html body ytd-app ytd-watch-metadata #bottom-row {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Unify all action buttons, subscribe button, and bell button to match Like button */
 html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal,
-html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button.ytSpecButtonShapeNext--tonal,
-html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button,
+html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html body #page-manager ytd-watch-metadata #owner yt-button-shape button,
+html body #page-manager ytd-watch-metadata ytd-subscribe-button-renderer button,
+html body #page-manager ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer-next button {
     background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
+    color: var(--yt-spec-text-primary) !important;
 }
 
 
@@ -2260,5 +2276,12 @@ html[data-ypp-ui-design] body #page-manager #columns #primary ytd-watch-metadata
 }
 
 
-html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal:hover, html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button.ytSpecButtonShapeNext--tonal:hover, html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover { background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important; }
+html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal:hover, 
+html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button:hover, 
+html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover,
+html body #page-manager ytd-watch-metadata #owner yt-button-shape button:hover,
+html body #page-manager ytd-watch-metadata ytd-subscribe-button-renderer button:hover,
+html body #page-manager ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer-next button:hover { 
+    background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important; 
+}
 
