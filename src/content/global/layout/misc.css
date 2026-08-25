@@ -2240,6 +2240,17 @@ ytd-watch-metadata #actions, ytd-watch-metadata #actions-inner, ytd-watch-metada
 ytd-watch-flexy > .box { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; backdrop-filter: none !important; }
 
 
-/* Ultra-high specificity to defeat YouTube's !important if any */
-html body ytd-app ytd-watch-flexy ytd-watch-metadata, html body ytd-app ytd-watch-flexy ytd-watch-metadata[is-watch-flexy], html body ytd-app ytd-watch-flexy .box ytd-watch-metadata { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; margin: 0 !important; }
+/* Ultra-high specificity using IDs to defeat YouTube's !important */
+html body #page-manager #columns #primary ytd-watch-metadata, 
+html body #page-manager ytd-watch-flexy #primary ytd-watch-metadata, 
+html body ytd-app #page-manager #columns #primary-inner ytd-watch-metadata,
+html[data-ypp-ui-design] body #page-manager #columns #primary ytd-watch-metadata { 
+    background: transparent !important; 
+    background-color: transparent !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    backdrop-filter: none !important; 
+    padding: 0 !important; 
+    margin: 0 !important; 
+}
 
