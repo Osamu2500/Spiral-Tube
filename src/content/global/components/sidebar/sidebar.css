@@ -17,9 +17,9 @@ body.ypp-tabview-sidebar .ypp-tabview-header {
   align-items: center !important;
   gap: 6px !important;
   padding: 6px !important;
-  background: rgba(15, 15, 22, 0.65) !important;
+  background: var(--ypp-panel-bg, rgba(20, 20, 20, 0.65)) !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: var(--ypp-glass-border, 1px solid rgba(255, 255, 255, 0.08)) !important;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;

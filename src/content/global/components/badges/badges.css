@@ -61,7 +61,7 @@ html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer 
   right: 8px;
   width: 28px;
   height: 28px;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--ypp-glass-bg);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -217,11 +217,11 @@ ytd-thumbnail:hover .ypp-watched-icon {
     outline-offset: 2px;
 }
 .ypp-blacklist-btn.ypp-blacklist-btn--solid {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--ypp-glass-bg);
     color: var(--ypp-text-primary, #fff);
 }
 .ypp-blacklist-btn.ypp-blacklist-btn--solid:hover {
-    background: rgba(0, 0, 0, 0.92);
+    background: var(--ypp-glass-bg);
 }
 .ypp-whitelist-btn.ypp-whitelist-btn-pending {
     background: #1b3a63;

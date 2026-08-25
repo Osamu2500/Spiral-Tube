@@ -11,7 +11,7 @@
   left: 8px !important;
   width: 28px !important;
   height: 28px !important;
-  background: rgba(0, 0, 0, 0.6) !important;
+  background: var(--ypp-glass-bg) !important;
   border: 2px solid rgba(255, 255, 255, 0.6) !important;
   border-radius: 6px !important;
   z-index: 2147483646 !important;
@@ -101,7 +101,8 @@ ytd-reel-item-renderer, yt-lockup-view-model, ytd-lockup-view-model {
   bottom: 96px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  background: rgba(28, 28, 28, 0.98) !important;
+  background: var(--ypp-glass-bg) !important;
+  backdrop-filter: var(--ypp-glass-blur) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 48px !important;
   padding: 10px 20px !important;
@@ -135,7 +136,7 @@ ytd-reel-item-renderer, yt-lockup-view-model, ytd-lockup-view-model {
   background: var(--ypp-accent, #3ea6ff) !important;
   color: #000 !important;
   font-weight: 600 !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
   padding: 2px 10px !important;
   font-size: 14px !important;
 }

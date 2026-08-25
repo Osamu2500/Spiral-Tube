@@ -20,11 +20,11 @@ ytd-masthead,
 ytd-masthead #container,
 #container.ytd-masthead {
   border-radius: var(--ypp-shape-primary, 12px) !important;
-  background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.88)) !important;
-  background-color: var(--ypp-surface-bg, rgba(20, 20, 20, 0.88)) !important;
+  background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.65)) !important;
+  background-color: var(--ypp-surface-bg, rgba(20, 20, 20, 0.65)) !important;
   margin: 0 1px 1px !important;
   box-shadow: var(--ypp-shadow-active, 0 1px 4px rgba(0, 0, 0, 0.6)) !important;
-  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.08)) !important;
 }
 #background.ytd-masthead {
   background: transparent !important;
