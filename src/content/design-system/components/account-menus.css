@@ -123,6 +123,7 @@ ytd-multi-page-menu-renderer .ypp-account-menu {
     position: absolute !important;
     inset: 0 !important;
     background: rgba(0, 0, 0, 0.75) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
     backdrop-filter: blur(4px) !important;
     z-index: 100 !important;
     align-items: center !important;

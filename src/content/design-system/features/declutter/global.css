@@ -60,7 +60,6 @@ html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
-  scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 body.ypp-hide-scrollbar::-webkit-scrollbar,
@@ -406,7 +405,6 @@ html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
-  scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 body.ypp-hide-scrollbar::-webkit-scrollbar,
@@ -514,7 +512,4 @@ body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon-shape[icon="yt-icons:
 body.ypp-hide-shorts ytd-rich-section-renderer:has([aria-label*="Shorts"]),
 body.ypp-hide-shorts ytd-shelf-renderer[is-shorts],
 body.ypp-hide-shorts [is-shorts],
-body.ypp-hide-shorts ytm-reel-shelf-renderer,
-
-{ display: none !important; }
-{ display: none !important; }
+body.ypp-hide-shorts ytm-reel-shelf-renderer { display: none !important; }
