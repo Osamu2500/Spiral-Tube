@@ -331,5 +331,5 @@ window.YPP.core.DOMObserver = class DOMObserver {
         this._hasMutatedListeners = hasListeners;
     }
 };
-
-window.YPP.sharedObserver = new window.YPP.core.DOMObserver();
+// NOTE: window.YPP.sharedObserver is created by main.js in initFeatureManager().
+// Do NOT instantiate here to avoid double-creation and stale references in BaseFeature.

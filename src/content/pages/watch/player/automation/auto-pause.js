@@ -333,3 +333,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     
     // PAUSE-BUG-5: Removed dead _setupMediaSession code
 };
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.AutoPause = AutoPause;

@@ -108,14 +108,18 @@
 
                 // Initialize Page Managers
                 if (window.YPP.managers) {
-                    this.globalLayoutManager = new window.YPP.managers.GlobalLayoutManager(this.Utils, this.settings);
-                    this.globalLayoutManager.activate(window.location.href);
+                    this.globalLayoutManager = window.YPP.managers.GlobalLayoutManager
+                        ? new window.YPP.managers.GlobalLayoutManager(this.Utils, this.settings)
+                        : null;
+                    if (this.globalLayoutManager) {
+                        this.globalLayoutManager.activate(window.location.href);
+                    }
 
-                    this.pageManagers = [
-                        new window.YPP.managers.SubscriptionsPageManager(this.Utils, this.settings),
-                        new window.YPP.managers.SearchPageManager(this.Utils, this.settings),
-                        new window.YPP.managers.WatchPageManager(this.Utils, this.settings)
-                    ];
+                    this.pageManagers = [];
+                    // Only instantiate managers that actually exist after the architecture split
+                    if (window.YPP.managers.WatchPageManager) {
+                        this.pageManagers.push(new window.YPP.managers.WatchPageManager(this.Utils, this.settings));
+                    }
                     
                     if (window.YPP.managers.ThumbnailColorManager) {
                         const initColorManager = () => {

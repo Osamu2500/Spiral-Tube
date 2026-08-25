@@ -87,8 +87,12 @@ export class PlayerBarUI {
         }
     }
 
-    async onUpdate() {
+    async update(settings) {
         if (!this.isActive) return;
+        // Optionally update this.manager.settings if they differ
+        if (settings && this.manager && this.manager.settings !== settings) {
+             this.manager.settings = { ...this.manager.settings, ...settings };
+        }
         this.updateCustomStyles();
         this.injectedButtons = false;
         this.attemptInjection();
@@ -616,7 +620,7 @@ export class PlayerBarUI {
         `;
     }
 
-    cleanup() {
+    disable() {
         this._stopHeartbeat();
         
         if (this._resizeObserver) {

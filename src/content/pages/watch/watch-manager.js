@@ -407,7 +407,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
   // Methods moved to PlayerBarUI
 
   _cleanupPlayer() {
-    if (this.playerBarUI) this.playerBarUI.cleanup();
+    if (this.playerBarUI) this.playerBarUI.disable();
     this._cleanupEvents();
 
     if (window.YPP?.sharedObserver) {

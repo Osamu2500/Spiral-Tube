@@ -242,3 +242,7 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
         return currentQuality;
     }
 };
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.AutoQuality = AutoQuality;

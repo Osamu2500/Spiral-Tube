@@ -25,11 +25,21 @@ window.YPP.features.BaseFeature = class BaseFeature {
         // Next-Gen Architecture
         this.events = window.YPP.events;
         this.domApi = window.YPP.DomAPI;
-        this.observer = window.YPP.sharedObserver;
-        this.delegator = window.YPP.sharedEventDelegator;
+        // Note: this.observer and this.delegator are lazy getters defined below.
         
         this.eventListeners = [];
         this.busListeners = [];
+
+        // Lazy getters: resolve at call-time so construction doesn't race against
+        // main.js creating sharedObserver and sharedEventDelegator.
+        Object.defineProperty(this, 'observer', {
+            get() { return window.YPP.sharedObserver; },
+            configurable: true
+        });
+        Object.defineProperty(this, 'delegator', {
+            get() { return window.YPP.sharedEventDelegator; },
+            configurable: true
+        });
     }
 
     /**

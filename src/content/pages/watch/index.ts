@@ -50,8 +50,11 @@ window.YPP.FeatureManager.register(InlineChannelButtons);
 import { SeamlessMode } from './layout/seamless/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
 
-import './player/player-bar-ui.js';
-import './player/player-controls.js';
+import { PlayerBarUI } from './player/player-bar-ui.js';
+window.YPP.features.PlayerBarUI = PlayerBarUI;
+
+import { PlayerControls } from './player/player-controls.js';
+window.YPP.features.PlayerControls = PlayerControls;
 
 import { SnapshotButton } from './player/controls/snapshot-button.js';
 window.YPP.FeatureManager.register(SnapshotButton);
@@ -59,7 +62,9 @@ window.YPP.FeatureManager.register(SnapshotButton);
 import { LoopButton } from './player/controls/loop-button.js';
 window.YPP.FeatureManager.register(LoopButton);
 
-import './player/player-settings-menu.js';
+import { PlayerSettingsMenu } from './player/player-settings-menu.js';
+window.YPP.features.PlayerSettingsMenu = PlayerSettingsMenu;
+
 import './player/filter-presets.js';
 
 import { PlayerTools } from './player/controls/player-tools.js';

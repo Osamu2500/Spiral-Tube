@@ -151,3 +151,7 @@ export class AudioEQ extends window.YPP.features.BaseFeature {
     }
 };
 
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.AudioEQ = AudioEQ;
+

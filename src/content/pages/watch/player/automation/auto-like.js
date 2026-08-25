@@ -376,3 +376,7 @@ export class AutoLike extends window.YPP.features.BaseFeature {
         this._progressCheckHandler = null;
     }
 }
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.AutoLike = AutoLike;

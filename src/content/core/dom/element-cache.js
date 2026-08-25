@@ -170,7 +170,10 @@ class ElementCache {
     }
 }
 
-// Export for use in features
+// Attach to both root and the YPP core namespace
 if (typeof window !== 'undefined') {
     window.ElementCache = ElementCache;
+    window.YPP = window.YPP || {};
+    window.YPP.core = window.YPP.core || {};
+    window.YPP.core.ElementCache = ElementCache;
 }

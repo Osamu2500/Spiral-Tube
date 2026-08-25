@@ -553,3 +553,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         if (style) style.remove();
     }
 };
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.AutoSubtitles = AutoSubtitles;

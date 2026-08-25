@@ -840,3 +840,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         }
     }
 }
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.DomainMemory = DomainMemory;

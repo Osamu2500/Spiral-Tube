@@ -184,15 +184,11 @@ export class VscUI {
         btn.className = 'ypp-vsc-btn';
         btn.innerHTML = html;
         btn.title = title;
-        this.vsc.addListener(btn, 'pointerdown', (e) => {
+        this.vsc.addListener(btn, 'click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             onClick();
         });
-        btn.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-        };
         btn.onmousedown = (e) => e.stopPropagation();
         return btn;
     }

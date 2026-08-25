@@ -40,25 +40,25 @@ let loadedMessages = {};
 // MASTER DICTIONARY
 // Every key from the UI Blueprint, translated into all 5 languages.
 // ─────────────────────────────────────────────────────────────────────────────
-import en from './locales/en.js';
-import es from './locales/es.js';
-import fr from './locales/fr.js';
-import de from './locales/de.js';
-import ja from './locales/ja.js';
-import it from './locales/it.js';
-import pt from './locales/pt.js';
-import ru from './locales/ru.js';
-import zh from './locales/zh.js';
-import ko from './locales/ko.js';
-import ar from './locales/ar.js';
-import hi from './locales/hi.js';
-import tr from './locales/tr.js';
-import nl from './locales/nl.js';
-import pl from './locales/pl.js';
-import vi from './locales/vi.js';
-import th from './locales/th.js';
-import id from './locales/id.js';
-import sv from './locales/sv.js';
+import en from './en.js';
+import es from './es.js';
+import fr from './fr.js';
+import de from './de.js';
+import ja from './ja.js';
+import it from './it.js';
+import pt from './pt.js';
+import ru from './ru.js';
+import zh from './zh.js';
+import ko from './ko.js';
+import ar from './ar.js';
+import hi from './hi.js';
+import tr from './tr.js';
+import nl from './nl.js';
+import pl from './pl.js';
+import vi from './vi.js';
+import th from './th.js';
+import id from './id.js';
+import sv from './sv.js';
 
 const dictionaries = {
     en, es, fr, de, ja, it, pt, ru, zh, ko, ar, hi, tr, nl, pl, vi, th, id, sv

@@ -1015,3 +1015,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         return btn;
     }
 };
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.VolumeBooster = VolumeBooster;

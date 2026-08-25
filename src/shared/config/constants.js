@@ -391,49 +391,594 @@ window.YPP.CONSTANTS = {
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
 };
 
-const CARD_STYLES = [
-  { id: 'elevated', label: 'Elevated Cards (Shadowed)' },
-  { id: 'glass', label: 'Frosted Glass Cards' },
-  { id: 'neon', label: 'Neon Outline Cards' },
-  { id: 'folder', label: 'Folder Tab Cards' },
-  { id: 'polaroid', label: 'Polaroid Style Cards' },
-  { id: 'cyberpunk', label: 'Cyberpunk Cut Cards' },
-  { id: 'neumorphic', label: 'Neumorphic Cards' },
-  { id: 'holographic', label: 'Holographic Glow Cards' },
-  { id: 'nature', label: 'Nature Style Cards' },
-  { id: 'vintage', label: 'Vintage Style Cards' },
-  { id: 'abyss', label: 'Abyss Style Cards' },
-  { id: 'sakura', label: 'Sakura Style Cards' },
-  { id: 'ocean', label: 'Ocean Style Cards' },
-  { id: 'blue-sky', label: 'Blue Sky Style Cards' },
-  { id: 'retro', label: 'Retro OS Windows' },
-  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' },
-  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' },
-  { id: 'christmas', label: 'Christmas (Festive)' },
-  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
-  { id: 'aurora', label: 'Aurora (Northern Lights)' },
-  { id: 'autumn', label: 'Autumn (Fallen Leaf)' }
+export const CARD_STYLES = [
+  {
+    id: 'abyss',
+    label: 'Abyss'
+  },
+  {
+    id: 'aurora',
+    label: 'Aurora'
+  },
+  {
+    id: 'autumn',
+    label: 'Autumn'
+  },
+  {
+    id: 'bloodmoon',
+    label: 'Bloodmoon'
+  },
+  {
+    id: 'blue-sky',
+    label: 'Blue Sky'
+  },
+  {
+    id: 'brutalism',
+    label: 'Brutalism'
+  },
+  {
+    id: 'cairo-red',
+    label: 'Cairo Red'
+  },
+  {
+    id: 'cherry',
+    label: 'Cherry'
+  },
+  {
+    id: 'christmas',
+    label: 'Christmas'
+  },
+  {
+    id: 'claymorphism',
+    label: 'Claymorphism'
+  },
+  {
+    id: 'coffee',
+    label: 'Coffee'
+  },
+  {
+    id: 'colorize',
+    label: 'Colorize'
+  },
+  {
+    id: 'compact',
+    label: 'Compact'
+  },
+  {
+    id: 'crystal-glass',
+    label: 'Crystal Glass'
+  },
+  {
+    id: 'cyberpunk',
+    label: 'Cyberpunk'
+  },
+  {
+    id: 'deepspace',
+    label: 'Deepspace'
+  },
+  {
+    id: 'default',
+    label: 'Default'
+  },
+  {
+    id: 'discord',
+    label: 'Discord'
+  },
+  {
+    id: 'dracula',
+    label: 'Dracula'
+  },
+  {
+    id: 'elevated',
+    label: 'Elevated'
+  },
+  {
+    id: 'ember',
+    label: 'Ember'
+  },
+  {
+    id: 'flat',
+    label: 'Flat'
+  },
+  {
+    id: 'fluent',
+    label: 'Fluent'
+  },
+  {
+    id: 'folder',
+    label: 'Folder'
+  },
+  {
+    id: 'frosted',
+    label: 'Frosted'
+  },
+  {
+    id: 'frutiger-aero',
+    label: 'Frutiger Aero'
+  },
+  {
+    id: 'galaxy',
+    label: 'Galaxy'
+  },
+  {
+    id: 'glass',
+    label: 'Glass'
+  },
+  {
+    id: 'glassmorphism',
+    label: 'Glassmorphism'
+  },
+  {
+    id: 'gothic',
+    label: 'Gothic'
+  },
+  {
+    id: 'grunge',
+    label: 'Grunge'
+  },
+  {
+    id: 'hacker',
+    label: 'Hacker'
+  },
+  {
+    id: 'harry-potter',
+    label: 'Hogwarts Magic (Harry Potter) Video'
+  },
+  {
+    id: 'hologram',
+    label: 'Hologram'
+  },
+  {
+    id: 'holographic',
+    label: 'Holographic'
+  },
+  {
+    id: 'ice-blue',
+    label: 'Ice Blue'
+  },
+  {
+    id: 'immersive',
+    label: 'Immersive Glass'
+  },
+  {
+    id: 'kawaii',
+    label: 'Kawaii'
+  },
+  {
+    id: 'liquid-glass',
+    label: 'Liquid Glass'
+  },
+  {
+    id: 'material',
+    label: 'Material'
+  },
+  {
+    id: 'matrix',
+    label: 'Matrix'
+  },
+  {
+    id: 'maximalism',
+    label: 'Maximalism'
+  },
+  {
+    id: 'midnight',
+    label: 'Midnight'
+  },
+  {
+    id: 'minimalism',
+    label: 'Minimalism'
+  },
+  {
+    id: 'minimalist',
+    label: 'Minimalist'
+  },
+  {
+    id: 'nature',
+    label: 'Nature'
+  },
+  {
+    id: 'nebula',
+    label: 'Nebula'
+  },
+  {
+    id: 'neo-brutalism',
+    label: 'Neo Brutalism'
+  },
+  {
+    id: 'neon',
+    label: 'Neon'
+  },
+  {
+    id: 'neumorphic',
+    label: 'Neumorphic'
+  },
+  {
+    id: 'nord',
+    label: 'Nord'
+  },
+  {
+    id: 'ocean',
+    label: 'Ocean'
+  },
+  {
+    id: 'origami',
+    label: 'Origami'
+  },
+  {
+    id: 'outrun',
+    label: 'Outrun'
+  },
+  {
+    id: 'pink',
+    label: 'Pink'
+  },
+  {
+    id: 'polaroid',
+    label: 'Polaroid'
+  },
+  {
+    id: 'retro-wave',
+    label: 'Retro Wave'
+  },
+  {
+    id: 'retro',
+    label: 'Retro'
+  },
+  {
+    id: 'retrowave-green',
+    label: 'Retrowave Green'
+  },
+  {
+    id: 'sakura',
+    label: 'Sakura'
+  },
+  {
+    id: 'search-card-compat',
+    label: 'Search Card Compat'
+  },
+  {
+    id: 'skeuomorphic',
+    label: 'Skeuomorphic'
+  },
+  {
+    id: 'spring',
+    label: 'Spring'
+  },
+  {
+    id: 'steampunk',
+    label: 'Steampunk'
+  },
+  {
+    id: 'summer',
+    label: 'Summer'
+  },
+  {
+    id: 'sunset',
+    label: 'Sunset'
+  },
+  {
+    id: 'technozen',
+    label: 'Technozen'
+  },
+  {
+    id: 'terminalism',
+    label: 'Terminalism'
+  },
+  {
+    id: 'vaporwave',
+    label: 'Vaporwave'
+  },
+  {
+    id: 'vintage',
+    label: 'Vintage'
+  },
+  {
+    id: 'winter',
+    label: 'Winter'
+  },
+  {
+    id: 'woodblock',
+    label: 'Woodblock'
+  },
+  {
+    id: 'y2k',
+    label: 'Y2k'
+  }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
-  { id: 'default', label: 'Default (YouTube Standard)' },
-  { id: 'liquid-glass', label: 'Liquid Glass (Transparent blur)' },
-  { id: 'cyberpunk', label: 'Cyberpunk (Neon edges)' },
-  { id: 'neumorphic', label: 'Neumorphic (Soft UI)' },
-  { id: 'nature', label: 'Nature (Organic)' },
-  { id: 'vintage', label: 'Vintage (Retro & Print)' },
-  { id: 'abyss', label: 'Abyss (Deep Sea)' },
-  { id: 'sakura', label: 'Sakura (Cherry Blossom)' },
-  { id: 'ocean', label: 'Ocean (Deep Water)' },
-  { id: 'blue-sky', label: 'Blue Sky (Clouds)' },
-  { id: 'retro', label: 'Retro OS (Win 95)' },
-  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' },
-  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' },
-  { id: 'christmas', label: 'Christmas (Festive)' },
-  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
-  { id: 'aurora', label: 'Aurora (Northern Lights)' },
-  { id: 'autumn', label: 'Autumn (Fallen Leaf)' },
-  { id: 'cherry', label: 'Cherry (Night Sakura)' }
+  {
+    id: 'abyss',
+    label: 'Abyss'
+  },
+  {
+    id: 'aurora',
+    label: 'Aurora'
+  },
+  {
+    id: 'autumn',
+    label: 'Autumn'
+  },
+  {
+    id: 'bloodmoon',
+    label: 'Bloodmoon'
+  },
+  {
+    id: 'blue-sky',
+    label: 'Blue Sky'
+  },
+  {
+    id: 'brutalism',
+    label: 'Brutalism'
+  },
+  {
+    id: 'cairo-red',
+    label: 'Cairo Red'
+  },
+  {
+    id: 'cherry',
+    label: 'Cherry'
+  },
+  {
+    id: 'christmas',
+    label: 'Christmas'
+  },
+  {
+    id: 'claymorphism',
+    label: 'Claymorphism'
+  },
+  {
+    id: 'coffee',
+    label: 'Coffee'
+  },
+  {
+    id: 'colorize',
+    label: 'Colorize'
+  },
+  {
+    id: 'compact',
+    label: 'Compact'
+  },
+  {
+    id: 'crystal-glass',
+    label: 'Crystal Glass'
+  },
+  {
+    id: 'cyberpunk',
+    label: 'Cyberpunk'
+  },
+  {
+    id: 'deepspace',
+    label: 'Deepspace'
+  },
+  {
+    id: 'default',
+    label: 'Default'
+  },
+  {
+    id: 'discord',
+    label: 'Discord'
+  },
+  {
+    id: 'dracula',
+    label: 'Dracula'
+  },
+  {
+    id: 'elevated',
+    label: 'Elevated'
+  },
+  {
+    id: 'ember',
+    label: 'Ember'
+  },
+  {
+    id: 'flat',
+    label: 'Flat'
+  },
+  {
+    id: 'fluent',
+    label: 'Fluent'
+  },
+  {
+    id: 'folder',
+    label: 'Folder'
+  },
+  {
+    id: 'frosted',
+    label: 'Frosted'
+  },
+  {
+    id: 'frutiger-aero',
+    label: 'Frutiger Aero'
+  },
+  {
+    id: 'galaxy',
+    label: 'Galaxy'
+  },
+  {
+    id: 'glass',
+    label: 'Glass'
+  },
+  {
+    id: 'glassmorphism',
+    label: 'Glassmorphism'
+  },
+  {
+    id: 'gothic',
+    label: 'Gothic'
+  },
+  {
+    id: 'grunge',
+    label: 'Grunge'
+  },
+  {
+    id: 'hacker',
+    label: 'Hacker'
+  },
+  {
+    id: 'harry-potter',
+    label: 'Hogwarts Magic (Harry Potter) Video'
+  },
+  {
+    id: 'hologram',
+    label: 'Hologram'
+  },
+  {
+    id: 'holographic',
+    label: 'Holographic'
+  },
+  {
+    id: 'ice-blue',
+    label: 'Ice Blue'
+  },
+  {
+    id: 'immersive',
+    label: 'Immersive Glass'
+  },
+  {
+    id: 'kawaii',
+    label: 'Kawaii'
+  },
+  {
+    id: 'liquid-glass',
+    label: 'Liquid Glass'
+  },
+  {
+    id: 'material',
+    label: 'Material'
+  },
+  {
+    id: 'matrix',
+    label: 'Matrix'
+  },
+  {
+    id: 'maximalism',
+    label: 'Maximalism'
+  },
+  {
+    id: 'midnight',
+    label: 'Midnight'
+  },
+  {
+    id: 'minimalism',
+    label: 'Minimalism'
+  },
+  {
+    id: 'minimalist',
+    label: 'Minimalist'
+  },
+  {
+    id: 'nature',
+    label: 'Nature'
+  },
+  {
+    id: 'nebula',
+    label: 'Nebula'
+  },
+  {
+    id: 'neo-brutalism',
+    label: 'Neo Brutalism'
+  },
+  {
+    id: 'neon',
+    label: 'Neon'
+  },
+  {
+    id: 'neumorphic',
+    label: 'Neumorphic'
+  },
+  {
+    id: 'nord',
+    label: 'Nord'
+  },
+  {
+    id: 'ocean',
+    label: 'Ocean'
+  },
+  {
+    id: 'origami',
+    label: 'Origami'
+  },
+  {
+    id: 'outrun',
+    label: 'Outrun'
+  },
+  {
+    id: 'pink',
+    label: 'Pink'
+  },
+  {
+    id: 'polaroid',
+    label: 'Polaroid'
+  },
+  {
+    id: 'retro-wave',
+    label: 'Retro Wave'
+  },
+  {
+    id: 'retro',
+    label: 'Retro'
+  },
+  {
+    id: 'retrowave-green',
+    label: 'Retrowave Green'
+  },
+  {
+    id: 'sakura',
+    label: 'Sakura'
+  },
+  {
+    id: 'search-card-compat',
+    label: 'Search Card Compat'
+  },
+  {
+    id: 'skeuomorphic',
+    label: 'Skeuomorphic'
+  },
+  {
+    id: 'spring',
+    label: 'Spring'
+  },
+  {
+    id: 'steampunk',
+    label: 'Steampunk'
+  },
+  {
+    id: 'summer',
+    label: 'Summer'
+  },
+  {
+    id: 'sunset',
+    label: 'Sunset'
+  },
+  {
+    id: 'technozen',
+    label: 'Technozen'
+  },
+  {
+    id: 'terminalism',
+    label: 'Terminalism'
+  },
+  {
+    id: 'vaporwave',
+    label: 'Vaporwave'
+  },
+  {
+    id: 'vintage',
+    label: 'Vintage'
+  },
+  {
+    id: 'winter',
+    label: 'Winter'
+  },
+  {
+    id: 'woodblock',
+    label: 'Woodblock'
+  },
+  {
+    id: 'y2k',
+    label: 'Y2k'
+  }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation
