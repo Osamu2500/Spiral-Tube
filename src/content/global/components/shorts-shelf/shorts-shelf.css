@@ -23,19 +23,27 @@
 }
 
 /* 
- * Force Shorts Items to maintain a consistent, fixed size.
- * This completely decouples them from the main grid columns and 
- * prevents them from becoming massive or tiny. It also restores
- * YouTube's native horizontal carousel scrolling behavior.
+ * Responsive Shorts Columns (Decoupled from main feed) 
+ * This ensures Shorts perfectly fit the container width without being cut off
+ */
+:root { --ypp-shorts-columns: 6; }
+@media (max-width: 1300px) { :root { --ypp-shorts-columns: 5; } }
+@media (max-width: 1000px) { :root { --ypp-shorts-columns: 4; } }
+@media (max-width: 700px) { :root { --ypp-shorts-columns: 3; } }
+
+/* 
+ * Force Shorts Items to fit perfectly using percentage math.
+ * Now that the grid-layout.css conflict is removed, this will correctly
+ * calculate the exact width needed to fit all shorts without clipping.
  */
 #page-manager ytd-rich-section-renderer ytd-rich-item-renderer,
 #page-manager ytd-rich-shelf-renderer ytd-rich-item-renderer,
 #page-manager ytd-rich-section-renderer ytd-reel-item-renderer,
 #page-manager ytd-rich-shelf-renderer ytd-reel-item-renderer {
-  width: 210px !important;
-  min-width: 210px !important;
-  max-width: 210px !important;
-  flex: 0 0 210px !important;
+  width: calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 0 0 calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
   margin: 0 !important;
 }
 
