@@ -1,135 +1,62 @@
 const fs = require('fs');
-let css = fs.readFileSync('src/popup/styles/core/popup.css', 'utf8');
 
-// The file has a duplicate from '/* ─── Reset ─── */' at line 227 down to line 413.
-// We can just find the second occurrence of '/* ─── Reset ─── */' and remove everything between the first one and the second one!
-// Let's check where they are.
-const lines = css.split('\n');
-let firstReset = -1;
-let secondReset = -1;
-
-for (let i = 0; i < lines.length; i++) {
-    if (lines[i].includes('/* ─── Reset ─── */')) {
-        if (firstReset === -1) {
-            firstReset = i;
-        } else if (secondReset === -1) {
-            secondReset = i;
-        }
-    }
+function updateFile(filePath, searchContent, replacementContent) {
+  let content = fs.readFileSync(filePath, 'utf8');
+  if (content.includes(searchContent)) {
+    content = content.replace(searchContent, replacementContent);
+    fs.writeFileSync(filePath, content, 'utf8');
+    console.log(`Updated ${filePath}`);
+  } else {
+    console.log(`Could not find target content in ${filePath}`);
+  }
 }
 
-if (firstReset !== -1 && secondReset !== -1) {
-    console.log('Found first reset at ' + firstReset + ' and second reset at ' + secondReset);
-    // Remove the lines between firstReset and secondReset (excluding secondReset so it becomes the new firstReset)
-    lines.splice(firstReset, secondReset - firstReset);
-} else {
-    console.log('Could not find two Reset blocks');
-}
+// 1. Update popup.css
+const popupCssPath = 'src/popup/styles/core/popup.css';
+const popupSearch = `  /* ── Spacing & Shape ── */
+  --ui-radius: 12px;
+  --r-xl: calc(var(--ui-radius) * 1.6);
+  --r-lg: calc(var(--ui-radius) * 1.1);
+  --r-md: calc(var(--ui-radius) * 0.8);
+  --r-sm: calc(var(--ui-radius) * 0.5);
+  --r-pill: 100px;`;
 
-// Now let's fix the malformed html.full-page body and remove the animation.
-// Around line 445 (now shifted), we have:
-// html.full-page body {
-//   width: calc(100vw / var(--popup-zoom)) !important;
-//   height: calc(100vh / var(--popup-zoom)) !important;
-// }
-//   font-size: calc(14px * var(--ui-font-scale, 1));
-//   overflow: hidden;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   animation: popup-enter 0.28s var(--ease-snap) both;
-//   transition: width 0.15s ease-out, height 0.15s ease-out;
-// }
-//
-// These orphan properties belong to the ody { block that was split!
-// Let's join them back into ody and remove the nimation: line.
-// First, find html.full-page body {
-let htmlFullPageBodyIndex = -1;
-for (let i = 0; i < lines.length; i++) {
-    if (lines[i].includes('html.full-page body {')) {
-        htmlFullPageBodyIndex = i;
-        break;
-    }
-}
+const popupReplace = `  /* ── Spacing & Shape (Squircle Mapping) ── */
+  --ui-radius: var(--ypp-squircle-md, 12px);
+  --r-xl: var(--ypp-squircle-xl, 24px);
+  --r-lg: var(--ypp-squircle-lg, 16px);
+  --r-md: var(--ypp-squircle-md, 10px);
+  --r-sm: var(--ypp-squircle-sm, 6px);
+  --r-pill: var(--ypp-radius-pill, 100px);`;
 
-if (htmlFullPageBodyIndex !== -1) {
-    // Look backwards for ody { to append the orphaned properties.
-    let bodyIndex = -1;
-    for (let i = htmlFullPageBodyIndex; i >= 0; i--) {
-        if (lines[i].trim() === 'body {') {
-            bodyIndex = i;
-            break;
-        }
-    }
-    
-    // Find where the orphaned properties end (the '}' after transition)
-    let orphanEndIndex = -1;
-    for (let i = htmlFullPageBodyIndex + 4; i < lines.length; i++) {
-        if (lines[i].trim() === '}') {
-            orphanEndIndex = i;
-            break;
-        }
-    }
-    
-    if (bodyIndex !== -1 && orphanEndIndex !== -1) {
-        console.log('Fixing orphaned body properties from ' + (htmlFullPageBodyIndex + 4) + ' to ' + orphanEndIndex);
-        
-        // Extract orphaned properties (excluding the closing '}')
-        let orphanedProps = [];
-        for (let i = htmlFullPageBodyIndex + 4; i < orphanEndIndex; i++) {
-            // Remove the popup-enter animation
-            if (!lines[i].includes('animation: popup-enter')) {
-                orphanedProps.push(lines[i]);
-            }
-        }
-        
-        // Remove the orphaned properties and their closing '}'
-        lines.splice(htmlFullPageBodyIndex + 4, orphanEndIndex - (htmlFullPageBodyIndex + 4) + 1);
-        
-        // Now insert them into the body block (just before html.full-page body, which is right after body's closing brace... wait, no.)
-        // Let's find body's closing brace.
-        let bodyCloseIndex = -1;
-        for (let i = bodyIndex; i < htmlFullPageBodyIndex; i++) {
-            if (lines[i].trim() === '}') {
-                bodyCloseIndex = i;
-                break;
-            }
-        }
-        
-        if (bodyCloseIndex !== -1) {
-            lines.splice(bodyCloseIndex, 0, ...orphanedProps);
-            console.log('Successfully merged orphaned properties back into body');
-        } else {
-            console.log('Could not find body closing brace');
-        }
-    } else {
-        console.log('Could not find body index or orphan end index');
-    }
-} else {
-    console.log('Could not find html.full-page body');
-}
+updateFile(popupCssPath, popupSearch, popupReplace);
 
-// Remove popup-enter from anywhere else just to be sure.
-// Also remove the @keyframes popup-enter
-let keyframesStart = -1;
-for (let i = 0; i < lines.length; i++) {
-    if (lines[i].includes('@keyframes popup-enter')) {
-        keyframesStart = i;
-        break;
-    }
+// 2. Add tokens to base-ui-index.css
+const baseUiPath = 'src/content/styles/base-ui-index.css';
+let baseUiContent = fs.readFileSync(baseUiPath, 'utf8');
+if (!baseUiContent.includes('--ypp-glass-bg')) {
+  const tokens = `
+/* =========================================
+   CORE UI TOKENS (Glassmorphism & Squircles)
+   ========================================= */
+:root {
+  /* Squircle Geometry */
+  --ypp-squircle-xl: 24px;
+  --ypp-squircle-lg: 16px;
+  --ypp-squircle-md: 10px;
+  --ypp-squircle-sm: 6px;
+  --ypp-radius-pill: 999px;
+  
+  /* Blurs & Glassmorphism */
+  --ypp-glass-bg: rgba(20, 20, 20, 0.65);
+  --ypp-glass-bg-hover: rgba(255, 255, 255, 0.1);
+  --ypp-glass-blur: blur(16px);
+  --ypp-glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --ypp-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
-if (keyframesStart !== -1) {
-    let keyframesEnd = -1;
-    for (let i = keyframesStart; i < lines.length; i++) {
-        if (lines[i].trim() === '}') {
-            keyframesEnd = i;
-            break;
-        }
-    }
-    if (keyframesEnd !== -1) {
-        lines.splice(keyframesStart, keyframesEnd - keyframesStart + 1);
-        console.log('Removed @keyframes popup-enter');
-    }
+`;
+  baseUiContent = baseUiContent.replace('/* =========================================\r\n   GLOBAL COMPONENTS', tokens + '\n/* =========================================\r\n   GLOBAL COMPONENTS');
+  baseUiContent = baseUiContent.replace('/* =========================================\n   GLOBAL COMPONENTS', tokens + '\n/* =========================================\n   GLOBAL COMPONENTS');
+  fs.writeFileSync(baseUiPath, baseUiContent, 'utf8');
+  console.log(`Updated ${baseUiPath}`);
 }
-
-fs.writeFileSync('src/popup/styles/core/popup.css', lines.join('\n'));
-console.log('Done.');

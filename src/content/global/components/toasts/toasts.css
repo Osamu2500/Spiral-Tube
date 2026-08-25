@@ -28,14 +28,15 @@
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%) translateY(12px);
-  background: rgba(20, 20, 30, 0.88);
+  background: var(--ypp-glass-bg, rgba(20, 20, 30, 0.88));
+  backdrop-filter: blur(12px);
   color: var(--ypp-text-primary, #fff);
   font-family: "Roboto", "Inter", sans-serif;
   font-size: 13px;
   font-weight: 500;
   padding: 7px 18px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.12));
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   pointer-events: none;
   opacity: 0;

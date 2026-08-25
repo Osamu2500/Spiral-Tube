@@ -6,6 +6,47 @@
  */
 
 /* =========================================
+   CORE UI TOKENS (Glassmorphism & Squircles)
+   ========================================= */
+:root {
+  /* Squircle Geometry */
+  --ypp-squircle-xl: 24px;
+  --ypp-squircle-lg: 16px;
+  --ypp-squircle-md: 10px;
+  --ypp-squircle-sm: 6px;
+  --ypp-radius-pill: 999px;
+  
+  /* Blurs & Glassmorphism */
+  --ypp-glass-bg: rgba(20, 20, 20, 0.65);
+  --ypp-glass-bg-hover: rgba(255, 255, 255, 0.1);
+  --ypp-glass-blur: blur(16px);
+  --ypp-glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --ypp-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   GLOBAL GLASSMORPHISM APPLICATION
+   Applies the blur effect to all major overlays, menus, and panels
+   ========================================= */
+html:not([data-ypp-ui-design]) body :is(
+  ytd-menu-popup-renderer,
+  tp-yt-iron-dropdown,
+  ytd-engagement-panel-section-list-renderer,
+  ytd-multi-page-menu-renderer,
+  ytd-sponsorships-offer-renderer,
+  .ytd-popup-container,
+  tp-yt-paper-dialog,
+  #header.ytd-engagement-panel-title-header-renderer,
+  ytd-playlist-panel-renderer,
+  #masthead,
+  #guide-wrapper,
+  .ypp-toast
+) {
+  backdrop-filter: var(--ypp-glass-blur) !important;
+  -webkit-backdrop-filter: var(--ypp-glass-blur) !important;
+}
+
+/* =========================================
    GLOBAL COMPONENTS (Reusable UI Elements)
    ========================================= */
 @import "../global/components/account-menus/account-menus.css";

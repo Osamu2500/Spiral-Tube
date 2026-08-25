@@ -1,4 +1,4 @@
-﻿/* 
+/* 
    Popup Theme Variables 
    Extracted from content/styles.css to ensure isolation 
 */
@@ -14,17 +14,22 @@
   --ypp-content-gap: 24px;
   --ypp-grid-gap: 16px;
 
-  /* Shape & Motion */
-  --ypp-radius-lg: 20px;
-  --ypp-radius-md: 12px;
-  --ypp-radius-sm: 8px;
+  /* Squircle Geometry */
+  --ypp-squircle-xl: 24px;
+  --ypp-squircle-lg: 16px;
+  --ypp-squircle-md: 10px;
+  --ypp-squircle-sm: 6px;
   --ypp-radius-pill: 999px;
   
-  /* Blurs & Glass */
+  /* Blurs & Glassmorphism */
+  --ypp-glass-bg: rgba(20, 20, 20, 0.65);
+  --ypp-glass-bg-hover: rgba(255, 255, 255, 0.1);
+  --ypp-glass-blur: blur(16px);
+  --ypp-glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --ypp-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   --ypp-blur-subtle: blur(12px) saturate(1.2);
-  --ypp-blur-med: blur(24px) saturate(1.5);
+  --ypp-blur-med: var(--ypp-glass-blur) saturate(1.5);
   --ypp-blur-high: blur(40px) saturate(1.8);
-  --ypp-glass-border: 1px solid rgba(255, 255, 255, 0.1);
   --ypp-glass-border-light: 1px solid rgba(255, 255, 255, 0.15);
   
   /* Transitions */
