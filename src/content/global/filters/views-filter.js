@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
     static featureId = 'viewsFilter';
     static executionPhase = 'idle';

@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 export class CopyLinkButton extends window.YPP.features.BaseFeature {
     static featureId = 'copyLinkButton';
     static executionPhase = 'idle';

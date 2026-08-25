@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 import { TelemetryLogger } from './telemetry-logger.js';
 import { DOMTransactionManager } from './dom-transaction-manager.js';
 import { ActionButtonsController } from './action-buttons-controller.js';

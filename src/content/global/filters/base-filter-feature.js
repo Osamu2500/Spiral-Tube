@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * Base Class for filter features that hide elements on specific pages.
  * Handles page scoping, unified hiding mechanics via CSS classes, and cleanup.

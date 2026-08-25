@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 /**
  * Player Tools
  * Adds custom playback speed to the YouTube player

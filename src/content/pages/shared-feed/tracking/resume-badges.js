@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 export class ResumeBadges extends window.YPP.features.BaseFeature {
     static featureId = 'resumeBadges';
     static executionPhase = 'idle';

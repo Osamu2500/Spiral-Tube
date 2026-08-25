@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * Feed Grid Columns (Subscriptions Columns)
  * Manages the CSS custom property for the number of columns on the Subscriptions feed.

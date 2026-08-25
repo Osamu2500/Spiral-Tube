@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 export class UploadDateFilter extends window.YPP.features.BaseFilterFeature {
     static featureId = 'uploadDateFilter';
     static executionPhase = 'idle';

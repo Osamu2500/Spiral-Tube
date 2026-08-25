@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 /**
  * Live Stream Time Feature
  * Displays current elapsed livestream duration in the video player controls

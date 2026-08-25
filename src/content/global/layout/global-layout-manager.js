@@ -1,3 +1,4 @@
+import '../../core/system/base-page-manager.js';
 class GlobalLayoutManager extends window.YPP.BasePageManager {
     constructor(utils, settings) {
         super(utils, settings);

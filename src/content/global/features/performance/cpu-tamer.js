@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * YouTube Performance Booster (based on CPU Tamer by AnimationFrame, Script 431573 by CY Fung)
  * Reduces Browser's Energy and CPU Impact when playing YouTube videos.

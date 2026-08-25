@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * Filters Manager
  * Coordinates infinite loader loops caused by hiding too many videos.

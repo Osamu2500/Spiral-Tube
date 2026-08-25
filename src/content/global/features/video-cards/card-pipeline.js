@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Card Pipeline (V3 Architecture)
  * --------------------------------

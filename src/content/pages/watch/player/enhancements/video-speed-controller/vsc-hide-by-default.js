@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Video Speed Controller: Hide By Default
  * Configures the controller UI to be hidden until the user manually changes the speed.

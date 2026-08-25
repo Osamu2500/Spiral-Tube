@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 export class AutoTranscript extends window.YPP.features.BaseFeature {
     static featureId = 'autoTranscript';
     static executionPhase = 'idle';

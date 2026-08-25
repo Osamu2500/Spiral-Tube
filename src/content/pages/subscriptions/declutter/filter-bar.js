@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Filter Bar
  * Displays the duration/date filters on the Subscriptions page.

@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 // @ts-nocheck
 
 export class LoopButton extends window.YPP.features.BaseFeature {

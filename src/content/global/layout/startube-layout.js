@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * StarTube Layout & 5-Star Rating Visualizer (Based on Script 485622 by lightbeam24)
  * Brings classic YouTube V3 watch page row aesthetics and interactive 5-star rating bar.

@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 export class IntentionalDelay extends window.YPP.features.BaseFeature {
     static featureId = 'intentionalDelay';
     static executionPhase = 'idle';

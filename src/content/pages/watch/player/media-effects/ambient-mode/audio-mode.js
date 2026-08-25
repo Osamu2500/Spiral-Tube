@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Audio Mode - Hide video, show audio with thumbnail overlay
  * Enhanced with thumbnail fallbacks and improved UX

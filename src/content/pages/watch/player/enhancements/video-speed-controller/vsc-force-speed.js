@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Video Speed Controller: Force Speed
  * Prevents YouTube's SPA logic from fighting back and resetting custom playback rates.

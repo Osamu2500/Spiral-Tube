@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 export class SmartThumbnails extends window.YPP.features.BaseFeature {
     static featureId = 'smartThumbnails';
     static executionPhase = 'idle';

@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 export class TimeDisplay extends window.YPP.features.BaseFeature {
     static featureId = 'timeDisplay';
     static executionPhase = 'sequential-ui';

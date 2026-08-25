@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 /**
  * Bookmarks Manager
  * Captures video timestamps and highlights

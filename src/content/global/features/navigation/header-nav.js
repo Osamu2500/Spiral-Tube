@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Header Navigation Manager - Creates custom navigation buttons in the header
  * @class HeaderNav

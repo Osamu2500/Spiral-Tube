@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 /**
  * Clickbait Filter Module (V3 Architecture)
  * Detects and hides videos with clickbait characteristics, such as ALL CAPS titles.

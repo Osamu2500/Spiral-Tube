@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 import { CONFIG } from './constants.js';
 import { CinematicController } from './cinematic-controller.js';
 

@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Customize YouTube UI Feature (Style 21084 & Style 16687)
  * Manages granular UI customization toggles for hiding clutter across YouTube:

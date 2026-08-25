@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 export class CustomCursor extends window.YPP.features.BaseFeature {
     static featureId = 'customCursor';
     static executionPhase = 'idle';

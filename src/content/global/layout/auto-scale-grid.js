@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * Auto Scale Grid
  * Adjusts the global grid UI scale (fonts/spacing) and auto column count based on window size.

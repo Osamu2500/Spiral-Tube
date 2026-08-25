@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 export class ScreenFilters extends window.YPP.features.BaseFeature {
     static featureId = 'screenFilters';
     static executionPhase = 'idle';

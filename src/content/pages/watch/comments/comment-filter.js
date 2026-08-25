@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * @fileoverview
  * Feature: Comment Spam Filter

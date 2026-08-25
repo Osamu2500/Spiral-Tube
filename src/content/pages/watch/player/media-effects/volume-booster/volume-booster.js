@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Volume Booster / 10-Band Graphic Equalizer Orchestrator
  * Manages the Web Audio API graph for the active HTML5 video element.

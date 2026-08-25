@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * Layout Manager (Grid)
  * Enforces a configurable grid layout on the YouTube Home, Search, Channel,

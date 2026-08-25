@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 export class AudioEQ extends window.YPP.features.BaseFeature {
     static featureId = 'audioEQ';
     static executionPhase = 'idle';

@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Channel Columns
  * Manages the CSS custom property for the number of columns on Channel pages.

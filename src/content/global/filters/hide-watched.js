@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 /**
  * HideWatched — v3 (Pipeline Architecture)
  * -----------------------------------------

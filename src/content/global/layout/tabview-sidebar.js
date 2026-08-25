@@ -1,3 +1,4 @@
+import '../../core/system/base-feature.js';
 /**
  * Tabview Sidebar Feature (Based on Script 560618: YouTube Improvements - Layout & Video Enhancer)
  * Converts watch page right sidebar into clean tabs: Comments, Info, and Related Videos.

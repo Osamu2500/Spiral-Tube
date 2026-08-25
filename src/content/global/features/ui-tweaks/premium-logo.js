@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 export class PremiumLogo extends window.YPP.features.BaseFeature {
     static featureId = 'premiumLogo';
     static executionPhase = 'idle';

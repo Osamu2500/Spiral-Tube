@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
     static featureId = 'blocklistFilter';
     static executionPhase = 'idle';

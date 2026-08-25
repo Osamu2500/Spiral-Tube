@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Video Speed Controller: Audio Support
  * Allows the custom speed controller to attach to HTML5 <audio> elements.

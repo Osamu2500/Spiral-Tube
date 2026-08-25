@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Global Player Bar — Orchestrator
  * Detects external <video> tags (non-YouTube) and injects a custom floating

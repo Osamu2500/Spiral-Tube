@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 const SELECTORS = {
     CINEMATICS: '#cinematics, ytd-watch-flexy #cinematics',
     VIDEO: 'ytd-player video'

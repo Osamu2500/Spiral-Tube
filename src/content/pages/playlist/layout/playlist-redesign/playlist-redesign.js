@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 import { extractPlaylistData } from './data-extractor.js';
 import { renderHTML } from './ui-builder.js';
 import { wireEvents } from './event-handler.js';

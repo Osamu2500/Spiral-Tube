@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Feature: Auto Subtitles (Netflix-Style) — V6
  * Intercepts YouTube's native captions and renders them with a premium, custom UI.

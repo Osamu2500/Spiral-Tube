@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 /**
  * Real Cinema Mode Feature (Style 11811)
  * Expands YouTube's theater mode to span 100vw across the browser window

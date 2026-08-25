@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Auto Cinema — Spiral Tube
  * Automatically clicks the theater button whenever a watch page loads

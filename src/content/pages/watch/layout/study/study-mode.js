@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 import { SpeedPanel } from './speed-panel.js';
 import { SessionTimer } from './session-timer.js';
 import { SmartCaptions } from './smart-captions.js';

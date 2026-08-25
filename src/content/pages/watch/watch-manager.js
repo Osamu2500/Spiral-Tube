@@ -1,3 +1,4 @@
+import '../../core/system/base-page-manager.js';
 /**
  * @fileoverview
  * Watch Page Manager for Spiral Tube

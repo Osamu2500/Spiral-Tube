@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 export class HeaderButton extends window.YPP.features.BaseFeature {
     static instance = null;
 

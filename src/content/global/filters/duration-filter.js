@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 /**
  * Duration Filter Module (V3 Architecture)
  * Hides videos that are shorter than a specified minimum duration.

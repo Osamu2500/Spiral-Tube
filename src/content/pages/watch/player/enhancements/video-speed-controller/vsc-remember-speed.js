@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 /**
  * Video Speed Controller: Remember Speed
  * Saves the last used playback speed and restores it automatically for new videos.

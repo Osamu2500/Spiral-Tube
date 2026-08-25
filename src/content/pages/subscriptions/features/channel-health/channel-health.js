@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 /**
  * Channel Health
  * Displays a "Channel Health" button on the Subscriptions page to launch the dashboard.

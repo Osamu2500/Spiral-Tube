@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * Save Supreme UI Feature (Style 25092)
  * Enhances YouTube's "Save to playlist" popup menu with a cleaner grid/list view,

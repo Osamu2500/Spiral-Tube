@@ -1,3 +1,4 @@
+import '../../../../core/system/base-feature.js';
 /**
  * Two Column Subscriptions Feature (Style 4889)
  * Forces the YouTube subscriptions grid into a clean 2-column/row layout

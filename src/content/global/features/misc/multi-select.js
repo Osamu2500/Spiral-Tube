@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 // ─── Selectors (single source of truth — no magic strings) ────────────────────
 const SELECTORS = {
   CARD_ROOTS: [

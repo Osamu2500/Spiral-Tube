@@ -1,3 +1,4 @@
+import '../../filters/base-filter-feature.js';
 export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
     static featureId = 'channelBlacklist';
     static executionPhase = 'idle';

@@ -1,3 +1,4 @@
+import './base-filter-feature.js';
 export class HideMetrics extends window.YPP.features.BaseFilterFeature {
     static featureId = 'hideMetrics';
     static executionPhase = 'idle';

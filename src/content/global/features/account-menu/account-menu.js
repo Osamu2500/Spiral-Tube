@@ -1,3 +1,4 @@
+import '../../../core/system/base-feature.js';
 /**
  * AccountMenu — replaces YouTube's native account dropdown with an
  * orbital-style panel: active account centered, other accounts as

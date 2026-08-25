@@ -1,3 +1,4 @@
+import '../../../../../core/system/base-feature.js';
 import { VscUI } from './vsc-ui.js';
 import { VscShortcuts } from './vsc-shortcuts.js';
 
