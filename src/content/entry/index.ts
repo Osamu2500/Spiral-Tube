@@ -219,5 +219,63 @@ import { LiveStreamTime } from '../pages/watch/player/enhancements/live-stream-t
 window.YPP.FeatureManager.register(LiveStreamTime);
 
 
+
+// --- src/content/global/filters/index.ts ---
+import { BaseFilterFeature } from '../global/filters/base-filter-feature.js';
+window.YPP.FeatureManager.register(BaseFilterFeature);
+import { ScreenFilters } from '../global/filters/screen-filters.js';
+window.YPP.FeatureManager.register(ScreenFilters);
+import { HideWatched } from '../global/filters/hide-watched.js';
+window.YPP.FeatureManager.register(HideWatched);
+import { HideMetrics } from '../global/filters/hide-metrics.js';
+window.YPP.FeatureManager.register(HideMetrics);
+import '../global/filters/filter-ui-interactions.js';
+import { DurationFilter } from '../global/filters/duration-filter.js';
+window.YPP.FeatureManager.register(DurationFilter);
+import { BlocklistFilter } from '../global/filters/blocklist-filter.js';
+window.YPP.FeatureManager.register(BlocklistFilter);
+import { FeedFilter } from '../global/filters/feed-filter.js';
+window.YPP.FeatureManager.register(FeedFilter);
+import { FiltersManager } from '../global/filters/filters-manager.js';
+window.YPP.FeatureManager.register(FiltersManager);
+import { ViewsFilter } from '../global/filters/views-filter.js';
+window.YPP.FeatureManager.register(ViewsFilter);
+import { UploadDateFilter } from '../global/filters/upload-date-filter.js';
+window.YPP.FeatureManager.register(UploadDateFilter);
+import { ClickbaitFilter } from '../global/filters/clickbait-filter.js';
+window.YPP.FeatureManager.register(ClickbaitFilter);
+
+// --- src/content/global/layout/index.ts ---
+import '../global/layout/global-layout-manager.js';
+import { GridAnimator } from '../global/layout/grid-animator.js';
+window.YPP.FeatureManager.register(GridAnimator);
+import { AutoScaleGrid } from '../global/layout/auto-scale-grid.js';
+window.YPP.FeatureManager.register(AutoScaleGrid);
+import { GridLayoutManager } from '../global/layout/layout-manager.js';
+window.YPP.FeatureManager.register(GridLayoutManager);
+import { FeedGridColumns } from '../global/layout/feed-grid-columns.js';
+window.YPP.FeatureManager.register(FeedGridColumns);
+import { TabviewSidebar } from '../global/layout/tabview-sidebar.js';
+window.YPP.FeatureManager.register(TabviewSidebar);
+import { StarTubeLayout } from '../global/layout/startube-layout.js';
+window.YPP.FeatureManager.register(StarTubeLayout);
+
+// --- src/content/global/ui/global-bar/index.ts ---
+import { GlobalBarUI } from '../global/ui/global-bar/global-bar-ui.js';
+window.YPP.FeatureManager.register(GlobalBarUI);
+import { GlobalPlayerBar } from '../global/ui/global-bar/global-bar.js';
+window.YPP.FeatureManager.register(GlobalPlayerBar);
+
+// --- src/content/pages/watch/player/media-effects/video-filters/index.js ---
+import '../pages/watch/player/media-effects/video-filters/video-filters-presets.js';
+import '../pages/watch/player/media-effects/video-filters/video-filters-ui.js';
+import '../pages/watch/player/media-effects/video-filters/video-filters-overlay.js';
+import '../pages/watch/player/media-effects/video-filters/video-filters.js';
+
+// --- src/content/pages/watch/player/media-effects/volume-booster/index.js ---
+import '../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js';
+import '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
+
+
 // Main entry
 import './main.js';
