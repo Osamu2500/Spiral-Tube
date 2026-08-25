@@ -96,7 +96,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         document.body.classList.remove(...classesToRemove, 'ypp-nuke-shorts');
 
         // Remove event listeners
-        this._disableCleanMixUrls();
         document.removeEventListener('yt-navigate-finish', this._boundNavHandler);
     }
 
@@ -121,13 +120,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         }
         
         this._updateDynamicToggles();
-        
-        // Handle JS-heavy toggles
-        if (settings.cleanMixUrls) {
-            this._enableCleanMixUrls();
-        } else {
-            this._disableCleanMixUrls();
-        }
     }
 
     _updateDynamicToggles() {
@@ -158,34 +150,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         // useless data attributes that were never used by CSS or JS. 
         // HideShorts and HideMixes have their own dedicated JS files now, and HidePlaylists 
         // uses safe CSS rules.
-    }
-
-    // --- Clean Mix URLs ---
-    _enableCleanMixUrls() {
-        if (!this._mixClickHandler) {
-            this._mixClickHandler = (e) => {
-                const a = e.target.closest('a[href]');
-                if (a && a.href.includes('list=RD')) {
-                    try {
-                        const url = new URL(a.href, window.location.origin);
-                        const list = url.searchParams.get('list');
-                        if (list && list.startsWith('RD')) {
-                            url.searchParams.delete('list');
-                            url.searchParams.delete('start_radio');
-                            a.href = url.pathname + url.search + url.hash;
-                        }
-                    } catch (err) {}
-                }
-            };
-            document.addEventListener('click', this._mixClickHandler, true);
-        }
-    }
-
-    _disableCleanMixUrls() {
-        if (this._mixClickHandler) {
-            document.removeEventListener('click', this._mixClickHandler, true);
-            this._mixClickHandler = null;
-        }
     }
 }
 

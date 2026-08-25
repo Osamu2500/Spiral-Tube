@@ -6,14 +6,7 @@ export const getDeclutterTab = (t) => ({
     icon: ICONS.filter,
     sections: [
 
-      {
-        title: 'Watched Videos',
-        icon: ICONS.eyeSlash,
-        items: [
-          { type: 'toggle', id: 'hideWatchedMode', label: 'Hide Watched Videos', desc: 'Remove videos you have already seen', icon: ICONS.eyeSlash },
-          { type: 'range', id: 'hideWatchedThreshold', class: 'span-2', label: 'Watched Threshold', desc: 'Percentage watched to trigger', min: 10, max: 100, step: 5, unit: '%' },
-        ],
-      },
+
       {
         title: t('home_page'),
         icon: ICONS.secFiltersHome,
