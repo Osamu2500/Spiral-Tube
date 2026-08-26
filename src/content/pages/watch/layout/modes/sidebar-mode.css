@@ -74,7 +74,10 @@
 /* ── Compact: 1-line title with ellipsis (tighter layout) ── */
 body.ypp-sidebar-compact
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title),
+body.ypp-sidebar-compact
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
   -webkit-line-clamp: 1 !important;
   line-clamp: 1 !important;
   max-height: 2rem !important;
@@ -83,7 +86,7 @@ body.ypp-sidebar-compact
 /* ── Fix text wrapper overflow for compact & regular ── */
 :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#details, .yt-lockup-metadata-view-model-wiz, .yt-lockup-metadata-view-model-wiz__text-container) {
+  :is(#details, .yt-lockup-metadata-view-model-wiz, .yt-lockup-metadata-view-model-wiz__text-container, .ytLockupMetadataViewModelHost) {
   overflow: hidden !important;
   min-width: 0 !important;
 }
