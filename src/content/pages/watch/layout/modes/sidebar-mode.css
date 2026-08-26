@@ -44,6 +44,9 @@
   line-clamp: 2 !important;
   max-height: 4rem !important;
   overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
   font-size: 1.4rem !important;
   line-height: 1.9rem !important;
   font-weight: 500 !important;
@@ -63,6 +66,44 @@
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
   white-space: normal !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: break-word !important;
+}
+
+/* ── Compact: 1-line title with ellipsis (tighter layout) ── */
+body.ypp-sidebar-compact
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  -webkit-line-clamp: 1 !important;
+  line-clamp: 1 !important;
+  max-height: 2rem !important;
+}
+
+/* ── Fix text wrapper overflow for compact & regular ── */
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(#details, .yt-lockup-metadata-view-model-wiz, .yt-lockup-metadata-view-model-wiz__text-container) {
+  overflow: hidden !important;
+  min-width: 0 !important;
+}
+
+/* ── Hover: expand title as floating tooltip overlay ── */
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer):hover
+  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  max-height: none !important;
+  position: relative !important;
+  z-index: 50 !important;
+  background: var(--yt-spec-base-background, #0f0f0f) !important;
+  border-radius: 6px !important;
+  padding: 4px 6px !important;
+  margin: -4px -6px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid var(--yt-spec-10-percent-layer, rgba(255,255,255,0.1)) !important;
 }
 
 :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
