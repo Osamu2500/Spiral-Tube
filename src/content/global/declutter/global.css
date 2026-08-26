@@ -61,8 +61,16 @@ html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
 
-
+/* Zero out YouTube's reserved scrollbar layout space */
+html.ypp-hide-scrollbar ytd-watch-flexy,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) ytd-watch-flexy,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) ytd-watch-flexy,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar) ytd-watch-flexy {
+  --ytd-watch-flexy-scrollbar-width: 0px !important;
 }
 body.ypp-hide-scrollbar::-webkit-scrollbar,
 body.ypp-hide-scrollbar *::-webkit-scrollbar,
@@ -407,8 +415,16 @@ html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
 
-
+/* Zero out YouTube's reserved scrollbar layout space */
+html.ypp-hide-scrollbar ytd-watch-flexy,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) ytd-watch-flexy,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) ytd-watch-flexy,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar) ytd-watch-flexy {
+  --ytd-watch-flexy-scrollbar-width: 0px !important;
 }
 body.ypp-hide-scrollbar::-webkit-scrollbar,
 body.ypp-hide-scrollbar *::-webkit-scrollbar,
