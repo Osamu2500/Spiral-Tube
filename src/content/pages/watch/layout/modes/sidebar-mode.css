@@ -474,6 +474,7 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
  * ══════════════════════════════════════════════════════════════════════════ */
 
 /* Smooth width transitions for toggling sidebar modes */
+ytd-watch-flexy[flexy] #columns.ytd-watch-flexy,
 ytd-watch-flexy[flexy] #primary.ytd-watch-flexy,
 ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), min-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), flex-grow 0.3s ease !important;
@@ -491,6 +492,13 @@ ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
     --ytd-watch-flexy-sidebar-min-width: 290px !important;
   }
 
+  /* Force the columns container to take up all available horizontal space */
+  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy]:not([theater]) #columns.ytd-watch-flexy {
+    max-width: calc(100vw - 48px) !important; 
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
   :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy]:not([theater]) #secondary.ytd-watch-flexy {
     margin-left: auto !important; /* Pushes the secondary sidebar strictly to the right edge */
     width: var(--ytd-watch-flexy-sidebar-width) !important;
@@ -500,6 +508,8 @@ ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
 
   :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy]:not([theater]) #primary.ytd-watch-flexy {
     flex-grow: 1 !important;
+    max-width: none !important; /* Unlocks the primary container from YouTube's hardcoded max-width */
+    min-width: 0 !important;
     margin-right: 24px !important;
   }
 }
