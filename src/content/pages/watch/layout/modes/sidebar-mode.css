@@ -35,67 +35,124 @@
   will-change: transform !important; /* V3: GPU Acceleration for buttery smooth hover */
 }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+/* ══════════════════════════════════════════════════════════════════════════
+ * WIDTH CASCADE FIX
+ * #secondary is 290/350px but inner containers (ytd-watch-next-secondary-results-renderer,
+ * yt-lockup-view-model etc.) are still laid out at the old 924px.
+ * Force every level of the chain to 100% of its parent so text properly clips.
+ * ══════════════════════════════════════════════════════════════════════════ */
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary ytd-watch-next-secondary-results-renderer,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary #related,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary ytd-item-section-renderer,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary .contents,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary #items,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary yt-lockup-view-model,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary ytd-lockup-view-model,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary ytd-compact-video-renderer,
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary ytd-rich-item-renderer {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * TITLE OVERFLOW FIX — actual class names from DevTools
+ * Target .ytLockupMetadataViewModelHeadingReset (YT-LOCKUP-VIEW-MODEL cards)
+ * AND #video-title / h3 (ytd-compact-video-renderer cards)
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * TITLE OVERFLOW FIX
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Ensure all text wrappers are flex children that can shrink */
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  :is(#details, .yt-lockup-metadata-view-model-wiz, .ytLockupMetadataViewModelHost) {
+  overflow: hidden !important;
+  min-width: 0 !important;
+  width: auto !important; /* CRITICAL: prevents forcing 100% width inside flex row */
+  max-width: none !important;
+  flex: 1 1 0% !important;
+}
+
+/* 2. Setup the title container for webkit-box truncation */
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title) {
   display: -webkit-box !important;
   -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  max-height: 4rem !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
+  width: 100% !important;
+  white-space: normal !important;
   word-break: break-word !important;
-  overflow-wrap: break-word !important;
+  
+  /* Reset some styles */
   font-size: 1.4rem !important;
   line-height: 1.9rem !important;
   font-weight: 500 !important;
   margin-bottom: 4px !important;
   margin-top: 2px !important;
-  opacity: 1 !important;
-  visibility: visible !important;
   color: var(--yt-spec-text-primary) !important;
-  white-space: normal !important;
 }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+/* 3. The inner span MUST ALSO be a webkit-box or it will override the parent's clamp */
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title)
+  .yt-core-attributed-string {
   display: -webkit-box !important;
   -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  white-space: normal !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
+  white-space: normal !important;
   word-break: break-word !important;
 }
 
-/* ── Compact: 1-line title with ellipsis (tighter layout) ── */
+/* 4. Apply line-clamp for COMPACT (1 line) */
 body.ypp-sidebar-compact
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title),
+body.ypp-sidebar-compact
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title)
+  .yt-core-attributed-string {
   -webkit-line-clamp: 1 !important;
   line-clamp: 1 !important;
   max-height: 2rem !important;
 }
-
-/* ── Fix text wrapper overflow for compact & regular ── */
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+/* Override font sizes specifically for compact */
+body.ypp-sidebar-compact
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#details, .yt-lockup-metadata-view-model-wiz, .yt-lockup-metadata-view-model-wiz__text-container) {
-  overflow: hidden !important;
-  min-width: 0 !important;
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title) {
+  font-size: 1.3rem !important;
+  line-height: 1.8rem !important;
 }
 
-/* ── Hover: expand title as floating tooltip overlay ── */
+/* 5. Apply line-clamp for REGULAR (2 lines) */
+body.ypp-sidebar-regular
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title),
+body.ypp-sidebar-regular
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title)
+  .yt-core-attributed-string {
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  max-height: 4rem !important;
+}
+
+/* 6. Hover state (expand full title as floating overlay) */
 :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer):hover
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title) {
   -webkit-line-clamp: unset !important;
   line-clamp: unset !important;
   max-height: none !important;
+  overflow: visible !important;
   position: relative !important;
   z-index: 50 !important;
   background: var(--yt-spec-base-background, #0f0f0f) !important;
@@ -103,7 +160,18 @@ body.ypp-sidebar-compact
   padding: 4px 6px !important;
   margin: -4px -6px !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
-  border: 1px solid var(--yt-spec-10-percent-layer, rgba(255,255,255,0.1)) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer):hover
+  :is(h3, #video-title, .ytLockupMetadataViewModelHeadingReset, .yt-lockup-metadata-view-model-wiz__title)
+  .yt-core-attributed-string {
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
