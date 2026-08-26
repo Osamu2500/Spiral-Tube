@@ -7,7 +7,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     constructor() {
         super('TimeDisplay');
         this.name = 'TimeDisplay';
-        this._mode = 'default'; // 'default' | 'remaining' | 'chapter'
+        this._mode = 'remaining'; // 'remaining' | 'chapter' | 'hidden'
         this._boundTimeUpdate = null;
         this._videoElement = null;
         this._timeDisplays = new Set();
@@ -58,24 +58,20 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         const style = document.createElement('style');
         style.id = 'ypp-time-display-styles';
         style.textContent = `
-            .ytp-time-display { cursor: pointer !important; user-select: none !important; }
-            .ypp-time-mode-remaining .ytp-time-current,
-            .ypp-time-mode-remaining .ytp-time-separator,
-            .ypp-time-mode-remaining .ytp-time-duration { display: none !important; }
+            .ytp-time-display { cursor: pointer !important; }
             .ypp-custom-time { 
                 display: none; 
                 font-weight: 500; 
                 font-variant-numeric: tabular-nums;
                 color: #ffffff !important;
-                padding: 4px 8px;
-                margin: -4px 0 -4px -8px;
-                border-radius: 8px;
-                transition: background-color 0.2s;
+                background-color: rgba(255, 255, 255, 0.15);
+                padding: 2px 6px;
+                border-radius: 4px;
+                margin-left: 6px;
+                font-size: 0.9em;
+                vertical-align: middle;
             }
-            .ypp-time-mode-remaining .ypp-custom-time { display: inline-block !important; }
-            .ypp-time-mode-remaining:hover .ypp-custom-time {
-                background-color: rgba(255, 255, 255, 0.15) !important;
-            }
+            .ypp-time-mode-active .ypp-custom-time { display: inline-block !important; }
         `;
         document.head.appendChild(style);
     }
@@ -116,8 +112,8 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             td.addEventListener('click', this._handleClick, true);
             this._timeDisplays.add(td);
             
-            if (this._mode === 'remaining') {
-                td.classList.add('ypp-time-mode-remaining');
+            if (this._mode !== 'hidden') {
+                td.classList.add('ypp-time-mode-active');
             }
 
             const updateFn = () => this._updateTime(td, customSpan);
@@ -131,20 +127,20 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         e.stopPropagation();
         e.stopImmediatePropagation();
         
-        // Cycle modes: default -> remaining -> chapter
-        if (this._mode === 'default') {
-            this._mode = 'remaining';
-        } else if (this._mode === 'remaining') {
+        // Cycle modes: remaining -> chapter -> hidden
+        if (this._mode === 'remaining') {
             this._mode = 'chapter';
+        } else if (this._mode === 'chapter') {
+            this._mode = 'hidden';
         } else {
-            this._mode = 'default';
+            this._mode = 'remaining';
         }
         
         this._timeDisplays.forEach(td => {
-            if (this._mode !== 'default') {
-                td.classList.add('ypp-time-mode-remaining');
+            if (this._mode !== 'hidden') {
+                td.classList.add('ypp-time-mode-active');
             } else {
-                td.classList.remove('ypp-time-mode-remaining');
+                td.classList.remove('ypp-time-mode-active');
             }
         });
         
@@ -186,7 +182,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     }
 
     _updateTime(td, customSpan) {
-        if (!this.settings?.enableRemainingTime || this._mode === 'default') return;
+        if (!this.settings?.enableRemainingTime || this._mode === 'hidden') return;
 
         // Ensure customSpan is still in the DOM (YouTube SPA might wipe it)
         if (!td.contains(customSpan)) {
