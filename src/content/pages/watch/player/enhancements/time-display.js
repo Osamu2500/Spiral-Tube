@@ -64,14 +64,17 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
                 font-variant-numeric: tabular-nums;
                 margin-left: 8px;
                 background: transparent;
-                padding: 0;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
+                padding: 0 16px;
                 color: rgb(238, 238, 238);
                 height: 40px;
-                line-height: 40px;
+                line-height: 38px;
                 font-weight: 500;
                 font-size: 14px;
                 vertical-align: top;
                 box-sizing: border-box;
+                text-shadow: 0 0 2px rgba(0,0,0,.5);
             }
             .ypp-time-mode-active .ypp-custom-time { display: inline-block !important; }
         `;
