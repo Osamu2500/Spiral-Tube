@@ -96,11 +96,14 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             // Avoid miniplayer
             if (td.closest('.ytp-miniplayer-ui')) return;
 
-            let customSpan = td.querySelector('.ypp-custom-time');
+            // In new YouTube UI, .ytp-time-wrapper is the actual pill container inside .ytp-time-display
+            const targetContainer = td.querySelector('.ytp-time-wrapper') || td;
+
+            let customSpan = targetContainer.querySelector('.ypp-custom-time');
             if (!customSpan) {
                 customSpan = document.createElement('span');
                 customSpan.className = 'ypp-custom-time';
-                td.appendChild(customSpan);
+                targetContainer.appendChild(customSpan);
             }
 
             td.addEventListener('click', this._handleClick, true);
@@ -188,9 +191,13 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
 
         this._bindVideoListeners(video);
 
-        // Live stream protection
-        if (!video.duration || video.duration === Infinity || isNaN(video.currentTime) || video.duration <= 0) {
-            customSpan.textContent = 'Live';
+        // Live stream / loading protection
+        if (!video.duration || isNaN(video.currentTime) || video.duration <= 0) {
+            customSpan.textContent = '';
+            return;
+        }
+        if (video.duration === Infinity) {
+            customSpan.textContent = ' • Live';
             return;
         }
 
