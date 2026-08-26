@@ -72,9 +72,6 @@
   :is(#details, .yt-lockup-metadata-view-model-wiz, .ytLockupMetadataViewModelHost) {
   overflow: hidden !important;
   min-width: 0 !important;
-  width: auto !important; /* CRITICAL: prevents forcing 100% width inside flex row */
-  max-width: none !important;
-  flex: 1 1 0% !important;
 }
 
 /* 2. Setup the title container for webkit-box truncation */
