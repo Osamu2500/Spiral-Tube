@@ -59,12 +59,23 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         style.id = 'ypp-time-display-styles';
         style.textContent = `
             .ytp-time-display { cursor: pointer !important; user-select: none !important; }
-            .ytp-time-display:hover { opacity: 0.8 !important; }
             .ypp-time-mode-remaining .ytp-time-current,
             .ypp-time-mode-remaining .ytp-time-separator,
             .ypp-time-mode-remaining .ytp-time-duration { display: none !important; }
-            .ypp-custom-time { display: none; font-weight: 500; font-variant-numeric: tabular-nums; }
+            .ypp-custom-time { 
+                display: none; 
+                font-weight: 500; 
+                font-variant-numeric: tabular-nums;
+                color: #ffffff !important;
+                padding: 4px 8px;
+                margin: -4px 0 -4px -8px;
+                border-radius: 8px;
+                transition: background-color 0.2s;
+            }
             .ypp-time-mode-remaining .ypp-custom-time { display: inline-block !important; }
+            .ypp-time-mode-remaining:hover .ypp-custom-time {
+                background-color: rgba(255, 255, 255, 0.15) !important;
+            }
         `;
         document.head.appendChild(style);
     }
