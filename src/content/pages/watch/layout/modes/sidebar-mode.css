@@ -470,26 +470,36 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
 /* ══════════════════════════════════════════════════════════════════════════
  * DYNAMIC PRIMARY EXPANSION & SIDEBAR RIGHT-SHIFT (V4)
  * Automatically expands the video player space when sidebar cards are smaller.
+ * Includes Responsive Breakpoints, Theater Mode checks, and Smooth Transitions.
  * ══════════════════════════════════════════════════════════════════════════ */
 
-body.ypp-sidebar-regular ytd-watch-flexy[flexy] {
-  --ytd-watch-flexy-sidebar-width: 350px !important;
-  --ytd-watch-flexy-sidebar-min-width: 350px !important;
+/* Smooth width transitions for toggling sidebar modes */
+ytd-watch-flexy[flexy] #primary.ytd-watch-flexy,
+ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), min-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), flex-grow 0.3s ease !important;
 }
 
-body.ypp-sidebar-compact ytd-watch-flexy[flexy] {
-  --ytd-watch-flexy-sidebar-width: 290px !important;
-  --ytd-watch-flexy-sidebar-min-width: 290px !important;
-}
+/* Only apply layout shifts when not in theater mode, and on screens wide enough for 2 columns */
+@media (min-width: 1000px) {
+  body.ypp-sidebar-regular ytd-watch-flexy[flexy]:not([theater]) {
+    --ytd-watch-flexy-sidebar-width: 350px !important;
+    --ytd-watch-flexy-sidebar-min-width: 350px !important;
+  }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
-  margin-left: auto !important; /* Pushes the secondary sidebar strictly to the right edge */
-  width: var(--ytd-watch-flexy-sidebar-width) !important;
-  min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
-  max-width: var(--ytd-watch-flexy-sidebar-width) !important;
-}
+  body.ypp-sidebar-compact ytd-watch-flexy[flexy]:not([theater]) {
+    --ytd-watch-flexy-sidebar-width: 290px !important;
+    --ytd-watch-flexy-sidebar-min-width: 290px !important;
+  }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
-  flex-grow: 1 !important;
-  margin-right: 24px !important;
+  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy]:not([theater]) #secondary.ytd-watch-flexy {
+    margin-left: auto !important; /* Pushes the secondary sidebar strictly to the right edge */
+    width: var(--ytd-watch-flexy-sidebar-width) !important;
+    min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
+    max-width: var(--ytd-watch-flexy-sidebar-width) !important;
+  }
+
+  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy]:not([theater]) #primary.ytd-watch-flexy {
+    flex-grow: 1 !important;
+    margin-right: 24px !important;
+  }
 }
