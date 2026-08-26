@@ -61,17 +61,11 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             .ytp-time-display { cursor: pointer !important; }
             .ypp-custom-time { 
                 display: none; 
-                font-weight: 500; 
                 font-variant-numeric: tabular-nums;
-                color: #ffffff !important;
-                background-color: rgba(255, 255, 255, 0.15);
-                padding: 2px 6px;
-                border-radius: 4px;
-                margin-left: 6px;
-                font-size: 0.9em;
-                vertical-align: middle;
+                margin-left: 4px;
+                opacity: 0.85;
             }
-            .ypp-time-mode-active .ypp-custom-time { display: inline-block !important; }
+            .ypp-time-mode-active .ypp-custom-time { display: inline !important; }
         `;
         document.head.appendChild(style);
     }
@@ -237,15 +231,19 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         }
 
         if (Math.abs(speed - 1) <= 0.01) {
-            customSpan.textContent = `${prefix}-${this._format(rawLeft)}`;
+            customSpan.textContent = ` • -${this._format(rawLeft)}`;
         } else {
             if (speed > 1) {
                 const totalSaved = targetDuration - (targetDuration / speed);
-                customSpan.textContent = `${prefix}-${this._format(adjustedLeft)} · ${this._format(totalSaved)} saved`;
+                customSpan.textContent = ` • -${this._format(adjustedLeft)} (${this._format(totalSaved)} saved)`;
             } else {
                 const totalExtra = (targetDuration / speed) - targetDuration;
-                customSpan.textContent = `${prefix}-${this._format(adjustedLeft)} · ${this._format(totalExtra)} extra`;
+                customSpan.textContent = ` • -${this._format(adjustedLeft)} (${this._format(totalExtra)} extra)`;
             }
+        }
+        
+        if (prefix) {
+            customSpan.textContent = ` • ${prefix}` + customSpan.textContent.substring(3);
         }
     }
 }
