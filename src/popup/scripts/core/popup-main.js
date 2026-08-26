@@ -328,7 +328,7 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         enableVolumeBoost: 'Toggle Volume Booster',
         enableCinemaFilters: 'Toggle Video Filters',
         enableCustomSpeed: 'Toggle Custom Speed',
-        enableTranscript: 'Toggle Transcript',
+
         // --- UI / Theme ---
         trueBlack: 'Toggle True Black Dark Mode',
         hideScrollbar: 'Toggle Scrollbar',
@@ -995,26 +995,6 @@ const initPresets = (document, saveSettings, UI) => {
     });
 };
 
-const initSponsorBlockSettings = (document, saveSettings, UI) => {
-    const sbToggle  = document.getElementById('sponsorBlock');
-    const sbPanel   = document.getElementById('sponsorBlockCategories');
-    const sbCatIds  = ['sb_sponsor','sb_intro','sb_selfpromo','sb_interaction','sb_music_offtopic','sb_preview'];
-    if (sbToggle && sbPanel) {
-        const _syncPanel = () => {
-            sbPanel.style.display = sbToggle.checked ? 'block' : 'none';
-        };
-        sbToggle.addEventListener('change', () => {
-            _syncPanel();
-            saveSettings(() => UI.showSaveIndicator(document));
-        });
-        _syncPanel();
-        sbCatIds.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('change', () => saveSettings(() => UI.showSaveIndicator(document)));
-        });
-    }
-};
-
 const initApp = async () => {
     try {
         await initI18n();
@@ -1120,8 +1100,6 @@ const initApp = async () => {
         initHistoryWidget();
         initBackupTools();
         initBookmarksManager();
-        initSponsorBlockSettings(document, saveSettings, UI);
-
         // 6.5 Apply popup theme (based on saved state)
         if (localStorage.getItem('ypp-popup-dark') === 'true' || localStorage.getItem('ypp-popup-dark') === null) {
             document.body.classList.add('ypp-theme-dark');

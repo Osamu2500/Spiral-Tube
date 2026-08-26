@@ -5,16 +5,7 @@ export const getPlayerTab = (t) => ({
     label: t('tab_player'),
     icon: ICONS.player,
     sections: [
-      {
-        title: 'Ad & Sponsor Blocking',
-        icon: ICONS.compressor,
-        items: [
-          { type: 'toggle', id: 'autoSkipAds', label: 'Auto Skip Ads', desc: 'Automatically skip YouTube video ads', icon: ICONS.play },
-          { type: 'toggle', id: 'autoSkipPromos', label: 'Auto Skip Promos', desc: 'Skip self-promotion segments', icon: ICONS.play },
-          { type: 'toggle', id: 'autoSkipSponsors', label: 'Auto Skip Sponsors', desc: 'Skip sponsored segments in videos', icon: ICONS.play },
-          { type: 'toggle', id: 'sponsorBlock', label: 'SponsorBlock API', desc: 'Use crowdsourced SponsorBlock data', icon: ICONS.magicWand },
-        ],
-      },
+
       // Section 1: Playback Automation & Behaviors
       {
         title: t('playback_automation'),
@@ -56,15 +47,7 @@ export const getPlayerTab = (t) => ({
               'M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z'
             ),
           },
-          {
-            type: 'toggle',
-            id: 'enableTranscript',
-            label: t('enable_transcript'),
-            desc: t('enable_transcript_desc'),
-            icon: P(
-              'M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z'
-            ),
-          },
+
           {
             type: 'toggle',
             id: 'enableCpuTamer',
@@ -117,13 +100,7 @@ export const getPlayerTab = (t) => ({
         title: t('player_ui_components'),
         icon: ICONS.uiComponents,
         items: [
-          {
-            type: 'toggle',
-            id: 'enableSmoothTitleScroll',
-            label: 'Smooth Title Scroll',
-            desc: 'Marquee scrolling for long video titles',
-            icon: ICONS.play,
-          },
+
           {
             type: 'toggle',
             id: 'saveSupremeUI',
@@ -153,22 +130,13 @@ export const getPlayerTab = (t) => ({
             desc: t('solid_red_no_pink_gradient'),
             icon: ICONS.progressBar,
           },
-          {
-            type: 'toggle',
-            id: 'returnYouTubeDislike',
-            label: 'Return YouTube Dislike',
-            desc: 'Restore dislike counts on videos',
-            icon: ICONS.thumbsUp,
-          },
+
           {
             type: 'toggle',
             id: 'markWatched',
             label: 'Mark as Watched Button',
             desc: 'Add a button to manually mark videos as watched',
             icon: ICONS.eyeSlash,
-            label: t('classic_progress_bar'),
-            desc: t('solid_red_no_pink_gradient'),
-            icon: ICONS.progressBar,
           },
         ],
       },

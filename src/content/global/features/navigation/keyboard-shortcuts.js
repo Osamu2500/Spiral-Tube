@@ -57,7 +57,7 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             enableCinemaFilters: 'Video Filters',
             enableCustomSpeed: 'Custom Speed',
             autoCinema: 'Auto Cinema',
-            enableTranscript: 'Transcript',
+
             trueBlack: 'True Black Dark Mode',
             hideScrollbar: 'Scrollbar',
             grayscaleThumbnails: 'Grayscale Thumbs',

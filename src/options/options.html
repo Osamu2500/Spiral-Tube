@@ -20,7 +20,6 @@
                 <button class="nav-btn active" data-target="general">General</button>
                 <button class="nav-btn" data-target="player">Video Player</button>
                 <button class="nav-btn" data-target="shorts">Shorts</button>
-                <button class="nav-btn" data-target="sponsor">SponsorBlock</button>
             </nav>
         </aside>
 
@@ -46,16 +45,7 @@
                     </div>
                 </div>
 
-                <div class="setting-card">
-                    <div class="setting-info">
-                        <h3>Ad Skipper</h3>
-                        <p>Automatically click "Skip Ad" and fast-forward video ads.</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="switch"><input type="checkbox" id="adSkipper"><span class="slider"></span></label>
-                    </div>
-                </div>
-                
+
                 <div class="setting-card">
                     <div class="setting-info">
                         <h3>Custom Scrollbar</h3>
@@ -71,16 +61,6 @@
             <section id="player" class="settings-section">
                 <h2>Video Player</h2>
                 
-                <div class="setting-card">
-                    <div class="setting-info">
-                        <h3>Return YouTube Dislike</h3>
-                        <p>Fetch and display dislikes natively below the video.</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="switch"><input type="checkbox" id="returnYouTubeDislike"><span class="slider"></span></label>
-                    </div>
-                </div>
-
                 <div class="setting-card">
                     <div class="setting-info">
                         <h3>Video Speed Controller</h3>
@@ -127,30 +107,6 @@
                 </div>
             </section>
 
-            <!-- SponsorBlock Settings -->
-            <section id="sponsor" class="settings-section">
-                <h2>SponsorBlock Engine</h2>
-
-                <div class="setting-card">
-                    <div class="setting-info">
-                        <h3>Enable SponsorBlock</h3>
-                        <p>Automatically skip sponsored segments and draw markers on the timeline.</p>
-                    </div>
-                    <div class="setting-control">
-                        <label class="switch"><input type="checkbox" id="sponsorBlock"><span class="slider"></span></label>
-                    </div>
-                </div>
-
-                <h3>Skip Categories</h3>
-                <div class="sponsor-categories">
-                    <label class="category-toggle"><input type="checkbox" id="sb_sponsor"> Sponsor <span class="color-dot" style="background:#00d400"></span></label>
-                    <label class="category-toggle"><input type="checkbox" id="sb_intro"> Intro <span class="color-dot" style="background:#00ffff"></span></label>
-                    <label class="category-toggle"><input type="checkbox" id="sb_outro"> Outro <span class="color-dot" style="background:#0202ed"></span></label>
-                    <label class="category-toggle"><input type="checkbox" id="sb_interaction"> Interaction <span class="color-dot" style="background:#cc00ff"></span></label>
-                    <label class="category-toggle"><input type="checkbox" id="sb_selfpromo"> Self Promo <span class="color-dot" style="background:#ffff00"></span></label>
-                    <label class="category-toggle"><input type="checkbox" id="sb_music_offtopic"> Music/Offtopic <span class="color-dot" style="background:#ff9900"></span></label>
-                </div>
-            </section>
         </main>
     </div>
     <script src="options.js"></script>

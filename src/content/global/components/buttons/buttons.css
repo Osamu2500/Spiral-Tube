@@ -510,6 +510,8 @@ body.yt-spiral-tube-theme #actions-inner
   gap: 6px !important;
   font-weight: 500 !important;
   color: var(--ypp-text-primary, #fff) !important;
+  white-space: nowrap !important;
+  min-width: max-content !important;
   transition:
     transform 0.2s ease,
     background 0.2s ease,

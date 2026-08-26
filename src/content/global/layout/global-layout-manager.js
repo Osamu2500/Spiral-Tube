@@ -51,7 +51,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             showLiveStreamTime:    'ypp-live-stream-time', // Live stream time counter
             twoColumnSubscriptions:'ypp-two-column-subs',  // Two rows in subs feed
             enableDeckMode:        'ypp-deck-mode',
-            enableSmoothTitleScroll:'ypp-smooth-title-scroll',
+
             hideCountryCode:       'ypp-hide-country-code',
             hideThanksDonate:      'ypp-hide-thanks-donate',
             hidePlayerBranding:    'ypp-hide-player-branding',

@@ -27,7 +27,7 @@ window.YPP.SettingsSchema = {
         // Canonical names: "Theme" (background color) / "UI Design" (page overlay) / "Card Styles" (card shapes)
         // activeTheme controls the background color theme — loaded from dist/themes/
         // Keys not found in dist/themes/ fall back to dist/ui-styles/ (see theme.js _getThemeUrl)
-        activeTheme:         { type: 'string',  default: 'default', values: ['abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'coffee', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'default', 'discord', 'dracula', 'ember', 'fluent', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'hacker', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'midnight', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'nord', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'sakura', 'startube', 'steampunk', 'sunset', 'system', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'woodblock', 'y2k'] },
+        activeTheme:         { type: 'string',  default: 'default', values: ['abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'coffee', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'default', 'discord', 'dracula', 'ember', 'fluent', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'hacker', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'midnight', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'nord', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'sakura', 'steampunk', 'sunset', 'system', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'woodblock', 'y2k'] },
         trueBlack:           { type: 'boolean', default: false },
         hideScrollbar:       { type: 'boolean', default: false },
         customCursor:        { type: 'string',  default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel'] },
@@ -97,9 +97,9 @@ window.YPP.SettingsSchema = {
         // --- Player ---
         netflixSubtitles:    { type: 'boolean', default: false },
         autoCinema:          { type: 'boolean', default: false },
-        enableSmoothTitleScroll: { type: 'boolean', default: false },
+
         enablePiP:           { type: 'boolean', default: true },
-        enableTranscript:    { type: 'boolean', default: true },
+
         enableSnapshot:      { type: 'boolean', default: true },
         enableLoop:          { type: 'boolean', default: true },
         enableRemainingTime: { type: 'boolean', default: true },
@@ -116,10 +116,6 @@ window.YPP.SettingsSchema = {
         cleanSearch:         { type: 'boolean', default: true },
 
         // --- Player Automation ---
-        autoSkipAds:         { type: 'boolean', default: true },
-        autoSkipPromos:      { type: 'boolean', default: false },
-        autoSkipSponsors:    { type: 'boolean', default: false },
-        sponsorBlock:        { type: 'boolean', default: true },
         autoPlayNext:        { type: 'boolean', default: false },
         navHistory:          { type: 'boolean', default: true },
 
@@ -153,8 +149,6 @@ window.YPP.SettingsSchema = {
         cinemaFilterBlur:        { type: 'number',  default: 0,   min: 0, max: 10  },
         cinemaFilterOpacity:     { type: 'number',  default: 100, min: 10, max: 100 },
 
-        // --- Ad Skipper ---
-        adSkipper:           { type: 'boolean', default: true },
 
         // --- Night Mode ---
         blueLight:           { type: 'number',  default: 0, min: 0, max: 100 },
@@ -183,8 +177,7 @@ window.YPP.SettingsSchema = {
         ambientIntensity:    { type: 'number',  default: 0.6, min: 0.1, max: 1.0 },
         ambientBlur:         { type: 'number',  default: 120, min: 20, max: 200 },
         audioModeEnabled:    { type: 'boolean', default: false },
-        subscriptionFolders: { type: 'boolean', default: true },
-        returnYouTubeDislike:{ type: 'boolean', default: false },
+
         enableBookmarks:     { type: 'boolean', default: true },
         videoResumer:        { type: 'boolean', default: true },
         autoPause:           { type: 'boolean', default: false },
@@ -207,7 +200,7 @@ window.YPP.SettingsSchema = {
         enableStatsForNerds: { type: 'boolean', default: false },
 
         // --- Subscription Organizer (legacy) ---
-        enableSubsManager:   { type: 'boolean', default: false },
+
 
         // --- Keyboard Shortcuts ---
         keyboardShortcuts:      { type: 'boolean', default: true },
@@ -388,7 +381,7 @@ window.YPP.SettingsSchema = {
         enableCustomizeYouTubeUI:     { type: 'boolean', default: true },
         enableCpuTamer:               { type: 'boolean', default: true },
         enableTabviewSidebar:         { type: 'boolean', default: false },
-        enableStarTubeLayout:         { type: 'boolean', default: false },
+
         enableCustomSidebar:          { type: 'boolean', default: true },
         layout:                       { type: 'boolean', default: true },
         historyColumns:               { type: 'number',  default: 4, min: 1, max: 10 },

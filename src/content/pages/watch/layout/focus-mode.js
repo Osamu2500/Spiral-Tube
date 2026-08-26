@@ -191,7 +191,7 @@ export class FocusMode extends window.YPP.features.BaseFeature {
         // Target containers
         const targets = {
             'comments': document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]),
-            'related': document.querySelector('#secondary #related')
+            'related': document.querySelector('ytd-watch-next-secondary-results-renderer, #secondary #related')
         };
 
         for (const [key, container] of Object.entries(targets)) {

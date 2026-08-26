@@ -109,10 +109,10 @@ export const DEFAULT_SETTINGS = {
 
   // Player
   autoCinema: false,
-  enableSmoothTitleScroll: false,
+
   autoQuality: 'highres',
   enablePiP: true,
-  enableTranscript: true,
+
   enableSnapshot: true,
   enableLoop: true,
   enableRemainingTime: true,
@@ -202,9 +202,8 @@ export const DEFAULT_SETTINGS = {
   autoPiP: false,
 
   // Player Automation
-  autoSkipAds: true,
+  autoSkipAds: false,
   autoSkipPromos: false,
-  autoSkipSponsors: false,
   autoPlayNext: false,
 
   // New Features
@@ -302,5 +301,5 @@ export const DEFAULT_SETTINGS = {
   enableCustomizeYouTubeUI: true,
   enableCpuTamer: true,
   enableTabviewSidebar: false,
-  enableStarTubeLayout: false,
+
 };

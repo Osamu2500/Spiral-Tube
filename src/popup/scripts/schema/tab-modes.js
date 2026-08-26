@@ -59,13 +59,7 @@ export const getModesTab = (t) => ({
             desc: t('real_cinema_mode_desc'),
             icon: ICONS.cinema,
           },
-          {
-            type: 'toggle',
-            id: 'enableStarTubeLayout',
-            label: t('startube_layout'),
-            desc: t('startube_layout_desc'),
-            icon: ICONS.autoCinema,
-          },
+
           {
             type: 'toggle',
             id: 'playlistRedesign',

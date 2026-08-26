@@ -95,8 +95,8 @@ import { SearchRedesign } from '../pages/search/layout/search-redesign.js';
 window.YPP.FeatureManager.register(SearchRedesign);
 
 // --- src/content/pages/shorts/index.ts ---
-import { HideShorts } from '../pages/shorts/features/visibility/hide-shorts.js';
-window.YPP.FeatureManager.register(HideShorts);
+import { ShortsRemover } from '../global/filters/shorts-remover.js';
+window.YPP.FeatureManager.register(ShortsRemover);
 import { RedirectShorts } from '../pages/shorts/features/visibility/redirect-shorts.js';
 window.YPP.FeatureManager.register(RedirectShorts);
 import { StopShortsLooping } from '../pages/shorts/features/playback/stop-looping.js';
@@ -170,8 +170,7 @@ window.YPP.FeatureManager.register(AudioEQ);
 import { AutoSubtitles } from '../pages/watch/player/automation/auto-subtitles/auto-subtitles.js';
 AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
-import { AutoTranscript } from '../pages/watch/player/automation/auto-transcript/auto-transcript.js';
-window.YPP.FeatureManager.register(AutoTranscript);
+
 import { MiniPlayerScroll } from '../pages/watch/player/automation/mini-player-scroll/mini-player-scroll.js';
 window.YPP.FeatureManager.register(MiniPlayerScroll);
 import { VSCAudioSupport } from '../pages/watch/player/enhancements/video-speed-controller/vsc-audio-support.js';
@@ -197,8 +196,7 @@ import { AutoQuality } from '../pages/watch/player/automation/auto-quality/auto-
 window.YPP.FeatureManager.register(AutoQuality);
 import { TimeDisplay } from '../pages/watch/player/enhancements/time-display.js';
 window.YPP.FeatureManager.register(TimeDisplay);
-import { AdSkipper } from '../pages/watch/player/automation/ad-skipper/ad-skipper.js';
-window.YPP.FeatureManager.register(AdSkipper);
+
 import { AmbientMode } from '../pages/watch/player/media-effects/ambient-mode/ambient-mode.js';
 window.YPP.FeatureManager.register(AmbientMode);
 import { AudioMode } from '../pages/watch/player/media-effects/ambient-mode/audio-mode.js';
@@ -259,8 +257,6 @@ import { FeedGridColumns } from '../global/layout/feed-grid-columns.js';
 window.YPP.FeatureManager.register(FeedGridColumns);
 import { TabviewSidebar } from '../global/layout/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
-import { StarTubeLayout } from '../global/layout/startube-layout.js';
-window.YPP.FeatureManager.register(StarTubeLayout);
 
 // --- src/content/global/ui/global-bar/index.ts ---
 import { GlobalBarUI } from '../global/ui/global-bar/global-bar-ui.js';

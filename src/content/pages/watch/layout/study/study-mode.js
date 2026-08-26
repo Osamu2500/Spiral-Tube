@@ -99,12 +99,12 @@ export class StudyMode extends window.YPP.features.BaseFeature {
         if (!this.isEnabled) return;
         
         try {
-            const rightControls = await this.waitForElement('.ytp-right-controls', 5000);
+            const rightControls = await this.utils.waitForElement('.ytp-right-controls', 5000);
             if (rightControls) {
                 this.speedPanel._createButtonInControls(rightControls);
             }
             
-            const video = await this.waitForElement('video', 5000);
+            const video = await this.utils.waitForElement('video', 5000);
             if (video && this._boundEnforceState) {
                 video.removeEventListener('ratechange', this._boundEnforceState);
                 this.addListener(video, 'ratechange', this._boundEnforceState);

@@ -215,6 +215,15 @@ window.YPP.FilterWarning = (() => {
         }
     }
 
-    return { record, dismiss };
+    // Bind to event bus instead of global method calls
+    setTimeout(() => {
+        if (window.YPP?.events) {
+            window.YPP.events.on('filter:warning:record', (data) => {
+                if (data) record(data.hidden || 1, data.total || 1);
+            });
+        }
+    }, 0);
+
+    return { dismiss };
 })();
 

@@ -51,7 +51,7 @@ export class BaseFilterFeature extends window.YPP.features.BaseFeature {
             this._hiddenElements.add(el);
             this._emitHiddenEvent(el, reason);
             // Report to FilterWarning system
-            try { window.YPP.FilterWarning?.record(1, this._lastTotalCount || 1); } catch (_) {}
+            try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: this._lastTotalCount || 1 }); } catch (_) {}
             return;
         }
 
@@ -64,7 +64,7 @@ export class BaseFilterFeature extends window.YPP.features.BaseFeature {
         
         this._emitHiddenEvent(el, reason);
         // Report to FilterWarning system
-        try { window.YPP.FilterWarning?.record(1, this._lastTotalCount || 1); } catch (_) {}
+        try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: this._lastTotalCount || 1 }); } catch (_) {}
     }
 
     /**

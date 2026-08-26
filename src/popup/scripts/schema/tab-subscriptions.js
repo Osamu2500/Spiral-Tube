@@ -5,14 +5,7 @@ export const getSubscriptionsTab = (t) => ({
     label: t('tab_subs'),
     icon: ICONS.subs,
     sections: [
-      {
-        title: 'Subscription Organizers',
-        icon: ICONS.subs,
-        items: [
-          { type: 'toggle', id: 'enableSubsManager', label: 'Subs Manager', desc: 'Enable advanced subscription manager', icon: ICONS.settingsSync },
-          { type: 'toggle', id: 'subscriptionFolders', label: 'Subscription Folders', desc: 'Organize subscriptions into folders', icon: ICONS.folder },
-        ],
-      },
+
       {
         title: t('filter_bar_layout'),
         icon: ICONS.filterMode,
@@ -57,8 +50,6 @@ export const getSubscriptionsTab = (t) => ({
         title: t('filter_chips_status'),
         icon: ICONS.watched,
         items: [
-          { type: 'toggle', id: 'ff_unwatched_visible', label: t('unwatched') },
-          { type: 'toggle', id: 'ff_watched_visible', label: t('watched') },
           { type: 'toggle', id: 'ff_notifon_visible', label: t('notification_on') },
           { type: 'toggle', id: 'ff_notifoff_visible', label: t('notification_off') },
         ],

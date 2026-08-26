@@ -760,37 +760,6 @@ html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-butt
 
 
 
-/* Full Video Titles - Marquee Scroll */
-body.ypp-smooth-title-scroll :is(
-  ytd-rich-item-renderer,
-  ytd-video-renderer,
-  ytd-grid-video-renderer,
-  ytd-compact-video-renderer,
-  ytd-playlist-video-renderer,
-  ytd-playlist-panel-video-renderer,
-  yt-lockup-view-model
-):not([is-shorts]):not(:has(a[href*='/shorts'])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon='yt-icons:shorts'])):hover :is(
-  #video-title,
-  yt-formatted-string[id='video-title'],
-  .yt-lockup-metadata-view-model-wiz__title,
-  #video-title .yt-core-attributed-string,
-  .yt-lockup-metadata-view-model-wiz__title .yt-core-attributed-string
-) {
-  -webkit-line-clamp: initial !important;
-  line-clamp: initial !important;
-  max-height: none !important;
-  white-space: nowrap !important;
-  display: inline-block !important;
-  animation: yppMarqueeScroll 6s linear infinite alternate;
-  animation-delay: 0.5s;
-}
-
-@keyframes yppMarqueeScroll {
-  0% { transform: translateX(0); }
-  10% { transform: translateX(0); }
-  90% { transform: translateX(calc(-100% + 200px)); }
-  100% { transform: translateX(calc(-100% + 200px)); }
-}
 
 
 /* ────────────────────────────────────────────────────────────────── */

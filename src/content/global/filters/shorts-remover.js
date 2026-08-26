@@ -1,4 +1,4 @@
-import '../../../../core/system/base-feature.js';
+import '../../core/system/base-feature.js';
 /**
  * @fileoverview
  * Hide Shorts
@@ -8,13 +8,13 @@ import '../../../../core/system/base-feature.js';
  * Targets: search results, shelves, feed, and recommended videos.
  * Utilizes MutationObserver and robust selector heuristics.
  */
-export class HideShorts extends window.YPP.features.BaseFeature {
-    static featureId = 'hideShorts';
+export class ShortsRemover extends window.YPP.features.BaseFeature {
+    static featureId = 'aggressiveShortsBlock';
     static executionPhase = 'idle';
     static priority = 999;
 
     constructor() {
-        super('HideShorts');
+        super('ShortsRemover');
         this.handleShortsAdded = this.handleShortsAdded.bind(this);
         this._isMonitoringShorts = false;
     }
@@ -142,14 +142,14 @@ export class HideShorts extends window.YPP.features.BaseFeature {
                 });
             }
         } catch (err) {
-            this.utils?.log(`Error removing shorts: ${err.message}`, 'HideShorts', 'error');
+            this.utils?.log(`Error removing shorts: ${err.message}`, 'ShortsRemover', 'error');
         }
 
         this._removeShortsChips();
         this._removeShortsByHeuristics();
 
         if (removed > 0) {
-            this.utils?.log(`Removed ${removed} Shorts elements from DOM`, 'HideShorts');
+            this.utils?.log(`Removed ${removed} Shorts elements from DOM`, 'ShortsRemover');
         }
     }
 
@@ -231,7 +231,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
 
     startShortsMonitoring() {
         if (this._isMonitoringShorts) return;
-        this.utils?.log('Starting continuous Shorts monitoring via DOMObserver', 'HideShorts');
+        this.utils?.log('Starting continuous Shorts monitoring via DOMObserver', 'ShortsRemover');
         const isSearchPage = window.location.pathname === '/results';
         const monitorSelector = isSearchPage
             ? 'ytd-rich-item-renderer, yt-lockup-view-model, yt-collection-shelf-view-model, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer'
@@ -250,7 +250,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         if (this._isMonitoringShorts) {
             this.observer.unregister('shorts-monitor');
             this._isMonitoringShorts = false;
-            this.utils?.log('Stopped Shorts monitoring', 'HideShorts');
+            this.utils?.log('Stopped Shorts monitoring', 'ShortsRemover');
         }
     }
 
@@ -305,7 +305,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         });
 
         if (removed > 0) {
-            this.utils?.log(`Dynamic removal: ${removed} Shorts elements`, 'HideShorts');
+            this.utils?.log(`Dynamic removal: ${removed} Shorts elements`, 'ShortsRemover');
         }
     }
 };
