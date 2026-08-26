@@ -428,10 +428,7 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-
    AVATAR SPACING & COLLAB UI ENHANCEMENTS
    ========================================================================== */
 
-/* 1. Global Avatar-to-Title Spacing (Homepage & Grid layouts) */
-html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #avatar-link {
-  margin-right: 14px !important; /* Ensure breathing room before title */
-}
+/* 1. Global Avatar-to-Title Spacing (Removed, now handled in cards.css) */
 
 /* 2. Search Grid Font Normalization */
 /* When in a grid layout, ytd-video-renderer (search result) titles are too big natively. We normalize them. */
@@ -462,7 +459,6 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avata
 }
 
 html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avatar-link yt-img-shadow {
-  border-radius: 50% !important;
   border: 2px solid var(--ypp-bg-base, #000) !important;
   box-sizing: border-box !important;
   /* Elevate consecutive avatars so they overlap cleanly */

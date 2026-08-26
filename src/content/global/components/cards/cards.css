@@ -23,16 +23,16 @@
       .ypp-grid-item
     ) *)
 ) {
-  background: var(--ypp-card-bg, transparent) !important;
-  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 0px)) !important;
-  border: var(--ypp-card-border, 1px solid transparent) !important;
-  padding: var(--ypp-card-pad, 0px) !important;
-  box-shadow: var(--ypp-card-shadow, none) !important;
+  background: var(--ypp-card-bg, rgba(20, 20, 20, 0.4)) !important;
+  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 16px)) !important;
+  border: var(--ypp-card-border, 1px solid rgba(255, 255, 255, 0.05)) !important;
+  padding: 0 !important; /* Edge to edge thumbnails */
+  box-shadow: var(--ypp-card-shadow, 0 4px 12px rgba(0,0,0,0.15)) !important;
   filter: var(--ypp-card-filter, none) !important;
-  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, blur(12px)) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter, blur(12px)) !important;
   transform: var(--ypp-card-transform, none) !important;
-  transition: var(--ypp-card-transition, all 0.2s ease) !important;
+  transition: var(--ypp-card-transition, all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)) !important;
 }
 
 :is(
@@ -55,13 +55,13 @@
       .ypp-grid-item
     ) *)
 ):hover {
-  background: var(--ypp-card-bg-hover, var(--ypp-card-bg, transparent)) !important;
-  border: var(--ypp-card-border-hover, var(--ypp-card-border, 1px solid transparent)) !important;
-  transform: var(--ypp-card-transform-hover, none) !important;
-  box-shadow: var(--ypp-card-shadow-hover, var(--ypp-card-shadow, none)) !important;
+  background: var(--ypp-card-bg-hover, rgba(255, 255, 255, 0.08)) !important;
+  border: var(--ypp-card-border-hover, 1px solid rgba(255, 255, 255, 0.15)) !important;
+  transform: var(--ypp-card-transform-hover, translateY(-4px)) !important;
+  box-shadow: var(--ypp-card-shadow-hover, 0 12px 32px rgba(0,0,0,0.3)) !important;
   filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
-  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, blur(16px))) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, blur(16px))) !important;
   }
 
 /* Inner Text Hooks for Card Styles */
@@ -272,11 +272,59 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer ytd-thumbnail {
   width: 100% !important;
   aspect-ratio: 16/9 !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-card-radius, 16px) var(--ypp-card-radius, 16px) 0 0 !important; /* Edge to edge */
   overflow: hidden !important;
   position: relative !important;
   /* Fix thumbnail background bleeding */
   background-color: transparent !important;
+  margin-bottom: 0 !important;
+}
+
+/* Card Details Padding (Outer wrapper) */
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #details,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupViewModelMetadata {
+  padding: 2px 10px 14px 10px !important;
+  margin-top: 0 !important; /* Prevent stacking with native margins */
+}
+
+/* Card Details Flex Layout (Inner wrapper) */
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #details,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) yt-lockup-metadata-view-model {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 6px !important; 
+}
+
+/* Avatar Reset & Sizing */
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #avatar-link,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #channel-thumbnail,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupMetadataViewModelAvatar {
+  margin: 0 !important; /* Removed double margin */
+  width: 44px !important; /* MUST match the inner avatar size so it doesn't overlap text! */
+  height: 44px !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+}
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer #avatar,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer yt-img-shadow#avatar,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer yt-avatar-shape,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer .yt-spec-avatar-shape,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup-view-model yt-avatar-shape,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup-view-model .yt-spec-avatar-shape {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 12px !important; /* Squircle shape */
+  overflow: hidden !important;
+}
+
+/* Text Container */
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #meta {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 100% !important;
+  overflow: hidden !important;
 }
 
 html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
@@ -358,17 +406,18 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-
 
 /* Video Title */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer #video-title {
-  font-size: 1.6rem !important;
-  line-height: 2.4rem !important;
+  font-size: 1.4rem !important; /* Native Youtube size */
+  line-height: 2rem !important;
   font-weight: 500 !important;
-  margin: 12px 0 4px 0 !important;
+  margin: 0 0 4px 0 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
-  max-height: 4.8rem !important;
+  max-height: 4rem !important;
   color: var(--yt-spec-text-primary, #ffffff) !important;
+  letter-spacing: 0 !important;
 }
 
 /* Metadata */

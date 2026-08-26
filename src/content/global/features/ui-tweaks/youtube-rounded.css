@@ -1,0 +1,147 @@
+/* 
+ * ==========================================================================
+ * YOUTUBE ROUNDED UI (Style 8064) - DEFAULT DESIGN
+ * ========================================================================== 
+ */
+
+#movie_player, .ytd-playlist-panel-renderer {
+    border-radius: 1em;
+}
+.ytd-playlist-panel-renderer {
+    margin: 0.2em;
+}
+#playlist-items:hover {
+    background-color: var(--ypp-accent, var(--yt-spec-call-to-action, #3ea6ff));
+}
+#search-form #container {
+    border-radius: 1em 0 0 1em;
+}
+ytd-button-renderer .ytd-button-renderer {
+    border-radius: 1em;
+}
+ytd-subscribe-button-renderer .ytd-subscribe-button-renderer {
+    border-radius: 1em;
+}
+ytd-thumbnail a {
+    border-radius: 1em;
+}
+ytd-thumbnail.ytd-rich-grid-media::before {
+    background: transparent;
+}
+ytd-searchbox button {
+    border-radius: 0 1em 1em 0 !important;
+}
+ytd-watch-flexy[theater] #player-theater-container.ytd-watch-flexy,
+ytd-watch-flexy[fullscreen] #player-theater-container.ytd-watch-flexy {
+    border-radius: 13px !important;
+}
+/*↓rounded square avatars↓*/
+yt-avatar-shape,
+.yt-spec-avatar-shape,
+yt-avatar-shape img,
+.yt-spec-avatar-shape__image,
+yt-img-shadow#author-photo {
+    border-radius: 25% !important;
+}
+#author-photo.yt-live-chat-text-message-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow#thumbnail {
+    border-radius: 25% !important;
+}
+ytd-comment-renderer:not([comment-style="backstage-comment"])[is-reply] #author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer,
+ytd-comment-renderer[is-creator-reply] #author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow.ytd-channel-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow#avatar {
+    border-radius: 25% !important;
+}
+#avatar.ytd-active-account-header-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow.ytd-mini-channel-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow.ytd-topbar-menu-button-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow.ytd-channel-avatar-editor {
+    border-radius: 25% !important;
+}
+#avatar.ytd-c4-tabbed-header-renderer {
+    border-radius: 25% !important;
+}
+#author-thumbnail.ytd-comment-simplebox-renderer {
+    border-radius: 25% !important;
+}
+#author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer {
+    border-radius: 25% !important;
+}
+#avatar.ytd-video-owner-renderer {
+    border-radius: 25% !important;
+}
+yt-img-shadow.style-scope.ytd-guide-entry-renderer.no-transition {
+    border-radius: 25% !important;
+}
+yt-img-shadow.style-scope.ytd-grid-channel-renderer.no-transition {
+    border-radius: 25% !important;
+}
+yt-img-shadow.ytd-backstage-image-renderer {
+    --yt-img-border-radius: 25% !important;
+}
+ytd-comment-renderer:not([comment-style=backstage-comment])[is-reply] #author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer,
+ytd-comment-renderer[is-creator-reply] #author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer {
+    width: 30px !important;
+    height: 30px !important;
+}
+.ytp-flyout-cta .ytp-flyout-cta-icon {
+    border-radius: 25% !important;
+}
+a.ytp-title-channel-logo {
+    border-radius: 25% !important;
+}
+/*thumbnail scale effect*/
+ytd-thumbnail,
+#thumbnail.ytd-playlist-thumbnail,
+.ytp-show-tiles .ytp-videowall-still {
+    transition: all 0.25s !important;
+}
+/*thumbnail scale effect*/
+ytd-thumbnail:hover,
+#thumbnail.ytd-playlist-thumbnail:hover,
+.ytp-show-tiles .ytp-videowall-still:hover {
+    transform: scale(1.05)
+}
+/*sidebar width*/
+#contentContainer.app-drawer {
+    width: 249px !important;
+    padding-left: 3px !important;
+}
+/*sidebar hover border radius*/
+.ytd-guide-section-renderer #endpoint:hover {
+    border-radius: 10px !important;
+}
+/*sidebar selected border radius*/
+ytd-guide-entry-renderer[active] {
+    border-radius: 10px !important;
+}
+/*sidebar selected border radius*/
+paper-item.style-scope.ytd-guide-entry-renderer::before {
+    border-radius: 10px !important;
+}
+ytd-app {
+    --app-drawer-width: 245px !important;
+}
+ytd-guide-entry-renderer {
+    width: 95% !important;
+    margin: 5px 0 !important;
+}
+tp-yt-paper-item.ytd-guide-entry-renderer {
+    padding: 0px 10px !important;
+}
+#sections.ytd-guide-renderer {
+    padding-left: 5px;
+}
