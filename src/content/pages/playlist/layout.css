@@ -880,3 +880,53 @@ body.ypp-playlist-redesign ytd-masthead {
 
 #ypp-pl-root .ypp-pl-card-thumb-placeholder svg { width: 36px; height: 36px; }
 
+
+/* ===================================================================================
+   PLAYLIST PAGE — Restore native YouTube list layout
+   These pages use ytd-playlist-video-renderer which must NOT be touched by
+   the grid/card rules above. All overrides below undo any leakage.
+   =================================================================================== */
+
+/* Reset the grid layout override that leaks from the home grid */
+body:not(.cinematic-home).ypp-playlist-page ytd-rich-grid-renderer {
+  display: revert !important;
+  grid-template-columns: revert !important;
+  padding: revert !important;
+}
+
+/* Restore playlist video rows to native horizontal list format */
+body.ypp-playlist-page ytd-playlist-video-renderer {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 60px !important;
+  box-sizing: border-box !important;
+}
+
+/* Restore thumbnail to fixed sidebar size */
+body.ypp-playlist-page ytd-playlist-video-renderer ytd-thumbnail {
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  height: 68px !important;
+  flex-shrink: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  aspect-ratio: unset !important;
+}
+
+/* Restore metadata visibility */
+body.ypp-playlist-page ytd-playlist-video-renderer #meta,
+body.ypp-playlist-page ytd-playlist-video-renderer #index,
+body.ypp-playlist-page ytd-playlist-video-renderer #video-title {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-height: unset !important;
+  -webkit-box-orient: unset !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+}
+

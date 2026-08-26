@@ -14,3 +14,16 @@ body.ypp-grayscale-thumbnails ytd-thumbnail img {
 body.ypp-grayscale-thumbnails ytd-thumbnail:hover img {
     filter: grayscale(0%);
 }
+/* =========================================================================
+   GRAYSCALE THUMBNAILS
+   ========================================================================= */
+body.ypp-grayscale-thumbs ytd-thumbnail img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
+    filter: grayscale(100%) !important;
+    transition: filter 0.3s ease !important;
+}
+body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
+    filter: grayscale(0%) !important;
+}
+

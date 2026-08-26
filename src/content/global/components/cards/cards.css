@@ -1,6 +1,7 @@
 /* 
- * Cards Component - Handles universal video card aesthetics, layout and grid logic.
- * Does not affect outside scope. 
+ * Cards Component - Handles universal video card aesthetics, colors, typography, and visual styling.
+ * DOES NOT INCLUDE: Layout logic, structural grids, or feature toggles.
+ * Modifying this file only affects the visual appearance of video cards and thumbnails.
  */
 
 :is(
@@ -23,46 +24,17 @@
       .ypp-grid-item
     ) *)
 ) {
-  background: var(--ypp-card-bg, rgba(20, 20, 20, 0.4)) !important;
+  background: transparent !important;
   border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 16px)) !important;
-  border: var(--ypp-card-border, 1px solid rgba(255, 255, 255, 0.05)) !important;
+  border: none !important;
   padding: 0 !important; /* Edge to edge thumbnails */
-  box-shadow: var(--ypp-card-shadow, 0 4px 12px rgba(0,0,0,0.15)) !important;
+  box-shadow: none !important;
   filter: var(--ypp-card-filter, none) !important;
-  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, blur(12px)) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter, blur(12px)) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   transform: var(--ypp-card-transform, none) !important;
   transition: var(--ypp-card-transition, all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)) !important;
 }
-
-:is(
-  ytd-rich-item-renderer,
-  ytd-video-renderer,
-  ytd-playlist-renderer,
-  ytd-radio-renderer,
-  ytd-channel-renderer,
-  ytd-compact-video-renderer,
-  ytd-grid-video-renderer,
-  .ypp-grid-item,
-  yt-lockup-view-model:not(:is(
-      ytd-rich-item-renderer,
-      ytd-video-renderer,
-      ytd-playlist-renderer,
-      ytd-radio-renderer,
-      ytd-channel-renderer,
-      ytd-compact-video-renderer,
-      ytd-grid-video-renderer,
-      .ypp-grid-item
-    ) *)
-):hover {
-  background: var(--ypp-card-bg-hover, rgba(255, 255, 255, 0.08)) !important;
-  border: var(--ypp-card-border-hover, 1px solid rgba(255, 255, 255, 0.15)) !important;
-  transform: var(--ypp-card-transform-hover, translateY(-4px)) !important;
-  box-shadow: var(--ypp-card-shadow-hover, 0 12px 32px rgba(0,0,0,0.3)) !important;
-  filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
-  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, blur(16px))) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, blur(16px))) !important;
-  }
 
 /* Inner Text Hooks for Card Styles */
 :is(
@@ -107,111 +79,9 @@
   color: var(--ypp-card-meta-color, var(--ypp-text-secondary)) !important;
 }
 
-
 /* Base Overrides for Cards elements like thumbnails */
 body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
   border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
-}
-
-/* ===================================================================================
-   2. GRID LAYOUT (Home / Subscriptions)
-   =================================================================================== */
-
-/* Main Grid Container - Full Width, Edge-to-Edge
-   Guard: never touch the grid on playlist / library / history pages */
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-renderer {
-  margin-top: 16px !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 12px !important;
-  padding-right: 12px !important;
-  box-sizing: border-box !important;
-  overflow: visible !important;
-}
-
-/* Strip YouTube's own outer container margins that create side gaps */
-.yt-spiral-tube-theme ytd-browse[page-subtype="home"] #primary,
-.yt-spiral-tube-theme ytd-browse[page-subtype="home"] ytd-two-column-browse-results-renderer > #primary-items,
-.yt-spiral-tube-theme ytd-browse[page-subtype="home"] #contents.ytd-page-manager {
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-/* Grid Contents - CSS Grid with exact columns from user settings
-   Guard: skip on playlist / library / history — they use native list layout */
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-renderer > #contents {
-  display: grid !important;
-  grid-template-columns: repeat(
-    var(--ypp-active-columns, 4),
-    minmax(0, 1fr)
-  ) !important;
-  grid-auto-flow: dense !important;
-  gap: var(--ypp-grid-gap, 16px) !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
-  justify-items: stretch !important;
-  align-items: start !important;
-}
-
-/* Grid Rows - display:contents flattens ALL row wrappers so items participate directly in parent grid.
-   IMPORTANT: Must cover both the element AND its #contents — YouTube re-stamps these on scroll.
-   Guard: skip on playlist / library / history pages */
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-row,
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-row #contents,
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-row > div {
-  display: contents !important;
-}
-
-/* Override YouTube's own --ytd-rich-grid-items-per-row at EVERY level.
-   YouTube's polymer JS sets this variable on the renderer AND on individual rows/items.
-   Setting it to 'auto' makes calc(100%/auto) resolve as invalid, which browsers discard. */
-/* Neuter YouTube's own grid variable — only on pages that use our grid */
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-renderer,
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-row,
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)):not(.cinematic-home) ytd-rich-item-renderer {
-  --ytd-rich-grid-items-per-row: auto !important;
-  --ytd-rich-grid-posts-per-row: auto !important;
-}
-
-/* ytd-rich-section-renderer: wide promo/shelf cards injected mid-scroll by YouTube.
-   Force them to span the full grid row so they never break column flow.
-   If empty (e.g. Shorts shelf hidden inside), hide them entirely to prevent blank rows. */
-body.yt-spiral-tube-theme:not(.ypp-channel-page) ytd-rich-section-renderer {
-  grid-column: 1 / -1 !important;
-  width: 100% !important;
-}
-/* Hide section renderers that are completely empty (all children hidden) */
-body.yt-spiral-tube-theme:not(.ypp-channel-page) ytd-rich-section-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))) {
-  display: none !important;
-}
-
-/* Individual Video Items - Premium Glassmorphic Card.
-   NOTE: YouTube's polymer sets an inline 'width' style on this element via JS on scroll.
-   We compensate by also declaring width:100% here AND by neutering the --ytd variable above
-   so YouTube's own calc(100% / var(--ytd-rich-grid-items-per-row)) resolves as invalid. */
-/* Individual Video Items - Premium Glassmorphic Card.
-   Guard: skip on playlist / library / history pages */
-body.yt-spiral-tube-theme:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)):not(.cinematic-home) ytd-rich-item-renderer {
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  height: auto !important;
-  margin: 0 !important;
-  flex: none !important;
-  align-self: stretch !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  box-sizing: border-box !important;
-  /* Removed isolation:isolate and overflow:hidden — they trapped z-index and clipped .ypp-watched-icon-permanent */
-  position: relative;
 }
 
 /* Permanent eye icon for Mark as Watched feature — hidden by default, visible on hover */
@@ -253,7 +123,9 @@ body.yt-spiral-tube-theme ytd-playlist-video-renderer:hover .ypp-watched-icon-pe
 
 /* Video Cards - Reset Child Styling (Since parent now has card style) */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer ytd-video-renderer,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer ytd-rich-grid-media {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer ytd-rich-grid-media,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer yt-lockup-view-model,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer .ytLockupViewModelHost {
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
@@ -280,6 +152,27 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-
   margin-bottom: 0 !important;
 }
 
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer ytd-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  background-color: transparent !important;
+}
+
+/* Global thumbnail rounding — guard excludes playlist/library/history
+   so native list-row thumbnails keep their correct fixed sizing */
+body.yt-spiral-tube-theme:not(:is(.ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-thumbnail {
+  border-radius: var(--ypp-radius-md);
+  overflow: hidden;
+  width: 100%;
+}
+
+html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: var(--ypp-surface-border) !important;
+}
+
 /* Card Details Padding (Outer wrapper) */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #details,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupViewModelMetadata {
@@ -287,22 +180,14 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-r
   margin-top: 0 !important; /* Prevent stacking with native margins */
 }
 
-/* Card Details Flex Layout (Inner wrapper) */
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #details,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) yt-lockup-metadata-view-model {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 6px !important; 
-}
+
 
 /* Avatar Reset & Sizing */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #avatar-link,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #channel-thumbnail,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupMetadataViewModelAvatar {
-  margin: 0 !important; /* Removed double margin */
-  width: 44px !important; /* MUST match the inner avatar size so it doesn't overlap text! */
-  height: 44px !important;
+  margin: 0 !important;
+  margin-right: 12px !important;
   flex-shrink: 0 !important;
   display: block !important;
 }
@@ -318,98 +203,17 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup
   overflow: hidden !important;
 }
 
-/* Text Container */
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #meta {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 6px !important;
-  width: 100% !important;
-  overflow: hidden !important;
-}
 
-html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  border: var(--ypp-surface-border) !important;
-}
 
-/* ============================================================
-   EXPANDED LAYOUT (1 Column) - Details Below Thumbnail
-   ============================================================ */
-html[data-ypp-grid-layout="expand"] .ypp-grid-container {
-  grid-template-columns: 1fr !important;
-}
-
-html[data-ypp-grid-layout="expand"] ytd-rich-grid-renderer {
-  --ytd-rich-grid-items-per-row: 1 !important;
-  --ytd-rich-grid-posts-per-row: 1 !important;
-}
-
-html[data-ypp-grid-layout="expand"] .ypp-grid-item,
-html[data-ypp-grid-layout="expand"] ytd-rich-item-renderer {
-  margin-bottom: 40px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-}
-
-/* Force vertical flow, overriding proportional grid if active */
-html[data-ypp-grid-layout="expand"] ytd-rich-grid-media #dismissible,
-html[data-ypp-grid-layout="expand"] yt-lockup-view-model .yt-lockup-view-model-wiz {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  max-width: 1000px !important;
-  margin: 0 auto !important;
-}
-
-html[data-ypp-grid-layout="expand"] ytd-thumbnail,
-html[data-ypp-grid-layout="expand"] .yt-lockup-view-model-wiz__image {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16/9 !important;
-  margin: 0 0 20px 0 !important;
-}
-
-html[data-ypp-grid-layout="expand"] #details,
-html[data-ypp-grid-layout="expand"] .yt-lockup-view-model-wiz__metadata {
-  width: 100% !important;
-  padding: 0 16px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  box-sizing: border-box !important;
-}
-
-html[data-ypp-grid-layout="expand"] #video-title {
-  font-size: 2.2rem !important;
-  line-height: 3rem !important;
-  max-height: none !important;
-  -webkit-line-clamp: unset !important;
-  line-clamp: unset !important;
-  white-space: normal !important;
-}
-
-html[data-ypp-grid-layout="expand"] #metadata-line,
-html[data-ypp-grid-layout="expand"] #channel-name {
-  font-size: 1.5rem !important;
-  display: flex !important;
-}
-
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer ytd-thumbnail img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  background-color: transparent !important;
-}
-
-/* Video Title */
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer #video-title {
+/* Video Title Typography & Clamping */
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer #video-title,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup-view-model h3,
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup-view-model [class*="text-primary"],
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup-view-model [class*="TextPrimary"],
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) yt-lockup-view-model [class*="Title"] {
   font-size: 1.4rem !important; /* Native Youtube size */
   line-height: 2rem !important;
   font-weight: 500 !important;
-  margin: 0 0 4px 0 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
@@ -419,6 +223,7 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-
   color: var(--yt-spec-text-primary, #ffffff) !important;
   letter-spacing: 0 !important;
 }
+
 
 /* Metadata */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer #metadata-line,
@@ -432,142 +237,4 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer:hover #metadata-line,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home)) ytd-rich-item-renderer:hover #channel-name {
   color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.8)) !important;
-}
-
-
-
-/* Global thumbnail rounding — guard excludes playlist/library/history
-   so native list-row thumbnails keep their correct fixed sizing */
-body.yt-spiral-tube-theme:not(:is(.ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-thumbnail {
-  border-radius: var(--ypp-radius-md);
-  overflow: hidden;
-  width: 100%;
-}
-
-/* Fluid CSS Grid handles responsiveness natively using auto-fill minmax. 
-   Removing legacy percentage-width hacks for cleaner layout. */
-
-/* No Sidebar Mode: Already edge-to-edge, no extra treatment needed */
-
-/* ===================================================================================
-   PLAYLIST / LIBRARY / HISTORY PAGE — Restore native YouTube list layout
-   These pages use ytd-playlist-video-renderer which must NOT be touched by
-   the grid/card rules above. All overrides below undo any leakage.
-   =================================================================================== */
-
-/* Reset the grid layout override that leaks from the home grid */
-body:not(.cinematic-home).ypp-playlist-page ytd-rich-grid-renderer,
-body:not(.cinematic-home).ypp-library-page ytd-rich-grid-renderer,
-body:not(.cinematic-home).ypp-history-page ytd-rich-grid-renderer {
-  display: revert !important;
-  grid-template-columns: revert !important;
-  padding: revert !important;
-}
-
-/* Restore playlist video rows to native horizontal list format */
-body.ypp-playlist-page ytd-playlist-video-renderer,
-body.ypp-library-page ytd-playlist-video-renderer,
-body.ypp-history-page ytd-playlist-video-renderer {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 60px !important;
-  box-sizing: border-box !important;
-}
-
-/* Restore thumbnail to fixed sidebar size */
-body.ypp-playlist-page ytd-playlist-video-renderer ytd-thumbnail,
-body.ypp-library-page ytd-playlist-video-renderer ytd-thumbnail,
-body.ypp-history-page ytd-playlist-video-renderer ytd-thumbnail {
-  width: 120px !important;
-  min-width: 120px !important;
-  max-width: 120px !important;
-  height: 68px !important;
-  flex-shrink: 0 !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  aspect-ratio: unset !important;
-}
-
-/* Restore metadata visibility */
-body.ypp-playlist-page ytd-playlist-video-renderer #meta,
-body.ypp-playlist-page ytd-playlist-video-renderer #index,
-body.ypp-playlist-page ytd-playlist-video-renderer #video-title,
-body.ypp-library-page ytd-playlist-video-renderer #meta,
-body.ypp-library-page ytd-playlist-video-renderer #index,
-body.ypp-library-page ytd-playlist-video-renderer #video-title,
-body.ypp-history-page ytd-playlist-video-renderer #meta,
-body.ypp-history-page ytd-playlist-video-renderer #index,
-body.ypp-history-page ytd-playlist-video-renderer #video-title {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  max-height: unset !important;
-  -webkit-box-orient: unset !important;
-  -webkit-line-clamp: unset !important;
-  line-clamp: unset !important;
-}
-
-/* History & Library page — restore compact video renderer list layout */
-body.ypp-history-page ytd-video-renderer,
-body.ypp-library-page ytd-video-renderer {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-body.ypp-history-page ytd-video-renderer ytd-thumbnail,
-body.ypp-library-page ytd-video-renderer ytd-thumbnail {
-  width: 168px !important;
-  min-width: 168px !important;
-  max-width: 168px !important;
-  height: 94px !important;
-  flex-shrink: 0 !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  aspect-ratio: unset !important;
-}
-
-body.ypp-history-page ytd-video-renderer #dismissible,
-body.ypp-library-page ytd-video-renderer #dismissible {
-  flex-direction: row !important;
-}
-
-body.ypp-history-page ytd-video-renderer #video-title,
-body.ypp-library-page ytd-video-renderer #video-title {
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  max-height: unset !important;
-}
-
-
-
-
-/* =========================================================================
-   GRAYSCALE THUMBNAILS (Moved from badges.css)
-   ========================================================================= */
-body.ypp-grayscale-thumbs ytd-thumbnail img,
-body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
-    filter: grayscale(100%) !important;
-    transition: filter 0.3s ease !important;
-}
-body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
-body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
-    filter: grayscale(0%) !important;
-}
-
-/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
-ytd-thumbnail-overlay-toggle-button-renderer,
-ytd-thumbnail-overlay-button-renderer {
-  display: none !important;
 }
