@@ -94,6 +94,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         // Remove all dynamically added body classes from TOGGLE_MAP
         const classesToRemove = Object.values(this.TOGGLE_MAP);
         document.body.classList.remove(...classesToRemove, 'ypp-nuke-shorts');
+        document.documentElement.classList.remove('ypp-hide-scrollbar');
 
         // Remove event listeners
         document.removeEventListener('yt-navigate-finish', this._boundNavHandler);
@@ -114,8 +115,10 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         for (const [key, cssClass] of Object.entries(this.TOGGLE_MAP)) {
             if (this.settings[key]) {
                 document.body.classList.add(cssClass);
+                if (key === 'hideScrollbar') document.documentElement.classList.add(cssClass);
             } else {
                 document.body.classList.remove(cssClass);
+                if (key === 'hideScrollbar') document.documentElement.classList.remove(cssClass);
             }
         }
         

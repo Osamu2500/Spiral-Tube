@@ -466,3 +466,30 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
   margin-left: 0 !important;
   --ytd-mini-guide-width: 0px !important;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * DYNAMIC PRIMARY EXPANSION & SIDEBAR RIGHT-SHIFT (V4)
+ * Automatically expands the video player space when sidebar cards are smaller.
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+body.ypp-sidebar-regular ytd-watch-flexy[flexy] {
+  --ytd-watch-flexy-sidebar-width: 350px !important;
+  --ytd-watch-flexy-sidebar-min-width: 350px !important;
+}
+
+body.ypp-sidebar-compact ytd-watch-flexy[flexy] {
+  --ytd-watch-flexy-sidebar-width: 290px !important;
+  --ytd-watch-flexy-sidebar-min-width: 290px !important;
+}
+
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+  margin-left: auto !important; /* Pushes the secondary sidebar strictly to the right edge */
+  width: var(--ytd-watch-flexy-sidebar-width) !important;
+  min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
+  max-width: var(--ytd-watch-flexy-sidebar-width) !important;
+}
+
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+  flex-grow: 1 !important;
+  margin-right: 24px !important;
+}
