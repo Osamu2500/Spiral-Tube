@@ -74,6 +74,7 @@ ytd-searchbox #search-icon-legacy {
 }
 ytd-search-filter-group-renderer {
   background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
   backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   padding: 15px !important;

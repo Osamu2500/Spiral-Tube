@@ -249,7 +249,7 @@ export class SnapshotButton extends window.YPP.features.BaseFeature {
         
         toast.style.cssText = `
             position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.85); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
             color: white; padding: 12px 20px; border-radius: 12px; z-index: 999999;
             font-family: 'Inter', Roboto, sans-serif; font-weight: 500; font-size: 14px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);

@@ -15,6 +15,7 @@ yt-live-chat-text-message-renderer,
 yt-live-chat-paid-message-renderer,
 yt-live-chat-membership-item-renderer {
   background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
   backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
   border-radius: var(--ypp-border-radius-base, 12px) !important;
   margin: 4px 8px !important;

@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /* Misc Toggles */
 
 /* 3. FEATURE TOGGLE CLASSES
@@ -1946,8 +1947,6 @@ body.ypp-grayscale-thumbnails ytd-thumbnail:hover img {
     overflow-x: auto;
     overflow-y: visible; /* Needed for hover scale */
     scroll-behavior: smooth;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
 }
 
 .ypp-cinematic-row-cards::-webkit-scrollbar {
@@ -2233,7 +2232,7 @@ body.ypp-small-settings-menu .ytp-menuitem-label {
 
 
 /* User Request: Remove gray containers from Watch Metadata and Actions */
-ytd-watch-metadata { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; backdrop-filter: none !important; }
+ytd-watch-metadata { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
 /* Make sure all container wrappers for owner and actions are fully transparent */
 html body ytd-app ytd-watch-metadata #actions,
 html body ytd-app ytd-watch-metadata #actions-inner,
@@ -2258,7 +2257,7 @@ html body #page-manager ytd-watch-metadata ytd-subscription-notification-toggle-
 }
 
 
-ytd-watch-flexy > .box { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; backdrop-filter: none !important; }
+ytd-watch-flexy > .box { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
 
 
 /* Ultra-high specificity using IDs to defeat YouTube's !important */
@@ -2270,6 +2269,7 @@ html[data-ypp-ui-design] body #page-manager #columns #primary ytd-watch-metadata
     background-color: transparent !important; 
     border: none !important; 
     box-shadow: none !important; 
+    -webkit-backdrop-filter: none !important; 
     backdrop-filter: none !important; 
     padding: 0 !important; 
     margin: 0 !important; 

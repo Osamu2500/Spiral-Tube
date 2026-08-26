@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /* 
  * ==========================================================================
  * GLOBAL DECLUTTER
@@ -60,8 +61,8 @@ html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
+
+
 }
 body.ypp-hide-scrollbar::-webkit-scrollbar,
 body.ypp-hide-scrollbar *::-webkit-scrollbar,
@@ -406,8 +407,8 @@ html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
+
+
 }
 body.ypp-hide-scrollbar::-webkit-scrollbar,
 body.ypp-hide-scrollbar *::-webkit-scrollbar,

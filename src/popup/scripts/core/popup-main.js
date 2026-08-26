@@ -592,18 +592,18 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
 registerSlot('recapButtons', (container, state) => {
     container.innerHTML = `
         <div style="display: flex; gap: 10px; margin-top: 10px;">
-            <button id="btnOpenRecap" class="action-btn ypp-glass-btn" style="flex:1; background: rgba(255, 0, 80, 0.15); border: 1px solid rgba(255, 0, 80, 0.3); color: #ff3366; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 8px 32px rgba(255, 0, 80, 0.2), inset 0 1px 2px rgba(255,255,255,0.1);">
+            <button id="btnOpenRecap" class="action-btn ypp-glass-btn" style="flex:1; background: rgba(255, 0, 80, 0.15); border: 1px solid rgba(255, 0, 80, 0.3); color: #ff3366; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); box-shadow: 0 8px 32px rgba(255, 0, 80, 0.2), inset 0 1px 2px rgba(255,255,255,0.1);">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
                 My Recap
             </button>
-            <button id="btnOpenResumeHistory" class="action-btn ypp-glass-btn" style="flex:1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.1);">
+            <button id="btnOpenResumeHistory" class="action-btn ypp-glass-btn" style="flex:1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.1);">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 Resume History
             </button>
         </div>
         
         <!-- Hidden overlay panels -->
-        <div id="ypp-recap-overlay" style="display:none; position:absolute; top:0; left:0; right:0; bottom:0; z-index:100; padding:20px; overflow-y:auto; flex-direction:column; background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-top: 1px solid rgba(255,255,255,0.1);">
+        <div id="ypp-recap-overlay" style="display:none; position:absolute; top:0; left:0; right:0; bottom:0; z-index:100; padding:20px; overflow-y:auto; flex-direction:column; background: rgba(18, 18, 24, 0.85); -webkit-backdrop-filter: blur(25px); backdrop-filter: blur(25px); border-top: 1px solid rgba(255,255,255,0.1);">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
                 <h2 style="margin:0; font-size:18px; display:flex; align-items:center; gap:8px;">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ff3366" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
@@ -630,7 +630,7 @@ registerSlot('recapButtons', (container, state) => {
             <div id="recapTopVideos" style="display:flex; flex-direction:column; gap:8px; padding-bottom: 20px;"></div>
         </div>
 
-        <div id="ypp-resume-overlay" style="display:none; position:absolute; top:0; left:0; right:0; bottom:0; z-index:100; padding:20px; overflow-y:auto; flex-direction:column; background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-top: 1px solid rgba(255,255,255,0.1);">
+        <div id="ypp-resume-overlay" style="display:none; position:absolute; top:0; left:0; right:0; bottom:0; z-index:100; padding:20px; overflow-y:auto; flex-direction:column; background: rgba(18, 18, 24, 0.85); -webkit-backdrop-filter: blur(25px); backdrop-filter: blur(25px); border-top: 1px solid rgba(255,255,255,0.1);">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
                 <h2 style="margin:0; font-size:18px; display:flex; align-items:center; gap:8px;">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#00e5ff" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
