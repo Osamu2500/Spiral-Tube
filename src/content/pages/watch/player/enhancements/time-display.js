@@ -62,10 +62,17 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             .ypp-custom-time { 
                 display: none; 
                 font-variant-numeric: tabular-nums;
-                margin-left: 4px;
-                opacity: 0.85;
+                margin-left: 8px;
+                background-color: rgba(255, 255, 255, 0.15);
+                border-radius: 16px;
+                padding: 0 12px;
+                color: #fff;
+                height: 40px;
+                line-height: 40px;
+                font-weight: 500;
+                vertical-align: middle;
             }
-            .ypp-time-mode-active .ypp-custom-time { display: inline !important; }
+            .ypp-time-mode-active .ypp-custom-time { display: inline-block !important; }
         `;
         document.head.appendChild(style);
     }
@@ -96,14 +103,11 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             // Avoid miniplayer
             if (td.closest('.ytp-miniplayer-ui')) return;
 
-            // In new YouTube UI, .ytp-time-wrapper is the actual pill container inside .ytp-time-display
-            const targetContainer = td.querySelector('.ytp-time-wrapper') || td;
-
-            let customSpan = targetContainer.querySelector('.ypp-custom-time');
+            let customSpan = td.querySelector('.ypp-custom-time');
             if (!customSpan) {
                 customSpan = document.createElement('span');
                 customSpan.className = 'ypp-custom-time';
-                targetContainer.appendChild(customSpan);
+                td.appendChild(customSpan);
             }
 
             td.addEventListener('click', this._handleClick, true);
@@ -238,19 +242,19 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         }
 
         if (Math.abs(speed - 1) <= 0.01) {
-            customSpan.textContent = ` • -${this._format(rawLeft)}`;
+            customSpan.textContent = `-${this._format(rawLeft)}`;
         } else {
             if (speed > 1) {
                 const totalSaved = targetDuration - (targetDuration / speed);
-                customSpan.textContent = ` • -${this._format(adjustedLeft)} (${this._format(totalSaved)} saved)`;
+                customSpan.textContent = `-${this._format(adjustedLeft)} · ${this._format(totalSaved)} saved`;
             } else {
                 const totalExtra = (targetDuration / speed) - targetDuration;
-                customSpan.textContent = ` • -${this._format(adjustedLeft)} (${this._format(totalExtra)} extra)`;
+                customSpan.textContent = `-${this._format(adjustedLeft)} · ${this._format(totalExtra)} extra`;
             }
         }
         
         if (prefix) {
-            customSpan.textContent = ` • ${prefix}` + customSpan.textContent.substring(3);
+            customSpan.textContent = `${prefix}` + customSpan.textContent;
         }
     }
 }
