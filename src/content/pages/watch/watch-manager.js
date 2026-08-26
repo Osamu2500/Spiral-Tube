@@ -196,9 +196,12 @@ class WatchPageManager extends window.YPP.BasePageManager {
     // 1. Reset all managed classes & Inline Styles
     const classesToRemove = [
       'ypp-sidebar-dense',
+      'ypp-sidebar-macro',
+      'ypp-sidebar-mini',
       'ypp-sidebar-compact',
       'ypp-sidebar-regular',
       'ypp-sidebar-spacious',
+      'ypp-sidebar-huge',
       'ypp-sidebar-expanded',
       'ypp-sidebar-grid',
       'ypp-sidebar-hidden',
@@ -216,12 +219,18 @@ class WatchPageManager extends window.YPP.BasePageManager {
       // Custom sidebar is ON — apply chosen layout
       if (this.state.sidebar === 'dense') {
         body.classList.add('ypp-sidebar-dense');
+      } else if (this.state.sidebar === 'macro') {
+        body.classList.add('ypp-sidebar-macro');
+      } else if (this.state.sidebar === 'mini') {
+        body.classList.add('ypp-sidebar-mini');
       } else if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
         body.classList.add('ypp-sidebar-compact');
       } else if (this.state.sidebar === 'regular') {
         body.classList.add('ypp-sidebar-regular');
       } else if (this.state.sidebar === 'spacious') {
         body.classList.add('ypp-sidebar-spacious');
+      } else if (this.state.sidebar === 'huge') {
+        body.classList.add('ypp-sidebar-huge');
       } else if (this.state.sidebar === 'expanded') {
         body.classList.add('ypp-sidebar-expanded');
       } else if (this.state.sidebar === 'grid') {
@@ -261,9 +270,12 @@ class WatchPageManager extends window.YPP.BasePageManager {
     const classesToRemove = [
       // Note: 'ypp-sidebar-spacious' is the current name — 'compact' was the old name
       'ypp-sidebar-dense',
+      'ypp-sidebar-macro',
+      'ypp-sidebar-mini',
       'ypp-sidebar-compact',
       'ypp-sidebar-regular',
       'ypp-sidebar-spacious',
+      'ypp-sidebar-huge',
       'ypp-sidebar-expanded',
       'ypp-sidebar-grid',
       'ypp-sidebar-hidden',

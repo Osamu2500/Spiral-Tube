@@ -341,7 +341,7 @@ window.YPP.SettingsSchema = {
         pb_native_fullscreen:{ type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
 
         // --- Sidebar Layout ---
-        sidebarLayout:       { type: 'string',  default: 'compact', values: ['compact', 'regular', 'spacious', 'expanded'] },
+        sidebarLayout:       { type: 'string',  default: 'compact', values: ['macro', 'mini', 'compact', 'regular', 'spacious', 'huge', 'expanded'] },
         splitScrolling:      { type: 'boolean', default: false },
 
         // --- Search Layout ---

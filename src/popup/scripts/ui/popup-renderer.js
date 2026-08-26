@@ -521,7 +521,7 @@ function renderLayoutToggle(item, state) {
     headerRow.style.display = 'flex';
     headerRow.style.justifyContent = 'space-between';
     headerRow.style.alignItems = 'center';
-    headerRow.style.marginBottom = '12px';
+    headerRow.style.marginBottom = '10px';
 
     const info = document.createElement('div');
     info.className = 'info';
@@ -532,77 +532,81 @@ function renderLayoutToggle(item, state) {
     attachHoverTooltip(info, item.desc || 'Video cards size');
     info.appendChild(nameSpan);
     headerRow.appendChild(info);
+    wrap.appendChild(headerRow);
 
-    // Toggle Buttons
-    const toggleWrap = document.createElement('div');
-    toggleWrap.id = item.id + 'Toggle';
-    toggleWrap.className = 'sidebar-layout-toggle';
-    toggleWrap.style.display = 'inline-flex';
-    toggleWrap.style.background = 'rgba(255,255,255,0.06)';
-    toggleWrap.style.padding = '3px';
-    toggleWrap.style.borderRadius = '8px';
-    toggleWrap.style.border = '1px solid rgba(255,255,255,0.08)';
-
-    const svgCompactStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="6" height="4" rx="1"/><line x1="11" y1="7" x2="21" y2="7"/><rect x="3" y="13" width="6" height="4" rx="1"/><line x1="11" y1="15" x2="21" y2="15"/></svg>`;
-    const svgRegularStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`;
-    const svgSpaciousStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="10" height="7" rx="1"/><line x1="15" y1="5" x2="21" y2="5"/><rect x="3" y="14" width="10" height="7" rx="1"/><line x1="15" y1="16" x2="21" y2="16"/></svg>`;
-    const svgExpandedStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="11" rx="2"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="15" y2="21"/></svg>`;
+    // All 7 layout sizes (ordered smallest → largest → expanded)
+    const LAYOUTS = [
+        {
+            value: 'macro',
+            label: 'Macro',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="4" height="3" rx="0.5"/><line x1="9" y1="7.5" x2="21" y2="7.5"/><rect x="3" y="13" width="4" height="3" rx="0.5"/><line x1="9" y1="14.5" x2="21" y2="14.5"/></svg>`,
+        },
+        {
+            value: 'mini',
+            label: 'Mini',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="5" height="3.5" rx="0.5"/><line x1="10" y1="7.5" x2="21" y2="7.5"/><rect x="3" y="13" width="5" height="3.5" rx="0.5"/><line x1="10" y1="14.5" x2="21" y2="14.5"/></svg>`,
+        },
+        {
+            value: 'compact',
+            label: 'Compact',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="6" height="4" rx="1"/><line x1="11" y1="7" x2="21" y2="7"/><rect x="3" y="13" width="6" height="4" rx="1"/><line x1="11" y1="15" x2="21" y2="15"/></svg>`,
+        },
+        {
+            value: 'regular',
+            label: 'Regular',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`,
+        },
+        {
+            value: 'spacious',
+            label: 'Spacious',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="10" height="7" rx="1"/><line x1="15" y1="5" x2="21" y2="5"/><rect x="3" y="14" width="10" height="7" rx="1"/><line x1="15" y1="16" x2="21" y2="16"/></svg>`,
+        },
+        {
+            value: 'huge',
+            label: 'Huge',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="13" height="9" rx="1"/><line x1="18" y1="6" x2="21" y2="6"/><rect x="3" y="15" width="13" height="6" rx="1"/><line x1="18" y1="17" x2="21" y2="17"/></svg>`,
+        },
+        {
+            value: 'expanded',
+            label: 'Expanded',
+            svg: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="11" rx="2"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="15" y2="21"/></svg>`,
+        },
+    ];
 
     const parseSVG = (str) => new DOMParser().parseFromString(str, 'image/svg+xml').documentElement;
 
-    const btnStyle = 'display:flex; align-items:center; justify-content:center; flex:1; gap:4px; font-size:11px; padding:5px 8px; border:none; cursor:pointer; transition:all 0.2s; font-weight:500; border-radius:6px; background:transparent; color:rgba(255,255,255,0.5);';
+    // Pill container — flex-wrap so all 7 fit responsively
+    const toggleWrap = document.createElement('div');
+    toggleWrap.id = item.id + 'Toggle';
+    toggleWrap.className = 'sidebar-layout-toggle';
+    toggleWrap.style.cssText = 'display:flex; flex-wrap:wrap; gap:4px; background:rgba(255,255,255,0.04); padding:4px; border-radius:10px; border:1px solid rgba(255,255,255,0.07);';
 
-    const btnCompact = document.createElement('button');
-    btnCompact.type = 'button';
-    btnCompact.className = 'sidebar-layout-btn';
-    btnCompact.dataset.layout = 'compact';
-    btnCompact.style.cssText = btnStyle;
-    btnCompact.appendChild(parseSVG(svgCompactStr));
-    btnCompact.appendChild(document.createTextNode(' Compact'));
+    const btnStyle = 'display:flex; align-items:center; justify-content:center; gap:4px; font-size:10.5px; padding:5px 9px; border:none; cursor:pointer; transition:all 0.2s; font-weight:500; border-radius:7px; background:transparent; color:rgba(255,255,255,0.5); white-space:nowrap; flex:1; min-width:0;';
 
-    const btnRegular = document.createElement('button');
-    btnRegular.type = 'button';
-    btnRegular.className = 'sidebar-layout-btn';
-    btnRegular.dataset.layout = 'regular';
-    btnRegular.style.cssText = btnStyle;
-    btnRegular.appendChild(parseSVG(svgRegularStr));
-    btnRegular.appendChild(document.createTextNode(' Regular'));
+    const allBtns = LAYOUTS.map(layout => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'sidebar-layout-btn';
+        btn.dataset.layout = layout.value;
+        btn.style.cssText = btnStyle;
+        btn.appendChild(parseSVG(layout.svg));
+        btn.appendChild(document.createTextNode('\u00a0' + layout.label));
+        toggleWrap.appendChild(btn);
+        return btn;
+    });
 
-    const btnSpacious = document.createElement('button');
-    btnSpacious.type = 'button';
-    btnSpacious.className = 'sidebar-layout-btn';
-    btnSpacious.dataset.layout = 'spacious';
-    btnSpacious.style.cssText = btnStyle;
-    btnSpacious.appendChild(parseSVG(svgSpaciousStr));
-    btnSpacious.appendChild(document.createTextNode(' Spacious'));
-
-    const btnExpanded = document.createElement('button');
-    btnExpanded.type = 'button';
-    btnExpanded.className = 'sidebar-layout-btn';
-    btnExpanded.dataset.layout = 'expanded';
-    btnExpanded.style.cssText = btnStyle;
-    btnExpanded.appendChild(parseSVG(svgExpandedStr));
-    btnExpanded.appendChild(document.createTextNode(' Expanded'));
-
-    toggleWrap.appendChild(btnCompact);
-    toggleWrap.appendChild(btnRegular);
-    toggleWrap.appendChild(btnSpacious);
-    toggleWrap.appendChild(btnExpanded);
-    headerRow.appendChild(toggleWrap);
-    wrap.appendChild(headerRow);
-
-
+    wrap.appendChild(toggleWrap);
 
     // Hidden input
     const hiddenInput = document.createElement('input');
     hiddenInput.type = 'hidden';
     hiddenInput.id = item.id;
-    hiddenInput.value = item.default || 'spacious';
+    hiddenInput.value = item.default || 'compact';
     wrap.appendChild(hiddenInput);
 
     // Logic
     const updateVisuals = (layout) => {
-        [btnCompact, btnRegular, btnSpacious, btnExpanded].forEach(b => {
+        allBtns.forEach(b => {
             const isActive = b.dataset.layout === layout;
             b.classList.toggle('active', isActive);
             b.style.background = isActive ? 'color-mix(in srgb, var(--accent-primary) 22%, transparent)' : 'transparent';
@@ -613,22 +617,15 @@ function renderLayoutToggle(item, state) {
     const applyActiveState = (layout) => {
         hiddenInput.value = layout;
         updateVisuals(layout);
-        // Note: Do NOT force-enable enableCustomSidebar here.
-        // The master toggle is independent of which layout variant is selected.
         hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
-        
-        // Ensure robust saving
         import('./popup-state.js').then(module => {
-            if (module.saveSettings) {
-                module.saveSettings();
-            }
+            if (module.saveSettings) module.saveSettings();
         });
     };
 
-    btnCompact.onclick = () => applyActiveState('compact');
-    btnRegular.onclick = () => applyActiveState('regular');
-    btnSpacious.onclick = () => applyActiveState('spacious');
-    btnExpanded.onclick = () => applyActiveState('expanded');
+    allBtns.forEach(btn => {
+        btn.onclick = () => applyActiveState(btn.dataset.layout);
+    });
 
     const originalValueDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
     Object.defineProperty(hiddenInput, 'value', {
@@ -639,20 +636,14 @@ function renderLayoutToggle(item, state) {
         }
     });
 
-    // Initialize UI visual state without triggering save
     updateVisuals(hiddenInput.value);
 
     // Lock logic for Immersive Glass
     const enforceLock = () => {
-        // ONLY lock the sidebar layout
-        if (item.id !== 'sidebarLayout') {
-            return;
-        }
-
+        if (item.id !== 'sidebarLayout') return;
         const lockIcon = wrap.querySelector('#sidebar-layout-lock');
         const cardStyleInput = document.getElementById('cardStyle');
         const isLocked = cardStyleInput && cardStyleInput.value === 'immersive';
-        
         if (isLocked) {
             if (lockIcon) lockIcon.style.display = 'inline-block';
             toggleWrap.style.pointerEvents = 'none';
@@ -662,9 +653,6 @@ function renderLayoutToggle(item, state) {
                 hiddenInput.value = 'expanded';
                 hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
             }
-            // Note: Do NOT force-enable enableCustomSidebar here.
-            // Immersive Glass lock only controls the layout variant buttons,
-            // not whether the user has the custom sidebar enabled at all.
         } else {
             if (lockIcon) lockIcon.style.display = 'none';
             toggleWrap.style.pointerEvents = 'auto';

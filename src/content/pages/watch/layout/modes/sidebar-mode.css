@@ -18,24 +18,24 @@
  * ══════════════════════════════════════════════════════════════════════════ */
 
 /* Fluid transition when swapping between compact/regular/spacious layouts */
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer) {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer) {
   transition: margin-bottom 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease !important;
 }
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), min-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 /* V2 Micro-interactions for Compact/Regular/Spacious */
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious) :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer):hover :is(ytd-thumbnail, #thumbnail, a:is(:has(yt-image), :has(img))) {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge) :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer):hover :is(ytd-thumbnail, #thumbnail, a:is(:has(yt-image), :has(img))) {
   transform: scale(1.03) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
   z-index: 2 !important;
   will-change: transform !important; /* V3: GPU Acceleration for buttery smooth hover */
 }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
   display: -webkit-box !important;
@@ -58,7 +58,7 @@
   white-space: normal !important;
 }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
   display: -webkit-box !important;
@@ -72,11 +72,9 @@
 }
 
 /* ── Compact: 1-line title with ellipsis (tighter layout) ── */
-body.ypp-sidebar-compact
-  :is(#related, ytd-watch-next-secondary-results-renderer)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title),
-body.ypp-sidebar-compact
-  :is(#related, ytd-watch-next-secondary-results-renderer)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
   -webkit-line-clamp: 1 !important;
   line-clamp: 1 !important;
@@ -84,7 +82,7 @@ body.ypp-sidebar-compact
 }
 
 /* ── Fix text wrapper overflow for compact & regular ── */
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(#details, .yt-lockup-metadata-view-model-wiz, .yt-lockup-metadata-view-model-wiz__text-container, .ytLockupMetadataViewModelHost) {
   overflow: hidden !important;
@@ -92,7 +90,7 @@ body.ypp-sidebar-compact
 }
 
 /* ── Hover: expand title as floating tooltip overlay ── */
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(ytd-compact-video-renderer, yt-lockup-view-model, ytd-lockup-view-model, ytd-rich-item-renderer):hover
   :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
@@ -109,14 +107,14 @@ body.ypp-sidebar-compact
   border: 1px solid var(--yt-spec-10-percent-layer, rgba(255,255,255,0.1)) !important;
 }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   .badge-shape-wiz {
   margin-top: 6px !important;
   display: inline-flex !important;
 }
 
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded)
   :is(#related, ytd-watch-next-secondary-results-renderer)
   :is(ytd-video-meta-block, .ytd-channel-name) {
   line-height: 1.8rem !important;
@@ -220,23 +218,23 @@ body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer
  * COMPACT LAYOUT (Even smaller than regular, dense)
  * ══════════════════════════════════════════════════════════════════════════ */
 
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
   margin-bottom: 8px !important;
 }
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
   display: flex !important;
   flex-direction: row !important;
   width: 100% !important;
   align-items: flex-start !important;
   gap: 8px !important;
 }
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
   display: block !important;
   width: 140px !important;
   min-width: 140px !important;
@@ -247,9 +245,9 @@ body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer
   flex: none !important;
   overflow: hidden !important;
 }
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer,
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
   flex: 1 !important;
   min-width: 0 !important;
   padding: 0 !important;
@@ -305,7 +303,7 @@ body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-rendere
  * ══════════════════════════════════════════════════════════════════════════ */
 
 @media (min-width: 1700px) {
-  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) :is(#related, ytd-watch-next-secondary-results-renderer) #items {
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) :is(#related, ytd-watch-next-secondary-results-renderer) #items {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 0 16px !important;
@@ -313,7 +311,7 @@ body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-rendere
   }
   
   /* V3: Fix Grid Edge Cases (Shorts Shelves & Ads must span both columns) */
-  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) :is(#related, ytd-watch-next-secondary-results-renderer) #items > :is(ytd-reel-shelf-renderer, ytd-ad-slot-renderer, ytd-promoted-sparkles-web-renderer) {
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) :is(#related, ytd-watch-next-secondary-results-renderer) #items > :is(ytd-reel-shelf-renderer, ytd-ad-slot-renderer, ytd-promoted-sparkles-web-renderer) {
     grid-column: 1 / -1 !important;
   }
 }
@@ -519,35 +517,53 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
  * ══════════════════════════════════════════════════════════════════════════ */
 
 /* Smooth width transitions for toggling sidebar modes */
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy #columns,
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy #primary,
-:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy #secondary {
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy #columns,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy #primary,
+:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy #secondary {
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), min-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1), flex-grow 0.3s ease !important;
 }
 
 /* On screens wide enough, apply the two-column layout */
 @media (min-width: 1000px) {
 
-  /* Step 1: Force ytd-watch-flexy itself to fill full width */
-  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) {
+  /* Step 1: Force ytd-watch-flexy to fill full width */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) {
     width: 100% !important;
     max-width: 100% !important;
   }
 
-  /* Step 2: Compact mode — override the inline CSS variable */
+  /* Macro mode - narrowest sidebar (250px) */
+  body.ypp-sidebar-macro ytd-watch-flexy:not([theater]) {
+    --ytd-watch-flexy-sidebar-width: 250px !important;
+    --ytd-watch-flexy-sidebar-min-width: 250px !important;
+  }
+
+  /* Mini mode (270px) */
+  body.ypp-sidebar-mini ytd-watch-flexy:not([theater]) {
+    --ytd-watch-flexy-sidebar-width: 270px !important;
+    --ytd-watch-flexy-sidebar-min-width: 270px !important;
+  }
+
+  /* Compact mode (290px) */
   body.ypp-sidebar-compact ytd-watch-flexy:not([theater]) {
     --ytd-watch-flexy-sidebar-width: 290px !important;
     --ytd-watch-flexy-sidebar-min-width: 290px !important;
   }
 
-  /* Step 3: Regular mode — override the inline CSS variable */
+  /* Regular mode (350px) */
   body.ypp-sidebar-regular ytd-watch-flexy:not([theater]) {
     --ytd-watch-flexy-sidebar-width: 350px !important;
     --ytd-watch-flexy-sidebar-min-width: 350px !important;
   }
 
-  /* Step 4: Make #columns fill all available horizontal space */
-  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #columns {
+  /* Huge mode (420px) */
+  body.ypp-sidebar-huge ytd-watch-flexy:not([theater]) {
+    --ytd-watch-flexy-sidebar-width: 420px !important;
+    --ytd-watch-flexy-sidebar-min-width: 420px !important;
+  }
+
+  /* Make #columns fill all available horizontal space */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #columns {
     display: flex !important;
     flex-direction: row !important;
     width: 100% !important;
@@ -555,16 +571,16 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
     align-items: flex-start !important;
   }
 
-  /* Step 5: Expand the primary video container to fill the gap */
-  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #primary {
+  /* Expand the primary video container to fill the gap */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #primary {
     flex: 1 1 auto !important;
     max-width: none !important;
     min-width: 0 !important;
     margin-right: 0px !important;
   }
 
-  /* Step 6: Lock secondary to the correct compact/regular width */
-  :is(body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary {
+  /* Lock secondary to the correct width */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #secondary {
     display: block !important;
     flex: 0 0 var(--ytd-watch-flexy-sidebar-width) !important;
     width: var(--ytd-watch-flexy-sidebar-width) !important;
@@ -574,3 +590,142 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
   }
 }
 
+  /* Step 5: Expand the primary video container to fill the gap */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #primary {
+    flex: 1 1 auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin-right: 0px !important;
+  }
+
+  /* Step 6: Lock secondary to the correct compact/regular width */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary {
+    display: block !important;
+    flex: 0 0 var(--ytd-watch-flexy-sidebar-width) !important;
+    width: var(--ytd-watch-flexy-sidebar-width) !important;
+    min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
+    max-width: var(--ytd-watch-flexy-sidebar-width) !important;
+    margin-left: 0 !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * MACRO LAYOUT (Even smaller than compact)
+ * ══════════════════════════════════════════════════════════════════════════ */
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  margin-bottom: 6px !important;
+}
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+}
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+  display: block !important;
+  width: 90px !important;
+  min-width: 90px !important;
+  max-width: 90px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+  flex: none !important;
+  overflow: hidden !important;
+}
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer,
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * MINI LAYOUT (Between macro and compact)
+ * ══════════════════════════════════════════════════════════════════════════ */
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  margin-bottom: 8px !important;
+}
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+  display: block !important;
+  width: 115px !important;
+  min-width: 115px !important;
+  max-width: 115px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  border-radius: 6px !important;
+  flex: none !important;
+  overflow: hidden !important;
+}
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer,
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+body.ypp-sidebar-mini :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * HUGE LAYOUT (Between spacious and expanded)
+ * ══════════════════════════════════════════════════════════════════════════ */
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  margin-bottom: 20px !important;
+}
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+  display: block !important;
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  border-radius: 14px !important;
+  flex: none !important;
+  overflow: hidden !important;
+}
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer .text-wrapper,
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
