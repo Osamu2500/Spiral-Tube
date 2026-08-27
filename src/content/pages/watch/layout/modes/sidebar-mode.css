@@ -526,12 +526,15 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
 /* On screens wide enough, apply the two-column layout */
 @media (min-width: 1000px) {
 
-  /* Step 1: Force ytd-watch-flexy to fill full width */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) {
+  /* Step 1: Force ytd-watch-flexy to fill full width and remove artificial video size limits */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) ytd-watch-flexy:not([theater]) {
     width: 100% !important;
     max-width: 100% !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
+    --ytd-watch-flexy-master-page-width: 100% !important;
+    --ytd-watch-flexy-max-player-width: 100vw !important;
+    --ytd-watch-flexy-max-player-height: 100vh !important;
   }
 
   /* Macro mode - narrowest sidebar (250px) */
@@ -565,7 +568,7 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
   }
 
   /* Make #columns fill all available horizontal space and adjust top margin */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #columns {
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) ytd-watch-flexy:not([theater]) #columns {
     display: flex !important;
     flex-direction: row !important;
     width: 100% !important;
@@ -579,7 +582,7 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
   }
 
   /* Expand the primary video container to fill the gap */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #primary {
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) ytd-watch-flexy:not([theater]) #primary {
     flex: 1 1 auto !important;
     max-width: none !important;
     min-width: 0 !important;
@@ -590,12 +593,12 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
   }
 
   /* Remove rogue top margin from inner player */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #player {
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) ytd-watch-flexy:not([theater]) #player {
     margin-top: 0px !important;
   }
 
   /* Lock secondary to the correct width */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #secondary {
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-huge, body.ypp-sidebar-expanded) ytd-watch-flexy:not([theater]) #secondary {
     display: block !important;
     flex: 0 0 var(--ytd-watch-flexy-sidebar-width) !important;
     width: var(--ytd-watch-flexy-sidebar-width) !important;
@@ -717,4 +720,16 @@ body.ypp-sidebar-huge :is(#related, ytd-watch-next-secondary-results-renderer) y
   padding: 0 !important;
   display: flex !important;
   flex-direction: column !important;
+}
+
+/* Spacious mode */
+body.ypp-sidebar-spacious ytd-watch-flexy:not([theater]) {
+  --ytd-watch-flexy-sidebar-width: 450px !important;
+  --ytd-watch-flexy-sidebar-min-width: 450px !important;
+}
+
+/* Expanded mode */
+body.ypp-sidebar-expanded ytd-watch-flexy:not([theater]) {
+  --ytd-watch-flexy-sidebar-width: 550px !important;
+  --ytd-watch-flexy-sidebar-min-width: 550px !important;
 }
