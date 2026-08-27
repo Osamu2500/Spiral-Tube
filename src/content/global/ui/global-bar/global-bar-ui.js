@@ -424,8 +424,7 @@ export class GlobalBarUI {
         if (this.trackedVideos.size === 0) return null;
         
         let bestVideo = null;
-        let maxVisibility = -1;
-        let maxArea = -1;
+        let maxScore = -1;
         
         for (const [video, ratio] of this.videoVisibility.entries()) {
             const area = (video.offsetWidth || 0) * (video.offsetHeight || 0);
@@ -433,9 +432,12 @@ export class GlobalBarUI {
             // Ignore tiny/hidden tracking pixels if there are other visible videos
             if (area < 10 && !video._proxy && this.trackedVideos.size > 1) continue;
 
-            if (ratio > maxVisibility || (ratio === maxVisibility && area > maxArea)) {
-                maxVisibility = ratio;
-                maxArea = area;
+            let score = ratio * 1000 + area; // base score combining visibility and size
+            if (!video.paused) score += 1000000; // huge bonus for playing
+            if (!video.muted && video.volume > 0) score += 500000; // bonus for sound
+
+            if (score > maxScore) {
+                maxScore = score;
                 bestVideo = video;
             }
         }
@@ -574,10 +576,9 @@ export class GlobalBarUI {
             this._uiStateCache.fullscreen = isFs;
         }
 
-        const hasValidSrc = primary._proxy ? true : !!primary.src;
-        const readyState = primary._proxy ? (primary.readyState ?? 1) : primary.readyState;
-        const isActive = !primary.ended && readyState > 0 && hasValidSrc;
+        const hasValidSrc = primary._proxy ? true : !!(primary.src || primary.currentSrc || primary.srcObject || (primary.querySelector && primary.querySelector('source')));
         const isVisibleOnScreen = (this.videoVisibility.get(primary) || 0) > 0;
+        const isActive = !primary.ended && hasValidSrc;
         const shouldHideBar = isFs || !isActive || !isVisibleOnScreen;
 
         if (this._uiStateCache.shouldHideBar !== shouldHideBar) {
@@ -642,6 +643,7 @@ export class GlobalBarUI {
         this._bindSpeedControls();
         this._bindWindowControls();
         this._bindKeyboardControls(signal);
+        this._setupIdleTimer(signal);
     }
 
     _bindKeyboardControls(signal) {
@@ -651,6 +653,9 @@ export class GlobalBarUI {
             
             const primary = this._getPrimaryVideo();
             if (!primary) return;
+
+            // Isolation: Only intercept if focused on body/html or the video itself
+            if (e.target.tagName !== 'BODY' && e.target.tagName !== 'HTML' && e.target !== primary) return;
 
             switch (e.code) {
                 case 'Space':
@@ -676,6 +681,37 @@ export class GlobalBarUI {
                     break;
             }
         }, { signal });
+    }
+
+    _setupIdleTimer(signal) {
+        let idleTimeout;
+        const bar = this.barElement;
+        if (!bar) return;
+
+        // Ensure transition is set for smooth fading
+        bar.style.transition = 'opacity 0.3s ease';
+
+        const resetTimer = () => {
+            bar.style.opacity = '1';
+            bar.classList.remove('ypp-gpb-idle');
+            clearTimeout(idleTimeout);
+            
+            idleTimeout = setTimeout(() => {
+                const primary = this._getPrimaryVideo();
+                // Only hide if a video is actually playing and we aren't hovering the bar
+                if (primary && !primary.paused && !bar.matches(':hover')) {
+                    bar.style.opacity = '0';
+                    bar.classList.add('ypp-gpb-idle');
+                }
+            }, 2500);
+        };
+
+        document.addEventListener('mousemove', resetTimer, { signal });
+        bar.addEventListener('mouseenter', resetTimer, { signal });
+        bar.addEventListener('mouseleave', resetTimer, { signal });
+        
+        // Initial timer start
+        resetTimer();
     }
 
     _bindPlaybackControls() {
