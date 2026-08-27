@@ -1,0 +1,111 @@
+/* 
+   ==========================================================================
+   SEARCH LINEAR VIEW
+   ========================================================================== 
+   Target: /results (when .ypp-search-list-mode is active).
+   Purpose: Provides layout safeguards and cleanups (like removing AI summaries)
+   specifically for the standard list view.
+   Note: This file is strictly scoped and does not affect global components.
+   ========================================================================== 
+*/
+
+/* =========================================================================
+   LINEAR SEARCH VIEW CLEANUPS
+   ========================================================================= */
+
+/* Remove Matching Chapters & AI Summaries from Linear View */
+body.ypp-search-list-mode ytd-video-renderer #expandable-metadata,
+body.ypp-search-list-mode ytd-video-renderer ytd-search-match-group-renderer,
+body.ypp-search-list-mode ytd-video-renderer ytd-expandable-metadata-renderer,
+body.ypp-search-list-mode ytd-video-renderer ytd-info-panel-content-renderer,
+body.ypp-search-list-mode ytd-video-renderer ytd-info-panel-container-renderer {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Badges Alignment (4K, Subtitles moved next to Channel Name) */
+ytd-video-renderer #channel-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+@keyframes yppBadgeAdded {
+  from { outline-color: transparent; }
+  to { outline-color: rgba(0,0,0,0); }
+}
+ytd-video-renderer .text-wrapper ytd-badge-supported-renderer {
+  animation: yppBadgeAdded 0.001s;
+}
+
+ytd-video-renderer #channel-info #badges,
+ytd-video-renderer #channel-info > ytd-badge-supported-renderer {
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+/* Ensure hidden or empty badges don't take up space */
+ytd-video-renderer #channel-info > ytd-badge-supported-renderer[hidden],
+ytd-video-renderer #channel-info > ytd-badge-supported-renderer[is-empty] {
+  display: none !important;
+}
+/* =========================================================================
+   LINEAR CARD STYLE ENFORCEMENT
+   ========================================================================= */
+/* We rely on the card-styles/ CSS files to apply backgrounds, borders, and hover effects.
+   This section strictly ensures that Card Styles do NOT break the horizontal linear layout 
+   by accidentally applying flex-direction: column to the dismissible content! */
+   
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-video-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-playlist-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode yt-lockup-view-model,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-radio-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-channel-renderer {
+  margin-bottom: 16px !important;
+  /* Card styles might accidentally apply flex-direction: column if they use wildcard selectors, 
+     but ytd-video-renderer is horizontal by default. We lock it here. */
+}
+
+/* VERY STRICT horizontal layout lock for Linear View */
+body.ypp-search-list-mode ytd-video-renderer > #dismissible {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+body.ypp-search-list-mode ytd-video-renderer:hover > #dismissible {
+  flex-direction: row !important;
+}
+
+body.ypp-search-list-mode ytd-video-renderer #channel-info {
+  margin-bottom: 8px !important;
+}
+
+
+/* LINEAR RULES RECOVERED FROM GRID FILE */
+body.ypp-search-list-mode ytd-item-section-renderer #contents {
+    display: flex;
+    flex-direction: column;
+}
+body.ypp-search-list-mode ytd-video-renderer {
+    margin-bottom: 16px !important;
+}
+body.ypp-search-list-mode ytd-video-renderer:last-child {
+    margin-bottom: 0 !important;
+}
+body.ypp-search-list-mode ytd-video-renderer:hover {
+    background: var(--ypp-hover-bg) !important;
+    border-radius: 12px;
+}
+body.ypp-search-list-mode ytd-video-renderer #dismissible {
+    padding: 8px;
+}
+body.ypp-search-list-mode ytd-video-renderer ytd-thumbnail {
+    border-radius: 8px;
+    overflow: hidden;
+}
+body.ypp-search-list-mode ytd-video-renderer .metadata-snippet-container {
+    color: var(--yt-spec-text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}

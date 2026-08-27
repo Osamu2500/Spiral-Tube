@@ -301,7 +301,7 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
                     this._processedNodes.add(op.node);
 
                     if (op.isShorts) {
-                        if (this._settings.hideSearchShorts) {
+                        if (this._settings.aggressiveShortsBlock) {
                             op.node.style.setProperty('display', 'none', 'important');
                             continue;
                         }

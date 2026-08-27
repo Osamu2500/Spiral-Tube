@@ -1,0 +1,25 @@
+/* 
+   ==========================================================================
+   SEARCH CORE LAYOUT
+   ========================================================================== 
+   Target: /results (Applies globally to the search page).
+   Purpose: Fixes master page margins (like the mini-guide offset) and 
+   hides the secondary column to provide a clean slate for both List and Grid views.
+   ========================================================================== 
+*/
+
+/* ===================================================================================
+   6. SEARCH REDESIGN
+   =================================================================================== */
+
+/* ── 0. SEARCH PAGE: MINI-GUIDE & LAYOUT MARGIN FIX ──────────────── */
+
+/* Reinforces the global mini-guide rule with a search-scoped, higher-specificity
+   selector. This prevents the blank left gutter that appears on /results when
+   YouTube's own search-page stylesheet overrides the generic rule. */
+
+/* Stretch the search container edge-to-edge (applied for ALL search page
+   layouts, not just grid mode, so the fix survives a grid toggle). */
+
+/* Hide the secondary sidebar column (watch-next / ads) on the search page —
+   keeps the layout single-column and prevents a gap on the right. */

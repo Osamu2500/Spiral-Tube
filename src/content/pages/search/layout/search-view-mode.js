@@ -58,7 +58,7 @@ export class SearchViewMode extends window.YPP.features.BaseFeature {
         }
 
         // Use searchGrid setting as base, override with searchViewMode if explicitly set
-        const baseGridEnabled = !!(this._settings.searchGrid || this._settings.cleanSearch || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.autoVideoFilter);
+        const baseGridEnabled = !!this._settings.searchGrid;
         const mode = this._settings.searchViewMode || (baseGridEnabled ? SearchViewMode.MODES.GRID : SearchViewMode.MODES.LIST);
 
 

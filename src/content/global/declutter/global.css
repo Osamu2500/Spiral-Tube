@@ -539,3 +539,12 @@ ytd-thumbnail-overlay-button-renderer {
   display: none !important;
 }
 
+
+/* Hide Shorts shelf headers completely when Hide Shorts feature is enabled */
+body.ypp-nuke-shorts yt-collection-shelf-view-model:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-nuke-shorts yt-collection-shelf-view-model:has(yt-icon-shape[icon="yt-icons:shorts"]),
+body.ypp-nuke-shorts ytd-shelf-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-nuke-shorts ytd-reel-shelf-renderer {
+    display: none !important;
+}
+

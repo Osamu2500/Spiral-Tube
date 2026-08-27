@@ -78,7 +78,6 @@
 /* --- SEARCH PAGE CONTEXT --- */
 @import "../pages/search/layout.css";
 @import "../pages/search/declutter.css";
-@import "../pages/search/features/search-toggles.css";
 
 /* --- SUBSCRIPTIONS & CHANNELS --- */
 @import "../pages/subscriptions/layout.css";
@@ -96,7 +95,10 @@
 
 /* --- LAYOUT / GRIDS (Connected to Design System) --- */
 @import "../global/styles/layout-grid.css";
-@import "../global/styles/search-grid.css";
+@import "../pages/search/styles/search-core.css";
+@import "../pages/search/styles/search-grid-view.css";
+@import "../pages/search/styles/search-linear-view.css";
+@import "../pages/search/styles/search-list-sizes.css";
 @import "../global/styles/grid-layout.css";
 
 @import "../global/components/shorts-shelf/shorts-shelf.css";

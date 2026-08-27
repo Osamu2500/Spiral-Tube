@@ -102,7 +102,12 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         this._settings = settings || {};
 
         // Reset processed-node cache so a fresh page starts clean
-        this._searchObserver.resetProcessedNodes();
+        if (!this._searchObserver) {
+            this._searchObserver = window.YPP.featureManager.getFeature('searchObserver');
+        }
+        
+        // Reset processed-node cache so a fresh page starts clean
+        this._searchObserver?.resetProcessedNodes();
 
         const shouldEnable = this._settings.searchGrid || 
                              this._settings.cleanSearch || 
@@ -145,7 +150,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         if (!this._isEnabled) return;
         this._isEnabled = false;
 
-        this._searchObserver.stop();
+        this._searchObserver?.stop();
 
         document.body.classList.remove(
             SearchRedesign.CLASSES.GRID_MODE,
@@ -188,7 +193,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
             this._searchObserver.resetProcessedNodes();
 
             // Push fresh state into sub-modules before they act
-            this._searchObserver.sync(
+            this._searchObserver?.sync(
                 this._settings,
                 () => this._isEnabled,
                 SearchRedesign.CLASSES
@@ -196,9 +201,9 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
             if (this._settings.searchGrid || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.cleanSearch || this._settings.searchLayout) {
                 // Apply the selected search layout size class
                 const layoutSize = this._settings.searchLayout || 'regular';
-                document.body.classList.add('ypp-search-layout-' + layoutSize);
+                document.body.setAttribute('data-ypp-search-layout', layoutSize);
 
-                this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
+                this._searchObserver?.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
             } else {
                 // ── CARD STYLE FALLBACK:
                 // Some card styles (e.g. immersive) need a body class on
@@ -209,13 +214,13 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 const LAYOUT_AWARE_CARD_STYLES = new Set(['immersive']);
 
                 if (activeCardStyle && LAYOUT_AWARE_CARD_STYLES.has(activeCardStyle)) {
-                    this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
+                    this._searchObserver?.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
                     this._log(`Card style "${activeCardStyle}" activated search list-mode fallback`, 'info');
                 }
             }
 
         } else {
-            this._searchObserver.stop();
+            this._searchObserver?.stop();
             this._removeClasses();
             this._stopCardStyleObserver();
             this._lastQuery = null;
@@ -332,13 +337,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         });
 
         // Ensure body classes do not leak to non-search pages
-        document.body.classList.remove(
-            'ypp-search-layout-dense',
-            'ypp-search-layout-compact',
-            'ypp-search-layout-regular',
-            'ypp-search-layout-spacious',
-            'ypp-search-layout-expanded'
-        );
+        document.body.removeAttribute('data-ypp-search-layout');
     }
 
     // =========================================================================
@@ -354,13 +353,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     }
 
     _removeClasses() {
-        document.body.classList.remove(
-            'ypp-search-layout-dense',
-            'ypp-search-layout-compact',
-            'ypp-search-layout-regular',
-            'ypp-search-layout-spacious',
-            'ypp-search-layout-expanded'
-        );
+        document.body.removeAttribute('data-ypp-search-layout');
     }
 }
 
