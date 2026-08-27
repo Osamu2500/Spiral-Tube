@@ -590,34 +590,6 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
   }
 }
 
-  /* Step 5: Expand the primary video container to fill the gap */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #primary {
-    flex: 1 1 auto !important;
-    max-width: none !important;
-    min-width: 0 !important;
-    margin-right: 0px !important;
-  }
-
-  /* Step 6: Lock secondary to the correct compact/regular width */
-  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular) ytd-watch-flexy:not([theater]) #secondary {
-    display: block !important;
-    flex: 0 0 var(--ytd-watch-flexy-sidebar-width) !important;
-    width: var(--ytd-watch-flexy-sidebar-width) !important;
-    min-width: var(--ytd-watch-flexy-sidebar-min-width) !important;
-    max-width: var(--ytd-watch-flexy-sidebar-width) !important;
-    margin-left: 0 !important;
-  }
-}
-
-
-/* ══════════════════════════════════════════════════════════════════════════
- * MACRO LAYOUT (Even smaller than compact)
- * ══════════════════════════════════════════════════════════════════════════ */
-body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
-body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
-body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
-  margin-bottom: 6px !important;
-}
 body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
 body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
 body.ypp-sidebar-macro :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
