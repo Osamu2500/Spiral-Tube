@@ -71,16 +71,6 @@
   word-break: break-word !important;
 }
 
-/* ── Compact: 1-line title with ellipsis (tighter layout) ── */
-:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title),
-:is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact) :is(#related, ytd-watch-next-secondary-results-renderer)
-  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
-  -webkit-line-clamp: 1 !important;
-  line-clamp: 1 !important;
-  max-height: 2rem !important;
-}
-
 /* ── Fix text wrapper overflow for compact & regular ── */
 :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular)
   :is(#related, ytd-watch-next-secondary-results-renderer)
