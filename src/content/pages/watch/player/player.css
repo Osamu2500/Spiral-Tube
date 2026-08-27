@@ -666,7 +666,7 @@ body.ypp-revert-progress-bar .thumbnail-overlay-resume-playback-progress {
   opacity: 0 !important;
   display: none !important;
 }
-body.ypp-sidebar-hidden:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
+body[data-ypp-sidebar-size="hidden"]:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
   --ytd-watch-flexy-sidebar-width: 0px !important;
 }
 

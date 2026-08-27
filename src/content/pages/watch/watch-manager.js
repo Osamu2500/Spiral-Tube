@@ -195,17 +195,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
 
     // 1. Reset all managed classes & Inline Styles
     const classesToRemove = [
-      'ypp-sidebar-dense',
-      'ypp-sidebar-macro',
-      'ypp-sidebar-mini',
-      'ypp-sidebar-compact',
-      'ypp-sidebar-regular',
-      'ypp-sidebar-spacious',
-      'ypp-sidebar-huge',
-      'ypp-sidebar-expanded',
-      'ypp-sidebar-grid',
-      'ypp-sidebar-hidden',
-      'ypp-cinema-mode',
+                                                                  'ypp-cinema-mode',
       'ypp-minimal-mode',
       'ypp-zen-mode',
       'ypp-focus-mode',
@@ -218,28 +208,28 @@ class WatchPageManager extends window.YPP.BasePageManager {
     if (this.settings.enableCustomSidebar) {
       // Custom sidebar is ON — apply chosen layout
       if (this.state.sidebar === 'dense') {
-        body.classList.add('ypp-sidebar-dense');
+        body.setAttribute("data-ypp-sidebar-size", "dense");
       } else if (this.state.sidebar === 'macro') {
-        body.classList.add('ypp-sidebar-macro');
+        body.setAttribute("data-ypp-sidebar-size", "macro");
       } else if (this.state.sidebar === 'mini') {
-        body.classList.add('ypp-sidebar-mini');
+        body.setAttribute("data-ypp-sidebar-size", "mini");
       } else if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
-        body.classList.add('ypp-sidebar-compact');
+        body.setAttribute("data-ypp-sidebar-size", "compact");
       } else if (this.state.sidebar === 'regular') {
-        body.classList.add('ypp-sidebar-regular');
+        body.setAttribute("data-ypp-sidebar-size", "regular");
       } else if (this.state.sidebar === 'spacious') {
-        body.classList.add('ypp-sidebar-spacious');
+        body.setAttribute("data-ypp-sidebar-size", "spacious");
       } else if (this.state.sidebar === 'huge') {
-        body.classList.add('ypp-sidebar-huge');
+        body.setAttribute("data-ypp-sidebar-size", "huge");
       } else if (this.state.sidebar === 'expanded') {
-        body.classList.add('ypp-sidebar-expanded');
+        body.setAttribute("data-ypp-sidebar-size", "expanded");
       } else if (this.state.sidebar === 'grid') {
-        body.classList.add('ypp-sidebar-grid');
+        body.setAttribute("data-ypp-sidebar-size", "grid");
       }
     }
 
     if (this.state.sidebar === 'hidden' || ['zen', 'focus'].includes(this.state.viewMode)) {
-      body.classList.add('ypp-sidebar-hidden'); // Force hide sidebar in extreme modes
+      body.setAttribute("data-ypp-sidebar-size", "hidden"); // Force hide sidebar in extreme modes
     }
 
     // 3. Apply View Mode
@@ -269,16 +259,16 @@ class WatchPageManager extends window.YPP.BasePageManager {
   _cleanupDOM() {
     const classesToRemove = [
       // Note: 'ypp-sidebar-spacious' is the current name — 'compact' was the old name
-      'ypp-sidebar-dense',
-      'ypp-sidebar-macro',
-      'ypp-sidebar-mini',
-      'ypp-sidebar-compact',
-      'ypp-sidebar-regular',
-      'ypp-sidebar-spacious',
-      'ypp-sidebar-huge',
-      'ypp-sidebar-expanded',
-      'ypp-sidebar-grid',
-      'ypp-sidebar-hidden',
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       'ypp-cinema-mode',
       'ypp-minimal-mode',
       'ypp-zen-mode',

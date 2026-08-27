@@ -29,6 +29,8 @@ window.YPP.features.BaseFeature = class BaseFeature {
         
         this.eventListeners = [];
         this.busListeners = [];
+        this.observerIds = [];
+        this.settingWatchers = new Map();
 
         // Lazy getters: resolve at call-time so construction doesn't race against
         // main.js creating sharedObserver and sharedEventDelegator.
@@ -85,8 +87,11 @@ window.YPP.features.BaseFeature = class BaseFeature {
             }
             await this.disable();
             this.isEnabled = false;
-        } else if (this.isEnabled && typeof this.onUpdate === 'function' && settingsChanged) {
-            await this.onUpdate(settings, oldSettings);
+        } else if (this.isEnabled && settingsChanged) {
+            this._triggerSettingWatchers(this.settings, oldSettings);
+            if (typeof this.onUpdate === 'function') {
+                await this.onUpdate(settings, oldSettings);
+            }
         }
     }
 
@@ -187,6 +192,14 @@ window.YPP.features.BaseFeature = class BaseFeature {
             }
         });
         this.busListeners = [];
+        
+        // DOM Observers
+        if (this.observer) {
+            this.observerIds.forEach(id => {
+                try { this.observer.unregister(id); } catch (e) {}
+            });
+        }
+        this.observerIds = [];
     }
 
     /**
@@ -198,6 +211,69 @@ window.YPP.features.BaseFeature = class BaseFeature {
         if (!this.events) return;
         const unsub = this.events.on(event, handler.bind(this));
         this.busListeners.push(unsub);
+    }
+
+    /**
+     * Register a DOM Observer safely bound to this feature's lifecycle
+     */
+    registerObserver(id, selector, callback, immediate = true, lazy = false) {
+        if (!this.observer) return;
+        // Scope the ID so multiple features don't collide
+        const scopedId = `${this.name}_${id}`;
+        this.observerIds.push(scopedId);
+        
+        // Bind the callback safely to catch errors within the feature context
+        const safeCallback = (nodes) => {
+            if (!this.isEnabled) return;
+            try {
+                callback.call(this, nodes);
+            } catch (e) {
+                this.utils?.log(`Observer error in ${this.name}: ${e.message}`, BaseFeature.CONFIG.LOG_CATEGORY, 'error');
+            }
+        };
+        
+        this.observer.register(scopedId, selector, safeCallback, immediate, lazy);
+    }
+
+    /**
+     * Manually unregister a DOM Observer
+     */
+    unregisterObserver(id) {
+        if (!this.observer) return;
+        const scopedId = `${this.name}_${id}`;
+        this.observer.unregister(scopedId);
+        this.observerIds = this.observerIds.filter(i => i !== scopedId);
+    }
+
+    /**
+     * Subscribe to specific setting changes rather than parsing the full settings object on every update.
+     * @param {string} key - Setting key
+     * @param {Function} callback - Callback called with (newValue, oldValue)
+     */
+    watchSetting(key, callback) {
+        if (!this.settingWatchers.has(key)) {
+            this.settingWatchers.set(key, []);
+        }
+        this.settingWatchers.get(key).push(callback);
+    }
+
+    /**
+     * Trigger setting watchers if the setting changed
+     * @param {Object} newSettings
+     * @param {Object} oldSettings
+     * @private
+     */
+    _triggerSettingWatchers(newSettings, oldSettings) {
+        for (const [key, callbacks] of this.settingWatchers.entries()) {
+            const newVal = newSettings[key];
+            const oldVal = oldSettings[key];
+            if (newVal !== oldVal) {
+                callbacks.forEach(cb => {
+                    try { cb.call(this, newVal, oldVal); }
+                    catch(e) { this.utils?.log(`Error in setting watcher for ${key} in ${this.name}: ${e.message}`, BaseFeature.CONFIG.LOG_CATEGORY, 'error'); }
+                });
+            }
+        }
     }
 
     /**
