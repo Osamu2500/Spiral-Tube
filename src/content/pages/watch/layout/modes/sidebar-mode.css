@@ -589,6 +589,11 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
     padding-left: 0px !important;
   }
 
+  /* Remove rogue top margin from inner player */
+  :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #player {
+    margin-top: 0px !important;
+  }
+
   /* Lock secondary to the correct width */
   :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #secondary {
     display: block !important;
