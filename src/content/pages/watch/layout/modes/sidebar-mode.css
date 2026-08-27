@@ -562,13 +562,14 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
     --ytd-watch-flexy-sidebar-min-width: 420px !important;
   }
 
-  /* Make #columns fill all available horizontal space */
+  /* Make #columns fill all available horizontal space and adjust top margin */
   :is(body.ypp-sidebar-macro, body.ypp-sidebar-mini, body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-huge) ytd-watch-flexy:not([theater]) #columns {
     display: flex !important;
     flex-direction: row !important;
     width: 100% !important;
     max-width: 100% !important;
     align-items: flex-start !important;
+    margin-top: 10px !important;
   }
 
   /* Expand the primary video container to fill the gap */
