@@ -214,10 +214,75 @@ export function initpagebuttons(document, state, ui, updateSetting, notifyThemeC
       });
     }
 
+  function createPageButtonInitializer(selector, keyPrefix) {
+    return function() {
+      const btns = document.querySelectorAll(selector);
+      if (!btns.length) return;
+  
+      const applyState = (settings) => {
+        btns.forEach((btn) => {
+          const page = btn.dataset.page;
+          const key = keyPrefix + page.charAt(0).toUpperCase() + page.slice(1);
+          const isActive = settings[key] !== false;
+          btn.classList.toggle('active', isActive);
+          if (isActive) {
+            btn.style.background = 'rgba(255, 78, 69, 0.18)';
+            btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
+            btn.style.color = '#fff';
+          } else {
+            btn.style.background = 'rgba(255, 255, 255, 0.04)';
+            btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            btn.style.color = 'rgba(255, 255, 255, 0.5)';
+          }
+        });
+      };
+  
+      chrome.storage.local.get('settings', (data) => {
+        const settings = data.settings || {};
+        applyState(settings);
+      });
+  
+      btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const page = btn.dataset.page;
+          const key = keyPrefix + page.charAt(0).toUpperCase() + page.slice(1);
+          const nextState = !btn.classList.contains('active');
+  
+          btn.classList.toggle('active', nextState);
+          if (nextState) {
+            btn.style.background = 'rgba(255, 78, 69, 0.18)';
+            btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
+            btn.style.color = '#fff';
+          } else {
+            btn.style.background = 'rgba(255, 255, 255, 0.04)';
+            btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            btn.style.color = 'rgba(255, 255, 255, 0.5)';
+          }
+  
+          chrome.runtime.sendMessage(
+            { action: 'PATCH_SETTINGS', payload: { [key]: nextState } },
+            () => {
+              if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+            }
+          );
+        });
+      });
+    }
+  }
+
+  const initPlaylistsPageButtons = createPageButtonInitializer('.playlists-page-btn', 'hidePlaylists');
+  const initMixesPageButtons = createPageButtonInitializer('.mixes-page-btn', 'hideMixes');
+  const initPodcastsPageButtons = createPageButtonInitializer('.podcasts-page-btn', 'hidePodcasts');
+  const initPostsPageButtons = createPageButtonInitializer('.posts-page-btn', 'hidePosts');
+
   return {
     initHideWatchedModePill,
     initHideWatchedPageButtons,
     initMetaFilterPageButtons,
-    initShortsFilterPageButtons
+    initShortsFilterPageButtons,
+    initPlaylistsPageButtons,
+    initMixesPageButtons,
+    initPodcastsPageButtons,
+    initPostsPageButtons
   };
 }

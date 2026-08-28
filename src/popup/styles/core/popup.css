@@ -240,10 +240,13 @@
   --popup-height: 600px;
 }
 html {
-  width: var(--popup-width);
-  height: var(--popup-height);
+  width: var(--popup-width) !important;
+  height: var(--popup-height) !important;
+  min-width: var(--popup-width) !important;
+  min-height: var(--popup-height) !important;
+  max-width: var(--popup-width) !important;
+  max-height: var(--popup-height) !important;
   overflow: hidden;
-  transition: width 0.15s ease-out, height 0.15s ease-out;
 }
 html.full-page {
   width: 100vw !important;
@@ -251,8 +254,12 @@ html.full-page {
 }
 body {
   margin: 0; padding: calc(6px * var(--ui-density, 1));
-  width: calc(var(--popup-width) / var(--popup-zoom));
-  height: calc(var(--popup-height) / var(--popup-zoom));
+  width: calc(var(--popup-width) / var(--popup-zoom)) !important;
+  height: calc(var(--popup-height) / var(--popup-zoom)) !important;
+  min-width: calc(var(--popup-width) / var(--popup-zoom)) !important;
+  min-height: calc(var(--popup-height) / var(--popup-zoom)) !important;
+  max-width: calc(var(--popup-width) / var(--popup-zoom)) !important;
+  max-height: calc(var(--popup-height) / var(--popup-zoom)) !important;
   zoom: var(--popup-zoom);
   font-family: 'Inter', sans-serif;
   background: 
@@ -265,7 +272,6 @@ body {
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: width 0.15s ease-out, height 0.15s ease-out;
 }
 html.full-page body {
   width: calc(100vw / var(--popup-zoom)) !important;

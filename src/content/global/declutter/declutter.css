@@ -37,10 +37,10 @@ body.ypp-hide-podcasts ytd-rich-item-renderer:has(a[href^="/podcast?"]),
 body.ypp-hide-podcasts ytd-video-renderer:has(a[href^="/podcast?"]),
 body.ypp-hide-podcasts ytd-playlist-renderer:has(a[href^="/podcast?"]),
 body.ypp-hide-podcasts yt-lockup-view-model:has(a[href^="/podcast?"]),
-body.ypp-hide-podcasts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Podcast" i]),
-body.ypp-hide-podcasts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Podcasts" i]),
-body.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-supported-renderer[aria-label="Podcast" i]),
-body.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-supported-renderer[aria-label="Podcasts" i]) {
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(yt-icon[icon="yt-icons:podcast"]),
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(yt-icon-shape[icon="yt-icons:podcast"]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(yt-icon[icon="yt-icons:podcast"]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(yt-icon-shape[icon="yt-icons:podcast"]) {
     display: none !important;
 }
 .ypp-hidden-duration {
@@ -123,10 +123,7 @@ body.ypp-hide-sidebar #content {
   left: -9999px !important;
   pointer-events: none !important;
 }
-body.ypp-hide-podcasts
-tp-yt-paper-tab:has([title*="Podcast"]),
-body.ypp-hide-podcasts
-tp-yt-paper-tab:has([title*="podcast"]) {
+body.ypp-hide-podcasts tp-yt-paper-tab:has(a[href$="/podcasts"]) {
     display: none !important;
 }
 body.ypp-hide-metrics #metadata-line,
@@ -261,10 +258,7 @@ html body .ypp-hidden-by-pipeline {
     margin: 0 !important;
     padding: 0 !important;
 }
-body.ypp-hide-podcasts
-tp-yt-paper-tab:has([title*="Podcast"]),
-body.ypp-hide-podcasts
-tp-yt-paper-tab:has([title*="podcast"]) {
+body.ypp-hide-podcasts tp-yt-paper-tab:has(a[href$="/podcasts"]) {
     display: none !important;
 }
 body.ypp-hide-metrics #metadata-line,
@@ -536,12 +530,11 @@ body.ypp-hide-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]),
 body.ypp-hide-shorts ytd-playlist-video-renderer:has(a[href*="/shorts"]),
 
 /* --- Shorts Badge/Label Detection --- */
-body.ypp-hide-shorts ytd-grid-video-renderer:has(span#text[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-compact-video-renderer:has(span[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-video-renderer:has(span[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(span[aria-label="Shorts"]),
+body.ypp-hide-shorts ytd-grid-video-renderer:has([overlay-style="SHORTS"]),
+body.ypp-hide-shorts ytd-compact-video-renderer:has([overlay-style="SHORTS"]),
+body.ypp-hide-shorts ytd-video-renderer:has([overlay-style="SHORTS"]),
+body.ypp-hide-shorts yt-lockup-view-model:has([overlay-style="SHORTS"]),
+body.ypp-hide-shorts ytd-rich-item-renderer:has([overlay-style="SHORTS"]),
 body.ypp-hide-shorts ytd-rich-item-renderer:has(yt-icon[icon="yt-icons:shorts"]),
 body.ypp-hide-shorts ytd-rich-item-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
 
@@ -550,18 +543,16 @@ body.ypp-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
 body.ypp-hide-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
 
 /* --- Channel Page Tabs --- */
-body.ypp-hide-shorts tp-yt-paper-tab[aria-label="Shorts"],
-body.ypp-hide-shorts tp-yt-paper-tab[tab-title="Shorts"],
-body.ypp-hide-shorts yt-tab-shape[tab-title="Shorts"],
+body.ypp-hide-shorts tp-yt-paper-tab:has(a[href$="/shorts"]),
+body.ypp-hide-shorts yt-tab-shape:has(a[href$="/shorts"]),
 
 /* --- Search & Chip Filters --- */
 body.ypp-hide-shorts yt-chip-cloud-chip-renderer:has(a[href*="/shorts"]),
 
 /* --- Shelf Title Detection --- */
-body.ypp-hide-shorts ytd-shelf-renderer:has(span#title[aria-label*="Shorts"]),
-body.ypp-hide-shorts ytd-shelf-renderer:has(div#title-container h2 span[aria-label*="Shorts"]),
+body.ypp-hide-shorts ytd-shelf-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-shelf-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
 body.ypp-hide-shorts ytd-shelf-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-shelf-renderer:has(ytd-icon-button-renderer[aria-label="Shorts"]),
 
 /* --- Watch Page (Secondary Results) --- */
 body.ypp-hide-shorts #related ytd-reel-shelf-renderer,
@@ -594,9 +585,7 @@ body.ypp-hide-shorts
 body.ypp-hide-shorts
   ytd-item-section-renderer:has(ytd-shelf-renderer[is-shorts]),
 body.ypp-hide-shorts
-  ytd-item-section-renderer:has(
-    ytd-shelf-renderer span#title[aria-label*="Shorts"]
-  ) {
+  ytd-item-section-renderer:has(ytd-shelf-renderer a[href*="/shorts"]) {
   display: none !important;
 }
 body.ypp-hide-shorts ytd-rich-section-renderer[is-shorts],
@@ -637,10 +626,10 @@ body.ypp-hide-podcasts ytd-rich-item-renderer:has(a[href^="/podcast?"]),
 body.ypp-hide-podcasts ytd-video-renderer:has(a[href^="/podcast?"]),
 body.ypp-hide-podcasts ytd-playlist-renderer:has(a[href^="/podcast?"]),
 body.ypp-hide-podcasts yt-lockup-view-model:has(a[href^="/podcast?"]),
-body.ypp-hide-podcasts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Podcast" i]),
-body.ypp-hide-podcasts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Podcasts" i]),
-body.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-supported-renderer[aria-label="Podcast" i]),
-body.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-supported-renderer[aria-label="Podcasts" i]) {
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(yt-icon[icon="yt-icons:podcast"]),
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(yt-icon-shape[icon="yt-icons:podcast"]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(yt-icon[icon="yt-icons:podcast"]),
+body.ypp-hide-podcasts yt-lockup-view-model:has(yt-icon-shape[icon="yt-icons:podcast"]) {
     display: none !important;
 }
 .ypp-hidden-duration {
@@ -776,12 +765,11 @@ body.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer,
 body.ypp-hide-channel-cards.ypp-search-page ytd-item-section-renderer:has(ytd-channel-renderer) {
     display: none !important;
 }
-body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]) {
+body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(yt-icon[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(yt-icon-shape[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(yt-icon[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(yt-icon[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has(yt-icon-shape[icon="yt-icons:music_note"]) {
     display: none !important;
 }
 body.ypp-hide-search-shelves .ypp-noise-section {
@@ -857,12 +845,11 @@ body.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer,
 body.ypp-hide-channel-cards.ypp-search-page ytd-item-section-renderer:has(ytd-channel-renderer) {
     display: none !important;
 }
-body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]) {
+body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(yt-icon[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(yt-icon-shape[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(yt-icon[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(yt-icon[icon="yt-icons:music_note"]),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has(yt-icon-shape[icon="yt-icons:music_note"]) {
     display: none !important;
 }
 
@@ -1011,30 +998,14 @@ body.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='synth
 body.ypp-hide-ai-logo ytd-thumbnail-overlay-badge-view-model[badge-style*='ai'] {
   display: none !important;
 }
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label*='Altered' i]),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label*='Synthetic' i]),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([aria-label='AI']),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([title*='AI' i]),
-body.ypp-hide-ai-logo ytd-metadata-badge-renderer:has([title*='Altered' i]),
 body.ypp-hide-ai-logo [badge-style*='altered' i],
 body.ypp-hide-ai-logo [badge-style*='synthetic' i],
-body.ypp-hide-ai-logo [class*='altered-content' i],
-body.ypp-hide-ai-logo ytd-badge-supported-renderer:has([aria-label='AI' i]),
-body.ypp-hide-ai-logo ytd-badge-supported-renderer:has([aria-label*='Altered' i]) {
+body.ypp-hide-ai-logo [class*='altered-content' i] {
   display: none !important;
 }
-body.ypp-hide-ai-logo [aria-label*='Content was made with AI' i],
-body.ypp-hide-ai-logo [aria-label*='Altered or synthetic content' i],
-body.ypp-hide-ai-logo [aria-label*='Altered content' i],
-body.ypp-hide-ai-logo *:has(> [aria-label*='Content was made with AI' i]),
-body.ypp-hide-ai-logo *:has(> [aria-label*='Altered or synthetic' i]),
 body.ypp-hide-ai-logo ytd-watch-metadata [class*='altered-content' i],
 body.ypp-hide-ai-logo ytd-watch-metadata [class*='badge-style-type-altered' i],
-body.ypp-hide-ai-logo ytd-watch-metadata [badge-style*='altered' i],
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-metadata-badge-renderer:has([aria-label='AI' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-badge-supported-renderer:has([aria-label='AI' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-metadata-badge-renderer:has([title='AI' i]),
-body.ypp-hide-ai-logo ytd-watch-metadata ytd-badge-supported-renderer:has([title='AI' i]) {
+body.ypp-hide-ai-logo ytd-watch-metadata [badge-style*='altered' i] {
   display: none !important;
 }
 body.ypp-zen-mode #masthead-container,

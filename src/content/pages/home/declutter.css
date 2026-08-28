@@ -4,30 +4,7 @@
  * ========================================================================== 
  */
 
-/* --- home-declutter.css --- */
-body.ypp-home-page.ypp-hide-explore-topics #frosted-glass.with-chipbar,
-body.ypp-home-page.ypp-hide-explore-topics #frosted-glass {
-  display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-explore-topics ytd-page-manager {
-  margin-top: var(--ytd-masthead-height, 56px) !important;
-}
-
-body.ypp-home-page.ypp-hide-posts ytd-post-renderer,
-body.ypp-home-page.ypp-hide-posts ytd-shared-post-renderer,
-body.ypp-home-page.ypp-hide-posts ytd-rich-item-renderer:has(ytd-post-renderer),
-body.ypp-home-page.ypp-hide-posts ytd-rich-item-renderer:has(ytd-shared-post-renderer),
-body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer),
-body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-shared-post-renderer) {
-    display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-promos ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)),
-body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)) {
-    display: none !important;
-}
-
+/* --- Hide Explore Topics (Chip Bar) --- */
 body.ypp-home-page.ypp-hide-explore-topics ytd-browse ytd-feed-filter-chip-bar-renderer,
 body.ypp-home-page.ypp-hide-explore-topics ytd-browse yt-chip-cloud-renderer,
 body.ypp-home-page.ypp-hide-explore-topics ytd-browse #chips-wrapper,
@@ -35,78 +12,54 @@ body.ypp-home-page.ypp-hide-explore-topics ytd-browse ytd-rich-grid-renderer > #
 body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-chip-cloud-renderer),
 body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
 body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-related-chip-cloud-renderer),
-body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-search-query-renderer) {
-    display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer {
-    display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-trending ytd-rich-section-renderer:has(a[href*="/trending"]) {
-    display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer {
-    display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-trending ytd-rich-section-renderer:has(a[href*="/trending"]) {
-    display: none !important;
-}
-
-body.ypp-home-page.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/trending"]),
-body.ypp-home-page.ypp-hide-trending ytd-mini-guide-entry-renderer:has(a[href*="/feed/trending"]),
-body.ypp-home-page.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/explore"]) {
-  display: none !important;
-}
-
+body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-search-query-renderer),
+body.ypp-home-page.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer,
 body.ypp-home-page.ypp-hide-explore-topics #frosted-glass.with-chipbar,
 body.ypp-home-page.ypp-hide-explore-topics #frosted-glass {
-  display: none !important;
+    display: none !important;
 }
 
 body.ypp-home-page.ypp-hide-explore-topics ytd-page-manager {
-  margin-top: var(--ytd-masthead-height, 56px) !important;
+    margin-top: var(--ytd-masthead-height, 56px) !important;
 }
 
-body.ypp-home-page.ypp-hide-feed ytd-browse[page-subtype="home"] #primary {
-  display: none !important;
-}
-
-body.ypp-home-page:not(.cinematic-home).ypp-hide-posts ytd-rich-item-renderer:has(ytd-post-renderer),
-body.ypp-home-page:not(.cinematic-home).ypp-hide-posts ytd-rich-item-renderer:has(ytd-shared-post-renderer),
-body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer),
-body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-shared-post-renderer) {
-  display: none !important;
-}
-
+/* --- Hide Feed (Entire Video Grid) --- */
+body.ypp-home-page.ypp-hide-feed ytd-browse[page-subtype="home"] #primary,
 body.ypp-home-page.ypp-hide-feed ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {
     display: none !important;
 }
 
+/* --- Hide Community Posts --- */
 body.ypp-home-page.ypp-hide-posts ytd-post-renderer,
 body.ypp-home-page.ypp-hide-posts ytd-shared-post-renderer,
 body.ypp-home-page.ypp-hide-posts ytd-rich-item-renderer:has(ytd-post-renderer),
 body.ypp-home-page.ypp-hide-posts ytd-rich-item-renderer:has(ytd-shared-post-renderer),
 body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer),
-body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-shared-post-renderer) {
+body.ypp-home-page.ypp-hide-posts ytd-rich-section-renderer:has(ytd-shared-post-renderer),
+body.ypp-home-page.ypp-hide-posts yt-lockup-view-model:has(ytd-post-renderer),
+body.ypp-home-page.ypp-hide-posts yt-lockup-view-model:has(ytd-shared-post-renderer) {
     display: none !important;
 }
 
+/* --- Hide Promos / Shelves (Excluding Shorts) --- */
+/* Simplified to avoid fragile negative selectors, targets brand/promo elements directly */
+body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer),
+body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:has(ytd-statement-banner-renderer),
+body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:has(ytd-compact-promoted-video-renderer),
+body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer),
+body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:has(.badge-style-type-ad),
+/* Fallback: Generic shelf hiding (hides ALL shelves except those explicitly marked as shorts) */
 body.ypp-home-page.ypp-hide-promos ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)),
-body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)) {
+body.ypp-home-page.ypp-hide-promos ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)):has(ytd-shelf-renderer) {
     display: none !important;
 }
 
-body.ypp-home-page.ypp-hide-explore-topics ytd-browse ytd-feed-filter-chip-bar-renderer,
-body.ypp-home-page.ypp-hide-explore-topics ytd-browse yt-chip-cloud-renderer,
-body.ypp-home-page.ypp-hide-explore-topics ytd-browse #chips-wrapper,
-body.ypp-home-page.ypp-hide-explore-topics ytd-browse ytd-rich-grid-renderer > #header,
-body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-chip-cloud-renderer),
-body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
-body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-related-chip-cloud-renderer),
-body.ypp-home-page.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-search-query-renderer) {
+/* --- Hide Trending / Explore --- */
+body.ypp-home-page.ypp-hide-trending ytd-rich-section-renderer:has(a[href*="/trending"]),
+body.ypp-home-page.ypp-hide-trending ytd-rich-section-renderer:has(a[href*="/explore"]),
+body.ypp-home-page.ypp-hide-trending ytd-rich-section-renderer:has(yt-icon[icon="yt-icons:trending"]),
+body.ypp-home-page.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/trending"]),
+body.ypp-home-page.ypp-hide-trending ytd-mini-guide-entry-renderer:has(a[href*="/feed/trending"]),
+body.ypp-home-page.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/explore"]) {
     display: none !important;
 }
-

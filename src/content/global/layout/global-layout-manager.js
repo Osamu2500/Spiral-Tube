@@ -12,10 +12,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideMetrics:           'ypp-hide-metrics',
             hideThumbnails:        'ypp-hide-thumbnails',
             hideWatched:           'ypp-hide-watched',
-            hideMixes:             'ypp-hide-mixes',
-            hidePlaylists:         'ypp-hide-playlists',
-            hidePodcasts:          'ypp-hide-podcasts',
-            hidePosts:             'ypp-hide-posts',
             hidePromoShelves:      'ypp-hide-promos',
 
             hideLiveChat:          'ypp-hide-live-chat',   // Fixed: was ypp-hide-livechat
@@ -128,21 +124,40 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
     _updateDynamicToggles() {
         if (!this.isActive) return;
         
+        const path = window.location.pathname;
+        let pageType = '';
+        if (path === '/' || path === '/index') pageType = 'Home';
+        else if (path.startsWith('/feed/subscriptions')) pageType = 'Subs';
+        else if (path.startsWith('/results')) pageType = 'Search';
+        else if (path.startsWith('/watch') || path.startsWith('/shorts')) pageType = 'Related';
+        else if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) pageType = 'Channel';
+
+        const isFeatureActive = (baseKey) => {
+            if (!this.settings[baseKey]) return false;
+            if (pageType && this.settings[`${baseKey}${pageType}`] === false) return false;
+            return true;
+        };
+
+        const toggleClass = (active, className) => {
+            if (active) document.body.classList.add(className);
+            else document.body.classList.remove(className);
+        };
+
+        toggleClass(isFeatureActive('hideMixes'), 'ypp-hide-mixes');
+        toggleClass(isFeatureActive('hidePlaylists'), 'ypp-hide-playlists');
+        toggleClass(isFeatureActive('hidePodcasts'), 'ypp-hide-podcasts');
+        toggleClass(isFeatureActive('hidePosts'), 'ypp-hide-posts');
+
         let nukeShortsActive = this.settings.aggressiveShortsBlock;
         if (nukeShortsActive) {
-            const path = window.location.pathname;
-            if (path === '/' || path === '/index') nukeShortsActive = this.settings.shortsFilterHome !== false;
-            else if (path.startsWith('/feed/subscriptions')) nukeShortsActive = this.settings.shortsFilterSubs !== false;
-            else if (path.startsWith('/results')) nukeShortsActive = this.settings.shortsFilterSearch !== false;
-            else if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) nukeShortsActive = this.settings.shortsFilterChannel !== false;
-            else if (path.startsWith('/watch')) nukeShortsActive = this.settings.shortsFilterRelated !== false;
+            if (pageType) nukeShortsActive = this.settings[`shortsFilter${pageType}`] !== false;
             else nukeShortsActive = false;
         }
         
         if (nukeShortsActive) {
-            document.body.classList.add('ypp-nuke-shorts');
+            document.body.classList.add('ypp-nuke-shorts', 'ypp-hide-shorts');
         } else {
-            document.body.classList.remove('ypp-nuke-shorts');
+            document.body.classList.remove('ypp-nuke-shorts', 'ypp-hide-shorts');
         }
     }
 

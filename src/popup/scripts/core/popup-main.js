@@ -1074,6 +1074,10 @@ const initApp = async () => {
         safeInit(components.initHideWatchedPageButtons);
         safeInit(components.initMetaFilterPageButtons);
         safeInit(components.initShortsFilterPageButtons);
+        safeInit(components.initPlaylistsPageButtons);
+        safeInit(components.initMixesPageButtons);
+        safeInit(components.initPodcastsPageButtons);
+        safeInit(components.initPostsPageButtons);
         safeInit(components.initGlobalPlayerBarGrid);
         safeInit(components.initCardStyleGrid);
         safeInit(components.initYoutubeStyleGrid);

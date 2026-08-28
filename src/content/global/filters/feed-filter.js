@@ -13,21 +13,29 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
 
     constructor() {
         super('FeedFilter');
-        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/'];
+        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/', '/watch', '/shorts'];
     }
 
     getConfigKey() { return 'feedFilter'; }
 
-    _shouldRunOnCurrentPage() {
+    _getCurrentPageType() {
         const path = window.location.pathname;
-        const s = this.settings || {};
-
-        if (path === '/' || path === '/index') return s.feedFilterHome !== false;
-        if (path.startsWith('/feed/subscriptions')) return s.feedFilterSubs !== false;
-        if (path.startsWith('/results')) return s.feedFilterSearch !== false;
+        if (path === '/' || path === '/index') return 'Home';
+        if (path.startsWith('/feed/subscriptions')) return 'Subs';
+        if (path.startsWith('/results')) return 'Search';
+        if (path.startsWith('/watch') || path.startsWith('/shorts')) return 'Related';
         if (path.startsWith('/@') || path.startsWith('/channel/') ||
-            path.startsWith('/user/') || path.startsWith('/c/')) return s.feedFilterChannel !== false;
-        return false;
+            path.startsWith('/user/') || path.startsWith('/c/')) return 'Channel';
+        return '';
+    }
+
+    _shouldRunOnCurrentPage() {
+        const pageType = this._getCurrentPageType();
+        if (!pageType) return false;
+        const s = this.settings || {};
+        // If there's no generic feedFilter setting for this page, default to true 
+        // to allow sub-features (like hideMixes) to evaluate themselves.
+        return s[`feedFilter${pageType}`] !== false;
     }
 
     async run(settings, oldSettings) {
@@ -56,16 +64,22 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
     evaluate(context) {
         if (!context.card || !context.card.isConnected) return null;
         
+        const pageType = this._getCurrentPageType();
+        const isFeatureActive = (baseKey) => {
+            if (!this.settings?.[baseKey]) return false; // Global toggle off
+            if (pageType && this.settings?.[`${baseKey}${pageType}`] === false) return false; // Page toggle off
+            return true;
+        };
+
         // Settings flags
         const hideLive = this.settings?.hideLiveStreams;
         const hideUpcoming = this.settings?.hideUpcoming;
-        const hidePosts = this.settings?.hidePosts;
         const hideMembersOnly = this.settings?.hideMembersOnly;
         const keywordsRaw = this.settings?.feedFilterKeywords || '';
         
         const keywords = keywordsRaw.split(',').map(k => k.trim()).filter(k => k.length > 0);
         
-        if (hidePosts && context.isPost) {
+        if (isFeatureActive('hidePosts') && context.isPost) {
             return { action: 'hide', reason: 'Post' };
         }
         if (context.isPost) return null;
@@ -82,12 +96,16 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
             return { action: 'hide', reason: 'Members only' };
         }
 
-        if (this.settings?.hidePlaylists && context.isPlaylist) {
+        if (isFeatureActive('hidePlaylists') && context.isPlaylist) {
             return { action: 'hide', reason: 'Playlist' };
         }
 
-        if (this.settings?.hideMixes && context.isMix) {
+        if (isFeatureActive('hideMixes') && context.isMix) {
             return { action: 'hide', reason: 'Mix playlist' };
+        }
+
+        if (isFeatureActive('hidePodcasts') && context.isPodcast) {
+            return { action: 'hide', reason: 'Podcast' };
         }
 
         if (keywords.length > 0 && context.title) {
