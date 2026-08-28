@@ -113,14 +113,6 @@ export class VideoFiltersUI {
         const footer = this._buildFooter(ctx, video, btn);
 
         panel.append(header, tabsWrap, tabContent, footer);
-        
-        // -- Apply Double-Bezel Inner Core Wrapper --
-        const innerCore = document.createElement('div');
-        innerCore.className = 'ypp-eq-inner-core';
-        while (panel.firstChild) {
-            innerCore.appendChild(panel.firstChild);
-        }
-        panel.appendChild(innerCore);
 
         this._mountPanel(panel, btn);
         ctx._filterPanel = panel;
@@ -137,10 +129,10 @@ export class VideoFiltersUI {
         panel.id = 'ypp-cinema-panel';
         Object.assign(panel.style, {
             position: 'fixed', top: '56px', right: '24px', left: 'auto', bottom: '16px', width: '440px',
-            padding: '6px', /* Outer shell padding */
-            backgroundColor: 'rgba(5, 5, 5, 0.65)',
+            padding: '0',
+            backgroundColor: 'rgba(5, 5, 5, 0.7)',
             backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.04\'/%3E%3C/svg%3E")',
-            border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '32px',
+            border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '24px',
             zIndex: '2147483646', color: '#fff', fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
             boxShadow: '0 24px 64px rgba(0,0,0,0.8), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
             backdropFilter: 'blur(72px) saturate(200%)', WebkitBackdropFilter: 'blur(72px) saturate(200%)',

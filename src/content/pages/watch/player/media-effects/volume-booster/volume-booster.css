@@ -4,11 +4,11 @@
     bottom: 72px;
     right: 24px;
     width: 440px;
-    padding: 6px; /* Outer shell padding for Double-Bezel */
-    background-color: rgba(5, 5, 5, 0.65);
+    padding: 0;
+    background-color: rgba(5, 5, 5, 0.7);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 32px; /* Large squircle radius */
+    border-radius: 24px;
     z-index: 2147483646;
     color: #fff;
     font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -17,17 +17,10 @@
     backdrop-filter: blur(72px) saturate(200%);
     -webkit-user-select: none;
     user-select: none;
-    animation: ypp-eq-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Inner Core for Double-Bezel Architecture */
-.ypp-eq-inner-core {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: calc(32px - 6px); /* Concentric border radius */
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    animation: ypp-eq-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes ypp-eq-in {
