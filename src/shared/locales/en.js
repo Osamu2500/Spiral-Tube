@@ -94,7 +94,7 @@ export default {
     "increase_past_100": "Boost video audio volume up to 300% using Web Audio API amplification",
     "audio_enhancements": "Audio & Equalizer Enhancements",
     "audio_enhancements_desc": "Unlock professional equalizer, volume boost up to 300%, frequency tuning, and compression",
-    "video_filters": "Video Color & Visual Filters",
+    "video_filters": "Filters",
     "video_filters_desc": "Apply real-time cinematic color filters, brightness, contrast, and visual profiles",
     "auto_pip": "Auto PiP",
     "auto_pip_desc": "Automatically open a floating Picture-in-Picture window when switching browser tabs",

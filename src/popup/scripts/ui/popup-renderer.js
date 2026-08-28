@@ -351,14 +351,24 @@ function renderSelect(item, state) {
     }
 
     const wrap = document.createElement('div');
-    wrap.className = 'toggle-card span-2-tile'; // Gives it the tile look
-    wrap.style.gridColumn = 'span 2';
+    const isSpan1 = item.class && item.class.includes('span-1');
+    wrap.className = `toggle-card ${item.class || 'span-2-tile'}`;
+    wrap.style.gridColumn = isSpan1 ? 'span 1' : 'span 2';
+    
+    if (isSpan1) {
+        wrap.style.flexDirection = 'row';
+        wrap.style.alignItems = 'center';
+        wrap.style.justifyContent = 'space-between';
+        wrap.style.gap = '8px';
+        wrap.style.padding = '8px 12px';
+    }
 
     const headerRow = document.createElement('div');
     headerRow.style.display = 'flex';
     headerRow.style.alignItems = 'center';
     headerRow.style.gap = '10px';
     headerRow.style.flex = '1';
+    headerRow.style.minWidth = '0'; // Allow text truncation if needed
 
     if (item.icon) {
         const iconWrap = document.createElement('div');

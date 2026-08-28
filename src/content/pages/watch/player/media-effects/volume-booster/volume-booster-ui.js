@@ -112,6 +112,11 @@ export class VolumeBoosterUI {
                 panel.style.top = '76px';
                 panel.style.right = '24px';
                 panel.style.left = 'auto';
+            } else {
+                panel.style.bottom = '76px';
+                panel.style.top = 'auto';
+                panel.style.right = '24px';
+                panel.style.left = 'auto';
             }
         } else {
             Object.assign(panel.style, {
@@ -575,13 +580,7 @@ export class VolumeBoosterUI {
         footer.appendChild(resetBtn);
         panel.appendChild(footer);
 
-        // -- Apply Double-Bezel Inner Core Wrapper --
-        const innerCore = document.createElement('div');
-        innerCore.className = 'ypp-eq-inner-core';
-        while (panel.firstChild) {
-            innerCore.appendChild(panel.firstChild);
-        }
-        panel.appendChild(innerCore);
+        // Inner core wrapper removed; CSS now handles Ethereal Glass directly.
 
         // Mount into the shared top-layer dialog portal
         if (isGlobalBar) {

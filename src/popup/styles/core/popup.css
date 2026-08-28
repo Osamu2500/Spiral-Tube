@@ -7,6 +7,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap');
 
 :root {
+/*
+  Spiral Tube — Popup UI v4.0
+  Full redesign: clean dark theme, 2-col feature grid, no stale badges
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap');
+
+:root {
   --ui-density: 1.0;
   /* ── Core palette — deep space + crimson red ── */
   --accent-primary:   #6366f1;  /* vivid indigo */
@@ -16,22 +24,22 @@
   --accent-glow-sm:   rgba(99, 102, 241, 0.22);
 
   --bg-primary: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --bg-primary:    color-mix(in srgb, var(--accent-primary) 4%, #08080a);
+  --bg-primary:    color-mix(in oklch, var(--accent-primary) 4%, #08080a);
   --bg-surface: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --bg-surface:    color-mix(in srgb, var(--accent-primary) 8%, #0d0d10);
+  --bg-surface:    color-mix(in oklch, var(--accent-primary) 8%, #0d0d10);
   --bg-elevated: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --bg-elevated:   color-mix(in srgb, var(--accent-primary) 12%, #111115);
+  --bg-elevated:   color-mix(in oklch, var(--accent-primary) 12%, #111115);
   --bg-glass: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --bg-glass:      color-mix(in srgb, var(--accent-primary) 5%, rgba(255, 255, 255, 0.03));
+  --bg-glass:      color-mix(in oklch, var(--accent-primary) 5%, rgba(255, 255, 255, 0.03));
   --bg-glass-hover: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --bg-glass-hover:color-mix(in srgb, var(--accent-primary) 10%, rgba(255, 255, 255, 0.05));
+  --bg-glass-hover:color-mix(in oklch, var(--accent-primary) 10%, rgba(255, 255, 255, 0.05));
 
   --text-primary: #ffffff;
-  --text-muted:   #a1a1aa;
-  --text-dim:     #52525b;
+  --text-muted:   rgba(255, 255, 255, 0.7);
+  --text-dim:     rgba(255, 255, 255, 0.5);
   --border-subtle:rgba(255, 255, 255, 0.07);
   --border-glow: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --border-glow:  color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  --border-glow:  color-mix(in oklch, var(--accent-primary) 40%, transparent);
 
   /* ── Legacy aliases (keep existing HTML working) ── */
   --bg:            var(--bg-primary);
@@ -43,7 +51,7 @@
   --border-top:    var(--border-subtle);
   --red:           var(--accent-primary);
   --red-dim: var(--accent-primary); /* Fallback for Chrome < 111 */
-  --red-dim:       color-mix(in srgb, var(--accent-primary) 14%, transparent);
+  --red-dim:       color-mix(in oklch, var(--accent-primary) 14%, transparent);
   --red-glow:      var(--accent-glow);
   --accent-grad:   linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   --accent-gradient: var(--accent-grad);
@@ -69,14 +77,18 @@
 
   /* ── Easing ── */
   --ease:        cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: linear(
+    0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+    1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+    1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+    0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+  );
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-snap:   cubic-bezier(0.23, 1, 0.32, 1);
   --ease-exit:   cubic-bezier(0.4, 0, 1, 1);
   --fast: 0.15s;
   --med:  0.25s;
 }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -338,7 +350,7 @@ html.full-page body {
   border-radius: var(--ui-radius, 12px);
   background: transparent;
   border: 1px solid transparent;
-  color: var(--text-3);
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   display: flex; flex-direction: column;
   align-items: center; gap: calc(3px * var(--ui-density, 1));
@@ -349,17 +361,18 @@ html.full-page body {
 }
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 .nav-item:active {
   transform: scale(0.94);
   border-color: rgba(255, 255, 255, 0.06);
-  color: var(--text-2);
+  color: #ffffff;
   transform: translateY(-1px);
 }
 .nav-item.active {
   background: linear-gradient(145deg, color-mix(in srgb, var(--accent-primary) 18%, transparent), color-mix(in srgb, var(--accent-secondary) 8%, transparent));
   border-color: var(--accent-primary);
-  color: var(--accent-primary);
+  color: #ffffff;
   box-shadow:
     0 0 20px color-mix(in srgb, var(--accent-primary) 20%, transparent),
     inset 0 1px 0 rgba(255,255,255,0.08);
@@ -481,6 +494,78 @@ html.full-page body {
 .search-icon { width: 14px; height: 14px; color: var(--text-3); margin-right: calc(8px * var(--ui-density, 1)); flex-shrink: 0; }
 .feature-search-input {
   background: transparent; border: none;
+}
+.top-bar-left { display: flex; align-items: center; gap: calc(10px * var(--ui-density, 1)); }
+
+#page-title {
+  font-size: calc(17px * var(--ui-font-scale, 1)); font-weight: 800; margin: 0;
+  letter-spacing: -.04em; color: var(--text-1);
+  background: linear-gradient(135deg, var(--text-primary) 0%, color-mix(in srgb, var(--accent-secondary) 90%, transparent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.status-badge {
+  font-size: calc(8.5px * var(--ui-font-scale, 1)); font-weight: 800;
+  color: #fff; text-transform: uppercase; letter-spacing: .1em;
+  background: var(--accent-grad);
+  padding: calc(3px * var(--ui-density, 1)) calc(9px * var(--ui-density, 1)); border-radius: var(--r-pill);
+  box-shadow: 0 2px 12px var(--accent-glow), inset 0 1px 1px rgba(255,255,255,0.25);
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: calc(12px * var(--ui-density, 1));
+}
+
+.theme-toggler-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--surface-light);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggler-btn:hover {
+  background: var(--surface-hover);
+}
+
+.ypp-theme-dark .theme-toggler-btn .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+.ypp-theme-dark .theme-toggler-btn .moon-icon {
+  opacity: 1 !important;
+  transform: rotate(0) scale(1) !important;
+}
+
+.search-container {
+  display: flex; align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-pill);
+  padding: calc(8px * var(--ui-density, 1)) calc(14px * var(--ui-density, 1)); width: 220px;
+  transition: all .3s var(--ease-spring);
+}
+.search-container:focus-within {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  width: 260px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.search-icon { width: 14px; height: 14px; color: var(--text-3); margin-right: calc(8px * var(--ui-density, 1)); flex-shrink: 0; }
+.feature-search-input {
+  background: transparent; border: none;
   color: var(--text-1); font-family: inherit;
   font-size: calc(13px * var(--ui-font-scale, 1)); width: 100%; outline: none;
 }
@@ -488,33 +573,34 @@ html.full-page body {
 
 /* ─── Tab content ─── */
 .tab-content {
-  flex: 1; overflow-y: auto;
-  padding: calc(20px * var(--ui-density, 1)) calc(14px * var(--ui-density, 1));
-  display: none; opacity: 0;
-  transform: translateY(6px);
-  transition: opacity var(--med) var(--ease-smooth), transform var(--med) var(--ease-snap);
+  display: none; 
+  opacity: 0;
+  transform: translateY(12px);
+  transition: display var(--med) allow-discrete, opacity var(--med) var(--ease-smooth), transform var(--med) var(--ease-spring);
 }
-.tab-content.active { display: block; opacity: 1; transform: translateY(0); animation: tab-enter 0.35s var(--ease-spring) both; }
+.tab-content.active { 
+  display: block; 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+@starting-style {
+  .tab-content.active {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
 
-::-webkit-scrollbar {
-  width: 6px;
-  background: transparent;
+/* Modern Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: calc(var(--ui-radius, 12px) * 0.83);
-  border: 2px solid transparent;
-  background-clip: padding-box;
+.tab-content { 
+  scrollbar-width: thin; 
+  flex: 1; 
+  overflow-y: auto;
+  padding: calc(20px * var(--ui-density, 1)) calc(14px * var(--ui-density, 1));
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: calc(var(--ui-radius, 12px) * 0.83);
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-.tab-content::-webkit-scrollbar { width: 6px; }
-.tab-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border: 2px solid transparent; background-clip: padding-box; border-radius: calc(var(--ui-radius, 12px) * 0.83); }
-.tab-content::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.3); border: 2px solid transparent; background-clip: padding-box; }
 
 /* ─── Section cards ─── */
 .settings-section {
@@ -701,7 +787,7 @@ html.full-page body {
 /* ─── Feature Icon ─── */
 .feature-icon {
   width: 28px; height: 28px;
-  border-radius: var(--r-md);
+  border-radius: calc(var(--ui-radius, 12px) * 0.5); /* Dynamic relative to global roundness */
   background: rgba(255,255,255,.05);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
@@ -746,8 +832,9 @@ html.full-page body {
 }
 
 /* ─── Info block ─── */
-.info { display: flex; flex-direction: column; gap: calc(2px * var(--ui-density, 1)); flex: 1; margin-right: calc(10px * var(--ui-density, 1)); }
-.name { font-size: calc(11px * var(--ui-font-scale, 1)); font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.info { display: flex; flex-direction: column; gap: calc(2px * var(--ui-density, 1)); flex: 1; margin-right: calc(10px * var(--ui-density, 1)); min-width: 0; }
+.name { font-size: calc(11px * var(--ui-font-scale, 1)); font-weight: 600; color: #ffffff; line-height: 1.3; white-space: normal; word-wrap: break-word; }
+.desc { font-size: calc(10px * var(--ui-font-scale, 1)); color: var(--text-muted); line-height: 1.4; white-space: normal; word-wrap: break-word; }
 .new-feature-badge {
   display: inline-block;
   margin-left: calc(6px * var(--ui-density, 1));
@@ -892,7 +979,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track { background: rgba(255,
   box-shadow: 0 6px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 .preset-icon {
-  width: 32px; height: 32px; border-radius: var(--r-md);
+  width: 32px; height: 32px; border-radius: calc(var(--ui-radius, 12px) * 0.5); /* Dynamic relative to global roundness */
   background: var(--red-dim); display: flex;
   align-items: center; justify-content: center; margin-bottom: calc(2px * var(--ui-density, 1));
 }
@@ -1008,7 +1095,7 @@ input[type="color"]::-webkit-color-swatch { border: 2px solid rgba(255,255,255,.
 /* ─── Theme select ─── */
 .theme-select-container { width: 100%; margin-top: calc(8px * var(--ui-density, 1)); }
 .theme-select {
-  width: 100%; padding: calc(8px * var(--ui-density, 1)) calc(12px * var(--ui-density, 1)); border-radius: var(--r-md);
+  width: 100%; padding: calc(8px * var(--ui-density, 1)) calc(12px * var(--ui-density, 1)); border-radius: calc(var(--ui-radius, 12px) * 0.5); /* Dynamic relative to global roundness */
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1);
   color: white; font-family: 'Inter',sans-serif; font-size: calc(14px * var(--ui-font-scale, 1));
   outline: none; cursor: pointer; appearance: none;
@@ -1090,7 +1177,7 @@ input[type="color"]::-webkit-color-swatch { border: 2px solid rgba(255,255,255,.
 
 .mode-icon {
   width: 30px; height: 30px;
-  border-radius: var(--r-md);
+  border-radius: calc(var(--ui-radius, 12px) * 0.5); /* Dynamic relative to global roundness */
   background: rgba(255,255,255,.05);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
@@ -2046,7 +2133,7 @@ body.ypp-theme-minimalism .nav-item.active {
     border-radius: calc(var(--ui-radius, 12px) * 0.75) !important;
     font-size: calc(11.5px * var(--ui-font-scale, 1)) !important; 
     font-weight: 500 !important;
-    color: var(--text-2) !important;
+    color: #ffffff !important;
     cursor: pointer !important;
     transition: all .18s var(--ease-smooth) !important;
     -webkit-user-select: none !important;
@@ -2775,4 +2862,54 @@ input[type="range"].styled-range::-webkit-slider-thumb:hover {
   display: none;
 }
 
+/* --- Global Text & Icon Light Overrides --- */
+:root {
+  --text-primary: #ffffff !important;
+  --text-muted: rgba(255, 255, 255, 0.8) !important;
+  --text-dim: rgba(255, 255, 255, 0.6) !important;
+}
 
+/* Force light text everywhere to override any dark theme leakage */
+body .app-container,
+body .app-container *,
+.nav-item, .nav-label, .name, .section-title, .group-title, .pill-option, .feature-icon, .mode-icon, .toggle-card {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Glassmorphic text effects for primary text */
+.name, .section-title, .group-title, .nav-label, .theme-name, .preset-name, .pill-option {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 4px 16px rgba(255, 255, 255, 0.35), 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  letter-spacing: 0.01em;
+}
+
+/* Slightly dim for descriptions but still very visible, with soft glow */
+body .app-container .desc,
+body .app-container .stat-label,
+body .app-container .preset-desc,
+body .app-container .ypp-inline-3,
+body .app-container .ypp-inline-6,
+body .app-container .ypp-inline-60,
+body .app-container .ypp-inline-63 {
+  color: rgba(255, 255, 255, 0.65) !important;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Force SVG icons to be light with a subtle glass glow */
+body .app-container svg {
+  color: rgba(255, 255, 255, 0.9) !important;
+  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.25));
+}
+
+/* Active Nav Item Accent Color Override + Glass Glow */
+body .app-container .nav-item.active {
+  color: var(--accent-primary) !important;
+}
+body .app-container .nav-item.active .nav-label {
+  color: var(--accent-primary) !important;
+  text-shadow: 0 4px 16px var(--accent-glow), 0 0 8px var(--accent-glow-sm) !important;
+}
+body .app-container .nav-item.active svg {
+  color: var(--accent-primary) !important;
+  filter: drop-shadow(0 2px 8px var(--accent-glow));
+}

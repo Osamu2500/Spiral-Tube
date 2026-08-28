@@ -50,25 +50,12 @@ export const getPlayerTab = (t) => ({
 
           {
             type: 'toggle',
-            id: 'enableCpuTamer',
-            label: t('cpu_tamer'),
-            desc: t('cpu_tamer_desc'),
-            icon: ICONS.compressor,
-          },
-          {
-            type: 'toggle',
             id: 'videoResumer',
             label: t('video_resumer'),
             desc: t('save_playback_position'),
             icon: ICONS.resume,
           },
-          {
-            type: 'toggle',
-            id: 'autoLike',
-            label: 'Auto Like',
-            desc: 'Automatically like watched videos',
-            icon: ICONS.thumbsUp,
-          },
+
           {
             type: 'toggle',
             id: 'autoPause',
@@ -79,6 +66,7 @@ export const getPlayerTab = (t) => ({
           {
             type: 'select',
             id: 'autoQuality',
+            class: 'span-1',
             label: t('auto_quality'),
             desc: t('force_specific_resolution'),
             icon: ICONS.settingsSync,
@@ -111,33 +99,13 @@ export const getPlayerTab = (t) => ({
           {
             type: 'toggle',
             id: 'reduceAnimations',
-            class: 'span-2',
             label: t('reduce_animations'),
             desc: t('reduce_animations_desc'),
             icon: ICONS.reduceAnimations,
-            inlineSlot: `
-    <div style="display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;">
-        <select id="reduceAnimationsLevel" class="theme-select card-style-select" style="min-width:100px; padding:4px 8px; font-size:11px; border-radius:6px; cursor:pointer; background:var(--bg-lighter); color:var(--text-primary); border:1px solid rgba(255,255,255,0.1);">
-            <option value="balanced">${t('reduce_animations_balanced')}</option>
-            <option value="minimal">${t('reduce_animations_minimal')}</option>
-        </select>
-    </div>`,
-          },
-          {
-            type: 'toggle',
-            id: 'revertProgressBar',
-            label: t('classic_progress_bar'),
-            desc: t('solid_red_no_pink_gradient'),
-            icon: ICONS.progressBar,
           },
 
-          {
-            type: 'toggle',
-            id: 'markWatched',
-            label: 'Mark as Watched Button',
-            desc: 'Add a button to manually mark videos as watched',
-            icon: ICONS.eyeSlash,
-          },
+
+
         ],
       },
 

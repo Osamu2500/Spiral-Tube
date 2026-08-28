@@ -67,8 +67,6 @@ import { SaveSupremeUI } from '../global/features/ui-tweaks/save-supreme-ui.js';
 window.YPP.FeatureManager.register(SaveSupremeUI);
 import { CustomizeYouTubeUI } from '../global/features/ui-tweaks/customize-youtube-ui.js';
 window.YPP.FeatureManager.register(CustomizeYouTubeUI);
-import { CPUTamer } from '../global/features/performance/cpu-tamer.js';
-window.YPP.FeatureManager.register(CPUTamer);
 import { ReduceAnimations } from '../global/features/performance/reduce-animations.js';
 window.YPP.FeatureManager.register(ReduceAnimations);
 
@@ -193,8 +191,7 @@ import { AmbientMode } from '../pages/watch/player/media-effects/ambient-mode/am
 window.YPP.FeatureManager.register(AmbientMode);
 import { AudioMode } from '../pages/watch/player/media-effects/ambient-mode/audio-mode.js';
 window.YPP.FeatureManager.register(AudioMode);
-import { ClassicProgressBar } from '../pages/watch/player/controls/classic-progress-bar.js';
-window.YPP.FeatureManager.register(ClassicProgressBar);
+
 import { VideoResumer } from '../pages/watch/player/automation/video-resumer/video-resumer.js';
 window.YPP.FeatureManager.register(VideoResumer);
 import { AutoPause } from '../pages/watch/player/automation/auto-pause/auto-pause.js';

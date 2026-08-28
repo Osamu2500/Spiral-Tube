@@ -100,8 +100,36 @@
                     processInitialData(data);
                 }).catch(() => {});
             }
+            // V3 Netflix Subtitles Interception
+            if (url.includes('/api/timedtext')) {
+                response.clone().json().then(data => {
+                    window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
+                        detail: { url, data }
+                    }));
+                }).catch(() => {});
+            }
             return response;
         });
+    };
+
+    const originalXhrOpen = XMLHttpRequest.prototype.open;
+    const originalXhrSend = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function(method, url, ...rest) {
+        this._url = url;
+        return originalXhrOpen.call(this, method, url, ...rest);
+    };
+    XMLHttpRequest.prototype.send = function(...args) {
+        this.addEventListener('load', function() {
+            if (this._url && this._url.includes('/api/timedtext')) {
+                try {
+                    const data = JSON.parse(this.responseText);
+                    window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
+                        detail: { url: this._url, data }
+                    }));
+                } catch(e) {}
+            }
+        });
+        return originalXhrSend.apply(this, args);
     };
 
 })();

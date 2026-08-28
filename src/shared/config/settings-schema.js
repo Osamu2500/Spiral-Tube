@@ -87,7 +87,7 @@ window.YPP.SettingsSchema = {
         accentColor:         { type: 'string',  default: '#ff4e45' },
         enableAnimations:    { type: 'boolean', default: true },
         reduceAnimations:    { type: 'boolean', default: false },
-        reduceAnimationsLevel: { type: 'string', default: 'balanced', values: ['balanced', 'minimal'] },
+
         enableThemeEffects:  { type: 'boolean', default: true },
         reducedMotion:       { type: 'boolean', default: false },
         cardStyle:           { type: 'string',  default: 'default', values: ['default','abyss','aurora','autumn','bloodmoon','blue-sky','brutalism','cairo-red','cherry','christmas','claymorphism','coffee','colorize','compact','crystal-glass','cyberpunk','deepspace','discord','dracula','elevated','ember','flat','fluent','folder','frosted','frutiger-aero','galaxy','glass','glassmorphism','gothic','grunge','hacker','harry-potter','hologram','holographic','ice-blue','immersive-glass','kawaii','liquid-glass','material','matrix','maximalism','midnight','minimalism','minimalist','nature','nebula','neo-brutalism','neon','neumorphic','nord','ocean','origami','outrun','pink','polaroid','retro-wave','retro','retrowave-green','sakura','skeuomorphic','spring','steampunk','summer','sunset','technozen','terminalism','vaporwave','vintage','winter','woodblock','y2k'] },
@@ -380,7 +380,7 @@ window.YPP.SettingsSchema = {
 
         enableSaveSupremeUI:          { type: 'boolean', default: true },
         enableCustomizeYouTubeUI:     { type: 'boolean', default: true },
-        enableCpuTamer:               { type: 'boolean', default: true },
+
         enableTabviewSidebar:         { type: 'boolean', default: false },
 
         enableCustomSidebar:          { type: 'boolean', default: true },

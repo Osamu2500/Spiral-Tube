@@ -4,15 +4,99 @@
  * ========================================================================== 
  */
 
-/* =========================================
-   NETFLIX SUBTITLES (From 3881)
-========================================= */
-body.ypp-netflix-subtitles .ytp-caption-segment {
-    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-    font-weight: 500 !important;
-    text-shadow: 
-        0px 2px 4px rgba(0,0,0,0.8), 
-        0px 4px 8px rgba(0,0,0,0.8), 
-        0px 0px 10px rgba(0,0,0,0.6) !important;
-    background: transparent !important;
+/* Hide native subtitles but keep them in DOM for observation */
+body.ypp-netflix-subtitles #ytp-caption-window-container {
+    opacity: 0.001 !important;
+    transform: scale(0.001) !important;
+    pointer-events: none !important;
+}
+
+/* Base Subtitle Container */
+body.ypp-netflix-subtitles .ypp-custom-subtitles {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    --base-y: 0px;
+    --obstruction-y: 0px;
+    --fullscreen-y: 0px;
+    --subtitle-scale: 1;
+    --subtitle-bg-opacity: 0.4;
+    transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y) + var(--fullscreen-y))) scale(calc(var(--subtitle-scale) * 0.95));
+    width: 80%;
+    text-align: center;
+    pointer-events: auto;
+    cursor: grab;
+    z-index: 50;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+body.ypp-netflix-subtitles .ypp-custom-subtitles.dragging {
+    transition: none;
+}
+
+body.ypp-netflix-subtitles .ypp-custom-subtitles.active {
+    opacity: 1;
+    transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y) + var(--fullscreen-y))) scale(var(--subtitle-scale));
+}
+
+/* Karaoke Highlight */
+body.ypp-netflix-subtitles .ypp-word { transition: color 0.1s ease, text-shadow 0.1s ease; }
+body.ypp-netflix-subtitles .ypp-word.active-word { color: #FFD700 !important; text-shadow: 0 0 10px rgba(255,215,0,0.8) !important; }
+
+/* Profile: Netflix */
+body.ypp-netflix-subtitles .ypp-custom-subtitles.style-netflix {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(16px, 3.5vh, 42px);
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0px 0px 4px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, var(--subtitle-bg-opacity));
+    padding: 4px 16px;
+    border-radius: 8px;
+}
+
+/* Profile: Prime Video */
+body.ypp-netflix-subtitles .ypp-custom-subtitles.style-prime {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    font-size: clamp(14px, 3vh, 36px);
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+/* Profile: Apple TV */
+body.ypp-netflix-subtitles .ypp-custom-subtitles.style-apple {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: clamp(16px, 3.2vh, 38px);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+}
+
+/* Profile: Anime */
+body.ypp-netflix-subtitles .ypp-custom-subtitles.style-anime {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: clamp(18px, 4vh, 48px);
+    font-weight: 800;
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px black;
+    text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    letter-spacing: 1px;
+}
+
+/* Profile: Accessibility */
+body.ypp-netflix-subtitles .ypp-custom-subtitles.style-accessibility {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+    font-size: clamp(20px, 4.5vh, 50px);
+    font-weight: 400;
+    color: #ffff00;
+    background: #000000;
+    padding: 12px 24px;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    line-height: 1.5;
 }

@@ -71,9 +71,9 @@ registerSlot('intentionalDelaySlot', (container, state) => {
 });
 registerSlot('autoLikeSlot', (container, state) => {
     container.className = 'setting-item toggle-card';
-    container.style.cssText = 'grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr 2fr; align-items: center; gap: 12px; padding: 10px 14px;';
+    container.style.cssText = 'grid-column: span 3; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px;';
     container.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 140px; flex-shrink: 0;">
             <div class="feature-icon" style="cursor: pointer; flex-shrink: 0;">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
             </div>
@@ -86,12 +86,14 @@ registerSlot('autoLikeSlot', (container, state) => {
                 <span class="slider"></span>
             </label>
         </div>
-        <div class="inline-slider-wrapper" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 0 12px; border-left: 1px solid rgba(255, 255, 255, 0.08); border-right: 1px solid rgba(255, 255, 255, 0.08);">
+        
+        <div class="inline-slider-wrapper" style="display: flex; align-items: center; gap: 8px; flex-grow: 1; min-width: 120px; padding: 0 12px; border-left: 1px solid rgba(255, 255, 255, 0.08); border-right: 1px solid rgba(255, 255, 255, 0.08);">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.6; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <input type="range" id="autoLikeThresholdUI" min="0" max="32" step="1" style="width: 100%; flex-grow: 1; cursor: pointer;">
             <span id="autoLikeThresholdValue" style="font-size: 11px; font-weight: 500; min-width: 36px; text-align: right; opacity: 0.8;">0s</span>
         </div>
-        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap;">
+        
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; flex-shrink: 0;">
             <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeSubscribedOnly" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Subscribed Only">Subs</button>
             <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeChannelLists" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Use Channel Lists">Lists</button>
             <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeWaitAds" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Wait for Ads">Ads</button>

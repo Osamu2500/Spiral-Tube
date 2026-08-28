@@ -210,6 +210,14 @@
         await import('../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js');
         await import('../pages/watch/player/domain-memory.js');
         await import('../pages/watch/player/domain-memory-ui.js');
+        
+        // Inject CSS for optional features since external sites don't load dist/style.css
+        const volCss = (await import('../pages/watch/player/media-effects/volume-booster/volume-booster.css?inline')).default;
+        const filterCss = (await import('../pages/watch/player/media-effects/video-filters/video-filters.css?inline')).default;
+        if (window.YPP.Utils.addStyle) {
+            window.YPP.Utils.addStyle(volCss, 'ypp-volume-booster-css');
+            window.YPP.Utils.addStyle(filterCss, 'ypp-video-filters-css');
+        }
     } catch (e) {
         window.YPP.Utils.log('Failed to load one or more optional features', 'Core', 'error');
     }

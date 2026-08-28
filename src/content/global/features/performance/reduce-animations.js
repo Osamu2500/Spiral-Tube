@@ -4,10 +4,11 @@ import '../../../core/system/base-feature.js';
  *
  * Three-speed animation suppression for YouTube:
  *   'off'      → no suppression (default YouTube behaviour)
- *   'balanced' → halves all durations (max 0.15s), preserves easing — subtle and smooth
- *   'minimal'  → near-zero durations (0.01ms), disables scroll-behaviour, kills iteration counts
+ *   'balanced' → halves all durations (max 0.15s), preserves easing, applies CPU Timer Taming.
+ *   'minimal'  → near-zero durations (0.01ms), disables scroll-behaviour, heavy CSS suppression, applies CPU Timer Taming.
  *
  * Extra capabilities:
+ *   • CPU Timer coalescing to reduce battery usage in the background.
  *   • Respects OS `prefers-reduced-motion` — auto-activates Minimal on accessibility setting
  *   • Intercepts `Element.prototype.scrollIntoView` in Minimal mode to stop JS smooth-scrolls
  *   • Exempts extension-owned elements (toasts, PiP, subtitles) from suppression
@@ -23,8 +24,18 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
         this._currentMode = 'off';
         this._originalScrollIntoView = null;
         this._originalAnimate = null;
-        this._motionQuery = null;
-        this._motionHandler = null;
+
+        // CPU Tamer state
+        this._originalSetTimeout = null;
+        this._originalSetInterval = null;
+        this._originalClearTimeout = null;
+        this._originalClearInterval = null;
+        this._isTamed = false;
+        this._timerStore = new Map();
+        this._nextTimerId = 1;
+        this._tamedCount = 0;
+        this._visibilityHandler = null;
+        this._navHandler = null;
     }
 
     getConfigKey() {
@@ -57,27 +68,8 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
     _resolveMode(settings) {
         const s = settings || this.settings || {};
         const isEnabled = s.reduceAnimations;
-        const level = s.reduceAnimationsLevel || 'balanced';
-
-        // 2B: Check OS prefers-reduced-motion — override to minimal if set
-        const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-        if (prefersReduced && !isEnabled) {
-            // First time auto-activation toast
-            if (!this._osAutoActivated) {
-                this._osAutoActivated = true;
-                setTimeout(() => {
-                    this.utils?.createToast?.(
-                        '♿ Reduce Animations: Minimal mode auto-activated (OS accessibility setting detected)',
-                        'info', 5000
-                    );
-                }, 1000);
-            }
-            return 'minimal';
-        }
-        
         if (!isEnabled) return 'off';
-        if (level === 'minimal') return 'minimal';
-        return 'balanced';
+        return 'minimal';
     }
 
     // ─── Apply / Clear ────────────────────────────────────────────────────────
@@ -95,24 +87,15 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
 
         document.body.classList.add(`ypp-reduce-anim-${mode}`);
 
-        if (mode === 'balanced') {
-            this._applyBalancedCSS();
-        } else {
-            this._removeBalancedCSS();
-        }
-
-        // 2D: Intercept JS smooth scroll and Web Animations API in Minimal mode
         if (mode === 'minimal') {
             this._patchScrollIntoView();
             this._patchWebAnimationsAPI();
+            this._installTamer();
+            this._applyMinimalCSS();
+        } else {
+            this._removeMinimalCSS();
         }
 
-        // 2B: Listen for OS setting changes live
-        if (!this._motionQuery) {
-            this._motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-            this._motionHandler = () => this.onSettingsUpdate(this.settings);
-            this._motionQuery.addEventListener('change', this._motionHandler);
-        }
 
         this.utils?.log?.(`ReduceAnimations: mode = ${mode}`, 'REDUCE-ANIM');
     }
@@ -122,67 +105,137 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
             'ypp-reduce-anim-balanced',
             'ypp-reduce-anim-minimal'
         );
-        this._removeBalancedCSS();
+
+        this._removeMinimalCSS();
         this._restoreScrollIntoView();
         this._restoreWebAnimationsAPI();
-        if (this._motionQuery && this._motionHandler) {
-            this._motionQuery.removeEventListener('change', this._motionHandler);
-            this._motionQuery = null;
-            this._motionHandler = null;
-        }
+        this._restoreTimers();
+
         this._currentMode = 'off';
     }
 
-    // ─── V3: Balanced Mode CSS (Apple-Style Spring + Micro-interactions) ──────
 
-    _applyBalancedCSS() {
-        if (document.getElementById('ypp-reduce-anim-balanced-css')) return;
+
+    // ─── Minimal Mode CSS (Aggressive Animation Suppression) ──────────────────
+
+    _applyMinimalCSS() {
+        if (document.getElementById('ypp-reduce-anim-minimal-css')) return;
         const style = document.createElement('style');
-        style.id = 'ypp-reduce-anim-balanced-css';
+        style.id = 'ypp-reduce-anim-minimal-css';
         style.textContent = `
-            /* 1. Global Apple-style Spring Easing */
-            :root {
-                --ypp-spring-easing: cubic-bezier(0.25, 1, 0.5, 1);
-            }
-            .ypp-reduce-anim-balanced * {
-                /* Override default linear/ease-in-out with a snappy spring */
-                transition-timing-function: var(--ypp-spring-easing) !important;
-                animation-timing-function: var(--ypp-spring-easing) !important;
+            /* ── Surgical animation suppression ── */
+
+            /* 1. Skeleton loaders — pulsing grey loading placeholders */
+            ytd-skeleton, .ytd-skeleton, ytd-ghost-card-renderer,
+            .yt-spec-skeleton-text, .skeleton-bg, .skeleton-animation {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                background: rgba(255,255,255,0.06) !important;
             }
 
-            /* 2. Premium Micro-interactions on Buttons */
-            .ypp-reduce-anim-balanced :is(ytd-button-renderer, yt-button-view-model) :is(tp-yt-paper-button, button),
-            .ypp-reduce-anim-balanced yt-icon-button,
-            .ypp-reduce-anim-balanced .ytp-button {
-                transition: transform 0.2s var(--ypp-spring-easing) !important;
+            /* 2. Ripple / ink effects on buttons */
+            paper-ripple, tp-yt-paper-ripple, .paper-ripple,
+            .yt-spec-touch-feedback-shape {
+                display: none !important;
             }
-            .ypp-reduce-anim-balanced :is(ytd-button-renderer, yt-button-view-model) :is(tp-yt-paper-button, button):active,
-            .ypp-reduce-anim-balanced yt-icon-button:active,
-            .ypp-reduce-anim-balanced .ytp-button:active {
-                transform: scale(0.92) !important;
+
+            /* 3. yt-animated-icon & yt-animated-action — morphing SVG/Lottie icons */
+            yt-animated-icon > *,
+            yt-animated-icon svg *,
+            yt-animated-action > *,
+            yt-animated-action svg *,
+            yt-animated-action canvas,
+            segmented-like-dislike-button-view-model yt-animated-action *,
+            .YtSegmentedLikeDislikeButtonViewModelSegmentedLikeDislikeButtonViewModelLikeButton yt-animated-action * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
-            .ypp-reduce-anim-balanced ytd-thumbnail:hover img {
-                transform: scale(1.03) !important;
-                transition: transform 0.4s var(--ypp-spring-easing) !important;
+
+            /* 4. Thumbnail hover zoom */
+            ytd-thumbnail:hover img,
+            yt-image:hover img,
+            .ytd-thumbnail:hover img {
+                transform: none !important;
+                transition: none !important;
+            }
+
+            /* 6. Sidebar guide entry hover slide effects */
+            ytd-guide-entry-renderer,
+            ytd-mini-guide-entry-renderer {
+                transition-duration: 0.01ms !important;
+            }
+
+            /* 7. Auto-play countdown ring animation */
+            .ytp-autonav-endscreen-countdown-overlay circle {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+
+            /* 8. Page-level loading spinners */
+            .ytd-loading-spinner,
+            #spinner.ytd-masthead,
+            .ytp-spinner-container,
+            .ytp-spinner {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+
+            /* 9. Notification bell active pulse */
+            yt-icon[icon="notifications_active"] {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+
+            /* 10. Subscribe button color-flash on press */
+            ytd-subscribe-button-renderer tp-yt-paper-button {
+                transition-duration: 0.01ms !important;
+            }
+
+            /* 11. All button hover transitions */
+            :is(ytd-button-renderer, yt-button-view-model) :is(tp-yt-paper-button, button) {
+                transition-duration: 0.01ms !important;
+            }
+
+            /* 12. "You're all caught up!" nudge banners */
+            ytd-feed-nudge-renderer {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            /* 13. Filter chip hover/select transitions */
+            yt-chip-cloud-chip-renderer {
+                transition-duration: 0.01ms !important;
+            }
+
+            /* 14. Shorts shelf entry animations */
+            ytd-reel-shelf-renderer {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            /* 15. Animated text on shelf titles */
+            .yt-core-attributed-string {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
         `;
         document.head.appendChild(style);
     }
 
-    _removeBalancedCSS() {
-        const style = document.getElementById('ypp-reduce-anim-balanced-css');
+    _removeMinimalCSS() {
+        const style = document.getElementById('ypp-reduce-anim-minimal-css');
         if (style) style.remove();
     }
 
-    // ─── 2D: scrollIntoView Patch ─────────────────────────────────────────────
+    // ─── scrollIntoView Patch ─────────────────────────────────────────────
 
     _patchScrollIntoView() {
-        if (this._originalScrollIntoView) return; // already patched
+        if (this._originalScrollIntoView) return; 
         this._originalScrollIntoView = Element.prototype.scrollIntoView;
         Element.prototype.scrollIntoView = function (options) {
-            // V4: Bug Fix - The custom `performance.now()` scroll engine assumed window.scrollTop
-            // which completely breaks in SPA independent containers (like our #secondary sidebar).
-            // Instead, we just strip the 'smooth' behavior and force an instant jump.
             if (options && typeof options === 'object') {
                 options = { ...options, behavior: 'auto' };
             } else if (options === undefined) {
@@ -200,7 +253,7 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
         this._originalScrollIntoView = null;
     }
 
-    // ─── 2F: Web Animations API Patch ─────────────────────────────────────────
+    // ─── Web Animations API Patch ─────────────────────────────────────────
 
     _patchWebAnimationsAPI() {
         if (this._originalAnimate) return;
@@ -208,7 +261,6 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
         const origAnimate = this._originalAnimate;
         
         Element.prototype.animate = function(keyframes, options) {
-            // Instantly finish JS animations by forcing duration to 0
             if (options) {
                 if (typeof options === 'number') {
                     options = 0;
@@ -229,6 +281,148 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
         Element.prototype.animate = this._originalAnimate;
         delete Element.prototype._yppOrigAnimate;
         this._originalAnimate = null;
+    }
+
+    // ─── Timer Coalescing (CPU Tamer) ────────────────────────────────────────
+
+    _installTamer() {
+        if (!window.requestAnimationFrame || this._isTamed) return;
+
+        const win = window;
+        this._originalSetTimeout = win.setTimeout;
+        this._originalSetInterval = win.setInterval;
+        this._originalClearTimeout = win.clearTimeout;
+        this._originalClearInterval = win.clearInterval;
+
+        const timerStore = this._timerStore;
+        const origSetTimeout = this._originalSetTimeout.bind(win);
+        const origSetInterval = this._originalSetInterval.bind(win);
+        const origClearTimeout = this._originalClearTimeout.bind(win);
+        const origClearInterval = this._originalClearInterval.bind(win);
+
+        this._visibilityHandler = () => {};
+        document.addEventListener('visibilitychange', this._visibilityHandler);
+
+        this._navHandler = () => this._onNavigateFinish();
+        window.addEventListener('yt-navigate-finish', this._navHandler);
+
+        const self = this;
+
+        const createTamedTimer = (origFunc, isInterval) => {
+            return (handler, delay = 0, ...args) => {
+                if (typeof handler !== 'function') {
+                    return origFunc(handler, delay, ...args);
+                }
+
+                if (document.hidden) {
+                    const video = document.querySelector('video');
+                    const isPaused = video ? video.paused : true;
+                    const floor = isPaused ? 10000 : 1000;
+                    const hiddenDelay = Math.max(delay, floor);
+                    return origFunc(handler, hiddenDelay, ...args);
+                }
+
+                if (delay > 40) {
+                    return origFunc(handler, delay, ...args);
+                }
+
+                self._tamedCount++;
+                const id = self._nextTimerId++;
+                let cancelled = false;
+
+                const checkFrame = () => {
+                    if (cancelled) return;
+                    try {
+                        handler(...args);
+                    } catch (e) {
+                        console.error('[ReduceAnimations/CPUTamer] Error in callback:', e);
+                    }
+                    if (isInterval && !cancelled) {
+                        origSetTimeout(checkFrame, Math.max(16, delay));
+                    } else {
+                        timerStore.delete(id);
+                    }
+                };
+
+                const executionDelay = isInterval ? Math.max(16, delay) : delay;
+                const nativeId = origSetTimeout(checkFrame, executionDelay);
+                timerStore.set(id, {
+                    nativeId,
+                    cancel: () => {
+                        cancelled = true;
+                        origClearTimeout(nativeId);
+                    }
+                });
+                return id;
+            };
+        };
+
+        win.setTimeout = createTamedTimer(origSetTimeout, false);
+        win.setInterval = createTamedTimer(origSetInterval, true);
+
+        win.clearTimeout = (id) => {
+            if (timerStore.has(id)) {
+                timerStore.get(id).cancel();
+                timerStore.delete(id);
+            } else {
+                origClearTimeout(id);
+            }
+        };
+
+        win.clearInterval = (id) => {
+            if (timerStore.has(id)) {
+                timerStore.get(id).cancel();
+                timerStore.delete(id);
+            } else {
+                origClearInterval(id);
+            }
+        };
+
+        try {
+            win.setTimeout.toString = () => origSetTimeout.toString();
+            win.setInterval.toString = () => origSetInterval.toString();
+            win.clearTimeout.toString = () => origClearTimeout.toString();
+            win.clearInterval.toString = () => origClearInterval.toString();
+        } catch (e) {}
+
+        this._isTamed = true;
+    }
+
+    _restoreTimers() {
+        if (!this._isTamed) return;
+        const win = window;
+        if (this._originalSetTimeout) win.setTimeout = this._originalSetTimeout;
+        if (this._originalSetInterval) win.setInterval = this._originalSetInterval;
+        if (this._originalClearTimeout) win.clearTimeout = this._originalClearTimeout;
+        if (this._originalClearInterval) win.clearInterval = this._originalClearInterval;
+
+        if (this._visibilityHandler) {
+            document.removeEventListener('visibilitychange', this._visibilityHandler);
+            this._visibilityHandler = null;
+        }
+        if (this._navHandler) {
+            window.removeEventListener('yt-navigate-finish', this._navHandler);
+            this._navHandler = null;
+        }
+
+        this._timerStore.forEach((item) => item.cancel());
+        this._timerStore.clear();
+        this._isTamed = false;
+    }
+
+    _onNavigateFinish() {
+        if (!this._isTamed) return;
+        
+        const tooltips = document.querySelectorAll('.ytp-tooltip');
+        tooltips.forEach(t => t.remove());
+
+        const hiddenIframes = document.querySelectorAll('iframe[style*="visibility: hidden"], iframe[style*="display: none"]');
+        hiddenIframes.forEach(f => {
+            f.src = 'about:blank';
+            f.remove();
+        });
+
+        this.utils?.log?.('Memory Guard: Cleared detached nodes on navigation.', 'REDUCE-ANIM', 'debug');
     }
 }
 

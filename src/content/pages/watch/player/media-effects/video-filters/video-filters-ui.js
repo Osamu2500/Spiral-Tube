@@ -268,9 +268,10 @@ export class VideoFiltersUI {
                 panel.style.right = '24px';
                 panel.style.left = 'auto';
             } else {
-                panel.style.right = '76px';
+                panel.style.bottom = '76px';
+                panel.style.top = 'auto';
+                panel.style.right = '24px';
                 panel.style.left = 'auto';
-                panel.style.top = topPx + 'px';
             }
             if (window.self !== window.top) {
                 panel.style.right = '32px';

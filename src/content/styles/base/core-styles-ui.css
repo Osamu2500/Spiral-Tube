@@ -148,7 +148,192 @@ ytd-popup-container {
 
 /* Fix scrolling on some native popups */
 .tp-yt-iron-dropdown {
-    max-height: 90vh !important;
+  max-height: 100vh !important;
+}
+
+/* ===================================================================================
+   YOUTUBE NATIVE PLAYER - PREMIUM BASE UI UPGRADE (PHASE 2)
+   =================================================================================== */
+
+/* Glassmorphic Base for the Native Control Bar */
+html.yt-spiral-tube-theme .ytp-chrome-bottom {
+  transition: opacity 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Add an internal top highlight (Double-Bezel effect) */
+html.yt-spiral-tube-theme .ytp-chrome-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent) !important;
+  pointer-events: none;
+}
+
+/* Clean up gradients that YouTube natively applies */
+html.yt-spiral-tube-theme .ytp-gradient-bottom {
+  /* Restored default opacity */
+}
+
+/* Spring Physics for Native Buttons (Play, Volume, Gear, Fullscreen, etc.) */
+html.yt-spiral-tube-theme .ytp-button {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, filter 0.2s ease !important;
+}
+html.yt-spiral-tube-theme .ytp-button:hover {
+  transform: scale(1.15) !important;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)) !important;
+}
+html.yt-spiral-tube-theme .ytp-button:active {
+  transform: scale(0.9) !important;
+}
+
+/* Override YouTube's solid red progress bar to the custom accent gradient */
+html.yt-spiral-tube-theme .ytp-swatch-background-color {
+  background: var(--ypp-accent-gradient, var(--ypp-accent, #3ea6ff)) !important;
+  box-shadow: 0 0 12px var(--ypp-accent-glow, transparent) !important;
+}
+
+/* Scrubber Button (Playhead indicator) */
+html.yt-spiral-tube-theme .ytp-scrubber-button {
+  background: var(--ypp-accent, #fff) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.2) inset !important;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
+  transform: scale(1.4) !important;
+}
+
+/* ===================================================================================
+   YOUTUBE BASE UI - MENUS, MASTHEAD & SIDEBAR UPGRADE (PHASE 3)
+   =================================================================================== */
+
+/* Masthead (Top Nav) - Deep Glassmorphism */
+html.yt-spiral-tube-theme #masthead-container,
+html.yt-spiral-tube-theme ytd-masthead {
+  background: rgba(10, 11, 16, 0.75) !important;
+  backdrop-filter: blur(32px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Search Box - Premium Input */
+html.yt-spiral-tube-theme ytd-searchbox {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  transition: border-color 0.2s ease, background 0.2s ease !important;
+}
+html.yt-spiral-tube-theme ytd-searchbox:focus-within {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.05) !important;
+}
+html.yt-spiral-tube-theme ytd-searchbox #container,
+html.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Left Guide Sidebar - Glass Panel */
+html.yt-spiral-tube-theme #guide-inner-content,
+html.yt-spiral-tube-theme ytd-mini-guide-renderer {
+  background: rgba(14, 15, 23, 0.6) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+html.yt-spiral-tube-theme #guide-inner-content::-webkit-scrollbar {
+  width: 6px !important;
+}
+html.yt-spiral-tube-theme #guide-inner-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+}
+
+/* Context Menus & Popups - Double Bezel OLED */
+html.yt-spiral-tube-theme ytd-menu-popup-renderer,
+html.yt-spiral-tube-theme .ytp-popup,
+html.yt-spiral-tube-theme tp-yt-paper-dialog {
+  background: rgba(10, 11, 16, 0.85) !important;
+  backdrop-filter: blur(40px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Menu Items Hover Physics */
+html.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover,
+html.yt-spiral-tube-theme .ytp-menuitem:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  margin: 0 4px !important;
+  transform: scale(1.02) !important;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* ===================================================================================
+   YOUTUBE BASE UI - CARDS, COMMENTS & LIVE CHAT UPGRADE (PHASE 4)
+   =================================================================================== */
+
+/* Video Cards (Homepage & Sidebar) - Premium Hover Spring */
+html.yt-spiral-tube-theme ytd-rich-item-renderer,
+html.yt-spiral-tube-theme ytd-video-renderer,
+html.yt-spiral-tube-theme ytd-compact-video-renderer {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease !important;
+  border-radius: 12px !important;
+}
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-video-renderer:hover,
+html.yt-spiral-tube-theme ytd-compact-video-renderer:hover {
+  transform: translateY(-4px) scale(1.01) !important;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) !important;
+  z-index: 10;
+}
+
+/* Comments Section - Glass Input & Threading */
+html.yt-spiral-tube-theme #simple-box.ytd-comment-simplebox-renderer {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease !important;
+}
+html.yt-spiral-tube-theme #simple-box.ytd-comment-simplebox-renderer:focus-within {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+html.yt-spiral-tube-theme ytd-comment-thread-renderer {
+  border-left: 2px solid rgba(255, 255, 255, 0.04) !important;
+  padding-left: 16px !important;
+  margin-left: 12px !important;
+}
+
+/* Live Chat - OLED Glass Integration */
+html.yt-spiral-tube-theme yt-live-chat-app {
+  background: rgba(10, 11, 16, 0.75) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-header-renderer {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-item-list-renderer {
+  background: transparent !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-text-message-renderer:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: 8px !important;
 }
 
 /* Smooth scrolling for the whole page */
@@ -220,11 +405,8 @@ html.yt-spiral-tube-theme #guide-inner-content {
     box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.02);
 }
 
-/* ── 3. Video Player Controls (Ethereal Glass) ── */
+/* ── 3. Video Player Controls ── */
 html.yt-spiral-tube-theme .ytp-chrome-bottom {
-    background: linear-gradient(to top, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.4) 60%, transparent 100%) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
     padding-bottom: 8px !important;
     border-radius: 0 0 12px 12px;
 }

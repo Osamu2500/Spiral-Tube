@@ -28,33 +28,6 @@ function switchTab(document, tabId) {
         tabs.forEach(tab => {
             const isActive = tab.id === `tab-${tabId}`;
             tab.classList.toggle('active', isActive);
-            
-            if (isActive && window.anime) {
-                const animatableItems = tab.querySelectorAll('.toggle-card, .setting-item, .mode-card');
-                if (animatableItems.length > 0) {
-                    try {
-                        animatableItems.forEach(el => {
-                            el.style.transform = 'translateY(16px)';
-                            el.style.opacity = '0';
-                        });
-                        
-                        window.anime({
-                            targets: animatableItems,
-                            translateY: [ 16, 0 ],
-                            opacity: [ 0, 1 ],
-                            delay: window.anime.stagger(30, { start: 50 }),
-                            easing: 'easeOutQuart',
-                            duration: 450,
-                        });
-                    } catch (e) {
-                        console.error('Animation error:', e);
-                        animatableItems.forEach(el => {
-                            el.style.transform = '';
-                            el.style.opacity = '1';
-                        });
-                    }
-                }
-            }
         });
 
         if (pageTitle) {

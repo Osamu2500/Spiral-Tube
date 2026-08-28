@@ -49,7 +49,11 @@ export class FXTabUI {
             { id: 'stadium', label: '🏟️ Stadium Announcer' },
             { id: 'alien', label: '👽 Alien Overlord' },
             { id: 'dream', label: '☁️ Lucid Dream' },
-            { id: 'cyberpunk', label: '🌆 Cyberpunk' }
+            { id: 'cyberpunk', label: '🌆 Cyberpunk' },
+            { id: 'demon_lord', label: '🔥 Demon Lord' },
+            { id: 'walkie_talkie', label: '📻 Walkie Talkie' },
+            { id: 'drunk', label: '🥴 Drunk' },
+            { id: 'bee', label: '🐝 Bee' }
         ];
         
         let activeBtn = null;

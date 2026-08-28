@@ -147,6 +147,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     // Cancel all pending per-card hydration polls
     this._hydrationTimers.forEach(t => clearInterval(t));
     this._hydrationTimers.clear();
+
     window.YPP.hotkeysManager?.unregister('multi-select');
     window.YPP.sharedObserver?.unregister('multi-select');
   }

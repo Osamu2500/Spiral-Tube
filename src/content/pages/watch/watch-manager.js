@@ -205,7 +205,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
     body.classList.remove(...classesToRemove);
 
     // 2. Apply Sidebar
-    if (this.settings.enableCustomSidebar) {
+    const isCustomSidebarEnabled = String(this.settings.enableCustomSidebar) === 'true';
+
+    if (isCustomSidebarEnabled) {
       // Custom sidebar is ON — apply chosen layout
       if (this.state.sidebar === 'dense') {
         body.setAttribute("data-ypp-sidebar-size", "dense");
@@ -226,11 +228,17 @@ class WatchPageManager extends window.YPP.BasePageManager {
       } else if (this.state.sidebar === 'grid') {
         body.setAttribute("data-ypp-sidebar-size", "grid");
       }
+    } else {
+      // If custom sidebar is off, remove the attribute to revert to YouTube default
+      body.removeAttribute("data-ypp-sidebar-size");
     }
 
     if (this.state.sidebar === 'hidden' || ['zen', 'focus'].includes(this.state.viewMode)) {
       body.setAttribute("data-ypp-sidebar-size", "hidden"); // Force hide sidebar in extreme modes
     }
+
+    // Force YouTube player to recalculate layout
+    window.dispatchEvent(new Event('resize'));
 
     // 3. Apply View Mode
     if (this.state.viewMode !== 'default') {
@@ -277,6 +285,8 @@ class WatchPageManager extends window.YPP.BasePageManager {
       'ypp-theater-mode-override',
     ];
     document.body.classList.remove(...classesToRemove);
+    document.body.removeAttribute("data-ypp-sidebar-size");
+    window.dispatchEvent(new Event('resize'));
   }
 
   // ==========================================

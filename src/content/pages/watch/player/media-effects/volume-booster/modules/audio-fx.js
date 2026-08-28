@@ -17,10 +17,11 @@ export const AudioFXMixin = {
         const k = typeof amount === 'number' ? amount : 50;
         const n_samples = 44100;
         const curve = new Float32Array(n_samples);
-        const deg = Math.PI / 180;
+        const drive = k / 10;
+        const maxTanh = Math.tanh(drive);
         for (let i = 0; i < n_samples; ++i) {
-            const x = i * 2 / n_samples - 1;
-            curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+            const x = (i * 2 / n_samples) - 1;
+            curve[i] = Math.tanh(x * drive) / maxTanh;
         }
         return curve;
     },
@@ -71,11 +72,16 @@ export const AudioFXMixin = {
         const impulse = this.ctx.createBuffer(2, length, sampleRate);
         const left = impulse.getChannelData(0);
         const right = impulse.getChannelData(1);
+        let lastOutL = 0; let lastOutR = 0;
+        const filter = 0.6;
         for (let i = 0; i < length; i++) {
             const n = reverse ? length - 1 - i : i;
             const envelope = Math.pow(1 - n / length, decay);
-            left[i] = (Math.random() * 2 - 1) * envelope;
-            right[i] = (Math.random() * 2 - 1) * envelope;
+            const noiseL = (Math.random() * 2 - 1) * envelope;
+            const noiseR = (Math.random() * 2 - 1) * envelope;
+            lastOutL = filter * lastOutL + (1 - filter) * noiseL;
+            lastOutR = filter * lastOutR + (1 - filter) * noiseR;
+            left[i] = lastOutL; right[i] = lastOutR;
         }
         return impulse;
     },
@@ -125,7 +131,7 @@ export const AudioFXMixin = {
         for (let i = 0; i < lfoData.length; i++) {
             const x = i / lfoData.length;
             lfoData[i] = x;
-            fadeData[i] = Math.sin(Math.PI * x); // Sine window
+            fadeData[i] = 0.5 - 0.5 * Math.cos(2 * Math.PI * x); // Hanning window for perfect constant-amplitude crossfade
         }
 
         const mod1 = this.ctx.createBufferSource(); mod1.buffer = lfoBuffer; mod1.loop = true;
@@ -195,24 +201,41 @@ export const AudioFXMixin = {
         return { output: outputNode, nodes: [rmNode, osc, dryGain, wetGain, outputNode] };
     },
 
-    setFX(effectName) {
+    async setFX(effectName) {
         this._activeFX = effectName;
         window.YPP?.Utils?.saveSettings({ volumeActiveEffect: effectName });
         if (this._proxyCmd('setFX', effectName)) return;
         if (!this._audioConnected || !this.fxInput) return;
 
+        if (this.ctx.state === 'suspended') {
+            await this.ctx.resume();
+        }
+
         this.fxInput.disconnect();
         this._cleanupFX();
 
+        const connectOut = (lastNode) => {
+            const comp = this.ctx.createDynamicsCompressor();
+            comp.threshold.value = -12;
+            comp.ratio.value = 4;
+            comp.attack.value = 0.003;
+            comp.release.value = 0.1;
+            lastNode.connect(comp);
+            comp.connect(this.fxOutput);
+            this._fxNodes.push(comp);
+        };
+
         if (effectName === 'radio') {
-            // ── MEGAPHONE v3 (Convolution Reverb) ──
-            const inputSat = this.ctx.createWaveShaper(); inputSat.curve = this._makeDistortionCurve(30); inputSat.oversample = '4x';
-            const convolver = this._createConvolver(0.08, 20.0); // Tin can IR
-            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 500;
-            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3000;
-            const hardClip = this.ctx.createWaveShaper(); hardClip.curve = this._makeDistortionCurve(100);
+            // ── MEGAPHONE v4 (Convolution Reverb) ──
+            const inputSat = this.ctx.createWaveShaper(); inputSat.curve = this._makeDistortionCurve(40); inputSat.oversample = '4x';
+            const convolver = this._createConvolver(0.1, 15.0); // Tin can IR
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 600; hp.Q.value = 2.0;
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2500;
+            const hardClip = this.ctx.createWaveShaper(); hardClip.curve = this._makeDistortionCurve(80);
+            
             this.fxInput.connect(inputSat); inputSat.connect(convolver); convolver.connect(hp); 
-            hp.connect(lp); lp.connect(hardClip); hardClip.connect(this.fxOutput);
+            hp.connect(lp); lp.connect(hardClip); 
+            connectOut(hardClip);
             this._fxNodes = [inputSat, convolver, hp, lp, hardClip];
 
         } else if (effectName === 'underwater') {
@@ -257,25 +280,27 @@ export const AudioFXMixin = {
             if (humSrc) this._fxNodes.push(humSrc);
 
         } else if (effectName === 'adam') {
-            // ── ADAM (TikTok AI Narrator) v2 ──
-            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 80;
-            const comp = this.ctx.createDynamicsCompressor(); comp.threshold.value = -35; comp.ratio.value = 10;
-            this.fxInput.connect(hp); hp.connect(comp); comp.connect(this.fxOutput);
-            this._fxNodes = [hp, comp];
+            // ── ADAM (TikTok AI Narrator) v4 ──
+            const pitch = this._createPitchShifter(this.fxInput, 1.05); // Tiny pitch up
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 90;
+            const airBoost = this.ctx.createBiquadFilter(); airBoost.type = 'highshelf'; airBoost.frequency.value = 6000; airBoost.gain.value = 4;
+            const comp = this.ctx.createDynamicsCompressor(); comp.threshold.value = -35; comp.ratio.value = 12; comp.attack.value = 0.005;
+            
+            pitch.output.connect(hp); hp.connect(airBoost); airBoost.connect(comp);
+            connectOut(comp);
+            this._fxNodes = [...pitch.nodes, hp, airBoost, comp];
 
         } else if (effectName === 'chipmunk') {
-            // ── CHIPMUNK v3 (True Pitch Shift) ──
+            // ── CHIPMUNK v4 (True Pitch Shift) ──
             const pitch = this._createPitchShifter(this.fxInput, 1.8);
-            const comp = this.ctx.createDynamicsCompressor();
-            pitch.output.connect(comp); comp.connect(this.fxOutput);
-            this._fxNodes = [...pitch.nodes, comp];
+            connectOut(pitch.output);
+            this._fxNodes = [...pitch.nodes];
 
         } else if (effectName === 'deep') {
-            // ── DEEP VOICE v3 (True Pitch Shift) ──
+            // ── DEEP VOICE v4 (True Pitch Shift) ──
             const pitch = this._createPitchShifter(this.fxInput, 0.6);
-            const comp = this.ctx.createDynamicsCompressor();
-            pitch.output.connect(comp); comp.connect(this.fxOutput);
-            this._fxNodes = [...pitch.nodes, comp];
+            connectOut(pitch.output);
+            this._fxNodes = [...pitch.nodes];
 
         } else if (effectName === 'demonic') {
             // ── DEMONIC v3 (Pitch Shift + Ring Mod + Reverb) ──
@@ -382,11 +407,12 @@ export const AudioFXMixin = {
             this._fxNodes = [convolver, wetGain, dryGain];
 
         } else if (effectName === 'alien') {
-            // ── ALIEN OVERLORD v3 (8D Panner + Ringmod + Chorus) ──
-            const rm = this._createRingMod(this.fxInput, 12, 0.85);
+            // ── ALIEN OVERLORD v4 (8D Panner + Ringmod + Chorus) ──
+            const rm = this._createRingMod(this.fxInput, 15, 0.85); // slightly faster warble
             const chorus = this._createChorus(rm.output, 0.35, 0.008, 0.65);
             const panner = this._createAutoPanner(0.15, 4); // Slow 8D swirl
-            chorus.output.connect(panner.output); panner.output.connect(this.fxOutput);
+            chorus.output.connect(panner.output); 
+            connectOut(panner.output);
             this._fxNodes = [...rm.nodes, ...chorus.nodes, ...panner.nodes];
 
         } else if (effectName === 'dream') {
@@ -483,19 +509,25 @@ export const AudioFXMixin = {
             this._fxNodes = [bc, midScoop, highPres, ...rm.nodes, d1, d2, fb1, fb2, ws, pumpLfo, pumpGain, pumpOut];
 
         } else if (effectName === 'sulfux') {
-            // ── SULFUR HEXAFLUORIDE v3 (Pitch Drop + Sub Formants + Chorus + Room) ──
+            // ── SULFUR HEXAFLUORIDE v4 (Pitch Drop + Sub Formants + Chorus + Room) ──
             const pitch = this._createPitchShifter(this.fxInput, 0.3); // Insanely deep
-            const lp1 = this.ctx.createBiquadFilter(); lp1.type = 'lowpass'; lp1.frequency.value = 700; lp1.Q.value = 1.5;
-            const f1 = this.ctx.createBiquadFilter(); f1.type = 'peaking'; f1.frequency.value = 100; f1.Q.value = 3.0; f1.gain.value = 14;
-            const f2 = this.ctx.createBiquadFilter(); f2.type = 'peaking'; f2.frequency.value = 250; f2.Q.value = 2.0; f2.gain.value = 8;
-            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(30);
-            const chorus = this._createChorus(ws, 0.6, 0.005, 0.25);
-            const convolver = this._createConvolver(1.0, 3.0); // dense heavy room
+            // Enhance formants to sound heavy but clear
+            const subBoost = this.ctx.createBiquadFilter(); subBoost.type = 'lowshelf'; subBoost.frequency.value = 150; subBoost.gain.value = 12;
+            const f1 = this.ctx.createBiquadFilter(); f1.type = 'peaking'; f1.frequency.value = 200; f1.Q.value = 2.0; f1.gain.value = 8;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(20);
+            const chorus = this._createChorus(ws, 0.8, 0.01, 0.3);
+            const convolver = this._createConvolver(1.5, 2.5); // heavy room
             
-            pitch.output.connect(lp1); lp1.connect(f1); f1.connect(f2); f2.connect(ws);
-            chorus.output.connect(convolver); convolver.connect(this.fxOutput);
+            const dryMix = this.ctx.createGain(); dryMix.gain.value = 0.9;
+            const wetMix = this.ctx.createGain(); wetMix.gain.value = 0.4;
             
-            this._fxNodes = [...pitch.nodes, lp1, f1, f2, ws, convolver, ...chorus.nodes];
+            pitch.output.connect(subBoost); subBoost.connect(f1); f1.connect(ws);
+            chorus.output.connect(dryMix);
+            chorus.output.connect(convolver); convolver.connect(wetMix);
+            
+            connectOut(dryMix); connectOut(wetMix);
+            
+            this._fxNodes = [...pitch.nodes, subBoost, f1, ws, convolver, dryMix, wetMix, ...chorus.nodes];
 
         } else if (effectName === 'far_away') {
             // ── FAR AWAY v3 (Distant Convolver + Bandpass + Multi-echo) ──
@@ -533,22 +565,29 @@ export const AudioFXMixin = {
             this._fxNodes = [...rm1.nodes, ...rm2.nodes, merge, comb, combFb, combLp, ws];
 
         } else if (effectName === 'zombie') {
-            // ── ZOMBIE v3 (Pitch Drop + Sub EQ + Drag Echo + Convolver) ──
-            const pitch = this._createPitchShifter(this.fxInput, 0.6);
-            const chorus = this._createChorus(pitch.output, 0.5, 0.025, 0.8);
-            const sub = this.ctx.createBiquadFilter(); sub.type = 'peaking'; sub.frequency.value = 80; sub.Q.value = 3.0; sub.gain.value = 8;
-            const ws1 = this.ctx.createWaveShaper(); ws1.curve = this._makeDistortionCurve(40);
+            // ── ZOMBIE v4 (Pitch Drop + Throat Rasp + Drag Echo + Convolver) ──
+            const pitch = this._createPitchShifter(this.fxInput, 0.55);
+            const rm = this._createRingMod(pitch.output, 40, 0.3); // Throat rasp
+            const chorus = this._createChorus(rm.output, 0.5, 0.025, 0.8);
+            const sub = this.ctx.createBiquadFilter(); sub.type = 'peaking'; sub.frequency.value = 90; sub.Q.value = 2.0; sub.gain.value = 10;
+            const ws1 = this.ctx.createWaveShaper(); ws1.curve = this._makeDistortionCurve(45);
             
-            const dragDelay = this.ctx.createDelay(); dragDelay.delayTime.value = 0.08;
-            const dragFb = this.ctx.createGain(); dragFb.gain.value = 0.5;
-            const convolver = this._createConvolver(2.0, 1.0); // muddy room
+            const dragDelay = this.ctx.createDelay(); dragDelay.delayTime.value = 0.1;
+            const dragFb = this.ctx.createGain(); dragFb.gain.value = 0.4;
+            const convolver = this._createConvolver(2.5, 1.5); // dark muddy room
             
             chorus.output.connect(sub); sub.connect(ws1);
             ws1.connect(dragDelay); dragDelay.connect(dragFb); dragFb.connect(dragDelay);
-            ws1.connect(convolver); dragDelay.connect(convolver);
-            convolver.connect(this.fxOutput);
             
-            this._fxNodes = [...pitch.nodes, ...chorus.nodes, sub, ws1, dragDelay, dragFb, convolver];
+            const dryMix = this.ctx.createGain(); dryMix.gain.value = 0.8;
+            ws1.connect(dryMix);
+            
+            ws1.connect(convolver); dragDelay.connect(convolver);
+            
+            connectOut(dryMix);
+            connectOut(convolver);
+            
+            this._fxNodes = [...pitch.nodes, ...rm.nodes, ...chorus.nodes, sub, ws1, dragDelay, dragFb, convolver, dryMix];
 
         } else if (effectName === 'child') {
             // ── CHILD v3 (True Pitch Up + Vocal Tract Formants) ──
@@ -689,6 +728,69 @@ export const AudioFXMixin = {
             stone.connect(convolver); convolver.connect(this.fxOutput); // Wet
             
             this._fxNodes = [convolver, preLp, stone];
+        } else if (effectName === 'demon_lord') {
+            // ── DEMON LORD (Very deep + resonating + chorus) ──
+            const pitch = this._createPitchShifter(this.fxInput, 0.45);
+            const sub = this.ctx.createBiquadFilter(); sub.type = 'lowshelf'; sub.frequency.value = 200; sub.gain.value = 15;
+            const res = this.ctx.createBiquadFilter(); res.type = 'peaking'; res.frequency.value = 1500; res.Q.value = 4.0; res.gain.value = 8;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(10);
+            const chorus = this._createChorus(ws, 0.4, 0.02, 0.7);
+            const convolver = this._createConvolver(3.0, 1.5); // long evil cave
+            
+            const wetGain = this.ctx.createGain(); wetGain.gain.value = 0.5;
+            const dryGain = this.ctx.createGain(); dryGain.gain.value = 0.9;
+            
+            pitch.output.connect(sub); sub.connect(res); res.connect(ws);
+            chorus.output.connect(dryGain);
+            chorus.output.connect(convolver); convolver.connect(wetGain);
+            
+            connectOut(dryGain); connectOut(wetGain);
+            this._fxNodes = [...pitch.nodes, sub, res, ws, convolver, dryGain, wetGain, ...chorus.nodes];
+
+        } else if (effectName === 'walkie_talkie') {
+            // ── WALKIE TALKIE (Squelch + Bandpass + Crackle) ──
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2000; bp.Q.value = 1.2;
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 600;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(60);
+            
+            const crackleGain = this.ctx.createGain(); crackleGain.gain.value = 0.3;
+            let crackleSrc = null;
+            try {
+                crackleSrc = this.ctx.createBufferSource(); crackleSrc.buffer = this._createCrackleBuffer(); crackleSrc.loop = true; crackleSrc.connect(crackleGain); crackleSrc.start();
+            } catch (e) {}
+            
+            this.fxInput.connect(hp); hp.connect(bp); bp.connect(ws);
+            
+            connectOut(ws); connectOut(crackleGain);
+            this._fxNodes = [bp, hp, ws, crackleGain];
+            if (crackleSrc) this._fxNodes.push(crackleSrc);
+
+        } else if (effectName === 'drunk') {
+            // ── DRUNK (Pitch Wobble + Muffle) ──
+            const delay = this.ctx.createDelay(1); delay.delayTime.value = 0.05;
+            const lfo = this.ctx.createOscillator(); lfo.type = 'sine'; lfo.frequency.value = 0.6; // slow dizzy wobble
+            const lfoGain = this.ctx.createGain(); lfoGain.gain.value = 0.015;
+            lfo.connect(lfoGain); lfoGain.connect(delay.delayTime); lfo.start();
+            
+            const muffle = this.ctx.createBiquadFilter(); muffle.type = 'lowpass'; muffle.frequency.value = 2000;
+            const slurp = this.ctx.createBiquadFilter(); slurp.type = 'highshelf'; slurp.frequency.value = 1500; slurp.gain.value = -10;
+            
+            this.fxInput.connect(delay); delay.connect(muffle); muffle.connect(slurp);
+            connectOut(slurp);
+            
+            this._fxNodes = [delay, lfo, lfoGain, muffle, slurp];
+
+        } else if (effectName === 'bee') {
+            // ── BEE (High Pitch + Fast Ringmod + 8D Pan) ──
+            const pitch = this._createPitchShifter(this.fxInput, 2.0); // 2x pitch
+            const rm = this._createRingMod(pitch.output, 150, 0.8); // Buzzzzz
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1000;
+            const panner = this._createAutoPanner(2.5, 4); // Fly around fast
+            
+            rm.output.connect(hp); hp.connect(panner.output);
+            connectOut(panner.output);
+            
+            this._fxNodes = [...pitch.nodes, ...rm.nodes, hp, ...panner.nodes];
         } else {
             // None — bypass
             this.fxInput.connect(this.fxOutput);

@@ -299,7 +299,7 @@ export const DEFAULT_SETTINGS = {
 
   enableSaveSupremeUI: true,
   enableCustomizeYouTubeUI: true,
-  enableCpuTamer: true,
+
   enableTabviewSidebar: false,
 
 };
