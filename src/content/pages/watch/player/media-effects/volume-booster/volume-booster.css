@@ -13,8 +13,9 @@
     color: #fff;
     font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
-    backdrop-filter: blur(48px) saturate(200%);
     -webkit-backdrop-filter: blur(48px) saturate(200%);
+    backdrop-filter: blur(48px) saturate(200%);
+    -webkit-user-select: none;
     user-select: none;
     overflow: hidden;
     animation: ypp-eq-in 0.28s cubic-bezier(0.2, 0, 0, 1) forwards;
@@ -87,7 +88,6 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    scrollbar-width: none;
 }
 .ypp-eq-presets-row::-webkit-scrollbar { display: none; }
 .ypp-eq-preset-btn {
@@ -197,8 +197,6 @@
     max-height: 180px;
     overflow-y: auto;
     padding-right: 4px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.2) transparent;
 }
 .ypp-eq-fx-grid::-webkit-scrollbar { width: 4px; }
 .ypp-eq-fx-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }

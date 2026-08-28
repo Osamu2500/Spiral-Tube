@@ -595,13 +595,7 @@ export class VolumeBoosterUI {
                 balanceValue.textContent = ctx._balance === 0 ? 'C' : (ctx._balance < 0 ? 'L' + Math.abs(Math.round(ctx._balance * 100)) : 'R' + Math.round(ctx._balance * 100));
                 this.updateBalanceTrack(balanceSlider);
 
-                stereoRow.querySelector('input').value = Math.round(ctx._stereoWidth * 100);
-                stereoRow.querySelector('span:last-child').textContent = Math.round(ctx._stereoWidth * 100) + '%';
-                monoRow2.querySelector('input').value = ctx._monoEnabled ? 100 : 0;
-                monoRow2.querySelector('span:last-child').textContent = ctx._monoEnabled ? '100%' : '0%';
-
-                compBtn.classList.toggle('active', ctx._compressorEnabled);
-                monoBtn.classList.toggle('active', ctx._monoEnabled);
+                panel.dispatchEvent(new Event('ypp-eq-update'));
 
                 if (activePresetBtn) activePresetBtn.classList.remove('active');
                 btn.classList.add('active');

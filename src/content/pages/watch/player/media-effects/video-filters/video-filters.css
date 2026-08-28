@@ -19,12 +19,12 @@
 .ypp-cinema-tab-btn.active::after { width: 100%; }
 
 /* Compare Toggle (A/B) Button */
-.ypp-vcp-compare-toggle { padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.85); cursor: pointer; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); user-select: none; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+.ypp-vcp-compare-toggle { padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.85); cursor: pointer; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-user-select: none; user-select: none; display: flex; align-items: center; justify-content: center; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .ypp-vcp-compare-toggle:hover { background: rgba(255, 255, 255, 0.15); color: #fff; border-color: rgba(255, 255, 255, 0.3); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 .ypp-vcp-compare-toggle.active { background: rgba(62, 166, 255, 0.15); border-color: rgba(62, 166, 255, 0.4); color: #3ea6ff; box-shadow: 0 0 12px rgba(62, 166, 255, 0.25), inset 0 1px 1px rgba(255,255,255,0.1); }
 
 /* Advanced Glassmorphism Category Header */
-.ypp-filter-cat-details summary { list-style: none; padding: 6px 10px; cursor: pointer; font-size: 10.5px; font-weight: 600; background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; transition: all 0.25s ease; backdrop-filter: blur(8px); }
+.ypp-filter-cat-details summary { list-style: none; padding: 6px 10px; cursor: pointer; font-size: 10.5px; font-weight: 600; background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; transition: all 0.25s ease; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .ypp-filter-cat-details summary::-webkit-details-marker { display: none; }
 .ypp-filter-cat-details summary:hover { background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); color: #fff; padding-left: 14px; }
 .ypp-filter-cat-details summary::after { content: '▼'; font-size: 9px; opacity: 0.5; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -44,7 +44,7 @@
 .ypp-filter-lut-preview { width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 2px 8px rgba(0,0,0,0.4); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .ypp-filter-card:hover .ypp-filter-lut-preview { transform: scale(1.15) rotate(2deg); border-color: rgba(255,255,255,0.5); }
 
-.ypp-star-btn { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.8); transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; padding: 0; backdrop-filter: blur(4px); }
+.ypp-star-btn { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.8); transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; padding: 0; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
 .ypp-filter-card:hover .ypp-star-btn, .ypp-star-btn[data-fav="true"] { opacity: 1; transform: scale(1); }
 .ypp-star-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.15) !important; }
 
@@ -60,7 +60,7 @@
 
 /* Adjustments Grid */
 .ypp-adjust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; padding: 8px; }
-.ypp-adjust-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 6px 8px; display: flex; flex-direction: column; gap: 4px; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s, border-color 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.ypp-adjust-card { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 6px 8px; display: flex; flex-direction: column; gap: 4px; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s, border-color 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .ypp-adjust-card:hover { background: rgba(0, 0, 0, 0.45); transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2); }
 .ypp-adjust-card-header { display: flex; justify-content: space-between; align-items: center; }
 .ypp-adjust-card-title { display: flex; align-items: center; gap: 4px; font-size: 9.5px; font-weight: 600; color: rgba(255,255,255,0.9); }
@@ -95,7 +95,7 @@
 .ypp-adj-section { border-bottom: 1px solid rgba(255,255,255,0.06); }
 .ypp-adj-section-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 7px 12px; cursor: pointer; user-select: none;
+    padding: 7px 12px; cursor: pointer; -webkit-user-select: none; user-select: none;
     background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
     transition: background 0.3s;
 }
@@ -145,6 +145,7 @@
 
 .ypp-adjust-card { 
     background: rgba(0,0,0,0.2); 
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.08); 
     border-radius: 8px; 
@@ -206,7 +207,7 @@
     background: rgba(0,0,0,0.7); color: #fff; font-size: 9px; font-weight: 700;
     padding: 3px 6px; border-radius: 4px; pointer-events: none;
     opacity: 0; transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
-    backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1);
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 .ypp-slider-container:hover .ypp-slider-tooltip,
@@ -222,6 +223,7 @@
     color: rgba(255,255,255,0.85); font-size: 9px; font-weight: 600; text-align: center;
     cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; 
     transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); 
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.1);
 }

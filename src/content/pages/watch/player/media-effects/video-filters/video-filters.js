@@ -221,14 +221,6 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         else VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
         // Hardware-accelerated CSS variable pipeline + Inline fallback immunity
-        video.classList.add('ypp-cinema-active');
-        video.style.setProperty('--ypp-video-filter', finalFilter);
-        
-        // Directly inject inline to guarantee survival even if site purges <head>
-        video.style.setProperty('filter', finalFilter, 'important');
-        video.style.setProperty('will-change', 'filter', 'important');
-        video.style.setProperty('transform', 'translateZ(0)', 'important');
-        video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
         
         if (adj.letterbox > 0) {
             const lb = adj.letterbox * 0.3; // scale 0-100 to 0-30%
@@ -239,10 +231,21 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             video.style.removeProperty('--ypp-video-clip');
         }
 
+        this._applyFilterStyles(video, finalFilter);
+
         // Re-apply overlay elements
         this._syncOverlays(preset, adj, video);
         
         this._ensureVideoState(video);
+    }
+
+    _applyFilterStyles(video, finalFilter) {
+        video.classList.add('ypp-cinema-active');
+        video.style.setProperty('--ypp-video-filter', finalFilter);
+        video.style.setProperty('filter', finalFilter, 'important');
+        video.style.setProperty('will-change', 'filter', 'important');
+        video.style.setProperty('transform', 'translateZ(0)', 'important');
+        video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
     }
 
     _ensureVideoState(video) {
@@ -277,7 +280,6 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             }
             if (needsReapply) {
                 VideoFiltersUI?._injectStyles?.();
-                video.classList.add('ypp-cinema-active');
                 
                 const preset = FILTERS[this.currentFilterIndex];
                 const adj = this.filterAdjustments;
@@ -291,11 +293,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 if (adj.bloom > 0) finalFilter += ` url("${docUrl}#ypp-svg-bloom")`;
                 if (adj.vhs > 0) finalFilter += ` url("${docUrl}#ypp-svg-vhs")`;
                 
-                video.style.setProperty('--ypp-video-filter', finalFilter);
-                video.style.setProperty('filter', finalFilter, 'important');
-                video.style.setProperty('will-change', 'filter', 'important');
-                video.style.setProperty('transform', 'translateZ(0)', 'important');
-                video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
+                this._applyFilterStyles(video, finalFilter);
 
                 if (adj.letterbox > 0) {
                     const lb = adj.letterbox * 0.3;
