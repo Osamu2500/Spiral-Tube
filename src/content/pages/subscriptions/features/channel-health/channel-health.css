@@ -1,7 +1,9 @@
-/* 
+/**
  * Channel Health Dashboard Styles
+ * Owns: Styling for the Channel Health Dashboard modal and its contents.
+ * Targets: Modal, Buttons, Stats, Channels, Checkboxes.
+ * Does not affect functionality outside the Channel Health feature.
  */
-
 /* Modal Overlay & Base Content */
 .ypp-health-modal-overlay {
     position: fixed !important;
@@ -19,10 +21,10 @@
 
 .ypp-health-modal-content {
     font-family: 'Inter', 'Outfit', sans-serif;
-    width: 90vw;
-    height: 90vh;
-    max-width: 1200px;
-    max-height: 800px;
+    width: 95vw;
+    height: 95vh;
+    max-width: 1600px;
+    max-height: 900px;
     border-radius: 24px;
     display: flex;
     flex-direction: column;
@@ -254,4 +256,91 @@
     border-color: rgba(255, 78, 69, 0.4);
     color: #ff6b6b;
     transform: translateY(-1px);
+}
+
+/* Visit Button */
+.ypp-health-btn-visit {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ypp-health-btn-visit:hover {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: #818cf8;
+    transform: translateY(-1px);
+}
+
+/* Custom Checkbox */
+.ypp-custom-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    user-select: none;
+    position: relative;
+    padding-left: 24px;
+    margin-right: 8px;
+    transition: color 0.2s;
+}
+.ypp-custom-checkbox-label:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ypp-custom-checkbox-label .ypp-unsub-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.ypp-custom-checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.ypp-custom-checkbox-label:hover .ypp-custom-checkmark {
+    border-color: rgba(99, 102, 241, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.ypp-custom-checkbox-label .ypp-unsub-checkbox:checked ~ .ypp-custom-checkmark {
+    background-color: #6366f1;
+    border-color: #6366f1;
+}
+
+/* Checkmark Icon */
+.ypp-custom-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.ypp-custom-checkbox-label .ypp-unsub-checkbox:checked ~ .ypp-custom-checkmark:after {
+    display: block;
 }

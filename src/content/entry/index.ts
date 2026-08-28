@@ -105,6 +105,8 @@ import { ShortsVolumeNormalizer } from '../pages/shorts/features/playback/volume
 window.YPP.FeatureManager.register(ShortsVolumeNormalizer);
 
 // --- src/content/pages/subscriptions/index.ts ---
+import { SubscriptionsBar } from '../pages/subscriptions/layout/subscriptions-bar.js';
+window.YPP.FeatureManager.register(SubscriptionsBar);
 import { ChannelHealth } from '../pages/subscriptions/features/channel-health/channel-health.js';
 window.YPP.FeatureManager.register(ChannelHealth);
 import { TwoColumnSubscriptions } from '../pages/subscriptions/features/grid-layout/two-column-subscriptions.js';

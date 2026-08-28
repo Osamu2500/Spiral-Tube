@@ -374,3 +374,26 @@ ytd-browse[page-subtype="subscriptions"] ytd-rich-section-renderer {
   display: none !important;
 }
 
+/* Custom Fixed Glassmorphic Bar below Topbar */
+#ypp-subscriptions-bar {
+  position: fixed;
+  top: var(--ytd-masthead-height, 56px);
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 2000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* Push down the content so it's not hidden behind the new fixed bar */
+ytd-browse[page-subtype="subscriptions"] #primary {
+  padding-top: 60px;
+}
+

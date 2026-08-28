@@ -1,10 +1,11 @@
-import '../../../../core/system/base-feature.js';
 /**
- * Channel Health
- * Displays a "Channel Health" button on the Subscriptions page to launch the dashboard.
+ * Channel Health Feature Setup
+ * Owns: Initializing the Channel Health Dashboard and injecting its launch button.
+ * Targets: Subscriptions page (#ypp-subscriptions-bar).
+ * Does not affect functionality outside the Channel Health feature.
  */
+import '../../../../core/system/base-feature.js';
 import { ChannelHealthUI } from './channel-health-ui.js';
-
 import './channel-health.css';
 
 export class ChannelHealth extends window.YPP.features.BaseFeature {
@@ -19,7 +20,7 @@ export class ChannelHealth extends window.YPP.features.BaseFeature {
         await super.enable();
         this.utils?.log('Starting Channel Health', 'ChannelHealth');
 
-        this.observer.register('channelHealthBtn', 'ytd-browse[page-subtype="subscriptions"] #title-container', () => {
+        this.observer.register('channelHealthBtn', '#ypp-subscriptions-bar', () => {
             this.injectButton();
         });
         this.observer.start();
@@ -37,7 +38,7 @@ export class ChannelHealth extends window.YPP.features.BaseFeature {
 
     injectButton() {
         if (document.getElementById('ypp-channel-health-btn')) return;
-        const container = document.querySelector('ytd-browse[page-subtype="subscriptions"] #title-container');
+        const container = document.getElementById('ypp-subscriptions-bar');
         if (!container) return;
 
         const btn = document.createElement('button');

@@ -1,6 +1,8 @@
 /**
  * Custom Dialog
- * Provides styled alert, confirm, and prompt modals that match the extension's UI.
+ * Owns: Styled alert, confirm, and prompt modals that match the extension's UI.
+ * Targets: Dynamic DOM overlay insertion.
+ * Does not affect functionality outside the scope of displaying a dialog.
  */
 export class CustomDialog {
     static featureId = 'customDialog';
