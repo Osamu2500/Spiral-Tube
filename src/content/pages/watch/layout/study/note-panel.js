@@ -18,18 +18,18 @@ export class NotePanel {
             top: 80px;
             height: calc(100vh - 120px);
             min-height: 500px;
-            background: rgba(25, 25, 30, 0.7);
-            backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(32px) saturate(180%);
+            -webkit-backdrop-filter: blur(32px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             z-index: 5000;
             display: flex;
             flex-direction: column;
             color: #fff;
             font-family: 'Inter', Roboto, sans-serif;
-            transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
         `;
 
         const header = document.createElement('div');

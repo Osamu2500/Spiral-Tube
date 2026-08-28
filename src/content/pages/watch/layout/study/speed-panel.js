@@ -45,20 +45,34 @@ export class SpeedPanel {
         panel.id = 'ypp-study-panel';
         panel.style.cssText = `
             position: absolute;
-            bottom: 50px;
-            right: 20px;
-            background: rgba(25, 25, 30, 0.7);
-            backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            bottom: 60px;
+            right: 24px;
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(32px) saturate(180%);
+            -webkit-backdrop-filter: blur(32px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             padding: 16px;
-            border-radius: 16px;
+            border-radius: 20px;
             z-index: 6000;
             width: 280px;
             color: #fff;
             font-family: 'Inter', Roboto, sans-serif;
+            animation: ypp-spring-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            will-change: transform, opacity;
         `;
+
+        if (!document.getElementById('ypp-study-keyframes')) {
+            const style = document.createElement('style');
+            style.id = 'ypp-study-keyframes';
+            style.textContent = `
+                @keyframes ypp-spring-up {
+                    0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+                    100% { opacity: 1; transform: translateY(0) scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
 
         const titleRow = document.createElement('div');
         titleRow.style.cssText = 'display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;';

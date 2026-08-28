@@ -34,17 +34,17 @@ function switchTab(document, tabId) {
                 if (animatableItems.length > 0) {
                     try {
                         animatableItems.forEach(el => {
-                            el.style.transform = 'translateX(-12px)';
+                            el.style.transform = 'translateY(16px)';
                             el.style.opacity = '0';
                         });
                         
                         window.anime({
                             targets: animatableItems,
-                            translateX: [ -12, 0 ],
+                            translateY: [ 16, 0 ],
                             opacity: [ 0, 1 ],
-                            delay: window.anime.stagger(40, { start: 100 }),
-                            easing: 'spring(1, 80, 10, 0)',
-                            duration: 600,
+                            delay: window.anime.stagger(30, { start: 50 }),
+                            easing: 'easeOutQuart',
+                            duration: 450,
                         });
                     } catch (e) {
                         console.error('Animation error:', e);

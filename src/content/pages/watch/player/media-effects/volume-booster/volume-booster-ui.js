@@ -141,8 +141,8 @@ export class VolumeBoosterUI {
                 </div>
             </div>
             <div style="display:flex; align-items:center;">
-                <button class="ypp-eq-link-btn" title="Auto-apply preset to this Channel" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.7);border-radius:12px;padding:2px 8px;font-size:10px;font-weight:700;cursor:pointer;margin-right:8px;transition:all 0.2s;">🔗</button>
-                <button class="ypp-eq-ab-btn${ctx._bypassed ? ' active' : ''}" title="Bypass All Effects" style="background:${ctx._bypassed ? 'rgba(255,65,108,0.3)' : 'rgba(255,255,255,0.06)'};border:1px solid rgba(255,255,255,0.09);color:${ctx._bypassed ? '#fff' : 'rgba(255,255,255,0.7)'};border-radius:12px;padding:2px 8px;font-size:10px;font-weight:700;cursor:pointer;margin-right:8px;transition:all 0.2s;">A/B</button>
+                <button class="ypp-eq-link-btn" title="Auto-apply preset to this Channel">🔗</button>
+                <button class="ypp-eq-ab-btn${ctx._bypassed ? ' active' : ''}" title="Bypass All Effects">A/B</button>
                 <button class="ypp-eq-close-btn" id="ypp-eq-close">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -203,8 +203,6 @@ export class VolumeBoosterUI {
             if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
             ctx.setBypass(!ctx._bypassed);
             abBtn.classList.toggle('active', ctx._bypassed);
-            abBtn.style.background = ctx._bypassed ? 'rgba(255,65,108,0.3)' : 'rgba(255,255,255,0.06)';
-            abBtn.style.color = ctx._bypassed ? '#fff' : 'rgba(255,255,255,0.7)';
             VolumeBoosterUI.saveVolumeSettings(ctx);
         };
 
@@ -226,13 +224,11 @@ export class VolumeBoosterUI {
             if (profiles[channel] === presetName) {
                 if (confirm(`Unlink preset "${presetName}" from channel "${channel}"?`)) {
                     delete profiles[channel];
-                    linkBtn.style.color = 'rgba(255,255,255,0.7)';
-                    linkBtn.style.background = 'rgba(255,255,255,0.06)';
+                    linkBtn.classList.remove('active');
                 } else return;
             } else {
                 profiles[channel] = presetName;
-                linkBtn.style.color = '#fff';
-                linkBtn.style.background = 'rgba(62,166,255,0.4)';
+                linkBtn.classList.add('active');
                 alert(`Successfully linked preset "${presetName}" to channel "${channel}"!\n\nThis preset will now auto-apply whenever you watch their videos.`);
             }
             
@@ -467,12 +463,29 @@ export class VolumeBoosterUI {
         const tabs = [tabEQ, tabDyn, tabSpa, tabFX];
         tabs.forEach((tab, i) => {
             tab.onclick = () => {
+                if (tab.classList.contains('active')) return;
                 tabs.forEach((t, j) => {
                     const active = i === j;
                     t.classList.toggle('active', active);
                     t.style.color = active ? '#fff' : 'rgba(255,255,255,0.45)';
                     t.style.borderBottom = `2px solid ${active ? 'rgba(255,255,255,0.7)' : 'transparent'}`;
-                    tabPanels[j].style.display = active ? '' : 'none';
+                    
+                    if (active) {
+                        tabPanels[j].style.display = '';
+                        if (typeof anime !== 'undefined') {
+                            const rows = Array.from(tabPanels[j].children);
+                            anime({
+                                targets: rows,
+                                opacity: [0, 1],
+                                translateY: [12, 0],
+                                delay: anime.stagger(40),
+                                duration: 400,
+                                easing: 'easeOutQuart'
+                            });
+                        }
+                    } else {
+                        tabPanels[j].style.display = 'none';
+                    }
                 });
             };
         });
@@ -561,6 +574,14 @@ export class VolumeBoosterUI {
         
         footer.appendChild(resetBtn);
         panel.appendChild(footer);
+
+        // -- Apply Double-Bezel Inner Core Wrapper --
+        const innerCore = document.createElement('div');
+        innerCore.className = 'ypp-eq-inner-core';
+        while (panel.firstChild) {
+            innerCore.appendChild(panel.firstChild);
+        }
+        panel.appendChild(innerCore);
 
         // Mount into the shared top-layer dialog portal
         if (isGlobalBar) {

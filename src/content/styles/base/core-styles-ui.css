@@ -177,3 +177,85 @@ html[data-ypp-theme="default"].ypp-theme-effects::before,
 html[data-ypp-theme="default"].ypp-theme-effects::after {
     display: none; 
 }
+
+/* ===================================================================================
+   AGENCY-GRADE PREMIUM UI OVERRIDES (V2 Phase)
+   Ethereal Glass, Double Bezel, and Spring Physics for YouTube Native UI
+   =================================================================================== */
+
+/* ── Custom Spring Physics Easing ── */
+:root {
+    --ypp-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ypp-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── 1. Masthead & Search (Pill-shaped Glass) ── */
+html.yt-spiral-tube-theme #masthead-container {
+    background: rgba(15, 15, 15, 0.7) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+}
+
+html.yt-spiral-tube-theme ytd-searchbox {
+    --ytd-searchbox-background: rgba(255, 255, 255, 0.04) !important;
+    --ytd-searchbox-legacy-border-color: rgba(255, 255, 255, 0.08) !important;
+    --ytd-searchbox-legacy-border-radius: 24px !important;
+    transition: all 0.3s var(--ypp-spring) !important;
+}
+
+html.yt-spiral-tube-theme ytd-searchbox:focus-within {
+    --ytd-searchbox-background: rgba(255, 255, 255, 0.08) !important;
+    --ytd-searchbox-legacy-border-color: var(--ypp-accent-primary, #6366f1) !important;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 20%, transparent);
+}
+
+/* ── 2. Sidebar (Double-Bezel) ── */
+html.yt-spiral-tube-theme #guide-inner-content {
+    background: rgba(10, 10, 12, 0.6) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.02);
+}
+
+/* ── 3. Video Player Controls (Ethereal Glass) ── */
+html.yt-spiral-tube-theme .ytp-chrome-bottom {
+    background: linear-gradient(to top, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.4) 60%, transparent 100%) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    padding-bottom: 8px !important;
+    border-radius: 0 0 12px 12px;
+}
+
+html.yt-spiral-tube-theme .ytp-popup {
+    background: rgba(15, 15, 15, 0.75) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ── 4. Video Thumbnails (Spring Physics) ── */
+html.yt-spiral-tube-theme ytd-rich-item-renderer,
+html.yt-spiral-tube-theme ytd-compact-video-renderer {
+    transition: transform 0.4s var(--ypp-spring) !important;
+    will-change: transform;
+}
+
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-compact-video-renderer:hover {
+    transform: translateY(-4px) scale(1.015);
+}
+
+html.yt-spiral-tube-theme ytd-thumbnail {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.4s var(--ypp-spring) !important;
+}
+
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-thumbnail,
+html.yt-spiral-tube-theme ytd-compact-video-renderer:hover ytd-thumbnail {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
