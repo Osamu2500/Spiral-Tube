@@ -158,13 +158,19 @@ export const AudioFXMixin = {
             this._fxNodes = [lp, lfo, lfoGain];
             
         } else if (effectName === 'vinyl') {
-            // Vinyl Lo-Fi (Bandpass + Crackle + Hum + Saturation + Wobble)
-            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2500; bp.Q.value = 0.5;
-            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(15);
-            const chorus = this._createChorus(ws, 0.33, 0.002, 1.0); // 100% wet for tape wobble
+            // Leveled Up Vinyl Lo-Fi (Bandpass + Crackle + Hum + Saturation + Wow/Flutter)
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2200; bp.Q.value = 0.8;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(18);
             
-            const crackleGain = this.ctx.createGain(); crackleGain.gain.value = 0.15;
-            const humGain = this.ctx.createGain(); humGain.gain.value = 0.05;
+            // Wow and flutter using delay modulated by an LFO
+            const wowDelay = this.ctx.createDelay(); wowDelay.delayTime.value = 0.03;
+            const wowLfo = this.ctx.createOscillator(); wowLfo.type = 'sine'; wowLfo.frequency.value = 0.33; // 33 RPM
+            const wowGain = this.ctx.createGain(); wowGain.gain.value = 0.002;
+            wowLfo.connect(wowGain); wowGain.connect(wowDelay.delayTime);
+            wowLfo.start();
+            
+            const crackleGain = this.ctx.createGain(); crackleGain.gain.value = 0.18;
+            const humGain = this.ctx.createGain(); humGain.gain.value = 0.08;
             
             let crackleSrc = null, humSrc = null;
             try {
@@ -175,29 +181,32 @@ export const AudioFXMixin = {
                 humSrc.loop = true; humSrc.connect(humGain); humSrc.start();
             } catch(e) {}
             
-            this.fxInput.connect(bp); bp.connect(ws);
-            chorus.output.connect(this.fxOutput);
+            this.fxInput.connect(bp); bp.connect(ws); ws.connect(wowDelay);
+            wowDelay.connect(this.fxOutput);
             crackleGain.connect(this.fxOutput); humGain.connect(this.fxOutput);
             
-            this._fxNodes = [bp, ws, crackleGain, humGain, ...chorus.nodes];
+            this._fxNodes = [bp, ws, wowDelay, wowLfo, wowGain, crackleGain, humGain];
             if (crackleSrc) this._fxNodes.push(crackleSrc);
             if (humSrc) this._fxNodes.push(humSrc);
             
         } else if (effectName === 'adam') {
-            // "Adam" AI Narrator (EQ + Presence + Multiband Comp + Chorus thickness)
-            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 85;
-            const boost = this.ctx.createBiquadFilter(); boost.type = 'lowshelf'; boost.frequency.value = 200; boost.gain.value = 4.0;
-            const presence = this.ctx.createBiquadFilter(); presence.type = 'peaking'; presence.frequency.value = 3500; presence.Q.value = 1.0; presence.gain.value = 4.0;
-            const chorus = this._createChorus(presence, 1.2, 0.003, 0.3); // Slight AI robotic thickness
+            // Leveled Up "Adam" AI Narrator (Broadcast EQ + Exciter + Aggressive Comp + Saturation)
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 90;
+            const lowshelf = this.ctx.createBiquadFilter(); lowshelf.type = 'lowshelf'; lowshelf.frequency.value = 150; lowshelf.gain.value = 5.0;
+            const dip = this.ctx.createBiquadFilter(); dip.type = 'peaking'; dip.frequency.value = 500; dip.Q.value = 1.2; dip.gain.value = -3.0;
+            const presence = this.ctx.createBiquadFilter(); presence.type = 'highshelf'; presence.frequency.value = 4000; presence.gain.value = 6.0;
+            
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(10);
+            const chorus = this._createChorus(presence, 1.5, 0.002, 0.2); 
             
             const comp = this.ctx.createDynamicsCompressor();
-            comp.threshold.value = -35; comp.ratio.value = 6; comp.attack.value = 0.005; comp.release.value = 0.1;
-            const makeup = this.ctx.createGain(); makeup.gain.value = 3.0; // Makeup gain
+            comp.threshold.value = -40; comp.ratio.value = 8; comp.attack.value = 0.002; comp.release.value = 0.15;
+            const makeup = this.ctx.createGain(); makeup.gain.value = 4.5;
             
-            this.fxInput.connect(hp); hp.connect(boost); boost.connect(presence);
-            chorus.output.connect(comp); comp.connect(makeup); makeup.connect(this.fxOutput);
+            this.fxInput.connect(hp); hp.connect(lowshelf); lowshelf.connect(dip); dip.connect(presence);
+            chorus.output.connect(ws); ws.connect(comp); comp.connect(makeup); makeup.connect(this.fxOutput);
             
-            this._fxNodes = [hp, boost, presence, comp, makeup, ...chorus.nodes];
+            this._fxNodes = [hp, lowshelf, dip, presence, ws, comp, makeup, ...chorus.nodes];
             
         } else if (effectName === 'chipmunk') {
             // Faux Chipmunk (Highpass + Saturation)
@@ -336,6 +345,57 @@ export const AudioFXMixin = {
             
             this._fxNodes = [bp, ws, noiseGain];
             if (noiseSrc) this._fxNodes.push(noiseSrc);
+            
+        } else if (effectName === 'stadium') {
+            // Stadium Announcer (Loud, massive slapback echo + reverb)
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'peaking'; bp.frequency.value = 3000; bp.Q.value = 1.0; bp.gain.value = 5.0;
+            const delay1 = this.ctx.createDelay(); delay1.delayTime.value = 0.12;
+            const fb1 = this.ctx.createGain(); fb1.gain.value = 0.4;
+            const delay2 = this.ctx.createDelay(); delay2.delayTime.value = 0.25;
+            const fb2 = this.ctx.createGain(); fb2.gain.value = 0.3;
+            
+            this.fxInput.connect(bp); bp.connect(this.fxOutput);
+            bp.connect(delay1); delay1.connect(fb1); fb1.connect(delay1); delay1.connect(this.fxOutput);
+            bp.connect(delay2); delay2.connect(fb2); fb2.connect(delay2); delay2.connect(this.fxOutput);
+            
+            this._fxNodes = [bp, delay1, fb1, delay2, fb2];
+            
+        } else if (effectName === 'alien') {
+            // Alien Overlord (Slow RingMod + Deep Flanger/Chorus)
+            const rm = this._createRingMod(this.fxInput, 15, 0.9);
+            const chorus = this._createChorus(rm.output, 0.5, 0.005, 0.7);
+            const eq = this.ctx.createBiquadFilter(); eq.type = 'lowpass'; eq.frequency.value = 1200;
+            
+            chorus.output.connect(eq); eq.connect(this.fxOutput);
+            
+            this._fxNodes = [...rm.nodes, ...chorus.nodes, eq];
+            
+        } else if (effectName === 'dream') {
+            // Lucid Dream (Heavy chorus + long blurred delay + lowpass)
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1500;
+            const chorus = this._createChorus(this.fxInput, 0.2, 0.008, 0.8);
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.4;
+            const fb = this.ctx.createGain(); fb.gain.value = 0.6;
+            
+            chorus.output.connect(lp);
+            lp.connect(this.fxOutput);
+            lp.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(this.fxOutput);
+            
+            this._fxNodes = [...chorus.nodes, lp, delay, fb];
+            
+        } else if (effectName === 'cyberpunk') {
+            // Cyberpunk Synth (Bitcrush + syncopated delays + robotic EQ)
+            const bc = this.ctx.createWaveShaper(); bc.curve = this._makeBitcrushCurve(6);
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2500; bp.Q.value = 3.0;
+            
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.125;
+            const fb = this.ctx.createGain(); fb.gain.value = 0.4;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(40);
+            
+            this.fxInput.connect(bc); bc.connect(bp); bp.connect(this.fxOutput);
+            bp.connect(delay); delay.connect(fb); fb.connect(ws); ws.connect(delay); delay.connect(this.fxOutput);
+            
+            this._fxNodes = [bc, bp, delay, fb, ws];
             
         } else {
             // None

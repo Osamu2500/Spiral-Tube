@@ -165,8 +165,7 @@ import { IntentionalDelay } from '../pages/watch/player/enhancements/intentional
 window.YPP.FeatureManager.register(IntentionalDelay);
 import { VideoSpeedController } from '../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js';
 window.YPP.FeatureManager.register(VideoSpeedController);
-import { AudioEQ } from '../pages/watch/player/media-effects/audio-eq.js';
-window.YPP.FeatureManager.register(AudioEQ);
+
 import { AutoSubtitles } from '../pages/watch/player/automation/auto-subtitles/auto-subtitles.js';
 AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
@@ -181,14 +180,7 @@ import { VSCForceSpeed } from '../pages/watch/player/enhancements/video-speed-co
 window.YPP.FeatureManager.register(VSCForceSpeed);
 import { VSCRememberSpeed } from '../pages/watch/player/enhancements/video-speed-controller/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
-import '../pages/watch/player/media-effects/video-filters/video-filters-presets.js';
-import '../pages/watch/player/media-effects/video-filters/video-filters-overlay.js';
-import '../pages/watch/player/media-effects/video-filters/video-filters-ui.js';
-import { VideoFilters } from '../pages/watch/player/media-effects/video-filters/video-filters.js';
-window.YPP.FeatureManager.register(VideoFilters);
-import '../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js';
-import { VolumeBooster } from '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
-window.YPP.FeatureManager.register(VolumeBooster);
+
 import '../pages/watch/player/domain-memory-ui.js';
 import { DomainMemory } from '../pages/watch/player/domain-memory.js';
 window.YPP.FeatureManager.register(DomainMemory);
@@ -268,11 +260,14 @@ window.YPP.FeatureManager.register(GlobalPlayerBar);
 import '../pages/watch/player/media-effects/video-filters/video-filters-presets.js';
 import '../pages/watch/player/media-effects/video-filters/video-filters-ui.js';
 import '../pages/watch/player/media-effects/video-filters/video-filters-overlay.js';
-import '../pages/watch/player/media-effects/video-filters/video-filters.js';
+import { VideoFilters } from '../pages/watch/player/media-effects/video-filters/video-filters.js';
+window.YPP.FeatureManager.register(VideoFilters);
+import '../pages/watch/player/media-effects/video-filters/video-filters.css';
 
 // --- src/content/pages/watch/player/media-effects/volume-booster/index.js ---
 import '../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js';
-import '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
+import { VolumeBooster } from '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
+window.YPP.FeatureManager.register(VolumeBooster);
 
 
 // Main entry

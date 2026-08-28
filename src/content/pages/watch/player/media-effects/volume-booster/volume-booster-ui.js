@@ -1,8 +1,9 @@
 import anime from 'animejs/lib/anime.es.js';
 
-
-
-
+import { EQTabUI } from './ui/tab-eq.js';
+import { DynamicsTabUI } from './ui/tab-dynamics.js';
+import { SpatialTabUI } from './ui/tab-spatial.js';
+import { FXTabUI } from './ui/tab-fx.js';
 export class VolumeBoosterUI {
     static featureId = 'volumeBoosterUI';
     static executionPhase = 'idle';
@@ -83,7 +84,6 @@ export class VolumeBoosterUI {
         // Force clean up before building a new one
         document.querySelectorAll('#ypp-eq-panel').forEach(e => e.remove());
 
-        this.injectEQStyles();
         if (anchorBtn && anchorBtn.classList) anchorBtn.classList.add('active');
 
         const panel = document.createElement('div');
@@ -334,7 +334,7 @@ export class VolumeBoosterUI {
         const tabDyn = mkTab('Dynamics', false);
         const tabSpa = mkTab('Spatial', false);
         const tabFX = mkTab('Voices FX', false);
-        tabBar.append(tabEQ, tabDyn, tabSpa);
+        tabBar.append(tabEQ, tabDyn, tabSpa, tabFX);
         panel.appendChild(tabBar);
 
         // ── Presets ──
@@ -477,46 +477,10 @@ export class VolumeBoosterUI {
             };
         });
 
-// ── Original Footer: Compressor toggle + Reset + Hint ──
+// ── Shared Footer ──
         const footer = document.createElement('div');
         footer.className = 'ypp-eq-footer';
-
-        const compBtn = document.createElement('button');
-        compBtn.className = 'ypp-eq-comp-btn' + (ctx._compressorEnabled ? ' active' : '');
-        compBtn.innerHTML = `
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-            </svg>
-            Compressor
-        `;
-        compBtn.onclick = () => {
-            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-            ctx._compressorEnabled = !ctx._compressorEnabled;
-            compBtn.classList.toggle('active', ctx._compressorEnabled);
-            if (ctx.compressorNode) {
-                // Bypass by setting neutral values rather than re-routing
-                ctx.compressorNode.ratio.value = ctx._compressorEnabled ? 4 : 1;
-                ctx.compressorNode.threshold.value = ctx._compressorEnabled ? -24 : 0;
-            }
-            clearActivePreset();
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-        };
-
-        const monoBtn = document.createElement('button');
-        monoBtn.className = 'ypp-eq-comp-btn' + (ctx._monoEnabled ? ' active' : '');
-        monoBtn.innerHTML = `
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-2-10h4v6h-4z"/>
-            </svg>
-            Mono
-        `;
-        monoBtn.onclick = () => {
-            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-            ctx.setMono(!ctx._monoEnabled);
-            monoBtn.classList.toggle('active', ctx._monoEnabled);
-            clearActivePreset();
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-        };
+        footer.style.justifyContent = 'flex-end'; // Align reset button to the right
 
         const resetBtn = document.createElement('button');
         resetBtn.className = 'ypp-eq-reset-btn';
@@ -548,74 +512,54 @@ export class VolumeBoosterUI {
             this.syncBandUI(ctx, panel, uiState.canvasEl);
 
             // Update UI Elements
-            gainSlider.value = 1.0;
-            gainValue.textContent = '100%';
-            this.updateGainTrack(gainSlider);
-            anchorBtn.classList.remove('active');
+            if (typeof gainSlider !== 'undefined') {
+                gainSlider.value = 1.0;
+                if (typeof gainValue !== 'undefined') gainValue.textContent = '100%';
+                this.updateGainTrack(gainSlider);
+            }
+            if (anchorBtn && anchorBtn.classList) anchorBtn.classList.remove('active');
 
-            balanceSlider.value = 0;
-            balanceValue.textContent = 'C';
-            this.updateBalanceTrack(balanceSlider);
+            if (typeof balanceSlider !== 'undefined') {
+                balanceSlider.value = 0;
+                if (typeof balanceValue !== 'undefined') balanceValue.textContent = 'C';
+                this.updateBalanceTrack(balanceSlider);
+            }
 
             const sRow = document.querySelector('#ypp-eq-tab-spa');
-if (sRow) {
-  const ranges = sRow.querySelectorAll('.ypp-eq-hslider');
-  if(ranges[0]) { ranges[0].value = 100; ranges[0].nextElementSibling.textContent = '100%'; }
-  if(ranges[1]) { ranges[1].value = 0; ranges[1].nextElementSibling.textContent = '0%'; }
-  if(ranges[2]) { ranges[2].value = 1.0; ranges[2].nextElementSibling.textContent = '1x'; }
-  if(ranges[3]) { ranges[3].value = 0; ranges[3].nextElementSibling.textContent = '0%'; }
-}
-            
-            
-            
-            
-            const sRow2 = document.querySelector('#ypp-eq-tab-spa');
-            if (sRow2) {
-                const btns = sRow2.querySelectorAll('.ypp-eq-preset-btn');
+            if (sRow) {
+                const ranges = sRow.querySelectorAll('.ypp-eq-hslider');
+                if(ranges[0]) { ranges[0].value = 100; ranges[0].nextElementSibling.textContent = '100%'; }
+                if(ranges[1]) { ranges[1].value = 0; ranges[1].nextElementSibling.textContent = '0%'; }
+                if(ranges[2]) { ranges[2].value = 1.0; ranges[2].nextElementSibling.textContent = '1x'; }
+                if(ranges[3]) { ranges[3].value = 0; ranges[3].nextElementSibling.textContent = '0%'; }
+                
+                const btns = sRow.querySelectorAll('.ypp-eq-preset-btn');
                 btns.forEach(b => b.classList.remove('active'));
                 const nb = Array.from(btns).find(b => b.textContent === 'None');
                 if (nb) nb.classList.add('active');
                 
-                const compBtns = sRow2.querySelectorAll('.ypp-eq-comp-btn');
+                const compBtns = sRow.querySelectorAll('.ypp-eq-comp-btn');
                 compBtns.forEach(b => b.classList.remove('active'));
             }
 
-            compBtn.classList.add('active');
-            monoBtn.classList.remove('active');
-            if (typeof vinylBtn !== 'undefined') vinylBtn.classList.remove('active');
-            
-            
             const dRow = document.querySelector('#ypp-eq-tab-dyn');
             if (dRow) {
                 const ag = dRow.querySelector('.ypp-eq-comp-btn');
                 if (ag) { ag.classList.remove('active'); ag.textContent = 'OFF'; }
             }
 
-            if (activePresetBtn) activePresetBtn.classList.remove('active');
-            const flatPreset = presetsRow.querySelector('.ypp-eq-preset-btn');
-            if (flatPreset) flatPreset.classList.add('active');
-            activePresetBtn = flatPreset;
+            if (typeof activePresetBtn !== 'undefined' && activePresetBtn) {
+                activePresetBtn.classList.remove('active');
+            }
+            if (typeof presetsRow !== 'undefined' && presetsRow) {
+                const flatPreset = presetsRow.querySelector('.ypp-eq-preset-btn');
+                if (flatPreset) flatPreset.classList.add('active');
+                if (typeof activePresetBtn !== 'undefined') activePresetBtn = flatPreset;
+            }
             VolumeBoosterUI.saveVolumeSettings(ctx);
         };
-
-        const vinylBtn = document.createElement('button');
-        vinylBtn.className = 'ypp-eq-comp-btn' + (ctx._vinylMode ? ' active' : '');
-        vinylBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">' +
-                             '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="#111"/>' +
-                             '</svg> Vinyl';
-        vinylBtn.onclick = () => {
-            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-            ctx.setVinylMode(!ctx._vinylMode);
-            vinylBtn.classList.toggle('active', ctx._vinylMode);
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-        };
-
-        const buttonsWrap = document.createElement('div');
-        buttonsWrap.style.display = 'flex';
-        buttonsWrap.style.gap = '8px';
-        buttonsWrap.append(compBtn, monoBtn, vinylBtn);
         
-        footer.append(buttonsWrap, resetBtn);
+        footer.appendChild(resetBtn);
         panel.appendChild(footer);
 
         // Mount into the shared top-layer dialog portal

@@ -32,7 +32,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
             if (!document.getElementById(scriptId)) {
                 const script = document.createElement('script');
                 script.id = scriptId;
-                script.src = chrome.runtime.getURL('src/content/pages/watch/player/enhancements/vsc-page-script.js');
+                script.src = chrome.runtime.getURL('src/content/pages/watch/player/enhancements/video-speed-controller/vsc-page-script.js');
                 (document.head || document.documentElement).appendChild(script);
             }
         }

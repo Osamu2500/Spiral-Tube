@@ -15,23 +15,27 @@ export class FXTabUI {
         grid.className = 'ypp-eq-fx-grid';
         
         const effects = [
-            { id: 'none', label: 'None (Bypass)' },
-            { id: 'adam', label: 'Adam (TikTok)' },
-            { id: 'vinyl', label: 'Vinyl Lo-Fi' },
-            { id: 'radio', label: 'Megaphone' },
-            { id: 'underwater', label: 'Underwater' },
-            { id: 'chipmunk', label: 'High Pitch' },
-            { id: 'deep', label: 'Deep Voice' },
-            { id: 'demonic', label: 'Demonic' },
-            { id: 'ethereal', label: 'Ethereal' },
-            { id: 'telephone', label: 'Telephone' },
-            { id: 'vader', label: 'Darth Vader' },
-            { id: 'robot', label: 'Robot (Dalek)' },
-            { id: 'astronaut', label: 'Astronaut' },
-            { id: '8bit', label: '8-Bit Retro' },
-            { id: 'cathedral', label: 'Cathedral' },
-            { id: 'witness', label: 'Witness Protection' },
-            { id: 'tv_static', label: 'TV Static' }
+            { id: 'none', label: '🚫 None (Bypass)' },
+            { id: 'adam', label: '🗣️ Adam (TikTok)' },
+            { id: 'vinyl', label: '📻 Vinyl Lo-Fi' },
+            { id: 'radio', label: '📣 Megaphone' },
+            { id: 'underwater', label: '🫧 Underwater' },
+            { id: 'chipmunk', label: '🐿️ High Pitch' },
+            { id: 'deep', label: '👹 Deep Voice' },
+            { id: 'demonic', label: '👿 Demonic' },
+            { id: 'ethereal', label: '✨ Ethereal' },
+            { id: 'telephone', label: '☎️ Telephone' },
+            { id: 'vader', label: '🌌 Darth Vader' },
+            { id: 'robot', label: '🤖 Robot (Dalek)' },
+            { id: 'astronaut', label: '🧑‍🚀 Astronaut' },
+            { id: '8bit', label: '👾 8-Bit Retro' },
+            { id: 'cathedral', label: '⛪ Cathedral' },
+            { id: 'witness', label: '🕵️ Witness Protection' },
+            { id: 'tv_static', label: '📺 TV Static' },
+            { id: 'stadium', label: '🏟️ Stadium Announcer' },
+            { id: 'alien', label: '👽 Alien Overlord' },
+            { id: 'dream', label: '☁️ Lucid Dream' },
+            { id: 'cyberpunk', label: '🌆 Cyberpunk' }
         ];
         
         let activeBtn = null;
