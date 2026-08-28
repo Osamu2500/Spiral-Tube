@@ -13,55 +13,6 @@ export const getDeclutterTab = (t) => ({
         items: [
           {
             type: 'toggle',
-            id: 'hideMemberships',
-            label: t('hide_memberships'),
-            desc: t('hide_memberships_desc'),
-            icon: ICONS.memberships,
-          },
-          {
-            type: 'toggle',
-            id: 'headerNavEnabled',
-            label: 'Header Navigation',
-            desc: 'Pin and customize top nav bar',
-            icon: ICONS.sidebar,
-          },
-          {
-            type: 'toggle',
-            id: 'hideClickbaitEnabled',
-            label: 'Hide Clickbait',
-            desc: 'Hide overly sensational titles/thumbnails',
-            icon: ICONS.hide,
-          },
-          {
-            type: 'toggle',
-            id: 'channelBlacklistEnabled',
-            label: 'Channel Blacklist',
-            desc: 'Block specific channels from appearing',
-            icon: ICONS.hide,
-          },
-          {
-            type: 'toggle',
-            id: 'channelWhitelistEnabled',
-            label: 'Channel Whitelist',
-            desc: 'Only allow specific channels to appear',
-            icon: ICONS.check,
-          },
-          {
-            type: 'toggle',
-            id: 'feedFilter',
-            label: 'Keyword Feed Filter',
-            desc: 'Hide videos matching blocked keywords',
-            icon: ICONS.cleanSearch,
-          },
-          {
-            type: 'toggle',
-            id: 'hideMembersOnly',
-            label: t('hide_members_only'),
-            desc: t('hide_members_only_desc'),
-            icon: ICONS.memberships,
-          },
-          {
-            type: 'toggle',
             id: 'hideFeed',
             label: t('hide_homepage_feed'),
             desc: t('blank_homepage'),
@@ -80,34 +31,7 @@ export const getDeclutterTab = (t) => ({
             label: t('hide_trending_explore'),
             icon: ICONS.explore,
           },
-          {
-            type: 'toggle',
-            id: 'hideMixes',
-            label: t('hide_mixes'),
-            desc: t('remove_infinite_mixes'),
-            icon: ICONS.mixes,
-          },
-          {
-            type: 'toggle',
-            id: 'hidePlaylists',
-            label: t('hide_playlists'),
-            desc: t('remove_playlist_cards'),
-            icon: ICONS.playlists,
-          },
-          {
-            type: 'toggle',
-            id: 'hidePodcasts',
-            label: t('hide_podcasts'),
-            desc: t('remove_podcast_cards'),
-            icon: ICONS.podcasts,
-          },
-          {
-            type: 'toggle',
-            id: 'hidePosts',
-            label: t('hide_posts'),
-            desc: t('remove_community_posts'),
-            icon: ICONS.uiComponents,
-          },
+
           {
             type: 'toggle',
             id: 'hidePromoShelves',
@@ -132,6 +56,13 @@ export const getDeclutterTab = (t) => ({
               { value: 'hide', label: t('hide_completely') },
               { value: 'dim', label: t('dim_hover_to_reveal') },
             ],
+          },
+          {
+            type: 'toggle',
+            id: 'hideClickbaitEnabled',
+            label: 'Hide Clickbait',
+            desc: 'Hide overly sensational titles/thumbnails',
+            icon: ICONS.hide,
           },
           {
             type: 'toggle',
@@ -323,20 +254,6 @@ export const getDeclutterTab = (t) => ({
           },
           {
             type: 'toggle',
-            id: 'hideVoiceSearch',
-            label: t('hide_voice_search'),
-            desc: t('remove_microphone_icon'),
-            icon: ICONS.voiceSearch,
-          },
-          {
-            type: 'toggle',
-            id: 'hideUploadButton',
-            label: t('hide_upload_button'),
-            desc: t('remove_upload_icon'),
-            icon: ICONS.uploadBtn,
-          },
-          {
-            type: 'toggle',
             id: 'hideSearchMixes',
             label: t('hide_mixes'),
             desc: t('remove_infinite_mixes'),
@@ -366,10 +283,23 @@ export const getDeclutterTab = (t) => ({
         ],
       },
       {
-        title: 'Global',
+        title: 'Global UI Cleanups',
         icon: ICONS.filter,
         items: [
-          // ── Single-tile items first ──────────────────────────────────────────
+          {
+            type: 'toggle',
+            id: 'hideVoiceSearch',
+            label: t('hide_voice_search'),
+            desc: t('remove_microphone_icon'),
+            icon: ICONS.voiceSearch,
+          },
+          {
+            type: 'toggle',
+            id: 'hideUploadButton',
+            label: t('hide_upload_button'),
+            desc: t('remove_upload_icon'),
+            icon: ICONS.uploadBtn,
+          },
           {
             type: 'toggle',
             id: 'hideThumbnails',
@@ -393,6 +323,20 @@ export const getDeclutterTab = (t) => ({
           },
           {
             type: 'toggle',
+            id: 'hideMemberships',
+            label: t('hide_memberships'),
+            desc: t('hide_memberships_desc'),
+            icon: ICONS.memberships,
+          },
+          {
+            type: 'toggle',
+            id: 'hideMembersOnly',
+            label: t('hide_members_only'),
+            desc: t('hide_members_only_desc'),
+            icon: ICONS.memberships,
+          },
+          {
+            type: 'toggle',
             id: 'hideUselessGuideLinks',
             label: t('hide_useless_guide_links'),
             desc: t('hide_useless_guide_links_desc'),
@@ -400,7 +344,21 @@ export const getDeclutterTab = (t) => ({
           },
           {
             type: 'toggle',
+            id: 'cleanMixUrls',
+            label: t('clean_mix_urls'),
+            desc: t('prevent_mix_auto_play'),
+            icon: ICONS.cleanMixUrls,
+          },
+        ],
+      },
+      {
+        title: 'Global Content Filters',
+        icon: ICONS.playlists,
+        items: [
+          {
+            type: 'toggle',
             id: 'hideLiveStreams',
+            class: 'span-2',
             label: 'Hide Live Streams',
             desc: 'Remove live-streaming videos from all feeds',
             icon: P(
@@ -410,6 +368,7 @@ export const getDeclutterTab = (t) => ({
           {
             type: 'toggle',
             id: 'hideUpcoming',
+            class: 'span-2',
             label: 'Hide Upcoming & Premieres',
             desc: 'Remove scheduled and premiere videos from feeds',
             icon: P(
@@ -418,37 +377,56 @@ export const getDeclutterTab = (t) => ({
           },
           {
             type: 'toggle',
-            id: 'hidePlaylists',
-            label: 'Hide Playlists',
-            desc: 'Remove Playlists from feeds and search results',
-            icon: ICONS.playlists,
-          },
-          {
-            type: 'toggle',
-            id: 'hideMixes',
-            label: 'Hide Mixes',
-            desc: 'Remove infinite YouTube Mix playlists everywhere',
-            icon: ICONS.mixes,
-          },
-          {
-            type: 'toggle',
-            id: 'cleanMixUrls',
-            label: t('clean_mix_urls'),
-            desc: t('prevent_mix_auto_play'),
-            icon: ICONS.cleanMixUrls,
-          },
-          {
-            type: 'toggle',
-            id: 'feedFilterKeywords',
-            class: 'span-2',
+            id: 'feedFilter',
+            class: 'span-4',
             label: 'Filter by Keywords',
             desc: 'Hide videos containing specific words (comma separated)',
             icon: ICONS.search,
             inlineSlot:
-              '<div style="display:flex; flex-grow:1; max-width:50%; margin-left:auto;"><input type="text" id="feedFilterKeywordsInput" placeholder="e.g. spoiler, review, unboxing" style="width:100%; padding:6px 10px; border-radius:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:12px; outline:none;"><input type="hidden" id="feedFilterKeywords" value="" /></div>',
+              '<div style="display:flex; width:100%; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><input type="text" id="feedFilterKeywords" placeholder="e.g. spoiler, review, unboxing" style="flex:1; padding:8px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:12px; outline:none;" /></div>',
           },
-
-          // ── Full-width filter items (span-4) ─────────────────────────────────
+          {
+            type: 'toggle',
+            id: 'hidePlaylists',
+            class: 'span-2 custom-flex-card',
+            label: 'Hide Playlists',
+            desc: 'Remove Playlists from feeds and search results',
+            icon: ICONS.playlists,
+            inlineSlot: '<style>.custom-flex-card .name { display: flex !important; width:100%; align-items:center; } .custom-flex-card .name > span { flex: 1; display: flex; }</style><div style="display:flex; align-items:center; flex:1; justify-content:space-between; margin-left:12px; margin-right:8px; gap:4px;"><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="home" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Home</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="channel" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Ch</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="subs" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Subs</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="search" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Srch</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="related" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Rel</button></div>',
+          },
+          {
+            type: 'toggle',
+            id: 'hideMixes',
+            class: 'span-2 custom-flex-card',
+            label: 'Hide Mixes',
+            desc: 'Remove infinite YouTube Mix playlists everywhere',
+            icon: ICONS.mixes,
+            inlineSlot: '<style>.custom-flex-card .name { display: flex !important; width:100%; align-items:center; } .custom-flex-card .name > span { flex: 1; display: flex; }</style><div style="display:flex; align-items:center; flex:1; justify-content:space-between; margin-left:12px; margin-right:8px; gap:4px;"><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="home" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Home</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="channel" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Ch</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="subs" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Subs</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="search" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Srch</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="related" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Rel</button></div>',
+          },
+          {
+            type: 'toggle',
+            id: 'hidePodcasts',
+            class: 'span-2 custom-flex-card',
+            label: t('hide_podcasts'),
+            desc: t('remove_podcast_cards'),
+            icon: ICONS.podcasts,
+            inlineSlot: '<style>.custom-flex-card .name { display: flex !important; width:100%; align-items:center; } .custom-flex-card .name > span { flex: 1; display: flex; }</style><div style="display:flex; align-items:center; flex:1; justify-content:space-between; margin-left:12px; margin-right:8px; gap:4px;"><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="home" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Home</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="channel" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Ch</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="subs" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Subs</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="search" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Srch</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="related" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Rel</button></div>',
+          },
+          {
+            type: 'toggle',
+            id: 'hidePosts',
+            class: 'span-2 custom-flex-card',
+            label: t('hide_posts'),
+            desc: t('remove_community_posts'),
+            icon: ICONS.uiComponents,
+            inlineSlot: '<style>.custom-flex-card .name { display: flex !important; width:100%; align-items:center; } .custom-flex-card .name > span { flex: 1; display: flex; }</style><div style="display:flex; align-items:center; flex:1; justify-content:space-between; margin-left:12px; margin-right:8px; gap:4px;"><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="home" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Home</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="channel" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Ch</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="subs" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Subs</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="search" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Srch</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="related" style="flex:1; font-size:9px; padding:4px 0; border-radius:4px; cursor:pointer; transition:all 0.2s; text-align:center;">Rel</button></div>',
+          },
+        ],
+      },
+      {
+        title: 'Advanced Smart Filters',
+        icon: ICONS.search,
+        items: [
           {
             type: 'toggle',
             id: 'hideWatched',
@@ -457,10 +435,9 @@ export const getDeclutterTab = (t) => ({
             desc: t('auto_hide_watched_videos'),
             icon: ICONS.watched,
             inlineSlot:
-              '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5" style="width:100px;"><span id="hideWatchedThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">80%</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="hideWatchedMode" value="dim" />',
+              '<div style="display:flex; align-items:center; width:100%; gap:16px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:12px; width:45%; max-width:250px;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; flex:1;"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5" style="flex:1; min-width:0;"><span id="hideWatchedThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">80%</span></div></div><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="font-size:11px; opacity:0.6; font-weight:500; min-width:40px;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:8px;"><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div></div><input type="hidden" id="hideWatchedMode" value="dim" />',
             slot: '',
           },
-
           {
             type: 'toggle',
             id: 'aggressiveShortsBlock',
@@ -469,9 +446,8 @@ export const getDeclutterTab = (t) => ({
             desc: 'Completely nuke all Shorts, reels, and shelves',
             icon: ICONS.promos,
             inlineSlot:
-              '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div>',
+              '<div style="display:flex; align-items:center; width:100%; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="font-size:11px; opacity:0.6; font-weight:500; min-width:40px;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:8px;"><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="home" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="channel" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="subs" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="search" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="related" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div></div>',
           },
-
           {
             type: 'toggle',
             id: 'viewsFilterEnabled',
@@ -482,9 +458,8 @@ export const getDeclutterTab = (t) => ({
               'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'
             ),
             inlineSlot:
-              '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1" style="width:100px;"><span id="viewsHideThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">Off</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="viewsHideThreshold" value="0" />',
+              '<div style="display:flex; align-items:center; width:100%; gap:16px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:12px; width:30%; max-width:180px;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; flex:1;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1" style="flex:1; min-width:0;"><span id="viewsHideThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">Off</span></div></div><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="font-size:11px; opacity:0.6; font-weight:500; min-width:40px;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:8px;"><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="home" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="channel" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="subs" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="search" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="related" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div></div><input type="hidden" id="viewsHideThreshold" value="0" />',
           },
-
           {
             type: 'toggle',
             id: 'dateFilterEnabled',
@@ -493,7 +468,7 @@ export const getDeclutterTab = (t) => ({
             desc: t('hide_videos_older_newer_than_n_days'),
             icon: ICONS.calendar,
             inlineSlot:
-              '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><span style="font-size:10px; opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:11px; min-width:40px; opacity:0.8; font-weight:600;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:11px; min-width:40px; opacity:0.8; font-weight:600;">Off</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />',
+              '<div style="display:flex; align-items:center; width:100%; gap:16px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:16px; width:40%; max-width:280px;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; flex:1;"><span style="font-size:10px; opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="flex:1; min-width:0;"><span id="dateFilterOlderThresholdValue" style="font-size:11px; min-width:40px; opacity:0.8; font-weight:600;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; flex:1;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="flex:1; min-width:0;"><span id="dateFilterNewerThresholdValue" style="font-size:11px; min-width:40px; opacity:0.8; font-weight:600;">Off</span></div></div><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="font-size:11px; opacity:0.6; font-weight:500; min-width:40px;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:8px;"><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="home" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="channel" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="subs" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="search" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="related" style="font-size:11px; padding:6px 0; flex:1; text-align:center; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />',
           },
         ],
       },
