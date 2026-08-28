@@ -9,14 +9,18 @@
 ytd-comment-view-model button,
 ytd-comment-renderer button {
   border-radius: var(--ypp-shape-primary, 12px) !important;
-  transition: background 0.15s ease, box-shadow 0.15s ease !important;
-  transform: none !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease !important;
+  will-change: transform;
 }
 ytd-comment-view-model button:hover,
 ytd-comment-renderer button:hover {
-  background: var(--ypp-surface-bg-hover, var(--yt-spec-10-percent-layer)) !important;
-  box-shadow: var(--ypp-shadow-hover) !important;
-  transform: none !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transform: scale(1.08) !important;
+}
+ytd-comment-view-model button:active,
+ytd-comment-renderer button:active {
+  transform: scale(0.92) !important;
 }
 
 ytd-comments-header-renderer[engagement-panel] {
@@ -44,13 +48,19 @@ ytd-comment-view-model {
 }
 
 ytd-comment-simplebox-renderer {
-  background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer)) !important;
-  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter, var(--ypp-glass-blur)) !important;
-  border-radius: var(--ypp-border-radius-base, 12px) !important;
-  padding: 15px !important;
-  box-shadow: var(--ypp-shadow-card) !important;
-  border: var(--ypp-surface-border) !important;
+  background: rgba(10, 10, 12, 0.6) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: 24px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+}
+
+ytd-comment-simplebox-renderer:focus-within {
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 2px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 40%, transparent) !important;
 }
 
 #placeholder-area.ytd-comment-simplebox-renderer {
