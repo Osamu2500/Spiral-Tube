@@ -152,12 +152,14 @@ ytd-popup-container {
 }
 
 /* ===================================================================================
-   YOUTUBE NATIVE PLAYER - PREMIUM BASE UI UPGRADE (PHASE 2)
+   YOUTUBE NATIVE PLAYER - PREMIUM BASE UI UPGRADE
    =================================================================================== */
 
 /* Glassmorphic Base for the Native Control Bar */
 html.yt-spiral-tube-theme .ytp-chrome-bottom {
   transition: opacity 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  padding-bottom: 8px !important;
+  border-radius: 0 0 12px 12px;
 }
 
 /* Add an internal top highlight (Double-Bezel effect) */
@@ -189,13 +191,13 @@ html.yt-spiral-tube-theme .ytp-button:active {
 
 /* Override YouTube's solid red progress bar to the custom accent gradient */
 html.yt-spiral-tube-theme .ytp-swatch-background-color {
-  background: var(--ypp-accent-gradient, var(--ypp-accent, #3ea6ff)) !important;
+  background: var(--ypp-accent-gradient, var(--ypp-accent-primary, #ff0000)) !important;
   box-shadow: 0 0 12px var(--ypp-accent-glow, transparent) !important;
 }
 
 /* Scrubber Button (Playhead indicator) */
 html.yt-spiral-tube-theme .ytp-scrubber-button {
-  background: var(--ypp-accent, #fff) !important;
+  background: var(--ypp-accent-primary, #ff0000) !important;
   border-color: rgba(255, 255, 255, 0.8) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.2) inset !important;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
@@ -204,168 +206,19 @@ html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
   transform: scale(1.4) !important;
 }
 
-/* ===================================================================================
-   YOUTUBE BASE UI - MENUS, MASTHEAD & SIDEBAR UPGRADE (PHASE 3)
-   =================================================================================== */
-
-/* Masthead (Top Nav) - Deep Glassmorphism */
-html.yt-spiral-tube-theme #masthead-container,
-html.yt-spiral-tube-theme ytd-masthead {
-  background: rgba(10, 11, 16, 0.75) !important;
-  backdrop-filter: blur(32px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Search Box - Premium Input */
-html.yt-spiral-tube-theme ytd-searchbox {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 24px !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-  transition: border-color 0.2s ease, background 0.2s ease !important;
-}
-html.yt-spiral-tube-theme ytd-searchbox:focus-within {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.05) !important;
-}
-html.yt-spiral-tube-theme ytd-searchbox #container,
-html.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Left Guide Sidebar - Glass Panel */
-html.yt-spiral-tube-theme #guide-inner-content,
-html.yt-spiral-tube-theme ytd-mini-guide-renderer {
-  background: rgba(14, 15, 23, 0.6) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-html.yt-spiral-tube-theme #guide-inner-content::-webkit-scrollbar {
-  width: 6px !important;
-}
-html.yt-spiral-tube-theme #guide-inner-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-radius: 10px !important;
-}
-
-/* Context Menus & Popups - Double Bezel OLED */
-html.yt-spiral-tube-theme ytd-menu-popup-renderer,
-html.yt-spiral-tube-theme .ytp-popup,
-html.yt-spiral-tube-theme tp-yt-paper-dialog {
-  background: rgba(10, 11, 16, 0.85) !important;
-  backdrop-filter: blur(40px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-top-color: rgba(255, 255, 255, 0.25) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Menu Items Hover Physics */
-html.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
-html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover,
-html.yt-spiral-tube-theme .ytp-menuitem:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-radius: 8px !important;
-  margin: 0 4px !important;
-  transform: scale(1.02) !important;
-  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+/* Player popup - reduced blur from 28px → 20px */
+html.yt-spiral-tube-theme .ytp-popup {
+    background: rgba(15, 15, 15, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
 
 /* ===================================================================================
-   YOUTUBE BASE UI - CARDS, COMMENTS & LIVE CHAT UPGRADE (PHASE 4)
-   =================================================================================== */
-
-/* Video Cards (Homepage & Sidebar) - Premium Hover Spring */
-html.yt-spiral-tube-theme ytd-rich-item-renderer,
-html.yt-spiral-tube-theme ytd-video-renderer,
-html.yt-spiral-tube-theme ytd-compact-video-renderer {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease !important;
-  border-radius: 12px !important;
-}
-html.yt-spiral-tube-theme ytd-rich-item-renderer:hover,
-html.yt-spiral-tube-theme ytd-video-renderer:hover,
-html.yt-spiral-tube-theme ytd-compact-video-renderer:hover {
-  transform: translateY(-4px) scale(1.01) !important;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) !important;
-  z-index: 10;
-}
-
-/* Comments Section - Glass Input & Threading */
-html.yt-spiral-tube-theme #simple-box.ytd-comment-simplebox-renderer {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 12px !important;
-  padding: 12px !important;
-  transition: background 0.2s ease, border-color 0.2s ease !important;
-}
-html.yt-spiral-tube-theme #simple-box.ytd-comment-simplebox-renderer:focus-within {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-}
-html.yt-spiral-tube-theme ytd-comment-thread-renderer {
-  border-left: 2px solid rgba(255, 255, 255, 0.04) !important;
-  padding-left: 16px !important;
-  margin-left: 12px !important;
-}
-
-/* Live Chat - OLED Glass Integration */
-html.yt-spiral-tube-theme yt-live-chat-app {
-  background: rgba(10, 11, 16, 0.75) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 16px !important;
-}
-html.yt-spiral-tube-theme yt-live-chat-header-renderer {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-html.yt-spiral-tube-theme yt-live-chat-item-list-renderer {
-  background: transparent !important;
-}
-html.yt-spiral-tube-theme yt-live-chat-text-message-renderer:hover {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-radius: 8px !important;
-}
-
-/* Smooth scrolling for the whole page */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Better Scrollbar for YouTube Default */
-html[data-ypp-theme="default"] ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-html[data-ypp-theme="default"] ::-webkit-scrollbar-track {
-    background: transparent;
-}
-html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb {
-    background: var(--ypp-text-secondary, #aaa);
-    border-radius: 4px;
-}
-html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover {
-    background: var(--ypp-text-primary, #fff);
-}
-
-/* Animated Default Pulse Effect - Kept clean for native feel */
-html[data-ypp-theme="default"].ypp-theme-effects::before,
-html[data-ypp-theme="default"].ypp-theme-effects::after {
-    display: none; 
-}
-
-/* ===================================================================================
-   AGENCY-GRADE PREMIUM UI OVERRIDES (V2 Phase)
-   Ethereal Glass, Double Bezel, and Spring Physics for YouTube Native UI
+   YOUTUBE BASE UI - MASTHEAD, SIDEBAR, MENUS & CARDS
+   Single canonical glass rules — duplicate Phase 2/3 blocks consolidated.
    =================================================================================== */
 
 /* ── Custom Spring Physics Easing ── */
@@ -374,70 +227,161 @@ html[data-ypp-theme="default"].ypp-theme-effects::after {
     --ypp-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── 1. Masthead & Search (Pill-shaped Glass) ── */
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Better Scrollbar for YouTube Default */
+html[data-ypp-theme="default"] ::-webkit-scrollbar { width: 8px; height: 8px; }
+html[data-ypp-theme="default"] ::-webkit-scrollbar-track { background: transparent; }
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb { background: var(--ypp-text-secondary, #aaa); border-radius: 4px; }
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover { background: var(--ypp-text-primary, #fff); }
+
+/* Animated Default Pulse Effect - Kept clean for native feel */
+html[data-ypp-theme="default"].ypp-theme-effects::before,
+html[data-ypp-theme="default"].ypp-theme-effects::after { display: none; }
+
+/* ── 1. Masthead & Search (Pill-shaped Glass)
+   Canonical single rule — reduced blur 32px → 20px.
+   will-change pre-composites the masthead only (high-interaction element).
+   Sidebar/menus promoted transiently on :hover, not permanently. ── */
 html.yt-spiral-tube-theme #masthead-container {
     background: rgba(15, 15, 15, 0.7) !important;
-    backdrop-filter: blur(24px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    will-change: backdrop-filter;
+}
+html.yt-spiral-tube-theme ytd-masthead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5) !important;
 }
 
 html.yt-spiral-tube-theme ytd-searchbox {
     --ytd-searchbox-background: rgba(255, 255, 255, 0.04) !important;
     --ytd-searchbox-legacy-border-color: rgba(255, 255, 255, 0.08) !important;
     --ytd-searchbox-legacy-border-radius: 24px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
     transition: all 0.3s var(--ypp-spring) !important;
 }
-
 html.yt-spiral-tube-theme ytd-searchbox:focus-within {
     --ytd-searchbox-background: rgba(255, 255, 255, 0.08) !important;
     --ytd-searchbox-legacy-border-color: var(--ypp-accent-primary, #6366f1) !important;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 20%, transparent);
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.05),
+                0 0 0 4px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 20%, transparent) !important;
+}
+html.yt-spiral-tube-theme ytd-searchbox #container,
+html.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* ── 2. Sidebar (Double-Bezel) ── */
-html.yt-spiral-tube-theme #guide-inner-content {
-    background: rgba(10, 10, 12, 0.6) !important;
-    backdrop-filter: blur(30px) !important;
-    -webkit-backdrop-filter: blur(30px) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.02);
+/* ── 2. Left Guide Sidebar - Glass Panel — reduced blur 28–30px → 18px ── */
+html.yt-spiral-tube-theme #guide-inner-content,
+html.yt-spiral-tube-theme ytd-mini-guide-renderer {
+    background: rgba(14, 15, 23, 0.6) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+html.yt-spiral-tube-theme #guide-inner-content::-webkit-scrollbar { width: 6px !important; }
+html.yt-spiral-tube-theme #guide-inner-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 10px !important;
 }
 
-/* ── 3. Video Player Controls ── */
-html.yt-spiral-tube-theme .ytp-chrome-bottom {
-    padding-bottom: 8px !important;
-    border-radius: 0 0 12px 12px;
-}
-
-html.yt-spiral-tube-theme .ytp-popup {
-    background: rgba(15, 15, 15, 0.75) !important;
-    backdrop-filter: blur(28px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+/* ── 3. Context Menus & Popups - Double Bezel OLED — reduced blur 40px → 24px ── */
+html.yt-spiral-tube-theme ytd-menu-popup-renderer,
+html.yt-spiral-tube-theme tp-yt-paper-dialog {
+    background: rgba(10, 11, 16, 0.85) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top-color: rgba(255, 255, 255, 0.25) !important;
     border-radius: 16px !important;
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
 
-/* ── 4. Video Thumbnails (Spring Physics) ── */
+/* Menu Items Hover Physics */
+html.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover,
+html.yt-spiral-tube-theme .ytp-menuitem:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+    margin: 0 4px !important;
+    transform: scale(1.02) !important;
+    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* ── 4. Video Cards (Homepage & Sidebar) - Premium Hover Spring
+   will-change moved to :hover only — prevents 30–100 permanent GPU compositor
+   layers on a typical feed page. Browser promotes each card on hover and
+   releases the layer when the pointer leaves. ── */
 html.yt-spiral-tube-theme ytd-rich-item-renderer,
+html.yt-spiral-tube-theme ytd-video-renderer,
 html.yt-spiral-tube-theme ytd-compact-video-renderer {
-    transition: transform 0.4s var(--ypp-spring) !important;
-    will-change: transform;
+    transition: transform 0.4s var(--ypp-spring), filter 0.3s ease !important;
+    border-radius: 12px !important;
 }
-
 html.yt-spiral-tube-theme ytd-rich-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-video-renderer:hover,
 html.yt-spiral-tube-theme ytd-compact-video-renderer:hover {
-    transform: translateY(-4px) scale(1.015);
+    transform: translateY(-4px) scale(1.015) !important;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) !important;
+    will-change: transform;
+    z-index: 10;
 }
 
 html.yt-spiral-tube-theme ytd-thumbnail {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.4s var(--ypp-spring) !important;
 }
-
 html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-thumbnail,
 html.yt-spiral-tube-theme ytd-compact-video-renderer:hover ytd-thumbnail {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── 5. Comments Section - Glass Input & Threading ── */
+html.yt-spiral-tube-theme #simple-box.ytd-comment-simplebox-renderer {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    transition: background 0.2s ease, border-color 0.2s ease !important;
+}
+html.yt-spiral-tube-theme #simple-box.ytd-comment-simplebox-renderer:focus-within {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+html.yt-spiral-tube-theme ytd-comment-thread-renderer {
+    border-left: 2px solid rgba(255, 255, 255, 0.04) !important;
+    padding-left: 16px !important;
+    margin-left: 12px !important;
+}
+
+/* ── 6. Live Chat - OLED Glass — reduced blur 28px → 16px ── */
+html.yt-spiral-tube-theme yt-live-chat-app {
+    background: rgba(10, 11, 16, 0.75) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-header-renderer {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-item-list-renderer {
+    background: transparent !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-text-message-renderer:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 8px !important;
 }

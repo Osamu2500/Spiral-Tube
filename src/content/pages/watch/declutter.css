@@ -5,6 +5,21 @@
  */
 
 /* --- watch-declutter.css --- */
+body.ypp-watch-page.ypp-hide-top-bar #masthead-container {
+    top: -60px !important;
+    transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+body.ypp-watch-page.ypp-show-top-bar #masthead-container {
+    top: 0 !important;
+}
+body.ypp-watch-page.ypp-hide-top-bar ytd-app {
+    --ytd-masthead-height: 0px !important;
+    margin-top: 0 !important;
+}
+body.ypp-watch-page.ypp-hide-top-bar #page-manager {
+    margin-top: 0 !important;
+}
+
 body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata #title,
 body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
 body.ypp-watch-page.ypp-hide-video-title ytd-video-primary-info-renderer #title,

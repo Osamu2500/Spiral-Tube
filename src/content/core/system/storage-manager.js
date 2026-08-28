@@ -77,17 +77,23 @@ window.YPP.StorageManager = class StorageManager {
             // Use string length * 2 as a conservative worst-case byte estimate
             // (avoids a full TextEncoder scan on every write)
             const bytes = compressedStr.length * 2;
-            const now2 = Date.now();
-            if (now2 - StorageManager._quotaCacheTime > StorageManager._QUOTA_TTL_MS) {
-                StorageManager._quotaCache = await this.getBytesUsed();
-                StorageManager._quotaCacheTime = now2;
-            }
-            const usage = StorageManager._quotaCache;
-            
-            if (usage + bytes > this._MAX_BYTES * 0.9) {
-                this._notifyQuotaWarning();
-                window.YPP.Utils?.log(`[YPP Storage] Quota almost exceeded! Skipping write for ${key}.`, StorageManager.CONFIG.LOG_CATEGORY, 'warn');
-                return false;
+
+            // Skip the full getBytesInUse() scan for small payloads (< 10 KB).
+            // A 10 KB write cannot meaningfully push storage toward the 10 MB quota,
+            // and getBytesInUse() can take 10-50 ms in the service worker.
+            // Only run the full quota check for large payloads that warrant it.
+            if (bytes >= 10_000) {
+                const now2 = Date.now();
+                if (now2 - StorageManager._quotaCacheTime > StorageManager._QUOTA_TTL_MS) {
+                    StorageManager._quotaCache = await this.getBytesUsed();
+                    StorageManager._quotaCacheTime = now2;
+                }
+                const usage = StorageManager._quotaCache;
+                if (usage + bytes > this._MAX_BYTES * 0.9) {
+                    this._notifyQuotaWarning();
+                    window.YPP.Utils?.log(`[YPP Storage] Quota almost exceeded! Skipping write for ${key}.`, StorageManager.CONFIG.LOG_CATEGORY, 'warn');
+                    return false;
+                }
             }
 
             await chrome.storage.local.set({ [key]: compressedStr });

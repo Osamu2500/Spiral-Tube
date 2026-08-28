@@ -97,6 +97,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
     this._cleanupDOM();
     this._cleanupPlayer();
     this._domApplied = false; // Reset so next activation always re-applies DOM
+    this._monitoringStarted = false; // Reset so _startMonitoring re-registers on next activation
 
     if (this.features) {
       Object.values(this.features).forEach((feature) => {
@@ -329,26 +330,8 @@ class WatchPageManager extends window.YPP.BasePageManager {
 
         this.playerBarUI.injectControls(video, controls, isShorts);
         this._startMonitoring();
-
-        // YouTube renders the player in multiple phases on cold load.
-        // The first render may be a skeleton that gets replaced by the full player.
-        // Re-inject at staggered intervals to guarantee persistence.
-        const retryInjection = () => {
-          if (!this.isActive) return;
-          // Clear processed stamps so the DOM observer can also re-fire
-          document
-            .querySelectorAll('[data-ypp-processed="true"]')
-            .forEach((el) => el.removeAttribute('data-ypp-processed'));
-          if (this.playerBarUI) {
-            this.playerBarUI.updateCustomStyles();
-            this.playerBarUI.injectedButtons = false;
-            this.playerBarUI.attemptInjection();
-          }
-        };
-        setTimeout(retryInjection, 800);
-        setTimeout(retryInjection, 2000);
-        setTimeout(retryInjection, 4000);
-        setTimeout(retryInjection, 6000);
+        // PlayerBarUI._scheduleRetry() handles exponential-backoff re-injection;
+        // no scattered setTimeout chains needed here.
       }
     } catch (error) {
       Utils.log('Player initialization timed out or failed', 'WATCH_MANAGER', 'debug');
@@ -356,6 +339,12 @@ class WatchPageManager extends window.YPP.BasePageManager {
   }
 
   _startMonitoring() {
+    // Hard guard: if already started, never register listeners twice.
+    // _initPlayer can be called multiple times (onActivate + _initFeatures),
+    // so a simple boolean flag checked first prevents double-registration.
+    if (this._monitoringStarted) return;
+    this._monitoringStarted = true;
+
     if (!window.YPP?.sharedObserver) return;
 
     window.YPP.sharedObserver.register(
@@ -393,24 +382,22 @@ class WatchPageManager extends window.YPP.BasePageManager {
       true
     );
 
-    // Listen for SPA navigation and player state changes to clear the processed stamps so buttons are re-injected
-    if (!this._hasNavListener) {
-      const resetProcessed = () => {
-        document.querySelectorAll('[data-ypp-processed="true"]').forEach((el) => {
-          el.removeAttribute('data-ypp-processed');
-        });
-        if (this.playerBarUI) {
-          this.playerBarUI.updateCustomStyles();
-          this.playerBarUI.injectedButtons = false;
-          this.playerBarUI.attemptInjection();
-        }
-      };
-      ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change', 'yt-page-type-changed'].forEach(evt => {
-        window.addEventListener(evt, resetProcessed);
-        document.addEventListener(evt, resetProcessed);
+    // Listen for SPA navigation and player state changes.
+    // Register only on window (YouTube dispatches these there; document is redundant).
+    // Use this.addListener so _cleanupEvents() removes them on deactivate.
+    const resetProcessed = () => {
+      document.querySelectorAll('[data-ypp-processed="true"]').forEach((el) => {
+        el.removeAttribute('data-ypp-processed');
       });
-      this._hasNavListener = true;
-    }
+      if (this.playerBarUI) {
+        this.playerBarUI.updateCustomStyles();
+        this.playerBarUI.injectedButtons = false;
+        this.playerBarUI.attemptInjection();
+      }
+    };
+    ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change', 'yt-page-type-changed'].forEach(evt => {
+      this.addListener(window, evt, resetProcessed);
+    });
   }
 
   injectControls(video, controls, isShorts) {

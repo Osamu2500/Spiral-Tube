@@ -304,7 +304,7 @@ export class VideoFiltersUI {
             }
         };
         ctx._filterPanelOutsideHandler = outside;
-        setTimeout(() => ctx.addListener ? ctx.addListener(document, 'click', outside) : document.addEventListener('click', outside), 0);
+        setTimeout(() => ctx.addListener ? ctx.addListener(document, 'pointerdown', outside) : document.addEventListener('pointerdown', outside), 0);
 
         const onKeyDown = (e) => {
             if (e.key === 'Escape' && ctx._filterPanel) {

@@ -129,7 +129,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             else target.removeEventListener(type, handler);
         };
 
-        removeListenerSafe(document, 'click', this._filterPanelOutsideHandler);
+        removeListenerSafe(document, 'pointerdown', this._filterPanelOutsideHandler);
         removeListenerSafe(document, 'keydown', this._filterPanelKeydownHandler);
         removeListenerSafe(window, 'resize', this._filterPanelResizeHandler);
         

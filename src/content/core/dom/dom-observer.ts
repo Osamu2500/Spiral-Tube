@@ -29,6 +29,10 @@ window.YPP.core.DOMObserver = class DOMObserver {
         this._hasMutatedListeners = false;
         /** @type {string|null} Cached combined selector to avoid string building on every frame */
         this._cachedSelector = null;
+        /** @type {Map<string, string[]>|null} Reverse index: selector string → [listenerIds]
+         *  Built alongside _cachedSelector so Step 4 of _flush() can look up only
+         *  the relevant listeners for each matched element (avoids O(N×M) .matches() calls). */
+        this._selectorIndex = null;
         
         // --- Lazy Loading state ---
         this._lazyObserver = new IntersectionObserver(this._onIntersect.bind(this), { rootMargin: '400px 0px', threshold: 0 });
@@ -74,6 +78,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
 
         this.registry.set(id, { selector, callback, lazy });
         this._cachedSelector = null; // Invalidate cache
+        this._selectorIndex = null;  // Invalidate reverse index
 
         if (immediate) {
             let existingElements = [];
@@ -163,6 +168,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
         if (this.registry.has(id)) {
             this.registry.delete(id);
             this._cachedSelector = null; // Invalidate cache
+            this._selectorIndex = null;  // Invalidate reverse index
         }
     }
 
@@ -242,6 +248,17 @@ window.YPP.core.DOMObserver = class DOMObserver {
                 selectorChunks.push(currentChunk.join(','));
             }
             this._cachedSelector = selectorChunks;
+
+            // Build reverse index: selector → [id, ...]
+            // This lets Step 4 look up only the listeners a matched element
+            // could satisfy, instead of testing all registered selectors.
+            this._selectorIndex = new Map();
+            for (const [id, { selector }] of this.registry.entries()) {
+                if (!this._selectorIndex.has(selector)) {
+                    this._selectorIndex.set(selector, []);
+                }
+                this._selectorIndex.get(selector).push(id);
+            }
         }
 
         // 2. Extract valid nodes to process.
@@ -280,20 +297,24 @@ window.YPP.core.DOMObserver = class DOMObserver {
             }
         }
 
-        // 4. Distribute the unique matched elements to the correct listener buckets
+        // 4. Distribute unique matched elements to the correct listener buckets.
+        // Use the reverse index (_selectorIndex) so each element is only tested
+        // against the selectors it was matched under — avoids the O(N×M) inner loop
+        // where N = allMatches count and M = registry size.
         const matchedBuckets = new Map();
-        
-        if (allMatches.size > 0) {
-            for (const [id, { selector }] of this.registry.entries()) {
-                const matches = [];
-                for (const element of allMatches) {
-                    if (element.matches && element.matches(selector)) {
-                        matches.push(element);
+
+        if (allMatches.size > 0 && this._selectorIndex) {
+            for (const element of allMatches) {
+                if (!element.matches) continue;
+                // For each known selector, test this element only once.
+                for (const [selector, ids] of this._selectorIndex.entries()) {
+                    let matched = false;
+                    try { matched = element.matches(selector); } catch (_) { continue; }
+                    if (!matched) continue;
+                    for (const id of ids) {
+                        if (!matchedBuckets.has(id)) matchedBuckets.set(id, []);
+                        matchedBuckets.get(id).push(element);
                     }
-                }
-                
-                if (matches.length > 0) {
-                    matchedBuckets.set(id, matches);
                 }
             }
         }

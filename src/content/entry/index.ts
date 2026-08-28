@@ -140,6 +140,8 @@ import { WatchRedesign } from '../pages/watch/layout/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
 import { InlineChannelButtons } from '../pages/watch/features/ui-elements/inline-channel-buttons.js';
 window.YPP.FeatureManager.register(InlineChannelButtons);
+import { AutoHideTopbar } from '../pages/watch/features/ui-elements/auto-hide-topbar.js';
+window.YPP.FeatureManager.register(AutoHideTopbar);
 import { SeamlessMode } from '../pages/watch/layout/seamless/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
 import { PlayerBarUI } from '../pages/watch/player/player-bar-ui.js';

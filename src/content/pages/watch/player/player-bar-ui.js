@@ -14,6 +14,9 @@ export class PlayerBarUI {
     constructor(manager) {
         this.manager = manager;
         this.injectedButtons = false;
+        // Dirty-flag: only rebuild CSS string when relevant settings change
+        this._stylesHash = null;
+        this._retryTimer = null; // tracks the current backoff retry
         this.setupInjectionObserver();
     }
 
@@ -31,16 +34,14 @@ export class PlayerBarUI {
 
     async enable() {
         if (!this.isActive) return;
+        this._injectStaticStyles();
         this.updateCustomStyles();
         this.injectedButtons = false;
         
         if (!this._navigateListener) {
             this._navigateListener = () => {
                 this.injectedButtons = false; // Reset to allow re-injection on new pages
-                this.attemptInjection();
-                setTimeout(() => this.attemptInjection(), 1000);
-                setTimeout(() => this.attemptInjection(), 2000);
-                setTimeout(() => this.attemptInjection(), 4000);
+                this._scheduleRetry();
             };
             
             this._dataUpdatedListener = () => {
@@ -64,20 +65,62 @@ export class PlayerBarUI {
         this._startHeartbeat();
     }
 
+    /**
+     * Inject the static auto-hide CSS block once, rather than rebuilding it
+     * on every updateCustomStyles() call.
+     */
+    _injectStaticStyles() {
+        if (document.getElementById('ypp-player-static-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'ypp-player-static-styles';
+        style.textContent = `
+            html body.ypp-auto-hide-controls .html5-video-player:not(:hover) .ypp-player-controls {
+                opacity: 0 !important;
+                pointer-events: none !important;
+                transition: opacity 0.3s ease !important;
+            }
+            html body.ypp-auto-hide-controls .html5-video-player:hover .ypp-player-controls {
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                transition: opacity 0.2s ease !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    /**
+     * Single exponential-backoff retry replacing scattered setTimeout chains.
+     * Attempts: immediate, 300ms, 800ms, 2000ms, 4000ms (5 total).
+     * Cancels any in-progress retry before scheduling a new one.
+     * @param {number} [attempt=0]
+     */
+    _scheduleRetry(attempt = 0) {
+        const delays = [0, 300, 800, 2000, 4000];
+        if (attempt >= delays.length) return;
+        if (this._retryTimer) clearTimeout(this._retryTimer);
+        this._retryTimer = setTimeout(() => {
+            this._retryTimer = null;
+            this.attemptInjection();
+            // Only schedule next attempt if buttons still not injected
+            if (!this.injectedButtons) {
+                this._scheduleRetry(attempt + 1);
+            }
+        }, delays[attempt]);
+    }
+
     _startHeartbeat() {
         if (this._heartbeatTimer) return;
+        // Reduced from 2000ms → 5000ms. The sharedObserver handles immediate
+        // re-injection; the heartbeat is only a last-resort safety net.
         this._heartbeatTimer = setInterval(() => {
-            if (!this.isActive) return;
-            // V5: Double Check System - Microscopic DOM check to detect orphaned UI
+            if (!this.isActive || document.hidden) return;
             const isShorts = window.location.pathname.startsWith('/shorts');
             const selector = isShorts ? 'ytd-reel-video-renderer[is-active] .ypp-player-controls' : '.ypp-player-controls';
             const container = document.querySelector(selector);
-            
-            // If the container is missing or destroyed, instantly attempt reinjection
             if (!container || !document.contains(container) || container.children.length === 0) {
                 this.attemptInjection();
             }
-        }, 2000);
+        }, 5000);
     }
 
     _stopHeartbeat() {
@@ -164,10 +207,8 @@ export class PlayerBarUI {
     setupInjectionObserver() {
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.register('player-bar-injection', window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR, () => {
-                this.attemptInjection();
-                // Check a few times in case video element lags behind controls
-                setTimeout(() => this.attemptInjection(), 500);
-                setTimeout(() => this.attemptInjection(), 1500);
+                // Use backoff retry instead of scattered individual timeouts
+                this._scheduleRetry();
             }, true);
             
             // Also listen to video element just in case it is added AFTER the player bar
@@ -184,8 +225,6 @@ export class PlayerBarUI {
                 this.attemptInjection();
             }, true);
         }
-        // ALWAYS run a lightweight fallback check so if YouTube mutates innerHTML without adding new nodes, we catch it
-        // Removed fallback polling loop; relying entirely on robust sharedObserver rules
     }
 
     injectControls(video, controls, isShorts) {
@@ -570,6 +609,17 @@ export class PlayerBarUI {
     }
 
     updateCustomStyles() {
+        const s = this.settings;
+        // Build a cheap hash of the keys that affect the generated CSS.
+        // Skip the expensive DOM write if nothing changed.
+        const hash = [
+            s.pb_native_play, s.pb_native_next, s.pb_native_mute, s.pb_native_cast,
+            s.pb_native_autoplay, s.pb_native_cc, s.pb_native_miniplayer,
+            s.pb_native_theater, s.pb_native_fullscreen
+        ].join('|');
+        if (hash === this._stylesHash) return;
+        this._stylesHash = hash;
+
         let styleNode = document.getElementById('ypp-player-overrides');
         if (!styleNode) {
             styleNode = document.createElement('style');
@@ -579,15 +629,15 @@ export class PlayerBarUI {
 
         const hiddenSelectors = [];
         const isHiddenOrBack = (val) => val === 'hidden' || val === 'back';
-        if (isHiddenOrBack(this.settings.pb_native_play)) hiddenSelectors.push('.ytp-play-button', '.ytp-play-button-container');
-        if (isHiddenOrBack(this.settings.pb_native_next)) hiddenSelectors.push('.ytp-next-button');
-        if (isHiddenOrBack(this.settings.pb_native_mute)) hiddenSelectors.push('.ytp-mute-button', '.ytp-volume-area', '.ytp-volume-panel');
-        if (isHiddenOrBack(this.settings.pb_native_cast)) hiddenSelectors.push('button[data-tooltip-target-id="ytp-remote-button"]', '.ytp-remote-button', '.ytp-remote-button-container', 'yt-button-shape[aria-label*="Cast"]');
-        if (isHiddenOrBack(this.settings.pb_native_autoplay)) hiddenSelectors.push('.ytp-autonav-toggle-button-container', 'button[data-tooltip-target-id="ytp-autonav-toggle-button"]', 'button.ytp-button[aria-label*="Autoplay"]', '.ytp-autonav-toggle-button', '.ytp-autonav-button');
-        if (isHiddenOrBack(this.settings.pb_native_cc)) hiddenSelectors.push('.ytp-subtitles-button', '.ytp-subtitles-button-container');
-        if (isHiddenOrBack(this.settings.pb_native_miniplayer)) hiddenSelectors.push('.ytp-miniplayer-button', '.ytp-miniplayer-button-container');
-        if (isHiddenOrBack(this.settings.pb_native_theater)) hiddenSelectors.push('.ytp-size-button', '.ytp-size-button-container');
-        if (isHiddenOrBack(this.settings.pb_native_fullscreen)) hiddenSelectors.push('.ytp-fullscreen-button', '.ytp-fullscreen-button-container');
+        if (isHiddenOrBack(s.pb_native_play)) hiddenSelectors.push('.ytp-play-button', '.ytp-play-button-container');
+        if (isHiddenOrBack(s.pb_native_next)) hiddenSelectors.push('.ytp-next-button');
+        if (isHiddenOrBack(s.pb_native_mute)) hiddenSelectors.push('.ytp-mute-button', '.ytp-volume-area', '.ytp-volume-panel');
+        if (isHiddenOrBack(s.pb_native_cast)) hiddenSelectors.push('button[data-tooltip-target-id="ytp-remote-button"]', '.ytp-remote-button', '.ytp-remote-button-container', 'yt-button-shape[aria-label*="Cast"]');
+        if (isHiddenOrBack(s.pb_native_autoplay)) hiddenSelectors.push('.ytp-autonav-toggle-button-container', 'button[data-tooltip-target-id="ytp-autonav-toggle-button"]', 'button.ytp-button[aria-label*="Autoplay"]', '.ytp-autonav-toggle-button', '.ytp-autonav-button');
+        if (isHiddenOrBack(s.pb_native_cc)) hiddenSelectors.push('.ytp-subtitles-button', '.ytp-subtitles-button-container');
+        if (isHiddenOrBack(s.pb_native_miniplayer)) hiddenSelectors.push('.ytp-miniplayer-button', '.ytp-miniplayer-button-container');
+        if (isHiddenOrBack(s.pb_native_theater)) hiddenSelectors.push('.ytp-size-button', '.ytp-size-button-container');
+        if (isHiddenOrBack(s.pb_native_fullscreen)) hiddenSelectors.push('.ytp-fullscreen-button', '.ytp-fullscreen-button-container');
 
         if (hiddenSelectors.length > 0) {
             const selectors = hiddenSelectors.map(sel => [
@@ -604,24 +654,13 @@ export class PlayerBarUI {
         } else {
             styleNode.textContent = '';
         }
-        
-        // V2: Auto-hide CSS Framework (Optional clean mode)
-        styleNode.textContent += `
-            html body.ypp-auto-hide-controls .html5-video-player:not(:hover) .ypp-player-controls {
-                opacity: 0 !important;
-                pointer-events: none !important;
-                transition: opacity 0.3s ease !important;
-            }
-            html body.ypp-auto-hide-controls .html5-video-player:hover .ypp-player-controls {
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                transition: opacity 0.2s ease !important;
-            }
-        `;
+        // Note: auto-hide CSS is in a separate static <style> injected once by _injectStaticStyles()
     }
 
     disable() {
         this._stopHeartbeat();
+        if (this._retryTimer) { clearTimeout(this._retryTimer); this._retryTimer = null; }
+        this._stylesHash = null; // Force rebuild on next enable
         
         if (this._resizeObserver) {
             this._resizeObserver.disconnect();

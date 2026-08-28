@@ -120,8 +120,13 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     // Initial scan for cards already on screen
     this._attachCheckboxes();
 
-    // Polling fallback at 1.5s — catches anything the events missed
-    this._pollInterval = setInterval(() => this._attachCheckboxes(), 1500);
+    // Polling fallback — last-resort safety net for anything the events missed.
+    // 8 s interval: sharedObserver + yt-page-data-updated cover the hot path.
+    // Skip entirely when the tab is hidden (user can't see the feed anyway).
+    this._pollInterval = setInterval(() => {
+      if (document.hidden) return;
+      this._attachCheckboxes();
+    }, 8000);
   }
 
   async disable() {

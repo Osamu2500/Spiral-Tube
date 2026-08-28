@@ -175,6 +175,13 @@ export const getDeclutterTab = (t) => ({
         items: [
           {
             type: 'toggle',
+            id: 'hideTopBarOnPlayer',
+            label: 'Auto-hide Topbar',
+            desc: 'Hide top navigation bar, shows when cursor is near top',
+            icon: ICONS.sidebar,
+          },
+          {
+            type: 'toggle',
             id: 'hideAiLogo',
               label: t('hide_ai_logo'),
               desc: t('hide_ai_logo_desc'),

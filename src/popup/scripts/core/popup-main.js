@@ -3,12 +3,12 @@ import '../../../shared/config/constants.js';
 import '../../../shared/config/settings-schema.js';
 import '../../../shared/utils/utils.js';
 
-import { initStorage, loadSettings, state, saveSettings, updateSetting, notifyThemeChange } from './popup-state.js';
-import * as UI from '../ui/popup-ui.js';
-import { initComponents } from '../ui/popup-components.js';
-import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerBarOrganizer, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist } from '../ui/popup-extras.js';
-import { renderSchema, registerSlot, convertStaticDescriptionsToHelpButtons } from '../ui/popup-renderer.js';
 import { initI18n, t } from '../../../shared/locales/i18n.js';
+import { initComponents } from '../ui/popup-components.js';
+import { initBackupTools, initBookmarksManager, initHistoryWidget, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist, renderPlayerBarOrganizer } from '../ui/popup-extras.js';
+import { convertStaticDescriptionsToHelpButtons, registerSlot, renderSchema } from '../ui/popup-renderer.js';
+import * as UI from '../ui/popup-ui.js';
+import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
 
 // Detect if we are running outside a native popup (e.g. Edge extension options modal, full tab)
 // A native Chrome popup never exceeds 800x600 and is never an iframe.

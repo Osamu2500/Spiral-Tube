@@ -102,6 +102,7 @@ export const DEFAULT_SETTINGS = {
   hidePaidPromotion: false,     // Hide 'Includes paid promotion' banner
 
   // Player Page Declutter (OFF by default)
+  hideTopBarOnPlayer: false,    // Hide top navigation bar on watch page, shows on hover
   hideVideoTitle: false,        // Hide video title below the player
   hideChannelBar: false,        // Hide channel name + subscribe button
   hideVideoDescription: false,  // Hide the description box
