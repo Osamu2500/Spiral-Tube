@@ -637,6 +637,9 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
             // 1. Setup Input/EQ Nodes
             this.inputGain = this.ctx.createGain();
+            this.fxInput = this.ctx.createGain();
+            this.fxOutput = this.ctx.createGain();
+            this.fxInput.connect(this.fxOutput); // Default bypass connection
             this.eqInGain = this.ctx.createGain();
             this._eqNodes = this._bands.map((band, i) => {
                 const f = this.ctx.createBiquadFilter();
@@ -667,7 +670,8 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             // ── ROUTING ──
             this.source.connect(this.phaseSplitter);
             this.phaseMerger.connect(this.inputGain);
-            this.inputGain.connect(this.eqInGain);
+            this.inputGain.connect(this.fxInput);
+            this.fxOutput.connect(this.eqInGain);
             
             this.eqInGain.connect(this._eqNodes[0]);
             for (let i = 0; i < 9; i++) {
@@ -767,6 +771,8 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this.setMono(this._monoEnabled);
         this._applyCompressorState();
         this.setReverbMix(this._reverbMix);
+        if (this.setFX) this.setFX(this._activeFX);
+        if (this.setVinylMode) this.setVinylMode(this._vinylMode);
         
         // Restore EQ gains safely
         this._eqNodes.forEach((n, i) => { 
