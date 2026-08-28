@@ -268,6 +268,7 @@ import '../pages/watch/player/media-effects/video-filters/video-filters.css';
 import '../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js';
 import { VolumeBooster } from '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
 window.YPP.FeatureManager.register(VolumeBooster);
+import '../pages/watch/player/media-effects/volume-booster/volume-booster.css';
 
 
 // Main entry
