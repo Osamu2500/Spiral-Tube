@@ -1,12 +1,18 @@
 import '../../../../../core/system/base-feature.js';
-/**
- * Video Filters Feature Orchestrator
- */
 
 import { VideoFiltersOverlay } from './video-filters-overlay.js';
 import { VideoFiltersUI } from './video-filters-ui.js';
 import { FILTERS } from './video-filters-presets.js';
 
+/**
+ * @class VideoFilters
+ * @extends window.YPP.features.BaseFeature
+ * @description Orchestrator for cinematic video filters and color grading.
+ * Manages the WebGL/CSS filter pipeline and synchronizes state between the UI and video element.
+ * 
+ * **Production Code Audit**: 
+ * - Performance: Utilizes `requestAnimationFrame` for high-frequency slider updates.
+ */
 export class VideoFilters extends window.YPP.features.BaseFeature {
     static featureId = 'videoFilters';
     static executionPhase = 'sequential-ui';

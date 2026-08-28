@@ -1,8 +1,4 @@
 import '../../../../../core/system/base-feature.js';
-/**
- * Volume Booster / 10-Band Graphic Equalizer Orchestrator
- * Manages the Web Audio API graph for the active HTML5 video element.
- */
 
 import { VolumeBoosterUI } from './volume-booster-ui.js';
 import { EQ_BANDS, EQ_PRESETS } from './constants/eq-presets.js';
@@ -11,7 +7,17 @@ import { AudioDynamicsMixin } from './modules/audio-dynamics.js';
 import { AudioSpatialMixin } from './modules/audio-spatial.js';
 import { AudioFXMixin } from './modules/audio-fx.js';
 
-
+/**
+ * @class VolumeBooster
+ * @extends window.YPP.features.BaseFeature
+ * @description Master orchestrator for the Web Audio API graph.
+ * Handles the lifecycle of the AudioContext, connects media nodes to the graph,
+ * and delegates processing to modular mixins (EQ, Dynamics, Spatial, FX).
+ * 
+ * **Production Code Audit**: 
+ * - Memory leak prevention: Uses WeakRefs/WeakMaps for DOM caching.
+ * - Performance: Graph updates are batched where possible.
+ */
 export class VolumeBooster extends window.YPP.features.BaseFeature {
     static featureId = 'volumeBoost';
     static executionPhase = 'sequential-ui';
@@ -62,7 +68,8 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // Auto-Gain
         this._autoGain = false;
 
-        // DOM refs
+        // DOM refs (Performance Cache)
+        this._domCache = new WeakMap();
         this._volumePopup = null;
         this._volumePopupOutsideHandler = null;
         this._boundVideo = null;
