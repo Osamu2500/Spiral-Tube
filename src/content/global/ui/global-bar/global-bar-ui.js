@@ -94,6 +94,7 @@ export class GlobalBarUI {
 
         this._boundUpdateUIState = this.updateUIState.bind(this);
         this._boundHandleIntersection = this._handleIntersection.bind(this);
+        this._boundWakeUpBar = this._wakeUpBar.bind(this);
         
         this._intersectionObserver = new IntersectionObserver(this._boundHandleIntersection, {
             threshold: [0, 0.25, 0.5, 0.75, 1.0]
@@ -117,7 +118,12 @@ export class GlobalBarUI {
         
         const setDisp = (sel, show) => {
             const el = b.querySelector(sel);
-            if (el) el.style.display = show !== false ? '' : 'none';
+            if (el) {
+                // Strict check to handle undefined properly (default true) and avoid string "false" trap
+                const isVisible = show !== false && show !== 'false' && show !== 0;
+                if (isVisible) el.style.removeProperty('display');
+                else el.style.setProperty('display', 'none', 'important');
+            }
         };
 
         const primary = this._currentPrimaryVideo || this._getPrimaryVideo();
@@ -144,31 +150,36 @@ export class GlobalBarUI {
 
         // Update Sub-features (Domain, Vol Booster, Filters)
         if (primary) {
+            this._currentPrimaryVideo = null; // Force re-render to apply new visibility settings
             this._syncSubFeatureButtons(primary);
         }
 
-        // Manage visibility of groups
+        // Manage visibility of dividers logically based on adjacent groups
+        const g1 = (t.gpb_showPlay !== false) || (t.gpb_showTime !== false);
+        const g2 = (t.gpb_showVolume !== false) || (t.gpb_showSpeed !== false);
+        const featsCont = b.querySelector('#ypp-gpb-features-container');
+        const g3 = featsCont ? (featsCont.children.length > 0 && featsCont.style.display !== 'none') : false;
+        const g4 = (t.gpb_showLoop !== false) || (t.gpb_showPip !== false) || (t.gpb_showFullscreen !== false);
+
+        setDisp('#ypp-gpb-div-1', g1 && (g2 || g3 || g4));
+        setDisp('#ypp-gpb-div-2', g2 && (g3 || g4));
+        setDisp('#ypp-gpb-div-3', g3 && g4);
+
+        // Manage visibility of groups logically
         const groups = b.querySelectorAll('.ypp-gpb-group');
         groups.forEach(group => {
             if (group.id === 'ypp-gpb-features-container') return; // Managed by _syncSubFeatureButtons
-            
-            let hasVisible = false;
-            Array.from(group.children).forEach(child => {
-                if (child.style.display !== 'none') hasVisible = true;
-            });
-            group.style.display = hasVisible ? 'flex' : 'none';
+            if (group) {
+                let hasVisible = false;
+                Array.from(group.children).forEach(child => {
+                    if (child.style.display !== 'none' && !child.classList.contains('ypp-gpb-divider')) {
+                        hasVisible = true;
+                    }
+                });
+                if (hasVisible) group.style.removeProperty('display');
+                else group.style.setProperty('display', 'none', 'important');
+            }
         });
-
-        // Manage visibility of dividers
-        const g1 = t.gpb_showPlay !== false || t.gpb_showTime !== false;
-        const g2 = t.gpb_showVolume !== false || t.gpb_showSpeed !== false;
-        const featsCont = b.querySelector('#ypp-gpb-features-container');
-        const g3 = featsCont ? featsCont.children.length > 0 : false;
-        const g4 = t.gpb_showLoop !== false || t.gpb_showPip !== false || t.gpb_showFullscreen !== false;
-
-        setDisp('#ypp-gpb-div-1', g1 && (g2 || g3 || g4));
-        setDisp('#ypp-gpb-div-2', (g1 || g2) && g3 && g4);
-        setDisp('#ypp-gpb-div-3', (g1 || g2 || g3 || g4));
     }
 
     trackVideo(video) {
@@ -182,6 +193,7 @@ export class GlobalBarUI {
         // IntersectionObserver only works on real DOM Elements, not proxy objects
         if (!video?._proxy) {
             this._intersectionObserver.observe(video);
+            video.addEventListener('mousemove', this._boundWakeUpBar, { passive: true });
         }
 
         if (!this.barElement) {
@@ -197,6 +209,7 @@ export class GlobalBarUI {
         // IntersectionObserver only accepts real DOM Elements
         if (!video?._proxy) {
             this._intersectionObserver.unobserve(video);
+            video.removeEventListener('mousemove', this._boundWakeUpBar);
         }
 
         if (this._currentPrimaryVideo === video) {
@@ -252,16 +265,16 @@ export class GlobalBarUI {
 
         // Apply visibility settings from preferences
         const t = this.settings;
-        if (t.gpb_showPlay === false) bar.querySelector('#ypp-gpb-play').style.display = 'none';
-        if (t.gpb_showTime === false) bar.querySelector('#ypp-gpb-time').style.display = 'none';
+        if (t.gpb_showPlay === false) bar.querySelector('#ypp-gpb-play').style.setProperty('display', 'none', 'important');
+        if (t.gpb_showTime === false) bar.querySelector('#ypp-gpb-time').style.setProperty('display', 'none', 'important');
         if (t.gpb_showVolume === false) {
-            bar.querySelector('#ypp-gpb-mute').style.display = 'none';
-            bar.querySelector('#ypp-gpb-vol-wrap').style.display = 'none';
+            bar.querySelector('#ypp-gpb-mute').style.setProperty('display', 'none', 'important');
+            bar.querySelector('#ypp-gpb-vol-wrap').style.setProperty('display', 'none', 'important');
         }
-        if (t.gpb_showLoop === false) bar.querySelector('#ypp-gpb-loop').style.display = 'none';
-        if (t.gpb_showPip === false) bar.querySelector('#ypp-gpb-pip').style.display = 'none';
-        if (t.gpb_showFullscreen === false) bar.querySelector('#ypp-gpb-fullscreen').style.display = 'none';
-        if (t.gpb_showSpeed === false) bar.querySelector('#ypp-gpb-speed').style.display = 'none';
+        if (t.gpb_showLoop === false) bar.querySelector('#ypp-gpb-loop').style.setProperty('display', 'none', 'important');
+        if (t.gpb_showPip === false) bar.querySelector('#ypp-gpb-pip').style.setProperty('display', 'none', 'important');
+        if (t.gpb_showFullscreen === false) bar.querySelector('#ypp-gpb-fullscreen').style.setProperty('display', 'none', 'important');
+        if (t.gpb_showSpeed === false) bar.querySelector('#ypp-gpb-speed').style.setProperty('display', 'none', 'important');
 
         this.barElement = bar;
         this.ICONS = ICONS;
@@ -277,6 +290,11 @@ export class GlobalBarUI {
             const offsetX = e.clientX - rect.left;
             const offsetY = e.clientY - rect.top;
 
+            // Create iframe shield to prevent iframes from swallowing mouse events
+            let shield = document.createElement('div');
+            shield.style.cssText = 'position: fixed; inset: 0; z-index: 2147483646; cursor: grabbing;';
+            document.body.appendChild(shield);
+
             const onMouseMove = (moveEvent) => {
                 bar.style.left = (moveEvent.clientX - offsetX) + 'px';
                 bar.style.top = (moveEvent.clientY - offsetY) + 'px';
@@ -289,6 +307,18 @@ export class GlobalBarUI {
                 bar.style.transition = ''; // Restore CSS transitions
                 document.removeEventListener('mousemove', onMouseMove);
                 document.removeEventListener('mouseup', onMouseUp);
+                if (shield) {
+                    shield.remove();
+                    shield = null;
+                }
+                
+                // Save custom position to localStorage (site-specific)
+                try {
+                    localStorage.setItem('ypp_gpb_custom_pos', JSON.stringify({
+                        left: bar.style.left,
+                        top: bar.style.top
+                    }));
+                } catch(e){}
             };
 
             document.addEventListener('mousemove', onMouseMove);
@@ -348,6 +378,44 @@ export class GlobalBarUI {
         
         // Initial state sync
         this.updateUIState();
+        this._applyAdaptiveTheme();
+    }
+
+    _applyAdaptiveTheme() {
+        if (!this.barElement) return;
+        
+        let isLight = false;
+        
+        // 1. Check meta theme-color
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta && themeMeta.content) {
+            const color = themeMeta.content.toLowerCase();
+            if (color === '#fff' || color === '#ffffff' || color === 'white') {
+                isLight = true;
+            }
+        }
+        
+        // 2. Fallback to body background color calculation
+        if (!isLight) {
+            const bg = window.getComputedStyle(document.body).backgroundColor;
+            const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+            if (match) {
+                const r = parseInt(match[1]);
+                const g = parseInt(match[2]);
+                const b = parseInt(match[3]);
+                // Luma calculation
+                const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                if (luma > 200) {
+                    isLight = true;
+                }
+            }
+        }
+        
+        if (isLight) {
+            this.barElement.classList.add('ypp-theme-light');
+        } else {
+            this.barElement.classList.remove('ypp-theme-light');
+        }
     }
 
     /** Remove the global bar and clear tracked videos. */
@@ -390,8 +458,27 @@ export class GlobalBarUI {
         setStyle('z-index', '2147483647');
         setStyle('display', 'flex');
         setStyle('visibility', 'visible');
+        
+        let customPos = null;
+        try {
+            const lastSetting = localStorage.getItem('ypp_gpb_pos_setting');
+            if (lastSetting && lastSetting !== pos) {
+                // User changed setting in popup! Wipe custom drag position
+                localStorage.removeItem('ypp_gpb_custom_pos');
+            }
+            localStorage.setItem('ypp_gpb_pos_setting', pos);
 
-        if (pos === 'top') {
+            const saved = localStorage.getItem('ypp_gpb_custom_pos');
+            if (saved) customPos = JSON.parse(saved);
+        } catch(e) {}
+
+        if (customPos && customPos.left && customPos.top) {
+            setStyle('left', customPos.left);
+            setStyle('top', customPos.top);
+            setStyle('right', 'auto');
+            setStyle('bottom', 'auto');
+            setStyle('transform', 'none');
+        } else if (pos === 'top') {
             setStyle('top', '16px');
             setStyle('bottom', 'auto');
             setStyle('left', '50%');
@@ -448,6 +535,15 @@ export class GlobalBarUI {
     /** Updates the bar's UI to reflect the primary video's state. */
     updateUIState() {
         if (!this.barElement) return;
+
+        // 1. SPA Survival: If the website replaced the body, our bar is orphaned. Re-inject it.
+        if (!this.barElement.isConnected) {
+            window.YPP.Utils?.log('Global Player Bar was orphaned by SPA. Re-injecting.', 'GlobalBarUI', 'warn');
+            document.body.appendChild(this.barElement);
+            if ('popover' in this.barElement && !this.barElement.matches(':popover-open')) {
+                try { this.barElement.showPopover(); } catch(e){}
+            }
+        }
         
         const primary = this._getPrimaryVideo();
         if (!primary) return;
@@ -558,11 +654,27 @@ export class GlobalBarUI {
         }
 
         // Fullscreen
-        let isFs = false;
-        for (const v of this.trackedVideos) {
-            if (document.fullscreenElement === v || document.fullscreenElement === v.closest('.ypp-video-container')) {
-                isFs = true;
-                break;
+        let isFs = !!document.fullscreenElement;
+        
+        if (!isFs) {
+            for (const v of this.trackedVideos) {
+                if (v.isConnected) {
+                    if (v.getBoundingClientRect) {
+                        const rect = v.getBoundingClientRect();
+                        // Fake fullscreen detection: video takes up >98% of the viewport
+                        if (rect.width >= window.innerWidth * 0.98 && rect.height >= window.innerHeight * 0.98) {
+                            isFs = true;
+                            break;
+                        }
+                    } else if (v._proxy && v._capabilities) {
+                        // If it's a proxy, we rely on document.fullscreenElement (checked above)
+                        // Or if the iframe passes a specific fullscreen flag in the future
+                        if (v._capabilities.isFullscreen) {
+                            isFs = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
         
@@ -577,15 +689,23 @@ export class GlobalBarUI {
         }
 
         const hasValidSrc = primary._proxy ? true : !!(primary.src || primary.currentSrc || primary.srcObject || (primary.querySelector && primary.querySelector('source')));
-        const isVisibleOnScreen = (this.videoVisibility.get(primary) || 0) > 0;
         const isActive = !primary.ended && hasValidSrc;
-        const shouldHideBar = isFs || !isActive || !isVisibleOnScreen;
+        const shouldHideBar = isFs || !isActive;
+
+        // If the video is paused, force the bar to wake up from idle
+        if (primary.paused) {
+            this.barElement.style.opacity = '1';
+            this.barElement.classList.remove('ypp-gpb-idle');
+        }
 
         if (this._uiStateCache.shouldHideBar !== shouldHideBar) {
             if (shouldHideBar) {
-                this.barElement.style.setProperty('display', 'none', 'important');
+                this.barElement.style.setProperty('opacity', '0', 'important');
+                this.barElement.style.setProperty('pointer-events', 'none', 'important');
             } else {
-                this.barElement.style.setProperty('display', 'flex', 'important');
+                this.barElement.style.removeProperty('pointer-events');
+                // The idle timer handles opacity when it's not explicitly hidden
+                this.barElement.style.opacity = this.barElement.classList.contains('ypp-gpb-idle') ? '0' : '1';
             }
             this._uiStateCache.shouldHideBar = shouldHideBar;
         }
@@ -683,35 +803,48 @@ export class GlobalBarUI {
         }, { signal });
     }
 
+    _wakeUpBar(e) {
+        if (e && e.type === 'mousemove') {
+            if (e.movementX === 0 && e.movementY === 0) return;
+        }
+        
+        // Do not wake up the bar if it's explicitly hidden (e.g. fullscreen)
+        if (this._uiStateCache && this._uiStateCache.shouldHideBar) return;
+
+        const bar = this.barElement;
+        if (!bar) return;
+
+        bar.style.opacity = '1';
+        bar.classList.remove('ypp-gpb-idle');
+        clearTimeout(this._idleTimeout);
+        
+        this._idleTimeout = setTimeout(() => {
+            const primary = this._getPrimaryVideo();
+            // Only hide if a video is actually playing and we aren't hovering the bar
+            if (primary && !primary.paused && !bar.matches(':hover')) {
+                bar.style.opacity = '0';
+                bar.classList.add('ypp-gpb-idle');
+            }
+        }, 2500);
+    }
+
     _setupIdleTimer(signal) {
-        let idleTimeout;
         const bar = this.barElement;
         if (!bar) return;
 
         // Ensure transition is set for smooth fading
         bar.style.transition = 'opacity 0.3s ease';
 
-        const resetTimer = () => {
-            bar.style.opacity = '1';
-            bar.classList.remove('ypp-gpb-idle');
-            clearTimeout(idleTimeout);
-            
-            idleTimeout = setTimeout(() => {
-                const primary = this._getPrimaryVideo();
-                // Only hide if a video is actually playing and we aren't hovering the bar
-                if (primary && !primary.paused && !bar.matches(':hover')) {
-                    bar.style.opacity = '0';
-                    bar.classList.add('ypp-gpb-idle');
-                }
-            }, 2500);
-        };
-
-        document.addEventListener('mousemove', resetTimer, { signal });
-        bar.addEventListener('mouseenter', resetTimer, { signal });
-        bar.addEventListener('mouseleave', resetTimer, { signal });
+        bar.addEventListener('mousemove', this._boundWakeUpBar, { signal, passive: true });
+        bar.addEventListener('mouseenter', this._boundWakeUpBar, { signal });
+        bar.addEventListener('mouseleave', this._boundWakeUpBar, { signal });
+        
+        window.addEventListener('message', (e) => {
+            if (e.data?.ypp && e.data.type === 'iframe-mousemove') this._boundWakeUpBar();
+        }, { signal });
         
         // Initial timer start
-        resetTimer();
+        this._boundWakeUpBar();
     }
 
     _bindPlaybackControls() {

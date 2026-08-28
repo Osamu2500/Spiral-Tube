@@ -1,0 +1,222 @@
+/* ── EQ Panel ── */
+#ypp-eq-panel {
+    position: fixed;
+    bottom: 72px;
+    right: 24px;
+    width: 440px;
+    background-color: rgba(18, 18, 20, 0.45);
+    background-image: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(62, 166, 255, 0.15) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(255, 65, 108, 0.1) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 65, 108, 0.05) 0%, transparent 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    z-index: 2147483646;
+    color: #fff;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+    backdrop-filter: blur(48px) saturate(200%);
+    -webkit-backdrop-filter: blur(48px) saturate(200%);
+    user-select: none;
+    overflow: hidden;
+    animation: ypp-eq-in 0.28s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+@keyframes ypp-eq-in {
+    from { opacity:0; transform:translateY(12px) scale(calc(0.96 * var(--ypp-auto-scale, 1))); }
+    to   { opacity:1; transform:translateY(0)   scale(var(--ypp-auto-scale, 1));    }
+}
+
+/* Header */
+.ypp-eq-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.ypp-eq-title-group { display:flex; align-items:center; gap:10px; }
+.ypp-eq-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+.ypp-eq-title { font-size:13px; font-weight:700; letter-spacing:-0.3px; }
+.ypp-eq-subtitle { font-size:10px; color:rgba(255,255,255,0.38); font-weight:500; margin-top:1px; }
+.ypp-eq-close-btn {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.7); border-radius: 50%; width:24px; height:24px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition: background 0.2s, color 0.2s;
+}
+.ypp-eq-close-btn:hover { background: rgba(255,255,255,0.14); color:#fff; }
+
+/* Gain Row */
+.ypp-eq-gain-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.ypp-eq-row-label {
+    font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.5px; min-width: 60px;
+}
+.ypp-eq-gain-value {
+    font-size: 11px; font-weight: 800; color: #ffffff;
+    min-width: 34px; text-align: right;
+}
+
+/* Horizontal slider */
+.ypp-eq-hslider {
+    -webkit-appearance: none; appearance: none; flex: 1;
+    height: 3px; border-radius: 3px; outline: none; cursor: pointer;
+    border: none; transition: height 0.15s ease;
+}
+.ypp-eq-hslider:hover { height: 5px; }
+.ypp-eq-hslider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+    background: #fff; border: 2px solid #fff; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,255,255,0.2);
+    transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+}
+.ypp-eq-hslider::-webkit-slider-thumb:hover {
+    transform: scale(1.35);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* Presets */
+.ypp-eq-presets-row {
+    display: flex; gap: 5px; padding: 7px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.ypp-eq-presets-row::-webkit-scrollbar { display: none; }
+.ypp-eq-preset-btn {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.6); border-radius: 16px; cursor: pointer;
+    font-size: 10px; font-weight: 600; padding: 3px 10px;
+    font-family: inherit; transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.ypp-eq-preset-btn:hover {
+    background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff;
+}
+.ypp-eq-preset-btn.active {
+    background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5);
+    color: #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
+/* Canvas */
+.ypp-eq-canvas {
+    display: block; width: calc(100% - 32px); height: 40px;
+    margin: 0 16px 2px; border-radius: 8px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Band columns */
+.ypp-eq-bands {
+    display: flex; gap: 0; padding: 4px 10px 8px;
+    justify-content: space-between;
+}
+.ypp-eq-band-col {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; flex: 1; padding: 0 1px;
+}
+.ypp-eq-band-db {
+    font-size: 8px; font-weight: 800; min-height: 10px; line-height: 1;
+}
+.ypp-eq-band-track {
+    position: relative; height: 46px; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+}
+.ypp-eq-band-center {
+    position: absolute; width: 100%; height: 1px;
+    background: rgba(255,255,255,0.1); top: 50%; left: 0;
+    pointer-events: none;
+}
+.ypp-eq-band-freq {
+    font-size: 8px; color: rgba(255,255,255,0.38); font-weight:600;
+}
+
+/* Vertical slider (rotated horizontal) */
+.ypp-eq-vslider {
+    -webkit-appearance: none; appearance: none;
+    width: 42px;
+    height: 2px; border-radius: 2px; outline: none; cursor: pointer;
+    background: rgba(255,255,255,0.1); border: none;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    position: absolute;
+    transition: height 0.1s ease;
+}
+.ypp-eq-vslider:hover { height: 4px; }
+.ypp-eq-vslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--band-color, #ffffff);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+}
+.ypp-eq-vslider::-webkit-slider-thumb:hover { transform: scale(1.45); }
+
+/* Footer */
+.ypp-eq-footer {
+    display: flex; align-items: center; gap: 6px;
+    padding: 0 16px 10px;
+}
+.ypp-eq-comp-btn {
+    display: flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.55); border-radius: 16px; cursor: pointer;
+    font-size: 10px; font-weight: 600; padding: 4px 10px;
+    font-family: inherit; transition: all 0.2s ease;
+}
+.ypp-eq-comp-btn.active {
+    background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4);
+    color: #ffffff; box-shadow: 0 0 8px rgba(255,255,255,0.15);
+}
+.ypp-eq-comp-btn:hover { background: rgba(255,255,255,0.1); }
+.ypp-eq-reset-btn {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22);
+    color: #ffffff; border-radius: 16px; cursor: pointer;
+    font-size: 10px; font-weight: 600; padding: 4px 10px;
+    font-family: inherit; transition: all 0.2s ease;
+}
+.ypp-eq-reset-btn:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); }
+.ypp-eq-hint {
+    font-size: 8px; color: rgba(255,255,255,0.22); margin-left: auto;
+}
+
+/* Voice FX Tab Grid */
+.ypp-eq-fx-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+.ypp-eq-fx-grid::-webkit-scrollbar { width: 4px; }
+.ypp-eq-fx-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+.ypp-eq-fx-btn {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.7); border-radius: 8px; cursor: pointer;
+    font-size: 9px; font-weight: 600; padding: 6px 4px;
+    font-family: inherit; transition: all 0.2s ease;
+    text-align: center;
+    word-break: break-word;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 36px;
+}
+.ypp-eq-fx-btn:hover {
+    background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.25); color: #fff;
+}
+.ypp-eq-fx-btn.active {
+    background: rgba(255, 65, 108, 0.2); border-color: rgba(255, 65, 108, 0.5);
+    color: #fff; box-shadow: 0 0 10px rgba(255, 65, 108, 0.2);
+}

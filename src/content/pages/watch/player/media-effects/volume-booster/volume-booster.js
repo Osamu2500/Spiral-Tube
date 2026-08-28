@@ -5,6 +5,12 @@ import '../../../../../core/system/base-feature.js';
  */
 
 import { VolumeBoosterUI } from './volume-booster-ui.js';
+import { EQ_BANDS, EQ_PRESETS } from './constants/eq-presets.js';
+import { AudioEQMixin } from './modules/audio-eq.js';
+import { AudioDynamicsMixin } from './modules/audio-dynamics.js';
+import { AudioSpatialMixin } from './modules/audio-spatial.js';
+import { AudioFXMixin } from './modules/audio-fx.js';
+
 
 export class VolumeBooster extends window.YPP.features.BaseFeature {
     static featureId = 'volumeBoost';
@@ -36,6 +42,10 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._balance = 0.0;                     // -1.0 (Left) to 1.0 (Right)
         this._stereoWidth = 1.0;                 // 0.0 (Mono) to 2.0 (Wide)
         this._bypassed = false;
+        
+        // Audio Effects (TikTok Styles)
+        this._activeFX = 'none';
+        this._fxNodes = [];
         
         // Vinyl Mode
         this._vinylMode = false;
@@ -103,6 +113,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         if (settings.volumeMono !== undefined) this._monoEnabled = settings.volumeMono;
         if (settings.volumeStereoWidth !== undefined) this._stereoWidth = settings.volumeStereoWidth;
         if (settings.volumeBypassed !== undefined) this._bypassed = settings.volumeBypassed;
+        if (settings.volumeActiveEffect !== undefined) this._activeFX = settings.volumeActiveEffect;
         if (settings.volumeVinylMode !== undefined) this._vinylMode = settings.volumeVinylMode;
         if (settings.volumePlaybackRate !== undefined) this._playbackRate = settings.volumePlaybackRate;
         if (settings.volumeReverbEnv !== undefined) this._reverbEnv = settings.volumeReverbEnv;
@@ -148,93 +159,19 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         return false;
     }
 
-    setVinylMode(enabled) {
-        this._vinylMode = !!enabled;
-        if (this._boundVideo) {
-            this._boundVideo.preservesPitch = !this._vinylMode;
-        }
-    }
 
-    setPlaybackRate(rate) {
-        this._playbackRate = rate;
-        if (this._proxyCmd('setPlaybackRate', rate)) return;
-        if (this._boundVideo) {
-            this._boundVideo.playbackRate = rate;
-        }
-    }
+
+
     
-    _generateSyntheticIR(duration, decay) {
-        if (!this.ctx) return null;
-        const sampleRate = this.ctx.sampleRate;
-        const length = sampleRate * duration;
-        const impulse = this.ctx.createBuffer(2, length, sampleRate);
-        const left = impulse.getChannelData(0);
-        const right = impulse.getChannelData(1);
-        
-        for (let i = 0; i < length; i++) {
-            const multiplier = Math.pow(1 - i / length, decay);
-            left[i] = (Math.random() * 2 - 1) * multiplier;
-            right[i] = (Math.random() * 2 - 1) * multiplier;
-        }
-        return impulse;
-    }
 
-    setReverbEnvironment(envName) {
-        this._reverbEnv = envName;
-        if (this._proxyCmd('setReverbEnvironment', envName)) return;
-        if (!this.reverbNode) return;
-        
-        let duration = 0, decay = 0;
-        switch (envName) {
-            case 'Studio': duration = 0.5; decay = 5.0; break;
-            case 'Club': duration = 1.5; decay = 3.0; break;
-            case 'Concert Hall': duration = 3.0; decay = 2.0; break;
-            case 'Cave': duration = 5.0; decay = 1.0; break;
-            case 'None':
-            default:
-                this.reverbNode.buffer = null;
-                this.setReverbMix(this._reverbMix);
-                return;
-        }
-        this.reverbNode.buffer = this._generateSyntheticIR(duration, decay);
-        this.setReverbMix(this._reverbMix);
-    }
+
+
     
-    setReverbMix(value) {
-        this._reverbMix = value;
-        if (this._proxyCmd('setReverbMix', value)) return;
-        if (this._bypassed) return;
-        if (this.reverbDryGain && this.reverbWetGain && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
-            const effectiveMix = (this._reverbEnv === 'None') ? 0.0 : value;
-            this.reverbDryGain.gain.setTargetAtTime(1.0 - effectiveMix, this.ctx.currentTime, 0.05);
-            this.reverbWetGain.gain.setTargetAtTime(effectiveMix, this.ctx.currentTime, 0.05);
-        }
-    }
 
-    setPhaseInvert(channel, inverted) {
-        if (this._proxyCmd('setPhaseInvert', [channel, inverted])) {
-            if (channel === 'L') this._invertL = inverted;
-            else if (channel === 'R') this._invertR = inverted;
-            return;
-        }
-        if (channel === 'L') {
-            this._invertL = inverted;
-            if (this.phaseGainL) this.phaseGainL.gain.value = inverted ? -1 : 1;
-        } else if (channel === 'R') {
-            this._invertR = inverted;
-            if (this.phaseGainR) this.phaseGainR.gain.value = inverted ? -1 : 1;
-        }
-    }
 
-    setAutoGain(enabled) {
-        this._autoGain = enabled;
-        if (this._proxyCmd('setAutoGain', enabled)) return;
-        if (this.agcNode && this.agcMakeup) {
-            this.agcNode.ratio.value = enabled ? 10 : 1;
-            this.agcMakeup.gain.value = enabled ? 4.0 : 1.0;
-        }
-    }
+
+
+
 
     setBypass(enabled) {
         this._bypassed = enabled;
@@ -802,33 +739,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         }
     }
 
-    _createStereoWidthMatrix(ctx) {
-        const input = ctx.createGain();
-        const output = ctx.createGain();
-        const widthGain = ctx.createGain();
-        const splitter = ctx.createChannelSplitter(2);
-        const merger = ctx.createChannelMerger(2);
-        const mid = ctx.createGain(); mid.gain.value = 0.5;
-        const rInvert = ctx.createGain(); rInvert.gain.value = -1;
-        const side = ctx.createGain(); side.gain.value = 0.5;
-        const sideInvert = ctx.createGain(); sideInvert.gain.value = -1;
 
-        input.connect(splitter);
-        splitter.connect(mid, 0); splitter.connect(mid, 1);
-        splitter.connect(rInvert, 1);
-        splitter.connect(side, 0);
-        rInvert.connect(side);
-        widthGain.gain.value = this._stereoWidth;
-        side.connect(widthGain);
-        mid.connect(merger, 0, 0);
-        widthGain.connect(merger, 0, 0);
-        widthGain.connect(sideInvert);
-        mid.connect(merger, 0, 1);
-        sideInvert.connect(merger, 0, 1);
-        merger.connect(output);
-        
-        return { input, output, widthGain };
-    }
 
     /**
      * Restores all internal audio states (gains, mono, etc.) to the graph.
@@ -863,20 +774,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         });
     }
 
-    _applyCompressorState() {
-        if (!this.compressorNode) return;
-        if (this._compressorEnabled) {
-            this.compressorNode.threshold.value = this._compThreshold ?? -24;
-            this.compressorNode.knee.value = this._compKnee ?? 30;
-            this.compressorNode.ratio.value = this._compRatio ?? 4;
-            this.compressorNode.attack.value = this._compAttack ?? 0.003;
-            this.compressorNode.release.value = this._compRelease ?? 0.25;
-        } else {
-            // Transparent bypass values
-            this.compressorNode.threshold.value = 0;
-            this.compressorNode.ratio.value = 1;
-        }
-    }
+
 
     setVolume(multiplier) {
         this._volumeGain = multiplier;
@@ -894,51 +792,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         }
     }
 
-    setBalance(value) {
-        this._balance = value;
-        if (this._proxyCmd('setBalance', value)) return;
-        if (this._bypassed) return;
-        if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-            if (video) this.initAudioContext(video);
-        }
-        if (this.pannerNode && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
-            this.pannerNode.pan.setTargetAtTime(value, this.ctx.currentTime, 0.05);
-        }
-    }
 
-    setWidth(value) {
-        this._stereoWidth = value;
-        if (this._proxyCmd('setWidth', value)) return;
-        if (this._bypassed) return;
-        if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-            if (video) this.initAudioContext(video);
-        }
-        if (this.widthMatrix && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
-            this.widthMatrix.widthGain.gain.setTargetAtTime(value, this.ctx.currentTime, 0.05);
-        }
-    }
 
-    setMono(enabled, forceBypass = false) {
-        if (!forceBypass) this._monoEnabled = enabled;
-        if (this._proxyCmd('setMono', [enabled, forceBypass])) return;
-        const targetMono = forceBypass ? false : (this._bypassed ? false : this._monoEnabled);
-        if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-            if (video) this.initAudioContext(video);
-        }
-        if (this.ctx && this.source) {
-            try {
-                this.source.channelCount = targetMono ? 1 : 2;
-                this.source.channelCountMode = targetMono ? 'explicit' : 'max';
-            } catch (e) {
-                this.source.channelCountMode = targetMono ? 'explicit' : 'max';
-            }
-        }
-    }
+
+
+
 
     setBypass(enabled) {
         this._bypassed = enabled;
@@ -950,19 +808,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._restoreAudioState();
     }
 
-    _setEQBand(index, db) {
-        this._eqGains[index] = db;
-        if (this._proxyCmd('_setEQBand', [index, db])) return;
-        if (this._bypassed) return;
-        if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-            if (video) this.initAudioContext(video);
-        }
-        if (this._eqNodes[index] && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
-            this._eqNodes[index].gain.setTargetAtTime(db, this.ctx.currentTime, 0.05);
-        }
-    }
+
 
     applyPreset(presetName) {
         const preset = this._presets[presetName];
@@ -1019,4 +865,10 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
+
+Object.assign(VolumeBooster.prototype, AudioEQMixin);
+Object.assign(VolumeBooster.prototype, AudioDynamicsMixin);
+Object.assign(VolumeBooster.prototype, AudioSpatialMixin);
+Object.assign(VolumeBooster.prototype, AudioFXMixin);
+
 window.YPP.features.VolumeBooster = VolumeBooster;

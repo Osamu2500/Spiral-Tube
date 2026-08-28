@@ -8,31 +8,30 @@ export class VideoFiltersOverlay {
     if (ctx && typeof ctx._getVideo === 'function') {
         video = ctx._getVideo();
     }
+    if (!video) return;
 
-    let container =
-      document.getElementById('movie_player') ||
-      document.querySelector('.html5-video-player');
+    let container = document.getElementById('movie_player') || document.querySelector('.html5-video-player');
+    const isExternal = !container;
 
-    // If no YouTube container, try to find the fullscreen-capable player container
-    if (!container && video) {
-        // Try known player classes
-        container = video.closest('.jwplayer, .plyr, .video-js, .vjs-tech, .artplayer-app, .dplayer, .dplayer-video-wrap');
-        // Fallback: If the video is inside a container, and that container is likely to be the fullscreen element
-        if (!container && video.parentElement) {
-            container = video.parentElement;
-        }
+    if (isExternal) {
+        // Always append to document.body for external players to prevent
+        // position: fixed from being hijacked by parent elements with transforms or filters
+        container = document.body;
     }
-
-    if (!container) container = document.body;
 
     if (!container) return;
 
-    const overlay = this._buildOverlayElement(container);
+    const overlay = this._buildOverlayElement(container, isExternal);
 
     this._applyOverlayStyles(overlay, ctx, type, grainAmount);
 
     container.appendChild(overlay);
     ctx._filterOverlay = overlay;
+    
+    if (isExternal) {
+        this._syncOverlayBounds(overlay, video);
+    }
+    
     this.injectOverlayCSS();
   }
 
@@ -57,22 +56,47 @@ export class VideoFiltersOverlay {
     }
   }
 
-  static _buildOverlayElement(container) {
+  static _buildOverlayElement(container, isExternal) {
     const overlay = document.createElement('div');
     overlay.id = 'ypp-filter-overlay';
     const isBody = container === document.body;
 
     Object.assign(overlay.style, {
-      position: isBody ? 'fixed' : 'absolute',
+      position: isExternal ? 'fixed' : 'absolute',
       top: '0',
       left: '0',
       width: isBody ? '100vw' : '100%',
       height: isBody ? '100vh' : '100%',
       pointerEvents: 'none',
-      zIndex: isBody ? '2147483640' : '5',
+      zIndex: isBody ? '2147483640' : (isExternal ? '2147483640' : '5'),
     });
 
     return overlay;
+  }
+
+  static _syncOverlayBounds(overlay, video) {
+      const sync = () => {
+          if (!overlay.isConnected) {
+              if (this._resizeObserver) this._resizeObserver.disconnect();
+              return;
+          }
+          const rect = video.getBoundingClientRect();
+          overlay.style.top = rect.top + 'px';
+          overlay.style.left = rect.left + 'px';
+          overlay.style.width = rect.width + 'px';
+          overlay.style.height = rect.height + 'px';
+      };
+      
+      sync();
+      
+      if (!this._resizeObserver) {
+          this._resizeObserver = new ResizeObserver(() => sync());
+      }
+      this._resizeObserver.observe(video);
+      
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync, { passive: true });
+      overlay._syncHandler = sync;
   }
 
   static _applyOverlayStyles(overlay, ctx, type, grainAmount) {
@@ -640,7 +664,15 @@ export class VideoFiltersOverlay {
   }
 
   static removeOverlay(ctx) {
+    if (this._resizeObserver) {
+        this._resizeObserver.disconnect();
+        this._resizeObserver = null;
+    }
     if (ctx._filterOverlay) {
+      if (ctx._filterOverlay._syncHandler) {
+          window.removeEventListener('scroll', ctx._filterOverlay._syncHandler);
+          window.removeEventListener('resize', ctx._filterOverlay._syncHandler);
+      }
       ctx._filterOverlay.remove();
       ctx._filterOverlay = null;
     }

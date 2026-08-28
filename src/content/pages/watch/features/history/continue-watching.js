@@ -13,7 +13,7 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('ContinueWatching');
-        this.observer = null;
+        // this.observer = null;
         this.notifiedVideos = new Set();
     }
 

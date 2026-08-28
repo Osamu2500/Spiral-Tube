@@ -110,6 +110,7 @@ window.YPP.SettingsSchema = {
         volumeBalance:       { type: 'number',  default: 0, min: -1, max: 1 },
         volumeEqBands:       { type: 'string',  default: '[0,0,0,0,0,0,0,0,0,0]' },
         volumeMono:          { type: 'boolean', default: false },
+        volumeActiveEffect:  { type: 'string',  default: 'none', values: ['none', 'radio', 'robot', 'echo', 'underwater', 'vinyl'] },
 
         // --- Search ---
         searchGrid:          { type: 'boolean', default: true },

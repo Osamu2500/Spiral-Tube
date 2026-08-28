@@ -378,7 +378,8 @@ export class VideoFiltersUI {
 
     static _attachEventListeners(ctx, btn) {
         const outside = (e) => {
-            if (ctx._filterPanel && !ctx._filterPanel.contains(e.target) && !btn?.contains(e.target)) {
+            const path = e.composedPath ? e.composedPath() : [];
+            if (ctx._filterPanel && !path.includes(ctx._filterPanel) && (!btn || !path.includes(btn))) {
                 ctx._removeFilterPanel();
             }
         };
@@ -644,8 +645,21 @@ export class VideoFiltersUI {
             .ypp-adj-active-dot.visible { display: block; }
             .ypp-adj-chevron { color: rgba(255,255,255,0.3); font-size: 9px; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
             .ypp-adj-section.open .ypp-adj-chevron { transform: rotate(180deg); }
-            .ypp-adj-section-body { display: none; padding: 4px 8px 8px; }
-            .ypp-adj-section.open .ypp-adj-section-body { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+            
+            .ypp-adj-section-body-wrapper { 
+                display: grid; 
+                grid-template-rows: 0fr; 
+                transition: grid-template-rows 0.4s cubic-bezier(0.34,1.56,0.64,1); 
+            }
+            .ypp-adj-section.open .ypp-adj-section-body-wrapper { 
+                grid-template-rows: 1fr; 
+            }
+            .ypp-adj-section-body { 
+                overflow: hidden; 
+            }
+            .ypp-adj-section-body-inner { 
+                display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px 8px 8px; 
+            }
             
             .ypp-adjust-card { 
                 background: rgba(0,0,0,0.2); 
@@ -678,25 +692,46 @@ export class VideoFiltersUI {
             .ypp-adjust-card.modified .ypp-adjust-card-val { background: rgba(62,166,255,0.3); color: #7dd3fc; }
             .ypp-adj-reset { background: transparent; border: none; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 13px; padding: 0 2px; line-height:1; transition: color 0.2s; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
             .ypp-adj-reset:hover { color: #fff; }
-            
+            .ypp-slider-container { position: relative; width: 100%; display: flex; align-items: center; margin: 8px 0 4px; }
             .ypp-vcp-slider { 
                 -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px; 
-                background: linear-gradient(to right, var(--track-color, rgba(255,255,255,0.55)) 0%, var(--track-color, rgba(255,255,255,0.55)) var(--track-fill, 0%), rgba(255,255,255,0.1) var(--track-fill, 0%));
+                background: linear-gradient(to right, 
+                    rgba(255,255,255,0.1) 0%, 
+                    rgba(255,255,255,0.1) var(--fill-start, 0%), 
+                    var(--track-color, rgba(255,255,255,0.55)) var(--fill-start, 0%), 
+                    var(--track-color, rgba(255,255,255,0.55)) var(--fill-end, 0%), 
+                    rgba(255,255,255,0.1) var(--fill-end, 0%), 
+                    rgba(255,255,255,0.1) 100%
+                );
                 outline: none; cursor: pointer;
                 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
             }
             .ypp-vcp-slider::-webkit-slider-thumb { 
-                -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; 
+                -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; 
                 background: #fff; cursor: pointer; 
                 box-shadow: 0 2px 6px rgba(0,0,0,0.6); 
                 transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s; 
-                border: 2px solid rgba(0,0,0,0.2); 
+                border: 3px solid #121214; 
             }
             .ypp-vcp-slider::-webkit-slider-thumb:hover { 
-                transform: scale(1.3); 
-                box-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 0 8px rgba(255,255,255,0.5); 
+                transform: scale(1.2); 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 0 8px rgba(62,166,255,0.5); 
+                border-color: #3ea6ff;
             }
-            
+            .ypp-slider-tooltip {
+                position: absolute; top: -24px; left: var(--track-fill, 0%);
+                transform: translateX(-50%) scale(0.8) translateY(4px);
+                background: rgba(0,0,0,0.7); color: #fff; font-size: 9px; font-weight: 700;
+                padding: 3px 6px; border-radius: 4px; pointer-events: none;
+                opacity: 0; transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+                backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            }
+            .ypp-slider-container:hover .ypp-slider-tooltip,
+            .ypp-vcp-slider:active + .ypp-slider-tooltip {
+                opacity: 1;
+                transform: translateX(-50%) scale(1) translateY(0);
+            }
             .ypp-adj-copy-paste { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
             .ypp-adj-cp-btn { 
                 padding: 6px 4px; border-radius: 8px; 
@@ -737,8 +772,21 @@ export class VideoFiltersUI {
         intSlider.type = 'range'; intSlider.className = 'ypp-vcp-slider';
         intSlider.min = '0'; intSlider.max = '100';
         intSlider.value = ctx.filterIntensity !== undefined ? ctx.filterIntensity : 100;
+        
+        const intSliderContainer = document.createElement('div');
+        intSliderContainer.className = 'ypp-slider-container';
+        const intTooltip = document.createElement('div');
+        intTooltip.className = 'ypp-slider-tooltip';
+        intSliderContainer.appendChild(intSlider);
+        intSliderContainer.appendChild(intTooltip);
+
         const updateIntTrack = (v) => {
-            intSlider.style.background = `linear-gradient(to right, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.6) ${v}%, rgba(255,255,255,0.1) ${v}%)`;
+            const pct = trackPct(Number(v), 0, 100);
+            intSlider.style.setProperty('--fill-start', '0%');
+            intSlider.style.setProperty('--fill-end', pct + '%');
+            intSlider.style.setProperty('--track-fill', pct + '%');
+            intSlider.style.setProperty('--track-color', 'rgba(255,255,255,0.6)');
+            intTooltip.textContent = v + '%';
         };
         updateIntTrack(intSlider.value);
         intSlider.oninput = (e) => {
@@ -748,7 +796,7 @@ export class VideoFiltersUI {
             ctx._applyComputedFilter(video);
             VideoFiltersUI.saveFilterSettings(ctx);
         };
-        intensitySection.appendChild(intSlider);
+        intensitySection.appendChild(intSliderContainer);
         wrap.appendChild(intensitySection);
 
         // ── Copy / Paste Buttons ──
@@ -1065,8 +1113,14 @@ export class VideoFiltersUI {
             hdr.onclick = () => { sec.classList.toggle('open'); };
 
             // Body (grid)
+            const bodyWrapper = document.createElement('div');
+            bodyWrapper.className = 'ypp-adj-section-body-wrapper';
             const body = document.createElement('div');
             body.className = 'ypp-adj-section-body';
+            const bodyInner = document.createElement('div');
+            bodyInner.className = 'ypp-adj-section-body-inner';
+            body.appendChild(bodyInner);
+            bodyWrapper.appendChild(body);
 
             section.sliders.forEach(cfg => {
                 const currentValue = ctx.filterAdjustments[cfg.id] !== undefined ? ctx.filterAdjustments[cfg.id] : cfg.def;
@@ -1100,14 +1154,25 @@ export class VideoFiltersUI {
                 slider.min = cfg.min; slider.max = cfg.max;
                 slider.value = currentValue;
 
+                const sliderContainer = document.createElement('div');
+                sliderContainer.className = 'ypp-slider-container';
+                const tooltip = document.createElement('div');
+                tooltip.className = 'ypp-slider-tooltip';
+                sliderContainer.appendChild(slider);
+                sliderContainer.appendChild(tooltip);
+
                 // Live track fill via CSS variables (hardware optimized)
                 const updateTrack = (v) => {
                     const pct = trackPct(Number(v), cfg.min, cfg.max);
-                    const color = modified || Math.abs(Number(v) - cfg.def) > 0.01
-                        ? 'rgba(62,166,255,0.8)'
-                        : 'rgba(255,255,255,0.55)';
-                    slider.style.setProperty('--track-fill', pct + '%');
+                    const defPct = trackPct(cfg.def, cfg.min, cfg.max);
+                    const isMod = Math.abs(Number(v) - cfg.def) > 0.01;
+                    const color = isMod ? '#3ea6ff' : 'rgba(255,255,255,0.6)';
+                    
+                    slider.style.setProperty('--fill-start', Math.min(pct, defPct) + '%');
+                    slider.style.setProperty('--fill-end', Math.max(pct, defPct) + '%');
+                    slider.style.setProperty('--track-fill', pct + '%'); // For tooltip positioning
                     slider.style.setProperty('--track-color', color);
+                    tooltip.textContent = v + cfg.unit;
                 };
                 updateTrack(currentValue);
 
@@ -1148,12 +1213,12 @@ export class VideoFiltersUI {
                 headerRow.appendChild(titleEl);
                 headerRow.appendChild(valWrap);
                 card.appendChild(headerRow);
-                card.appendChild(slider);
-                body.appendChild(card);
+                card.appendChild(sliderContainer);
+                bodyInner.appendChild(card);
             });
 
             sec.appendChild(hdr);
-            sec.appendChild(body);
+            sec.appendChild(bodyWrapper);
             wrap.appendChild(sec);
         });
 

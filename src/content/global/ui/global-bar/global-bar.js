@@ -18,7 +18,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
         super('GlobalPlayerBar');
         
         this.isYouTube = window.location.hostname.includes('youtube.com');
-        this.observer = null;
+        // this.observer = null;
         this.isDismissed = false;
         
         // ── Sub-modules ────────────────────────────────────────────────────

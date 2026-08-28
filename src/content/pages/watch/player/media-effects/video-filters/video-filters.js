@@ -196,23 +196,25 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         const hasSVGCurves = this._applySVGCurves(baseValues, adj);
         let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
         
+        const docUrl = window.location.href.split('#')[0];
+
         if (adj.sharpness !== 0) {
             if (video._proxy) video.injectSVGSharpness(adj.sharpness);
             else VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
-            finalFilter += ` url(#ypp-svg-sharpness)`;
+            finalFilter += ` url("${docUrl}#ypp-svg-sharpness")`;
         }
 
         if (adj.aberration > 0) {
             if (!video._proxy) VideoFiltersOverlay.injectSVGAberration(adj.aberration);
-            finalFilter += ` url(#ypp-svg-aberration)`;
+            finalFilter += ` url("${docUrl}#ypp-svg-aberration")`;
         }
         if (adj.bloom > 0) {
             if (!video._proxy) VideoFiltersOverlay.injectSVGBloom(adj.bloom);
-            finalFilter += ` url(#ypp-svg-bloom)`;
+            finalFilter += ` url("${docUrl}#ypp-svg-bloom")`;
         }
         if (adj.vhs > 0) {
             if (!video._proxy) VideoFiltersOverlay.injectSVGVHS(adj.vhs);
-            finalFilter += ` url(#ypp-svg-vhs)`;
+            finalFilter += ` url("${docUrl}#ypp-svg-vhs")`;
         }
 
         if (video._proxy) video.manageSVGFilters(finalFilter);
@@ -283,10 +285,11 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 const baseValues = this._calculateBaseValues(adj);
                 const hasSVGCurves = this._applySVGCurves(baseValues, adj);
                 let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
-                if (adj.sharpness !== 0) finalFilter += ` url(#ypp-svg-sharpness)`;
-                if (adj.aberration > 0) finalFilter += ` url(#ypp-svg-aberration)`;
-                if (adj.bloom > 0) finalFilter += ` url(#ypp-svg-bloom)`;
-                if (adj.vhs > 0) finalFilter += ` url(#ypp-svg-vhs)`;
+                const docUrl = window.location.href.split('#')[0];
+                if (adj.sharpness !== 0) finalFilter += ` url("${docUrl}#ypp-svg-sharpness")`;
+                if (adj.aberration > 0) finalFilter += ` url("${docUrl}#ypp-svg-aberration")`;
+                if (adj.bloom > 0) finalFilter += ` url("${docUrl}#ypp-svg-bloom")`;
+                if (adj.vhs > 0) finalFilter += ` url("${docUrl}#ypp-svg-vhs")`;
                 
                 video.style.setProperty('--ypp-video-filter', finalFilter);
                 video.style.setProperty('filter', finalFilter, 'important');
@@ -336,6 +339,9 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         video.style.removeProperty('clip-path');
         video.style.removeProperty('--ypp-video-clip');
         VideoFiltersOverlay.removeOverlay(this);
+        if (video.removeOverlay) video.removeOverlay();
+        if (video.manageSVGFilters) video.manageSVGFilters('');
+        this._lastOverlayKey = null;
     }
 
     _calculateBaseValues(adj) {
@@ -385,9 +391,12 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         const cssDehazeContrast = adj.dehaze !== 0 ? (adj.dehaze * 0.5 * inst) : 0;
         const cssClarityContrast = adj.clarity !== 0 ? (adj.clarity * 0.3 * inst) : 0;
         const extraContrast = cssDehazeContrast + cssClarityContrast;
+        
+        const isExternal = !window.location.hostname.includes('youtube.com');
+        const docUrl = isExternal ? '' : window.location.href.split('#')[0];
 
         const adjStr = [
-            hasSVGCurves ? `url(#ypp-dynamic-filter)` : '',
+            hasSVGCurves ? `url("${docUrl}#ypp-dynamic-filter")` : '',
             baseValues.saturate !== 100 ? `saturate(${s(baseValues.saturate)}%)` : '',
             adj.hueRotate !== 0 ? `hue-rotate(${adj.hueRotate * inst}deg)` : '',
             adj.sepia > 0 ? `sepia(${adj.sepia * inst}%)` : '',
@@ -398,8 +407,14 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             adj.opacity !== 100 ? `opacity(${s(adj.opacity)}%)` : ''
         ].filter(Boolean).join(' ');
 
-        if (preset.css !== 'none' && adjStr) return `${preset.css} ${adjStr}`;
-        if (preset.css !== 'none') return preset.css;
+        // Apply base URL fix to preset CSS filters too (like CRT)
+        let presetCss = preset.css;
+        if (presetCss && presetCss !== 'none') {
+            presetCss = presetCss.replace(/url\(#(ypp-[^)]+)\)/g, `url("${docUrl}#$1")`);
+        }
+
+        if (presetCss !== 'none' && adjStr) return `${presetCss} ${adjStr}`;
+        if (presetCss !== 'none') return presetCss;
         if (adjStr) return adjStr;
         return 'none';
     }

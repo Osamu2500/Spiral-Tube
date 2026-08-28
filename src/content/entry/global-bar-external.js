@@ -199,16 +199,20 @@
     // Load custom cursor
     await import('../global/features/misc/custom-cursor.js');
     
-    // Load rich features
-    await import('../pages/watch/player/media-effects/volume-booster/volume-booster.js');
-    await import('../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js');
-    await import('../pages/watch/player/media-effects/video-filters/video-filters-presets.js');
-    await import('../pages/watch/player/media-effects/video-filters/video-filters-overlay.js');
-    await import('../pages/watch/player/media-effects/video-filters/video-filters-ui.js');
-    await import('../pages/watch/player/media-effects/video-filters/video-filters.js');
-    await import('../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js');
-    await import('../pages/watch/player/domain-memory.js');
-    await import('../pages/watch/player/domain-memory-ui.js');
+    // Load rich features (Optional - wrap in try/catch to prevent cascading failure)
+    try {
+        await import('../pages/watch/player/media-effects/volume-booster/volume-booster.js');
+        await import('../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js');
+        await import('../pages/watch/player/media-effects/video-filters/video-filters-presets.js');
+        await import('../pages/watch/player/media-effects/video-filters/video-filters-overlay.js');
+        await import('../pages/watch/player/media-effects/video-filters/video-filters-ui.js');
+        await import('../pages/watch/player/media-effects/video-filters/video-filters.js');
+        await import('../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js');
+        await import('../pages/watch/player/domain-memory.js');
+        await import('../pages/watch/player/domain-memory-ui.js');
+    } catch (e) {
+        window.YPP.Utils.log('Failed to load one or more optional features', 'Core', 'error');
+    }
 
     // ── 3. Read user settings ────────────────────────────────────────────────
     let settings = {};
@@ -273,7 +277,8 @@
         const capabilities = {
             pip: document.pictureInPictureEnabled !== false,
             fullscreen: document.fullscreenEnabled !== false,
-            host: window.location.hostname
+            host: window.location.hostname,
+            isFullscreen: !!document.fullscreenElement
         };
 
         // Bridge: listen for video events and relay them to the parent frame
@@ -315,22 +320,38 @@
                 video.addEventListener(t, () => relay(t), { passive: true });
             });
 
+            video.addEventListener('mousemove', (e) => {
+                if (e.movementX === 0 && e.movementY === 0) return;
+                try {
+                    window.top.postMessage({ ypp: true, type: 'iframe-mousemove' }, '*');
+                } catch (_) {}
+            }, { passive: true });
+
+            document.addEventListener('fullscreenchange', () => {
+                capabilities.isFullscreen = !!document.fullscreenElement;
+                relay('fullscreenchange');
+            }, { passive: true });
+
             // Heartbeat
             heartbeatInterval = setInterval(() => {
-                if (video.isConnected && video.offsetWidth > 0) {
+                // If video is still in DOM but hidden (e.g. display: none), we just send video-hidden
+                // so the bar hides, but we KEEP the interval running. When it becomes visible again,
+                // we send heartbeat to re-awaken the bar!
+                if (video.isConnected && video.offsetWidth > 0 && video.offsetHeight > 0) {
                     relay('heartbeat');
-                } else {
+                } else if (video.isConnected) {
                     relay('video-hidden');
                 }
             }, 1000);
 
-            // Re-arm main observer if video is removed
+            // Re-arm main observer ONLY if video is physically removed from DOM
             removalObserver = new MutationObserver(() => {
-                if (!document.contains(video) || video.offsetWidth === 0) {
+                if (!document.contains(video)) {
                     removalObserver.disconnect();
                     removalObserver = null;
                     clearInterval(heartbeatInterval);
-                    relay('video-hidden');
+                    relay('video-hidden'); // Tell parent to kill the bar
+                    video._yppBridged = false; // Allow re-bridging if re-added
                     activeVideo = null;
                     startMainObserver();
                 }

@@ -26,6 +26,23 @@
     backdrop-filter: var(--ypp-gpb-blur) !important;
     border: 1px solid var(--ypp-gpb-border) !important;
     border-top-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.ypp-global-player-bar.ypp-bar-pos-top {
+    flex-direction: row !important;
+    padding: 7px 14px !important;
+}
+.ypp-global-player-bar.ypp-bar-pos-top .ypp-gpb-controls,
+.ypp-global-player-bar.ypp-bar-pos-top .ypp-gpb-group {
+    flex-direction: row !important;
+}
+.ypp-global-player-bar.ypp-bar-pos-top .ypp-gpb-divider {
+    width: 1px !important;
+    height: 24px !important;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.22), transparent) !important;
+    margin: 0 2px !important;
+}
+.ypp-global-player-bar {
     box-shadow:
         0 20px 48px rgba(0, 0, 0, 0.65),
         0 0 0 1px rgba(255, 255, 255, 0.08) inset,
@@ -416,4 +433,47 @@
     }
 }
 
+/* ── Adaptive Light Theme ── */
+.ypp-global-player-bar.ypp-theme-light {
+    --ypp-gpb-bg: rgba(255, 255, 255, 0.78);
+    --ypp-gpb-text: #1a1a1a;
+    --ypp-gpb-border: rgba(0, 0, 0, 0.12);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.08) inset !important;
+}
 
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-btn,
+.ypp-global-player-bar.ypp-theme-light .ypp-action-btn,
+.ypp-global-player-bar.ypp-theme-light button {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: rgba(0, 0, 0, 0.75) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-btn:hover,
+.ypp-global-player-bar.ypp-theme-light .ypp-action-btn:hover,
+.ypp-global-player-bar.ypp-theme-light button:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #000 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-time-capsule,
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-vol-wrap {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-time-cur {
+    color: #1a1a1a !important;
+}
+
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-time-tot {
+    color: rgba(0, 0, 0, 0.55) !important;
+}
+
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-time-sep,
+.ypp-global-player-bar.ypp-theme-light .ypp-gpb-divider {
+    background: rgba(0, 0, 0, 0.15) !important;
+}

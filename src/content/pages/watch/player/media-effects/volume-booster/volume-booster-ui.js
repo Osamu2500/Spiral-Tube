@@ -333,6 +333,7 @@ export class VolumeBoosterUI {
         const tabEQ  = mkTab('Equalizer', true);
         const tabDyn = mkTab('Dynamics', false);
         const tabSpa = mkTab('Spatial', false);
+        const tabFX = mkTab('Voices FX', false);
         tabBar.append(tabEQ, tabDyn, tabSpa);
         panel.appendChild(tabBar);
 
@@ -346,7 +347,7 @@ export class VolumeBoosterUI {
             if (name === 'Flat') { btn.classList.add('active'); activePresetBtn = btn; }
             btn.onclick = () => {
                 ctx.applyPreset(name);
-                this.syncBandUI(ctx, panel, canvasEl);
+                this.syncBandUI(ctx, panel, uiState.canvasEl);
                 if (activePresetBtn) activePresetBtn.classList.remove('active');
                 btn.classList.add('active');
                 activePresetBtn = btn;
@@ -421,92 +422,7 @@ export class VolumeBoosterUI {
 
         panel.appendChild(presetsRow);
 
-        // ── Canvas Curve (will be moved to eqContentWrap)
-        const canvasEl = document.createElement('canvas');
-        canvasEl.width  = isGlobalBar ? 268 : 308;
-        canvasEl.height = isGlobalBar ? 52  : 50;
-        canvasEl.className = 'ypp-eq-canvas';
-        canvasEl.style.cursor = 'pointer';
-        canvasEl.title = 'Click to cycle visualizer modes (Both, Curve, Bars, Waveform, Off)';
-        canvasEl.onclick = () => {
-            ctx._visualizerMode = ((ctx._visualizerMode || 0) + 1) % 5;
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-            if (!ctx.analyserNode) this.drawCurve(ctx, canvasEl);
-        };
-        // NOTE: NOT appended to panel here — appended via eqContentWrap below
-
-        // ── 10-Band Vertical EQ Faders
-        const bandsSection = document.createElement('div');
-        bandsSection.className = 'ypp-eq-bands';
-        const sliderEls = [];
-        const dbLabelEls = [];
-
-        ctx._bands.forEach((band, i) => {
-            const col = document.createElement('div');
-            col.className = 'ypp-eq-band-col';
-
-            const dbLabel = document.createElement('div');
-            dbLabel.className = 'ypp-eq-band-db';
-            dbLabel.style.color = band.color;
-            const cur = ctx._eqGains[i];
-            dbLabel.textContent = (cur >= 0 ? '+' : '') + cur;
-            dbLabelEls.push(dbLabel);
-
-            const track = document.createElement('div');
-            track.className = 'ypp-eq-band-track';
-
-            const centerLine = document.createElement('div');
-            centerLine.className = 'ypp-eq-band-center';
-
-            const slider = document.createElement('input');
-            slider.type = 'range'; slider.min = -12; slider.max = 12; slider.step = 0.5;
-            slider.value = ctx._eqGains[i];
-            slider.className = 'ypp-eq-vslider';
-            slider.style.setProperty('--band-color', band.color);
-            slider.dataset.band = i;
-            slider.oninput = (e) => {
-                if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-                const db = parseFloat(e.target.value);
-                ctx._setEQBand(i, db);
-                dbLabel.textContent = (db >= 0 ? '+' : '') + db;
-                this.drawCurve(ctx, canvasEl);
-                clearActivePreset();
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            };
-            slider.ondblclick = () => {
-                if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-                ctx._setEQBand(i, 0);
-                slider.value = 0;
-                dbLabel.textContent = '0';
-                this.drawCurve(ctx, canvasEl);
-                clearActivePreset();
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            };
-            sliderEls.push(slider);
-
-            const freqLabel = document.createElement('div');
-            freqLabel.className = 'ypp-eq-band-freq';
-            freqLabel.textContent = band.label;
-
-            track.append(centerLine, slider);
-            col.append(dbLabel, track, freqLabel);
-            bandsSection.appendChild(col);
-        });
-        // NOTE: bandsSection is NOT appended to panel directly — appended via eqContentWrap below
-
-        // ── Footer: tabbed content panels ──
-        // --- EQ content wrapper (bands + canvas)
-        const eqContentWrap = document.createElement('div');
-        eqContentWrap.id = 'ypp-eq-tab-eq';
-        eqContentWrap.appendChild(canvasEl);
-        eqContentWrap.appendChild(bandsSection);
-        panel.appendChild(eqContentWrap);
-
-        // --- Dynamics tab panel
-        const dynPanel = document.createElement('div');
-        dynPanel.id = 'ypp-eq-tab-dyn';
-        dynPanel.style.display = 'none';
-        dynPanel.style.cssText = 'padding:16px 18px;display:none;';
+        
         const mkDynRow = (label, min, max, step, val, unit, onChange) => {
             const row = document.createElement('div');
             row.style.cssText = 'display:flex;align-items:center;gap:12px;margin-bottom:14px;';
@@ -524,138 +440,31 @@ export class VolumeBoosterUI {
             row.append(lbl, sl, valEl);
             return row;
         };
-        if (ctx.compressorNode) {
-            dynPanel.appendChild(mkDynRow('Threshold', -60, 0, 1, ctx.compressorNode.threshold.value, 'dB', v => { ctx.compressorNode.threshold.value = v; }));
-            dynPanel.appendChild(mkDynRow('Ratio', 1, 20, 0.5, ctx.compressorNode.ratio.value, ':1', v => { ctx.compressorNode.ratio.value = v; }));
-            dynPanel.appendChild(mkDynRow('Attack', 0, 1, 0.01, ctx.compressorNode.attack.value, 's', v => { ctx.compressorNode.attack.value = v; }));
-            dynPanel.appendChild(mkDynRow('Release', 0, 1, 0.01, ctx.compressorNode.release.value, 's', v => { ctx.compressorNode.release.value = v; }));
-            dynPanel.appendChild(mkDynRow('Knee', 0, 40, 1, ctx.compressorNode.knee.value, 'dB', v => { ctx.compressorNode.knee.value = v; }));
-        } else {
-            dynPanel.innerHTML = '<div style="padding:20px;text-align:center;color:rgba(255,255,255,0.3);font-size:12px;">Compressor unavailable — audio not initialised yet.</div>';
-        }
-        
-        // Auto-Gain Normalizer
-        const autoGainRow = document.createElement('div');
-        autoGainRow.style.cssText = 'display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.05);';
-        const autoGainLbl = document.createElement('div');
-        autoGainLbl.innerHTML = '<div style="color:rgba(255,255,255,0.85); font-size:13px; font-weight:600;">Auto-Gain Normalizer</div><div style="color:rgba(255,255,255,0.4); font-size:10px;">Automatically rides volume to target loudness</div>';
-        const autoGainBtn = document.createElement('button');
-        autoGainBtn.className = 'ypp-eq-comp-btn' + (ctx._autoGain ? ' active' : '');
-        autoGainBtn.style.margin = '0';
-        autoGainBtn.textContent = ctx._autoGain ? 'ON' : 'OFF';
-        autoGainBtn.onclick = () => {
-            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-            ctx.setAutoGain(!ctx._autoGain);
-            autoGainBtn.classList.toggle('active', ctx._autoGain);
-            autoGainBtn.textContent = ctx._autoGain ? 'ON' : 'OFF';
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-        };
-        autoGainRow.append(autoGainLbl, autoGainBtn);
-        dynPanel.appendChild(autoGainRow);
 
+        const saveSettings = VolumeBoosterUI.saveVolumeSettings.bind(VolumeBoosterUI);
+        
+        const uiState = {
+            ctx, panel, video, anchorBtn, clearActivePreset, saveSettings, mkDynRow,
+            DynamicsTabUI, SpatialTabUI, FXTabUI, VolumeBoosterUI
+        };
+
+        const eqContentWrap = EQTabUI.build(uiState);
+        panel.appendChild(eqContentWrap);
+
+        const dynPanel = DynamicsTabUI.build(uiState);
+        dynPanel.style.display = 'none';
         panel.appendChild(dynPanel);
 
-        // --- Spatial tab panel
-        const spaPanel = document.createElement('div');
-        spaPanel.id = 'ypp-eq-tab-spa';
-        spaPanel.style.cssText = 'padding:16px 18px;display:none;';
-        const stereoRow = mkDynRow('Stereo Width', 0, 200, 1, Math.round(ctx._stereoWidth * 100), '%', v => {
-            if (ctx.setWidth) {
-                ctx.setWidth(v / 100);
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            }
-        });
-        spaPanel.appendChild(stereoRow);
-        const monoRow2 = mkDynRow('Mono Mix', 0, 100, 1, 0, '%', v => {
-            if (ctx.setMono) {
-                ctx.setMono(v > 50);
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            }
-        });
-        spaPanel.appendChild(monoRow2);
-        
-        const speedRow = mkDynRow('Playback Speed', 0.25, 2.0, 0.05, ctx._playbackRate || 1.0, 'x', v => {
-            if (ctx.setPlaybackRate) {
-                ctx.setPlaybackRate(v);
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            }
-        });
-        spaPanel.appendChild(speedRow);
-        
-        // Reverb Environment
-        const envTitle = document.createElement('div');
-        envTitle.style.cssText = 'color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;margin:16px 0 8px;';
-        envTitle.textContent = 'Spatial Reverb (Synthetic IR)';
-        spaPanel.appendChild(envTitle);
-        
-        const envRow = document.createElement('div');
-        envRow.className = 'ypp-eq-presets-row';
-        envRow.style.margin = '0';
-        const envs = ['None', 'Studio', 'Club', 'Concert Hall', 'Cave'];
-        let activeEnvBtn = null;
-        envs.forEach(env => {
-            const btn = document.createElement('button');
-            btn.className = 'ypp-eq-preset-btn';
-            btn.textContent = env;
-            if (env === (ctx._reverbEnv || 'None')) { btn.classList.add('active'); activeEnvBtn = btn; }
-            btn.onclick = () => {
-                if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-                if (activeEnvBtn) activeEnvBtn.classList.remove('active');
-                btn.classList.add('active');
-                activeEnvBtn = btn;
-                if (ctx.setReverbEnvironment) ctx.setReverbEnvironment(env);
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            };
-            envRow.appendChild(btn);
-        });
-        spaPanel.appendChild(envRow);
-
-        const revMixRow = mkDynRow('Reverb Mix', 0, 100, 1, Math.round((ctx._reverbMix || 0) * 100), '%', v => {
-            if (ctx.setReverbMix) {
-                ctx.setReverbMix(v / 100);
-                VolumeBoosterUI.saveVolumeSettings(ctx);
-            }
-        });
-        spaPanel.appendChild(revMixRow);
-        
-        // Phase Inversion
-        const phaseRow = document.createElement('div');
-        phaseRow.style.cssText = 'display:flex; gap:8px; margin-top:16px; align-items:center;';
-        
-        const phaseLBtn = document.createElement('button');
-        phaseLBtn.className = 'ypp-eq-comp-btn' + (ctx._invertL ? ' active' : '');
-        phaseLBtn.innerHTML = 'Ø L';
-        phaseLBtn.title = 'Invert Left Channel Phase (Fixes hollow audio)';
-        phaseLBtn.onclick = () => {
-            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-            ctx.setPhaseInvert('L', !ctx._invertL);
-            phaseLBtn.classList.toggle('active', ctx._invertL);
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-        };
-
-        const phaseRBtn = document.createElement('button');
-        phaseRBtn.className = 'ypp-eq-comp-btn' + (ctx._invertR ? ' active' : '');
-        phaseRBtn.innerHTML = 'Ø R';
-        phaseRBtn.title = 'Invert Right Channel Phase';
-        phaseRBtn.onclick = () => {
-            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
-            ctx.setPhaseInvert('R', !ctx._invertR);
-            phaseRBtn.classList.toggle('active', ctx._invertR);
-            VolumeBoosterUI.saveVolumeSettings(ctx);
-        };
-        
-        const phaseLbl = document.createElement('span');
-        phaseLbl.style.cssText = 'color:rgba(255,255,255,0.7);font-size:11px; margin-right:8px; flex:1;';
-        phaseLbl.textContent = 'Phase Invert';
-        
-        phaseRow.append(phaseLbl, phaseLBtn, phaseRBtn);
-        spaPanel.appendChild(phaseRow);
-        
+        const spaPanel = SpatialTabUI.build(uiState);
+        spaPanel.style.display = 'none';
         panel.appendChild(spaPanel);
 
-        // --- Tab switching
-        const tabPanels = [eqContentWrap, dynPanel, spaPanel];
-        const tabs = [tabEQ, tabDyn, tabSpa];
+        const fxPanel = FXTabUI.build(uiState);
+        fxPanel.style.display = 'none';
+        panel.appendChild(fxPanel);
+
+        const tabPanels = [eqContentWrap, dynPanel, spaPanel, fxPanel];
+        const tabs = [tabEQ, tabDyn, tabSpa, tabFX];
         tabs.forEach((tab, i) => {
             tab.onclick = () => {
                 tabs.forEach((t, j) => {
@@ -668,7 +477,7 @@ export class VolumeBoosterUI {
             };
         });
 
-        // ── Original Footer: Compressor toggle + Reset + Hint ──
+// ── Original Footer: Compressor toggle + Reset + Hint ──
         const footer = document.createElement('div');
         footer.className = 'ypp-eq-footer';
 
@@ -736,7 +545,7 @@ export class VolumeBoosterUI {
             ctx.setPhaseInvert('R', false);
             ctx.setAutoGain(false);
             ctx._eqGains.fill(0);
-            this.syncBandUI(ctx, panel, canvasEl);
+            this.syncBandUI(ctx, panel, uiState.canvasEl);
 
             // Update UI Elements
             gainSlider.value = 1.0;
@@ -748,28 +557,38 @@ export class VolumeBoosterUI {
             balanceValue.textContent = 'C';
             this.updateBalanceTrack(balanceSlider);
 
-            stereoRow.querySelector('input').value = 100;
-            stereoRow.querySelector('span:last-child').textContent = '100%';
-            monoRow2.querySelector('input').value = 0;
-            monoRow2.querySelector('span:last-child').textContent = '0%';
-            speedRow.querySelector('input').value = 1.0;
-            speedRow.querySelector('span:last-child').textContent = '1x';
-            revMixRow.querySelector('input').value = 0;
-            revMixRow.querySelector('span:last-child').textContent = '0%';
+            const sRow = document.querySelector('#ypp-eq-tab-spa');
+if (sRow) {
+  const ranges = sRow.querySelectorAll('.ypp-eq-hslider');
+  if(ranges[0]) { ranges[0].value = 100; ranges[0].nextElementSibling.textContent = '100%'; }
+  if(ranges[1]) { ranges[1].value = 0; ranges[1].nextElementSibling.textContent = '0%'; }
+  if(ranges[2]) { ranges[2].value = 1.0; ranges[2].nextElementSibling.textContent = '1x'; }
+  if(ranges[3]) { ranges[3].value = 0; ranges[3].nextElementSibling.textContent = '0%'; }
+}
             
-            if (activeEnvBtn) activeEnvBtn.classList.remove('active');
-            const noneEnvBtn = Array.from(envRow.querySelectorAll('button')).find(b => b.textContent === 'None');
-            if (noneEnvBtn) { noneEnvBtn.classList.add('active'); activeEnvBtn = noneEnvBtn; }
+            
+            
+            
+            const sRow2 = document.querySelector('#ypp-eq-tab-spa');
+            if (sRow2) {
+                const btns = sRow2.querySelectorAll('.ypp-eq-preset-btn');
+                btns.forEach(b => b.classList.remove('active'));
+                const nb = Array.from(btns).find(b => b.textContent === 'None');
+                if (nb) nb.classList.add('active');
+                
+                const compBtns = sRow2.querySelectorAll('.ypp-eq-comp-btn');
+                compBtns.forEach(b => b.classList.remove('active'));
+            }
 
             compBtn.classList.add('active');
             monoBtn.classList.remove('active');
             if (typeof vinylBtn !== 'undefined') vinylBtn.classList.remove('active');
-            phaseLBtn.classList.remove('active');
-            phaseRBtn.classList.remove('active');
             
-            if (typeof autoGainBtn !== 'undefined') {
-                autoGainBtn.classList.remove('active');
-                autoGainBtn.textContent = 'OFF';
+            
+            const dRow = document.querySelector('#ypp-eq-tab-dyn');
+            if (dRow) {
+                const ag = dRow.querySelector('.ypp-eq-comp-btn');
+                if (ag) { ag.classList.remove('active'); ag.textContent = 'OFF'; }
             }
 
             if (activePresetBtn) activePresetBtn.classList.remove('active');
@@ -821,7 +640,7 @@ export class VolumeBoosterUI {
             const btn = presetsRow.children[idx];
             btn.onclick = () => {
                 ctx.applyPreset(name);
-                this.syncBandUI(ctx, panel, canvasEl);
+                this.syncBandUI(ctx, panel, uiState.canvasEl);
 
                 gainSlider.value = ctx._volumeGain;
                 gainValue.textContent = Math.round(ctx._volumeGain * 100) + '%';
