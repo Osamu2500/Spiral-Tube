@@ -397,6 +397,159 @@ export const AudioFXMixin = {
             
             this._fxNodes = [bc, bp, delay, fb, ws];
             
+        } else if (effectName === 'helium') {
+            // Helium (Formant Pitch Up approximation: highpass + extreme high peaking)
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 800;
+            const pk = this.ctx.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 3500; pk.Q.value = 2.0; pk.gain.value = 10;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(10);
+            this.fxInput.connect(hp); hp.connect(pk); pk.connect(ws); ws.connect(this.fxOutput);
+            this._fxNodes = [hp, pk, ws];
+            
+        } else if (effectName === 'sulfux') {
+            // Sulfux (Formant Pitch Down approximation: steep lowpass + low peaking)
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 800;
+            const pk = this.ctx.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 150; pk.Q.value = 2.0; pk.gain.value = 12;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(20);
+            this.fxInput.connect(lp); lp.connect(pk); pk.connect(ws); ws.connect(this.fxOutput);
+            this._fxNodes = [lp, pk, ws];
+
+        } else if (effectName === 'far_away') {
+            // Far Away (Thin bandpass + delay + low volume)
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2000; bp.Q.value = 1.0;
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.05;
+            const gain = this.ctx.createGain(); gain.gain.value = 0.2;
+            this.fxInput.connect(bp); bp.connect(delay); delay.connect(gain); gain.connect(this.fxOutput);
+            this._fxNodes = [bp, delay, gain];
+
+        } else if (effectName === 'whisper') {
+            // Whisper (Heavy saturation + bandpass to extract breathy textures)
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(150); ws.oversample = '4x';
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 4000; bp.Q.value = 0.5;
+            const gain = this.ctx.createGain(); gain.gain.value = 2.0;
+            this.fxInput.connect(ws); ws.connect(bp); bp.connect(gain); gain.connect(this.fxOutput);
+            this._fxNodes = [ws, bp, gain];
+
+        } else if (effectName === 'autotune') {
+            // Auto-Tune / Vocoder approx (Ring modulation + fast slapback comb filter)
+            const rm = this._createRingMod(this.fxInput, 180, 0.5); // Fixed pitch
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.01; // 10ms for comb filter effect
+            const fb = this.ctx.createGain(); fb.gain.value = 0.8;
+            rm.output.connect(delay); delay.connect(fb); fb.connect(delay);
+            rm.output.connect(this.fxOutput); delay.connect(this.fxOutput);
+            this._fxNodes = [...rm.nodes, delay, fb];
+
+        } else if (effectName === 'zombie') {
+            // Zombie (Slow chorus + heavy low end + distortion)
+            const chorus = this._createChorus(this.fxInput, 0.8, 0.02, 1.0);
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+            const ws = this.ctx.createWaveShaper(); ws.curve = this._makeDistortionCurve(50);
+            chorus.output.connect(lp); lp.connect(ws); ws.connect(this.fxOutput);
+            this._fxNodes = [...chorus.nodes, lp, ws];
+
+        } else if (effectName === 'child') {
+            // Child (Highpass + peaking in high-mids)
+            const hp = this.ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 600;
+            const pk = this.ctx.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 2500; pk.Q.value = 1.5; pk.gain.value = 8;
+            this.fxInput.connect(hp); hp.connect(pk); pk.connect(this.fxOutput);
+            this._fxNodes = [hp, pk];
+
+        } else if (effectName === 'mask') {
+            // Mask (Muffled lowpass + slight lower-mid boost)
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1200;
+            const pk = this.ctx.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 300; pk.Q.value = 1.0; pk.gain.value = 4;
+            this.fxInput.connect(lp); lp.connect(pk); pk.connect(this.fxOutput);
+            this._fxNodes = [lp, pk];
+
+        } else if (effectName === 'helmet') {
+            // Helmet (Bandpass + short slapback)
+            const bp = this.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1000; bp.Q.value = 1.0;
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.015;
+            const fb = this.ctx.createGain(); fb.gain.value = 0.5;
+            this.fxInput.connect(bp); bp.connect(this.fxOutput);
+            bp.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(this.fxOutput);
+            this._fxNodes = [bp, delay, fb];
+
+        } else if (effectName === 'empty_room') {
+            // Empty Room (Short reverb via delays)
+            const delay1 = this.ctx.createDelay(); delay1.delayTime.value = 0.04;
+            const delay2 = this.ctx.createDelay(); delay2.delayTime.value = 0.07;
+            const fb = this.ctx.createGain(); fb.gain.value = 0.4;
+            const mix = this.ctx.createGain(); mix.gain.value = 0.5;
+            this.fxInput.connect(this.fxOutput);
+            this.fxInput.connect(delay1); delay1.connect(fb); fb.connect(delay2); delay2.connect(fb);
+            delay1.connect(mix); delay2.connect(mix); mix.connect(this.fxOutput);
+            this._fxNodes = [delay1, delay2, fb, mix];
+
+        } else if (effectName === 'ghost') {
+            // Ghost (Reverse-like delay wobble + ethereal chorus)
+            const chorus = this._createChorus(this.fxInput, 0.4, 0.01, 0.8);
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.3;
+            const fb = this.ctx.createGain(); fb.gain.value = 0.7;
+            const lfo = this.ctx.createOscillator(); lfo.type = 'sine'; lfo.frequency.value = 0.5;
+            const lfoGain = this.ctx.createGain(); lfoGain.gain.value = 0.05;
+            lfo.connect(lfoGain); lfoGain.connect(delay.delayTime); lfo.start();
+            chorus.output.connect(this.fxOutput);
+            chorus.output.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(this.fxOutput);
+            this._fxNodes = [...chorus.nodes, delay, fb, lfo, lfoGain];
+
+        } else if (effectName === 'rain') {
+            // Rain (White/Pink noise + crackle)
+            const noiseGain = this.ctx.createGain(); noiseGain.gain.value = 0.1;
+            const crackleGain = this.ctx.createGain(); crackleGain.gain.value = 0.3;
+            let noiseSrc = null, crackleSrc = null;
+            try {
+                noiseSrc = this.ctx.createBufferSource();
+                const b = this.ctx.createBuffer(1, this.ctx.sampleRate, this.ctx.sampleRate);
+                const d = b.getChannelData(0);
+                for(let i=0; i<d.length; i++) d[i] = Math.random()*2-1;
+                noiseSrc.buffer = b; noiseSrc.loop = true; noiseSrc.connect(noiseGain); noiseSrc.start();
+                
+                crackleSrc = this.ctx.createBufferSource(); crackleSrc.buffer = this._createCrackleBuffer();
+                crackleSrc.loop = true; crackleSrc.connect(crackleGain); crackleSrc.start();
+            } catch(e){}
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2000;
+            this.fxInput.connect(this.fxOutput);
+            noiseGain.connect(lp); crackleGain.connect(lp); lp.connect(this.fxOutput);
+            this._fxNodes = [noiseGain, crackleGain, lp];
+            if (noiseSrc) this._fxNodes.push(noiseSrc);
+            if (crackleSrc) this._fxNodes.push(crackleSrc);
+
+        } else if (effectName === 'forest') {
+            // Forest (Wind noise + chirps)
+            const windGain = this.ctx.createGain(); windGain.gain.value = 0.05;
+            let windSrc = null;
+            try {
+                windSrc = this.ctx.createBufferSource();
+                const b = this.ctx.createBuffer(1, this.ctx.sampleRate * 2, this.ctx.sampleRate);
+                const d = b.getChannelData(0);
+                for(let i=0; i<d.length; i++) d[i] = Math.random()*2-1;
+                windSrc.buffer = b; windSrc.loop = true; windSrc.connect(windGain); windSrc.start();
+            } catch(e){}
+            const windLp = this.ctx.createBiquadFilter(); windLp.type = 'lowpass'; windLp.frequency.value = 800;
+            
+            const chirpOsc = this.ctx.createOscillator(); chirpOsc.type = 'sine'; chirpOsc.frequency.value = 4000;
+            const chirpLfo = this.ctx.createOscillator(); chirpLfo.type = 'square'; chirpLfo.frequency.value = 0.5;
+            const chirpLfoGain = this.ctx.createGain(); chirpLfoGain.gain.value = 1000;
+            chirpLfo.connect(chirpLfoGain); chirpLfoGain.connect(chirpOsc.frequency);
+            const chirpVca = this.ctx.createGain(); chirpVca.gain.value = 0.02;
+            chirpOsc.connect(chirpVca); chirpOsc.start(); chirpLfo.start();
+
+            this.fxInput.connect(this.fxOutput);
+            windGain.connect(windLp); windLp.connect(this.fxOutput);
+            chirpVca.connect(this.fxOutput);
+            this._fxNodes = [windGain, windLp, chirpOsc, chirpLfo, chirpLfoGain, chirpVca];
+            if (windSrc) this._fxNodes.push(windSrc);
+
+        } else if (effectName === 'cave') {
+            // Cave (Long delay + reverb-like feedback + lowpass)
+            const delay = this.ctx.createDelay(); delay.delayTime.value = 0.6;
+            const fb = this.ctx.createGain(); fb.gain.value = 0.55;
+            const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1000;
+            this.fxInput.connect(this.fxOutput);
+            this.fxInput.connect(delay); delay.connect(fb); fb.connect(delay);
+            delay.connect(lp); lp.connect(this.fxOutput);
+            this._fxNodes = [delay, fb, lp];
+
         } else {
             // None
             this.fxInput.connect(this.fxOutput);
