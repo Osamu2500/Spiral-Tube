@@ -626,14 +626,14 @@ export class VolumeBoosterUI {
         const renderLoop = () => {
             if (!ctx._volumePopup) return; // Stop if closed
             if (ctx.analyserNode) {
-                this.drawCurve(ctx, canvasEl, true);
+                this.drawCurve(ctx, uiState.canvasEl, true);
             }
             animFrameId = requestAnimationFrame(renderLoop);
         };
         renderLoop();
 
         // Initial curve draw (if no analyser yet)
-        if (!ctx.analyserNode) this.drawCurve(ctx, canvasEl);
+        if (!ctx.analyserNode) this.drawCurve(ctx, uiState.canvasEl);
 
         // Click-outside to close
         const outside = (e) => {

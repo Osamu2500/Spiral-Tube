@@ -854,14 +854,19 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             e.stopPropagation();
             if (VolumeBoosterUI) {
                 const activeVideo = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-                // Synchronously initialize AudioContext during a guaranteed user gesture (click)
-                // This prevents the AudioContext from being created in a 'suspended' state,
-                // which would otherwise cause the video to buffer and the audio to mute.
                 if (activeVideo && !this._audioConnected) {
                     this.initAudioContext(activeVideo);
                 }
                 
-                VolumeBoosterUI.toggleEQPanel(this, activeVideo, btn);
+                try {
+                    VolumeBoosterUI.toggleEQPanel(this, activeVideo, btn);
+                } catch (err) {
+                    console.error('[YPP Debug] ERROR in toggleEQPanel:', err);
+                    alert('[YPP Debug] Error opening panel: ' + err.message);
+                }
+            } else {
+                console.error('[YPP Debug] VolumeBoosterUI is falsy!', VolumeBoosterUI);
+                alert('[YPP Debug] VolumeBoosterUI is undefined');
             }
         });
 
