@@ -65,10 +65,13 @@ export class VolumeBoosterUI {
   }
 
   static toggleEQPanel(ctx, video, anchorBtn) {
-    // ALWAYS fetch the active video, overriding any stale reference from UI closures
-    video =
-      document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) ||
-      document.querySelector('video');
+    // Only fall back to querySelector when no video was passed (e.g. direct hotkey trigger).
+    // Do NOT overwrite a valid proxy-video object from the iframe bridge.
+    if (!video) {
+      video =
+        document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) ||
+        document.querySelector('video');
+    }
 
     if (ctx._volumePopup) {
       if (document.body.contains(ctx._volumePopup)) ctx._volumePopup.remove();
@@ -106,6 +109,11 @@ export class VolumeBoosterUI {
     // Check if opened from Global Bar
     const isGlobalBar = !!anchorBtn.closest('.ypp-global-player-bar');
     if (isGlobalBar) {
+      // position:fixed is required — the panel is mounted into the popup portal
+      // which is a fixed-positioned transparent overlay. Without this the offsets
+      // are interpreted relative to the flow parent and the panel renders off-screen.
+      panel.style.position = 'fixed';
+      panel.style.zIndex = '2147483646';
       panel.style.boxShadow = '0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)';
 
       // Position it next to the global bar
@@ -143,6 +151,7 @@ export class VolumeBoosterUI {
         zIndex: '2147483646',
       });
     }
+
 
     // ── Header
     const header = document.createElement('div');

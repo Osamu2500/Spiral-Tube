@@ -205,6 +205,14 @@ export const AudioFXMixin = {
         this._activeFX = effectName;
         window.YPP?.Utils?.saveSettings({ volumeActiveEffect: effectName });
         if (this._proxyCmd('setFX', effectName)) return;
+
+        if (!this._audioConnected && effectName !== 'none') {
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            if (video && this.initAudioContext) {
+                this.initAudioContext(video);
+            }
+        }
+
         if (!this._audioConnected || !this.fxInput) return;
 
         if (this.ctx.state === 'suspended') {

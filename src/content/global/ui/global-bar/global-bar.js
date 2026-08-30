@@ -60,6 +60,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
 
         try {
             this.utils?.log('Enabling Global Player Bar', 'GlobalPlayerBar');
+            if (this.ui) this.ui.updateSettings(this.settings || {});
             this._injectCSS();
             this.scanForVideos();
             this.startObserver();

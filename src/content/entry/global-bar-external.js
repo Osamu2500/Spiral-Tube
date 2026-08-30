@@ -108,6 +108,13 @@
             panel.style.left = clampLeft(left) + 'px';
             panel.style.top  = clampTop(top)   + 'px';
         },
+        addStyle: (css, id) => {
+            if (id && document.getElementById(id)) return;
+            const style = document.createElement('style');
+            if (id) style.id = id;
+            style.textContent = css;
+            document.head.appendChild(style);
+        },
         getPopupPortal: () => {
             let dlg = document.getElementById('ypp-popup-portal');
             if (dlg) return dlg;
@@ -214,9 +221,11 @@
         // Inject CSS for optional features since external sites don't load dist/style.css
         const volCss = (await import('../pages/watch/player/media-effects/volume-booster/volume-booster.css?inline')).default;
         const filterCss = (await import('../pages/watch/player/media-effects/video-filters/video-filters.css?inline')).default;
+        const vscCss = (await import('../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css?inline')).default;
         if (window.YPP.Utils.addStyle) {
             window.YPP.Utils.addStyle(volCss, 'ypp-volume-booster-css');
             window.YPP.Utils.addStyle(filterCss, 'ypp-video-filters-css');
+            window.YPP.Utils.addStyle(vscCss, 'ypp-video-speed-controller-css');
         }
     } catch (e) {
         window.YPP.Utils.log('Failed to load one or more optional features', 'Core', 'error');
@@ -473,8 +482,11 @@
     const bar = new window.YPP.features.GlobalPlayerBar();
     if (bar.update) bar.update(settings);
     bar.isEnabled = false;
-    await bar.enable();
-    bar.isEnabled = true;
+    
+    if (settings.enableGlobalPlayerBar !== false) {
+        await bar.enable();
+        bar.isEnabled = true;
+    }
 
     if (instances['domainMemory']) {
         const video = document.querySelector('video');
@@ -548,6 +560,7 @@
                     isConnected: true,
                     offsetWidth: 1,
                     offsetHeight: 1,
+                    _listeners: {}
                 };
 
                 // Use ES Proxy so property assignments relay commands to the iframe
@@ -575,8 +588,15 @@
                         if (key === 'getAttribute')    return () => null;
                         if (key === 'setAttribute')    return () => {};
                         if (key === 'removeAttribute') return () => {};
-                        if (key === 'addEventListener')    return () => {};
-                        if (key === 'removeEventListener') return () => {};
+                        if (key === 'addEventListener') return (type, listener) => {
+                            if (!target._listeners[type]) target._listeners[type] = [];
+                            target._listeners[type].push(listener);
+                        };
+                        if (key === 'removeEventListener') return (type, listener) => {
+                            if (target._listeners[type]) {
+                                target._listeners[type] = target._listeners[type].filter(l => l !== listener);
+                            }
+                        };
                         if (key === 'requestFullscreen')   return () => { sendCommand('fullscreen'); return Promise.resolve(); };
                         if (key === 'requestPictureInPicture') return () => { sendCommand('pip'); return Promise.resolve(); };
                         if (key === 'play')  return () => { sendCommand('play');  return Promise.resolve(); };
@@ -624,7 +644,16 @@
             // Sync proxy internal state directly from iframe (bypass proxy setter to avoid echo-back)
             if (state) {
                 const internalState = proxyVideo._internalState;
-                if (internalState) Object.assign(internalState, state);
+                if (internalState) {
+                    Object.assign(internalState, state);
+                    if (evtType && internalState._listeners[evtType]) {
+                        const fakeEvent = new Event(evtType);
+                        Object.defineProperty(fakeEvent, 'target', { value: proxyVideo, writable: false });
+                        internalState._listeners[evtType].forEach(fn => {
+                            try { fn(fakeEvent); } catch (e) {}
+                        });
+                    }
+                }
             }
 
             // Trigger UI update

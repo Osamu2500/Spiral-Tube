@@ -716,7 +716,13 @@ export class DomainMemoryUI {
 
     static _mountPanel(panel, btn) {
         if (btn?.closest?.('.ypp-global-player-bar')) {
+            // Use the popup portal to escape host-site overflow/stacking contexts,
+            // matching the same pattern used by VideoFiltersUI._mountPanel.
+            const portal = window.YPP?.Utils?.getPopupPortal?.();
             const bar = btn.closest('.ypp-global-player-bar');
+            panel.style.position = 'fixed';
+            panel.style.zIndex = '2147483647';
+            panel.style.pointerEvents = 'auto';
             panel.style.bottom = 'auto';
             const topPx = Math.max(76, Math.floor((window.innerHeight - 440) / 2));
             if (bar.classList.contains('ypp-bar-pos-right')) {
@@ -732,7 +738,11 @@ export class DomainMemoryUI {
                 panel.style.right = '24px';
                 panel.style.left = 'auto';
             }
-            document.body.appendChild(panel);
+            if (portal) {
+                portal.appendChild(panel);
+            } else {
+                document.body.appendChild(panel);
+            }
         } else {
             document.body.appendChild(panel);
             Object.assign(panel.style, {
@@ -747,6 +757,7 @@ export class DomainMemoryUI {
             window.YPP.Utils.makePopupZoomInvariant(panel);
         }
     }
+
 
     /**
      * Bug 1 fix: Handlers stored on ctx, removed in ctx._removePanel()

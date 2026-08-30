@@ -267,3 +267,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         return largest;
     }
 }
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.VideoSpeedController = VideoSpeedController;
