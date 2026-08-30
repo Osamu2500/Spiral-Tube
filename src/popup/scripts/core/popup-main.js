@@ -960,10 +960,14 @@ const initMiscButtons = (document, saveSettings, loadSettings) => {
              const defaultSettings = (window.YPP && window.YPP.CONSTANTS) 
                     ? window.YPP.CONSTANTS.DEFAULT_SETTINGS 
                     : {};
-            if (confirm('Are you sure you want to reset all settings to default?')) {
-                chrome.storage.local.set({ settings: defaultSettings }, () => {
-                    chrome.storage.local.remove(['ytProVolumeSettings'], () => {
-                        loadSettings();
+            if (confirm('Are you sure you want to reset ALL settings to default? This cannot be undone.')) {
+                const resetSettings = { ...defaultSettings, lastUpdated: Date.now() };
+                // Write to BOTH local and sync to prevent stale sync data winning on next load
+                chrome.storage.local.set({ settings: resetSettings }, () => {
+                    chrome.storage.sync.set({ settings: resetSettings }, () => {
+                        chrome.storage.local.remove(['ytProVolumeSettings'], () => {
+                            loadSettings();
+                        });
                     });
                 });
             }

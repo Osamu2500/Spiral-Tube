@@ -15,10 +15,8 @@ const escapeHTML = (str) => {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
 };
-
 let currentCalDate = new Date();
 let selectedCalDateString = null;
-
 
 export function initBackupTools() {
     // --- Local folder export/import ---

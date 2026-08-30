@@ -296,6 +296,9 @@
                 this.settings = { ...this.settings, ...(await this.Utils.loadSettings()) };
                 this.Utils?.log(`Settings Loaded (attempt ${attempt})`, 'MAIN', 'debug');
 
+                // Self-heal: ensure core UI settings can never get stuck off
+                await this.guardAlwaysOnSettings();
+
             } catch (error) {
                 this.Utils?.log(`Error loading settings (attempt ${attempt}): ${error.message}`, 'MAIN', 'error');
 
@@ -313,6 +316,58 @@
                 // Fallback to defaults
                 this.Utils?.log('Using default settings after retry failure', 'MAIN', 'warn');
                 this.settings = { ...this.settings, ...window.YPP.getDefaultSettings() };
+            }
+        },
+
+        /**
+         * Self-healing guard: ensures the handful of settings that should
+         * always default to true are never left false due to accidental toggling.
+         * Silently patches storage only when a violation is detected.
+         * @private
+         * @async
+         */
+        async guardAlwaysOnSettings() {
+            // Settings that must always be true — these are infrastructure/framework
+            // switches, not user-choice features. Turning them off breaks the whole UI.
+            const ALWAYS_ON = {
+                premiumTheme:             true,
+                enableThemeEffects:       true,
+                enableAnimations:         true,
+                enableCustomizeYouTubeUI: true,
+                layout:                   true,
+                enableCustomSidebar:      true,
+                headerNavEnabled:         true,
+                autoScaleLayout:          true,
+            };
+
+            const violations = Object.entries(ALWAYS_ON).filter(
+                ([key]) => this.settings[key] === false
+            );
+
+            if (violations.length === 0) return; // Nothing to fix — fast path
+
+            const patch: any = {};
+            violations.forEach(([key, val]) => { patch[key] = val; });
+
+            // Apply to in-memory settings immediately so this page load is correct
+            Object.assign(this.settings, patch);
+
+            this.Utils?.log(
+                `Auto-healed ${violations.length} always-on setting(s): ${violations.map(([k]) => k).join(', ')}`,
+                'MAIN', 'warn'
+            );
+
+            // Persist the fix to storage so it doesn't happen again next load
+            try {
+                await chrome.runtime.sendMessage({ action: 'PATCH_SETTINGS', payload: patch });
+            } catch (_) {
+                // Content script context — fall back to direct storage write
+                try {
+                    const localData = await new Promise<any>(r => chrome.storage.local.get('settings', r));
+                    const merged = { ...(localData.settings || {}), ...patch, lastUpdated: Date.now() };
+                    chrome.storage.local.set({ settings: merged });
+                    chrome.storage.sync.set({ settings: merged }).catch(() => {});
+                } catch (_2) { /* best-effort */ }
             }
         },
 

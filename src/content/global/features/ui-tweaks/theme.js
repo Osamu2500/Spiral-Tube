@@ -25,8 +25,14 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         this._initState();
     }
 
+    /**
+     * ThemeManager is always active — it manages its own internal on/off
+     * state via _toggleTheme(). Returning null here prevents BaseFeature
+     * from ever calling disable() due to premiumTheme being accidentally
+     * toggled off in user settings.
+     */
     getConfigKey() {
-        return 'premiumTheme';
+        return null;
     }
 
     /**
