@@ -493,24 +493,19 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
   display: block !important;
 }
 
+/* ── Text Wrapper Layout ── */
 body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
-  display: grid !important;
-  grid-template-columns: 36px 1fr !important;
-  grid-template-areas:
-    'avatar title'
-    'avatar channel'
-    'avatar metadata';
-  column-gap: 12px !important;
-  row-gap: 4px !important; 
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
   margin: 12px 0 0 0 !important;
-  padding: 0 !important;
+  padding: 0 24px 0 48px !important; /* 48px left for avatar (36px + 12px gap), 24px right for 3 dots */
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
   box-sizing: border-box !important;
   grid-column: 1 / -1 !important;
   grid-row: 2 / 3 !important;
-  align-content: start !important;
 }
 
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
@@ -526,23 +521,32 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta {
   max-width: 100% !important;
 }
 
+/* Force intermediate wrappers to be static blocks/flex so absolute positioning escapes them */
 body.ypp-search-grid-mode ytd-video-renderer #meta,
 body.ypp-search-grid-mode ytd-video-renderer #channel-info {
-  display: contents !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
+/* ── Avatar Absolute Positioning ── */
 body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info a.yt-simple-endpoint:first-child {
-  grid-area: avatar !important;
+body.ypp-search-grid-mode ytd-video-renderer #channel-info a.yt-simple-endpoint:has(yt-img-shadow),
+body.ypp-search-grid-mode ytd-video-renderer #channel-info a.yt-simple-endpoint:first-child:not(:has(yt-formatted-string)) {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
   width: 36px !important;
   height: 36px !important;
   min-width: 36px !important;
   max-width: 36px !important;
   margin: 0 !important;
   padding: 0 !important;
-  align-self: start !important;
   display: flex !important;
+  border-radius: 50% !important;
   overflow: hidden !important;
 }
 
@@ -558,20 +562,21 @@ body.ypp-search-grid-mode ytd-video-renderer yt-img-shadow {
   display: block !important;
 }
 
+/* ── Text Layout ── */
 body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
 body.ypp-search-grid-mode ytd-video-renderer h3.title-and-badge {
-  grid-area: title !important;
-  align-self: start !important;
-  margin: 0 !important;
-  padding-right: 32px !important;
+  align-self: flex-start !important;
+  margin: 0 0 4px 0 !important;
+  padding-right: 0 !important; /* Removed 32px padding that was squishing text */
+  width: 100% !important;
 }
 
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name,
 body.ypp-search-grid-mode ytd-video-renderer #channel-info .yt-simple-endpoint.yt-formatted-string {
-  grid-area: channel !important;
-  margin: 0 !important;
+  margin: 0 0 2px 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
+  position: static !important;
 }
 
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
@@ -595,7 +600,6 @@ body.ypp-search-grid-mode ytd-video-renderer:hover ytd-channel-name a {
 }
 
 body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  grid-area: metadata !important;
   margin: 0 !important;
 }
 
@@ -692,9 +696,10 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-menu-renderer,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-menu-renderer {
   visibility: visible !important;
-  grid-column: 2 / 3 !important;
-  grid-row: 2 / 3 !important;
-  margin-top: 12px !important;
+  position: absolute !important;
+  top: -4px !important;
+  right: -8px !important;
+  margin: 0 !important;
   align-self: start !important;
 }
 
