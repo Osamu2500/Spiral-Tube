@@ -537,25 +537,21 @@ body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail {
 
 /* ── Meta and Channel Text Layout ── */
 body.ypp-search-grid-mode ytd-video-renderer #meta {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  align-items: flex-start !important;
-  margin: 0 !important;
+  display: contents !important;
 }
 
-/* Reorder children using Flex order */
+/* Reorder children using Flex order (Negative to push them to the top of .text-wrapper) */
 body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
 body.ypp-search-grid-mode ytd-video-renderer h3:has(#video-title),
 body.ypp-search-grid-mode ytd-video-renderer #meta > h3 {
-  order: 1 !important;
+  order: -3 !important;
   margin: 0 0 4px 0 !important;
   width: 100% !important;
   align-self: flex-start !important;
 }
 
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
-  order: 2 !important;
+  order: -2 !important;
   margin: 0 0 2px 0 !important;
   width: 100% !important;
   display: block !important;
@@ -563,7 +559,7 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
 
 body.ypp-search-grid-mode ytd-video-renderer #meta > ytd-video-meta-block,
 body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  order: 3 !important;
+  order: -1 !important;
   margin: 0 !important;
   width: 100% !important;
 }
