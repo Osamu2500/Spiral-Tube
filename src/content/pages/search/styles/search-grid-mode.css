@@ -1,29 +1,12 @@
-/* 
- * ==========================================================================
- * SEARCH GRID VIEW
- * ========================================================================== 
- * Target: /results (when .ypp-search-grid-mode is active).
- * Purpose: Provides the master CSS grid architecture, column calculations,
- * and internal flex-to-grid overrides for video cards.
- * ========================================================================== 
+/**
+ * Search Grid Mode CSS
+ * Styles for rendering YouTube search results in a grid layout (regular and immersive cards),
+ * as well as layout density handling.
+ * Does not affect unrelated pages/functionality outside the search scope.
  */
 
-/* ── 1. CONTAINER RESETS ──────────────────────────────────────────── */
+@import '../declutter/search-declutter.css';
 
-/* ── 2. MASTER GRID — lives on the section-list, not the item section ─── */
-
-/* Architecture:
-     ytd-section-list-renderer > #contents   ← CSS GRID (this rule)
-       ytd-item-section-renderer             ← display:contents (transparent)
-         ytd-item-section-renderer > #contents ← display:contents (transparent)
-           ytd-video-renderer                ← GRID CELL
-*/
-
-/* Bulletproof shelf grids in case JS fallback misses the container */
-
-/* Flatten item-section wrappers so video cards land directly in master grid */
-
-/* Hide headers of flattened shelves (prevents floating text in grid) */
 body.ypp-search-grid-mode .ypp-flattened-container yt-shelf-header-layout,
 body.ypp-search-grid-mode .ypp-flattened-container #header,
 body.ypp-search-grid-mode .ypp-flattened-container #title-container,
@@ -31,115 +14,13 @@ body.ypp-search-grid-mode .ypp-flattened-container .ytShelfHeaderLayoutTitleRow 
     display: none !important;
 }
 
-/* Ensure flattened containers span the entire grid width so their internal items can break out,
-   and ensure full width elements span across all columns. */
 body.ypp-search-grid-mode .ypp-flattened-container,
 body.ypp-search-grid-mode .ypp-full-width-item {
     grid-column: 1 / -1 !important;
     width: 100% !important;
 }
 
-/* BUG 3: Staggered/misaligned middle cards (Image 3) */
-
-/* BUG 4 & OPTION B: Force full width for shelf renderers */
-
-/* FIX 4c: Convert shelf inner lists to grids so items inside them (like playlists) form grid cards! */
-
-/* OPTION A: Hide completely if clean search or hide search shelves is on */
-
-/* ── 4. FULL-WIDTH ITEMS (ads, continuation, non-card types) ─────── */
-
-/* =====================================================================
-   SEARCH GRID: INTERNAL CARD LAYOUT — VERTICAL STACK (matches homepage)
-   =====================================================================
-   The native ytd-video-renderer has a HORIZONTAL layout:
-     • ytd-thumbnail   → fixed width ~246px, floated/positioned left
-     • .text-wrapper   → margin-left ~246px to sit beside the thumbnail
-   We MUST override both CSS AND inline styles (the JS _cleanInlineStyles
-   method clears the inline values; these rules cover any stragglers).
-   ===================================================================== */
-
-/* ── 1. #dismissible or #content: primary inner wrapper → column stack ────────── */
-
-/* ── 1b. Brute-force any inner links to column stack (sometimes YouTube wraps the whole thing in <a>) ────────── */
-
-/* ── 2. Thumbnail: override the inline width YouTube's Polymer injects ─ */
-
-/* ── 3. Thumbnail inner elements ─────────────────────────────────── */
-
-/* ── 4. .text-wrapper: CRITICAL — zero out the side-offset margin ─── */
-
-/* ── 4. .text-wrapper: Grid layout to mimic Homepage ─── */
-
-/* Maintain flex column behavior for Playlists and Radios since they lack avatars */
-
-/* Flatten the internal wrappers to participate in grid */
-
-/* Avatar to grid area */
-
-/* Title wrapper to grid area */
-
-/* Channel name to grid area */
-
-/* Metadata (views/time) to grid area */
-
-/* Hide description text and badges for unified look */
-
-/* ── 9. Playlist / radio internal wrappers ───────────────────────── */
-
-/* Brute force all wrappers into flex columns */
-
-/* Hide YouTube's native 'stacked folder' backdrops for playlists */
-
-/* Ensure inner links don't inherit weird margins */
-
-/* ── 10. Action menu: pin to top-right corner of card ───────────── */
-
-/* Hover: identical float-and-glow to homepage cards */
-
-/* Strip the YouTube-native search-specific skew/arrow */
-
-/* Fix prominent-thumb variants: force correct aspect ratio */
-
-/* Hide description snippet in grid mode (too cluttered) */
-
-/* Hide inline badge labels in grid mode */
-
-/* Hide chapter bars (too cluttered in grid) */
-
-/* Non-Video Elements Span Full Width (shelves, promos) */
-
-/* Channel card: spans 2 columns, not full row */
-
-/* Channel Result Card — glassmorphic square card spanning 2 grid columns */
-
-/* Force intermediate wrappers to be columns so text isn't clipped out of view */
-
-/* Force channel name alignment and visibility */
-
-/* Subscribe Button centered at bottom */
-
-/* Noise Section Hiding */
-
-/* Continuation item MUST remain visible — it is YouTube's scroll sentinel.
-   When it enters the viewport, YouTube's IntersectionObserver loads the next
-   page of results. Hiding it with display:none breaks infinite scroll entirely.
-   We just make it span the full row and keep it at the bottom of the grid. */
-
-/* Section separator spacing – works because item-section is display:contents,
-   these are effectively no-ops on layout but prevent flash of spacing during load */
-
-/* Strict Shorts Suppression on Search */
-
-/* Responsive Search Grid — matches homepage responsive breakpoints */
-
-/* ===================================================================================
-   6b. SEARCH REDESIGN — Supplement (Playlist Wrappers & Misc)
-   Grid flattening is handled in section 6 above.
-   =================================================================================== */
-
-/* Playlist Specific Badge Overlays */
-
+/* Playlist thumbnail styling — scoped to search grid to avoid leaking to home/watch */
 body.ypp-search-grid-mode ytd-playlist-thumbnail {
   border-radius: var(--ypp-radius-md) !important;
   overflow: hidden !important;
@@ -147,16 +28,13 @@ body.ypp-search-grid-mode ytd-playlist-thumbnail {
   position: relative !important;
 }
 
-/* Premium Playlist Side Panel Overlay */
-
 body.ypp-search-grid-mode ytd-thumbnail-overlay-side-panel-renderer {
   background: rgba(10, 10, 15, 0.6) !important;
-
   border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: var(--ypp-text-primary, #fff) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   width: 35% !important;
-  max-width: 100% !important; /* Fixed: was 100px */
+  max-width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -170,8 +48,6 @@ body.ypp-search-grid-mode ytd-thumbnail-overlay-side-panel-renderer yt-formatted
   font-family: 'Inter', sans-serif !important;
 }
 
-/* Mix/Radio Premium Overlay */
-
 body.ypp-search-grid-mode ytd-thumbnail-overlay-bottom-panel-renderer {
   background: linear-gradient(to top, rgba(10, 10, 15, 0.95), transparent) !important;
   padding: 16px 8px 8px 8px !important;
@@ -182,69 +58,16 @@ body.ypp-search-grid-mode ytd-thumbnail-overlay-bottom-panel-renderer {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Premium Playlist "View Full Playlist" Label */
-
-/* Uniform metadata line colour across all card types */
-
-/* Hover-Only Menu Button */
-
-/* Non-Video Elements Span Full Width (Except Channels) */
-
-/* Shelf Internal Grid (e.g. "From related searches") */
-
-/* Annihilate Horizontal Scroll Containers */
-
-/* Gap Annihilation: Nuke Hidden Shorts and Spacers */
-
-/* Channel search renderer height fix merged into the primary rules at line 2628 */
-
-/* Chips rule deleted due to deduplication */
-
-/* Next/Prev Buttons */
-
-/* Responsive Search Grid - Forcing specific column counts for perfect cards */
-
-/* Responsive breakpoints for grid */
-
-/* Ensure chip bar doesn't interfere with grid */
-
-body.ypp-search-grid-mode ytd-feed-filter-chip-bar-renderer {
+/* Feed filter chips — search page spacing */
+body.ypp-search-page ytd-feed-filter-chip-bar-renderer {
   margin-bottom: 24px;
 }
 
-/* ============================================================
-   SEARCH GRID — TARGETED BUG FIXES
-   ============================================================ */
 
-/* FIX 1: Circular avatar in search results — match homepage style */
-
-/* FIX 2: Duration badge visible in search grid */
-
-/* FIX 3: Remove gap caused by continuation loader spanning a full tall row */
-
-/* FIX 4: Playlist cards in grid — treat same as video cards, not full-width */
-
-/* FIX 4b: Playlist thumbnail overlay — video count badge */
-
-/* FIX 5: Mix/radio cards — same grid treatment as videos */
-
-/* FIX 6: Remove the large left gap on first load (image 2) —
-   caused by YouTube injecting a wide promo in column 1-2 before results load */
-
-/* FIX 7: Bracket/bracket artifacts (image 3 purple markers) —
-   these are ytd-search-refinement-card-renderer elements leaking into grid */
-
-
-
-
-/* =========================================================================
-   SEARCH GRID: INSTANT CARD ENTRANCE (CSS-native, no JS overhead)
-   Applied by the browser compositor — zero scheduling delay.
-   ========================================================================= */
 @keyframes ypp-card-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -257,14 +80,8 @@ body.ypp-search-grid-mode ytd-feed-filter-chip-bar-renderer {
   100% { background-position: -200% 0; }
 }
 
-/* Apply to all cards as soon as they enter the grid.
-   animation-fill-mode: backwards means they start hidden until the
-   animation fires, preventing a FOUC flash. */
 body.ypp-search-grid-mode .ypp-grid-item {
-  animation: ypp-card-in 0.18s ease-out both;
-  
-  /* PERFORMANCE VIRUALIZATION: 
-     Skip rendering off-screen cards to maintain 60FPS on infinite scroll */
+  animation: ypp-card-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   content-visibility: auto;
   contain-intrinsic-size: auto 300px;
 }
@@ -285,6 +102,7 @@ body.ypp-search-page ytd-app[mini-guide-visible] #content {
   padding-left: 0 !important;
   --ytd-mini-guide-width: 0px !important;
 }
+
 body.ypp-search-page ytd-search,
 body.ypp-search-page ytd-two-column-search-results-renderer,
 body.ypp-search-page ytd-two-column-search-results-renderer #primary {
@@ -294,12 +112,14 @@ body.ypp-search-page ytd-two-column-search-results-renderer #primary {
   padding-left: 0 !important;
   box-sizing: border-box !important;
 }
+
 body.ypp-search-page ytd-two-column-search-results-renderer #secondary {
   display: none !important;
   width: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-search,
 body.ypp-search-grid-mode ytd-two-column-search-results-renderer,
 body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary {
@@ -308,13 +128,16 @@ body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary {
   display: flex !important;
   justify-content: center !important;
 }
+
 body.ypp-search-grid-mode ytd-section-list-renderer {
   padding: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
 body.ypp-search-grid-mode .ypp-flattened-grid,
 body.ypp-search-grid-mode .ypp-grid-container {
@@ -324,6 +147,7 @@ body.ypp-search-grid-mode .ypp-grid-container {
   gap: 20px !important;
   align-items: start !important;
 }
+
 body.ypp-search-grid-mode ytd-shelf-renderer #items,
 body.ypp-search-grid-mode ytd-shelf-renderer #contents,
 body.ypp-search-grid-mode ytd-vertical-list-renderer #items {
@@ -335,15 +159,15 @@ body.ypp-search-grid-mode ytd-vertical-list-renderer #items {
   box-sizing: border-box !important;
   align-items: start !important;
 }
+
 body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]) {
   display: contents !important;
 }
+
 body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]) > #contents {
   display: contents !important;
 }
 
-/* FORCE AUTO-ADJUST: Aggressive Whitelist to completely destroy any invisible grid blockers */
-/* 1. Destroy any unknown elements inside the grid contents */
 body.ypp-search-grid-mode
   ytd-item-section-renderer
   > #contents
@@ -357,14 +181,12 @@ body.ypp-search-grid-mode
   display: none !important;
 }
 
-/* 2. Destroy any unknown structural elements (like empty #header) inside the section wrappers */
 body.ypp-search-grid-mode
   ytd-item-section-renderer
   > *:not(#contents):not(ytd-continuation-item-renderer) {
   display: none !important;
 }
 
-/* 3. Destroy specific known ad shells and empty elements */
 body.ypp-search-grid-mode ytd-continuation-item-renderer:empty,
 body.ypp-search-grid-mode ytd-continuation-item-renderer[hidden],
 body.ypp-search-grid-mode ytd-video-renderer:empty,
@@ -395,6 +217,7 @@ body.ypp-search-grid-mode ytd-reel-shelf-renderer:not(:has(ytd-reel-item-rendere
   margin: 8px 0;
   box-sizing: border-box;
 }
+
 .ypp-search-page.ypp-search-grid-mode ytd-shelf-renderer ytd-vertical-list-renderer > #items {
   display: grid !important;
   grid-template-columns: repeat(var(--ypp-search-columns, 4), minmax(0, 1fr)) !important;
@@ -402,10 +225,11 @@ body.ypp-search-grid-mode ytd-reel-shelf-renderer:not(:has(ytd-reel-item-rendere
   gap: 20px !important;
   width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer,
 body.ypp-search-grid-mode ytd-playlist-renderer,
 body.ypp-search-grid-mode ytd-radio-renderer {
-  /* Size */
+  
   width: 100% !important;
   min-width: 0 !important;
   max-width: 100% !important;
@@ -420,7 +244,6 @@ body.ypp-search-grid-mode ytd-radio-renderer {
   position: relative !important;
 }
 
-/* Grid layout for song/compact results and newer lockup card types */
 body.ypp-search-grid-mode ytd-compact-video-renderer,
 body.ypp-search-grid-mode yt-lockup-view-model,
 body.ypp-search-grid-mode ytd-lockup-view-model {
@@ -436,6 +259,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model {
   overflow: hidden !important;
   position: relative !important;
 }
+
 body.ypp-search-grid-mode ytd-compact-video-renderer ytd-thumbnail,
 body.ypp-search-grid-mode yt-lockup-view-model ytd-thumbnail,
 body.ypp-search-grid-mode yt-lockup-view-model .yt-lockup-view-model-wiz__image,
@@ -451,12 +275,14 @@ body.ypp-search-grid-mode ytd-lockup-view-model .yt-lockup-view-model-wiz__image
   border-radius: 12px !important;
   overflow: hidden !important;
 }
+
 body.ypp-search-grid-mode ytd-compact-video-renderer #dismissible {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
   min-width: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-compact-video-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-compact-video-renderer #meta {
   margin-left: 0 !important;
@@ -466,7 +292,6 @@ body.ypp-search-grid-mode ytd-compact-video-renderer #meta {
   flex: 1 !important;
 }
 
-/* PREMIUM POLISH: Channel Card Grid Layout */
 body.ypp-search-grid-mode ytd-channel-renderer {
   width: 100% !important;
   min-width: 0 !important;
@@ -510,6 +335,7 @@ body.ypp-search-grid-mode ytd-channel-renderer #buttons {
   display: flex !important;
   justify-content: center !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
@@ -522,29 +348,24 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   overflow: hidden !important;
   position: relative !important;
   
-  /* PERCEIVED SPEED: Skeleton shimmer background while image loads */
+  
   background: linear-gradient(90deg, var(--yt-spec-badge-chip-background, rgba(255,255,255,0.03)) 25%, rgba(255,255,255,0.08) 50%, var(--yt-spec-badge-chip-background, rgba(255,255,255,0.03)) 75%) !important;
   background-size: 200% 100% !important;
   animation: ypp-skeleton-shimmer 2s infinite linear !important;
   
   margin-right: 0 !important;
-  margin-bottom: 0 !important; /* Spacing handled by title margin-top */
+  margin-bottom: 0 !important; 
   grid-column: 1 / -1 !important;
   grid-row: 1 / 2 !important;
   flex: none !important;
   z-index: var(--ypp-z-content);
   
-  /* PREMIUM POLISH: Rounded corners and smooth hover transition */
+  
   border-radius: 12px !important;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease !important;
 }
 
-/* PREMIUM POLISH: Subtle hover lift and shadow for the entire card */
-body.ypp-search-grid-mode ytd-video-renderer:hover ytd-thumbnail,
-body.ypp-search-grid-mode ytd-playlist-renderer:hover ytd-playlist-thumbnail,
-body.ypp-search-grid-mode ytd-radio-renderer:hover ytd-thumbnail {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
-}
+
 
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail img,
@@ -554,26 +375,21 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
   object-fit: cover !important;
   background-color: transparent !important;
   
-  /* PREMIUM POLISH: Smooth scale transition for the image */
+  
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease-in !important;
 }
 
-/* PREMIUM POLISH: Scale up image inside the rounded thumbnail container */
-body.ypp-search-grid-mode ytd-video-renderer:hover ytd-thumbnail img,
-body.ypp-search-grid-mode ytd-playlist-renderer:hover ytd-thumbnail img,
-body.ypp-search-grid-mode ytd-radio-renderer:hover ytd-thumbnail img {
-  transform: scale(1.04) !important;
-}
+
 body.ypp-search-grid-mode ytd-video-renderer #video-title,
 body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
 body.ypp-search-grid-mode ytd-radio-renderer #video-title,
 body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string,
 body.ypp-search-grid-mode ytd-playlist-renderer #video-title yt-formatted-string,
 body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
-  font-family: 'Inter', 'Roboto', sans-serif !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
   font-size: 1.6rem !important;
-  line-height: 2.4rem !important;
-  font-weight: 500 !important;
+  line-height: 2.5rem !important;
+  font-weight: 600 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
@@ -582,7 +398,6 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
   transition: color 0.2s ease !important;
 }
 
-/* PREMIUM POLISH: Highlight title on card hover */
 body.ypp-search-grid-mode ytd-video-renderer:hover #video-title,
 body.ypp-search-grid-mode ytd-playlist-renderer:hover #video-title,
 body.ypp-search-grid-mode ytd-radio-renderer:hover #video-title {
@@ -596,20 +411,21 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title,
 body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string,
 body.ypp-search-grid-mode ytd-playlist-renderer #video-title yt-formatted-string,
 body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
-  font-family: 'Inter', 'Roboto', sans-serif !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
   font-size: 1.6rem !important;
-  line-height: 2.4rem !important;
-  font-weight: 500 !important;
+  line-height: 2.5rem !important;
+  font-weight: 600 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
-  max-height: 4.8rem !important;
+  max-height: 5.0rem !important;
   color: var(--ypp-text-primary, #fff) !important;
   letter-spacing: -0.1px !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #dismissible,
 body.ypp-search-grid-mode ytd-playlist-renderer #content,
 body.ypp-search-grid-mode ytd-radio-renderer #content {
@@ -626,6 +442,7 @@ body.ypp-search-grid-mode ytd-radio-renderer #content {
   box-sizing: border-box !important;
   grid-column: 1 / -1 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer a.yt-simple-endpoint,
 body.ypp-search-grid-mode ytd-radio-renderer a.yt-simple-endpoint,
 body.ypp-search-grid-mode ytd-playlist-renderer #content > a,
@@ -637,12 +454,13 @@ body.ypp-search-grid-mode ytd-radio-renderer > div {
   width: 100% !important;
   height: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   display: block !important;
   width: 100% !important;
-  min-width: 0 !important; /* beats YouTube's min-width: 246px */
+  min-width: 0 !important; 
   max-width: 100% !important;
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
@@ -654,6 +472,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   margin: 0 !important;
   background-color: transparent !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail a,
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail a,
@@ -664,6 +483,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail yt-image {
   width: 100% !important;
   height: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail img,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
@@ -672,6 +492,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
   object-fit: cover !important;
   display: block !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
   display: grid !important;
   grid-template-columns: 36px 1fr !important;
@@ -680,7 +501,7 @@ body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
     'avatar channel'
     'avatar metadata';
   column-gap: 12px !important;
-  row-gap: 4px !important; /* Increased from 2px to match spacing */
+  row-gap: 4px !important; 
   margin: 12px 0 0 0 !important;
   padding: 0 !important;
   width: 100% !important;
@@ -689,7 +510,9 @@ body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
   box-sizing: border-box !important;
   grid-column: 1 / -1 !important;
   grid-row: 2 / 3 !important;
+  align-content: start !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-playlist-renderer #meta,
@@ -702,12 +525,15 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta {
   width: 100% !important;
   max-width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #meta,
 body.ypp-search-grid-mode ytd-video-renderer #channel-info {
   display: contents !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail,
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element {
+body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info a.yt-simple-endpoint:first-child {
   grid-area: avatar !important;
   width: 36px !important;
   height: 36px !important;
@@ -719,6 +545,7 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element {
   display: flex !important;
   overflow: hidden !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail img,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element img {
   width: 36px !important;
@@ -726,25 +553,32 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element img {
   object-fit: cover !important;
   display: block !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer yt-img-shadow {
   display: block !important;
 }
-body.ypp-search-grid-mode ytd-video-renderer #title-wrapper {
+
+body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
+body.ypp-search-grid-mode ytd-video-renderer h3.title-and-badge {
   grid-area: title !important;
   align-self: start !important;
   margin: 0 !important;
   padding-right: 32px !important;
 }
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
+
+body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info .yt-simple-endpoint.yt-formatted-string {
   grid-area: channel !important;
   margin: 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a {
-  font-size: 1.3rem !important; /* matched to homepage */
-  font-weight: 400 !important;
+body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a,
+body.ypp-search-grid-mode ytd-video-renderer .yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+  font-size: 1.3rem !important; 
+  font-weight: 500 !important;
   line-height: 1.5 !important;
   white-space: nowrap !important;
   overflow: hidden !important;
@@ -752,37 +586,45 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a {
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  color: var(--ypp-text-secondary, #aaa) !important;
   transition: color 0.2s ease;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer:hover ytd-channel-name a {
   color: rgba(255, 255, 255, 0.92) !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
   grid-area: metadata !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #metadata-line,
 body.ypp-search-grid-mode ytd-playlist-renderer #metadata-line,
 body.ypp-search-grid-mode ytd-radio-renderer #metadata-line,
 body.ypp-search-grid-mode ytd-video-renderer #metadata-line span,
 body.ypp-search-grid-mode ytd-playlist-renderer #metadata-line span,
-body.ypp-search-grid-mode ytd-radio-renderer #metadata-line span {
+body.ypp-search-grid-mode ytd-radio-renderer #metadata-line span,
+body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   gap: 0 4px !important;
-  font-size: 1.3rem !important; /* matched to homepage */
-  font-weight: 400 !important;
+  font-size: 1.3rem !important; 
+  font-weight: 500 !important;
   line-height: 1.5 !important;
-  width: auto !important; /* Allows flex wrapping better */
+  width: auto !important; 
   margin-top: 0 !important;
+  color: var(--ypp-text-secondary, #aaa) !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string.metadata-snippet-text,
 body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string#description-text,
 body.ypp-search-grid-mode ytd-video-renderer #badges {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer > *,
 body.ypp-search-grid-mode ytd-radio-renderer > *,
 body.ypp-search-grid-mode ytd-playlist-renderer #content,
@@ -800,6 +642,7 @@ body.ypp-search-grid-mode ytd-radio-renderer > div {
   height: auto !important;
   box-sizing: border-box !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
@@ -816,6 +659,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   position: relative !important;
   background: transparent !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
   margin-left: 0 !important;
@@ -826,6 +670,7 @@ body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
   display: flex !important;
   flex-direction: column !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer yt-collections-stack,
 body.ypp-search-grid-mode ytd-playlist-renderer .yt-collections-stack,
 body.ypp-search-grid-mode ytd-playlist-renderer [class*='stack-'],
@@ -834,12 +679,14 @@ body.ypp-search-grid-mode ytd-playlist-renderer .ytd-playlist-thumbnail-renderer
   display: none !important;
   opacity: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer #main-link,
 body.ypp-search-grid-mode ytd-radio-renderer #main-link {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #action-menu,
 body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-menu-renderer,
@@ -857,17 +704,21 @@ body.ypp-search-grid-mode ytd-playlist-renderer::after,
 body.ypp-search-grid-mode ytd-radio-renderer::after {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer[use-prominent-thumbs] ytd-thumbnail {
   aspect-ratio: 16/9 !important;
   width: 100% !important;
   min-width: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-container {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer .ytd-badge-supported-renderer {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-macro-markers-list-item-renderer,
 body.ypp-search-grid-mode ytd-video-renderer ytd-chapter-renderer,
 body.ypp-search-grid-mode ytd-video-renderer #chapters,
@@ -875,6 +726,7 @@ body.ypp-search-grid-mode ytd-video-renderer #chapter-list,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-macro-markers-list-item-renderer {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-shelf-renderer,
 body.ypp-search-grid-mode ytd-rich-shelf-renderer,
 body.ypp-search-grid-mode ytd-horizontal-card-list-renderer,
@@ -884,14 +736,14 @@ body.ypp-search-grid-mode ytd-rich-section-renderer {
   max-width: 100%;
 }
 
-/* Feature: Hide Channel Cards */
 body.ypp-search-grid-mode ytd-channel-renderer {
   grid-column: span 2;
   width: 100%;
   max-width: 100%;
-  align-self: start !important; /* Prevents vertical stretch that causes card overlap */
-  z-index: var(--ypp-z-content); /* Sits above video cards in normal state */
+  align-self: start !important; 
+  z-index: var(--ypp-z-content); 
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer {
   -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
   backdrop-filter: blur(24px) saturate(1.2) !important;
@@ -904,9 +756,9 @@ body.ypp-search-grid-mode ytd-channel-renderer {
   border-top-color: rgba(255, 255, 255, 0.15) !important;
   border-radius: var(--ypp-radius-lg);
   padding: 32px 24px !important;
-  margin: 0 !important; /* Grid gap handles spacing natively */
+  margin: 0 !important; 
   display: flex !important;
-  flex-direction: column !important; /* Stack elements vertically */
+  flex-direction: column !important; 
   align-items: center !important;
   justify-content: center !important;
   box-shadow:
@@ -923,9 +775,10 @@ body.ypp-search-grid-mode ytd-channel-renderer {
   width: 100% !important;
   min-height: 280px !important;
   max-height: none !important;
-  grid-column: span 1 !important; /* Forces standard grid column (e.g. 3 or 4 per row depending on screen) */
+  grid-column: span 1 !important; 
   box-sizing: border-box !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer:hover {
   transform: translateY(-3px) scale(1.005) !important;
   background: linear-gradient(
@@ -941,6 +794,7 @@ body.ypp-search-grid-mode ytd-channel-renderer:hover {
     inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
   z-index: var(--ypp-z-card-hover);
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer::before {
   content: '';
   position: absolute;
@@ -954,14 +808,17 @@ body.ypp-search-grid-mode ytd-channel-renderer::before {
   transition: opacity 0.4s ease;
   z-index: var(--ypp-z-content);
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer:hover::before {
   opacity: 1;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #content-section,
 body.ypp-search-grid-mode ytd-channel-renderer #subscribe-button {
   position: relative;
   z-index: var(--ypp-z-content);
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #content-section {
   display: flex !important;
   flex-direction: column !important;
@@ -969,6 +826,7 @@ body.ypp-search-grid-mode ytd-channel-renderer #content-section {
   width: 100% !important;
   margin-bottom: 24px !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #avatar-section {
   margin-right: 0 !important;
   margin-bottom: 16px !important;
@@ -976,6 +834,7 @@ body.ypp-search-grid-mode ytd-channel-renderer #avatar-section {
   align-items: center !important;
   justify-content: center !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer img#img,
 body.ypp-search-grid-mode ytd-channel-renderer yt-img-shadow {
   width: 120px !important;
@@ -984,6 +843,7 @@ body.ypp-search-grid-mode ytd-channel-renderer yt-img-shadow {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #info-section {
   display: flex !important;
   flex-direction: column !important;
@@ -993,6 +853,7 @@ body.ypp-search-grid-mode ytd-channel-renderer #info-section {
   width: 100% !important;
   max-width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #main-link,
 body.ypp-search-grid-mode ytd-channel-renderer #info {
   display: flex !important;
@@ -1002,6 +863,7 @@ body.ypp-search-grid-mode ytd-channel-renderer #info {
   width: 100% !important;
   max-width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #title,
 body.ypp-search-grid-mode ytd-channel-renderer #channel-title,
 body.ypp-search-grid-mode ytd-channel-renderer #channel-name,
@@ -1015,6 +877,7 @@ body.ypp-search-grid-mode ytd-channel-renderer ytd-channel-name {
   text-align: center !important;
   overflow: visible !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #title *,
 body.ypp-search-grid-mode ytd-channel-renderer #channel-title *,
 body.ypp-search-grid-mode ytd-channel-renderer ytd-channel-name * {
@@ -1032,6 +895,7 @@ body.ypp-search-grid-mode ytd-channel-renderer ytd-channel-name * {
   line-clamp: unset !important;
   -webkit-box-orient: unset !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #subscribers,
 body.ypp-search-grid-mode ytd-channel-renderer #subscriber-count,
 body.ypp-search-grid-mode ytd-channel-renderer #video-count,
@@ -1049,9 +913,10 @@ body.ypp-search-grid-mode ytd-channel-renderer #subscribers * {
   -webkit-box-orient: unset !important;
   overflow: visible !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #description {
   display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important; /* Allow up to 2 lines of description for better context */
+  -webkit-line-clamp: 2 !important; 
   line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
@@ -1062,6 +927,7 @@ body.ypp-search-grid-mode ytd-channel-renderer #description {
   line-height: 1.5 !important;
   max-width: 80% !important;
 }
+
 body.ypp-search-grid-mode ytd-channel-renderer #buttons,
 body.ypp-search-grid-mode ytd-channel-renderer #subscribe-button {
   display: flex !important;
@@ -1070,13 +936,13 @@ body.ypp-search-grid-mode ytd-channel-renderer #subscribe-button {
   width: 100% !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-background-promo-renderer,
 body.ypp-search-grid-mode ytd-search-refinement-card-renderer {
   display: none !important;
 }
-body.ypp-search-grid-mode ytd-continuation-item-renderer,
-body.ypp-search-grid-mode ytd-two-column-search-results-renderer ytd-continuation-item-renderer,
-body.ypp-search-grid-mode ytd-rich-grid-renderer ytd-continuation-item-renderer {
+
+body.ypp-search-grid-mode ytd-continuation-item-renderer {
   grid-column: 1 / -1 !important;
   width: 100% !important;
   flex-basis: 100%;
@@ -1088,33 +954,39 @@ body.ypp-search-grid-mode ytd-rich-grid-renderer ytd-continuation-item-renderer 
   align-items: center;
   justify-content: center;
 }
+
 body.ypp-search-grid-mode ytd-item-section-renderer.ypp-noise-section {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-reel-shelf-renderer,
 body.ypp-search-grid-mode ytd-rich-shelf-renderer[is-shorts],
 body.ypp-search-grid-mode ytd-video-renderer:has(a[href*='/shorts/']),
 body.ypp-search-grid-mode ytd-grid-video-renderer:has(a[href*='/shorts/']) {
   display: none !important;
 }
+
 @media (max-width: 1600px) {
   body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
   body.ypp-search-grid-mode ytd-item-section-renderer #contents {
     gap: 20px !important;
   }
 }
+
 @media (max-width: 1200px) {
   body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
   body.ypp-search-grid-mode ytd-item-section-renderer #contents {
     gap: 16px !important;
   }
 }
+
 @media (max-width: 900px) {
   body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
   body.ypp-search-grid-mode ytd-item-section-renderer #contents {
     gap: 12px !important;
   }
 }
+
 @media (max-width: 600px) {
   body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
   body.ypp-search-grid-mode ytd-item-section-renderer #contents {
@@ -1122,61 +994,19 @@ body.ypp-search-grid-mode ytd-grid-video-renderer:has(a[href*='/shorts/']) {
   }
 }
 
-
-
-
-
-
-
-body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-container {
-  display: none;
-}
-body.ypp-search-grid-mode ytd-shelf-renderer,
-body.ypp-search-grid-mode ytd-rich-shelf-renderer,
-body.ypp-search-grid-mode ytd-horizontal-card-list-renderer,
-body.ypp-search-grid-mode ytd-rich-section-renderer {
-  grid-column: 1 / -1;
-  width: 100%;
-  max-width: 100%;
-}
 body.ypp-search-grid-mode ytd-ad-slot-renderer,
-body.ypp-search-grid-mode ytd-ad-slot-renderer,
-body.ypp-search-grid-mode:not(.ypp-channel-page):not(.cinematic-home)
-  ytd-rich-item-renderer:has(ytd-ad-slot-renderer),
-body.ypp-search-grid-mode:not(.ypp-channel-page) ytd-rich-section-renderer:empty {
+body.ypp-search-grid-mode ytd-in-feed-ad-layout-renderer,
+body.ypp-search-grid-mode ytd-promoted-sparkles-web-renderer,
+body.ypp-search-grid-mode ytd-search-pyv-renderer,
+body.ypp-search-grid-mode ytd-promoted-video-renderer {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
   height: 0 !important;
   width: 0 !important;
 }
-body.ypp-search-grid-mode:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer,
-body.ypp-search-grid-mode ytd-video-renderer,
-body.ypp-search-grid-mode ytd-video-renderer,
-body.ypp-search-grid-mode ytd-playlist-renderer,
-body.ypp-search-grid-mode ytd-radio-renderer,
-body.ypp-search-grid-mode ytd-channel-renderer {
-  transition:
-    transform var(--ypp-transition),
-    box-shadow var(--ypp-transition),
-    border-color var(--ypp-transition),
-    background-color var(--ypp-transition);
-  transform: translateZ(0); /* Hardware Acceleration */
-  will-change: transform, box-shadow, border-color, background-color;
-}
-body.ypp-search-grid-mode:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover,
-body.ypp-search-grid-mode ytd-video-renderer:hover,
-body.ypp-search-grid-mode ytd-video-renderer:hover,
-body.ypp-search-grid-mode ytd-playlist-renderer:hover,
-body.ypp-search-grid-mode ytd-radio-renderer:hover,
-body.ypp-search-grid-mode ytd-channel-renderer:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.4),
-    0 0 24px rgba(255, 255, 255, 0.05);
-  background-color: var(--ypp-bg-surface);
-  z-index: var(--ypp-z-card-hover);
-}
+
+
 body.ypp-search-grid-mode ytd-playlist-renderer > a,
 body.ypp-search-grid-mode ytd-radio-renderer > div,
 body.ypp-search-grid-mode ytd-radio-renderer > ytd-thumbnail,
@@ -1191,12 +1021,14 @@ body.ypp-search-grid-mode ytd-playlist-renderer #content > * {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer #view-more {
   margin-top: auto !important;
   padding-top: 12px !important;
   display: block !important;
   width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer #view-more a {
   display: flex !important;
   align-items: center !important;
@@ -1212,12 +1044,14 @@ body.ypp-search-grid-mode ytd-playlist-renderer #view-more a {
   border: 1px solid rgba(99, 102, 241, 0.2) !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer:hover #view-more a {
   background: rgba(99, 102, 241, 0.2) !important;
   color: var(--ypp-text-primary, #fff) !important;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
   border-color: rgba(99, 102, 241, 0.4) !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon-button,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-menu-renderer yt-icon-button,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-menu-renderer yt-icon-button {
@@ -1226,14 +1060,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-menu-renderer yt-icon-button {
   padding: 4px !important;
   background: transparent !important;
 }
-body.ypp-search-grid-mode ytd-shelf-renderer,
-body.ypp-search-grid-mode ytd-rich-shelf-renderer,
-body.ypp-search-grid-mode ytd-horizontal-card-list-renderer,
-body.ypp-search-grid-mode ytd-rich-section-renderer {
-  grid-column: 1 / -1;
-  width: 100%;
-  max-width: 100%;
-}
+
 body.ypp-search-grid-mode ytd-shelf-renderer #contents,
 body.ypp-search-grid-mode ytd-horizontal-card-list-renderer #contents,
 body.ypp-search-grid-mode ytd-horizontal-card-list-renderer #items {
@@ -1244,10 +1071,12 @@ body.ypp-search-grid-mode ytd-horizontal-card-list-renderer #items {
   flex-wrap: nowrap !important;
   width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-shelf-renderer #scroll-container,
 body.ypp-search-grid-mode ytd-horizontal-card-list-renderer #scroll-container {
-  display: contents !important; /* Flatten the scroll track so children join the grid */
+  display: contents !important; 
 }
+
 body.ypp-search-grid-mode ytd-reel-shelf-renderer,
 body.ypp-search-grid-mode ytd-horizontal-card-list-renderer[has-shorts],
 body.ypp-search-grid-mode ytd-item-section-renderer.ytd-section-list-renderer[is-empty] {
@@ -1257,44 +1086,18 @@ body.ypp-search-grid-mode ytd-item-section-renderer.ytd-section-list-renderer[is
   height: 0 !important;
   width: 0 !important;
 }
+
 body.ypp-search-grid-mode #left-arrow-button,
 body.ypp-search-grid-mode #right-arrow-button {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   background: rgba(10, 10, 10, 0.8);
 }
-@media (max-width: 1600px) {
-  body.ypp-search-grid-mode ytd-item-section-renderer > #contents,
-  body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
-  body.ypp-search-grid-mode ytd-shelf-renderer > #contents,
-  body.ypp-search-grid-mode ytd-horizontal-card-list-renderer > #contents {
-    gap: 20px !important;
-  }
-}
-@media (max-width: 1200px) {
-  body.ypp-search-grid-mode ytd-item-section-renderer > #contents,
-  body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
-  body.ypp-search-grid-mode ytd-shelf-renderer > #contents,
-  body.ypp-search-grid-mode ytd-horizontal-card-list-renderer > #contents {
-    gap: 16px !important;
-  }
-}
-@media (max-width: 900px) {
-  body.ypp-search-grid-mode ytd-item-section-renderer > #contents,
-  body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
-  body.ypp-search-grid-mode ytd-shelf-renderer > #contents,
-  body.ypp-search-grid-mode ytd-horizontal-card-list-renderer > #contents {
-    gap: 12px !important;
-  }
-}
-@media (max-width: 600px) {
-  body.ypp-search-grid-mode ytd-item-section-renderer > #contents,
-  body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
-  body.ypp-search-grid-mode ytd-shelf-renderer > #contents,
-  body.ypp-search-grid-mode ytd-horizontal-card-list-renderer > #contents {
-    gap: 16px !important;
-  }
-}
+
+/* Note: Media queries for gap/responsive layout are defined once above (around line 969). */
+
+
+
 body.ypp-search-grid-mode ytd-reel-shelf-renderer,
 body.ypp-search-grid-mode ytd-rich-shelf-renderer[is-shorts],
 body.ypp-search-grid-mode
@@ -1303,24 +1106,29 @@ body.ypp-search-grid-mode ytd-video-renderer:has(a[href*='/shorts/']),
 body.ypp-search-grid-mode ytd-grid-video-renderer:has(a[href*='/shorts/']) {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-rich-section-renderer,
 body.ypp-search-grid-mode ytd-horizontal-card-list-renderer {
   grid-column: 1 / -1 !important;
   width: 100% !important;
   max-width: 100% !important;
 }
+
 body.ypp-search-grid-mode ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
 body.ypp-search-grid-mode ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-expandable-metadata-renderer {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-expandable-metadata-renderer {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-avatar-element yt-img-shadow,
@@ -1336,6 +1144,7 @@ body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail img {
   display: block !important;
   border-radius: var(--ypp-radius-md) !important;
 }
+
 body.ypp-search-grid-mode ytd-continuation-item-renderer {
   position: absolute !important;
   bottom: 0 !important;
@@ -1350,11 +1159,13 @@ body.ypp-search-grid-mode ytd-continuation-item-renderer {
   padding: 0 !important;
   grid-column: auto !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer {
   grid-column: span 1 !important;
   display: flex !important;
   flex-direction: column !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail-overlay-side-panel-renderer {
   position: absolute !important;
   right: 0 !important;
@@ -1364,18 +1175,22 @@ body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail-overlay-side-panel
   border-radius: 4px 0 12px 0 !important;
   padding: 4px 8px !important;
 }
+
 body.ypp-search-grid-mode ytd-radio-renderer {
   grid-column: span 1 !important;
   display: flex !important;
   flex-direction: column !important;
 }
+
 body.ypp-search-grid-mode ytd-background-promo-renderer,
 body.ypp-search-grid-mode ytd-search-pyv-renderer {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-search-refinement-card-renderer {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer,
 body.ypp-search-grid-mode ytd-radio-renderer {
   display: flex !important;
@@ -1389,6 +1204,7 @@ body.ypp-search-grid-mode ytd-radio-renderer {
   box-sizing: border-box !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer *:has(> ytd-playlist-thumbnail),
 body.ypp-search-grid-mode ytd-playlist-renderer *:has(> ytd-thumbnail),
 body.ypp-search-grid-mode ytd-radio-renderer *:has(> ytd-playlist-thumbnail),
@@ -1408,6 +1224,7 @@ body.ypp-search-grid-mode ytd-radio-renderer a.yt-simple-endpoint {
   box-sizing: border-box !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail,
@@ -1418,6 +1235,7 @@ body.ypp-search-grid-mode ytd-playlist-renderer .ytd-playlist-thumbnail-renderer
   margin: 0 !important;
   display: block !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer yt-collections-stack,
 body.ypp-search-grid-mode ytd-playlist-renderer .yt-collections-stack,
 body.ypp-search-grid-mode ytd-playlist-renderer [class*='stack-'],
@@ -1426,6 +1244,7 @@ body.ypp-search-grid-mode ytd-playlist-renderer .ytd-playlist-thumbnail-renderer
   display: none !important;
   opacity: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-playlist-renderer #meta,
@@ -1443,6 +1262,7 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta {
   max-width: 100% !important;
   box-sizing: border-box !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
 body.ypp-search-grid-mode ytd-radio-renderer #video-title,
 body.ypp-search-grid-mode ytd-playlist-renderer #video-title yt-formatted-string,
@@ -1462,6 +1282,7 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
   letter-spacing: -0.1px !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-channel-name,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-channel-name {
   grid-area: channel !important;
@@ -1469,6 +1290,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-channel-name {
   min-width: 0 !important;
   overflow: hidden !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-channel-name yt-formatted-string,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-channel-name yt-formatted-string,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-channel-name a,
@@ -1483,10 +1305,12 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-channel-name a {
   display: block !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer:hover ytd-channel-name a,
 body.ypp-search-grid-mode ytd-radio-renderer:hover ytd-channel-name a {
   color: rgba(255, 255, 255, 0.92) !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer #metadata-line,
 body.ypp-search-grid-mode ytd-radio-renderer #metadata-line,
 body.ypp-search-grid-mode ytd-playlist-renderer yt-formatted-string.ytd-playlist-renderer,
@@ -1504,6 +1328,7 @@ body.ypp-search-grid-mode ytd-playlist-renderer #video-count {
   width: auto !important;
   margin-top: 0 !important;
 }
+
 body.ypp-search-grid-mode ytd-playlist-renderer #view-more,
 body.ypp-search-grid-mode ytd-radio-renderer #view-more,
 body.ypp-search-grid-mode ytd-playlist-renderer yt-icon,
@@ -1512,6 +1337,7 @@ body.ypp-search-grid-mode ytd-playlist-renderer yt-formatted-string#description-
 body.ypp-search-grid-mode ytd-radio-renderer yt-formatted-string#description-text {
   display: none !important;
 }
+
 body.ypp-search-grid-mode yt-lockup-view-model,
 body.ypp-search-grid-mode ytd-lockup-view-model,
 body.ypp-search-grid-mode yt-lockup-view-model > *,
@@ -1522,6 +1348,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model > * {
   box-sizing: border-box !important;
   grid-column: span 1 !important;
 }
+
 body.ypp-search-grid-mode yt-lockup-view-model a:has(yt-image),
 body.ypp-search-grid-mode yt-lockup-view-model a:has(img),
 body.ypp-search-grid-mode ytd-lockup-view-model a:has(yt-image),
@@ -1539,6 +1366,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model a:has(img) {
   display: block !important;
   flex: none !important;
 }
+
 body.ypp-search-grid-mode yt-lockup-view-model a:has(yt-image) yt-image,
 body.ypp-search-grid-mode yt-lockup-view-model a:has(yt-image) img,
 body.ypp-search-grid-mode yt-lockup-view-model a:has(img) yt-image,
@@ -1559,6 +1387,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model a:has(img) img {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 body.ypp-search-grid-mode yt-lockup-view-model .yt-lockup-metadata-view-model-wiz,
 body.ypp-search-grid-mode ytd-lockup-view-model .yt-lockup-metadata-view-model-wiz {
   margin-top: 0 !important;
@@ -1569,6 +1398,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model .yt-lockup-metadata-view-model-w
   width: 100% !important;
   max-width: 100% !important;
 }
+
 body.ypp-search-grid-mode yt-lockup-view-model h3,
 body.ypp-search-grid-mode ytd-lockup-view-model h3,
 body.ypp-search-grid-mode yt-lockup-view-model .yt-lockup-metadata-view-model-wiz__title,
@@ -1584,6 +1414,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model .yt-lockup-metadata-view-model-w
   overflow: hidden !important;
   margin: 0 0 4px 0 !important;
 }
+
 body.ypp-search-grid-mode yt-lockup-view-model .yt-lockup-metadata-view-model-wiz__text-wrapper,
 body.ypp-search-grid-mode ytd-lockup-view-model .yt-lockup-metadata-view-model-wiz__text-wrapper {
   font-size: 1.2rem !important;
@@ -1591,6 +1422,7 @@ body.ypp-search-grid-mode ytd-lockup-view-model .yt-lockup-metadata-view-model-w
   line-height: 1.8rem !important;
   margin: 0 !important;
 }
+
 body.ypp-search-grid-mode
   yt-lockup-view-model
   .yt-lockup-metadata-view-model-wiz__text-wrapper:nth-of-type(n + 3),
@@ -1599,14 +1431,11 @@ body.ypp-search-grid-mode
   .yt-lockup-metadata-view-model-wiz__text-wrapper:nth-of-type(n + 3) {
   display: none !important;
 }
+
 body.ypp-search-grid-mode ytd-thumbnail-overlay-time-status-renderer {
   z-index: var(--ypp-z-content) !important;
 }
 
-/* =========================================================================
-   SPA NAVIGATION SAFEGUARDS
-   ========================================================================= */
-/* NEVER force display an element that YouTube has explicitly hidden */
 body.ypp-search-grid-mode [hidden],
 body.ypp-search-grid-mode [hidden] *,
 body.ypp-search-grid-mode #contents [hidden],
@@ -1616,403 +1445,36 @@ body.ypp-search-grid-mode ytd-item-section-renderer[hidden] {
   pointer-events: none !important;
 }
 
+/* ==========================================================================
+   SEARCH PAGE: BADGE REPOSITIONING ANIMATION HOOK
+   Used by search-observer.js to detect when badges are inserted into
+   the DOM via animationstart event. Scoped to search grid mode.
+   ========================================================================== */
 
-/* ===================================================================================
-   SEARCH GRID FIXES: TYPOGRAPHY AND ALIGNMENT OVERRIDES (PHASE 4 & 5)
-   =================================================================================== */
-/* Fix Video Title Typography to match homepage */
-ytd-video-renderer #video-title,
-ytd-video-renderer #video-title yt-formatted-string,
-.ytd-video-renderer #video-title {
-    font-family: "Roboto", "Inter", sans-serif !important;
-    font-size: 1.4rem !important;
-    line-height: 2.0rem !important;
-    font-weight: 500 !important;
-    -webkit-box-orient: vertical !important;
-    -webkit-line-clamp: 2 !important;
-    display: -webkit-box !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+@keyframes yppBadgeAdded {
+  from { outline-color: transparent; }
+  to { outline-color: rgba(0,0,0,0); }
 }
 
-/* Fix Channel Name and Views/Date Metadata spacing */
-ytd-video-renderer #metadata-line,
-ytd-video-renderer #channel-name,
-ytd-video-renderer .ytd-channel-name {
-    font-family: "Roboto", "Inter", sans-serif !important;
+body.ypp-search-grid-mode ytd-video-renderer .text-wrapper ytd-badge-supported-renderer {
+  animation: yppBadgeAdded 0.001s;
 }
 
-ytd-video-renderer #metadata-line {
-    margin-top: 2px !important;
+body.ypp-search-grid-mode ytd-video-renderer #channel-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-/* Fix grid multi-avatar overlap */
-ytd-video-renderer #channel-name img,
-ytd-video-renderer yt-img-shadow.ytd-channel-name {
-    margin-right: -4px !important;
-    border: 2px solid var(--ypp-bg-surface, #0f0f0f) !important;
-    border-radius: 50% !important;
-    position: relative !important;
-    z-index: 1 !important;
-    transition: transform 0.2s ease, z-index 0s !important;
-}
-
-ytd-video-renderer #channel-name img:hover,
-ytd-video-renderer yt-img-shadow.ytd-channel-name:hover {
-    transform: translateX(-4px) scale(1.1) !important;
-    z-index: 10 !important;
-}
-
-/* =======================================================================
-   IMMERSIVE CARD STYLE — Search Grid Override
-   Mirrors the homepage ytd-rich-item-renderer immersive implementation.
-   Key principle: #dismissible becomes a 16:9 stacking context. Everything
-   inside is absolutely positioned — thumbnail as background, text at bottom,
-   avatar top-left, three-dot menu top-right. No gradient — text-shadow only.
-   ======================================================================= */
-
-/* ── 1. CARD WRAPPER ─────────────────────────────────────────────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer {
-  display: block !important;
-  position: relative !important;
-  overflow: hidden !important;
-  border-radius: 20px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer:hover {
-  transform: translateY(-4px) scale(1.01) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* ── 2. #DISMISSIBLE: 16:9 stacking context ─────────────────────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #dismissible {
-  display: block !important;
-  position: relative !important;
-  width: 100% !important;
-  aspect-ratio: 16 / 9 !important;
-  height: auto !important;
-  overflow: hidden !important;
-  border-radius: 20px !important;
-  background: #000 !important;
-}
-
-/* ── 3. THUMBNAIL: fills the entire card ────────────────────────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  aspect-ratio: unset !important;
-  border-radius: 20px !important;
-  grid-column: unset !important;
-  grid-row: unset !important;
-  z-index: 1 !important;
-  margin: 0 !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail a,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image {
-  display: block !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img {
-  display: block !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  border-radius: 20px !important;
-}
-
-/* ── 4. .text-wrapper: absolute overlay at bottom, NO gradient ─ */
-/* .text-wrapper is ytd-video-renderer's native text container (unlike homepage which uses #details) */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-end !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  padding: 16px !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
-  grid-column: unset !important;
-  grid-row: unset !important;
-  z-index: 3 !important;
-  pointer-events: none !important;
-  background: transparent !important;
-}
-
-/* ── 5. Flatten #meta so its children flow into .text-wrapper ─────── */
-/* By making #meta display:contents, its children (#title-wrapper, ytd-video-meta-block) 
-   become direct flex children of .text-wrapper alongside #channel-info */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta {
-  display: contents !important;
-}
-
-/* ── 6. TEXT STACK ORDER: title → views/date → channel ─────────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #title-wrapper {
-  order: 1 !important;
-  pointer-events: auto !important;
-  margin: 0 0 2px 0 !important;
-  width: 100% !important;
-  padding-right: 44px !important; /* clear the three-dot button */
-  align-self: unset !important;
-  grid-area: unset !important;
-  position: static !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  order: 2 !important;
-  grid-area: unset !important;
-  margin: 0 0 1px 0 !important;
-  pointer-events: auto !important;
-  position: static !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info {
-  order: 3 !important;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 4px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  pointer-events: auto !important;
-  position: static !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* ── 7. TITLE: 3-line clamp, stroke shadow — same as homepage ────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #video-title,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string {
-  color: #ffffff !important;
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 3 !important;
-  line-clamp: 3 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  max-height: none !important;
-  pointer-events: auto !important;
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000,
-     0 2px 8px rgba(0, 0, 0, 0.9),
-     0 4px 12px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* ── 8. VIEWS / DATE: same as homepage metadata style ───────────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #metadata-line,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #metadata-line span,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .inline-metadata-item,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block * {
-  color: var(--ypp-text-primary, #fff) !important;
-  font-weight: 600 !important;
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000,
-     0 2px 4px rgba(0, 0, 0, 0.9) !important;
-  pointer-events: auto !important;
-  display: inline !important;
-}
-
-/* ── 9. CHANNEL NAME: same as homepage channel-name style ───────────── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a {
-  color: var(--ypp-text-primary, #fff) !important;
-  font-weight: 600 !important;
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000,
-     0 2px 4px rgba(0, 0, 0, 0.9) !important;
-  pointer-events: auto !important;
-}
-
-/* Keep verified badge visible inside channel name */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info ytd-badge-supported-renderer {
-  display: inline-flex !important;
-  flex-shrink: 0 !important;
-}
-
-/* ── 10. AVATAR: top-left, 40px perfectly circular — matches homepage ── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
-  position: absolute !important;
-  top: 12px !important;
-  left: 12px !important;
-  z-index: 5 !important;
-  grid-area: unset !important;
-  pointer-events: auto !important;
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 0 !important;
-  margin: 0 !important;
-  order: unset !important;
-  width: auto !important;
-  height: auto !important;
-}
-
-/* Collab second avatar: overlap by 4px */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail ~ #channel-thumbnail {
-  position: absolute !important;
-  top: 12px !important;
-  left: 48px !important;
-}
-
-/* All avatar container elements — 40px circle (matches homepage's 40px) */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-img-shadow,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail ytd-channel-avatar-element,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .ytSpecAvatarShapeHost,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image-wrapper,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape {
-  width: 40px !important;
-  height: 40px !important;
-  min-width: 40px !important;
-  max-width: none !important;
-  max-height: none !important;
-  border-radius: 50% !important;
-  overflow: hidden !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-  /* Matches homepage: black border + drop shadow */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9),
-              0 4px 12px rgba(0, 0, 0, 0.7) !important;
-  border: 1.5px solid #000 !important;
-  display: block !important;
-  background: transparent !important;
-}
-
-/* Avatar inner image — fill container, perfectly circular */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail img,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image-wrapper img {
-  width: 100% !important;
-  height: 100% !important;
-  min-width: 100% !important;
-  min-height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-}
-
-/* ── 11. THREE-DOT MENU: top-right, always visible — matches homepage ── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer {
-  position: absolute !important;
-  top: 12px !important;
-  right: 12px !important;
-  display: flex !important;
-  z-index: 9999 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  grid-column: unset !important;
-  grid-row: unset !important;
-  grid-area: unset !important;
-  align-self: unset !important;
-}
-
-/* Icon button wrapper size */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon-button,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-button-shape,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon-button {
-  width: 36px !important;
-  height: 36px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Button pill: frosted dark circle — matches homepage exactly */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer button,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu button {
-  -webkit-backdrop-filter: blur(4px) !important;
-  backdrop-filter: blur(4px) !important;
-  background: rgba(0, 0, 0, 0.6) !important;
-  border-radius: 50% !important;
-  width: 36px !important;
-  height: 36px !important;
+body.ypp-search-grid-mode ytd-video-renderer #channel-info #badges,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-badge-supported-renderer {
+  margin-top: 0 !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
-  pointer-events: auto !important;
-  border: none !important;
-  box-shadow: none !important;
-  transition: all 0.2s ease !important;
 }
 
-/* Three-dot icon color — white with stroke — matches homepage */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer svg,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
-  color: #fff !important;
-  fill: #fff !important;
-  box-shadow: none !important;
-}
-
-/* Three-dot icon — white with drop-shadow stroke — matches homepage */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer svg,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
-  color: #fff !important;
-  fill: #fff !important;
-  filter:
-    drop-shadow(-1px -1px 0 #000)
-    drop-shadow( 1px -1px 0 #000)
-    drop-shadow(-1px  1px 0 #000)
-    drop-shadow( 1px  1px 0 #000)
-    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9)) !important;
-}
-
-/* Suppress ripple inside menu button */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-interaction {
-  display: none !important;
-}
-
-/* Hide description snippet; keep verified badge in channel-info, hide all others */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-container {
-  display: none !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info ytd-badge-supported-renderer {
-  display: inline-flex !important;
-  flex-shrink: 0 !important;
-}
-
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-badge-supported-renderer:not(#channel-info ytd-badge-supported-renderer) {
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-badge-supported-renderer[hidden],
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-badge-supported-renderer[is-empty] {
   display: none !important;
 }

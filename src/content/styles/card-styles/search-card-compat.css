@@ -82,23 +82,22 @@ html[data-ypp-card-style]:not([data-ypp-card-style='immersive']) body.ypp-search
   background: none !important;
 }
 
-/* Text Visibility Overrides */
-html[data-ypp-card-style] #video-title,
-html[data-ypp-card-style] .yt-core-attributed-string--link-inherit-color,
-html[data-ypp-card-style] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
-    color: #111111 !important;
+/* Text Visibility Overrides — use theme-aware variables, not hardcoded colors */
+html[data-ypp-card-style] body.ypp-search-grid-mode #video-title,
+html[data-ypp-card-style] body.ypp-search-grid-mode .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style] body.ypp-search-grid-mode yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
 }
 
-html[data-ypp-card-style] ytd-channel-name .yt-core-attributed-string,
-html[data-ypp-card-style] #metadata-line .yt-core-attributed-string,
-html[data-ypp-card-style] .ytd-channel-name,
-html[data-ypp-card-style] #metadata,
-html[data-ypp-card-style] #metadata-line span {
-    color: #606060 !important;
+html[data-ypp-card-style] body.ypp-search-grid-mode ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style] body.ypp-search-grid-mode #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style] body.ypp-search-grid-mode .ytd-channel-name,
+html[data-ypp-card-style] body.ypp-search-grid-mode #metadata,
+html[data-ypp-card-style] body.ypp-search-grid-mode #metadata-line span {
+    color: var(--ypp-text-secondary, var(--yt-spec-text-secondary, rgba(255,255,255,0.7))) !important;
 }
 
-html[data-ypp-card-style] yt-icon.ytd-badge-supported-renderer {
-    color: #606060 !important;
-    fill: #606060 !important;
+html[data-ypp-card-style] body.ypp-search-grid-mode yt-icon.ytd-badge-supported-renderer {
+    color: var(--ypp-text-secondary, rgba(255,255,255,0.7)) !important;
+    fill: var(--ypp-text-secondary, rgba(255,255,255,0.7)) !important;
 }
-

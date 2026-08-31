@@ -958,14 +958,8 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
         const idVars = 'ypp-card-style-css';
         let linkVars = document.getElementById(idVars);
 
-        // Also manage the search compatibility stylesheet
-        const searchCompatId = 'ypp-search-card-compat-css';
-
         if (!cardStyleKey || cardStyleKey === 'none') {
             if (linkVars) linkVars.remove();
-            // Remove search compat too when no card style is active
-            const searchCompatLink = document.getElementById(searchCompatId);
-            if (searchCompatLink) searchCompatLink.remove();
             document.documentElement.removeAttribute('data-ypp-card-style');
             return;
         }
@@ -994,18 +988,9 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
             }
         }
 
-        // Always inject search compat for ANY active card style (including 'default')
-        let searchCompatLink = document.getElementById(searchCompatId);
-        if (!searchCompatLink) {
-            searchCompatLink = document.createElement('link');
-            searchCompatLink.id = searchCompatId;
-            searchCompatLink.rel = 'stylesheet';
-            searchCompatLink.className = 'ypp-ui-style-link';
-            (document.head || document.documentElement).appendChild(searchCompatLink);
-        }
-        searchCompatLink.href = chrome.runtime.getURL('src/content/styles/card-styles/search-card-compat.css');
+        // search-card-compat.css is now bundled via index.css — no dynamic injection needed.
 
-        this._Utils.log(`Injecting Card Style: ${cardStyleKey} + search-card-compat`, 'THEME');
+        this._Utils.log(`Injecting Card Style: ${cardStyleKey}`, 'THEME');
     }
 
 

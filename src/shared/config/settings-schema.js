@@ -366,7 +366,7 @@ window.YPP.SettingsSchema = {
         splitScrolling:      { type: 'boolean', default: false },
 
         // --- Search Layout ---
-        searchLayout:        { type: 'string',  default: 'regular', values: ['compact', 'regular', 'spacious', 'expanded'] },
+        searchLayout:        { type: 'string',  default: 'regular', values: ['macro', 'mini', 'compact', 'regular', 'spacious', 'huge', 'expanded'] },
 
         // --- Navigation ---
         navTrending:         { type: 'boolean', default: true },

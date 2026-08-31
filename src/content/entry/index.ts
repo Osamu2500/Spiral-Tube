@@ -85,12 +85,7 @@ import { ReversePlaylist } from '../pages/playlist/features/reverse-playlist.js'
 window.YPP.FeatureManager.register(ReversePlaylist);
 
 // --- src/content/pages/search/index.ts ---
-import { SearchViewMode } from '../pages/search/layout/search-view-mode.js';
-window.YPP.FeatureManager.register(SearchViewMode);
-import { SearchObserver } from '../pages/search/features/search-observer.js';
-window.YPP.FeatureManager.register(SearchObserver);
-import { SearchRedesign } from '../pages/search/layout/search-redesign.js';
-window.YPP.FeatureManager.register(SearchRedesign);
+import '../pages/search/search-manager.js';
 
 // --- src/content/pages/shorts/index.ts ---
 import { ShortsRemover } from '../global/filters/shorts-remover.js';

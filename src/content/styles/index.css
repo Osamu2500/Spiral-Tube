@@ -76,8 +76,16 @@
 @import "../pages/shorts/declutter.css";
 
 /* --- SEARCH PAGE CONTEXT --- */
-@import "../pages/search/layout.css";
-@import "../pages/search/declutter.css";
+@import "../pages/search/declutter/search-declutter.css";
+@import "../pages/search/styles/search-grid-mode.css";
+@import "../pages/search/styles/search-list-mode.css";
+@import "../pages/search/styles/search-layout-densities.css";
+@import "../pages/search/styles/search-immersive-cards.css";
+@import "../pages/search/styles/search-default-card-compat.css";
+
+/* Search card compatibility layer — always bundled so themes work on search grid.
+   Selectors are gated on html[data-ypp-card-style] so no cost when no style active. */
+@import "./card-styles/search-card-compat.css";
 
 /* --- SUBSCRIPTIONS & CHANNELS --- */
 @import "../pages/subscriptions/layout.css";
@@ -94,11 +102,6 @@
 @import "../pages/shared-feed/typography/full-video-titles.css";
 
 /* --- LAYOUT / GRIDS (Connected to Design System) --- */
-@import "../global/styles/layout-grid.css";
-@import "../pages/search/styles/search-core.css";
-@import "../pages/search/styles/search-grid-view.css";
-/* @import "../pages/search/styles/search-linear-view.css"; */
-@import "../pages/search/styles/search-list-sizes.css";
 @import "../global/styles/grid-layout.css";
 
 @import "../global/components/shorts-shelf/shorts-shelf.css";

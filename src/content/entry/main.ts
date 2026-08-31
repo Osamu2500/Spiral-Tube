@@ -120,6 +120,9 @@
                     if (window.YPP.managers.WatchPageManager) {
                         this.pageManagers.push(new window.YPP.managers.WatchPageManager(this.Utils, this.settings));
                     }
+                    if (window.YPP.managers.SearchPageManager) {
+                        this.pageManagers.push(new window.YPP.managers.SearchPageManager(this.Utils, this.settings));
+                    }
                     
                     if (window.YPP.managers.ThumbnailColorManager) {
                         const initColorManager = () => {

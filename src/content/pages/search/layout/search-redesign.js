@@ -1,19 +1,17 @@
-import '../../../core/system/base-feature.js';
 /**
- * ==========================================================================
- * SEARCH REDESIGN
- * ========================================================================== 
- * Target: /results route.
- * Purpose: Owns: enable/disable lifecycle, SPA navigation handling, and view-mode toggle.
+ * Search Redesign — Orchestrator
+ * Owns: enable/disable lifecycle, SPA navigation handling, and view-mode toggle.
  * Delegates observation/processing to SearchObserver and filter logic to SearchFilter.
+ * Does not affect unrelated files/functionality outside its scope.
  *
  * Architecture:
  * - Uses a distinct "Grid Mode" (ypp-search-grid-mode) on body.
  * - Hides Shorts via CSS for performance/stability.
  * - Implements a responsive CSS Grid for results.
  * - Features a persistent View Toggle (Grid/List).
- * ==========================================================================
  */
+
+import '../../../core/system/base-feature.js';
 
 export class SearchRedesign extends window.YPP.features.BaseFeature {
     static featureId = 'searchRedesign';
@@ -33,27 +31,10 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         GRID_CONTAINER:  'ypp-grid-container',
         GRID_ITEM:       'ypp-grid-item',
         FULL_WIDTH:      'ypp-full-width-item',
-        TOGGLE_BTN:      'ypp-toggle-btn',
-        TOGGLE_CONTAINER:'ypp-view-mode-toggle',
-        ACTIVE:          'active',
     };
 
-    /** DOM selectors for targeting YouTube elements */
-    static SELECTORS = {
-        SEARCH_CONTAINER: 'ytd-search',
-        SECTION_LIST:     'ytd-section-list-renderer',
-        ITEM_SECTION:     'ytd-item-section-renderer',
-        CONTENTS:         '#contents',
-        FILTER_HEADER:    'ytd-search-sub-menu-renderer',
-        TOOLS_CONTAINER:  '#filter-menu',
-        VIDEO:            'ytd-video-renderer',
-        PLAYLIST:         'ytd-playlist-renderer',
-        CHANNEL:          'ytd-channel-renderer',
-        SHELF:            'ytd-shelf-renderer',
-        RADIO:            'ytd-radio-renderer',
-        REEL_SHELF:       'ytd-reel-shelf-renderer',
-        RICH_SHELF:       'ytd-rich-shelf-renderer',
-    };
+    /** Layout sizes for grid configuration */
+    static LAYOUT_CLASSES = []; // Deprecated: Now uses data-ypp-search-layout attribute
 
     // =========================================================================
     // INITIALIZATION
@@ -67,11 +48,8 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         /** @type {Object} Current user settings */
         this._settings   = {};
 
-        /** @type {boolean} Batching guard (legacy compat) */
-        this._batching   = false;
-
-        /** @type {string|null} Last seen query (nav-away reset) */
-        this._lastQuery  = null;
+        /** @type {Object} The dedicated mutation observer for search */
+        this._searchObserver = window.YPP.features.SearchObserver ? new window.YPP.features.SearchObserver() : null;
 
         // Bind dynamic CSS adapter
         this._adaptCardStylesToGrid = this._adaptCardStylesToGrid.bind(this);
@@ -88,14 +66,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     async init(settings) {
         this._settings = settings || {};
 
-        // Must match the same trigger conditions as run() — all 5 settings can activate the grid
-        const shouldEnable = this._settings.searchGrid ||
-                             this._settings.cleanSearch ||
-                             this._settings.hideSearchShelves ||
-                             this._settings.hideChannelCards ||
-                             this._settings.autoVideoFilter;
-
-        if (shouldEnable) {
+        if (this._settings.searchGrid || this._settings.autoVideoFilter) {
             this.enable();
         } else {
             this.disable();
@@ -109,11 +80,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     run(settings) {
         this._settings = settings || {};
 
-        // Reset processed-node cache so a fresh page starts clean
-        if (!this._searchObserver) {
-            this._searchObserver = window.YPP.featureManager.getFeature('searchObserver');
-        }
-        
         // Reset processed-node cache so a fresh page starts clean
         this._searchObserver?.resetProcessedNodes();
 
@@ -162,13 +128,9 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
 
         document.body.classList.remove(
             SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE,
-            'ypp-search-layout-dense',
-            'ypp-search-layout-compact',
-            'ypp-search-layout-regular',
-            'ypp-search-layout-spacious',
-            'ypp-search-layout-expanded'
+            SearchRedesign.CLASSES.LIST_MODE
         );
+        document.body.removeAttribute('data-ypp-search-layout');
         document.body.classList.remove('ypp-filter-pending');
         
         this._purgeStaleClasses();
@@ -198,7 +160,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
             this._purgeStaleClasses();
 
             // Reset processed-node WeakSet so every node is treated as new
-            this._searchObserver.resetProcessedNodes();
+            this._searchObserver?.resetProcessedNodes();
 
             // Push fresh state into sub-modules before they act
             this._searchObserver?.sync(
@@ -207,11 +169,11 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 SearchRedesign.CLASSES
             );
             if (this._settings.searchGrid || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.cleanSearch || this._settings.searchLayout) {
-                // Apply the selected search layout size class
+                // Apply the selected search layout size via data attribute
                 const layoutSize = this._settings.searchLayout || 'regular';
                 document.body.setAttribute('data-ypp-search-layout', layoutSize);
 
-                this._searchObserver?.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
+                this._searchObserver?.start('ytd-search');
             } else {
                 // ── CARD STYLE FALLBACK:
                 // Some card styles (e.g. immersive) need a body class on
@@ -222,7 +184,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 const LAYOUT_AWARE_CARD_STYLES = new Set(['immersive']);
 
                 if (activeCardStyle && LAYOUT_AWARE_CARD_STYLES.has(activeCardStyle)) {
-                    this._searchObserver?.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
+                    this._searchObserver?.start('ytd-search');
                     this._log(`Card style "${activeCardStyle}" activated search list-mode fallback`, 'info');
                 }
             }
@@ -231,7 +193,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
             this._searchObserver?.stop();
             this._removeClasses();
             this._stopCardStyleObserver();
-            this._lastQuery = null;
         }
     }
 
@@ -284,7 +245,17 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
      */
     async _adaptCardStylesToGrid() {
         const styleId = document.documentElement.getAttribute('data-ypp-card-style');
-        if (!styleId || styleId === 'default' || styleId === 'none') {
+
+        // Only skip when there is truly no style to adapt
+        if (!styleId || styleId === 'none') {
+            const styleTag = document.getElementById('ypp-search-grid-dynamic-compat');
+            if (styleTag) styleTag.remove();
+            return;
+        }
+
+        // 'default' is bundled in the main CSS and has its own search compat file.
+        // No dynamic CSS fetching needed — just ensure the dynamic tag is cleared.
+        if (styleId === 'default') {
             const styleTag = document.getElementById('ypp-search-grid-dynamic-compat');
             if (styleTag) styleTag.remove();
             return;
@@ -345,7 +316,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         });
 
         // Ensure body classes do not leak to non-search pages
-        document.body.removeAttribute('data-ypp-search-layout');
+        this._removeClasses();
     }
 
     // =========================================================================
@@ -361,7 +332,15 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     }
 
     _removeClasses() {
+        // Remove layout attribute
         document.body.removeAttribute('data-ypp-search-layout');
+        // Remove grid/list body classes so they don't leak to non-search pages
+        document.body.classList.remove(
+            SearchRedesign.CLASSES.GRID_MODE,
+            SearchRedesign.CLASSES.LIST_MODE
+        );
     }
 }
 
+// Expose to global namespace for FeatureManager
+window.YPP.features.SearchRedesign = SearchRedesign;

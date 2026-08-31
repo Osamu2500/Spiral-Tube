@@ -14,15 +14,22 @@ html[data-ypp-card-style="default"] :is(
   ytd-video-renderer,
   ytd-compact-video-renderer,
   ytd-grid-video-renderer,
-  .ypp-grid-item
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  yt-lockup-view-model,
+  ytd-lockup-view-model,
+  .ypp-grid-item,
+  .ypp-card-container
 ) {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background-color 0.3s ease !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.3s ease,
+              backdrop-filter 0.3s ease !important;
   border-radius: 12px !important;
-  padding: 8px !important;
+  padding: 0 !important;
   /* Very subtle transparent base so the hover transition is smooth */
   background-color: transparent !important;
+  border: none !important;
 }
 
 /* Hover effects */
@@ -31,18 +38,44 @@ html[data-ypp-card-style="default"] :is(
   ytd-video-renderer,
   ytd-compact-video-renderer,
   ytd-grid-video-renderer,
-  .ypp-grid-item
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  yt-lockup-view-model,
+  ytd-lockup-view-model,
+  .ypp-grid-item,
+  .ypp-card-container
 ):hover {
   transform: translateY(-4px) scale(1.01) !important;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 16px 32px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
   background-color: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.05)) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   z-index: 2 !important;
 }
 
-/* Ensure the thumbnail has a premium rounding */
+/* Ensure the thumbnail has a premium rounding and prepare for scaling */
 html[data-ypp-card-style="default"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
   border-radius: 12px !important;
   overflow: hidden !important;
+  transform: translateZ(0) !important; /* Force hardware acceleration */
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Thumbnail scale on hover */
+html[data-ypp-card-style="default"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  yt-lockup-view-model,
+  ytd-lockup-view-model,
+  .ypp-grid-item,
+  .ypp-card-container
+):hover :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image) {
+  transform: scale(1.03) translateZ(0) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 /* Optional: Slight border adjustment to match thumbnail */
@@ -59,12 +92,12 @@ html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-render
   pointer-events: auto !important;
 }
 
-html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu ytd-menu-renderer {
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, yt-lockup-view-model, ytd-lockup-view-model) #menu ytd-menu-renderer {
   display: block !important;
 }
 
 /* Native-like menu button styling */
-html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button {
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, yt-lockup-view-model, ytd-lockup-view-model) #menu yt-icon-button {
   transition: all 0.2s ease !important;
   border-radius: 50% !important;
   width: 36px !important;
@@ -74,7 +107,7 @@ html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-render
   justify-content: center !important;
 }
 
-html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button:hover {
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, yt-lockup-view-model, ytd-lockup-view-model) #menu yt-icon-button:hover {
   background: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.1)) !important;
   transform: scale(1.1) !important;
 }

@@ -1,97 +1,33 @@
-import '../../../core/system/base-feature.js';
 /**
- * ==========================================================================
- * SEARCH OBSERVER
- * ========================================================================== 
- * Target: /results route.
- * Purpose: Owns: MutationObserver, monitor interval, debounce, processAll / processNode.
+ * Search Observer
+ * Owns: MutationObserver, monitor interval, debounce, processAll / processNode.
  * Stateless w.r.t. settings — caller syncs via sync() before use.
- * ==========================================================================
+ * Does not affect unrelated files/functionality outside its scope.
  */
-export class SearchObserver extends window.YPP.features.BaseFeature {
+
+import { SearchUtils } from './search-utils.js';
+
+export class SearchObserver {
     static featureId = 'searchObserver';
     static executionPhase = 'idle';
     static priority = 999;
-
-
-    // -------------------------------------------------------------------------
-    // Static constants (tag-level classification)
-    // -------------------------------------------------------------------------
-
-    static NOISE_TAGS = new Set([
-        'ytd-shelf-renderer',
-        'ytd-horizontal-card-list-renderer',
-        'ytd-vertical-list-renderer',
-        'ytd-universal-watch-card-renderer',
-        'ytd-background-promo-renderer',
-        'ytd-search-refinement-card-renderer',
-        'ytd-reel-shelf-renderer',
-        'ytd-rich-shelf-renderer',
-        'ytd-rich-section-renderer',
-        'yt-horizontal-list-renderer',
-        'yt-collection-shelf-view-model'
-    ]);
-
-    static VIDEO_TAGS = new Set([
-        'ytd-video-renderer',
-        'ytd-compact-video-renderer', // used by music/song results and some compact search layouts
-        'ytd-playlist-renderer',
-        'ytd-radio-renderer',
-        'ytd-channel-renderer',
-        'yt-lockup-view-model',
-        'ytd-lockup-view-model'
-    ]);
-
-    static SELECTORS = {
-        VERTICAL_ITEMS: 'ytd-vertical-list-renderer #items',
-        HORIZONTAL_SCROLL: 'ytd-horizontal-card-list-renderer #scroll-container',
-        HORIZONTAL_ITEMS: 'ytd-horizontal-card-list-renderer #items',
-        GENERIC_ITEMS: '#items',
-        GENERIC_SCROLL: '#scroll-container',
-        CONTENTS: '#contents',
-        RENDERERS: 'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, ytd-channel-renderer, yt-lockup-view-model',
-        THUMBNAIL: 'ytd-thumbnail, ytd-playlist-thumbnail',
-        DISMISSIBLE: '#dismissible',
-        INNER_THUMB: 'a, yt-image',
-        TEXT_WRAPPER: '.text-wrapper',
-        ACTION_MENU: '#action-menu, .action-menu',
-        BADGES: 'ytd-badge-supported-renderer, #badges',
-        CHANNEL_INFO: '#channel-info',
-        SHORTS_LINK: 'a[href*="/shorts/"]',
-        SHORTS_OVERLAY: '[overlay-style="SHORTS"]',
-        TITLE: '#title-container #title',
-        SHORTS_BTN: 'ytd-icon-button-renderer[aria-label="Shorts"]'
-    };
 
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
 
     constructor() {
-        super('searchObserver');
         this._processedNodes  = new WeakSet();
 
         /** Injected by SearchRedesign via sync() */
         this._settings  = {};
         this._isEnabled = () => false;
         this._classes   = {};
+        this._isObserving = false;
         
         // Listen for asynchronously added badges
-        document.addEventListener('animationstart', (e) => {
-            if (e.animationName === 'yppBadgeAdded' && this._isEnabled()) {
-                const badge = e.target;
-                if (badge.closest('ytd-channel-name') || badge.closest('ytd-thumbnail') || badge.closest('.ytLockupViewModelContentImage') || badge.closest('a#thumbnail')) return; // ignore verified badge and timestamps
-                const renderer = badge.closest('ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer');
-                if (renderer) {
-                    const channelInfo = renderer.querySelector('#channel-info');
-                    if (channelInfo && badge.parentElement !== channelInfo) {
-                        window.YPP.Utils.batch.write(() => {
-                            channelInfo.appendChild(badge);
-                        });
-                    }
-                }
-            }
-        });
+        this._handleBadgeAnimation = this._handleBadgeAnimation.bind(this);
+        document.addEventListener('animationstart', this._handleBadgeAnimation);
     }
 
     // -------------------------------------------------------------------------
@@ -115,10 +51,9 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
         this._processedNodes = new WeakSet();
     }
 
-    start(containerSelector) {
+    start() {
         if (this._isObserving) return;
         this._isObserving = true;
-        this._containerSelector = containerSelector;
 
         if (window.YPP?.sharedObserver) {
             // Debounce: batches rapid mutations (20 items loading at once) into a
@@ -149,6 +84,30 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
     // Observer internals
     // -------------------------------------------------------------------------
 
+    _handleBadgeAnimation(e) {
+        if (e.animationName === 'yppBadgeAdded' && this._isEnabled()) {
+            const badge = e.target;
+            if (!this._isMovableBadge(badge)) return;
+
+            const renderer = badge.closest('ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer');
+            if (renderer) {
+                const channelInfo = renderer.querySelector('#channel-info');
+                if (channelInfo && badge.parentElement !== channelInfo) {
+                    window.YPP.Utils.batch.write(() => {
+                        channelInfo.appendChild(badge);
+                    });
+                }
+            }
+        }
+    }
+
+    _isMovableBadge(badge) {
+        return !badge.closest('ytd-channel-name') && 
+               !badge.closest('ytd-thumbnail') && 
+               !badge.closest('.ytLockupViewModelContentImage') && 
+               !badge.closest('a#thumbnail');
+    }
+
     _processMatches(matches) {
         if (!this._isEnabled()) return;
         
@@ -170,7 +129,7 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
                     this._processSection(section);
                 }
             } catch (error) {
-                this.utils?.log('_processSection error', 'SEARCH', 'warn', error);
+                this._logError('_processSection error', error);
             }
         });
     }
@@ -189,7 +148,7 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
                 this._processSection(itemSections[i]);
             }
         } catch (error) {
-            this.utils?.log('processAll error', 'SEARCH', 'warn', error);
+            this._logError('processAll error', error);
         }
     }
 
@@ -223,12 +182,12 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
                 if (this._processedNodes.has(node)) continue;
 
                 const tag = node.tagName.toLowerCase();
-                const isFlattenable = this._isFlattenableShelf(node);
-                const isShorts = this._isShorts(node);
+                const isFlattenable = SearchUtils.isFlattenableShelf(node);
+                const isShorts = SearchUtils.isShorts(node);
 
                 let flattenData = null;
                 if (isFlattenable) {
-                    const { SELECTORS } = SearchObserver;
+                    const { SELECTORS } = SearchUtils;
                     const vertical = node.querySelector(SELECTORS.VERTICAL_ITEMS);
                     const horizontal = node.querySelector(SELECTORS.HORIZONTAL_SCROLL)
                                     || node.querySelector(SELECTORS.HORIZONTAL_ITEMS);
@@ -265,13 +224,11 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
                         tag === 'yt-lockup-view-model'       ||
                         tag === 'ytd-lockup-view-model'
                     ) {
-                        const { SELECTORS } = SearchObserver;
+                        const { SELECTORS } = SearchUtils;
                         const thumb = node.querySelector(SELECTORS.THUMBNAIL);
                         const textWrapper = node.querySelector(SELECTORS.TEXT_WRAPPER);
-                        // Aggressively find all badges (4K, Subtitles, New, Live) anywhere in the card, except the verified badge inside channel-name and overlays inside thumbnail
-                        const extraBadges = Array.from(node.querySelectorAll(SELECTORS.BADGES)).filter(badge => {
-                            return !badge.closest('ytd-channel-name') && !badge.closest('ytd-thumbnail') && !badge.closest('.ytLockupViewModelContentImage') && !badge.closest('a#thumbnail');
-                        });
+                        // Aggressively find all badges anywhere in the card, except inside channel-name or thumbnail
+                        const extraBadges = Array.from(node.querySelectorAll(SELECTORS.BADGES)).filter(badge => this._isMovableBadge(badge));
                             
                         cleanData = {
                             dismissible: node.querySelector(SELECTORS.DISMISSIBLE),
@@ -290,7 +247,7 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
 
             // Phase 2: DOM Writes (Apply all mutations in one frame)
             window.YPP.Utils.batch.write(() => {
-                const { NOISE_TAGS } = SearchObserver;
+                const { NOISE_TAGS } = SearchUtils;
 
                 this._handleNoiseSection(section, stats, children.length);
 
@@ -302,7 +259,7 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
                     this._processedNodes.add(op.node);
 
                     if (op.isShorts) {
-                        if (this._settings.aggressiveShortsBlock) {
+                        if (this._settings.hideSearchShorts) {
                             op.node.style.setProperty('display', 'none', 'important');
                             continue;
                         }
@@ -370,7 +327,7 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
         let hasVideos = false;
         let allNoise = true;
         let hasTransients = false;
-        const { NOISE_TAGS, VIDEO_TAGS } = SearchObserver;
+        const { NOISE_TAGS, VIDEO_TAGS } = SearchUtils;
 
         for (let i = 0; i < children.length; i++) {
             const tag = children[i].tagName.toLowerCase();
@@ -400,64 +357,6 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
         }
         return false;
     }
-
-    // -------------------------------------------------------------------------
-    // Shorts detection helpers
-    // -------------------------------------------------------------------------
-
-    _isShorts(node) {
-        const { SELECTORS } = SearchObserver;
-        const tag = node.tagName.toLowerCase();
-        if (tag === 'ytd-reel-shelf-renderer') return true;
-        if (tag === 'ytd-rich-shelf-renderer' && node.hasAttribute('is-shorts')) return true;
-        if (node.querySelector(SELECTORS.SHORTS_LINK)) return true;
-        if (node.querySelector(SELECTORS.SHORTS_OVERLAY)) return true;
-
-        const title = node.querySelector(SELECTORS.TITLE)?.textContent?.trim() || '';
-        if (title.includes('Shorts')) return true;
-
-        const badges = node.querySelectorAll('ytd-badge-supported-renderer');
-        for (let i = 0; i < badges.length; i++) {
-            if (badges[i].textContent.trim() === 'Shorts') return true;
-        }
-        
-        if (this._isShortsShelf(node)) return true;
-        
-        return false;
-    }
-
-    _isShortsShelf(node) {
-        const { SELECTORS } = SearchObserver;
-        const title = node.querySelector(SELECTORS.TITLE)?.textContent?.trim() || '';
-        if (/shorts/i.test(title)) return true;
-        const titleRow = node.querySelector('.ytShelfHeaderLayoutTitleRow')?.textContent?.trim() || '';
-        if (/shorts/i.test(titleRow)) return true;
-        if (node.querySelector(SELECTORS.SHORTS_BTN)) return true;
-        if (node.querySelector(SELECTORS.SHORTS_LINK)) return true;
-        return false;
-    }
-
-    _isFlattenableShelf(node) {
-        const tag = node.tagName.toLowerCase();
-        if (
-            tag === 'ytd-horizontal-card-list-renderer' ||
-            tag === 'ytd-vertical-list-renderer'        ||
-            tag === 'ytd-shelf-renderer'                ||
-            tag === 'ytd-rich-shelf-renderer'           ||
-            tag === 'yt-collection-shelf-view-model'
-        ) {
-            if (!this._isShortsShelf(node)) {
-                return !!node.querySelector(
-                    // ytd-compact-video-renderer covers music/song results in shelves —
-                    // without it, music shelves are never flattenable and get hidden.
-                    'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, yt-lockup-view-model'
-                );
-            }
-        }
-        return false;
-    }
-
-
 
     // -------------------------------------------------------------------------
     // Inline style cleanup
@@ -515,6 +414,13 @@ export class SearchObserver extends window.YPP.features.BaseFeature {
     // Utility
     // -------------------------------------------------------------------------
 
+    _logError(msg, error) {
+        if (window.YPP?.Utils?.log) {
+            window.YPP.Utils.log(msg, 'SEARCH', 'warn', error);
+        } else {
+            console.warn(`[SearchObserver] ${msg}`, error);
+        }
+    }
+}
 
-};
-
+window.YPP.features.SearchObserver = SearchObserver;
