@@ -2,51 +2,55 @@
  * ==========================================================================
  * SEARCH DECLUTTER
  * ========================================================================== 
+ * Target: /results
+ * Purpose: Hide unselected content (mixes, channels, etc.) based on user preferences.
+ * ==========================================================================
  */
 
-/* --- search-declutter.css --- */
+/* Voice Search */
 body.ypp-search-page.ypp-hide-voice-search #voice-search-button,
 body.ypp-search-page.ypp-hide-voice-search ytm-voice-search-button-renderer {
   display: none !important;
 }
-body.ypp-search-page.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer,
-body.ypp-search-page.ypp-hide-channel-cards.ypp-search-page ytd-item-section-renderer:has(ytd-channel-renderer) {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]) {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-search-shelves .ypp-noise-section {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-channel-cards ytd-channel-renderer {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-search-shelves .ypp-noise-section {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-channel-cards ytd-channel-renderer {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-voice-search #voice-search-button,
-body.ypp-search-page.ypp-hide-voice-search ytm-voice-search-button-renderer {
+
+/* Channel Cards */
+body.ypp-search-page.ypp-hide-channel-cards ytd-channel-renderer,
+body.ypp-search-page.ypp-hide-channel-cards ytd-item-section-renderer:has(ytd-channel-renderer) {
   display: none !important;
 }
-body.ypp-search-page.ypp-clean-search.ypp-search-page ytd-shelf-renderer,
-body.ypp-search-page.ypp-clean-search.ypp-search-page ytd-rich-shelf-renderer,
-body.ypp-search-page.ypp-clean-search.ypp-search-page ytd-reel-shelf-renderer,
-body.ypp-search-page.ypp-clean-search.ypp-search-page ytd-horizontal-card-list-renderer,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page ytd-shelf-renderer,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page ytd-rich-shelf-renderer,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page ytd-reel-shelf-renderer,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page ytd-horizontal-card-list-renderer {
+
+/* Official Music / Artists */
+body.ypp-search-page.ypp-hide-search-music ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
+body.ypp-search-page.ypp-hide-search-music ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
+body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
+body.ypp-search-page.ypp-hide-search-music ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
+body.ypp-search-page.ypp-hide-search-music ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
+body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
+body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has(a[href*='music.youtube.com']),
+body.ypp-search-page.ypp-hide-search-music ytd-shelf-renderer:has(a[href*='music.youtube.com']),
+body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has([aria-label*="Official Music Video"]),
+body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has([aria-label*="Official Audio"]) {
   display: none !important;
 }
+
+/* Shelves and "Noise" */
+body.ypp-search-page.ypp-hide-search-shelves .ypp-noise-section,
+body.ypp-search-page.ypp-hide-search-shelves .ypp-hidden-shelf,
+body.ypp-search-page.ypp-hide-search-shelves ytd-rich-section-renderer,
+body.ypp-search-page.ypp-hide-search-shelves yt-horizontal-list-renderer,
+body.ypp-search-page.ypp-hide-search-shelves yt-collection-shelf-view-model,
+body.ypp-search-page.ypp-clean-search ytd-shelf-renderer,
+body.ypp-search-page.ypp-clean-search ytd-rich-shelf-renderer,
+body.ypp-search-page.ypp-clean-search ytd-reel-shelf-renderer,
+body.ypp-search-page.ypp-clean-search ytd-horizontal-card-list-renderer,
+body.ypp-search-page.ypp-hide-search-shelves ytd-shelf-renderer,
+body.ypp-search-page.ypp-hide-search-shelves ytd-rich-shelf-renderer,
+body.ypp-search-page.ypp-hide-search-shelves ytd-reel-shelf-renderer,
+body.ypp-search-page.ypp-hide-search-shelves ytd-horizontal-card-list-renderer {
+  display: none !important;
+}
+
+/* Search Mixes */
 body.ypp-search-page.ypp-hide-search-mixes ytd-radio-renderer,
 body.ypp-search-page.ypp-hide-search-mixes ytd-shelf-renderer:has(ytd-radio-renderer),
 body.ypp-search-page.ypp-hide-search-mixes ytd-video-renderer:has(a[href*='start_radio']),
@@ -55,31 +59,22 @@ body.ypp-search-page.ypp-hide-search-mixes ytd-compact-video-renderer:has(a[href
 body.ypp-search-page.ypp-hide-search-mixes ytd-compact-video-renderer:has(a[href*='list=RD']) {
   display: none !important;
 }
+
+/* Playlists */
 body.ypp-search-page.ypp-hide-search-playlists ytd-playlist-renderer,
 body.ypp-search-page.ypp-hide-search-playlists ytd-shelf-renderer:has(ytd-playlist-renderer),
 body.ypp-search-page.ypp-hide-search-playlists ytd-video-renderer:has(a[href*='list=PL']),
 body.ypp-search-page.ypp-hide-search-playlists ytd-compact-video-renderer:has(a[href*='list=PL']) {
   display: none !important;
 }
+
+/* Podcasts */
 body.ypp-search-page.ypp-hide-search-podcasts ytd-video-renderer:has(a[href*='/podcast/']),
 body.ypp-search-page.ypp-hide-search-podcasts ytd-shelf-renderer:has(a[href*='/podcast/']) {
   display: none !important;
 }
-body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has(a[href*='music.youtube.com']),
-body.ypp-search-page.ypp-hide-search-music ytd-shelf-renderer:has(a[href*='music.youtube.com']),
-body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has([aria-label*="Official Music Video"]),
-body.ypp-search-page.ypp-hide-search-music ytd-video-renderer:has([aria-label*="Official Audio"]) {
-  display: none !important;
-}
-body.ypp-search-page.ypp-search-grid-mode.ypp-hide-channel-cards ytd-channel-renderer {
-  display: none !important;
-}
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page .ypp-hidden-shelf,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page ytd-rich-section-renderer,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page yt-horizontal-list-renderer,
-body.ypp-search-page.ypp-hide-search-shelves.ypp-search-page yt-collection-shelf-view-model {
-  display: none !important;
-}
+
+/* Shorts */
 body.ypp-search-page.ypp-hide-search-shorts ytd-search ytd-video-renderer:has(a[href*="/shorts/"]),
 body.ypp-search-page.ypp-hide-search-shorts ytd-search ytd-reel-shelf-renderer,
 body.ypp-search-page.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
@@ -89,17 +84,5 @@ body.ypp-search-page.ypp-hide-search-shorts ytd-shelf-renderer:has(ytd-reel-item
 body.ypp-search-page.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-item-renderer),
 body.ypp-search-page.ypp-hide-search-shorts yt-collection-shelf-view-model:has(a[href*="/shorts/"]) {
   display: none !important;
-}
-body.ypp-search-page.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer,
-body.ypp-search-page.ypp-hide-channel-cards.ypp-search-page ytd-item-section-renderer:has(ytd-channel-renderer) {
-    display: none !important;
-}
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-search-page.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]) {
-    display: none !important;
 }
 

@@ -1,11 +1,12 @@
 import '../../../core/system/base-feature.js';
 /**
- * @fileoverview
- * Search Observer
- * 
+ * ==========================================================================
+ * SEARCH OBSERVER
+ * ========================================================================== 
  * Target: /results route.
  * Purpose: Owns: MutationObserver, monitor interval, debounce, processAll / processNode.
  * Stateless w.r.t. settings — caller syncs via sync() before use.
+ * ==========================================================================
  */
 export class SearchObserver extends window.YPP.features.BaseFeature {
     static featureId = 'searchObserver';

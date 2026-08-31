@@ -1,8 +1,11 @@
 /* 
-   ==========================================================================
-   SEARCH PAGE & SEARCHBOX
-   ========================================================================== 
-*/
+ * ==========================================================================
+ * SEARCH LAYOUT & SEARCHBOX
+ * ========================================================================== 
+ * Target: /results (Applies globally to the search page).
+ * Purpose: Styling for the search box input, suggestions container, and header.
+ * ==========================================================================
+ */
 
 ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
   margin: 5px auto !important;

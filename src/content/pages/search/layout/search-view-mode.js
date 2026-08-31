@@ -1,11 +1,12 @@
 import '../../../core/system/base-feature.js';
 /**
- * @fileoverview
- * Search View Mode
- * 
+ * ==========================================================================
+ * SEARCH VIEW MODE
+ * ========================================================================== 
  * Target: /results route.
  * Purpose: Owns the state and logic for toggling between "Grid" and "List"
  * layout views on the search results page.
+ * ==========================================================================
  */
 export class SearchViewMode extends window.YPP.features.BaseFeature {
     static featureId = 'searchViewMode';
@@ -27,7 +28,6 @@ export class SearchViewMode extends window.YPP.features.BaseFeature {
         super('searchViewMode');
         this._settings = {};
         this._isEnabled = false;
-        this._logFn = ((msg, level) => console[level]?.(`[SearchViewMode] ${msg}`));
     }
 
     async init(settings) {
@@ -58,7 +58,14 @@ export class SearchViewMode extends window.YPP.features.BaseFeature {
         }
 
         // Use searchGrid setting as base, override with searchViewMode if explicitly set
-        const baseGridEnabled = !!this._settings.searchGrid;
+        // Grid activates if ANY of these search-related settings are enabled (restored from main branch)
+        const baseGridEnabled = !!(
+            this._settings.searchGrid ||
+            this._settings.cleanSearch ||
+            this._settings.hideSearchShelves ||
+            this._settings.hideChannelCards ||
+            this._settings.autoVideoFilter
+        );
         const mode = this._settings.searchViewMode || (baseGridEnabled ? SearchViewMode.MODES.GRID : SearchViewMode.MODES.LIST);
 
 

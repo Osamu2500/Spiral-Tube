@@ -108,6 +108,48 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
             return { action: 'hide', reason: 'Podcast' };
         }
 
+        // --- Wired Up Legacy Feed Filters ---
+        // Check if we are on a page where feed filters apply (e.g. Subs, Home)
+        // using the specific page toggles: feedFilter_page_subscriptions, etc.
+        let pageKey = null;
+        if (pageType === 'Subs') pageKey = 'feedFilter_page_subscriptions';
+        else if (pageType === 'Home') pageKey = 'feedFilter_page_home';
+        
+        if (pageKey && this.settings?.[pageKey]) {
+            // Video
+            if (this.settings?.feedFilter_video_visible === false && !context.isShort && !context.isLive && !context.isUpcoming && !context.isPlaylist && !context.isMix && !context.isPost) {
+                return { action: 'hide', reason: 'Video filtered' };
+            }
+            // Shorts
+            if (this.settings?.feedFilter_shorts_visible === false && context.isShort) {
+                return { action: 'hide', reason: 'Shorts filtered' };
+            }
+            // Live
+            if (this.settings?.feedFilter_live_visible === false && context.isLive) {
+                return { action: 'hide', reason: 'Live filtered' };
+            }
+            // Upcoming (Scheduled)
+            if (this.settings?.feedFilter_scheduled_visible === false && context.isUpcoming) {
+                return { action: 'hide', reason: 'Scheduled filtered' };
+            }
+            // Playlists
+            if (this.settings?.feedFilter_playlist_visible === false && (context.isPlaylist || context.isMix)) {
+                return { action: 'hide', reason: 'Playlist filtered' };
+            }
+            // Posts
+            if (this.settings?.feedFilter_posts_visible === false && context.isPost) {
+                return { action: 'hide', reason: 'Post filtered' };
+            }
+            // Watched / Unwatched
+            const isWatched = context.progressPercent !== null && context.progressPercent > 0;
+            if (this.settings?.feedFilter_watched_visible === false && isWatched) {
+                return { action: 'hide', reason: 'Watched filtered' };
+            }
+            if (this.settings?.feedFilter_unwatched_visible === false && !isWatched) {
+                return { action: 'hide', reason: 'Unwatched filtered' };
+            }
+        }
+
         if (keywords.length > 0 && context.title) {
             const titleText = context.title;
             const titleLower = titleText.toLowerCase();

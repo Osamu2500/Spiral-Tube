@@ -1,12 +1,12 @@
 /* 
-   ==========================================================================
-   SEARCH GRID VIEW
-   ========================================================================== 
-   Target: /results (when .ypp-search-grid-mode is active).
-   Purpose: Provides the master CSS grid architecture, column calculations,
-   and internal flex-to-grid overrides for video cards.
-   ========================================================================== 
-*/
+ * ==========================================================================
+ * SEARCH GRID VIEW
+ * ========================================================================== 
+ * Target: /results (when .ypp-search-grid-mode is active).
+ * Purpose: Provides the master CSS grid architecture, column calculations,
+ * and internal flex-to-grid overrides for video cards.
+ * ========================================================================== 
+ */
 
 /* ── 1. CONTAINER RESETS ──────────────────────────────────────────── */
 
@@ -319,7 +319,7 @@ body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
 body.ypp-search-grid-mode .ypp-flattened-grid,
 body.ypp-search-grid-mode .ypp-grid-container {
   display: grid !important;
-  grid-template-columns: repeat(var(--ypp-search-columns, 4), minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--ypp-active-columns, var(--ypp-search-columns, 4)), minmax(0, 1fr)) !important;
   grid-auto-flow: dense !important;
   gap: 20px !important;
   align-items: start !important;
@@ -1616,102 +1616,6 @@ body.ypp-search-grid-mode ytd-item-section-renderer[hidden] {
   pointer-events: none !important;
 }
 
-/* =========================================================================
-   LINEAR SEARCH VIEW CLEANUPS
-   ========================================================================= */
-
-/* Remove Matching Chapters & AI Summaries from Linear View */
-
-
-/* Badges Alignment (4K, Subtitles moved next to Channel Name) */
-ytd-video-renderer #channel-info {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-@keyframes yppBadgeAdded {
-  from { outline-color: transparent; }
-  to { outline-color: rgba(0,0,0,0); }
-}
-ytd-video-renderer .text-wrapper ytd-badge-supported-renderer {
-  animation: yppBadgeAdded 0.001s;
-}
-
-ytd-video-renderer #channel-info #badges,
-ytd-video-renderer #channel-info > ytd-badge-supported-renderer {
-  margin-top: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-}
-/* Ensure hidden or empty badges don't take up space */
-ytd-video-renderer #channel-info > ytd-badge-supported-renderer[hidden],
-ytd-video-renderer #channel-info > ytd-badge-supported-renderer[is-empty] {
-  display: none !important;
-}
-/* =========================================================================
-   LINEAR CARD STYLE ENFORCEMENT
-   ========================================================================= */
-/* We rely on the card-styles/ CSS files to apply backgrounds, borders, and hover effects.
-   This section strictly ensures that Card Styles do NOT break the horizontal linear layout 
-   by accidentally applying flex-direction: column to the dismissible content! */
-   
-html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) 
-
-/* VERY STRICT horizontal layout lock for Linear View */
-
-
-
-
-
-
-/* =========================================================================
-   LINEAR SEARCH VIEW SIZES & TRANSITIONS
-   ========================================================================= */
-
-
-
-/* Dense (Smallest) */
-
-
-
-
-
-
-
-/* Compact (Small) */
-
-
-
-
-
-
-
-/* Regular (Default YouTube size approx) */
-
-
-
-
-
-
-
-/* Spacious (Large) */
-
-
-
-
-
-
-
-/* Expanded (Extra Large) */
-
-
-
-
-
-
-
-
 
 /* ===================================================================================
    SEARCH GRID FIXES: TYPOGRAPHY AND ALIGNMENT OVERRIDES (PHASE 4 & 5)
@@ -1768,7 +1672,7 @@ ytd-video-renderer yt-img-shadow.ytd-channel-name:hover {
    ======================================================================= */
 
 /* ── 1. CARD WRAPPER ─────────────────────────────────────────────────── */
-body.ypp-search-grid-mode ytd-video-renderer {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer {
   display: block !important;
   position: relative !important;
   overflow: hidden !important;
@@ -1778,13 +1682,13 @@ body.ypp-search-grid-mode ytd-video-renderer {
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer:hover {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer:hover {
   transform: translateY(-4px) scale(1.01) !important;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* ── 2. #DISMISSIBLE: 16:9 stacking context ─────────────────────────── */
-body.ypp-search-grid-mode ytd-video-renderer #dismissible {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #dismissible {
   display: block !important;
   position: relative !important;
   width: 100% !important;
@@ -1796,7 +1700,7 @@ body.ypp-search-grid-mode ytd-video-renderer #dismissible {
 }
 
 /* ── 3. THUMBNAIL: fills the entire card ────────────────────────────── */
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
@@ -1809,8 +1713,8 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail {
   margin: 0 !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail a,
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail a,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image {
   display: block !important;
   position: absolute !important;
   inset: 0 !important;
@@ -1818,7 +1722,7 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image {
   height: 100% !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img {
   display: block !important;
   position: absolute !important;
   inset: 0 !important;
@@ -1830,7 +1734,7 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img {
 
 /* ── 4. .text-wrapper: absolute overlay at bottom, NO gradient ─ */
 /* .text-wrapper is ytd-video-renderer's native text container (unlike homepage which uses #details) */
-body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-end !important;
@@ -1853,12 +1757,12 @@ body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
 /* ── 5. Flatten #meta so its children flow into .text-wrapper ─────── */
 /* By making #meta display:contents, its children (#title-wrapper, ytd-video-meta-block) 
    become direct flex children of .text-wrapper alongside #channel-info */
-body.ypp-search-grid-mode ytd-video-renderer #meta {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta {
   display: contents !important;
 }
 
 /* ── 6. TEXT STACK ORDER: title → views/date → channel ─────────────── */
-body.ypp-search-grid-mode ytd-video-renderer #title-wrapper {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #title-wrapper {
   order: 1 !important;
   pointer-events: auto !important;
   margin: 0 0 2px 0 !important;
@@ -1869,7 +1773,7 @@ body.ypp-search-grid-mode ytd-video-renderer #title-wrapper {
   position: static !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
   order: 2 !important;
   grid-area: unset !important;
   margin: 0 0 1px 0 !important;
@@ -1879,7 +1783,7 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
   visibility: visible !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer #channel-info {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info {
   order: 3 !important;
   display: flex !important;
   flex-direction: row !important;
@@ -1895,8 +1799,8 @@ body.ypp-search-grid-mode ytd-video-renderer #channel-info {
 
 
 /* ── 7. TITLE: 3-line clamp, stroke shadow — same as homepage ────────── */
-body.ypp-search-grid-mode ytd-video-renderer #video-title,
-body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #video-title,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string {
   color: #ffffff !important;
   font-size: 1.5rem !important;
   font-weight: 700 !important;
@@ -1918,10 +1822,10 @@ body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string {
 }
 
 /* ── 8. VIEWS / DATE: same as homepage metadata style ───────────────── */
-body.ypp-search-grid-mode ytd-video-renderer #metadata-line,
-body.ypp-search-grid-mode ytd-video-renderer #metadata-line span,
-body.ypp-search-grid-mode ytd-video-renderer .inline-metadata-item,
-body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block * {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #metadata-line,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #metadata-line span,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .inline-metadata-item,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block * {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 600 !important;
   text-shadow:
@@ -1935,8 +1839,8 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block * {
 }
 
 /* ── 9. CHANNEL NAME: same as homepage channel-name style ───────────── */
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 600 !important;
   text-shadow:
@@ -1949,13 +1853,13 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a {
 }
 
 /* Keep verified badge visible inside channel name */
-body.ypp-search-grid-mode ytd-video-renderer #channel-info ytd-badge-supported-renderer {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info ytd-badge-supported-renderer {
   display: inline-flex !important;
   flex-shrink: 0 !important;
 }
 
 /* ── 10. AVATAR: top-left, 40px perfectly circular — matches homepage ── */
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
   position: absolute !important;
   top: 12px !important;
   left: 12px !important;
@@ -1972,20 +1876,20 @@ body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
 }
 
 /* Collab second avatar: overlap by 4px */
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail ~ #channel-thumbnail {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail ~ #channel-thumbnail {
   position: absolute !important;
   top: 12px !important;
   left: 48px !important;
 }
 
 /* All avatar container elements — 40px circle (matches homepage's 40px) */
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-img-shadow,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail ytd-channel-avatar-element,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .ytSpecAvatarShapeHost,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image-wrapper,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-img-shadow,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail ytd-channel-avatar-element,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .ytSpecAvatarShapeHost,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image-wrapper,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape {
   width: 40px !important;
   height: 40px !important;
   min-width: 40px !important;
@@ -2004,9 +1908,9 @@ body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail yt-avatar-shape 
 }
 
 /* Avatar inner image — fill container, perfectly circular */
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail img,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image-wrapper img {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail img,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-shape__image-wrapper img {
   width: 100% !important;
   height: 100% !important;
   min-width: 100% !important;
@@ -2023,8 +1927,8 @@ body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail .yt-spec-avatar-
 }
 
 /* ── 11. THREE-DOT MENU: top-right, always visible — matches homepage ── */
-body.ypp-search-grid-mode ytd-video-renderer #action-menu,
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer {
   position: absolute !important;
   top: 12px !important;
   right: 12px !important;
@@ -2042,9 +1946,9 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer {
 }
 
 /* Icon button wrapper size */
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon-button,
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-button-shape,
-body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon-button {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon-button,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-button-shape,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon-button {
   width: 36px !important;
   height: 36px !important;
   padding: 0 !important;
@@ -2052,8 +1956,8 @@ body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon-button {
 }
 
 /* Button pill: frosted dark circle — matches homepage exactly */
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer button,
-body.ypp-search-grid-mode ytd-video-renderer #action-menu button {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer button,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu button {
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
   background: rgba(0, 0, 0, 0.6) !important;
@@ -2070,20 +1974,20 @@ body.ypp-search-grid-mode ytd-video-renderer #action-menu button {
 }
 
 /* Three-dot icon color — white with stroke — matches homepage */
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon,
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer svg,
-body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon,
-body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer svg,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
   color: #fff !important;
-  fill: #fff !imrtant;
+  fill: #fff !important;
   box-shadow: none !important;
 }
 
 /* Three-dot icon — white with drop-shadow stroke — matches homepage */
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon,
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer svg,
-body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon,
-body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-icon,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer svg,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu yt-icon,
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
   color: #fff !important;
   fill: #fff !important;
   filter:
@@ -2095,20 +1999,20 @@ body.ypp-search-grid-mode ytd-video-renderer #action-menu svg {
 }
 
 /* Suppress ripple inside menu button */
-body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-interaction {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-menu-renderer yt-interaction {
   display: none !important;
 }
 
 /* Hide description snippet; keep verified badge in channel-info, hide all others */
-body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-container {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-container {
   display: none !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer #channel-info ytd-badge-supported-renderer {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info ytd-badge-supported-renderer {
   display: inline-flex !important;
   flex-shrink: 0 !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer ytd-badge-supported-renderer:not(#channel-info ytd-badge-supported-renderer) {
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-badge-supported-renderer:not(#channel-info ytd-badge-supported-renderer) {
   display: none !important;
 }

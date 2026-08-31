@@ -1,8 +1,8 @@
 import '../../../core/system/base-feature.js';
 /**
- * @fileoverview
- * Search Redesign — Orchestrator
- * 
+ * ==========================================================================
+ * SEARCH REDESIGN
+ * ========================================================================== 
  * Target: /results route.
  * Purpose: Owns: enable/disable lifecycle, SPA navigation handling, and view-mode toggle.
  * Delegates observation/processing to SearchObserver and filter logic to SearchFilter.
@@ -12,6 +12,7 @@ import '../../../core/system/base-feature.js';
  * - Hides Shorts via CSS for performance/stability.
  * - Implements a responsive CSS Grid for results.
  * - Features a persistent View Toggle (Grid/List).
+ * ==========================================================================
  */
 
 export class SearchRedesign extends window.YPP.features.BaseFeature {
@@ -87,7 +88,14 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     async init(settings) {
         this._settings = settings || {};
 
-        if (this._settings.searchGrid || this._settings.autoVideoFilter) {
+        // Must match the same trigger conditions as run() — all 5 settings can activate the grid
+        const shouldEnable = this._settings.searchGrid ||
+                             this._settings.cleanSearch ||
+                             this._settings.hideSearchShelves ||
+                             this._settings.hideChannelCards ||
+                             this._settings.autoVideoFilter;
+
+        if (shouldEnable) {
             this.enable();
         } else {
             this.disable();

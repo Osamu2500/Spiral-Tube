@@ -20,7 +20,7 @@ window.YPP.SettingsSchema = {
     //   values  - array of allowed values for strings (enum-like)
     // =========================================================================
     schema: Object.freeze({
-        schemaVersion:       { type: 'number',  default: 1 },
+        schemaVersion:       { type: 'number',  default: 2 },
         // --- Theme ---
         premiumTheme:        { type: 'boolean', default: true },
         premiumLogo:         { type: 'boolean', default: false },
@@ -264,41 +264,41 @@ window.YPP.SettingsSchema = {
         stopShortsLooping:   { type: 'boolean', default: false },
 
         // --- Feed Filters (Subscription Feed Filter Clone) ---
-        ff_live_visible:        { type: 'boolean', default: true },
-        ff_live_default:        { type: 'boolean', default: false },
-        ff_streamed_visible:    { type: 'boolean', default: true },
-        ff_streamed_default:    { type: 'boolean', default: false },
-        ff_video_visible:       { type: 'boolean', default: true },
-        ff_video_default:       { type: 'boolean', default: false },
-        ff_shorts_visible:      { type: 'boolean', default: true },
-        ff_shorts_default:      { type: 'boolean', default: false },
-        ff_scheduled_visible:   { type: 'boolean', default: true },
-        ff_scheduled_default:   { type: 'boolean', default: false },
-        ff_notifon_visible:     { type: 'boolean', default: false },
-        ff_notifon_default:     { type: 'boolean', default: false },
-        ff_notifoff_visible:    { type: 'boolean', default: false },
-        ff_notifoff_default:    { type: 'boolean', default: false },
-        ff_posts_visible:       { type: 'boolean', default: false },
-        ff_posts_default:       { type: 'boolean', default: false },
-        ff_playlist_visible:    { type: 'boolean', default: false },
-        ff_playlist_default:    { type: 'boolean', default: false },
-        ff_unwatched_visible:   { type: 'boolean', default: true },
-        ff_unwatched_default:   { type: 'boolean', default: false },
-        ff_watched_visible:     { type: 'boolean', default: true },
-        ff_watched_default:     { type: 'boolean', default: false },
-        ff_search_visible:      { type: 'boolean', default: true },
-        ff_search_default:      { type: 'string',  default: '' },
+        feedFilter_live_visible:        { type: 'boolean', default: true },
+        feedFilter_live_default:        { type: 'boolean', default: false },
+        feedFilter_streamed_visible:    { type: 'boolean', default: true },
+        feedFilter_streamed_default:    { type: 'boolean', default: false },
+        feedFilter_video_visible:       { type: 'boolean', default: true },
+        feedFilter_video_default:       { type: 'boolean', default: false },
+        feedFilter_shorts_visible:      { type: 'boolean', default: true },
+        feedFilter_shorts_default:      { type: 'boolean', default: false },
+        feedFilter_scheduled_visible:   { type: 'boolean', default: true },
+        feedFilter_scheduled_default:   { type: 'boolean', default: false },
+        feedFilter_notifon_visible:     { type: 'boolean', default: false },
+        feedFilter_notifon_default:     { type: 'boolean', default: false },
+        feedFilter_notifoff_visible:    { type: 'boolean', default: false },
+        feedFilter_notifoff_default:    { type: 'boolean', default: false },
+        feedFilter_posts_visible:       { type: 'boolean', default: false },
+        feedFilter_posts_default:       { type: 'boolean', default: false },
+        feedFilter_playlist_visible:    { type: 'boolean', default: false },
+        feedFilter_playlist_default:    { type: 'boolean', default: false },
+        feedFilter_unwatched_visible:   { type: 'boolean', default: true },
+        feedFilter_unwatched_default:   { type: 'boolean', default: false },
+        feedFilter_watched_visible:     { type: 'boolean', default: true },
+        feedFilter_watched_default:     { type: 'boolean', default: false },
+        feedFilter_search_visible:      { type: 'boolean', default: true },
+        feedFilter_search_default:      { type: 'string',  default: '' },
         
-        ff_opt_multiselect:     { type: 'boolean', default: false },
-        ff_opt_responsive:      { type: 'boolean', default: true },
+        feedFilter_opt_multiselect:     { type: 'boolean', default: false },
+        feedFilter_opt_responsive:      { type: 'boolean', default: true },
         
-        ff_page_subscriptions:  { type: 'boolean', default: true },
-        ff_page_home:           { type: 'boolean', default: true },
-        ff_page_shorts:         { type: 'boolean', default: true },
-        ff_page_history:        { type: 'boolean', default: true },
-        ff_page_playlists:      { type: 'boolean', default: true },
-        ff_page_allplaylists:   { type: 'boolean', default: true },
-        ff_page_hashtag:        { type: 'boolean', default: true },
+        feedFilter_page_subscriptions:  { type: 'boolean', default: true },
+        feedFilter_page_home:           { type: 'boolean', default: true },
+        feedFilter_page_shorts:         { type: 'boolean', default: true },
+        feedFilter_page_history:        { type: 'boolean', default: true },
+        feedFilter_page_playlists:      { type: 'boolean', default: true },
+        feedFilter_page_allplaylists:   { type: 'boolean', default: true },
+        feedFilter_page_hashtag:        { type: 'boolean', default: true },
 
         // --- Blocklist ---
         blockedChannels:     { type: 'string',  default: '' },
@@ -564,7 +564,29 @@ window.YPP.SettingsSchema = {
             raw.schemaVersion = 1;
         }
 
-        // Future migrations go here: if (currentVersion < 2) { ... }
+        // Migrate legacy ff_ prefix to feedFilter_ prefix
+        if (currentVersion < 2) {
+            const legacyKeys = [
+                'live_visible', 'live_default', 'streamed_visible', 'streamed_default',
+                'video_visible', 'video_default', 'shorts_visible', 'shorts_default',
+                'scheduled_visible', 'scheduled_default', 'notifon_visible', 'notifon_default',
+                'notifoff_visible', 'notifoff_default', 'posts_visible', 'posts_default',
+                'playlist_visible', 'playlist_default', 'unwatched_visible', 'unwatched_default',
+                'watched_visible', 'watched_default', 'search_visible', 'search_default',
+                'opt_multiselect', 'opt_responsive', 'page_subscriptions', 'page_home',
+                'page_shorts', 'page_history', 'page_playlists', 'page_allplaylists', 'page_hashtag'
+            ];
+            
+            legacyKeys.forEach(key => {
+                if (raw[`ff_${key}`] !== undefined) {
+                    raw[`feedFilter_${key}`] = raw[`ff_${key}`];
+                    delete raw[`ff_${key}`];
+                }
+            });
+            
+            raw.schemaVersion = 2;
+            window.YPP.Utils?.log('Migrated legacy ff_ features to feedFilter_', 'SCHEMA', 'info');
+        }
 
         return raw;
     },
