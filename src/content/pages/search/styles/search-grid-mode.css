@@ -536,7 +536,9 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta {
 /* ── Grid assignments for direct children ── */
 /* Title: Top */
 body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
+body.ypp-search-grid-mode ytd-video-renderer h3:has(#video-title),
 body.ypp-search-grid-mode ytd-video-renderer #meta > h3,
+body.ypp-search-grid-mode ytd-video-renderer a#video-title,
 body.ypp-search-grid-mode ytd-playlist-renderer #title-wrapper,
 body.ypp-search-grid-mode ytd-playlist-renderer #meta > h3,
 body.ypp-search-grid-mode ytd-radio-renderer #title-wrapper,
@@ -549,7 +551,9 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta > h3 {
 
 /* Channel: Middle */
 body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-channel-name,
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
+body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name,
+body.ypp-search-grid-mode ytd-video-renderer .ytd-channel-name,
+body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string#text {
   grid-area: channel !important;
   align-self: center !important;
   margin: 0 0 2px 0 !important;
@@ -609,8 +613,9 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
 }
 
 /* ── Avatar Grid Positioning ── */
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > *:not(ytd-channel-name),
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
+body.ypp-search-grid-mode ytd-video-renderer a#avatar-link,
+body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child {
   grid-area: avatar !important;
   align-self: start !important;
   position: static !important; /* Reset any absolute positioning */
@@ -625,10 +630,13 @@ body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
   overflow: hidden !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > *:not(ytd-channel-name) img,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > *:not(ytd-channel-name) yt-img-shadow,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > *:not(ytd-channel-name) yt-avatar-shape,
-body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail img {
+body.ypp-search-grid-mode ytd-video-renderer a#avatar-link img,
+body.ypp-search-grid-mode ytd-video-renderer a#avatar-link yt-img-shadow,
+body.ypp-search-grid-mode ytd-video-renderer a#avatar-link yt-avatar-shape,
+body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail img,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child img,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child yt-img-shadow,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child yt-avatar-shape {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;

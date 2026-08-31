@@ -125,7 +125,8 @@ body.yt-spiral-tube-theme ytd-playlist-video-renderer:hover .ypp-watched-icon-pe
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-video-renderer,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-rich-grid-media,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-lockup-view-model,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer .ytLockupViewModelHost {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer .ytLockupViewModelHost,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer {
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
@@ -141,7 +142,8 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
 }
 
 /* Thumbnail */
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-thumbnail {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-thumbnail,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail {
   width: 100% !important;
   aspect-ratio: 16/9 !important;
   border-radius: var(--ypp-card-radius, 16px) var(--ypp-card-radius, 16px) 0 0 !important; /* Edge to edge */
@@ -152,7 +154,8 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
   margin-bottom: 0 !important;
 }
 
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-thumbnail img {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-thumbnail img,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -175,7 +178,8 @@ html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbn
 
 /* Card Details Padding (Outer wrapper) */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #details,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupViewModelMetadata {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupViewModelMetadata,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
   padding: 2px 10px 14px 10px !important;
   margin-top: 0 !important; /* Prevent stacking with native margins */
 }
@@ -185,7 +189,10 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
 /* Avatar Reset & Sizing */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #avatar-link,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #channel-thumbnail,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupMetadataViewModelAvatar {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupMetadataViewModelAvatar,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer a#avatar-link,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child {
   margin: 0 !important;
   margin-right: 12px !important;
   flex-shrink: 0 !important;
@@ -196,7 +203,9 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-avatar-shape,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer .yt-spec-avatar-shape,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model yt-avatar-shape,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model .yt-spec-avatar-shape {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model .yt-spec-avatar-shape,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer #channel-info a yt-img-shadow,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer #channel-info a yt-avatar-shape {
   width: 100% !important;
   height: 100% !important;
   border-radius: 12px !important; /* Squircle shape */
@@ -210,7 +219,8 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model h3,
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="text-primary"],
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="TextPrimary"],
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="Title"] {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="Title"],
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer #video-title {
   font-size: 1.4rem !important; /* Native Youtube size */
   line-height: 2rem !important;
   font-weight: 500 !important;
@@ -227,7 +237,9 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
 
 /* Metadata */
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #metadata-line,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #channel-name {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #channel-name,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer #metadata-line,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
   font-size: 1.3rem !important;
   color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.55)) !important;
   line-height: 1.5 !important;
@@ -235,6 +247,8 @@ body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch
 }
 
 body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #metadata-line,
-body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #channel-name {
+body.yt-spiral-tube-theme:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #channel-name,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer:hover #metadata-line,
+body.yt-spiral-tube-theme.ypp-search-grid-mode ytd-video-renderer:hover ytd-channel-name {
   color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.8)) !important;
 }
