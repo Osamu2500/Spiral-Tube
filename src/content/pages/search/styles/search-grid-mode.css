@@ -63,7 +63,6 @@ body.ypp-search-page ytd-feed-filter-chip-bar-renderer {
   margin-bottom: 24px;
 }
 
-
 @keyframes ypp-card-in {
   from {
     opacity: 0;
@@ -336,136 +335,11 @@ body.ypp-search-grid-mode ytd-channel-renderer #buttons {
   justify-content: center !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16/9 !important;
-
-  overflow: hidden !important;
-  position: relative !important;
-  
-  
-  background: linear-gradient(90deg, var(--yt-spec-badge-chip-background, rgba(255,255,255,0.03)) 25%, rgba(255,255,255,0.08) 50%, var(--yt-spec-badge-chip-background, rgba(255,255,255,0.03)) 75%) !important;
-  background-size: 200% 100% !important;
-  animation: ypp-skeleton-shimmer 2s infinite linear !important;
-  
-  margin-right: 0 !important;
-  margin-bottom: 0 !important; 
-  grid-column: 1 / -1 !important;
-  grid-row: 1 / 2 !important;
-  flex: none !important;
-  z-index: var(--ypp-z-content);
-  
-  
-  border-radius: 12px !important;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease !important;
-}
-
-
-
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail img,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  background-color: transparent !important;
-  
-  
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease-in !important;
-}
-
-
-body.ypp-search-grid-mode ytd-video-renderer #video-title,
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title,
-body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string,
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title yt-formatted-string,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
-  font-family: 'Inter', system-ui, sans-serif !important;
-  font-size: 1.6rem !important;
-  line-height: 2.5rem !important;
-  font-weight: 600 !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  transition: color 0.2s ease !important;
-}
-
 body.ypp-search-grid-mode ytd-video-renderer:hover #video-title,
 body.ypp-search-grid-mode ytd-playlist-renderer:hover #video-title,
 body.ypp-search-grid-mode ytd-radio-renderer:hover #video-title {
   color: var(--yt-spec-text-primary) !important;
   text-decoration: none !important;
-}
-
-body.ypp-search-grid-mode ytd-video-renderer #video-title,
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title,
-body.ypp-search-grid-mode ytd-video-renderer #video-title yt-formatted-string,
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title yt-formatted-string,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
-  font-family: var(--ypp-card-title-font, var(--ypp-font-primary, 'Inter', system-ui, sans-serif)) !important;
-  font-size: 1.4rem !important;
-  line-height: 2rem !important;
-  font-weight: 500 !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  max-height: 4rem !important;
-  color: var(--yt-spec-text-primary, #ffffff) !important;
-  letter-spacing: 0 !important;
-  margin: 0 !important;
-}
-
-body.ypp-search-grid-mode ytd-video-renderer #dismissible {
-  display: grid !important;
-  grid-template-columns: 36px 1fr !important;
-  grid-template-areas: 
-    "thumbnail thumbnail"
-    "avatar title"
-    "avatar channel"
-    "avatar views" !important;
-  grid-auto-rows: auto !important;
-  column-gap: 12px !important;
-  row-gap: 2px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  height: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  position: relative !important;
-}
-
-body.ypp-search-grid-mode ytd-playlist-renderer #content,
-body.ypp-search-grid-mode ytd-radio-renderer #content {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  grid-template-areas: 
-    "thumbnail"
-    "title"
-    "views" !important;
-  grid-template-rows: auto auto auto !important;
-  row-gap: 2px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  height: auto !important;
-  flex: 1 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  position: relative !important;
 }
 
 body.ypp-search-grid-mode ytd-playlist-renderer a.yt-simple-endpoint,
@@ -476,48 +350,7 @@ body.ypp-search-grid-mode ytd-radio-renderer > div {
   display: contents !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
-  grid-area: thumbnail !important;
-  display: block !important;
-  width: 100% !important;
-  min-width: 0 !important; 
-  max-width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  margin: 0 0 12px 0 !important;
-  overflow: hidden !important;
-  position: relative !important;
-  background-color: transparent !important;
-}
-
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail a,
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail a,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail yt-image,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail a,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail yt-image {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail img,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-}
-
 /* ── Text Wrapper ── */
-body.ypp-search-grid-mode ytd-video-renderer .text-wrapper,
-body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
-body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
-  display: contents !important;
-}
 
 /* Hide Snippets */
 body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-text {
@@ -525,72 +358,17 @@ body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-text {
 }
 
 /* ── Flatten inner wrappers to become direct grid children ── */
-body.ypp-search-grid-mode ytd-video-renderer #meta,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info {
-  display: contents !important;
-}
 
 /* ── Grid assignments for direct children ── */
 /* Avatar */
-body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail {
-  grid-area: avatar !important;
-  align-self: start !important;
-  margin: 0 !important;
-  display: block !important;
-}
 
 /* Title: Top */
-body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
-body.ypp-search-grid-mode ytd-video-renderer h3:has(#video-title),
-body.ypp-search-grid-mode ytd-video-renderer #meta > h3 {
-  grid-area: title !important;
-  align-self: end !important;
-  margin: 0 0 2px 0 !important;
-  width: 100% !important;
-}
 
 /* Channel: Middle */
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-channel-name,
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name,
-body.ypp-search-grid-mode ytd-video-renderer .ytd-channel-name,
-body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string#text,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-formatted-string,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > :not(a):not(yt-img-shadow) {
-  grid-area: channel !important;
-  align-self: center !important;
-  margin: 0 0 2px 0 !important;
-  width: 100% !important;
-  display: block !important;
-  overflow: hidden !important;
-}
 
 /* Views: Bottom */
-body.ypp-search-grid-mode ytd-video-renderer #meta > ytd-video-meta-block,
-body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  grid-area: views !important;
-  align-self: start !important;
-  margin: 0 !important;
-  width: 100% !important;
-}
 
 /* ── Typography & Visuals ── */
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
-body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-formatted-string,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info a,
-body.ypp-search-grid-mode ytd-video-renderer .yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
-  font-size: 1.3rem !important; 
-  font-weight: 500 !important;
-  line-height: 1.5 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  color: var(--ypp-card-meta-color, var(--yt-spec-text-secondary, #aaa)) !important;
-  transition: color 0.2s ease;
-}
 
 body.ypp-search-grid-mode ytd-video-renderer:hover ytd-channel-name a,
 body.ypp-search-grid-mode ytd-video-renderer:hover #channel-info a {
@@ -601,46 +379,8 @@ body.ypp-search-grid-mode ytd-video-renderer:hover #channel-info a {
 body.ypp-search-grid-mode ytd-video-renderer #metadata-line span,
 body.ypp-search-grid-mode ytd-playlist-renderer #metadata-line span,
 body.ypp-search-grid-mode ytd-radio-renderer #metadata-line span,
-body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 0 4px !important;
-  font-size: 1.3rem !important; 
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-  width: auto !important; 
-  margin-top: 0 !important;
-  color: var(--ypp-card-meta-color, var(--yt-spec-text-secondary, #aaa)) !important;
-}
 
 /* ── Avatar Visual Styling ── */
-body.ypp-search-grid-mode ytd-video-renderer a#avatar-link,
-body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-img-shadow,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-avatar-shape {
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  max-width: 36px !important;
-  border-radius: 12px !important; /* Squircle */
-  overflow: hidden !important;
-}
-
-body.ypp-search-grid-mode ytd-video-renderer a#avatar-link img,
-body.ypp-search-grid-mode ytd-video-renderer a#avatar-link yt-img-shadow,
-body.ypp-search-grid-mode ytd-video-renderer a#avatar-link yt-avatar-shape,
-body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail img,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child img,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child yt-img-shadow,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child yt-avatar-shape {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-  border-radius: 12px !important;
-}
 
 body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string.metadata-snippet-text,
 body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string#description-text,
@@ -667,21 +407,6 @@ body.ypp-search-grid-mode ytd-radio-renderer > div {
 }
 
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
-  display: block !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-
-  overflow: hidden !important;
-  flex-shrink: 0 !important;
-  margin: 0 !important;
-  position: relative !important;
-  background: transparent !important;
-}
 
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
@@ -1030,7 +755,6 @@ body.ypp-search-grid-mode ytd-promoted-video-renderer {
   width: 0 !important;
 }
 
-
 body.ypp-search-grid-mode ytd-playlist-renderer > a,
 body.ypp-search-grid-mode ytd-radio-renderer > div,
 body.ypp-search-grid-mode ytd-radio-renderer > ytd-thumbnail,
@@ -1119,8 +843,6 @@ body.ypp-search-grid-mode #right-arrow-button {
 }
 
 /* Note: Media queries for gap/responsive layout are defined once above (around line 969). */
-
-
 
 body.ypp-search-grid-mode ytd-reel-shelf-renderer,
 body.ypp-search-grid-mode ytd-rich-shelf-renderer[is-shorts],
@@ -1249,17 +971,6 @@ body.ypp-search-grid-mode ytd-radio-renderer a.yt-simple-endpoint {
   margin: 0 !important;
 }
 
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
-body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail,
-body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail,
-body.ypp-search-grid-mode ytd-playlist-renderer .ytd-playlist-thumbnail-renderer {
-  width: 100% !important;
-  max-width: 100% !important;
-  aspect-ratio: 16 / 9 !important;
-  margin: 0 !important;
-  display: block !important;
-}
-
 body.ypp-search-grid-mode ytd-playlist-renderer yt-collections-stack,
 body.ypp-search-grid-mode ytd-playlist-renderer .yt-collections-stack,
 body.ypp-search-grid-mode ytd-playlist-renderer [class*='stack-'],
@@ -1285,26 +996,6 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta {
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-}
-
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title,
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title yt-formatted-string,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
-  grid-area: title !important;
-  font-family: 'Inter', 'Roboto', sans-serif !important;
-  font-size: 1.6rem !important;
-  line-height: 2.4rem !important;
-  font-weight: 500 !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  max-height: 4.8rem !important;
-  color: var(--ypp-text-primary, #fff) !important;
-  letter-spacing: -0.1px !important;
-  margin: 0 !important;
 }
 
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-channel-name,
@@ -1482,13 +1173,6 @@ body.ypp-search-grid-mode ytd-item-section-renderer[hidden] {
 
 body.ypp-search-grid-mode ytd-video-renderer .text-wrapper ytd-badge-supported-renderer {
   animation: yppBadgeAdded 0.001s;
-}
-
-body.ypp-search-grid-mode ytd-video-renderer #channel-info {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
 body.ypp-search-grid-mode ytd-video-renderer #channel-info #badges,
