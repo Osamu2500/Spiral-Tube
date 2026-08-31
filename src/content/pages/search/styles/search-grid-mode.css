@@ -427,13 +427,20 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
 }
 
 body.ypp-search-grid-mode ytd-video-renderer #dismissible {
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-columns: 36px 1fr !important;
+  grid-template-areas: 
+    "thumbnail thumbnail"
+    "avatar title"
+    "avatar channel"
+    "avatar views" !important;
+  grid-auto-rows: auto !important;
+  column-gap: 12px !important;
+  row-gap: 2px !important;
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
   height: auto !important;
-  flex: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
@@ -505,14 +512,11 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
   display: block !important;
 }
 
-/* ── Text Wrapper (Flexbox mimic of ytd-rich-grid-media) ── */
+/* ── Text Wrapper ── */
 body.ypp-search-grid-mode ytd-video-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important;
-  padding-left: 48px !important; /* 36px avatar + 12px gap */
+  display: contents !important;
 }
 
 /* Hide Snippets */
@@ -520,46 +524,45 @@ body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-text {
   display: none !important;
 }
 
-/* ── Avatar Layout ── */
+/* ── Flatten inner wrappers to become direct grid children ── */
+body.ypp-search-grid-mode ytd-video-renderer #meta,
 body.ypp-search-grid-mode ytd-video-renderer #channel-info {
   display: contents !important;
 }
 
+/* ── Grid assignments for direct children ── */
+/* Avatar */
 body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail {
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 36px !important;
-  height: 36px !important;
+  grid-area: avatar !important;
+  align-self: start !important;
   margin: 0 !important;
   display: block !important;
 }
 
-/* ── Meta and Channel Text Layout ── */
-body.ypp-search-grid-mode ytd-video-renderer #meta {
-  display: contents !important;
-}
-
-/* Reorder children using Flex order (Negative to push them to the top of .text-wrapper) */
+/* Title: Top */
 body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
 body.ypp-search-grid-mode ytd-video-renderer h3:has(#video-title),
 body.ypp-search-grid-mode ytd-video-renderer #meta > h3 {
-  order: -3 !important;
-  margin: 0 0 4px 0 !important;
+  grid-area: title !important;
+  align-self: end !important;
+  margin: 0 0 2px 0 !important;
   width: 100% !important;
-  align-self: flex-start !important;
 }
 
+/* Channel: Middle */
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
-  order: -2 !important;
+  grid-area: channel !important;
+  align-self: center !important;
   margin: 0 0 2px 0 !important;
   width: 100% !important;
   display: block !important;
 }
 
+/* Views: Bottom */
 body.ypp-search-grid-mode ytd-video-renderer #meta > ytd-video-meta-block,
 body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  order: -1 !important;
+  grid-area: views !important;
+  align-self: start !important;
   margin: 0 !important;
   width: 100% !important;
 }
