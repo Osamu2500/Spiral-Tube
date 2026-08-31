@@ -706,7 +706,7 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
         // ── Card Style ───────────────────────────────────────────────────────
         let finalCardStyle = this._settings.cardStyle || 'default';
 
-        if (!finalCardStyle || finalCardStyle === 'default' || finalCardStyle === 'none') {
+        if (!finalCardStyle || finalCardStyle === 'none') {
             root.removeAttribute('data-ypp-card-style');
         } else {
             root.setAttribute('data-ypp-card-style', finalCardStyle);
@@ -961,7 +961,7 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
         // Also manage the search compatibility stylesheet
         const searchCompatId = 'ypp-search-card-compat-css';
 
-        if (!cardStyleKey || cardStyleKey === 'default' || cardStyleKey === 'none') {
+        if (!cardStyleKey || cardStyleKey === 'none') {
             if (linkVars) linkVars.remove();
             // Remove search compat too when no card style is active
             const searchCompatLink = document.getElementById(searchCompatId);
@@ -970,25 +970,31 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
             return;
         }
 
-        if (linkVars && linkVars.getAttribute('data-card-style') === cardStyleKey) {
-            return;
+        // We DO NOT load an external vars URL if it's 'default', because default is included in the bundle.
+        // But we DO need to keep the attribute and inject search-card-compat.css!
+        if (cardStyleKey !== 'default') {
+            if (linkVars && linkVars.getAttribute('data-card-style') === cardStyleKey) {
+                // already loaded
+            } else {
+                const varsUrl = this._getCardStyleUrl(cardStyleKey);
+                if (!linkVars) {
+                    linkVars = document.createElement('link');
+                    linkVars.id = idVars;
+                    linkVars.rel = 'stylesheet';
+                    linkVars.className = 'ypp-ui-style-link';
+                    (document.head || document.documentElement).appendChild(linkVars);
+                }
+                linkVars.setAttribute('data-card-style', cardStyleKey);
+                linkVars.href = varsUrl;
+            }
+        } else {
+            // For 'default', we remove the external file link if it exists, as the CSS is bundled
+            if (linkVars) {
+                linkVars.remove();
+            }
         }
 
-        const varsUrl = this._getCardStyleUrl(cardStyleKey);
-
-        if (!linkVars) {
-            linkVars = document.createElement('link');
-            linkVars.id = idVars;
-            linkVars.rel = 'stylesheet';
-            linkVars.className = 'ypp-ui-style-link';
-            (document.head || document.documentElement).appendChild(linkVars);
-        }
-
-        linkVars.setAttribute('data-card-style', cardStyleKey);
-        linkVars.href = varsUrl;
-
-        // Inject the shared search compatibility layer (always after card style CSS
-        // so its rules have a higher source order for equal-specificity ties)
+        // Always inject search compat for ANY active card style (including 'default')
         let searchCompatLink = document.getElementById(searchCompatId);
         if (!searchCompatLink) {
             searchCompatLink = document.createElement('link');
