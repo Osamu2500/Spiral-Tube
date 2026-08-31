@@ -426,12 +426,38 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
   margin: 0 !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer #dismissible,
+body.ypp-search-grid-mode ytd-video-renderer #dismissible {
+  display: grid !important;
+  grid-template-columns: 36px 1fr !important;
+  grid-template-areas: 
+    "thumbnail thumbnail"
+    "avatar title"
+    "avatar channel"
+    "avatar views" !important;
+  grid-template-rows: auto auto auto auto !important;
+  column-gap: 12px !important;
+  row-gap: 2px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  flex: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
 body.ypp-search-grid-mode ytd-playlist-renderer #content,
 body.ypp-search-grid-mode ytd-radio-renderer #content {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-areas: 
+    "thumbnail"
+    "title"
+    "views" !important;
+  grid-template-rows: auto auto auto !important;
+  row-gap: 2px !important;
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
@@ -454,6 +480,7 @@ body.ypp-search-grid-mode ytd-radio-renderer > div {
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
+  grid-area: thumbnail !important;
   display: block !important;
   width: 100% !important;
   min-width: 0 !important; 
@@ -464,7 +491,6 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   overflow: hidden !important;
   position: relative !important;
   background-color: transparent !important;
-  flex-shrink: 0 !important;
 }
 
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail a,
@@ -491,13 +517,7 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
 body.ypp-search-grid-mode ytd-video-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
 body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important; /* Contains absolute avatar */
-  padding: 0 24px 0 48px !important; /* Left 48px for Avatar, Right 24px for Dots */
-  margin: 0 !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  display: contents !important;
 }
 
 /* Hide Snippets */
@@ -505,7 +525,7 @@ body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-text {
   display: none !important;
 }
 
-/* ── Flatten inner wrappers to become direct flex children of .text-wrapper ── */
+/* ── Flatten inner wrappers to become direct grid children ── */
 body.ypp-search-grid-mode ytd-video-renderer #meta,
 body.ypp-search-grid-mode ytd-video-renderer #channel-info,
 body.ypp-search-grid-mode ytd-playlist-renderer #meta,
@@ -513,19 +533,25 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta {
   display: contents !important;
 }
 
-/* ── Order assignments for direct flex children ── */
+/* ── Grid assignments for direct children ── */
 /* Title: Top */
 body.ypp-search-grid-mode ytd-video-renderer #title-wrapper,
-body.ypp-search-grid-mode ytd-video-renderer #meta > h3 {
-  order: 1 !important;
-  margin: 0 0 4px 0 !important;
+body.ypp-search-grid-mode ytd-video-renderer #meta > h3,
+body.ypp-search-grid-mode ytd-playlist-renderer #title-wrapper,
+body.ypp-search-grid-mode ytd-playlist-renderer #meta > h3,
+body.ypp-search-grid-mode ytd-radio-renderer #title-wrapper,
+body.ypp-search-grid-mode ytd-radio-renderer #meta > h3 {
+  grid-area: title !important;
+  align-self: end !important;
+  margin: 0 0 2px 0 !important;
   width: 100% !important;
 }
 
 /* Channel: Middle */
 body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-channel-name,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
-  order: 2 !important;
+  grid-area: channel !important;
+  align-self: center !important;
   margin: 0 0 2px 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
@@ -533,8 +559,13 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name {
 
 /* Views: Bottom */
 body.ypp-search-grid-mode ytd-video-renderer #meta > ytd-video-meta-block,
-body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
-  order: 3 !important;
+body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block,
+body.ypp-search-grid-mode ytd-playlist-renderer #meta > ytd-video-meta-block,
+body.ypp-search-grid-mode ytd-playlist-renderer ytd-video-meta-block,
+body.ypp-search-grid-mode ytd-radio-renderer #meta > ytd-video-meta-block,
+body.ypp-search-grid-mode ytd-radio-renderer ytd-video-meta-block {
+  grid-area: views !important;
+  align-self: start !important;
   margin: 0 !important;
 }
 
@@ -577,17 +608,17 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
   color: var(--ypp-card-meta-color, var(--yt-spec-text-secondary, #aaa)) !important;
 }
 
-/* ── Avatar Absolute Positioning ── */
+/* ── Avatar Grid Positioning ── */
 body.ypp-search-grid-mode ytd-video-renderer #channel-info > *:not(ytd-channel-name),
 body.ypp-search-grid-mode ytd-video-renderer #channel-thumbnail {
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important; /* Aligned with top of .text-wrapper */
+  grid-area: avatar !important;
+  align-self: start !important;
+  position: static !important; /* Reset any absolute positioning */
   width: 36px !important;
   height: 36px !important;
   min-width: 36px !important;
   max-width: 36px !important;
-  margin: 0 !important;
+  margin: 2px 0 0 0 !important;
   padding: 0 !important;
   display: block !important;
   border-radius: 12px !important; /* Squircle */
