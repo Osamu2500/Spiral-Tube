@@ -31,16 +31,18 @@ export class SearchPageManager extends window.YPP.BasePageManager {
     onActivate() {
         this.utils.log('Search Page Active', 'SEARCH_MANAGER', 'info');
 
-        // Mark body so search-specific CSS selectors activate (20+ rules depend on this)
+        // Mark body so search-specific CSS selectors activate (20+ rules depend on this class)
         document.body.classList.add('ypp-search-page');
 
-        // Use run() so each feature respects its own settings toggle
-        // rather than unconditionally enabling regardless of user preference.
-        if (this.features.searchViewMode) {
-            this.features.searchViewMode.run(this.settings);
+        // Must call enable() — NOT run() — here.
+        // SearchViewMode._isEnabled starts false; run() guards on it and silently no-ops,
+        // meaning ypp-search-grid-mode would never be added to body and the CSS grid never fires.
+        // enable() sets _isEnabled = true then calls applyViewMode() which reads settings internally.
+        if (this.features.searchViewMode?.enable) {
+            this.features.searchViewMode.enable();
         }
-        if (this.features.searchRedesign) {
-            this.features.searchRedesign.run(this.settings);
+        if (this.features.searchRedesign?.enable) {
+            this.features.searchRedesign.enable();
         }
     }
 
@@ -58,6 +60,7 @@ export class SearchPageManager extends window.YPP.BasePageManager {
     applySettings(settings) {
         this.settings = { ...this.settings, ...settings };
         
+        // run() is correct here — features are already enabled, run() just updates settings
         if (this.features.searchViewMode) {
             this.features.searchViewMode.run(this.settings);
         }
