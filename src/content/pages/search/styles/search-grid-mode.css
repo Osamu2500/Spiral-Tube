@@ -528,6 +528,8 @@ body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-text {
 /* ── Flatten inner wrappers to become direct grid children ── */
 body.ypp-search-grid-mode ytd-video-renderer #meta,
 body.ypp-search-grid-mode ytd-video-renderer #channel-info,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > a,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-channel-name,
 body.ypp-search-grid-mode ytd-playlist-renderer #meta,
 body.ypp-search-grid-mode ytd-radio-renderer #meta {
   display: contents !important;
@@ -553,7 +555,8 @@ body.ypp-search-grid-mode ytd-radio-renderer #meta > h3 {
 body.ypp-search-grid-mode ytd-video-renderer #channel-info > ytd-channel-name,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name,
 body.ypp-search-grid-mode ytd-video-renderer .ytd-channel-name,
-body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string#text {
+body.ypp-search-grid-mode ytd-video-renderer yt-formatted-string#text,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-formatted-string {
   grid-area: channel !important;
   align-self: center !important;
   margin: 0 0 2px 0 !important;
@@ -576,6 +579,8 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-video-meta-block {
 /* ── Typography & Visuals ── */
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name yt-formatted-string,
 body.ypp-search-grid-mode ytd-video-renderer ytd-channel-name a,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-formatted-string,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info a,
 body.ypp-search-grid-mode ytd-video-renderer .yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
   font-size: 1.3rem !important; 
   font-weight: 500 !important;
@@ -590,7 +595,8 @@ body.ypp-search-grid-mode ytd-video-renderer .yt-formatted-string[has-link-only_
   transition: color 0.2s ease;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer:hover ytd-channel-name a {
+body.ypp-search-grid-mode ytd-video-renderer:hover ytd-channel-name a,
+body.ypp-search-grid-mode ytd-video-renderer:hover #channel-info a {
   color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.92)) !important;
 }
 
@@ -615,7 +621,8 @@ body.ypp-search-grid-mode ytd-video-renderer ytd-video-meta-block {
 /* ── Avatar Grid Positioning ── */
 body.ypp-search-grid-mode ytd-video-renderer a#avatar-link,
 body.ypp-search-grid-mode ytd-video-renderer a#channel-thumbnail,
-body.ypp-search-grid-mode ytd-video-renderer #channel-info > a:first-child {
+body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-img-shadow,
+body.ypp-search-grid-mode ytd-video-renderer #channel-info yt-avatar-shape {
   grid-area: avatar !important;
   align-self: start !important;
   position: static !important; /* Reset any absolute positioning */
