@@ -139,3 +139,14 @@ body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-rad
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block a {
   text-decoration: none !important;
 }
+
+/* Fix missing thumbnail images */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail a#thumbnail,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail yt-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
