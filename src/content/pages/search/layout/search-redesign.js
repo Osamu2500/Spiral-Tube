@@ -26,8 +26,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
 
     /** CSS classes used for styling and state management */
     static CLASSES = {
-        GRID_MODE:       'ypp-search-grid-mode',
-        LIST_MODE:       'ypp-search-list-mode',
         GRID_CONTAINER:  'ypp-grid-container',
         GRID_ITEM:       'ypp-grid-item',
         FULL_WIDTH:      'ypp-full-width-item',
@@ -126,10 +124,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
 
         this._searchObserver?.stop();
 
-        document.body.classList.remove(
-            SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE
-        );
         document.body.removeAttribute('data-ypp-search-layout');
         document.body.classList.remove('ypp-filter-pending');
         
@@ -334,11 +328,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     _removeClasses() {
         // Remove layout attribute
         document.body.removeAttribute('data-ypp-search-layout');
-        // Remove grid/list body classes so they don't leak to non-search pages
-        document.body.classList.remove(
-            SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE
-        );
     }
 }
 
