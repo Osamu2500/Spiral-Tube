@@ -1,0 +1,91 @@
+/* --- NETFLIX SUBTITLES (From 3881) --- */
+body.ypp-netflix-subtitles .ytp-caption-segment {
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: 500 !important;
+    text-shadow: 
+        0px 2px 4px rgba(0,0,0,0.8), 
+        0px 4px 8px rgba(0,0,0,0.8), 
+        0px 0px 10px rgba(0,0,0,0.6) !important;
+    background: transparent !important;
+}
+
+/* --- Compact Settings Menu --- */
+body.ypp-small-settings-menu #contentContainer.tp-yt-app-drawer[swipe-open]::after {
+    display: none !important;
+}
+body.ypp-small-settings-menu .ytp-panel-menu {
+    display: block !important;
+}
+body.ypp-small-settings-menu .ytp-menuitem:not(.ytp-menuitem-with-footer) {
+    display: flex !important;
+    align-items: center !important;
+    height: 30px !important;
+    border-radius: 4px !important;
+}
+body.ypp-small-settings-menu .ytp-menuitem-label {
+    flex: 1 !important;
+}
+
+/* --- Show Live Stream Elapsed Time --- */
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-current,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-separator,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-duration {
+  display: inline-block !important;
+}
+
+
+/* User Request: Remove gray containers from Watch Metadata and Actions */
+ytd-watch-metadata { background: transparent !important; border: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+/* Make sure all container wrappers for owner and actions are fully transparent */
+html body ytd-app ytd-watch-metadata #actions,
+html body ytd-app ytd-watch-metadata #actions-inner,
+html body ytd-app ytd-watch-metadata #owner,
+html body ytd-app ytd-watch-metadata ytd-video-owner-renderer,
+html body ytd-app ytd-watch-metadata #bottom-row {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Unify all action buttons, subscribe button, and bell button to match Like button */
+html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal,
+html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button,
+html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html body #page-manager ytd-watch-metadata #owner yt-button-shape button,
+html body #page-manager ytd-watch-metadata ytd-subscribe-button-renderer button,
+html body #page-manager ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer-next button {
+    background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
+    color: var(--yt-spec-text-primary) !important;
+}
+
+
+ytd-watch-flexy > .box { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+
+
+/* Ultra-high specificity using IDs to defeat YouTube's !important */
+html body #page-manager #columns #primary ytd-watch-metadata, 
+html body #page-manager ytd-watch-flexy #primary ytd-watch-metadata, 
+html body ytd-app #page-manager #columns #primary-inner ytd-watch-metadata,
+html[data-ypp-ui-design] body #page-manager #columns #primary ytd-watch-metadata { 
+    background: transparent !important; 
+    background-color: transparent !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    -webkit-backdrop-filter: none !important; 
+    backdrop-filter: none !important; 
+    padding: 0 !important; 
+    margin: 0 !important; 
+}
+
+
+html body #page-manager ytd-watch-metadata #actions-inner button.ytSpecButtonShapeNext--tonal:hover, 
+html body #page-manager ytd-watch-metadata #actions-inner yt-button-shape button:hover, 
+html body #page-manager ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover,
+html body #page-manager ytd-watch-metadata #owner yt-button-shape button:hover,
+html body #page-manager ytd-watch-metadata ytd-subscribe-button-renderer button:hover,
+html body #page-manager ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer-next button:hover { 
+    background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important; 
+}
+
+
