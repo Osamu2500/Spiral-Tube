@@ -55,6 +55,8 @@
 @import '../pages/watch/styles/watch-declutter.css';
 @import '../pages/watch/components/comments/comments.css';
 @import '../pages/watch/components/livechat/livechat.css';
+@import '../pages/watch/components/metadata-row/action-buttons.css';
+@import '../pages/watch/components/metadata-row/channel-bar.css';
 
 /* Watch Layout & Modes */
 @import '../pages/watch/layouts/modes/css/cinema-mode.css';
@@ -68,6 +70,7 @@
 @import '../pages/watch/layouts/seamless-mode/seamless-mode.css';
 
 /* Watch Player Enhancements */
+@import '../pages/watch/player/styles/progress-bar.css';
 @import '../pages/watch/player/styles/base-native-overrides.css';
 @import '../pages/watch/player/styles/custom-bar-ui.css';
 @import '../pages/watch/player/styles/floating-action-bar.css';

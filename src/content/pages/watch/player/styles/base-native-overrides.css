@@ -8,20 +8,6 @@
    MIGRATED FROM BASE/CORE-STYLES-UI.CSS
    =================================================================================== */
 
-/* Player Controls & Progress Bar (Neon effect) */
-html.yt-spiral-tube-theme .ytp-play-progress {
-    background: var(--ypp-accent-primary, #6366f1) !important;
-    box-shadow: 0 0 12px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 60%, transparent) !important;
-}
-html.yt-spiral-tube-theme .ytp-scrubber-button {
-    background: #fff !important;
-    border: 3px solid var(--ypp-accent-primary, #6366f1) !important;
-    box-shadow: 0 0 16px var(--ypp-accent-primary, #6366f1) !important;
-    transition: transform 0.15s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
-}
-html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
-    transform: scale(1.3) !important;
-}
 
 /* Player Controls Containers */
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
@@ -63,23 +49,6 @@ html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
   padding-left: 10px;
 }
 
-/* ── Progress Bar: Prevent Blue FOUC ──────────────────────────────────────
-   Root cause: base/core-styles-ui.css overrides --yt-spec-brand-icon-active
-   to our accent blue (#3ea6ff). YouTube's player reads that variable on
-   initial render (before its own JS color-init runs), causing a blue flash.
-   Fix: force red unconditionally here — no JS-added class needed, so this
-   applies the moment the stylesheet is parsed, eliminating the flash.
-   Theme-specific overrides (ui-styles/<theme>/overrides.css) use higher-specificity
-   data-ypp-ui-design selectors and will still correctly override this.
-   ─────────────────────────────────────────────────────────────────────── */
-.ytp-play-progress,
-.ytp-swatch-background-color {
-  background: #ff0000 !important;
-}
-.ytp-scrubber-button {
-  background: #ff0000 !important;
-  border-color: #ff0000 !important;
-}
 
 
 /* Buttons inside Player */
@@ -392,15 +361,6 @@ body.ypp-use-square-corners yt-avatar-shape,
 body.ypp-use-square-corners yt-img-shadow[shape='circle'] {
   border-radius: 0 !important;
 }
-body.ypp-revert-progress-bar .ytp-play-progress,
-body.ypp-revert-progress-bar #progress.ytd-thumbnail-overlay-resume-playback-renderer,
-body.ypp-revert-progress-bar .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment,
-body.ypp-revert-progress-bar .ytChapteredProgressBarChapteredPlayerBarChapterSeen,
-body.ypp-revert-progress-bar .ytChapteredProgressBarChapteredPlayerBarFill,
-body.ypp-revert-progress-bar .ytSliderSliderPrimary,
-body.ypp-revert-progress-bar .thumbnail-overlay-resume-playback-progress {
-  background: #f00 !important;
-}
 /* ===================================================================================
    TIME REMAINING DISPLAY (Speed-aware remaining time beside duration)
    =================================================================================== */
@@ -418,25 +378,7 @@ body.ypp-revert-progress-bar .thumbnail-overlay-resume-playback-progress {
    MIGRATED FROM BASE/CORE-STYLES-UI.CSS
    =================================================================================== */
 
-/* Remove the weird blue color from YouTube Native Progress Bar */
-yt-page-navigation-progress, 
-#progress.yt-page-navigation-progress {
-  display: none !important;
-}
 
-/* Dual Accent Gradient Enhancements */
-body.ypp-dual-accent-enabled .ytp-play-progress,
-body.ypp-dual-accent-enabled .ytp-swatch-background-color,
-body.ypp-dual-accent-enabled tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button,
-body.ypp-dual-accent-enabled #progress.ytd-thumbnail-overlay-resume-playback-renderer {
-    background: var(--ypp-accent-gradient) !important;
-    background-color: transparent !important;
-}
-
-body.ypp-dual-accent-enabled .ytp-scrubber-button {
-    background: var(--ypp-accent-gradient) !important;
-    border-color: transparent !important;
-}
 
 /* ===================================================================================
    YOUTUBE NATIVE PLAYER - PREMIUM BASE UI UPGRADE
@@ -471,22 +413,6 @@ html.yt-spiral-tube-theme .ytp-button:active {
   transform: scale(0.9) !important;
 }
 
-/* Override YouTube's solid red progress bar to the custom accent gradient */
-html.yt-spiral-tube-theme .ytp-swatch-background-color {
-  background: var(--ypp-accent-gradient, var(--ypp-accent-primary, #ff0000)) !important;
-  box-shadow: 0 0 12px var(--ypp-accent-glow, transparent) !important;
-}
-
-/* Scrubber Button (Playhead indicator) */
-html.yt-spiral-tube-theme .ytp-scrubber-button {
-  background: var(--ypp-accent-primary, #ff0000) !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.2) inset !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-}
-html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
-  transform: scale(1.4) !important;
-}
 
 /* Player popup - reduced blur from 28px → 20px */
 html.yt-spiral-tube-theme .ytp-popup {

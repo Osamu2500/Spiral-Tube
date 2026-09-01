@@ -1,0 +1,106 @@
+/* ==========================================================================
+   CHANNEL BAR & OWNER INFO REDESIGN
+   ========================================================================== */
+
+/* Container for the entire top row (Channel info + Actions) */
+body.yt-spiral-tube-theme ytd-watch-metadata #top-row {
+  margin-top: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+
+/* Channel Owner Section Pill */
+body.yt-spiral-tube-theme ytd-watch-metadata #owner {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 100px !important;
+  padding: 4px 16px 4px 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Subscribe Button Container & Positioning */
+body.yt-spiral-tube-theme ytd-watch-metadata #owner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button {
+  margin-left: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  > ytd-subscribe-button-renderer
+  > yt-smartimation
+  > div
+  > yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;  padding: 0 20px !important;
+  height: 40px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  > ytd-subscribe-button-renderer
+  > yt-smartimation
+  > div
+  > yt-button-shape
+  > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Subscribed State */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--ypp-text-secondary, #aaa) !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content {
+  color: inherit !important;
+}

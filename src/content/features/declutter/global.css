@@ -481,9 +481,3 @@ body.ypp-nuke-shorts ytd-shelf-renderer:has(yt-icon[icon="yt-icons:shorts"]),
 body.ypp-nuke-shorts ytd-reel-shelf-renderer {
     display: none !important;
 }
-
-/* Remove the weird blue color from YouTube Native Progress Bar */
-yt-page-navigation-progress, 
-#progress.yt-page-navigation-progress {
-  display: none !important;
-}

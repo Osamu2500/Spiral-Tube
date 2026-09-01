@@ -1,0 +1,165 @@
+/* ==========================================================================
+   ACTION BUTTONS REDESIGN
+   ========================================================================== */
+
+/* Actions Menu Container */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions.ytd-watch-metadata,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #top-level-buttons-computed,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #flexible-item-buttons {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Base button container fixes (remove native YouTube backgrounds that cause double layering) */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
+  border: none !important; /* Will be overridden by specific rules if subscribe */
+}
+
+/* Hide native ripple and dark mode overlay pseudo-elements responsible for the "double view" */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
+  display: none !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content {
+  margin: 0 !important;
+}
+
+/* Individual Action Pills (Share, Download, Save, etc.) applying glassmorphism to the outer button structure */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape-with-explainer
+  yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  > button {
+  border-radius: 100px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-weight: 500 !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  :is(ytd-download-button-renderer, yt-button-view-model)
+  yt-button-shape
+  > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Segmented Like/Dislike Button Fixes */
+/* Reset background on the container so we can style the inner buttons */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 100px !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 36px !important;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper):hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Like button side */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
+  yt-button-shape:first-child
+  button {
+  border-radius: 100px 0 0 100px !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+}
+
+/* Dislike button side */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
+  yt-button-shape:last-child
+  button {
+  border-radius: 0 100px 100px 0 !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Adjust icons inside buttons */
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
