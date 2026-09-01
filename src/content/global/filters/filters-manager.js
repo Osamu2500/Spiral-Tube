@@ -13,6 +13,7 @@ export class FiltersManager extends window.YPP.features.BaseFeature {
         super('FiltersManager');
         this._infiniteLoopCounter = 0;
         this._lastLoaderTime = 0;
+        this._lastScrollY = 0;
         this._boundProcessLoader = this._processLoader.bind(this);
     }
 
@@ -100,21 +101,29 @@ export class FiltersManager extends window.YPP.features.BaseFeature {
         if (!this._isEnabled || nodes.length === 0) return;
         
         const now = Date.now();
-        if (now - this._lastLoaderTime < 1000) {
-            this._infiniteLoopCounter++;
-        } else {
-            this._infiniteLoopCounter = 1;
-        }
-        this._lastLoaderTime = now;
+        const currentScrollY = window.scrollY;
+        const scrollDelta = Math.abs(currentScrollY - this._lastScrollY);
 
-        if (this._infiniteLoopCounter > 15) {
+        if (now - this._lastLoaderTime > 10000) {
             this._infiniteLoopCounter = 0;
-            this._lastLoaderTime = now + 10000; // sleep 10s
-            window.YPP.Utils.log('Infinite loader loop detected due to excessive hiding.', 'FILTERS', 'warn');
-            try {
-                window.YPP.Utils.createToast('Too many videos hidden! YouTube is stuck loading. Scroll down or disable some filters.', 'warn', 5000);
-            } catch (e) {}
         }
+        
+        // Only count as problematic if user hasn't scrolled significantly
+        if (scrollDelta < 100) {
+            this._infiniteLoopCounter++;
+            this._lastLoaderTime = now;
+            if (this._infiniteLoopCounter >= 4) {
+                this._infiniteLoopCounter = 0;
+                this._lastLoaderTime = now + 10000;
+                window.YPP.Utils.log('Infinite loader loop detected due to excessive hiding.', 'FILTERS', 'warn');
+                try {
+                    window.YPP.Utils.createToast('Too many videos hidden! YouTube is stuck loading. Scroll down or disable some filters.', 'warn', 5000);
+                } catch (e) {}
+            }
+        } else {
+            this._infiniteLoopCounter = 0;
+        }
+        this._lastScrollY = currentScrollY;
     }
 }
 window.YPP.features.FiltersManager = FiltersManager;

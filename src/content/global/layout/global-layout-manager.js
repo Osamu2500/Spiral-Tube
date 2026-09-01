@@ -21,8 +21,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideMerch:             'ypp-hide-merch',
             hideFundraiser:        'ypp-hide-fundraiser',
             hideSearchShelves:     'ypp-hide-search-shelves',
-            hideSearchMixes:       'ypp-hide-search-mixes',
-            hideSearchPlaylists:   'ypp-hide-search-playlists',
             hideSearchPodcasts:    'ypp-hide-search-podcasts',
             hideSearchMusic:       'ypp-hide-search-music',
             hideSearchTopics:      'ypp-hide-search-topics',
@@ -142,8 +140,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             else document.body.classList.remove(className);
         };
 
-        toggleClass(isFeatureActive('hideMixes'), 'ypp-hide-mixes');
-        toggleClass(isFeatureActive('hidePlaylists'), 'ypp-hide-playlists');
         toggleClass(isFeatureActive('hidePodcasts'), 'ypp-hide-podcasts');
         toggleClass(isFeatureActive('hidePosts'), 'ypp-hide-posts');
 

@@ -176,13 +176,16 @@ export function applyDimMode(element, reason, channelPathRaw) {
     badgeTarget.appendChild(createDimBadge(reason, channelPath));
 }
 
-// Attach hover preview blocker so that zooming doesn't hide the overlay
-document.addEventListener('mouseover', e => {
+// Attach hover preview blocker so that dimmed cards don't trigger YouTube's hover preview
+// Uses capture phase on BOTH mouseover and mouseenter to stop propagation before YouTube sees it.
+const _blockHoverPreview = (e) => {
     if (!e.target || !e.target.closest) return;
     if (e.target.closest('[data-ypp-dimmed]')) {
         e.stopPropagation();
     }
-}, true);
+};
+document.addEventListener('mouseover', _blockHoverPreview, true);
+document.addEventListener('mouseenter', _blockHoverPreview, true);
 
 // --- Hover Pill ---
 let hoverPillEl = null;

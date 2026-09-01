@@ -28,7 +28,11 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         'ytm-rich-item-renderer',
         'ytd-post-renderer',
         'ytd-backstage-post-thread-renderer',
-        'ytd-shared-post-renderer'
+        'ytd-shared-post-renderer',
+        'ytd-playlist-renderer',
+        'ytd-compact-playlist-renderer',
+        'ytd-radio-renderer',
+        'ytd-compact-radio-renderer'
     ].join(',');
 
     constructor() {
@@ -53,11 +57,19 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             );
         }
 
-        // Catch newly loaded progress bars specifically
+        // Catch newly loaded progress bars specifically (all 3 renderer eras)
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.register(
                 'v3-pipeline-progress',
-                'ytd-thumbnail-overlay-resume-playback-renderer #progress, #progress.ytd-thumbnail-overlay-resume-playback-renderer, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, yt-progress-bar-view-model, .yt-progress-bar-view-model-progress',
+                [
+                    'ytd-thumbnail-overlay-resume-playback-renderer #progress',
+                    '#progress.ytd-thumbnail-overlay-resume-playback-renderer',
+                    '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
+                    'yt-progress-bar-view-model',
+                    '.yt-progress-bar-view-model-progress',
+                    // ytw-* era: newer YouTube rollout (per-account, never gate behind pathname)
+                    '.ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress'
+                ].join(', '),
                 (nodes) => {
                     if (!this.isEnabled) return;
                     nodes.forEach(bar => {
@@ -176,6 +188,17 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         // 1. Extract unified metadata
         const context = this._extractContext(target);
 
+        // Whitelist short-circuit: whitelisted channels are never filtered
+        const whitelist = window.YPP.FeatureManager?.getFeature('channelWhitelist');
+        if (whitelist?.isEnabled && context.channelPath) {
+            const isExempt = this._isChannelWhitelisted(context.channelPath, whitelist);
+            if (isExempt) {
+                this._unhideElement(target);
+                target.setAttribute('data-ypp-v3-processed', '1');
+                return;
+            }
+        }
+
         // 2. Pass through all enabled filters
         const verdicts = [];
         for (const filter of this._filters) {
@@ -196,6 +219,16 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
 
         // 3. Resolve verdicts
         this._applyVerdicts(target, verdicts, context);
+    }
+
+    _isChannelWhitelisted(channelPath, whitelistFeature) {
+        const raw = whitelistFeature._settings?.channelWhitelist || '';
+        const list = Array.isArray(raw) 
+            ? raw 
+            : raw.split(/[\n,]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+        const normalized = channelPath.toLowerCase();
+        return list.some(entry => normalized === entry || 
+                                   normalized.endsWith('/' + entry.replace(/^\/@?/, '')));
     }
 
     _extractContext(card) {
@@ -300,8 +333,20 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             if (timeSpan) ctx.durationSeconds = parsers.parseDuration(timeSpan.textContent);
         }
 
-        // Progress
-        const progressBar = card.querySelector('.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, .yt-progress-bar-view-model-progress, ytd-thumbnail-overlay-resume-playback-renderer #progress, ytd-thumbnail-overlay-resume-playback-renderer [id="progress"], .thumbnail-overlay-resume-playback-progress, yt-progress-bar-view-model');
+        // Progress bar - handle all 3 renderer eras:
+        // Legacy: ytd-thumbnail-overlay-resume-playback-renderer #progress
+        // New: .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment / yt-progress-bar-view-model
+        // ytw-* era: .ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress
+        const progressBar = card.querySelector([
+            '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
+            '.yt-progress-bar-view-model-progress',
+            'ytd-thumbnail-overlay-resume-playback-renderer #progress',
+            'ytd-thumbnail-overlay-resume-playback-renderer [id="progress"]',
+            '.thumbnail-overlay-resume-playback-progress',
+            'yt-progress-bar-view-model',
+            // ytw-* overlay era
+            '.ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress'
+        ].join(', '));
         if (progressBar) {
             const widthStr = progressBar.style.width;
             if (widthStr && widthStr.includes('%')) {

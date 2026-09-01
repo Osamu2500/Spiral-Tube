@@ -77,6 +77,11 @@ window.YPP.SettingsSchema = {
         aggressiveShortsBlock: { type: 'boolean', default: false },
         hideShortVideos:     { type: 'boolean', default: false },
         minVideoDuration:    { type: 'number',  default: 5, min: 0, max: 60 },
+        maxVideoDuration:    { type: 'number',  default: 0, min: 0, max: 300 }, // 0 = disabled
+
+        hideClickbaitEnabled: { type: 'boolean', default: false },
+        hideClickbaitEmojis:  { type: 'boolean', default: true },
+        hideClickbaitPunctuation: { type: 'boolean', default: true },
 
         // --- Customization ---
         customThemes:        { type: 'object',  default: {} },

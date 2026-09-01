@@ -1,15 +1,16 @@
 import './base-filter-feature.js';
-export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
-    static featureId = 'viewsFilter';
+
+export class MixesFilter extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'hideMixes';
     static executionPhase = 'idle';
     static priority = 10;
 
     constructor() {
-        super('ViewsFilter');
-        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/'];
+        super('MixesFilter');
+        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/', '/watch', '/shorts'];
     }
 
-    getConfigKey() { return 'viewsFilterEnabled'; }
+    getConfigKey() { return 'hideMixes'; }
 
     _getCurrentPageType() {
         const path = window.location.pathname;
@@ -23,10 +24,10 @@ export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
     }
 
     _shouldRunOnCurrentPage() {
-        if (!this.settings?.viewsFilterEnabled) return false;
+        if (!this.settings?.hideMixes) return false;
         const pageType = this._getCurrentPageType();
         if (!pageType) return false;
-        return this.settings[`metaFilter${pageType}`] !== false;
+        return this.settings[`hideMixes${pageType}`] !== false;
     }
 
     async run(settings, oldSettings) {
@@ -38,22 +39,14 @@ export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
 
     async enable() {
         await super.enable();
-        if (this._isEnabled) return;
-        this._isEnabled = true;
-        
         if (window.YPP.FeatureManager) {
             const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
-            if (pipeline) {
-                pipeline.registerFilter(this);
-                pipeline.triggerGlobalReevaluation();
-            }
+            if (pipeline) pipeline.registerFilter(this);
         }
     }
 
     async disable() {
         await super.disable();
-        this._isEnabled = false;
-        
         if (window.YPP.FeatureManager) {
             const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
             if (pipeline) {
@@ -65,22 +58,13 @@ export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
 
     evaluate(context) {
         if (!this._shouldRunOnCurrentPage()) return null;
-        if (context.isShort || context.isMix) return null;
+        const mode = this.settings?.filterMode || 'dim';
 
-        const minViews = parseInt(this.settings.viewsHideThreshold, 10) || 0;
-        const filterMode = this.settings?.filterMode || 'hide';
-        const action = filterMode === 'dim' ? 'dim' : 'hide';
-
-        if (context.views !== undefined) {
-            if (minViews > 0 && context.views < minViews && !context.isLive) {
-                return { action, reason: 'Views too low' };
-            }
-        } else if (!context.isLive && !context.isUpcoming) {
-            if (minViews === 0) return null;
-            context.fullyParsed = false;
+        if (context.isMix) {
+            return { action: mode, reason: 'Mix playlist' };
         }
         return null;
     }
 }
 
-window.YPP.features.ViewsFilter = ViewsFilter;
+window.YPP.features.MixesFilter = MixesFilter;

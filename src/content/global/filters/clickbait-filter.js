@@ -48,9 +48,11 @@ export class ClickbaitFilter extends window.YPP.features.BaseFilterFeature {
         if (!context.title) return null;
         if (context.isPost) return null;
 
+        const title = context.title;
+
         // Check for ALL CAPS (more than 80% caps, excluding spaces and symbols)
         if (this.settings?.hideClickbaitAllCaps) {
-            const text = context.title.replace(/[^a-zA-Z]/g, '');
+            const text = title.replace(/[^a-zA-Z]/g, '');
             if (text.length > 5) {
                 let upperCount = 0;
                 for (let i = 0; i < text.length; i++) {
@@ -60,8 +62,25 @@ export class ClickbaitFilter extends window.YPP.features.BaseFilterFeature {
                 }
                 const ratio = upperCount / text.length;
                 if (ratio >= 0.8) {
-                    return { action: 'hide', reason: 'ALL CAPS title (Clickbait)' };
+                    return { action: 'hide', reason: 'ALL CAPS title' };
                 }
+            }
+        }
+        
+        // Check for excessive emojis
+        if (this.settings?.hideClickbaitEmojis !== false) {
+            // Match most emojis (approximate ranges)
+            const emojiRegex = /[\u{1F300}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}]/gu;
+            const matches = title.match(emojiRegex);
+            if (matches && matches.length >= 4) {
+                return { action: 'hide', reason: 'Excessive emojis' };
+            }
+        }
+        
+        // Check for excessive punctuation
+        if (this.settings?.hideClickbaitPunctuation !== false) {
+            if (/[!?]{3,}/.test(title)) {
+                return { action: 'hide', reason: 'Excessive punctuation' };
             }
         }
 

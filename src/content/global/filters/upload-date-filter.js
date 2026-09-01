@@ -70,13 +70,20 @@ export class UploadDateFilter extends window.YPP.features.BaseFilterFeature {
         const maxDaysOlder = parseInt(this.settings.dateFilterOlderThreshold, 10) || 0;
         const maxDaysNewer = parseInt(this.settings.dateFilterNewerThreshold, 10) || 0;
         
+        // 0 means "disabled" for both thresholds; treat it as no restriction
+        const filterMode = this.settings?.filterMode || 'hide';
+        const action = filterMode === 'dim' ? 'dim' : 'hide';
+
         if (context.ageDays !== undefined) {
             if (maxDaysNewer > 0 && context.ageDays < maxDaysNewer) {
-                return { action: 'hide', reason: 'Video too new' };
-            } else if (maxDaysOlder > 0 && context.ageDays > maxDaysOlder) {
-                return { action: 'hide', reason: 'Video too old' };
+                return { action, reason: 'Video too new' };
+            }
+            if (maxDaysOlder > 0 && context.ageDays > maxDaysOlder) {
+                return { action, reason: 'Video too old' };
             }
         } else if (!context.isLive && !context.isUpcoming) {
+            // Neither threshold is set — don't flag as incomplete
+            if (maxDaysNewer === 0 && maxDaysOlder === 0) return null;
             context.fullyParsed = false;
         }
         return null;

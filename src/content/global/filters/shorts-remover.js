@@ -63,13 +63,23 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
     }
     
     _hideShortsContainer(el) {
-        // Safely hide individual cells or explicitly marked shelves. Avoid generic ytd-rich-section-renderer.
-        const container = this.utils.findOutermostMatch(el, [
+        // Explicitly remove dedicated shorts shelves entirely to fix layout gaps
+        const dedicatedShelf = this.utils.findOutermostMatch(el, [
             'ytd-rich-section-renderer[is-shorts]',
             'ytd-rich-shelf-renderer[is-shorts]',
             'ytd-shelf-renderer[is-shorts]',
             'yt-collection-shelf-view-model[is-shorts]',
             'ytd-reel-shelf-renderer',
+            'ytm-reel-shelf-renderer'
+        ]);
+        
+        if (dedicatedShelf && dedicatedShelf.isConnected) {
+            dedicatedShelf.remove();
+            return true;
+        }
+
+        // Safely hide individual cells. Avoid generic ytd-rich-section-renderer.
+        const container = this.utils.findOutermostMatch(el, [
             'ytd-rich-item-renderer',
             'ytd-video-renderer',
             'ytd-grid-video-renderer',

@@ -58,13 +58,20 @@ export class DurationFilter extends window.YPP.features.BaseFilterFeature {
         if (context.isLive || context.isUpcoming) return null;
 
         const minDuration = parseInt(this.settings?.minVideoDuration || 5, 10);
+        const maxDuration = parseInt(this.settings?.maxVideoDuration || 0, 10);
+        const filterMode = this.settings?.filterMode || 'hide';
+        const action = filterMode === 'dim' ? 'dim' : 'hide';
         
         if (context.durationSeconds !== undefined) {
             const minutes = context.durationSeconds / 60;
-            if (minutes < minDuration) {
-                return { action: 'hide', reason: `Too short (<${minDuration}m)` };
+            if (minDuration > 0 && minutes < minDuration) {
+                return { action, reason: `Too short (<${minDuration}m)` };
+            }
+            if (maxDuration > 0 && minutes > maxDuration) {
+                return { action, reason: `Too long (>${maxDuration}m)` };
             }
         } else if (!context.isLive && !context.isUpcoming) {
+            if (minDuration === 0 && maxDuration === 0) return null;
             context.fullyParsed = false;
         }
 

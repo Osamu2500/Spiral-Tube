@@ -10,8 +10,14 @@ window.YPP.Utils.youtubeParsers = (function() {
     
     const SUFFIX_MULTIPLIERS = {
         k: 1e3, m: 1e6, mln: 1e6, mio: 1e6, mn: 1e6, b: 1e9, md: 1e9,
-        万: 1e4, 만: 1e4, 억: 1e8, тыс: 1e3, млн: 1e6, млрд: 1e9,
-        mi: 1e3, mil: 1e3, rb: 1e3, lakh: 1e5, cr: 1e7,
+        // CJK: Chinese/Japanese/Korean number units
+        '万': 1e4, '億': 1e8, '亿': 1e8, '만': 1e4, '억': 1e8,
+        // Cyrillic: Russian
+        'тыс': 1e3, 'млн': 1e6, 'млрд': 1e9,
+        // South Asian
+        'lakh': 1e5, 'cr': 1e7,
+        // Romance language / Indonesian
+        'mi': 1e3, 'mil': 1e3, 'rb': 1e3,
     };
 
     const SUFFIX_REGEX = new RegExp(
@@ -82,8 +88,15 @@ window.YPP.Utils.youtubeParsers = (function() {
         return base * multiplier;
     }
 
+    // Bidi marks (RTL/LTR embedding chars) appear in Arabic/Hebrew/Persian YouTube locales.
+    // Strip them before any numeric parsing.
+    const BIDI_MARKS_REGEX = /[\u200e\u200f\u061c\u2066-\u2069]/g;
+    const VIEW_COUNT_PREFIX_REGEX = /^(?:조회수|การดู|收看次數：|觀看次數：|lượt xem)\s*/i;
+
     function extractViewCount(text) {
-        const s = String(text).trim();
+        // Strip bidi marks before parsing (RTL locales like Arabic, Hebrew, Persian)
+        let s = String(text).replace(BIDI_MARKS_REGEX, '').trim();
+        s = s.replace(VIEW_COUNT_PREFIX_REGEX, '');
         if (!/\d/.test(s)) return NaN;
 
         const { numStr, suffix, remainder } = extractNumberAndSuffix(s);
@@ -200,6 +213,23 @@ window.YPP.Utils.youtubeParsers = (function() {
         return last;
     }
     
+    function resolveChannelIdentity(channel) {
+        if (!channel || typeof channel !== 'string') return channel;
+        if (!channel.startsWith('/channel/')) return channel;
+        
+        try {
+            const root = document.documentElement;
+            const cacheStr = root.getAttribute('data-ypp-channelid-cache');
+            if (cacheStr) {
+                const cache = JSON.parse(cacheStr);
+                const handle = cache[channel.toLowerCase()];
+                if (handle) return handle;
+            }
+        } catch (_) {}
+        
+        return channel;
+    }
+
     function extractChannelFromContainer(container) {
         if (!container) return null;
 
@@ -220,7 +250,7 @@ window.YPP.Utils.youtubeParsers = (function() {
                 const href = el.href || el.getAttribute('href');
                 if (href) {
                     try {
-                        const path = new URL(href, window.location.origin).pathname.toLowerCase();
+                        const path = resolveChannelIdentity(new URL(href, window.location.origin).pathname.toLowerCase());
                         if (!paths.includes(path)) paths.push(path);
                     } catch (e) {}
                 }
@@ -254,6 +284,7 @@ window.YPP.Utils.youtubeParsers = (function() {
         resolveViewsFromSpans,
         extractUploadAgeDays,
         resolveUploadAgeFromSpans,
-        extractChannelFromContainer
+        extractChannelFromContainer,
+        resolveChannelIdentity
     };
 })();

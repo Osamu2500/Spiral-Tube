@@ -47,11 +47,18 @@ export class HideMetrics extends window.YPP.features.BaseFilterFeature {
         style.id = 'ypp-hide-metrics-css';
         style.textContent = `
             body.ypp-hide-metrics ytd-video-meta-block #metadata-line span,
-            body.ypp-hide-metrics ytd-video-meta-block #metadata-line .ytd-video-meta-block {
+            body.ypp-hide-metrics ytd-video-meta-block #metadata-line .ytd-video-meta-block,
+            body.ypp-hide-metrics ytm-badge-and-byline-renderer .ytm-badge-and-byline-separator {
                 display: none !important;
             }
-            body.ypp-hide-metrics ytd-video-meta-block #metadata-line span:first-child {
+            body.ypp-hide-metrics ytd-video-meta-block #metadata-line span:first-child,
+            body.ypp-hide-metrics ytd-video-meta-block #metadata-line span:nth-child(2)::before {
                 display: inline !important; /* Keep upload date, hide views */
+            }
+            /* Hide the separator dots natively injected via ::before */
+            body.ypp-hide-metrics ytd-video-meta-block #metadata-line span:nth-child(n+3)::before {
+                display: none !important;
+                content: none !important;
             }
         `;
         document.head.appendChild(style);

@@ -106,22 +106,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
             }
         }
 
-        // 3. "WATCHED" Badge
-        if (!isWatched && context.card) {
-            const badges = context.card.querySelectorAll(
-                'ytd-badge-supported-renderer, ' +
-                'ytd-thumbnail-overlay-bottom-panel-renderer, ' +
-                'ytd-thumbnail-overlay-playback-status-renderer'
-            );
-            for (const badge of badges) {
-                if (window.getComputedStyle(badge).display === 'none') continue;
-                const text = badge.textContent.trim().toUpperCase();
-                if (text === 'WATCHED' || text === 'VIEWED' || text === 'PLAYED') {
-                    isWatched = true;
-                    break;
-                }
-            }
-        }
+
 
         if (isWatched) {
             const mode = this.settings.hideWatchedMode || 'dim';

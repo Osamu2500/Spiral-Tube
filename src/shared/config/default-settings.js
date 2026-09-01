@@ -156,6 +156,11 @@ export const DEFAULT_SETTINGS = {
   stopShortsLooping: false,
   hideShortVideos: false,
   minVideoDuration: 2,
+  maxVideoDuration: 0,
+  
+  hideClickbaitEnabled: false,
+  hideClickbaitEmojis: true,
+  hideClickbaitPunctuation: true,
 
   // Player Tools
   enableCustomSpeed: true,

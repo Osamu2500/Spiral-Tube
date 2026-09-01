@@ -66,6 +66,20 @@ export const getDeclutterTab = (t) => ({
           },
           {
             type: 'toggle',
+            id: 'hideClickbaitEmojis',
+            label: 'Block Excessive Emojis',
+            desc: 'Hide videos with 4+ emojis in the title',
+            icon: ICONS.hide,
+          },
+          {
+            type: 'toggle',
+            id: 'hideClickbaitPunctuation',
+            label: 'Block Excessive Punctuation',
+            desc: 'Hide videos with 3+ ! or ? in the title',
+            icon: ICONS.hide,
+          },
+          {
+            type: 'toggle',
             id: 'channelWhitelistEnabled',
             label: t('enable_channel_whitelist'),
             desc: t('exempt_channels_from_being_hidden'),

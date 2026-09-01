@@ -697,8 +697,6 @@
                         else classes.delete(className);
                     };
 
-                    toggleClass(this.settings?.hideMixes, 'ypp-hide-mixes');
-                    toggleClass(this.settings?.hidePlaylists, 'ypp-hide-playlists');
                     toggleClass(this.settings?.hidePosts, 'ypp-hide-posts');
                     toggleClass(this.settings?.hidePodcasts, 'ypp-hide-podcasts');
                     toggleClass(this.settings?.hideChannelCards, 'ypp-hide-channel-cards');
