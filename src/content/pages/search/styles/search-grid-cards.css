@@ -28,10 +28,12 @@ body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   display: block !important;
   width: 100% !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important; /* Bulletproof 16:9 aspect ratio */
   min-width: 0 !important;
   max-width: 100% !important;
-  aspect-ratio: 16 / 9 !important; /* Critical: rely on aspect-ratio for height */
   flex-shrink: 0 !important;
+  position: relative !important; /* Ensure absolute absolute children are contained */
   /* Visual styling (border-radius, margin, etc.) is handled by cards.css */
 }
 
@@ -41,29 +43,29 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
   display: block !important;
 }
 
-/* ── 3. Text Wrapper Grid ── */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .text-wrapper,
-body.ypp-search-grid-mode ytd-playlist-renderer .text-wrapper,
-body.ypp-search-grid-mode ytd-radio-renderer .text-wrapper {
+/* ── 3. Meta Text Area (Grid Container) ── */
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .text-wrapper {
   display: grid !important;
   grid-template-columns: 36px 1fr !important;
+  grid-template-rows: auto auto auto !important;
   grid-template-areas: 
     "avatar title"
     "avatar channel"
     "avatar views" !important;
-  grid-auto-rows: min-content !important;
-  column-gap: 12px !important;
-  row-gap: 2px !important;
+  gap: 0px 12px !important;
+  padding: 6px 10px 12px 10px !important;
+  margin: 0 !important;
   width: 100% !important;
-  flex-grow: 1 !important;
-  /* Padding and margins are handled by cards.css */
+  box-sizing: border-box !important;
 }
 
-/* ── 4. Flatten Inner Wrappers ── */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #meta,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #byline-container,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name {
+/* ── 4. Break Out of Wrappers (display: contents) ── */
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) div#meta.style-scope.ytd-video-renderer,
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) div#channel-info.style-scope.ytd-video-renderer,
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) div#byline-container.style-scope.ytd-video-renderer,
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #meta,
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info,
+body.yt-spiral-tube-theme.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #byline-container {
   display: contents !important;
 }
 
@@ -72,72 +74,142 @@ body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-rad
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .metadata-snippet-container,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) yt-formatted-string#description-text,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #badges,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .ytd-badge-supported-renderer {
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .ytd-badge-supported-renderer,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) yt-icon.ytd-badge-supported-renderer {
   display: none !important;
 }
 
-/* ── 6. Avatar (Row 1-3, Col 1) ── */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info > a,
+/* ── 6. Avatar ── */
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) a#avatar-link,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) a#channel-thumbnail,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-avatar-element {
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info yt-img-shadow {
   grid-area: avatar !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   align-self: start !important;
-  display: block !important;
-  margin: 0 !important; /* Override cards.css right-margin since we use grid gap */
-  /* Size and squircle border-radius handled by cards.css */
 }
 
-/* ── 7. Title (Row 1, Col 2) ── */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #title-wrapper,
-body.ypp-search-grid-mode ytd-playlist-renderer #title-wrapper,
-body.ypp-search-grid-mode ytd-radio-renderer #title-wrapper {
-  grid-area: title !important;
-  align-self: start !important;
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) a#avatar-link img,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) a#channel-thumbnail img,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info yt-img-shadow img {
   width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
 }
 
-/* Typography, line-clamp, max-height handled by cards.css */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #video-title,
-body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
-body.ypp-search-grid-mode ytd-radio-renderer #video-title {
+/* ── 7. Title ── */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #title-wrapper,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #video-title {
+  grid-area: title !important;
+  margin: 0 0 2px 0 !important;
+  width: 100% !important;
+  align-self: end !important;
+}
+
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #video-title yt-formatted-string,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) yt-formatted-string#video-title {
+  font-family: 'Inter', 'Roboto', sans-serif !important;
+  font-size: 1.4rem !important;
+  line-height: 2rem !important;
+  font-weight: 500 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-height: 4rem !important;
+  color: var(--ypp-text-primary, #fff) !important;
   margin: 0 !important;
 }
 
-/* ── 8. Channel Name (Row 2, Col 2) ── */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name yt-formatted-string,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name > div,
+/* ── 8. Channel Name ── */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name[hidden],
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .ytd-channel-name,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info > yt-formatted-string,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info > :not(a):not(yt-img-shadow):not(yt-avatar-shape) {
   grid-area: channel !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  margin: 0 0 2px 0 !important;
   align-self: center !important;
   width: 100% !important;
-  display: block !important;
-  overflow: hidden !important; /* Keep to prevent wrapping text from breaking grid if text overflows */
+  overflow: hidden !important;
 }
 
-/* ── 9. Views & Date (Row 3, Col 2) ── */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block {
+/* Force internal containers of channel name to be visible (Overrides YT JS) */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name #container,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name #text-container,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name yt-formatted-string {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name yt-formatted-string,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name a,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info > yt-formatted-string {
+  font-size: 1.2rem !important; 
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  color: var(--ypp-card-meta-color, var(--yt-spec-text-secondary, #aaa)) !important;
+  margin: 0 !important;
+}
+
+/* ── 9. Views & Date ── */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block[hidden] {
   grid-area: views !important;
-  align-self: start !important;
-  width: 100% !important;
   display: block !important; 
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 100% !important;
+  align-self: start !important;
+  margin: 0 !important;
+}
+
+/* Force internal containers of views to be visible (Overrides YT JS) */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block #metadata,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block #metadata-line,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block #byline-container {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Fix Meta Line layout inside Views block */
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #metadata-line {
-  display: flex !important;
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block #metadata-line {
   flex-direction: row !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   gap: 0 4px !important;
+  width: 100% !important;
+}
+
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #metadata-line span,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #metadata-line yt-formatted-string {
+  font-size: 1.2rem !important; 
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  display: inline-block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: var(--ypp-card-meta-color, var(--yt-spec-text-secondary, #aaa)) !important;
 }
 
 /* Link Resets */
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name a,
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info a,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-video-meta-block a {
   text-decoration: none !important;
+  color: inherit !important;
 }
 
 /* Fix missing thumbnail images */
@@ -149,4 +221,20 @@ body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-rad
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
+}
+
+/* ── 11. Premium Hover Effects ── */
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+}
+
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover {
+  transform: translateY(-4px) !important;
+  z-index: 2 !important;
+}
+
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover ytd-thumbnail {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.1) !important;
 }
