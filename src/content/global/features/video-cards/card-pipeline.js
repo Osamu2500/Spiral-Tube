@@ -236,9 +236,9 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         const ctx = {
             card: card,
             isPost: card.tagName.toLowerCase().includes('post-renderer') || card.tagName.toLowerCase().includes('post-thread'),
-            isShort: card.querySelector('ytd-reel-item-renderer') || card.classList.contains('ypp-is-short'),
-            isMix: card.querySelector('[class*="content-id-RD"]') || card.querySelector('a[href*="start_radio=1"]') || card.tagName.toLowerCase().includes('radio-renderer') || card.classList.contains('ypp-is-mix'),
-            isPlaylist: card.querySelector('[class*="content-id-PL"]') || card.tagName.toLowerCase().includes('playlist-renderer'),
+            isShort: !!(card.querySelector('ytd-reel-item-renderer') || card.classList.contains('ypp-is-short')),
+            isMix: !!(card.querySelector('[class*="content-id-RD"], a[href*="start_radio=1"], a[href*="list=RD"], a[href*="list=AL"], [overlay-style="MIX"]') || card.tagName.toLowerCase().includes('radio-renderer') || card.classList.contains('ypp-is-mix') || (card.querySelector('#video-title, #video-title-link') && card.querySelector('#video-title, #video-title-link').textContent.trim().startsWith('Mix - '))),
+            isPlaylist: !!(card.querySelector('[class*="content-id-PL"], a[href*="list=PL"], [overlay-style="PLAYLIST"]') || card.tagName.toLowerCase().includes('playlist-renderer') || card.classList.contains('ypp-is-playlist')),
             isLive: !!card.querySelector('.badge-style-type-live-now, ytd-badge-supported-renderer[is-live], badge-shape.yt-badge-shape--thumbnail-live, badge-shape.yt-badge-shape--live, badge-shape.ytBadgeShapeThumbnailLive, badge-shape.ytBadgeShapeLive, ytd-thumbnail-overlay-time-status-renderer[overlay-style="LIVE"]'),
             isUpcoming: !!card.querySelector('[overlay-style="UPCOMING"], .badge-style-type-simple[aria-label*="Premiere"]'),
             isMembersOnly: !!card.querySelector('.badge-style-type-members-only, [aria-label*="Members only"], ytd-badge-supported-renderer[class*="members"]'),
