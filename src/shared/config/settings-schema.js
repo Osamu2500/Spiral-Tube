@@ -119,7 +119,6 @@ window.YPP.SettingsSchema = {
 
         // --- Search ---
         searchGrid:          { type: 'boolean', default: true },
-        cleanSearch:         { type: 'boolean', default: true },
 
         // --- Player Automation ---
         autoPlayNext:        { type: 'boolean', default: false },
@@ -240,6 +239,7 @@ window.YPP.SettingsSchema = {
         feedFilterKeywords:  { type: 'string', default: '' },
         hideThumbnails:      { type: 'boolean', default: false },
         hideCards:           { type: 'boolean', default: false },
+        hideSearchTopics:    { type: 'boolean', default: false },
         hideMetrics:         { type: 'boolean', default: false },
         multiSelect:         { type: 'boolean', default: true  },
         autoLike:            { type: 'boolean', default: false },

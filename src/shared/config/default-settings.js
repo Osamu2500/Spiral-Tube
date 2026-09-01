@@ -88,6 +88,7 @@ export const DEFAULT_SETTINGS = {
   hideSearchPlaylists: false,
   hideSearchPodcasts: false,
   hideSearchMusic: false,
+  hideSearchTopics: false,
   hideChannelCards: false,
   hideCards: false, // Player video card pop-ups
   hideAnnotations: false, // Player on-screen annotations
@@ -131,7 +132,6 @@ export const DEFAULT_SETTINGS = {
 
   // Search Redesign
   searchGrid: true,
-  cleanSearch: true,
 
   // Navigation
   navTrending: true,

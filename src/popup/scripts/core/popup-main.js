@@ -352,7 +352,6 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         hideTrending: 'Toggle Trending Tab',
         // --- Search ---
         searchGrid: 'Toggle Search Grid',
-        cleanSearch: 'Toggle Clean Search',
         // --- Shorts ---
         shortsAutoScroll: 'Toggle Shorts Auto Scroll',
         shortsVolumeNormalizer: 'Toggle Shorts Volume',

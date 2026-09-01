@@ -9,13 +9,7 @@ export const getSearchTab = (t) => ({
         title: t('layout_filters'),
         icon: P('M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12z'),
         items: [
-          {
-            type: 'toggle',
-            id: 'cleanSearch',
-            label: t('clean_search'),
-            desc: t('remove_junk_ads'),
-            icon: ICONS.cleanSearch,
-          },
+
           {
             type: 'toggle',
             id: 'autoVideoFilter',

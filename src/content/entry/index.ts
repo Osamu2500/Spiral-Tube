@@ -232,6 +232,8 @@ import { UploadDateFilter } from '../global/filters/upload-date-filter.js';
 window.YPP.FeatureManager.register(UploadDateFilter);
 import { ClickbaitFilter } from '../global/filters/clickbait-filter.js';
 window.YPP.FeatureManager.register(ClickbaitFilter);
+import { ShortsFilter } from '../global/filters/shorts-filter.js';
+window.YPP.FeatureManager.register(ShortsFilter);
 
 // --- src/content/global/layout/index.ts ---
 import '../global/layout/global-layout-manager.js';

@@ -1,15 +1,23 @@
 import './base-filter-feature.js';
-export class UploadDateFilter extends window.YPP.features.BaseFilterFeature {
-    static featureId = 'uploadDateFilter';
+
+/**
+ * ShortsFilter
+ * ------------
+ * A dedicated Pipeline filter that enforces the Shorts Remover across all pages.
+ * Works alongside CSS tags to guarantee that stray shorts (e.g., those disguised
+ * as standard videos on the search page) are securely hidden.
+ */
+export class ShortsFilter extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'shortsFilter';
     static executionPhase = 'idle';
-    static priority = 10;
+    static priority = 15; // Higher priority to strip out shorts early
 
     constructor() {
-        super('UploadDateFilter');
-        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/'];
+        super('ShortsFilter');
+        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/', '/watch', '/shorts'];
     }
 
-    getConfigKey() { return 'dateFilterEnabled'; }
+    getConfigKey() { return 'aggressiveShortsBlock'; }
 
     _getCurrentPageType() {
         const path = window.location.pathname;
@@ -23,10 +31,12 @@ export class UploadDateFilter extends window.YPP.features.BaseFilterFeature {
     }
 
     _shouldRunOnCurrentPage() {
-        if (!this.settings?.dateFilterEnabled) return false;
+        if (!this.settings?.aggressiveShortsBlock) return false;
         const pageType = this._getCurrentPageType();
         if (!pageType) return false;
-        return this.settings[`metaFilter${pageType}`] !== false;
+        
+        // If there's no generic shortsFilter setting for this page, default to true 
+        return this.settings[`shortsFilter${pageType}`] !== false;
     }
 
     async run(settings, oldSettings) {
@@ -65,22 +75,13 @@ export class UploadDateFilter extends window.YPP.features.BaseFilterFeature {
 
     evaluate(context) {
         if (!this._shouldRunOnCurrentPage()) return null;
-        if (context.isShort || context.isMix) return null;
-
-        const maxDaysOlder = parseInt(this.settings.dateFilterOlderThreshold, 10) || 0;
-        const maxDaysNewer = parseInt(this.settings.dateFilterNewerThreshold, 10) || 0;
         
-        if (context.ageDays !== undefined) {
-            if (maxDaysNewer > 0 && context.ageDays < maxDaysNewer) {
-                return { action: 'hide', reason: 'Video too new' };
-            } else if (maxDaysOlder > 0 && context.ageDays > maxDaysOlder) {
-                return { action: 'hide', reason: 'Video too old' };
-            }
-        } else if (!context.isLive && !context.isUpcoming) {
-            context.fullyParsed = false;
+        if (context.isShort) {
+            return { action: 'hide', reason: 'Shorts blocked' };
         }
+        
         return null;
     }
 }
 
-window.YPP.features.UploadDateFilter = UploadDateFilter;
+window.YPP.features.ShortsFilter = ShortsFilter;

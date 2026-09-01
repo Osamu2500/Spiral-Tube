@@ -70,7 +70,6 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             hideFeed: 'Home Feed',
             hideTrending: 'Trending Tab',
             searchGrid: 'Search Grid',
-            cleanSearch: 'Clean Search',
             shortsAutoScroll: 'Shorts Auto Scroll',
             shortsVolumeNormalizer: 'Shorts Volume',
             autoSkipAds: 'Auto Skip Ads',

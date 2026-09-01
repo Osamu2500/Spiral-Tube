@@ -25,6 +25,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideSearchPlaylists:   'ypp-hide-search-playlists',
             hideSearchPodcasts:    'ypp-hide-search-podcasts',
             hideSearchMusic:       'ypp-hide-search-music',
+            hideSearchTopics:      'ypp-hide-search-topics',
             // Previously unhandled — now wired up:
             hideAnnotations:       'ypp-hide-annotations',
             hideRelated:           'ypp-hide-related',
@@ -38,8 +39,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideVideoDescription:  'ypp-hide-video-description',
             hideActionButtons:     'ypp-hide-action-buttons',
             hideFeed:              'ypp-hide-feed',              // Moved from HomePageManager
-
-            cleanSearch:           'ypp-clean-search',
 
 
             cinematicMode:         'ypp-real-cinema-mode', // Improve cinematic mode on watch page

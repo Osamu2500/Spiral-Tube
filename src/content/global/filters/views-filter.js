@@ -11,6 +11,24 @@ export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
 
     getConfigKey() { return 'viewsFilterEnabled'; }
 
+    _getCurrentPageType() {
+        const path = window.location.pathname;
+        if (path === '/' || path === '/index') return 'Home';
+        if (path.startsWith('/feed/subscriptions')) return 'Subs';
+        if (path.startsWith('/results')) return 'Search';
+        if (path.startsWith('/watch') || path.startsWith('/shorts')) return 'Related';
+        if (path.startsWith('/@') || path.startsWith('/channel/') ||
+            path.startsWith('/user/') || path.startsWith('/c/')) return 'Channel';
+        return '';
+    }
+
+    _shouldRunOnCurrentPage() {
+        if (!this.settings?.viewsFilterEnabled) return false;
+        const pageType = this._getCurrentPageType();
+        if (!pageType) return false;
+        return this.settings[`metaFilter${pageType}`] !== false;
+    }
+
     async run(settings, oldSettings) {
         if (this._isEnabled && window.YPP.FeatureManager) {
             const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
@@ -46,17 +64,16 @@ export class ViewsFilter extends window.YPP.features.BaseFilterFeature {
     }
 
     evaluate(context) {
+        if (!this._shouldRunOnCurrentPage()) return null;
         if (context.isShort || context.isMix) return null;
 
-        if (this.settings?.viewsFilterEnabled) {
-            const minViews = parseInt(this.settings.viewsHideThreshold, 10) || 0;
-            if (context.views !== undefined) {
-                if (context.views < minViews && !context.isLive) {
-                    return { action: 'hide', reason: 'Views too low' };
-                }
-            } else if (!context.isLive && !context.isUpcoming) {
-                context.fullyParsed = false;
+        const minViews = parseInt(this.settings.viewsHideThreshold, 10) || 0;
+        if (context.views !== undefined) {
+            if (context.views < minViews && !context.isLive) {
+                return { action: 'hide', reason: 'Views too low' };
             }
+        } else if (!context.isLive && !context.isUpcoming) {
+            context.fullyParsed = false;
         }
         return null;
     }

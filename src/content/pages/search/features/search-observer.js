@@ -327,10 +327,19 @@ export class SearchObserver {
         let hasVideos = false;
         let allNoise = true;
         let hasTransients = false;
+        
+        let hasStandardVideos = false;
+        let hasShorts = false;
+        let hasMixes = false;
+        let hasPlaylists = false;
+        let hasChannels = false;
+        let hasShelves = false;
+        
         const { NOISE_TAGS, VIDEO_TAGS } = SearchUtils;
 
         for (let i = 0; i < children.length; i++) {
-            const tag = children[i].tagName.toLowerCase();
+            const node = children[i];
+            const tag = node.tagName.toLowerCase();
 
             if (tag === 'ytd-continuation-item-renderer') {
                 hasTransients = true;
@@ -339,23 +348,55 @@ export class SearchObserver {
             if (VIDEO_TAGS.has(tag)) {
                 hasVideos = true;
                 allNoise = false;
+                
+                // Detailed classification
+                if (tag === 'ytd-channel-renderer') {
+                    hasChannels = true;
+                } else if (tag === 'ytd-radio-renderer' || node.querySelector("a[href*='start_radio']") || node.querySelector("a[href*='list=RD']")) {
+                    hasMixes = true;
+                } else if (tag === 'ytd-playlist-renderer' || node.querySelector("a[href*='list=PL']")) {
+                    hasPlaylists = true;
+                } else if (SearchUtils.isShorts(node)) {
+                    hasShorts = true;
+                } else {
+                    hasStandardVideos = true;
+                }
             } else if (!NOISE_TAGS.has(tag)) {
                 allNoise = false;
+                hasStandardVideos = true; // Unknown elements treated as standard to avoid accidental hiding
+            } else {
+                // Noise tags
+                if (tag === 'ytd-reel-shelf-renderer' || SearchUtils.isShorts(node)) {
+                    hasShorts = true;
+                } else {
+                    hasShelves = true;
+                }
             }
         }
-        return { hasVideos, allNoise, hasTransients };
+        return { hasVideos, allNoise, hasTransients, hasStandardVideos, hasShorts, hasMixes, hasPlaylists, hasChannels, hasShelves };
     }
 
     _handleNoiseSection(section, stats, childCount) {
-        if (stats.allNoise && !stats.hasTransients && childCount > 0) {
+        // Clear previous smart tags
+        section.classList.remove('ypp-noise-section', 'ypp-shorts-section', 'ypp-channel-section', 'ypp-mix-section', 'ypp-playlist-section', 'ypp-shelf-section');
+        
+        if (childCount === 0 || stats.hasTransients) return false;
+
+        // Legacy support
+        if (stats.allNoise) {
             section.classList.add('ypp-noise-section');
-            return true;
         }
 
-        if (section.classList.contains('ypp-noise-section') && stats.hasVideos) {
-            section.classList.remove('ypp-noise-section');
+        // Apply smart tags IF there are no standard videos in this section
+        if (!stats.hasStandardVideos) {
+            if (stats.hasShorts) section.classList.add('ypp-shorts-section');
+            if (stats.hasChannels) section.classList.add('ypp-channel-section');
+            if (stats.hasMixes) section.classList.add('ypp-mix-section');
+            if (stats.hasPlaylists) section.classList.add('ypp-playlist-section');
+            if (stats.hasShelves) section.classList.add('ypp-shelf-section');
         }
-        return false;
+        
+        return true;
     }
 
     // -------------------------------------------------------------------------

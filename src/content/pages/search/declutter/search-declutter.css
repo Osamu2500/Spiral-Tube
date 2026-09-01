@@ -1,75 +1,77 @@
-/* Search Page Declutter Rules */
+/* Search Page Declutter Rules (V2 - Smart Tags + Fallback) */
 
+/* 1. Voice Search */
 body.ypp-hide-voice-search #voice-search-button,
-body.ypp-hide-voice-search ytm-voice-search-button-renderer {
+body.ypp-hide-voice-search ytm-voice-search-button-renderer,
+body.ypp-hide-voice-search ytd-voice-search-button-renderer {
   display: none !important;
 }
 
-body.ypp-hide-channel-cards ytd-channel-renderer,
-body.ypp-hide-channel-cards.ypp-search-page ytd-item-section-renderer:has(ytd-channel-renderer) {
+/* 2. Search Topics / Pills */
+body.ypp-hide-search-topics.ypp-search-page yt-chip-cloud-renderer,
+body.ypp-hide-search-topics.ypp-search-page ytd-search-sub-menu-renderer,
+body.ypp-hide-search-topics.ypp-search-page ytd-feed-filter-chip-bar-renderer {
+  display: none !important;
+}
+
+/* 3. Channel Cards */
+body.ypp-hide-channel-cards.ypp-search-page ytd-item-section-renderer.ypp-channel-section,
+body.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer {
     display: none !important;
 }
 
-body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
+/* 4. Search Music */
+/* Music is usually mixed, so we rely on child hides rather than section parent tagging */
 body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label*="Official Artist" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-shelf-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-item-section-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
 body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Music" i]),
-body.ypp-hide-search-music ytd-video-renderer:has(a[href*='music.youtube.com']),
-body.ypp-hide-search-music ytd-shelf-renderer:has(a[href*='music.youtube.com']),
-body.ypp-hide-search-music ytd-video-renderer:has([aria-label*="Official Music Video"]),
-body.ypp-hide-search-music ytd-video-renderer:has([aria-label*="Official Audio"]) {
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(yt-badge-view-model[aria-label*="Official Artist" i]),
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(yt-badge-view-model[aria-label="Music" i]),
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(a[href*='music.youtube.com']),
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has([aria-label*="Official Music Video" i]),
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has([aria-label*="Official Audio" i]) {
     display: none !important;
 }
 
-body.ypp-hide-search-shelves .ypp-noise-section,
-body.ypp-hide-search-shelves.ypp-search-page .ypp-hidden-shelf,
-body.ypp-hide-search-shelves.ypp-search-page ytd-rich-section-renderer,
-body.ypp-hide-search-shelves.ypp-search-page yt-horizontal-list-renderer,
+/* 5. Search Shelves */
+body.ypp-hide-search-shelves.ypp-search-page ytd-item-section-renderer.ypp-shelf-section,
 body.ypp-hide-search-shelves.ypp-search-page yt-collection-shelf-view-model,
 body.ypp-hide-search-shelves.ypp-search-page ytd-shelf-renderer,
+body.ypp-hide-search-shelves.ypp-search-page ytd-horizontal-card-list-renderer,
+body.ypp-hide-search-shelves.ypp-search-page yt-horizontal-list-renderer,
 body.ypp-hide-search-shelves.ypp-search-page ytd-rich-shelf-renderer,
-body.ypp-hide-search-shelves.ypp-search-page ytd-reel-shelf-renderer,
-body.ypp-hide-search-shelves.ypp-search-page ytd-horizontal-card-list-renderer {
+body.ypp-hide-search-shelves.ypp-search-page ytd-rich-section-renderer {
     display: none !important;
 }
 
-body.ypp-clean-search.ypp-search-page ytd-shelf-renderer,
-body.ypp-clean-search.ypp-search-page ytd-rich-shelf-renderer,
-body.ypp-clean-search.ypp-search-page ytd-reel-shelf-renderer,
-body.ypp-clean-search.ypp-search-page ytd-horizontal-card-list-renderer {
+/* 6. Mixes */
+body.ypp-hide-search-mixes.ypp-search-page ytd-item-section-renderer.ypp-mix-section,
+body.ypp-hide-search-mixes.ypp-search-page ytd-radio-renderer,
+body.ypp-hide-search-mixes.ypp-search-page ytd-video-renderer:has(a[href*='start_radio']),
+body.ypp-hide-search-mixes.ypp-search-page ytd-video-renderer:has(a[href*='list=RD']),
+body.ypp-hide-search-mixes.ypp-search-page ytd-compact-video-renderer:has(a[href*='start_radio']),
+body.ypp-hide-search-mixes.ypp-search-page ytd-compact-video-renderer:has(a[href*='list=RD']) {
   display: none !important;
 }
 
-body.ypp-hide-search-mixes ytd-radio-renderer,
-body.ypp-hide-search-mixes ytd-shelf-renderer:has(ytd-radio-renderer),
-body.ypp-hide-search-mixes ytd-video-renderer:has(a[href*='start_radio']),
-body.ypp-hide-search-mixes ytd-video-renderer:has(a[href*='list=RD']),
-body.ypp-hide-search-mixes ytd-compact-video-renderer:has(a[href*='start_radio']),
-body.ypp-hide-search-mixes ytd-compact-video-renderer:has(a[href*='list=RD']) {
+/* 7. Playlists */
+body.ypp-hide-search-playlists.ypp-search-page ytd-item-section-renderer.ypp-playlist-section,
+body.ypp-hide-search-playlists.ypp-search-page ytd-playlist-renderer,
+body.ypp-hide-search-playlists.ypp-search-page ytd-video-renderer:has(a[href*='list=PL']),
+body.ypp-hide-search-playlists.ypp-search-page ytd-compact-video-renderer:has(a[href*='list=PL']) {
   display: none !important;
 }
 
-body.ypp-hide-search-playlists ytd-playlist-renderer,
-body.ypp-hide-search-playlists ytd-shelf-renderer:has(ytd-playlist-renderer),
-body.ypp-hide-search-playlists ytd-video-renderer:has(a[href*='list=PL']),
-body.ypp-hide-search-playlists ytd-compact-video-renderer:has(a[href*='list=PL']) {
+/* 8. Podcasts */
+body.ypp-hide-search-podcasts.ypp-search-page ytd-video-renderer:has(a[href*='/podcast/']) {
   display: none !important;
 }
 
-body.ypp-hide-search-podcasts ytd-video-renderer:has(a[href*='/podcast/']),
-body.ypp-hide-search-podcasts ytd-shelf-renderer:has(a[href*='/podcast/']) {
-  display: none !important;
-}
-
-body.ypp-hide-search-shorts ytd-search ytd-video-renderer:has(a[href*="/shorts/"]),
-body.ypp-hide-search-shorts ytd-search ytd-reel-shelf-renderer,
-body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
-body.ypp-hide-search-shorts ytd-shelf-renderer:has(a[href*="/shorts/"]),
-body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-shelf-renderer a[href*="/shorts/"]),
-body.ypp-hide-search-shorts ytd-shelf-renderer:has(ytd-reel-item-renderer),
-body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-item-renderer),
-body.ypp-hide-search-shorts yt-collection-shelf-view-model:has(a[href*="/shorts/"]) {
+/* 9. Shorts */
+body.ypp-hide-shorts.ypp-search-page ytd-item-section-renderer.ypp-shorts-section,
+body.ypp-hide-shorts.ypp-search-page ytd-reel-shelf-renderer,
+body.ypp-hide-shorts.ypp-search-page ytd-reel-item-renderer,
+body.ypp-hide-shorts.ypp-search-page yt-collection-shelf-view-model:has(a[href*="/shorts/"]),
+body.ypp-hide-shorts.ypp-search-page ytd-shelf-renderer:has(a[href*="/shorts/"]),
+body.ypp-hide-shorts.ypp-search-page ytd-video-renderer:has(a[href*="/shorts/"]) {
   display: none !important;
 }
