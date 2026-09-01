@@ -200,11 +200,11 @@
     // ── 2. Load feature modules AFTER namespace is ready ─────────────────────
     // Dynamic imports are inlined by Rollup but execute after the awaits,
     // so BaseFeature above is guaranteed to exist when the modules run.
-    await import('../global/ui/global-bar/global-bar-ui.js');
-    await import('../global/ui/global-bar/global-bar.js');
+    await import('../features/global-bar/global-bar-ui.js');
+    await import('../features/global-bar/global-bar.js');
 
     // Load custom cursor
-    await import('../global/features/misc/custom-cursor.js');
+    await import('../features/misc/custom-cursor.js');
     
     // Load rich features (Optional - wrap in try/catch to prevent cascading failure)
     try {
@@ -215,8 +215,8 @@
         await import('../pages/watch/player/media-effects/video-filters/video-filters-ui.js');
         await import('../pages/watch/player/media-effects/video-filters/video-filters.js');
         await import('../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js');
-        await import('../pages/watch/player/domain-memory.js');
-        await import('../pages/watch/player/domain-memory-ui.js');
+        await import('../pages/watch/player/utils/domain-memory.js');
+        await import('../pages/watch/player/utils/domain-memory-ui.js');
         
         // Inject CSS for optional features since external sites don't load dist/style.css
         const volCss = (await import('../pages/watch/player/media-effects/volume-booster/volume-booster.css?inline')).default;

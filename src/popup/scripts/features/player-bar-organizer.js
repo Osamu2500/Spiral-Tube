@@ -1,25 +1,11 @@
-// popup-extras.js — History Widget, Backup Tools, and Bookmarks Manager
-// All code is wrapped in exported functions. No side-effects at module level.
-import { FILTERS } from '../../../content/pages/watch/player/media-effects/video-filters/video-filters-presets.js';
-
-// =========================================================================
-// HISTORY WIDGET
-// =========================================================================
-
-const escapeHTML = (str) => {
-    if (!str) return '';
-    return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-};
-
-let currentCalDate = new Date();
-let selectedCalDateString = null;
-
-
+/**
+ * @fileoverview
+ * Player Bar Organizer
+ * 
+ * Target: Extension Popup
+ * Purpose: Handles the drag-and-drop UI for reordering player bar buttons.
+ */
+import { FILTERS } from '../../../content/pages/watch/player/media-effects';
 export function renderPlayerBarOrganizer(container, state) {
     container.innerHTML = `
         <div style="margin-top:12px; background:rgba(0,0,0,0.2); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
@@ -133,7 +119,3 @@ export function renderPlayerBarOrganizer(container, state) {
         renderList(seq);
     });
 }
-
-/// =========================================================================
-// REMEMBERED STREAMING SITES (DOMAIN MEMORY) MANAGER - LINEAR VIEW
-// =========================================================================

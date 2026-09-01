@@ -1,0 +1,25 @@
+/* Rounded Player Override */
+.html5-video-player.ytp-rounded-player {
+  border-radius: 12px;
+}
+.html5-video-player.ytp-rounded-player .ypp-overlay,
+.html5-video-player.ytp-rounded-player .ypp-player-bar {
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+/* Bug Fix: Prevent background thumbnail from blocking player clicks due to global thumbnail styles */
+.player-container-background ytd-thumbnail,
+ytd-thumbnail.player-container-background-image,
+#player-full-bleed-container ytd-thumbnail,
+#player-container ytd-thumbnail {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* Ensure the actual video element remains fully interactive */
+.html5-video-player video,
+video.html5-main-video,
+#movie_player video {
+  pointer-events: auto !important;
+}

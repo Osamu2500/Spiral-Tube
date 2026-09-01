@@ -246,8 +246,7 @@ window.YPP.CONSTANTS = {
         SHORTS_PAGE: 'ypp-shorts-page',
         HOME_PAGE: 'ypp-home-page',
 
-        // Player Tools
-        PLAYER_TOOLS: 'ypp-player-tools',
+        // Filters
         FILTER_PANEL: 'ypp-filter-panel'
     },
 

@@ -1,0 +1,17 @@
+/* =========================================================================
+   PICTURE-IN-PICTURE (PiP) MODE
+   ========================================================================= */
+
+/* ── PiP Active: Always keep sidebar visible ─────────────────────────── */
+body.ypp-pip-active ytd-watch-flexy #secondary,
+body.ypp-pip-active ytd-watch-flexy #related,
+body.ypp-pip-active ytd-watch-flexy #secondary-inner {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.ypp-pip-active ytd-watch-flexy #columns {
+  --ytd-watch-flexy-sidebar-width: var(--ytd-watch-flexy-sidebar-width-normal, 402px) !important;
+}

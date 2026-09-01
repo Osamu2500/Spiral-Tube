@@ -22,8 +22,8 @@ import '../styles/color/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
 import '../styles/managers/ui-manager.js';
-import '../global/components/buttons/button.js';
-import '../global/components/panels/panel.js';
+import '../components/buttons/button.js';
+import '../components/panels/panel.js';
 
 // Base feature class
 import '../core/system/base-feature.js';
@@ -31,43 +31,43 @@ import '../core/system/base-feature.js';
 // Domains (Combined)
 
 // --- src/content/global/features/index.js ---
-import '../global/features/navigation/hotkeys-manager.js';
-import { ThemeManager } from '../global/features/ui-tweaks/theme.js';
+import '../core/events/hotkeys-manager.js';
+import { ThemeManager } from '../features/ui-tweaks/theme.js';
 window.YPP.FeatureManager.register(ThemeManager);
-import '../global/features/account-menu/account-menu-data.js';
-import '../global/features/account-menu/account-menu-ui.js';
-import { AccountMenu } from '../global/features/account-menu/account-menu.js';
+import '../components/account-menus/account-menu-data.js';
+import '../components/account-menus/account-menu-ui.js';
+import { AccountMenu } from '../components/account-menus/account-menu.js';
 window.YPP.FeatureManager.register(AccountMenu);
-import { HeaderButton } from '../global/features/navigation/header-button.js';
+import { HeaderButton } from '../features/navigation/header-button.js';
 window.YPP.FeatureManager.register(HeaderButton);
-import { CustomCursor } from '../global/features/misc/custom-cursor.js';
+import { CustomCursor } from '../features/misc/custom-cursor.js';
 window.YPP.FeatureManager.register(CustomCursor);
-import '../global/features/data/watched-store.js';
-import { MultiSelect } from '../global/features/misc/multi-select.js';
+import '../core/data/watched-store.js';
+import { MultiSelect } from '../pages/shared-feed/features/multi-select/multi-select.js';
 window.YPP.FeatureManager.register(MultiSelect);
-import { CopyLinkButton } from '../global/features/video-cards/copy-link.js';
+import { CopyLinkButton } from '../pages/shared-feed/components/video-cards/copy-link.js';
 window.YPP.FeatureManager.register(CopyLinkButton);
-import { KeyboardShortcuts } from '../global/features/navigation/keyboard-shortcuts.js';
+import { KeyboardShortcuts } from '../core/events/keyboard-shortcuts.js';
 window.YPP.FeatureManager.register(KeyboardShortcuts);
-import { CardPipeline } from '../global/features/video-cards/card-pipeline.js';
+import { CardPipeline } from '../pages/shared-feed/components/video-cards/card-pipeline.js';
 window.YPP.FeatureManager.register(CardPipeline);
-import { ChannelBlacklist } from '../global/features/channel-filters/channel-blacklist.js';
+import { ChannelBlacklist } from '../pages/shared-feed/features/channel-filters/channel-blacklist.js';
 window.YPP.FeatureManager.register(ChannelBlacklist);
-import { ChannelWhitelist } from '../global/features/channel-filters/channel-whitelist.js';
+import { ChannelWhitelist } from '../pages/shared-feed/features/channel-filters/channel-whitelist.js';
 window.YPP.FeatureManager.register(ChannelWhitelist);
-import { HeaderNav } from '../global/features/navigation/header-nav.js';
+import { HeaderNav } from '../features/navigation/header-nav.js';
 window.YPP.FeatureManager.register(HeaderNav);
-import { ChannelColumns } from '../global/features/video-cards/channel-columns.js';
+import { ChannelColumns } from '../pages/shared-feed/components/video-cards/channel-columns.js';
 window.YPP.FeatureManager.register(ChannelColumns);
-import { PremiumLogo } from '../global/features/ui-tweaks/premium-logo.js';
+import { PremiumLogo } from '../features/ui-tweaks/premium-logo.js';
 window.YPP.FeatureManager.register(PremiumLogo);
 import { ResumeBadges } from '../pages/shared-feed/tracking/resume-badges.js';
 window.YPP.FeatureManager.register(ResumeBadges);
-import { SaveSupremeUI } from '../global/features/ui-tweaks/save-supreme-ui.js';
+import { SaveSupremeUI } from '../features/ui-tweaks/save-supreme-ui.js';
 window.YPP.FeatureManager.register(SaveSupremeUI);
-import { CustomizeYouTubeUI } from '../global/features/ui-tweaks/customize-youtube-ui.js';
+import { CustomizeYouTubeUI } from '../features/ui-tweaks/customize-youtube-ui.js';
 window.YPP.FeatureManager.register(CustomizeYouTubeUI);
-import { ReduceAnimations } from '../global/features/performance/reduce-animations.js';
+import { ReduceAnimations } from '../features/performance/reduce-animations.js';
 window.YPP.FeatureManager.register(ReduceAnimations);
 
 // --- src/content/pages/home/index.ts ---
@@ -88,7 +88,7 @@ window.YPP.FeatureManager.register(ReversePlaylist);
 import '../pages/search/search-manager.js';
 
 // --- src/content/pages/shorts/index.ts ---
-import { ShortsRemover } from '../global/filters/shorts-remover.js';
+import { ShortsRemover } from '../pages/shared-feed/filters/shorts-remover.js';
 window.YPP.FeatureManager.register(ShortsRemover);
 import { RedirectShorts } from '../pages/shorts/features/visibility/redirect-shorts.js';
 window.YPP.FeatureManager.register(RedirectShorts);
@@ -112,7 +112,7 @@ import { CustomDialog } from '../pages/subscriptions/features/channel-health/cus
 window.YPP.FeatureManager.register(CustomDialog);
 
 // --- src/content/pages/watch/index.ts ---
-import '../pages/watch/watch-manager.js';
+import '../pages/watch/core/watch-manager.js';
 import { SplitScrolling } from '../pages/watch/player/enhancements/split-scrolling.js';
 window.YPP.FeatureManager.register(SplitScrolling);
 import { WatchHistoryTracker } from '../pages/watch/features/history/watch-history.js';
@@ -125,35 +125,31 @@ import { WatchTimeLimit } from '../pages/watch/features/time-management/watch-ti
 window.YPP.FeatureManager.register(WatchTimeLimit);
 import { ContinueWatching } from '../pages/watch/features/history/continue-watching.js';
 window.YPP.FeatureManager.register(ContinueWatching);
-import { ZenMode } from '../pages/watch/layout/zen-mode.js';
+import { ZenMode } from '../pages/watch/layouts/modes/zen-mode.js';
 window.YPP.FeatureManager.register(ZenMode);
-import { FocusMode } from '../pages/watch/layout/focus-mode.js';
+import { FocusMode } from '../pages/watch/layouts/modes/focus-mode.js';
 window.YPP.FeatureManager.register(FocusMode);
-import { StudyMode } from '../pages/watch/layout/study/study-mode.js';
+import { StudyMode } from '../pages/watch/layouts/study-mode/study-mode.js';
 window.YPP.FeatureManager.register(StudyMode);
-import { CommentFilter } from '../pages/watch/comments/comment-filter.js';
+import { CommentFilter } from '../pages/watch/components/comments/comment-filter.js';
 window.YPP.FeatureManager.register(CommentFilter);
-import { WatchRedesign } from '../pages/watch/layout/watch-redesign.js';
+import { WatchRedesign } from '../pages/watch/layouts/modes/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
-import { InlineChannelButtons } from '../pages/watch/features/ui-elements/inline-channel-buttons.js';
+import { InlineChannelButtons } from '../pages/watch/features/ui-tweaks/inline-channel-buttons.js';
 window.YPP.FeatureManager.register(InlineChannelButtons);
-import { AutoHideTopbar } from '../pages/watch/features/ui-elements/auto-hide-topbar.js';
+import { AutoHideTopbar } from '../pages/watch/features/ui-tweaks/auto-hide-topbar.js';
 window.YPP.FeatureManager.register(AutoHideTopbar);
-import { SeamlessMode } from '../pages/watch/layout/seamless/seamless-mode.js';
+import { SeamlessMode } from '../pages/watch/layouts/seamless-mode/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
-import { PlayerBarUI } from '../pages/watch/player/player-bar-ui.js';
+import { PlayerBarUI } from '../pages/watch/player/core/player-bar-ui.js';
 window.YPP.features.PlayerBarUI = PlayerBarUI;
-import { PlayerControls } from '../pages/watch/player/player-controls.js';
+import { PlayerControls } from '../pages/watch/player/core/player-controls.js';
 window.YPP.features.PlayerControls = PlayerControls;
 import { SnapshotButton } from '../pages/watch/player/controls/snapshot-button.js';
 window.YPP.FeatureManager.register(SnapshotButton);
 import { LoopButton } from '../pages/watch/player/controls/loop-button.js';
 window.YPP.FeatureManager.register(LoopButton);
-import { PlayerSettingsMenu } from '../pages/watch/player/player-settings-menu.js';
-window.YPP.features.PlayerSettingsMenu = PlayerSettingsMenu;
-import '../pages/watch/player/filter-presets.js';
-import { PlayerTools } from '../pages/watch/player/controls/player-tools.js';
-window.YPP.FeatureManager.register(PlayerTools);
+import '../pages/watch/player/utils/filter-presets.js';
 import { AutoLike } from '../pages/watch/player/automation/auto-like/auto-like.js';
 window.YPP.FeatureManager.register(AutoLike);
 import { BookmarksManager } from '../pages/watch/player/controls/bookmarks.js';
@@ -178,8 +174,8 @@ window.YPP.FeatureManager.register(VSCForceSpeed);
 import { VSCRememberSpeed } from '../pages/watch/player/enhancements/video-speed-controller/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
 
-import '../pages/watch/player/domain-memory-ui.js';
-import { DomainMemory } from '../pages/watch/player/domain-memory.js';
+import '../pages/watch/player/utils/domain-memory-ui.js';
+import { DomainMemory } from '../pages/watch/player/utils/domain-memory.js';
 window.YPP.FeatureManager.register(DomainMemory);
 import { AutoQuality } from '../pages/watch/player/automation/auto-quality/auto-quality.js';
 window.YPP.FeatureManager.register(AutoQuality);
@@ -207,57 +203,57 @@ window.YPP.FeatureManager.register(LiveStreamTime);
 
 
 // --- src/content/global/filters/index.ts ---
-import { BaseFilterFeature } from '../global/filters/base-filter-feature.js';
+import { BaseFilterFeature } from '../pages/shared-feed/filters/base-filter-feature.js';
 window.YPP.FeatureManager.register(BaseFilterFeature);
-import { ScreenFilters } from '../global/filters/screen-filters.js';
+import { ScreenFilters } from '../pages/shared-feed/filters/screen-filters.js';
 window.YPP.FeatureManager.register(ScreenFilters);
-import { HideWatched } from '../global/filters/hide-watched.js';
-import { CleanMixUrls } from '../global/features/misc/clean-mix-urls.js';
+import { HideWatched } from '../pages/shared-feed/filters/hide-watched.js';
+import { CleanMixUrls } from '../features/misc/clean-mix-urls.js';
 window.YPP.FeatureManager.register(HideWatched);
 window.YPP.FeatureManager.register(CleanMixUrls);
-import { HideMetrics } from '../global/filters/hide-metrics.js';
+import { HideMetrics } from '../pages/shared-feed/filters/hide-metrics.js';
 window.YPP.FeatureManager.register(HideMetrics);
-import '../global/filters/filter-ui-interactions.js';
-import { DurationFilter } from '../global/filters/duration-filter.js';
+import '../pages/shared-feed/filters/filter-ui-interactions.js';
+import { DurationFilter } from '../pages/shared-feed/filters/duration-filter.js';
 window.YPP.FeatureManager.register(DurationFilter);
-import { BlocklistFilter } from '../global/filters/blocklist-filter.js';
+import { BlocklistFilter } from '../pages/shared-feed/filters/blocklist-filter.js';
 window.YPP.FeatureManager.register(BlocklistFilter);
-import { FeedFilter } from '../global/filters/feed-filter.js';
+import { FeedFilter } from '../pages/shared-feed/filters/feed-filter.js';
 window.YPP.FeatureManager.register(FeedFilter);
-import { FiltersManager } from '../global/filters/filters-manager.js';
+import { FiltersManager } from '../pages/shared-feed/filters/filters-manager.js';
 window.YPP.FeatureManager.register(FiltersManager);
-import { ViewsFilter } from '../global/filters/views-filter.js';
+import { ViewsFilter } from '../pages/shared-feed/filters/views-filter.js';
 window.YPP.FeatureManager.register(ViewsFilter);
-import { UploadDateFilter } from '../global/filters/upload-date-filter.js';
+import { UploadDateFilter } from '../pages/shared-feed/filters/upload-date-filter.js';
 window.YPP.FeatureManager.register(UploadDateFilter);
-import { ClickbaitFilter } from '../global/filters/clickbait-filter.js';
+import { ClickbaitFilter } from '../pages/shared-feed/filters/clickbait-filter.js';
 window.YPP.FeatureManager.register(ClickbaitFilter);
-import { ShortsFilter } from '../global/filters/shorts-filter.js';
+import { ShortsFilter } from '../pages/shared-feed/filters/shorts-filter.js';
 window.YPP.FeatureManager.register(ShortsFilter);
-import { LiveFilter } from '../global/filters/live-filter.js';
+import { LiveFilter } from '../pages/shared-feed/filters/live-filter.js';
 window.YPP.FeatureManager.register(LiveFilter);
-import { MixesFilter } from '../global/filters/mixes-filter.js';
+import { MixesFilter } from '../pages/shared-feed/filters/mixes-filter.js';
 window.YPP.FeatureManager.register(MixesFilter);
-import { PlaylistsFilter } from '../global/filters/playlists-filter.js';
+import { PlaylistsFilter } from '../pages/shared-feed/filters/playlists-filter.js';
 window.YPP.FeatureManager.register(PlaylistsFilter);
 
 // --- src/content/global/layout/index.ts ---
-import '../global/layout/global-layout-manager.js';
-import { GridAnimator } from '../global/layout/grid-animator.js';
+import '../layouts/core/global-layout-manager.js';
+import { GridAnimator } from '../pages/shared-feed/layout/grid-animator.js';
 window.YPP.FeatureManager.register(GridAnimator);
-import { AutoScaleGrid } from '../global/layout/auto-scale-grid.js';
+import { AutoScaleGrid } from '../pages/shared-feed/layout/auto-scale-grid.js';
 window.YPP.FeatureManager.register(AutoScaleGrid);
-import { GridLayoutManager } from '../global/layout/layout-manager.js';
+import { GridLayoutManager } from '../layouts/core/layout-manager.js';
 window.YPP.FeatureManager.register(GridLayoutManager);
-import { FeedGridColumns } from '../global/layout/feed-grid-columns.js';
+import { FeedGridColumns } from '../pages/shared-feed/layout/feed-grid-columns.js';
 window.YPP.FeatureManager.register(FeedGridColumns);
-import { TabviewSidebar } from '../global/layout/tabview-sidebar.js';
+import { TabviewSidebar } from '../layouts/core/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
 
 // --- src/content/global/ui/global-bar/index.ts ---
-import { GlobalBarUI } from '../global/ui/global-bar/global-bar-ui.js';
+import { GlobalBarUI } from '../features/global-bar/global-bar-ui.js';
 window.YPP.FeatureManager.register(GlobalBarUI);
-import { GlobalPlayerBar } from '../global/ui/global-bar/global-bar.js';
+import { GlobalPlayerBar } from '../features/global-bar/global-bar.js';
 window.YPP.FeatureManager.register(GlobalPlayerBar);
 
 // --- src/content/pages/watch/player/media-effects/video-filters/index.js ---

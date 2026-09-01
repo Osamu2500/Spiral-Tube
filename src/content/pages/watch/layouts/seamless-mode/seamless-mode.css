@@ -1,0 +1,29 @@
+/* ========================================================
+   SEAMLESS MODE (Sidebar Comments)
+   ======================================================== */
+
+/* Decrease gap between player/sidebar and topbar */
+body.ypp-seamless-mode ytd-watch-flexy[flexy] {
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+}
+
+/* Ensure #below takes full width of the sidebar */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #below {
+    width: 100% !important;
+}
+
+/* Move Related Videos under the Video */
+body.ypp-seamless-mode #primary-inner #related {
+    margin-top: 24px !important;
+    padding: 0 !important;
+}
+
+/* Custom scrollbar for sidebar comments */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar {
+    width: 6px;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar-thumb {
+    background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer));
+    border-radius: 3px;
+}

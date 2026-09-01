@@ -7,104 +7,120 @@
    ========================================================================== 
 */
 
-@import "./base/core-styles-ui.css";
-@import "./base/tokens.css";
-@import "./base/animations.css";
+@import './base/core-styles-ui.css';
+@import './base/tokens.css';
+@import './base/animations.css';
 
 /* --- GLOBAL CONTEXT --- */
-@import "../global/declutter/global.css";
+@import '../features/declutter/global.css';
+@import '../features/declutter/shorts-killer.css';
 
-@import "../global/layout/layout.css";
-@import "../global/layout/components.css";
-@import "../global/layout/misc.css";
+@import '../layouts/styles/layout.css';
+@import '../layouts/styles/components.css';
+@import '../layouts/styles/misc.css';
 
-@import "../global/features/ui-tweaks/premium-logo.css";
-@import "../global/features/ui-tweaks/retro-logo.css";
-@import "../global/features/ui-tweaks/save-supreme-ui.css";
-@import "../global/features/ui-tweaks/compact-settings-menu.css";
-@import "../global/features/ui-tweaks/square-corners.css";
-@import "../global/features/ui-tweaks/extra-rounded-ui.css";
-@import "../global/features/ui-tweaks/youtube-rounded.css";
-@import "../global/features/ui-tweaks/grayscale-thumbnails.css";
-@import "../global/features/ui-tweaks/custom-scrollbar.css";
-@import "../global/features/ui-tweaks/integrations.css";
-@import "../global/features/ui-tweaks/dual-accent.css";
+@import '../layouts/navbar/floating-guide.css';
+@import '../features/subscription-folders/subscription-folders.css';
+@import '../features/watched-badge/watched-badge.css';
+@import '../components/toasts/toast-mini.css';
 
-@import "../global/components/badges/badges.css";
-@import "../global/components/buttons/buttons.css";
-@import "../global/components/cards/cards.css";
-@import "../global/components/chips/chips.css";
-@import "../global/components/dialogs/dialogs.css";
-@import "../global/components/icons/icons.css";
-@import "../global/components/menus/menus.css";
-@import "../global/components/multi-select/multi-select.css";
-@import "../global/components/navbar/navbar.css";
-@import "../global/components/panels/panels.css";
-@import "../global/components/sidebar/sidebar.css";
-@import "../global/components/account-menus/account-menus.css";
-@import "../global/components/toasts/toasts.css";
+@import '../features/ui-tweaks/premium-logo.css';
+@import '../features/ui-tweaks/retro-logo.css';
+@import '../features/ui-tweaks/save-supreme-ui.css';
+@import '../features/ui-tweaks/compact-settings-menu.css';
+@import '../features/ui-tweaks/square-corners.css';
+@import '../features/ui-tweaks/extra-rounded-ui.css';
+@import '../features/ui-tweaks/youtube-rounded.css';
+@import '../features/ui-tweaks/grayscale-thumbnails.css';
+@import '../features/ui-tweaks/custom-scrollbar.css';
+@import '../features/ui-tweaks/integrations.css';
+@import '../features/ui-tweaks/dual-accent.css';
+
+@import '../components/badges/badges.css';
+@import '../components/buttons/buttons.css';
+@import '../components/cards/cards.css';
+@import '../components/chips/chips.css';
+@import '../components/dialogs/dialogs.css';
+@import '../components/icons/icons.css';
+@import '../components/menus/menus.css';
+@import '../pages/shared-feed/features/multi-select/multi-select.css';
+@import '../layouts/navbar/navbar.css';
+@import '../components/panels/panels.css';
+@import '../layouts/sidebar/sidebar.css';
+@import '../components/account-menus/account-menus.css';
+@import '../components/toasts/toasts.css';
 
 /* --- WATCH PAGE CONTEXT --- */
-@import "../pages/watch/layout.css";
-@import "../pages/watch/declutter.css";
-@import "../pages/watch/comments/comments.css";
-@import "../pages/watch/livechat/livechat.css";
+@import '../pages/watch/styles/watch-layout.css';
+@import '../pages/watch/styles/watch-declutter.css';
+@import '../pages/watch/components/comments/comments.css';
+@import '../pages/watch/components/livechat/livechat.css';
 
 /* Watch Layout & Modes */
-@import "../pages/watch/layout/modes/player-modes.css";
-@import "../pages/watch/layout/modes/cinematic-mode.css";
-@import "../pages/watch/layout/modes/sidebar-mode.css";
-@import "../pages/watch/layout/modes/deck-mode.css";
+@import '../pages/watch/layouts/modes/css/cinema-mode.css';
+@import '../pages/watch/layouts/modes/css/minimal-mode.css';
+@import '../pages/watch/layouts/modes/css/study-mode.css';
+@import '../pages/watch/layouts/modes/css/ambient-mode.css';
+@import '../pages/watch/layouts/modes/css/pip-mode.css';
+@import '../pages/watch/layouts/modes/css/cinematic-mode.css';
+@import '../pages/watch/layouts/modes/css/sidebar-mode.css';
+@import '../pages/watch/layouts/modes/css/deck-mode.css';
+@import '../pages/watch/layouts/seamless-mode/seamless-mode.css';
 
 /* Watch Player Enhancements */
-@import "../pages/watch/player/layout.css";
-@import "../pages/watch/player/player.css";
-@import "../pages/watch/player/enhancements/netflix-subtitles.css";
-@import "../pages/watch/player/enhancements/flex-width-player.css";
-@import "../pages/watch/player/enhancements/compact-player.css";
-@import "../pages/watch/player/enhancements/real-cinema-mode.css";
-@import "../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css";
+@import '../pages/watch/player/styles/base-native-overrides.css';
+@import '../pages/watch/player/styles/custom-bar-ui.css';
+@import '../pages/watch/player/styles/floating-action-bar.css';
+@import '../pages/watch/player/enhancements/floating-player.css';
+@import '../pages/watch/player/enhancements/rounded-player.css';
+@import '../pages/watch/player/enhancements/netflix-subtitles.css';
+@import '../pages/watch/player/enhancements/flex-width-player.css';
+@import '../pages/watch/player/enhancements/compact-player.css';
+@import '../pages/watch/player/enhancements/real-cinema-mode.css';
+@import '../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css';
 
 /* Watch Player Controls */
-@import "../pages/watch/player/controls/live-stream-time.css";
+@import '../pages/watch/player/controls/live-stream-time.css';
+@import '../pages/watch/player/controls/time-dashboard.css';
+@import '../pages/watch/components/alert/watch-alert.css';
 
 /* --- HOME PAGE CONTEXT --- */
-@import "../pages/home/layout.css";
-@import "../pages/home/declutter.css";
+@import '../pages/home/layout.css';
+@import '../pages/home/declutter.css';
 
 /* --- SHORTS PAGE CONTEXT --- */
-@import "../pages/shorts/layout.css";
-@import "../pages/shorts/declutter.css";
+@import '../pages/shorts/layout.css';
+@import '../pages/shorts/declutter.css';
 
 /* --- SEARCH PAGE CONTEXT --- */
-@import "../pages/search/declutter/search-declutter.css";
-@import "../pages/search/styles/search-grid-mode.css";
-@import "../pages/search/styles/search-grid-cards.css";
-@import "../pages/search/styles/search-list-mode.css";
-@import "../pages/search/styles/search-layout-densities.css";
-@import "../pages/search/styles/search-immersive-cards.css";
-@import "../pages/search/styles/search-default-card-compat.css";
+@import '../pages/search/declutter/search-declutter.css';
+@import '../pages/search/styles/search-grid-mode.css';
+@import '../pages/search/styles/search-grid-cards.css';
+@import '../pages/search/styles/search-list-mode.css';
+@import '../pages/search/styles/search-layout-densities.css';
+@import '../pages/search/styles/search-immersive-cards.css';
+@import '../pages/search/styles/search-default-card-compat.css';
 
 /* Search card compatibility layer — always bundled so themes work on search grid.
    Selectors are gated on html[data-ypp-card-style] so no cost when no style active. */
-@import "./card-styles/search-card-compat.css";
+@import './card-styles/search-card-compat.css';
 
 /* --- SUBSCRIPTIONS & CHANNELS --- */
-@import "../pages/subscriptions/layout.css";
-@import "../pages/channels/layout.css";
-@import "../pages/subscriptions/features/grid-layout/two-column-subs.css";
-@import "../pages/subscriptions/features/channel-health/channel-health.css";
-@import "../pages/playlist/layout.css";
-@import "../pages/history/layout.css";
+@import '../pages/subscriptions/layout.css';
+@import '../pages/channels/layout.css';
+@import '../pages/subscriptions/features/grid-layout/two-column-subs.css';
+@import '../pages/subscriptions/features/channel-health/channel-health.css';
+@import '../pages/playlist/layout.css';
+@import '../pages/history/layout.css';
 
 /* --- SHARED FEED CONTEXT --- */
-@import "../pages/shared-feed/tracking/resume-badges.css";
-@import "../pages/shared-feed/tracking/watched-indicator.css";
+@import '../pages/shared-feed/tracking/resume-badges.css';
+@import '../pages/shared-feed/tracking/watched-indicator.css';
 
-@import "../pages/shared-feed/typography/full-video-titles.css";
+@import '../pages/shared-feed/typography/full-video-titles.css';
 
 /* --- LAYOUT / GRIDS (Connected to Design System) --- */
-@import "../global/styles/grid-layout.css";
+@import '../layouts/styles/grid-layout.css';
 
-@import "../global/components/shorts-shelf/shorts-shelf.css";
+@import '../pages/shared-feed/components/shorts-shelf/shorts-shelf.css';
 

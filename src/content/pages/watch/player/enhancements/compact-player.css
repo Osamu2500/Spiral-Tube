@@ -1,9 +1,10 @@
-/* 
- * ==========================================================================
- * COMPACT PLAYER UI
- * ========================================================================== 
+/**
+ * @fileoverview
+ * Compact Player UI
+ * 
+ * Target: /watch route (and shorts) when compact player is enabled
+ * Purpose: Overrides YouTube player dimensions and layout to create a denser control bar.
  */
-
 /* --- Compact Player Controls --- */
 body.ypp-compact-player-ui #movie_player,
 body.ypp-compact-player-ui .html5-video-player {

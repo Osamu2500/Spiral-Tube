@@ -1,0 +1,21 @@
+/* =========================================================================
+   SHORTS KILLER
+   ========================================================================= */
+
+/* Nuke Shorts — Aggressive removal from all pages */
+body.yt-spiral-tube-theme ytd-rich-shelf-renderer[is-shorts],
+body.yt-spiral-tube-theme ytd-reel-shelf-renderer,
+body.yt-spiral-tube-theme ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+body.yt-spiral-tube-theme ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
+    display: none !important;
+}
+
+/* Hide Shorts Interaction Bar */
+ytd-reel-player-overlay-renderer {
+    display: none !important;
+}
+
+/* Hide Shorts in Search Results */
+ytd-video-renderer:has([href^="/shorts/"]) {
+    display: none !important;
+}
