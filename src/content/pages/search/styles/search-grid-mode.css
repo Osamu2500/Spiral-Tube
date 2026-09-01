@@ -141,7 +141,7 @@ body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
 body.ypp-search-grid-mode .ypp-flattened-grid,
 body.ypp-search-grid-mode .ypp-grid-container {
   display: grid !important;
-  grid-template-columns: repeat(var(--ypp-active-columns, var(--ypp-search-columns, 4)), minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--ypp-search-columns, 4), minmax(0, 1fr)) !important;
   grid-auto-flow: dense !important;
   gap: 20px !important;
   align-items: start !important;
