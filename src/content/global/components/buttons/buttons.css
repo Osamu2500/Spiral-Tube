@@ -652,3 +652,56 @@ body.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-touch-feedback-shape 
 .ypp-inline-btn--danger:hover {
     background: rgba(239,68,68,0.26);
 }
+
+/* ==========================================================================
+   PULSING ANIMATIONS (Migrated from animations.css)
+   ========================================================================== */
+
+@keyframes youtubeRedPulse {
+  0% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+  }
+  50% {
+    box-shadow:
+      inset 0 0 25px #f06,
+      inset 0 0 50px #f06,
+      0 0 15px #f06,
+      0 0 30px #f06;
+  }
+  100% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+  }
+}
+
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  transform: scale(1.1);
+  color: white !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite;
+}
+
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after,
+yt-button-shape button[aria-label*="Download" i]:hover::after,
+yt-button-shape button[title*="Download" i]:hover::after {
+  background: none !important;
+}
+
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important;
+  color: white !important;
+  box-shadow:
+    inset 0 0 25px red,
+    inset 0 0 50px red,
+    0 0 15px red,
+    0 0 30px red !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite !important;
+}

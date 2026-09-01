@@ -50,6 +50,10 @@
   /* --- Transitions --- */
   --ypp-transition-bounce: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   --ypp-transition-fast:   0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  
+  /* --- Easing Physics --- */
+  --ypp-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ypp-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* --- Typography --- */
   --ypp-font-primary: "Roboto", "Arial", sans-serif;
@@ -115,6 +119,13 @@ html.yt-spiral-tube-theme[dark] {
   --yt-spec-text-disabled: var(--ypp-text-secondary, #aaa) !important;
   --yt-spec-text-primary-inverse: var(--ypp-bg-base, #000) !important;
   
+  /* Accent Colors */
+  --ypp-accent: var(--ypp-accent-primary, #3ea6ff) !important;
+  --ypp-accent-hover: var(--ypp-accent-glow, #65b8ff) !important;
+  --yt-spec-static-brand-red: var(--ypp-accent-primary, #f00) !important;
+  --paper-toggle-button-checked-bar-color: var(--ypp-accent-primary, #3ea6ff) !important;
+  --paper-toggle-button-checked-button-color: var(--ypp-accent-primary, #3ea6ff) !important;
+
   /* Icons & Accents */
   --yt-spec-icon-inactive: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
   --yt-spec-icon-disabled: var(--ypp-text-secondary, #aaa) !important;

@@ -4,64 +4,31 @@
  * ========================================================================== 
  */
 
-/* ===================================================================================
-   3. GLOBAL UI ELEMENTS
-   =================================================================================== */
+/* Better Scrollbar for YouTube Default Theme */
+html[data-ypp-theme="default"] ::-webkit-scrollbar { width: 8px; height: 8px; }
+html[data-ypp-theme="default"] ::-webkit-scrollbar-track { background: transparent; }
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb { background: var(--ypp-text-secondary, #aaa); border-radius: 4px; }
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover { background: var(--ypp-text-primary, #fff); }
 
-/* Custom Scrollbar */
-
-body.ypp-custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  background: transparent;
-}
-
-body.ypp-custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body.ypp-custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-}
-
-body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* --- Custom Scrollbar --- */
-
-body.ypp-custom-scrollbar::-webkit-scrollbar {
+/* --- Custom Scrollbar Feature (Opt-in) --- */
+body.ypp-custom-scrollbar::-webkit-scrollbar,
+body.ypp-custom-scrollbar *::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-body.ypp-custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-body.ypp-custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: var(--ypp-accent-glow, rgba(255, 255, 255, 0.2));
-    border-radius: 10px;
-}
-
-body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: var(--ypp-accent, rgba(255, 255, 255, 0.5));
-}
-
-body.ypp-custom-scrollbar *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
+body.ypp-custom-scrollbar::-webkit-scrollbar-track,
 body.ypp-custom-scrollbar *::-webkit-scrollbar-track {
     background: transparent;
 }
 
+body.ypp-custom-scrollbar::-webkit-scrollbar-thumb,
 body.ypp-custom-scrollbar *::-webkit-scrollbar-thumb {
     background-color: var(--ypp-accent-glow, rgba(255, 255, 255, 0.2));
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
+body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover,
 body.ypp-custom-scrollbar *::-webkit-scrollbar-thumb:hover {
     background-color: var(--ypp-accent, rgba(255, 255, 255, 0.5));
 }

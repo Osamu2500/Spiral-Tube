@@ -5,6 +5,49 @@
    These rules use :root fallback tokens so the topbar is styled immediately
    on CSS inject, BEFORE ThemeManager adds the yt-spiral-tube-theme class.
    ========================================================================== */
+
+/* ===================================================================================
+   MIGRATED FROM BASE/CORE-STYLES-UI.CSS
+   =================================================================================== */
+
+/* Masthead & Search (Pill-shaped Glass) */
+html.yt-spiral-tube-theme #masthead-container {
+    background: rgba(15, 15, 15, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    will-change: backdrop-filter;
+}
+html.yt-spiral-tube-theme ytd-masthead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.yt-spiral-tube-theme ytd-searchbox {
+    --ytd-searchbox-background: rgba(255, 255, 255, 0.04) !important;
+    --ytd-searchbox-legacy-border-color: rgba(255, 255, 255, 0.08) !important;
+    --ytd-searchbox-legacy-border-radius: 24px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
+}
+html.yt-spiral-tube-theme ytd-searchbox:focus-within {
+    --ytd-searchbox-background: rgba(255, 255, 255, 0.08) !important;
+    --ytd-searchbox-legacy-border-color: var(--ypp-accent-primary, #6366f1) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.05),
+                0 0 0 4px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 20%, transparent) !important;
+}
+html.yt-spiral-tube-theme ytd-searchbox #container,
+html.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
 ytd-app,
 ytd-masthead,
 #page-manager.ytd-app,

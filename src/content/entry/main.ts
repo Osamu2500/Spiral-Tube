@@ -338,7 +338,6 @@
                 enableAnimations:         true,
                 enableCustomizeYouTubeUI: true,
                 layout:                   true,
-                enableCustomSidebar:      true,
                 headerNavEnabled:         true,
                 autoScaleLayout:          true,
             };

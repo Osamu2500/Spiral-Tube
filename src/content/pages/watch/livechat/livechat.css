@@ -5,6 +5,23 @@
    ========================================================================== 
 */
 
+/* ===================================================================================
+   MIGRATED FROM BASE/CORE-STYLES-UI.CSS
+   =================================================================================== */
+
+/* Live Chat (Dark Glass) */
+html.yt-spiral-tube-theme yt-live-chat-app {
+    background: rgba(10, 11, 16, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+}
+html.yt-spiral-tube-theme yt-live-chat-text-message-renderer {
+    font-size: 14px !important;
+    transition: background 0.2s ease !important;
+}
+
 yt-live-chat-app,
 yt-live-chat-renderer {
   /* Core panel styling inherited from watch/layout.css universal component */

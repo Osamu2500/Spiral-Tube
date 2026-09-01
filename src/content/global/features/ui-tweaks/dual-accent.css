@@ -1,0 +1,19 @@
+/* 
+   ==========================================================================
+   DUAL ACCENT FEATURE
+   ========================================================================== 
+*/
+
+/* Dual Accent Gradient Enhancements */
+body.ypp-dual-accent-enabled .ytp-play-progress,
+body.ypp-dual-accent-enabled .ytp-swatch-background-color,
+body.ypp-dual-accent-enabled tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button,
+body.ypp-dual-accent-enabled #progress.ytd-thumbnail-overlay-resume-playback-renderer {
+    background: var(--ypp-accent-gradient) !important;
+    background-color: transparent !important;
+}
+
+body.ypp-dual-accent-enabled .ytp-scrubber-button {
+    background: var(--ypp-accent-gradient) !important;
+    border-color: transparent !important;
+}

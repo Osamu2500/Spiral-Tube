@@ -3,6 +3,24 @@
  * Does not affect outside scope. 
  */
 
+/* ===================================================================================
+   MIGRATED FROM BASE/CORE-STYLES-UI.CSS
+   =================================================================================== */
+
+/* Sidebar / App Drawer (Translucent) */
+html.yt-spiral-tube-theme #guide-inner-content {
+    background: rgba(15, 15, 15, 0.4) !important;
+    backdrop-filter: blur(32px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+html.yt-spiral-tube-theme ytd-mini-guide-renderer {
+    background: rgba(15, 15, 15, 0.4) !important;
+    backdrop-filter: blur(32px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 body.ypp-tabview-sidebar #secondary.ytd-watch-flexy,
 body.ypp-tabview-sidebar #secondary-inner {
   position: relative !important;

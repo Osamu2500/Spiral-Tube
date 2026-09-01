@@ -449,6 +449,29 @@ body.ypp-hide-shorts ytm-reel-shelf-renderer { display: none !important; }
 ytd-thumbnail-overlay-toggle-button-renderer,
 ytd-thumbnail-overlay-button-renderer {
   display: none !important;
+
+    display: none !important;
+
+}
+body.ypp-hide-shorts ytd-reel-shelf-renderer,
+body.ypp-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+body.ypp-hide-shorts ytd-rich-section-renderer[is-shorts],
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-reel-item-renderer),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(a[href*="/shorts"]),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
+body.ypp-hide-shorts ytd-shelf-renderer[is-shorts],
+body.ypp-hide-shorts [is-shorts],
+body.ypp-hide-shorts ytm-reel-shelf-renderer { display: none !important; }
+
+/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
+ytd-thumbnail-overlay-toggle-button-renderer,
+ytd-thumbnail-overlay-button-renderer {
+  display: none !important;
 }
 
 /* Hide Shorts shelf headers completely when Hide Shorts feature is enabled */
@@ -459,3 +482,8 @@ body.ypp-nuke-shorts ytd-reel-shelf-renderer {
     display: none !important;
 }
 
+/* Remove the weird blue color from YouTube Native Progress Bar */
+yt-page-navigation-progress, 
+#progress.yt-page-navigation-progress {
+  display: none !important;
+}
