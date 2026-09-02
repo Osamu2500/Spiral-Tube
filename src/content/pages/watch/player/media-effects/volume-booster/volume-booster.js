@@ -184,7 +184,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._bypassed = enabled;
         if (this._proxyCmd('setBypass', enabled)) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video) this.initAudioContext(video);
         }
         
@@ -261,7 +261,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // video element when enable() is called right after SPA navigation
         // before YouTube has rendered the player.
         const findAndInit = async () => {
-            let video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            let video = window.YPP.DOMManager?.getVideo();
 
             if (!video) {
                 // Retry up to 3 s via BaseFeature's pollFor/waitForElement
@@ -388,7 +388,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // Re-load from persisted settings on every page change to guarantee
         // that in-memory values always match what was saved to Chrome storage.
         this._loadSettings(this.settings);
-        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+        const video = window.YPP.DOMManager?.getVideo();
         if (video) {
             if (this._audioConnected && this._boundVideo === video) {
                 // Same video element reused (YouTube SPA) — just re-apply state
@@ -405,7 +405,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._loadSettings(this.settings);
 
         const tryInit = async () => {
-            let video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            let video = window.YPP.DOMManager?.getVideo();
             if (!video) {
                 try {
                     video = await this.utils.pollFor({
@@ -447,7 +447,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         const currentUrl = window.location.href;
         const tryMatch = () => {
             if (window.location.href !== currentUrl) return; // abort if navigated away
-            const el = document.querySelector('ytd-video-owner-renderer ytd-channel-name yt-formatted-string a') || document.querySelector('#owner #channel-name a');
+            const el = window.YPP.DOMManager?.getChannelLink();
             if (el && el.textContent) {
                 const channel = el.textContent.trim();
                 const presetName = this._channelProfiles[channel];
@@ -732,7 +732,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             this.limiterNode.connect(this.analyserNode);
             
             // Chain to AudioCompressor if it is active, otherwise go straight to destination
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video && video.__ypp_ext_compressor) {
                 this.analyserNode.connect(video.__ypp_ext_compressor.input);
                 video.__ypp_ext_compressor.output.connect(this.ctx.destination);
@@ -795,7 +795,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         if (this._bypassed) return;
         // FIX Bug 2: Only use _needsAudioGraph as lazy-init guard (not in enable/onVideoChange)
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video) this.initAudioContext(video);
         }
         if (this.gainNode && this.ctx) {
@@ -814,7 +814,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     setBypass(enabled) {
         this._bypassed = enabled;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video) this.initAudioContext(video);
         }
         if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
@@ -860,7 +860,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this.addListener(btn, 'click', (e) => {
             e.stopPropagation();
             if (VolumeBoosterUI) {
-                const activeVideo = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+                const activeVideo = this._boundVideo || window.YPP.DOMManager?.getVideo();
                 if (activeVideo && !this._audioConnected) {
                     this.initAudioContext(activeVideo);
                 }

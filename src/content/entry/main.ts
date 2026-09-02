@@ -26,8 +26,8 @@
     };
 
     // Helper for safe logging before Utils is fully loaded
-    const safeLog = (msg, level = 'warn') => {
-        console[level]?.(`[YPP:MAIN] ${msg}`);
+    const safeLog = (msg: string, level = 'warn') => {
+        (console as any)[level]?.(`[YPP:MAIN] ${msg}`);
     };
 
     const YPPMainApp: any = {
@@ -159,7 +159,7 @@
                 this.showReadyToast();
                 document.documentElement.classList.add('ypp-loaded');
 
-            } catch (error) {
+            } catch (error: any) {
                 this.bootstrapLock = false;
                 this.handleCriticalError(error);
             }
@@ -200,7 +200,7 @@
          * @param {number} timeout - Maximum wait time in ms
          * @returns {Promise<boolean>}
          */
-        waitFor(condition, timeout = 10000) {
+        waitFor(condition: () => boolean, timeout = 10000) {
             return new Promise((resolve) => {
                 if (condition()) {
                     resolve(true);
@@ -255,8 +255,8 @@
             // V6 Hard Fix: Force the Download button to pretend it's a standard tonal button
             // so that all custom CSS themes will automatically style it correctly!
             if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.register('fix-download-btn-theme', 'ytd-watch-metadata yt-button-shape button[aria-label*="Download" i], ytd-watch-metadata yt-button-shape button[title*="Download" i], ytd-watch-metadata yt-download-button-view-model button, ytd-watch-metadata yt-button-view-model button[title*="Download" i], ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i]', (elements) => {
-                    elements.forEach(el => {
+                window.YPP.sharedObserver.register('fix-download-btn-theme', 'ytd-watch-metadata yt-button-shape button[aria-label*="Download" i], ytd-watch-metadata yt-button-shape button[title*="Download" i], ytd-watch-metadata yt-download-button-view-model button, ytd-watch-metadata yt-button-view-model button[title*="Download" i], ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i]', (elements: Element[]) => {
+                    elements.forEach((el: Element) => {
                         if (el && el.classList && el.classList.contains('yt-spec-button-shape-next--call-to-action')) {
                             el.classList.remove('yt-spec-button-shape-next--call-to-action');
                             el.classList.add('yt-spec-button-shape-next--tonal');
@@ -302,7 +302,7 @@
                 // Self-heal: ensure core UI settings can never get stuck off
                 await this.guardAlwaysOnSettings();
 
-            } catch (error) {
+            } catch (error: any) {
                 this.Utils?.log(`Error loading settings (attempt ${attempt}): ${error.message}`, 'MAIN', 'error');
 
                 if (error.message.includes('context invalidated')) {
@@ -378,7 +378,7 @@
          * @async
          * @param {Object} newSettings - Settings to save
          */
-        async saveSettings(newSettings) {
+        async saveSettings(newSettings: any) {
             this.settings = { ...this.settings, ...newSettings };
             try {
                 if (chrome.runtime?.id) {
@@ -390,7 +390,7 @@
                 } else {
                     throw new Error('No chrome runtime context');
                 }
-            } catch (error) {
+            } catch (error: any) {
                 this.Utils?.log(`Error communicating with Service Worker: ${error.message}. Falling back to local storage.`, 'MAIN', 'warn');
                 await chrome.storage.local.set({ settings: this.settings });
             }
@@ -445,7 +445,7 @@
                 if (pageTypeChanged && this.featureManager) {
                     try {
                         this.featureManager.init(this.settings);
-                    } catch (error) {
+                    } catch (error: any) {
                         this.Utils?.log(`Error initializing features on navigation: ${error.message}`, 'MAIN', 'error');
                     }
                 }
@@ -457,7 +457,7 @@
 
             // Listen for settings changes from popup
             if (chrome?.storage?.onChanged) {
-                const storageHandler = (changes, area) => {
+                const storageHandler = (changes: any, area: string) => {
                     try {
                         if (area === 'local' && changes.settings) {
                             const newSettings = changes.settings.newValue;
@@ -470,14 +470,14 @@
                                     this.globalLayoutManager.updateSettings(this.settings);
                                 }
                                 if (this.pageManagers) {
-                                    this.pageManagers.forEach(m => m.updateSettings(this.settings));
+                                    this.pageManagers.forEach((m: any) => m.updateSettings(this.settings));
                                 }
                                 if (this.thumbnailColorManager) {
                                     this.thumbnailColorManager.updateSettings(this.settings);
                                 }
                             }
                         }
-                    } catch (error) {
+                    } catch (error: any) {
                         this.Utils?.log(`Error handling settings change: ${error.message}`, 'MAIN', 'error');
                     }
                 };
@@ -489,7 +489,7 @@
 
             // Listen for direct messages for instant updates
             if (chrome?.runtime?.onMessage) {
-                const messageHandler = (request, sender, sendResponse) => {
+                const messageHandler = (request: any, sender: any, sendResponse: any) => {
                     // UPDATE_SETTINGS is now handled exclusively by chrome.storage.onChanged
                     
                     if (request.type === 'YPP_SET_THEME_IMMEDIATE') {
@@ -512,7 +512,7 @@
             
             // Listen for page-level filter toggles (from PageFilterBar)
             if (window.YPP.events) {
-                const toggleHandler = async ({ id, active }) => {
+                const toggleHandler = async ({ id, active }: {id: string, active: boolean}) => {
                     const delta = { [id]: active };
                     this.Utils?.log(`Filter toggled: ${id} = ${active}`, 'MAIN', 'info');
                     await this.saveSettings(delta);
@@ -535,7 +535,7 @@
                 if (this.featureManager) {
                     try {
                         this.featureManager.init(this.settings);
-                    } catch (error) {
+                    } catch (error: any) {
                         this.Utils?.log(`Error re-initializing features: ${error.message}`, 'MAIN', 'error');
                     }
                 }
@@ -550,7 +550,7 @@
          * @param {string} pathname
          * @returns {string}
          */
-        _getPageType(pathname) {
+        _getPageType(pathname: string) {
             if (pathname === '/' || pathname === '/index') return 'home';
             if (pathname.startsWith('/watch'))             return 'watch';
             if (pathname.startsWith('/results'))           return 'search';
@@ -572,7 +572,7 @@
          */
         removeEventListeners() {
             // Remove DOM listeners
-            this.eventListeners.forEach(({ target, event, handler }) => {
+            this.eventListeners.forEach(({ target, event, handler }: {target: any, event: string, handler: any}) => {
                 try {
                     if (target && typeof target.removeEventListener === 'function') {
                         target.removeEventListener(event, handler);
@@ -585,7 +585,7 @@
 
             // Remove Chrome API listeners
             if (this._chromeListeners) {
-                this._chromeListeners.forEach(({ api, handler }) => {
+                this._chromeListeners.forEach(({ api, handler }: {api: any, handler: any}) => {
                     try {
                         if (api && typeof api.removeListener === 'function') {
                             api.removeListener(handler);
@@ -661,6 +661,7 @@
                 requestAnimationFrame(() => {
                     if (!document.body) return;
                     
+                    const originalClassName = document.body.className;
                     const classes = new Set(document.body.classList);
                     
                     // Only remove old YPP context classes, preserving theme and feature state classes
@@ -691,7 +692,7 @@
                     classes.add('yt-spiral-tube-theme');
                     
                     // V7 Zero-JS Declutter Architecture Toggles
-                    const toggleClass = (condition, className) => {
+                    const toggleClass = (condition: boolean, className: string) => {
                         if (condition) classes.add(className);
                         else classes.delete(className);
                     };
@@ -703,23 +704,33 @@
                     toggleClass(this.settings?.hidePromoShelves, 'ypp-hide-promos');
                     toggleClass(this.settings?.hideExploreTopics, 'ypp-hide-explore-topics');
                     
-                    document.body.className = Array.from(classes).join(' ');
+                    const newClassName = Array.from(classes).join(' ');
+                    if (originalClassName !== newClassName) {
+                        document.body.className = newClassName;
+                    }
                 });
 
                 // Route to appropriate page managers cleanly
                 const currentUrl = window.location.href;
                 
                 if (this.globalLayoutManager) {
-                    try {
-                        this.globalLayoutManager.activate(currentUrl);
-                    } catch (err) {
-                        this.Utils?.log(`Error activating GlobalLayoutManager: ${err.message}`, 'MAIN', 'error');
+                    const runGlobalLayout = () => {
+                        try {
+                            this.globalLayoutManager.activate(currentUrl);
+                        } catch (err: any) {
+                            this.Utils?.log(`Error activating GlobalLayoutManager: ${err.message}`, 'MAIN', 'error');
+                        }
+                    };
+                    if (window.requestIdleCallback) {
+                        requestIdleCallback(runGlobalLayout);
+                    } else {
+                        setTimeout(runGlobalLayout, 50);
                     }
                 }
 
                 if (this.pageManagers) {
                     try {
-                        const newManager = this.pageManagers.find(m => m.matches(currentUrl));
+                        const newManager = this.pageManagers.find((m: any) => m.matches(currentUrl));
                         
                         if (newManager !== this._activeManager) {
                             if (this._activeManager) {
@@ -733,7 +744,7 @@
                             // Keep the active manager updated without deactivating it
                             try { newManager.activate(currentUrl); } catch (e) {}
                         }
-                    } catch (err) {
+                    } catch (err: any) {
                         this.Utils?.log(`Error updating PageManagers: ${err.message}`, 'MAIN', 'error');
                     }
                 }
@@ -741,7 +752,7 @@
 
                 this.Utils?.log('Context updated', 'MAIN', 'debug', this.context);
 
-            } catch (error) {
+            } catch (error: any) {
                 this.Utils?.log(`Error updating context: ${error.message}`, 'MAIN', 'error');
                 // Reset context dynamically while preserving shape to avoid brittle hardcoding
                 if (this.context && typeof this.context === 'object') {
@@ -769,7 +780,7 @@
         showReadyToast(message = 'Spiral Tube Ready') {
             try {
                 this.Utils?.createToast(message);
-            } catch (error) {
+            } catch (error: any) {
                 this.Utils?.log(`Error showing ready toast: ${error.message}`, 'MAIN', 'error');
             }
         },
@@ -783,7 +794,7 @@
          * @private
          * @param {Error} error - The error object
          */
-        handleCriticalError(error) {
+        handleCriticalError(error: any) {
             this.Utils?.log(`Critical Bootstrap Error: ${error.message}`, 'MAIN', 'error');
             console.error('[YPP:MAIN] Initialization failed:', error);
 

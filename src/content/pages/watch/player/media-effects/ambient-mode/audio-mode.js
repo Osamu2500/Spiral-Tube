@@ -196,7 +196,7 @@ export class AudioMode extends window.YPP.features.BaseFeature {
         // Handle clicks on overlay to toggle play/pause
         overlay.onclick = (e) => {
             if (e.target.id !== 'ypp-audio-thumb') {
-                const video = document.querySelector('video');
+                const video = window.YPP.DOMManager?.getVideo();
                 if (video) {
                     if (video.paused) {
                         video.play();
@@ -223,7 +223,7 @@ export class AudioMode extends window.YPP.features.BaseFeature {
             if (elapsed > fpsInterval) {
                 lastTime = timestamp - (elapsed % fpsInterval);
                 
-                const video = document.querySelector('video');
+                const video = window.YPP.DOMManager?.getVideo();
                 if (video && !video.paused && !document.hidden) {
                     this._initAudioContextSafe();
                     if (this.analyser && this.dataArray) {
@@ -258,7 +258,7 @@ export class AudioMode extends window.YPP.features.BaseFeature {
     }
 
     _initAudioContextSafe() {
-        const video = document.querySelector('video');
+        const video = window.YPP.DOMManager?.getVideo();
         if (!video) return;
         
         try {

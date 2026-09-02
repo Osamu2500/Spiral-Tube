@@ -31,10 +31,10 @@ class UIManager {
         sidebar: () => window.YPP.DomAPI?.getSecondary(), // We need to add this to DomAPI
         related: () => window.YPP.DomAPI?.getRelatedItems(),
         watchPage: () => window.YPP.DomAPI?.getWatchFlexy(),
-        homePageTop: () => document.querySelector('ytd-browse[page-subtype="home"] #contents'),
-        searchPageTop: () => document.querySelector('ytd-search #contents'),
-        watchPageTop: () => document.querySelector(window.YPP.CONSTANTS.SELECTORS.SIDEBAR[1]) || document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]),
-        subsPageTop: () => document.querySelector('ytd-browse[page-subtype="subscriptions"] #contents')
+        homePageTop: () => window.YPP.DOMManager?.get(window.YPP.CONSTANTS.SELECTORS.PAGES.HOME_CONTENTS, 'home-contents'),
+        searchPageTop: () => window.YPP.DOMManager?.get(window.YPP.CONSTANTS.SELECTORS.PAGES.SEARCH_CONTENTS, 'search-contents'),
+        watchPageTop: () => window.YPP.DOMManager?.get(window.YPP.CONSTANTS.SELECTORS.SIDEBAR[1], 'watch-page-top') || window.YPP.DOMManager?.get(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1], 'watch-page-comments'),
+        subsPageTop: () => window.YPP.DOMManager?.get(window.YPP.CONSTANTS.SELECTORS.PAGES.SUBSCRIPTIONS_CONTENTS, 'subs-contents')
     };
 
     /**

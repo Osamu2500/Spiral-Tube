@@ -73,7 +73,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
             
             // Simple URL polling for SPAs that use pushState without triggering popstate
             let lastUrl = location.href;
-            this._urlPoll = setInterval(() => {
+            this._urlPoll = this.setInterval(() => {
                 if (location.href !== lastUrl) {
                     lastUrl = location.href;
                     this.isDismissed = false;
@@ -88,7 +88,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         this.stopObserver();
-        if (this._urlPoll) clearInterval(this._urlPoll);
+        this.clearInterval(this._urlPoll);
         this.ui.removeAll();
         this.utils?.removeStyle('ypp-global-bar-css');
         
@@ -105,12 +105,13 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     startObserver() {
         if (this._isObserving) return;
         this._isObserving = true;
-        if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.register('global-bar-scanner', 'video', () => {
+        
+        if (window.YPP && window.YPP.events) {
+            this._unsubPlayerConstructed = window.YPP.events.on('dom:playerConstructed', () => {
                 this.scanForVideos();
             });
         } else {
-            // Fallback for external sites where sharedObserver is not loaded
+            // Fallback for isolated external sites
             this._fallbackVideoScanner = (e) => {
                 if (e.target && e.target.tagName === 'VIDEO') {
                     this.scanForVideos();
@@ -118,39 +119,18 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
             };
             this.addListener(document, 'play', this._fallbackVideoScanner, true);
             this.addListener(document, 'loadeddata', this._fallbackVideoScanner, true);
-
-            // MutationObserver: catch <video> elements injected dynamically after boot
-            // Only trigger when a node is *added* to the DOM that is or contains a <video>
-            if (!this._domVideoObserver) {
-                this._domVideoObserver = new MutationObserver((mutations) => {
-                    for (const m of mutations) {
-                        for (const node of m.addedNodes) {
-                            if (!node || node.nodeType !== 1) continue;
-                            if (node.tagName === 'VIDEO' || node.querySelector?.('video')) {
-                                this.scanForVideos();
-                                return; // one scan per batch is enough
-                            }
-                        }
-                    }
-                });
-                this._domVideoObserver.observe(document.documentElement, { childList: true, subtree: true });
-            }
         }
     }
 
     stopObserver() {
         if (this._isObserving) {
             this._isObserving = false;
-            if (window.YPP?.sharedObserver) {
-                window.YPP.sharedObserver.unregister('global-bar-scanner');
+            if (this._unsubPlayerConstructed) {
+                this._unsubPlayerConstructed();
+                this._unsubPlayerConstructed = null;
             }
             if (this._fallbackVideoScanner) {
-                // this.addListener will be cleaned up automatically by BaseFeature
                 this._fallbackVideoScanner = null;
-            }
-            if (this._domVideoObserver) {
-                this._domVideoObserver.disconnect();
-                this._domVideoObserver = null;
             }
         }
     }

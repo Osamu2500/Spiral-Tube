@@ -135,10 +135,8 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             this._cleanupClasses();
             this._cleanupCustomVariables();
 
-            if (this._themeObserver) {
-                this._themeObserver.disconnect();
-                this._themeObserver = null;
-            }
+            this._themeObserverAdded = false;
+            super.disable();
 
             this._isActive = false;
         } catch (error) {
@@ -420,16 +418,15 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         }
         
         // Setup observer to keep it enforced if YouTube tries to change it
-        if (!this._themeObserver) {
-            this._themeObserver = new MutationObserver((mutations) => {
+        if (!this._themeObserverAdded) {
+            this._themeObserverAdded = true;
+            this.onBusEvent('attr:darkModeChanged', (payload) => {
                 if (!this._currentThemeKey || this._currentThemeKey === 'system') return;
                 
-                const isDark = document.documentElement.hasAttribute('dark');
-                if (!isDark) {
+                if (!payload.isDark) {
                     document.documentElement.setAttribute('dark', 'true');
                 }
             });
-            this._themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['dark'] });
         }
     }
 

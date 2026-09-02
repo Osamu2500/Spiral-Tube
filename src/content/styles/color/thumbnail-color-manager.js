@@ -33,17 +33,13 @@ export class ThumbnailColorManager {
             rootMargin: '600px' // Pre-load well offscreen so all rows are ready
         });
 
-        // MutationObserver: catch dynamically-added cards (YouTube SPA loads cards progressively)
-        this.mutationObserver = new MutationObserver((mutations) => {
-            if (!this.enabled) return;
-            for (const mut of mutations) {
-                for (const node of mut.addedNodes) {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        this.observeNewNodes(node);
-                    }
-                }
-            }
-        });
+        // Let the central EventBus handle dynamically-added cards
+        if (window.YPP && window.YPP.events) {
+            window.YPP.events.on('dom:thumbnailsAdded', (payload) => {
+                if (!this.enabled) return;
+                payload.nodes.forEach(n => this.observer.observe(n.el));
+            });
+        }
     }
 
     updateSettings(settings) {
@@ -66,31 +62,16 @@ export class ThumbnailColorManager {
         // This covers the first screen load.
         this.observeNewNodes(document.body);
 
-        // Step 2: ALWAYS run MutationObserver — this catches every card YouTube
-        // adds to the DOM after the initial load (SPA navigation, lazy loading).
-        // The old code used `else if`, which meant MutationObserver was NEVER
-        // started when sharedObserver was available — that's why lower rows missed colors.
-        this.mutationObserver.observe(document.body, { childList: true, subtree: true });
+        // EventBus listener (registered in constructor) will automatically handle dynamically-added cards.
 
-        // Step 3: Also register with sharedObserver if available (belt-and-suspenders).
-        if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.register(
-                'thumbnail-color-manager',
-                this.CARD_SELECTOR,
-                (elements) => {
-                    if (!this.enabled) return;
-                    elements.forEach(node => this.observer.observe(node));
-                },
-                false
-            );
-        }
+
 
         // Step 4: Periodic rescan for the first 15 seconds.
         // YouTube can inject cards at any time. This is the ultimate safety net.
         let rescanCount = 0;
-        this._rescanInterval = setInterval(() => {
+        this._rescanInterval = window.setInterval(() => {
             if (!this.enabled || rescanCount >= 15) {
-                clearInterval(this._rescanInterval);
+                window.clearInterval(this._rescanInterval);
                 this._rescanInterval = null;
                 return;
             }
@@ -107,18 +88,13 @@ export class ThumbnailColorManager {
     stop() {
         this.enabled = false;
         this.observer.disconnect();
-        this.mutationObserver.disconnect();
-
-        if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.unregister('thumbnail-color-manager');
-        }
 
         if (this._pollingInterval) {
-            clearInterval(this._pollingInterval);
+            window.clearInterval(this._pollingInterval);
             this._pollingInterval = null;
         }
         if (this._rescanInterval) {
-            clearInterval(this._rescanInterval);
+            window.clearInterval(this._rescanInterval);
             this._rescanInterval = null;
         }
 
@@ -330,9 +306,9 @@ export class ThumbnailColorManager {
 
     startPolling() {
         if (this._pollingInterval) return;
-        this._pollingInterval = setInterval(() => {
+        this._pollingInterval = window.setInterval(() => {
             if (this.waitingElements.size === 0) {
-                clearInterval(this._pollingInterval);
+                window.clearInterval(this._pollingInterval);
                 this._pollingInterval = null;
                 return;
             }

@@ -320,7 +320,7 @@ export class FocusMode extends window.YPP.features.BaseFeature {
         `;
 
         overlay.appendChild(modal);
-        document.body.appendChild(overlay);
+        this.injectElement(overlay);
         
         // Trigger entrance animation
         requestAnimationFrame(() => {

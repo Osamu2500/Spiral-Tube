@@ -194,7 +194,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             td.appendChild(customSpan);
         }
 
-        const video = td.closest('.html5-video-player')?.querySelector('video') || document.querySelector('video.html5-main-video');
+        const video = td.closest('.html5-video-player')?.querySelector('video') || window.YPP.DOMManager?.getVideo();
         if (!video) return;
 
         this._bindVideoListeners(video);

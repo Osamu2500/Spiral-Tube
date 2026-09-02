@@ -102,16 +102,12 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       this._attachCheckboxes();
     });
 
-    // ── sharedObserver: fires synchronously (via rAF) when new cards enter DOM ──
+    // ── dom:thumbnailsAdded: fires via EventBus when new cards enter DOM ──
     // Mirror HideWatched exactly: no timeout, process each node directly.
-    window.YPP.sharedObserver?.register(
-      'multi-select',
-      SELECTORS.CARD_ROOTS.join(', '),
-      (nodes) => {
-        if (!this.isEnabled) return;
-        nodes.forEach(card => this._processCard(card));
-      }
-    );
+    this.onBusEvent('dom:thumbnailsAdded', (payload) => {
+      if (!this.isEnabled) return;
+      payload.nodes.forEach(n => this._processCard(n.el));
+    });
 
     window.YPP.hotkeysManager?.register('multi-select', [
       { combo: 'Ctrl+Q', callback: () => this._toggleSelectionMode() },
@@ -123,7 +119,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     // Polling fallback — last-resort safety net for anything the events missed.
     // 8 s interval: sharedObserver + yt-page-data-updated cover the hot path.
     // Skip entirely when the tab is hidden (user can't see the feed anyway).
-    this._pollInterval = setInterval(() => {
+    this._pollInterval = this.setInterval(() => {
       if (document.hidden) return;
       this._attachCheckboxes();
     }, 8000);
@@ -154,7 +150,6 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     this._hydrationTimers.clear();
 
     window.YPP.hotkeysManager?.unregister('multi-select');
-    window.YPP.sharedObserver?.unregister('multi-select');
   }
 
   /** Called on SPA page navigation (also used by sharedObserver callback) */
@@ -271,7 +266,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     const maxWait = 3000;
     const interval = 100;
 
-    const timer = setInterval(() => {
+    const timer = this.setInterval(() => {
       elapsed += interval;
       if (!this.isEnabled || !card.isConnected || elapsed > maxWait) {
         clearInterval(timer);
@@ -823,7 +818,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       }
 
       const start = Date.now();
-      const tick = setInterval(() => {
+      const tick = this.setInterval(() => {
         const el = document.querySelector(SELECTOR);
         if (el && this._isElementVisible(el)) {
           clearInterval(tick);
@@ -901,7 +896,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       });
 
       // Fallback interval for edge cases where MutationObserver might miss something
-      const intervalId = setInterval(() => {
+      const intervalId = this.setInterval(() => {
         lastChecked = getChecked();
         if (isClosed()) done(lastChecked);
       }, 250);
@@ -1210,7 +1205,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
   _waitForNearestDropdown(menuBtn, timeout = 2500) {
     return new Promise((resolve) => {
       const start = Date.now();
-      const handle = setInterval(() => {
+      const handle = this.setInterval(() => {
         const popup = this._findNearestOpenPopup(menuBtn);
         if (popup) {
           clearInterval(handle);

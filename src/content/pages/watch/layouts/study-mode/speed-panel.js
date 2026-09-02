@@ -210,7 +210,7 @@ export class SpeedPanel {
         this.parent.config.speed = speed;
         this.parent.saveConfig();
         
-        const video = document.querySelector('video');
+        const video = window.YPP.DOMManager?.getVideo();
         if (video) {
             video.playbackRate = speed;
         }

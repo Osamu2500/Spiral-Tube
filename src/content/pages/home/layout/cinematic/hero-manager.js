@@ -3,7 +3,8 @@ export class HeroManager {
         this.controller = controller;
         this.heroElement = null;
         this.status = 'inactive';
-        this._previewChangeObserver = null;
+        this._hasSetupEvents = false;
+        this._unsubHeroChanged = null;
     }
 
     create() {
@@ -51,60 +52,53 @@ export class HeroManager {
     }
 
     _setupPreviewChangeObserver() {
-        if (this._previewChangeObserver) return;
+        if (this._hasSetupEvents) return;
+        this._hasSetupEvents = true;
 
         let _lastHoveredCard = null;
         let _debounceTimer = null;
 
-        this._previewChangeObserver = new MutationObserver((mutations) => {
-            const isPreviewMutation = mutations.some(m =>
-                m.target.tagName && m.target.tagName.toLowerCase() === 'ytd-video-preview'
-            );
-            if (!isPreviewMutation) return;
+        if (window.YPP && window.YPP.events) {
+            this._unsubHeroChanged = window.YPP.events.on('dom:heroChanged', () => {
+                clearTimeout(_debounceTimer);
+                _debounceTimer = setTimeout(() => {
+                    const hoveredVideo = document.querySelector('ytd-rich-item-renderer:hover');
 
-            clearTimeout(_debounceTimer);
-            _debounceTimer = setTimeout(() => {
-                const hoveredVideo = document.querySelector('ytd-rich-item-renderer:hover');
+                    if (hoveredVideo) {
+                        if (hoveredVideo === _lastHoveredCard) return;
+                        _lastHoveredCard = hoveredVideo;
 
-                if (hoveredVideo) {
-                    if (hoveredVideo === _lastHoveredCard) return;
-                    _lastHoveredCard = hoveredVideo;
+                        if (!hoveredVideo.classList.contains('netflix-active-preview')) {
+                            document.querySelectorAll('.netflix-active-preview').forEach(el => {
+                                el.classList.remove('netflix-active-preview');
+                                el._isNetflixHeroPreview = false;
+                            });
+                            hoveredVideo.classList.add('netflix-active-preview');
+                            hoveredVideo._isNetflixHeroPreview = true;
+                        }
 
-                    if (!hoveredVideo.classList.contains('netflix-active-preview')) {
-                        document.querySelectorAll('.netflix-active-preview').forEach(el => {
-                            el.classList.remove('netflix-active-preview');
-                            el._isNetflixHeroPreview = false;
-                        });
-                        hoveredVideo.classList.add('netflix-active-preview');
-                        hoveredVideo._isNetflixHeroPreview = true;
+                        this.updateContent(
+                            hoveredVideo,
+                            this.controller.state.isMuted,
+                            this.controller.isRecentlyAdded.bind(this.controller)
+                        );
+                    } else {
+                        _lastHoveredCard = null;
                     }
-
-                    this.updateContent(
-                        hoveredVideo,
-                        this.controller.state.isMuted,
-                        this.controller.isRecentlyAdded.bind(this.controller)
-                    );
-                } else {
-                    _lastHoveredCard = null;
-                }
-            }, 200);
-        });
-
-        this._previewChangeObserver.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['active', 'playing', 'hidden'],
-            subtree: true,
-        });
+                }, 200);
+            });
+        }
     }
 
     destroy() {
         if (this.status === 'inactive') return;
         this.status = 'destroying';
 
-        if (this._previewChangeObserver) {
-            this._previewChangeObserver.disconnect();
-            this._previewChangeObserver = null;
+        if (this._unsubHeroChanged) {
+            this._unsubHeroChanged();
+            this._unsubHeroChanged = null;
         }
+        this._hasSetupEvents = false;
 
         this.heroElement?.remove();
         this.uiElement?.remove();

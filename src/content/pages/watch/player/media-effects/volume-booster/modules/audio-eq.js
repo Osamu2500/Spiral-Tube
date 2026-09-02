@@ -8,7 +8,7 @@ export const AudioEQMixin = {
         if (this._proxyCmd('_setEQBand', [index, db])) return;
         if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video) this.initAudioContext(video);
         }
         if (this._eqNodes[index] && this.ctx) {

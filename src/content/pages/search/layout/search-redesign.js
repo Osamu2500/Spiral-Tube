@@ -197,20 +197,10 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
      * @private
      */
     _startCardStyleObserver() {
-        if (!this._isEnabled || this._cardStyleObserver) return;
-        
-        this._cardStyleObserver = new MutationObserver((mutations) => {
-            for (const mutation of mutations) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'data-ypp-card-style') {
-                    this._adaptCardStylesToGrid();
-                    break;
-                }
-            }
-        });
-
-        this._cardStyleObserver.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['data-ypp-card-style']
+        if (!this._isEnabled || this._cardStyleObserverAdded) return;
+        this._cardStyleObserverAdded = true;
+        this.onBusEvent('attr:cardStyleChanged', () => {
+            this._adaptCardStylesToGrid();
         });
         
         // Initial run
@@ -222,10 +212,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
      * @private
      */
     _stopCardStyleObserver() {
-        if (this._cardStyleObserver) {
-            this._cardStyleObserver.disconnect();
-            this._cardStyleObserver = null;
-        }
+        this._cardStyleObserverAdded = false;
         
         const styleTag = document.getElementById('ypp-search-grid-dynamic-compat');
         if (styleTag) styleTag.remove();

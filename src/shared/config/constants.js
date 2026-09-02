@@ -183,6 +183,15 @@ window.YPP.CONSTANTS = {
             TWO_COLUMN: 'ytd-browse[page-subtype="playlist"] ytd-two-column-browse-results-renderer',
             SECTION_LIST: 'ytd-browse[page-subtype="playlist"] #primary > ytd-section-list-renderer',
             ITEM_SECTION: 'ytd-browse[page-subtype="playlist"] ytd-item-section-renderer'
+        },
+
+        // Pages
+        PAGES: {
+            HOME: 'ytd-browse[page-subtype="home"]',
+            HOME_CONTENTS: 'ytd-browse[page-subtype="home"] #contents',
+            SUBSCRIPTIONS: 'ytd-browse[page-subtype="subscriptions"]',
+            SUBSCRIPTIONS_CONTENTS: 'ytd-browse[page-subtype="subscriptions"] #contents',
+            SEARCH_CONTENTS: 'ytd-search #contents'
         }
     },
 

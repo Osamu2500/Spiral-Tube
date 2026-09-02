@@ -57,16 +57,15 @@ export class CinematicController {
     }
 
     _setupDarkModePersistence() {
-        const darkObserver = new MutationObserver(() => {
-            if (!document.documentElement.hasAttribute('dark')) {
+        if (!window.YPP || !window.YPP.events) return;
+        const handleDark = (payload) => {
+            if (!payload.isDark) {
                 document.documentElement.setAttribute('dark', '');
             }
-        });
-        darkObserver.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['dark'],
-        });
-        this.observerManager.addObserver(darkObserver);
+        };
+        const unsub = window.YPP.events.on('attr:darkModeChanged', handleDark);
+        this.state.eventListeners = this.state.eventListeners || [];
+        this.state.eventListeners.push(unsub);
     }
 
     destroy() {
@@ -75,6 +74,11 @@ export class CinematicController {
         
         this.hero.destroy();
         this.observerManager.cleanupAll();
+        
+        if (this.state.eventListeners) {
+            this.state.eventListeners.forEach(unsub => unsub());
+            this.state.eventListeners = [];
+        }
         
         document.querySelectorAll('.netflix-active-preview').forEach(el => {
             el.classList.remove('netflix-active-preview');
@@ -208,9 +212,8 @@ export class CinematicController {
     setupPreviewWatcher() {
         if (this.state.previewWatcher) return;
         
-        if (window.YPP && window.YPP.sharedObserver) {
-            const watcherId = 'cinematic-preview-watcher';
-            window.YPP.sharedObserver.register(watcherId, 'ytd-video-preview:not(.ypp-projected-preview)', () => {
+        if (window.YPP && window.YPP.events) {
+            const handlePreviewMutation = () => {
                 const heroElement = document.querySelector('.netflix-hero');
                 if (!heroElement) return;
                 
@@ -247,53 +250,14 @@ export class CinematicController {
 
                     this.syncMuteState();
                 }
-            }, false);
-            
-            // Mock observer for cleanup compatibility
-            this.state.previewWatcher = { disconnect: () => window.YPP.sharedObserver.unregister(watcherId) };
-            this.observerManager.addObserver(this.state.previewWatcher);
-        } else {
-            const observer = new MutationObserver(() => {
-                const heroElement = document.querySelector('.netflix-hero');
-                if (!heroElement) return;
-                
-                let activePreview = document.querySelector(
-                    'ytd-rich-item-renderer.netflix-active-preview ytd-video-preview:not(.ypp-projected-preview)'
-                );
+            };
 
-                if (!activePreview && document.querySelector('.netflix-active-preview')) {
-                    const anyPreview = document.querySelector('ytd-video-preview:not(.ypp-projected-preview)');
-                    if (anyPreview) {
-                        activePreview = anyPreview;
-                    }
-                }
-                
-                if (activePreview) {
-                    activePreview._yppOwnerCard = activePreview.closest('ytd-rich-item-renderer') || document.querySelector('.netflix-active-preview');
-                    activePreview.classList.add('ypp-projected-preview');
-                    const gradient = heroElement.querySelector('.netflix-hero-gradient');
-                    if (gradient) {
-                        heroElement.insertBefore(activePreview, gradient);
-                    } else {
-                        heroElement.appendChild(activePreview);
-                    }
-                    
-                    if (!activePreview._yppLeaveBlocked) {
-                        const blockLeave = (e) => {
-                            e.stopPropagation();
-                            e.stopImmediatePropagation();
-                        };
-                        activePreview.addEventListener('mouseleave', blockLeave, true);
-                        activePreview.addEventListener('mouseout', blockLeave, true);
-                        activePreview._yppLeaveBlocked = true;
-                    }
-
-                    this.syncMuteState();
-                }
-            });
+            const unsubPreview = window.YPP.events.on('dom:heroChanged', handlePreviewMutation);
+            const unsubFound = window.YPP.events.on('dom:found:_internal_video_previews', handlePreviewMutation);
             
-            this.state.previewWatcher = this.observerManager.addObserver(observer);
-            observer.observe(document.documentElement, { childList: true, subtree: true });
+            this.state.eventListeners = this.state.eventListeners || [];
+            this.state.eventListeners.push(unsubPreview, unsubFound);
+            this.state.previewWatcher = true;
         }
     }
 
@@ -593,9 +557,6 @@ export class CinematicController {
     }
 
     setupContentObserver() {
-        const grid = document.querySelector('ytd-rich-grid-renderer') || document.querySelector('#contents');
-        if (!grid) return;
-
         const chipBar = document.querySelector('ytd-feed-filter-chip-bar-renderer');
         if (chipBar && !chipBar._topicSwitchListenerAttached) {
             chipBar._topicSwitchListenerAttached = true;
@@ -605,21 +566,20 @@ export class CinematicController {
             });
         }
 
-        let debounceTimer;
-        const observer = new MutationObserver(() => {
-            this.observerManager.clearTimeout(debounceTimer);
-            debounceTimer = this.observerManager.addTimeout(setTimeout(() => {
-                this.updateVideoQueue();
-            }, 300));
-        });
-        
-        this.observerManager.addObserver(observer);
-        observer.observe(grid, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['data-ypp-mix', 'class', 'hidden', 'style']
-        });
+        if (window.YPP && window.YPP.events) {
+            let debounceTimer;
+            const handler = () => {
+                this.observerManager.clearTimeout(debounceTimer);
+                debounceTimer = this.observerManager.addTimeout(setTimeout(() => {
+                    this.updateVideoQueue();
+                }, 300));
+            };
+            const unsubThumb = window.YPP.events.on('dom:thumbnailsAdded', handler);
+            const unsubGrid = window.YPP.events.on('dom:gridMounted', handler);
+            
+            this.state.eventListeners = this.state.eventListeners || [];
+            this.state.eventListeners.push(unsubThumb, unsubGrid);
+        }
     }
 
     setupPeriodicCheck() {
@@ -692,22 +652,25 @@ export class CinematicController {
             const existing = document.querySelector(selector);
             if (existing) return resolve(existing);
 
-            if (window.YPP && window.YPP.sharedObserver) {
-                const observerId = 'cinematic-wait-' + Date.now() + Math.random();
-                window.YPP.sharedObserver.register(observerId, selector, (elements) => {
-                    window.YPP.sharedObserver.unregister(observerId);
-                    resolve(elements[0]);
-                }, true); // immediate = true
-            } else {
-                const observer = new MutationObserver(() => {
-                    const found = document.querySelector(selector);
-                    if (found) {
-                        observer.disconnect();
-                        resolve(found);
+            if (selector === 'ytd-rich-item-renderer' && window.YPP && window.YPP.events) {
+                const unsub = window.YPP.events.on('dom:thumbnailsAdded', () => {
+                    const el = document.querySelector(selector);
+                    if (el) {
+                        unsub();
+                        resolve(el);
                     }
                 });
-                observer.observe(document.documentElement, { childList: true, subtree: true });
+                return;
             }
+
+            const observer = new MutationObserver(() => {
+                const found = document.querySelector(selector);
+                if (found) {
+                    observer.disconnect();
+                    resolve(found);
+                }
+            });
+            observer.observe(document.documentElement, { childList: true, subtree: true });
         });
     }
 }

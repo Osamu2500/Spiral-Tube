@@ -169,7 +169,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         this._applyComputedFilter(video);
         
         let attempts = 0;
-        const interval = setInterval(() => {
+        const interval = this.setInterval(() => {
             attempts++;
             if (attempts > 6 || !video.isConnected) {
                 clearInterval(interval);
@@ -257,33 +257,29 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
     _ensureVideoState(video) {
         if (!video) return;
         
-        if (!this._videoObservers) {
-            this._videoObservers = new WeakMap();
+        // Ensure DOMObserver is tracking this video
+        if (window.YPP.sharedObserver && window.YPP.sharedObserver.observeVideoAttributes) {
+            window.YPP.sharedObserver.observeVideoAttributes(video);
         }
         
-        // Bug 2D fix: do NOT disconnect and recreate on every filter apply
-        // Only set up the observer once per video element
-        if (this._videoObservers.has(video)) return;
+        if (this._hasVideoAttrListener) return;
+        this._hasVideoAttrListener = true;
         
-        const observer = new MutationObserver((mutations) => {
+        this.onBusEvent('attr:videoStyleReset', (payload) => {
+            const affectedVideo = payload.videoNode;
             if (this.currentFilterIndex === 0 && !this._hasAdjustments()) return;
             
             let needsReapply = false;
-            for (const m of mutations) {
-                if (m.type === 'attributes') {
-                    if (m.attributeName === 'class' && !video.classList.contains('ypp-cinema-active')) {
-                        needsReapply = true;
-                    }
-                    if (m.attributeName === 'style') {
-                        const currentFilter = video.style.getPropertyValue('filter');
-                        const targetFilter = video.style.getPropertyValue('--ypp-video-filter');
-                        
-                        if (!targetFilter || !currentFilter || currentFilter === 'none' || currentFilter === 'initial' || currentFilter === 'unset') {
-                            needsReapply = true;
-                        }
-                    }
-                }
+            if (!affectedVideo.classList.contains('ypp-cinema-active')) {
+                needsReapply = true;
             }
+            const currentFilter = affectedVideo.style.getPropertyValue('filter');
+            const targetFilter = affectedVideo.style.getPropertyValue('--ypp-video-filter');
+            
+            if (!targetFilter || !currentFilter || currentFilter === 'none' || currentFilter === 'initial' || currentFilter === 'unset') {
+                needsReapply = true;
+            }
+            
             if (needsReapply) {
                 VideoFiltersUI?._injectStyles?.();
                 
@@ -299,21 +295,18 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 if (adj.bloom > 0) finalFilter += ` url("${docUrl}#ypp-svg-bloom")`;
                 if (adj.vhs > 0) finalFilter += ` url("${docUrl}#ypp-svg-vhs")`;
                 
-                this._applyFilterStyles(video, finalFilter);
+                this._applyFilterStyles(affectedVideo, finalFilter);
 
                 if (adj.letterbox > 0) {
                     const lb = adj.letterbox * 0.3;
-                    video.style.setProperty('clip-path', `inset(${lb}% 0 ${lb}% 0)`, 'important');
-                    video.style.setProperty('--ypp-video-clip', `inset(${lb}% 0 ${lb}% 0)`);
+                    affectedVideo.style.setProperty('clip-path', `inset(${lb}% 0 ${lb}% 0)`, 'important');
+                    affectedVideo.style.setProperty('--ypp-video-clip', `inset(${lb}% 0 ${lb}% 0)`);
                 } else {
-                    video.style.removeProperty('clip-path');
-                    video.style.removeProperty('--ypp-video-clip');
+                    affectedVideo.style.removeProperty('clip-path');
+                    affectedVideo.style.removeProperty('--ypp-video-clip');
                 }
             }
         });
-        
-        observer.observe(video, { attributes: true, attributeFilter: ['class', 'style'] });
-        this._videoObservers.set(video, observer);
     }
 
     _hasAdjustments() {
@@ -328,14 +321,6 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
     }
 
     _clearVideoFilters(video) {
-        if (this._videoObservers && this._videoObservers.has(video)) {
-            this._videoObservers.get(video).disconnect();
-            this._videoObservers.delete(video);
-        }
-        if (this._videoObserver) {
-            this._videoObserver.disconnect();
-            this._videoObserver = null;
-        }
         video.classList.remove('ypp-cinema-active');
         video.style.removeProperty('--ypp-video-filter');
         video.style.setProperty('filter', 'none', 'important'); // Fallback clear

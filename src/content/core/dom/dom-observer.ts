@@ -13,6 +13,22 @@ window.YPP = window.YPP || {};
 window.YPP.core = window.YPP.core || {};
 
 window.YPP.core.DOMObserver = class DOMObserver {
+    registry: Map<any, any>;
+    observer: MutationObserver;
+    isRunning: boolean;
+    events: any;
+    _pendingNodes: Element[];
+    _maxPendingNodes: number;
+    _rafPending: boolean;
+    _hasMutatedListeners: boolean;
+    _cachedSelector: string[] | null;
+    _selectorIndex: Map<string, string[]> | null;
+    _lazyObserver: IntersectionObserver;
+    _lazyMap: WeakMap<any, any>;
+    _rootAttrObserver: MutationObserver | null;
+    _videoAttrObserver: MutationObserver | null;
+    _observedVideos: WeakSet<Element>;
+
     constructor() {
         this.registry = new Map();
         this.observer = new MutationObserver(this._onMutations.bind(this));
@@ -37,6 +53,15 @@ window.YPP.core.DOMObserver = class DOMObserver {
         // --- Lazy Loading state ---
         this._lazyObserver = new IntersectionObserver(this._onIntersect.bind(this), { rootMargin: '400px 0px', threshold: 0 });
         this._lazyMap = new WeakMap(); // Map<Element, Array<{id, callback}>>
+        
+        // --- Attribute Watcher state ---
+        this._rootAttrObserver = null;
+        this._videoAttrObserver = null;
+        this._observedVideos = new WeakSet();
+        
+        // --- Preview Attribute Watcher state ---
+        this._previewAttrObserver = null;
+        this._observedPreviews = new WeakSet();
     }
 
     /**
@@ -48,7 +73,72 @@ window.YPP.core.DOMObserver = class DOMObserver {
             childList: true,
             subtree: true
         });
+        
+        // Dedicated observer for root attributes to avoid subtree performance penalty
+        this._rootAttrObserver = new MutationObserver(this._onRootAttributes.bind(this));
+        this._rootAttrObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['dark', 'data-ypp-card-style']
+        });
+        
+        // Dedicated observer for video elements
+        this._videoAttrObserver = new MutationObserver(this._onVideoAttributes.bind(this));
+        
+        // Dedicated observer for video previews
+        this._previewAttrObserver = new MutationObserver(this._onPreviewAttributes.bind(this));
+        
+        this._setupCentralWatchers();
+        
         this.isRunning = true;
+    }
+
+    /**
+     * Set up common taxonomy observers directly on EventBus
+     */
+    _setupCentralWatchers() {
+        if (this.registry.has('_internal_thumbnails')) return;
+
+        const THUMBNAIL_SELECTOR = [
+            'ytd-rich-item-renderer',
+            'ytd-video-renderer',
+            'ytd-grid-video-renderer',
+            'ytd-compact-video-renderer',
+            'yt-lockup-view-model',
+            '.ypp-grid-item'
+        ].join(', ');
+        
+        this.register('_internal_thumbnails', THUMBNAIL_SELECTOR, (nodes) => {
+            if (!this.events) return;
+            const mappedNodes = nodes.map(el => {
+                let cardType = 'unknown';
+                const tagName = el.tagName;
+                if (tagName === 'YTD-RICH-ITEM-RENDERER') cardType = 'rich-grid';
+                else if (tagName === 'YTD-VIDEO-RENDERER') cardType = 'list-video';
+                else if (tagName === 'YTD-GRID-VIDEO-RENDERER') cardType = 'grid-video';
+                else if (tagName === 'YTD-COMPACT-VIDEO-RENDERER') cardType = 'compact';
+                else if (tagName === 'YT-LOCKUP-VIEW-MODEL') cardType = 'lockup';
+                else if (el.classList && el.classList.contains('ypp-grid-item')) cardType = 'ypp-grid';
+                return { el, cardType };
+            });
+            this.events.emit('dom:thumbnailsAdded', { nodes: mappedNodes });
+        }, true, false);
+
+        this.register('_internal_player', 'video', (nodes) => {
+            if (!this.events) return;
+            const mappedNodes = nodes.map(el => ({ el }));
+            this.events.emit('dom:playerConstructed', { nodes: mappedNodes });
+            nodes.forEach(video => this.observeVideoAttributes(video));
+        }, true, false);
+
+        this.register('_internal_video_previews', 'ytd-video-preview', (nodes) => {
+            nodes.forEach(preview => this.observeVideoPreviewAttributes(preview));
+        }, true, false);
+
+        this.register('_internal_grid', 'ytd-rich-grid-renderer, #contents', (nodes) => {
+            if (!this.events) return;
+            const mappedNodes = nodes.map(el => ({ el }));
+            this.events.emit('dom:gridMounted', { nodes: mappedNodes });
+        }, true, false);
     }
 
     /**
@@ -58,6 +148,9 @@ window.YPP.core.DOMObserver = class DOMObserver {
         if (!this.isRunning) return;
         this.observer.disconnect();
         if (this._lazyObserver) this._lazyObserver.disconnect();
+        if (this._rootAttrObserver) this._rootAttrObserver.disconnect();
+        if (this._videoAttrObserver) this._videoAttrObserver.disconnect();
+        if (this._previewAttrObserver) this._previewAttrObserver.disconnect();
         this._pendingNodes = [];
         this._rafPending = false;
         this.isRunning = false;
@@ -73,7 +166,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
      * @param {boolean} [immediate=true] - Run immediately on existing elements
      * @param {boolean} [lazy=false] - Only fire callback when element enters the viewport
      */
-    register(id, selector, callback, immediate = true, lazy = false) {
+    register(id: string, selector: string, callback?: Function, immediate = true, lazy = false) {
         if (!id || !selector) return;
 
         this.registry.set(id, { selector, callback, lazy });
@@ -108,7 +201,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
         }
     }
 
-    _observeLazy(elements, id, callback) {
+    _observeLazy(elements: Element[], id: string, callback?: Function) {
         for (let i = 0; i < elements.length; i++) {
             const el = elements[i];
             if (!this._lazyMap.has(el)) {
@@ -123,7 +216,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
         }
     }
 
-    _onIntersect(entries) {
+    _onIntersect(entries: IntersectionObserverEntry[]) {
         const triggered = new Map(); // listenerId -> { callback, nodes }
         for (let i = 0; i < entries.length; i++) {
             const entry = entries[i];
@@ -164,7 +257,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
      * Unregister a selector
      * @param {string} id
      */
-    unregister(id) {
+    unregister(id: string) {
         if (this.registry.has(id)) {
             this.registry.delete(id);
             this._cachedSelector = null; // Invalidate cache
@@ -183,7 +276,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
      *
      * @param {MutationRecord[]} mutations
      */
-    _onMutations(mutations) {
+    _onMutations(mutations: MutationRecord[]) {
         // Conditionally emit raw mutation event (only when subscribed to)
         if (this.events && this._hasMutatedListeners) {
             this.events.emit('dom:mutated', mutations);
@@ -235,7 +328,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
             let currentLength = 0;
 
             for (const selector of uniqueSelectors) {
-                if (currentLength + selector.length + 1 > 4000) {
+                if (currentLength + selector.length + 1 > 1000) {
                     selectorChunks.push(currentChunk.join(','));
                     currentChunk = [selector];
                     currentLength = selector.length;
@@ -265,10 +358,11 @@ window.YPP.core.DOMObserver = class DOMObserver {
         // MutationObserver.addedNodes already yields root elements of an inserted subtree,
         // so we don't need expensive manual filtering for descendants.
         const rootNodes = new Set();
+        const IGNORED_TAGS = new Set(['SCRIPT', 'STYLE', 'LINK', 'META', 'NOSCRIPT', 'SVG', 'PATH', 'G', 'DEFS', 'USE', 'BR', 'WBR']);
         
         for (let i = 0; i < nodesToProcess.length; i++) {
             const node = nodesToProcess[i];
-            if (node.isConnected) {
+            if (node.isConnected && !IGNORED_TAGS.has(node.nodeName)) {
                 rootNodes.add(node);
             }
         }
@@ -348,8 +442,94 @@ window.YPP.core.DOMObserver = class DOMObserver {
      * Avoids checking listener count on every single mutation.
      * @param {boolean} hasListeners
      */
-    setHasMutatedListeners(hasListeners) {
+    setHasMutatedListeners(hasListeners: boolean) {
         this._hasMutatedListeners = hasListeners;
+    }
+
+    // =========================================================================
+    // ATTRIBUTE WATCHERS (Batch 3 Migration)
+    // =========================================================================
+
+    _onRootAttributes(mutations: MutationRecord[]) {
+        if (!this.events) return;
+        
+        let darkChanged = false;
+        let cardStyleChanged = false;
+        
+        for (let i = 0; i < mutations.length; i++) {
+            if (mutations[i].attributeName === 'dark') darkChanged = true;
+            if (mutations[i].attributeName === 'data-ypp-card-style') cardStyleChanged = true;
+        }
+        
+        if (darkChanged) {
+            this.events.emit('attr:darkModeChanged', { 
+                isDark: document.documentElement.hasAttribute('dark') 
+            });
+        }
+        
+        if (cardStyleChanged) {
+            this.events.emit('attr:cardStyleChanged', { 
+                newStyle: document.documentElement.getAttribute('data-ypp-card-style') || 'default' 
+            });
+        }
+    }
+
+    _onVideoAttributes(mutations: MutationRecord[]) {
+        if (!this.events) return;
+        
+        let styleChanged = false;
+        let srcChanged = false;
+        let changedNode = null;
+        
+        for (let i = 0; i < mutations.length; i++) {
+            const attr = mutations[i].attributeName;
+            if (attr === 'class' || attr === 'style') styleChanged = true;
+            if (attr === 'src' || attr === 'currentsrc') srcChanged = true;
+            changedNode = mutations[i].target as Element;
+        }
+        
+        if (!changedNode) return;
+        
+        if (styleChanged) {
+            this.events.emit('attr:videoStyleReset', {
+                videoNode: changedNode,
+                currentStyle: changedNode.getAttribute('style') || '',
+                currentClass: changedNode.getAttribute('class') || ''
+            });
+        }
+        
+        if (srcChanged) {
+            this.events.emit('attr:videoSrcChanged', {
+                videoNode: changedNode,
+                src: changedNode.getAttribute('src') || changedNode.getAttribute('currentsrc') || ''
+            });
+        }
+    }
+
+    /**
+     * Called by features or when a video element is found to track its attributes
+     */
+    observeVideoAttributes(videoNode: Element) {
+        if (!videoNode || this._observedVideos.has(videoNode) || !this._videoAttrObserver) return;
+        this._observedVideos.add(videoNode);
+        this._videoAttrObserver.observe(videoNode, {
+            attributes: true,
+            attributeFilter: ['class', 'style', 'src', 'currentsrc']
+        });
+    }
+
+    _onPreviewAttributes(mutations: MutationRecord[]) {
+        if (!this.events) return;
+        this.events.emit('dom:heroChanged', {});
+    }
+
+    observeVideoPreviewAttributes(previewNode: Element) {
+        if (!previewNode || this._observedPreviews.has(previewNode) || !this._previewAttrObserver) return;
+        this._observedPreviews.add(previewNode);
+        this._previewAttrObserver.observe(previewNode, {
+            attributes: true,
+            attributeFilter: ['active', 'playing', 'hidden']
+        });
     }
 };
 // NOTE: window.YPP.sharedObserver is created by main.js in initFeatureManager().

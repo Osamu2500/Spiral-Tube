@@ -281,7 +281,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         
         const fadeStep = this.originalVolume / 10; // Fade in 10 steps
         
-        this.fadeInterval = setInterval(() => {
+        this.fadeInterval = this.setInterval(() => {
             if (this.video.volume - fadeStep > 0) {
                 this.video.volume -= fadeStep;
             } else {
@@ -300,7 +300,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         const targetVolume = this.originalVolume;
         const fadeStep = targetVolume / 10;
         
-        this.fadeInterval = setInterval(() => {
+        this.fadeInterval = this.setInterval(() => {
             if (this.video.volume + fadeStep < targetVolume) {
                 this.video.volume += fadeStep;
             } else {

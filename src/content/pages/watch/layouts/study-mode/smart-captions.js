@@ -16,7 +16,7 @@ export class SmartCaptions {
                 if (!captionContainer) return;
                 
                 const text = captionContainer.textContent.trim();
-                const video = document.querySelector('video');
+                const video = window.YPP.DOMManager?.getVideo();
                 if (!video) return;
 
                 const now = Date.now();

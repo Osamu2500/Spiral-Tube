@@ -12,6 +12,8 @@ export class PlayerBarUI {
         this._stylesHash = null;
         this._retryTimer = null;
         this.overflowManager = null;
+        this._unsubPlayerConstructed = null;
+        this._unsubVideoSrc = null;
         this.setupInjectionObserver();
     }
 
@@ -74,7 +76,7 @@ export class PlayerBarUI {
 
     _startHeartbeat() {
         if (this._heartbeatTimer) return;
-        this._heartbeatTimer = setInterval(() => {
+        this._heartbeatTimer = this.setInterval(() => {
             if (!this.isActive || document.hidden) return;
             const isShorts = window.location.pathname.startsWith('/shorts');
             const selector = isShorts ? 'ytd-reel-video-renderer[is-active] .ypp-player-controls' : '.ypp-player-controls';
@@ -159,22 +161,15 @@ export class PlayerBarUI {
     }
 
     setupInjectionObserver() {
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('player-bar-injection', window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR, () => {
+        if (window.YPP && window.YPP.events) {
+            this._unsubPlayerConstructed = window.YPP.events.on('dom:playerConstructed', () => {
                 this._scheduleRetry();
-            }, true);
-            
-            window.YPP.sharedObserver.register('player-bar-injection-vid', window.YPP.CONSTANTS.SELECTORS.VIDEO[0], () => {
                 this.attemptInjection();
-            }, true);
+            });
 
-            window.YPP.sharedObserver.register('player-bar-injection-shorts', 'ytd-reel-video-renderer[is-active]', () => {
+            this._unsubVideoSrc = window.YPP.events.on('attr:videoSrcChanged', () => {
                 this.attemptInjection();
-            }, true);
-
-            window.YPP.sharedObserver.register('player-bar-injection-right', '.ytp-right-controls, .ytp-chrome-controls', () => {
-                this.attemptInjection();
-            }, true);
+            });
         }
     }
 
@@ -372,11 +367,14 @@ export class PlayerBarUI {
             this.overflowManager = null;
         }
         
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.unregister('player-bar-injection');
-            window.YPP.sharedObserver.unregister('player-bar-injection-vid');
-            window.YPP.sharedObserver.unregister('player-bar-injection-shorts');
-            window.YPP.sharedObserver.unregister('player-bar-injection-right');
+        if (this._unsubPlayerConstructed) {
+            this._unsubPlayerConstructed();
+            this._unsubPlayerConstructed = null;
+        }
+        
+        if (this._unsubVideoSrc) {
+            this._unsubVideoSrc();
+            this._unsubVideoSrc = null;
         }
         
         if (this._localObserver) {

@@ -45,7 +45,7 @@
     });
     
     // Observe the app root or document body
-    const root = document.querySelector('ytd-app') || document.body;
+    const root = window.YPP.DOMManager?.getAppRoot() || document.body;
     if (root) {
         observer.observe(root, { childList: true, subtree: true });
     }

@@ -126,7 +126,7 @@ export class NotePanel {
             this.notesPanel.style.right = '24px';
             this.notesPanel.style.width = '340px';
             this.notesPanel.style.zIndex = '5000';
-            document.body.appendChild(this.notesPanel);
+            this.parent.injectElement(this.notesPanel);
         }
 
         this.loadNotes();
@@ -158,7 +158,7 @@ export class NotePanel {
         const videoId = new URLSearchParams(window.location.search).get('v');
         if (!videoId) return;
 
-        const video = document.querySelector('video');
+        const video = window.YPP.DOMManager?.getVideo();
         const timestamp = video ? Math.floor(video.currentTime) : 0;
 
         const note = {
@@ -195,7 +195,7 @@ export class NotePanel {
         timeBtn.onmouseover = () => timeBtn.style.background = 'rgba(62,166,255,0.2)';
         timeBtn.onmouseout = () => timeBtn.style.background = 'rgba(62,166,255,0.1)';
         timeBtn.onclick = () => {
-            const video = document.querySelector('video');
+            const video = window.YPP.DOMManager?.getVideo();
             if (video) video.currentTime = note.timestamp;
         };
 

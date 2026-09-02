@@ -514,9 +514,9 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         };
         
         updateText();
-        document.body.appendChild(panel);
+        this.injectElement(panel);
         
-        const interval = setInterval(() => {
+        const interval = this.setInterval(() => {
             seconds--;
             if (seconds <= 0) {
                 clearInterval(interval);
@@ -559,7 +559,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                 <div style="color: #aaa; text-align: center;">Loading bookmarks...</div>
             </div>
         `;
-        document.body.appendChild(modal);
+        this.injectElement(modal);
 
         modal.querySelector('#ypp-bm-close').onclick = () => modal.remove();
 

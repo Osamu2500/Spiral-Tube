@@ -150,7 +150,7 @@ export const AudioSpatialMixin = {
         if (this._proxyCmd('setBalance', value)) return;
         if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video) this.initAudioContext(video);
         }
         if (this.pannerNode && this.ctx) {

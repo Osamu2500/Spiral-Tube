@@ -30,6 +30,9 @@ window.YPP.features.BaseFeature = class BaseFeature {
         this.eventListeners = [];
         this.busListeners = [];
         this.observerIds = [];
+        this.intervalIds = [];
+        this.timeoutIds = [];
+        this.injectedElements = [];
         this.settingWatchers = new Map();
 
         // Lazy getters: resolve at call-time so construction doesn't race against
@@ -170,9 +173,22 @@ window.YPP.features.BaseFeature = class BaseFeature {
     }
 
     /**
-     * Remove all tracked event listeners
+     * Remove all tracked event listeners, intervals, and nodes
      */
     cleanupEvents() {
+        // Timers
+        this.intervalIds.forEach(id => clearInterval(id));
+        this.intervalIds = [];
+        
+        this.timeoutIds.forEach(id => clearTimeout(id));
+        this.timeoutIds = [];
+
+        // Elements
+        this.injectedElements.forEach(el => {
+            try { if (el && el.parentNode) el.parentNode.removeChild(el); } catch (e) {}
+        });
+        this.injectedElements = [];
+
         // Standard DOM event listeners
         this.eventListeners.forEach(({ target, event, handler, options }) => {
             try {
@@ -243,6 +259,61 @@ window.YPP.features.BaseFeature = class BaseFeature {
         const scopedId = `${this.name}_${id}`;
         this.observer.unregister(scopedId);
         this.observerIds = this.observerIds.filter(i => i !== scopedId);
+    }
+
+    /**
+     * Safely start an interval bound to this feature's lifecycle
+     */
+    setInterval(handler, timeout) {
+        const id = setInterval(handler, timeout);
+        this.intervalIds.push(id);
+        return id;
+    }
+
+    /**
+     * Clear a safely started interval
+     */
+    clearInterval(id) {
+        clearInterval(id);
+        this.intervalIds = this.intervalIds.filter(i => i !== id);
+    }
+
+    /**
+     * Safely start a timeout bound to this feature's lifecycle
+     */
+    setTimeout(handler, timeout) {
+        const id = setTimeout(handler, timeout);
+        this.timeoutIds.push(id);
+        return id;
+    }
+
+    /**
+     * Clear a safely started timeout
+     */
+    clearTimeout(id) {
+        clearTimeout(id);
+        this.timeoutIds = this.timeoutIds.filter(i => i !== id);
+    }
+
+    /**
+     * Safely append an element to the DOM, bound to feature's lifecycle
+     */
+    injectElement(element, parent = document.body) {
+        if (!element || !parent) return;
+        parent.appendChild(element);
+        this.injectedElements.push(element);
+        return element;
+    }
+
+    /**
+     * Safely inject a stylesheet, bound to feature's lifecycle
+     */
+    injectStyle(cssString) {
+        const style = document.createElement('style');
+        style.textContent = cssString;
+        document.head.appendChild(style);
+        this.injectedElements.push(style);
+        return style;
     }
 
     /**

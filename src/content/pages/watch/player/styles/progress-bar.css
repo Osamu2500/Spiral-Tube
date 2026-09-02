@@ -28,19 +28,19 @@ yt-page-navigation-progress,
 
 /* Override YouTube's solid red progress bar to the custom accent gradient */
 html.yt-spiral-tube-theme .ytp-swatch-background-color {
-  background: var(--ypp-accent-gradient, var(--ypp-accent-primary, #ff0000)) !important;
-  box-shadow: 0 0 12px var(--ypp-accent-glow, transparent) !important;
+  background: #ff0000 !important;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6) !important;
 }
 
 /* Player Controls & Progress Bar (Neon effect) */
 html.yt-spiral-tube-theme .ytp-play-progress {
-    background: var(--ypp-accent-primary, #6366f1) !important;
-    box-shadow: 0 0 12px color-mix(in srgb, var(--ypp-accent-primary, #6366f1) 60%, transparent) !important;
+    background: #ff0000 !important;
+    box-shadow: 0 0 12px color-mix(in srgb, #ff0000 60%, transparent) !important;
 }
 html.yt-spiral-tube-theme .ytp-scrubber-button {
     background: #fff !important;
-    border: 3px solid var(--ypp-accent-primary, #6366f1) !important;
-    box-shadow: 0 0 16px var(--ypp-accent-primary, #6366f1) !important;
+    border: 3px solid #ff0000 !important;
+    box-shadow: 0 0 16px #ff0000 !important;
     transition: transform 0.15s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
 }
 html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
@@ -49,7 +49,7 @@ html.yt-spiral-tube-theme .ytp-scrubber-button:hover {
 
 /* Scrubber Button (Playhead indicator) Overrides */
 html.yt-spiral-tube-theme .ytp-scrubber-button {
-  background: var(--ypp-accent-primary, #ff0000) !important;
+  background: #ff0000 !important;
   border-color: rgba(255, 255, 255, 0.8) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.2) inset !important;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
@@ -63,12 +63,12 @@ body.ypp-dual-accent-enabled .ytp-play-progress,
 body.ypp-dual-accent-enabled .ytp-swatch-background-color,
 body.ypp-dual-accent-enabled tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button,
 body.ypp-dual-accent-enabled #progress.ytd-thumbnail-overlay-resume-playback-renderer {
-    background: var(--ypp-accent-gradient) !important;
+    background: #ff0000 !important;
     background-color: transparent !important;
 }
 
 body.ypp-dual-accent-enabled .ytp-scrubber-button {
-    background: var(--ypp-accent-gradient) !important;
+    background: #ff0000 !important;
     border-color: transparent !important;
 }
 

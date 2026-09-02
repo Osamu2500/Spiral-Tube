@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 // Basic mock to allow settings-schema to load in Node
 global.window = { YPP: {} };
-await import('../src/content/config/settings-schema.js');
+await import('../src/shared/config/settings-schema.js');
 
 describe('Settings Schema Validation', () => {
     let schema;
@@ -14,7 +14,7 @@ describe('Settings Schema Validation', () => {
     it('should fill missing keys with defaults', () => {
         const raw = {};
         const result = schema.validateAndMerge(raw);
-        expect(result.schemaVersion).toBe(1);
+        expect(result.schemaVersion).toBe(2);
         expect(result.premiumTheme).toBe(true);
         expect(result.activeTheme).toBe('default');
     });
@@ -28,9 +28,9 @@ describe('Settings Schema Validation', () => {
     });
 
     it('should reset wrong types to default', () => {
-        const raw = { premiumTheme: 'yes', hideShorts: 1 };
+        const raw = { premiumTheme: 'yes', hideMixes: 1 };
         const result = schema.validateAndMerge(raw);
         expect(result.premiumTheme).toBe(true); // default
-        expect(result.hideShorts).toBe(false); // default
+        expect(result.hideMixes).toBe(false); // default
     });
 });

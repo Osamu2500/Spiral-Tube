@@ -173,19 +173,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             this._loadedMetadataHandler = null;
         }
 
-        if (this._observer) {
-            this._observer.disconnect();
-            this._observer = null;
-        }
-        
-        if (this._videoWatcherId && window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.unobserve(this._videoWatcherId);
-            this._videoWatcherId = null;
-        }
-        if (this._videoObservers) {
-            this._videoObservers.forEach(mo => mo.disconnect());
-            this._videoObservers = [];
-        }
+        // No manual cleanup needed for EventBus listeners; BaseFeature handles it.
 
         this._removePanel();
         if (this._domainBtn) {
@@ -668,58 +656,15 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
      * Bug 3 fix: Store loadedmetadata handler ref so disable() can remove it.
      */
     _setupVideoSourceMonitoring() {
-        if (this._observer) this._observer.disconnect();
-        this._observer = null;
-
-        const videoSelector = window.YPP?.CONSTANTS?.SELECTORS?.VIDEO?.[0] || 'video';
-        
-        if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.register(
-                'domain-memory-watcher',
-                videoSelector,
-                (elements) => {
-                    elements.forEach(video => {
-                        this._attachLocalVideoObserver(video);
-                        this.restoreProfile(video, true);
-                    });
-                }
-            );
-            this._videoWatcherId = 'domain-memory-watcher';
-        } else {
-            // Fallback just in case, though sharedObserver should always be present
-            this._observer = new MutationObserver((mutations) => {
-                let videoChanged = false;
-                for (const m of mutations) {
-                    if (m.type === 'attributes' && (m.attributeName === 'src' || m.attributeName === 'currentsrc')) {
-                        if (m.target && m.target.tagName === 'VIDEO') {
-                            videoChanged = true;
-                            break;
-                        }
-                    }
-                    if (m.addedNodes?.length) {
-                        for (const node of m.addedNodes) {
-                            if (node.tagName === 'VIDEO' || node.querySelector?.('video')) {
-                                videoChanged = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (videoChanged) {
-                    const video = this._getVideo();
-                    if (video) {
-                        this.restoreProfile(video, true);
-                    }
-                }
+        this.onBusEvent('dom:playerConstructed', (payload) => {
+            payload.nodes.forEach(n => {
+                this.restoreProfile(n.el, true);
             });
+        });
 
-            this._observer.observe(document.body, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['src', 'currentsrc']
-            });
-        }
+        this.onBusEvent('attr:videoSrcChanged', (payload) => {
+            this.restoreProfile(payload.videoNode, true);
+        });
 
         // Bug 3 fix: store handler reference so it can be removed in disable()
         this._loadedMetadataHandler = (e) => {
@@ -731,25 +676,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         
         // Initial attach
         const existingVideo = this._getVideo();
-        if (existingVideo) this._attachLocalVideoObserver(existingVideo);
-    }
-    
-    _attachLocalVideoObserver(video) {
-        if (!video || video._yppDomainMemoryObserved) return;
-        video._yppDomainMemoryObserved = true;
-        
-        const mo = new MutationObserver((mutations) => {
-            for (const m of mutations) {
-                if (m.type === 'attributes' && (m.attributeName === 'src' || m.attributeName === 'currentsrc')) {
-                    this.restoreProfile(video, true);
-                    break;
-                }
-            }
-        });
-        mo.observe(video, { attributes: true, attributeFilter: ['src', 'currentsrc'] });
-        
-        this._videoObservers = this._videoObservers || [];
-        this._videoObservers.push(mo);
+        if (existingVideo) {
+            this.restoreProfile(existingVideo, true);
+        }
     }
 
     /**

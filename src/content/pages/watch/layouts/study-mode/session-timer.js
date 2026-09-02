@@ -12,12 +12,12 @@ export class SessionTimer {
         }
         
         if (this.sessionTimer) {
-            clearInterval(this.sessionTimer);
+            this.parent.clearInterval(this.sessionTimer);
         }
         
-        this.sessionTimer = setInterval(() => {
+        this.sessionTimer = this.parent.setInterval(() => {
             if (document.hidden) return;
-            const video = document.querySelector('video');
+            const video = window.YPP.DOMManager?.getVideo();
             if (video && !video.paused) {
                 this.elapsedSeconds++;
                 if (this.parent.speedPanel && this.parent.speedPanel.timerDisplay) {
@@ -65,7 +65,7 @@ export class SessionTimer {
         `;
 
         overlay.appendChild(modal);
-        document.body.appendChild(overlay);
+        this.parent.injectElement(overlay);
 
         document.getElementById('ypp-break-dismiss').onclick = () => {
             overlay.remove();
@@ -74,7 +74,7 @@ export class SessionTimer {
 
     stopSessionTimer() {
         if (this.sessionTimer) {
-            clearInterval(this.sessionTimer);
+            this.parent.clearInterval(this.sessionTimer);
             this.sessionTimer = null;
         }
     }

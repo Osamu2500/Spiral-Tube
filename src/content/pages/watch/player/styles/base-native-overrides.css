@@ -11,11 +11,8 @@
 
 /* Player Controls Containers */
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  background: var(--ypp-player-control-bg, transparent) !important;
-  border: var(--ypp-surface-border) !important;
-  border-radius: var(--ypp-player-control-radius, var(--ypp-border-radius-base, 12px)) !important;
-  -webkit-backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
-  backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
+  background: transparent !important;
+  border: none !important;
   overflow: hidden !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
   color: white !important;
@@ -55,12 +52,9 @@
 .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
-  background: var(--ypp-player-control-bg, transparent) !important;
-  border: var(--ypp-surface-border) !important;
-  -webkit-backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
-  backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
+  background: transparent !important;
+  border: none !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
-  border-radius: var(--ypp-player-control-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
 
 .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
@@ -79,8 +73,8 @@
 }
 
 .ytp-fullscreen-grid-expand-button {
-  background: var(--ypp-player-control-bg, transparent) !important;
-  border: var(--ypp-surface-border) !important;
+  background: transparent !important;
+  border: none !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
 }
 
@@ -338,8 +332,6 @@ body.yt-spiral-tube-theme .ytp-gradient-top {
   visibility: hidden !important;
 }
 body.yt-spiral-tube-theme .ytp-popup {
-  -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
-  backdrop-filter: blur(36px) saturate(180%) !important;
   border-radius: 18px !important;
   background: var(--ypp-surface-bg) !important;
   border: var(--ypp-surface-border) !important;
@@ -414,11 +406,9 @@ html.yt-spiral-tube-theme .ytp-button:active {
 }
 
 
-/* Player popup - reduced blur from 28px → 20px */
+/* Player popup - blur removed */
 html.yt-spiral-tube-theme .ytp-popup {
     background: rgba(15, 15, 15, 0.75) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-radius: 16px !important;
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;

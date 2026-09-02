@@ -52,14 +52,6 @@ export class ResumeBadges extends window.YPP.features.BaseFeature {
         this._saveData();
         this.stopVideoTracking();
         
-        if (this.thumbnailObserver) {
-            this.thumbnailObserver.disconnect();
-            this.thumbnailObserver = null;
-        }
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.unregister('resume-badges');
-        }
-        
         document.querySelectorAll('.yt-pro-pbar-wrap, .yt-pro-resume-badge').forEach(el => el.remove());
     }
 
@@ -138,24 +130,22 @@ export class ResumeBadges extends window.YPP.features.BaseFeature {
     }
 
     startThumbnailObserver() {
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('resume-badges', 'ytd-thumbnail:not([data-ypp-resume-processed="true"])', (elements) => {
-                this.processThumbnailsElements(elements);
-            }, true);
-        } else {
-            this.thumbnailObserver = new MutationObserver((mutations) => {
-                let shouldProcess = false;
-                for (let m of mutations) {
-                    if (m.addedNodes.length) {
-                        shouldProcess = true;
-                        break;
-                    }
+        this.onBusEvent('dom:thumbnailsAdded', (payload) => {
+            const thumbs = [];
+            for (let i = 0; i < payload.nodes.length; i++) {
+                const el = payload.nodes[i].el;
+                const thumb = (el.tagName === 'YTD-THUMBNAIL') ? el : (el.querySelector ? el.querySelector('ytd-thumbnail') : null);
+                if (thumb && !thumb.hasAttribute('data-ypp-resume-processed')) {
+                    thumbs.push(thumb);
                 }
-                if (shouldProcess) this.processThumbnails();
-            });
-            this.thumbnailObserver.observe(document.body, { childList: true, subtree: true });
-            this.processThumbnails();
-        }
+            }
+            if (thumbs.length > 0) {
+                this.processThumbnailsElements(thumbs);
+            }
+        });
+        
+        // Initial scan for elements already in DOM
+        this.processThumbnails();
     }
 
     processThumbnails() {

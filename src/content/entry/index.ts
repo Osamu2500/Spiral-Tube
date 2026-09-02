@@ -163,8 +163,7 @@ import { AutoSubtitles } from '../pages/watch/player/automation/auto-subtitles/a
 AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
 
-import { MiniPlayerScroll } from '../pages/watch/player/automation/mini-player-scroll/mini-player-scroll.js';
-window.YPP.FeatureManager.register(MiniPlayerScroll);
+
 import { VSCAudioSupport } from '../pages/watch/player/enhancements/video-speed-controller/vsc-audio-support.js';
 window.YPP.FeatureManager.register(VSCAudioSupport);
 import { VSCHideByDefault } from '../pages/watch/player/enhancements/video-speed-controller/vsc-hide-by-default.js';

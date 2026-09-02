@@ -68,9 +68,7 @@ export class VolumeBoosterUI {
     // Only fall back to querySelector when no video was passed (e.g. direct hotkey trigger).
     // Do NOT overwrite a valid proxy-video object from the iframe bridge.
     if (!video) {
-      video =
-        document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) ||
-        document.querySelector('video');
+      video = window.YPP.DOMManager?.getVideo();
     }
 
     if (ctx._volumePopup) {
@@ -236,8 +234,7 @@ export class VolumeBoosterUI {
     const linkBtn = header.querySelector('.ypp-eq-link-btn');
     linkBtn.onclick = () => {
       const el =
-        document.querySelector('ytd-video-owner-renderer ytd-channel-name yt-formatted-string a') ||
-        document.querySelector('#owner #channel-name a');
+        window.YPP.DOMManager?.getChannelLink();
       const channel = el ? el.textContent.trim() : null;
       if (!channel) return alert('Could not detect channel name. Make sure a video is playing.');
 

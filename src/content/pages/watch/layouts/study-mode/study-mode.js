@@ -76,7 +76,7 @@ export class StudyMode extends window.YPP.features.BaseFeature {
                 window.YPP.sharedObserver.unregister('study-mode-captions');
             }
 
-            const video = document.querySelector('video');
+            const video = window.YPP.DOMManager?.getVideo();
             if (video && this._boundEnforceState) {
                 video.removeEventListener('ratechange', this._boundEnforceState);
             }
@@ -120,7 +120,7 @@ export class StudyMode extends window.YPP.features.BaseFeature {
 
     _enforceState() {
         try {
-            const video = document.querySelector('video');
+            const video = window.YPP.DOMManager?.getVideo();
             if (video) {
                 if (video.playbackRate !== this.config.speed) {
                     video.playbackRate = this.config.speed;
@@ -161,7 +161,7 @@ export class StudyMode extends window.YPP.features.BaseFeature {
     }
 
     _onVisibilityChange() {
-        const video = document.querySelector('video');
+        const video = window.YPP.DOMManager?.getVideo();
         if (!video) return;
 
         if (document.hidden) {
