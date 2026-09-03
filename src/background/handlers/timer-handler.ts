@@ -45,7 +45,7 @@ export function handleAlarm(alarm: chrome.alarms.Alarm) {
 export async function handleGetTimer(sendResponse: (response: any) => void) {
   try {
     const data = await chrome.storage.local.get('timerState');
-    const state: { isRunning: boolean; endTime: number | null } = data.timerState || { isRunning: false, endTime: null };
+    const state: { isRunning: boolean; endTime: number | null } = (data.timerState as any) || { isRunning: false, endTime: null };
     let timeLeft = 0;
 
     if (state.isRunning && state.endTime) {
