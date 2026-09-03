@@ -6,7 +6,7 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        'service-worker': resolve(__dirname, 'src/background/service-worker.ts')
+        'service-worker': resolve(__dirname, 'src/background/index.ts')
       },
       output: {
         entryFileNames: '[name].js',

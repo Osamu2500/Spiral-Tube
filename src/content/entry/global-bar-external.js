@@ -203,8 +203,7 @@
     await import('../features/global-bar/global-bar-ui.js');
     await import('../features/global-bar/global-bar.js');
 
-    // Load custom cursor
-    await import('../features/misc/custom-cursor.js');
+
     
     // Load rich features (Optional - wrap in try/catch to prevent cascading failure)
     try {
@@ -272,11 +271,7 @@
         // Bug 3A fix: await so loadDomainProfile() finishes before restoreProfile() is called
         await instances['domainMemory'].enable();
     }
-    if (window.YPP.features.CustomCursor) {
-        instances['customCursor'] = new window.YPP.features.CustomCursor();
-        instances['customCursor'].update(settings);
-        instances['customCursor'].enable();
-    }
+
 
     // ── Guard: are we inside an iframe? ──────────────────────────────────────
 
@@ -699,9 +694,6 @@
                 }
                 if (instances['videoSpeedController']) {
                     instances['videoSpeedController'].update(newSettings);
-                }
-                if (instances['customCursor']) {
-                    instances['customCursor'].update(newSettings);
                 }
             }
 

@@ -31,7 +31,7 @@ export function handleAlarm(alarm: chrome.alarms.Alarm) {
     try {
       chrome.notifications.create({
         type: 'basic',
-        iconUrl: 'src/assets/icon.svg',
+        iconUrl: 'src/assets/icons/icon.svg',
         title: 'Focus Session Complete',
         message: 'Great job! Take a break.',
         priority: 2,
@@ -45,7 +45,7 @@ export function handleAlarm(alarm: chrome.alarms.Alarm) {
 export async function handleGetTimer(sendResponse: (response: any) => void) {
   try {
     const data = await chrome.storage.local.get('timerState');
-    const state = data.timerState || { isRunning: false, endTime: null };
+    const state: { isRunning: boolean; endTime: number | null } = data.timerState || { isRunning: false, endTime: null };
     let timeLeft = 0;
 
     if (state.isRunning && state.endTime) {

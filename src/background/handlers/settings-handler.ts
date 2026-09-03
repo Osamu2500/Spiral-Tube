@@ -1,4 +1,5 @@
 import { DEFAULT_SETTINGS } from '../../shared/config/default-settings.js';
+import { mergeSettings } from '../services/settings-utils.js';
 
 const BACKUP_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
@@ -12,15 +13,7 @@ export async function handleGetSettings(sendResponse: (response: any) => void) {
     const localSettings = localData.settings || {};
     const syncSettings = syncData.settings || {};
 
-    let currentSettings;
-    const syncTime = syncSettings.lastUpdated || 0;
-    const localTime = localSettings.lastUpdated || 0;
-
-    if (syncTime >= localTime) {
-      currentSettings = { ...localSettings, ...syncSettings };
-    } else {
-      currentSettings = { ...syncSettings, ...localSettings };
-    }
+    let currentSettings = mergeSettings(localSettings, syncSettings);
     
     if (Object.keys(currentSettings).length === 0) {
       currentSettings = DEFAULT_SETTINGS;
@@ -43,15 +36,7 @@ export async function handlePatchSettings(payload: any, sendResponse: (response:
     const localSettings = localData.settings || {};
     const syncSettings = syncData.settings || {};
 
-    let currentSettings;
-    const syncTime = syncSettings.lastUpdated || 0;
-    const localTime = localSettings.lastUpdated || 0;
-
-    if (syncTime >= localTime) {
-      currentSettings = { ...localSettings, ...syncSettings };
-    } else {
-      currentSettings = { ...syncSettings, ...localSettings };
-    }
+    let currentSettings = mergeSettings(localSettings, syncSettings);
 
     const newSettings = { ...currentSettings, ...payload, lastUpdated: Date.now() };
 

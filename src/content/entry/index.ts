@@ -1,9 +1,9 @@
 // Core dependencies
-import '../../shared/config/constants.js';
+import '../../shared/config/constants/index.js';
 import '../../shared/config/settings-schema.js';
 import '../core/system/error-handler.js';
 import '../core/dom/element-cache.js';
-import '../../shared/utils/utils.js';
+import '../../shared/utils/index.js';
 import '../core/utils/youtube-parsers.js';
 
 import '../core/events/event-bus.js';
@@ -40,8 +40,7 @@ import { AccountMenu } from '../components/account-menus/account-menu.js';
 window.YPP.FeatureManager.register(AccountMenu);
 import { HeaderButton } from '../features/navigation/header-button.js';
 window.YPP.FeatureManager.register(HeaderButton);
-import { CustomCursor } from '../features/misc/custom-cursor.js';
-window.YPP.FeatureManager.register(CustomCursor);
+
 import '../core/data/watched-store.js';
 import { MultiSelect } from '../pages/shared-feed/features/multi-select/multi-select.js';
 window.YPP.FeatureManager.register(MultiSelect);

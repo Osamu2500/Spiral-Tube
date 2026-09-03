@@ -1,7 +1,7 @@
 window.addEventListener("error", (e) => { alert("JS Error: " + e.message + " at " + e.filename + ":" + e.lineno); });
-import '../../../shared/config/constants.js';
+import '../../../shared/config/constants/index.js';
 import '../../../shared/config/settings-schema.js';
-import '../../../shared/utils/utils.js';
+import '../../../shared/utils/index.js';
 
 import { initI18n, t } from '../../../shared/locales/i18n.js';
 import { initComponents } from '../ui/popup-components.js';
