@@ -9,7 +9,7 @@ import { CustomDialog } from './custom-dialog.js';
 
 export class ChannelHealthAPI {
     static _extractYtInitialData(text) {
-        const markers = ['var ytInitialData = ', 'window["ytInitialData"] = ', 'window.ytInitialData = '];
+        const markers = ['let ytInitialData = ', 'window["ytInitialData"] = ', 'window.ytInitialData = '];
         for (const marker of markers) {
             const startIdx = text.indexOf(marker);
             if (startIdx !== -1) {

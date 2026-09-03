@@ -18,10 +18,10 @@ import '../styles/index.css';
 
 // Managers (Phase 4.5)
 import '../core/system/base-page-manager.js';
-import '../styles/color/thumbnail-color-manager.js';
+import '../features/ui-managers/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
-import '../styles/managers/ui-manager.js';
+import '../features/ui-managers/ui-manager.js';
 import '../components/buttons/button.js';
 import '../components/panels/panel.js';
 
@@ -149,7 +149,7 @@ window.YPP.FeatureManager.register(SnapshotButton);
 import { LoopButton } from '../pages/watch/player/controls/loop-button.js';
 window.YPP.FeatureManager.register(LoopButton);
 import '../pages/watch/player/utils/filter-presets.js';
-import { AutoLike } from '../pages/watch/player/automation/auto-like/auto-like.js';
+import { AutoLike } from '../pages/watch/player/automation/auto-like.js';
 window.YPP.FeatureManager.register(AutoLike);
 import { BookmarksManager } from '../pages/watch/player/controls/bookmarks.js';
 window.YPP.FeatureManager.register(BookmarksManager);
@@ -158,7 +158,7 @@ window.YPP.FeatureManager.register(IntentionalDelay);
 import { VideoSpeedController } from '../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js';
 window.YPP.FeatureManager.register(VideoSpeedController);
 
-import { AutoSubtitles } from '../pages/watch/player/automation/auto-subtitles/auto-subtitles.js';
+import { AutoSubtitles } from '../pages/watch/player/automation/auto-subtitles.js';
 AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
 
@@ -175,7 +175,7 @@ window.YPP.FeatureManager.register(VSCRememberSpeed);
 import '../pages/watch/player/utils/domain-memory-ui.js';
 import { DomainMemory } from '../pages/watch/player/utils/domain-memory.js';
 window.YPP.FeatureManager.register(DomainMemory);
-import { AutoQuality } from '../pages/watch/player/automation/auto-quality/auto-quality.js';
+import { AutoQuality } from '../pages/watch/player/automation/auto-quality.js';
 window.YPP.FeatureManager.register(AutoQuality);
 import { TimeDisplay } from '../pages/watch/player/enhancements/time-display.js';
 window.YPP.FeatureManager.register(TimeDisplay);
@@ -185,13 +185,13 @@ window.YPP.FeatureManager.register(AmbientMode);
 import { AudioMode } from '../pages/watch/player/media-effects/ambient-mode/audio-mode.js';
 window.YPP.FeatureManager.register(AudioMode);
 
-import { VideoResumer } from '../pages/watch/player/automation/video-resumer/video-resumer.js';
+import { VideoResumer } from '../pages/watch/player/automation/video-resumer.js';
 window.YPP.FeatureManager.register(VideoResumer);
-import { AutoPause } from '../pages/watch/player/automation/auto-pause/auto-pause.js';
+import { AutoPause } from '../pages/watch/player/automation/auto-pause.js';
 window.YPP.FeatureManager.register(AutoPause);
-import { AutoCinema } from '../pages/watch/player/automation/auto-cinema/auto-cinema.js';
+import { AutoCinema } from '../pages/watch/player/automation/auto-cinema.js';
 window.YPP.FeatureManager.register(AutoCinema);
-import { AutoPiP } from '../pages/watch/player/automation/auto-pip/auto-pip.js';
+import { AutoPiP } from '../pages/watch/player/automation/auto-pip.js';
 window.YPP.FeatureManager.register(AutoPiP);
 import { RealCinemaMode } from '../pages/watch/player/enhancements/real-cinema-mode.js';
 window.YPP.FeatureManager.register(RealCinemaMode);

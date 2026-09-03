@@ -33,8 +33,7 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
     }
 
     async disable() {
-        // Reset scale and clear the dynamic cols var
-        document.documentElement.style.setProperty('--ypp-auto-scale', 1);
+        // Reset scale and clear the dynamic cols let document.documentElement.style.setProperty('--ypp-auto-scale', 1);
         document.documentElement.style.removeProperty('--ypp-dynamic-cols');
         this.cleanupEvents();
         this._resizeListener = null;

@@ -115,7 +115,7 @@ export class PlaylistDuration extends window.YPP.features.BaseFeature {
       const scripts = Array.from(document.querySelectorAll('script'));
       const ytInitialDataScript = scripts.find(
         (s) =>
-          s.textContent.includes('var ytInitialData =') ||
+          s.textContent.includes('let ytInitialData =') ||
           s.textContent.includes('window["ytInitialData"] =') ||
           s.textContent.includes('window.ytInitialData =')
       );
@@ -127,7 +127,7 @@ export class PlaylistDuration extends window.YPP.features.BaseFeature {
       let initialData;
       const text = ytInitialDataScript.textContent;
       const markers = [
-        'var ytInitialData = ',
+        'let ytInitialData = ',
         'window["ytInitialData"] = ',
         'window.ytInitialData = ',
       ];

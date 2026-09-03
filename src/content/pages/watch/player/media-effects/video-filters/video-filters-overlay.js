@@ -2,6 +2,14 @@ export class VideoFiltersOverlay {
   static featureId = 'videoFiltersOverlay';
   static executionPhase = 'idle';
   static priority = 999;
+  static _domCache = {};
+
+  static _getContainer() {
+      if (!this._domCache.container || !this._domCache.container.isConnected) {
+          this._domCache.container = document.getElementById('movie_player') || document.querySelector('.html5-video-player');
+      }
+      return this._domCache.container;
+  }
 
   static applyOverlay(ctx, type, grainAmount = 0) {
     let video = null;
@@ -10,7 +18,7 @@ export class VideoFiltersOverlay {
     }
     if (!video) return;
 
-    let container = document.getElementById('movie_player') || document.querySelector('.html5-video-player');
+    let container = this._getContainer();
     const isExternal = !container;
 
     if (isExternal) {
@@ -48,10 +56,10 @@ export class VideoFiltersOverlay {
     // Glitch SVG: inject + pause/unpause animated filters based on active use (GPU saver)
     if (activeCSS.includes('ypp-fx-glitch') || activeCSS.includes('ypp-fx-rgb-split')) {
         this.injectGlitchSVGFilter();
-        const glitchSVG = document.getElementById('ypp-glitch-svg-defs');
+        const glitchSVG = this._domCache.glitch || document.getElementById('ypp-glitch-svg-defs');
         if (glitchSVG && glitchSVG.unpauseAnimations) glitchSVG.unpauseAnimations();
     } else {
-        const glitchSVG = document.getElementById('ypp-glitch-svg-defs');
+        const glitchSVG = this._domCache.glitch || document.getElementById('ypp-glitch-svg-defs');
         if (glitchSVG && glitchSVG.pauseAnimations) glitchSVG.pauseAnimations();
     }
   }
@@ -325,7 +333,7 @@ export class VideoFiltersOverlay {
   }
 
   static injectGlitchSVGFilter() {
-    if (document.getElementById('ypp-glitch-svg-defs')) return;
+    if (this._domCache.glitch || document.getElementById('ypp-glitch-svg-defs')) return;
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.id = 'ypp-glitch-svg-defs';
@@ -368,6 +376,7 @@ export class VideoFiltersOverlay {
 
     svg.innerHTML = `<defs>${rgbSplit}${datamosh}</defs>`;
     document.body.appendChild(svg);
+    this._domCache.glitch = svg;
   }
 
   static injectCRTSVGFilter() {

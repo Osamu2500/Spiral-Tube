@@ -1,0 +1,64 @@
+
+
+
+/* woodblock/theme/base/tokens.css */
+@import '../ui-styles/shared/timeline-visibility.css';
+[data-ypp-theme="woodblock"] {
+    --ypp-bg-base: #f5f5dc; --ypp-bg-surface: #faf8f0;
+    --ypp-accent: #8b4513; --ypp-text-primary: #5c3d1e;
+    --ypp-text-secondary: #8b6914;
+
+  /* Critical YouTube Overrides for Light Themes */
+
+  --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
+  --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
+
+
+/* --- TEXT READABILITY FIX --- */
+/* Enforce dark text color globally for this light theme */
+html[data-ypp-theme="woodblock"] body,
+html[data-ypp-theme="woodblock"] yt-formatted-string,
+html[data-ypp-theme="woodblock"] span,
+html[data-ypp-theme="woodblock"] div,
+html[data-ypp-theme="woodblock"] a,
+html[data-ypp-theme="woodblock"] h1,
+html[data-ypp-theme="woodblock"] h2,
+html[data-ypp-theme="woodblock"] h3,
+html[data-ypp-theme="woodblock"] #video-title,
+html[data-ypp-theme="woodblock"] .title,
+html[data-ypp-theme="woodblock"] ytd-guide-entry-renderer *,
+html[data-ypp-theme="woodblock"] ytd-mini-guide-entry-renderer * {
+  color: var(--ypp-text-primary) !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-theme="woodblock"] svg {
+  fill: var(--ypp-text-primary) !important;
+}
+
+/* Secondary text overrides */
+html[data-ypp-theme="woodblock"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="woodblock"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="woodblock"] ytd-video-renderer #metadata-line span,
+html[data-ypp-theme="woodblock"] #metadata-line span,
+html[data-ypp-theme="woodblock"] .inline-metadata-item,
+html[data-ypp-theme="woodblock"] #byline-container yt-formatted-string,
+html[data-ypp-theme="woodblock"] #byline-container span,
+html[data-ypp-theme="woodblock"] #byline-container a,
+html[data-ypp-theme="woodblock"] #description-text {
+  color: var(--ypp-text-secondary) !important;
+}
+
+/* Exempt Buttons to preserve contrast */
+html[data-ypp-theme="woodblock"] ytd-button-renderer yt-formatted-string,
+html[data-ypp-theme="woodblock"] yt-button-shape *,
+html[data-ypp-theme="woodblock"] ytd-subscribe-button-renderer *,
+html[data-ypp-theme="woodblock"] ytd-badge-supported-renderer * {
+  color: inherit !important;
+}
+
+}

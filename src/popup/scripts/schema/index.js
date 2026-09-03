@@ -13,3 +13,27 @@ export { getPopup_designTab } from './tabs/tab-popup-design.js';
 export { getAdvancedTab } from './tabs/tab-advanced.js';
 export { getHotkeyTab } from './tabs/tab-hotkey.js';
 export { getGlobalTab } from './tabs/tab-global.js';
+
+
+
+export const CUSTOM_SLOT_RENDERERS = new Map();
+
+export function getPopupSchema(t) {
+    return [
+        getHomeTab(t),
+        getShortsTab(t),
+        getPlayerTab(t),
+        getSpeedTab(t),
+        getModesTab(t),
+        getSearchTab(t),
+        getDeclutterTab(t),
+        getSubscriptionsTab(t),
+        getHistoryTab(t),
+        getBookmarksTab(t),
+        getAppearanceTab(t),
+        getPopup_designTab(t),
+        getAdvancedTab(t),
+        getHotkeyTab(t),
+        getGlobalTab(t)
+    ];
+}

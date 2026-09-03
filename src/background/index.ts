@@ -1,6 +1,6 @@
 import { initContextMenu } from './services/context-menu.js';
 import { setupMessageRouter } from './core/message-router.js';
-import { mergeSettings } from './services/settings-utils.js';
+import { mergeSettings } from './utils/settings.js';
 import { DEFAULT_SETTINGS } from '../shared/config/default-settings.js';
 import { handleAlarm } from './handlers/timer-handler.js';
 

@@ -54,7 +54,7 @@
 @import '../pages/watch/styles/watch-layout.css';
 @import '../pages/watch/styles/watch-declutter.css';
 @import '../pages/watch/components/comments/comments.css';
-@import '../pages/watch/components/livechat/livechat.css';
+@import '../pages/watch/components/livechat.css';
 @import '../pages/watch/components/metadata-row/action-buttons.css';
 @import '../pages/watch/components/metadata-row/channel-bar.css';
 
@@ -85,18 +85,18 @@
 /* Watch Player Controls */
 @import '../pages/watch/player/controls/live-stream-time.css';
 @import '../pages/watch/player/controls/time-dashboard.css';
-@import '../pages/watch/components/alert/watch-alert.css';
+@import '../pages/watch/components/watch-alert.css';
 
 /* --- HOME PAGE CONTEXT --- */
-@import '../pages/home/layout.css';
-@import '../pages/home/declutter.css';
+@import '../pages/home/styles/layout.css';
+@import '../pages/home/styles/declutter.css';
 
 /* --- SHORTS PAGE CONTEXT --- */
-@import '../pages/shorts/layout.css';
-@import '../pages/shorts/declutter.css';
+@import '../pages/shorts/styles/layout.css';
+@import '../pages/shorts/styles/declutter.css';
 
 /* --- SEARCH PAGE CONTEXT --- */
-@import '../pages/search/declutter/search-declutter.css';
+@import '../pages/search/styles/search-declutter.css';
 @import '../pages/search/styles/search-grid-mode.css';
 @import '../pages/search/styles/search-grid-cards.css';
 @import '../pages/search/styles/search-list-mode.css';
@@ -109,12 +109,12 @@
 @import './card-styles/search-card-compat.css';
 
 /* --- SUBSCRIPTIONS & CHANNELS --- */
-@import '../pages/subscriptions/layout.css';
-@import '../pages/channels/layout.css';
+@import '../pages/subscriptions/styles/layout.css';
+@import '../pages/channels/styles/layout.css';
 @import '../pages/subscriptions/features/grid-layout/two-column-subs.css';
 @import '../pages/subscriptions/features/channel-health/channel-health.css';
-@import '../pages/playlist/layout.css';
-@import '../pages/history/layout.css';
+@import '../pages/playlist/styles/layout.css';
+@import '../pages/history/styles/layout.css';
 
 /* --- SHARED FEED CONTEXT --- */
 @import '../pages/shared-feed/tracking/resume-badges.css';

@@ -4,8 +4,8 @@ import '../../../shared/config/settings-schema.js';
 import '../../../shared/utils/index.js';
 
 import { initI18n, t } from '../../../shared/locales/i18n.js';
-import { initComponents } from '../ui/popup-components.js';
-import { initBackupTools, initBookmarksManager, initHistoryWidget, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist, renderPlayerBarOrganizer } from '../ui/popup-extras.js';
+import { initComponents } from '../components/index.js';
+import { initBackupTools, initBookmarksManager, initHistoryWidget, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist, renderPlayerBarOrganizer } from '../features/index.js';
 import { convertStaticDescriptionsToHelpButtons, registerSlot, renderSchema } from '../ui/popup-renderer.js';
 import * as UI from '../ui/popup-ui.js';
 import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
