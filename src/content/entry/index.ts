@@ -172,8 +172,8 @@ window.YPP.FeatureManager.register(VSCForceSpeed);
 import { VSCRememberSpeed } from '../pages/watch/player/enhancements/video-speed-controller/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
 
-import '../pages/watch/player/utils/domain-memory-ui.js';
-import { DomainMemory } from '../pages/watch/player/utils/domain-memory.js';
+import '../features/global-player-bar/domain/domain-memory-ui.js';
+import { DomainMemory } from '../features/global-player-bar/domain/domain-memory.js';
 window.YPP.FeatureManager.register(DomainMemory);
 import { AutoQuality } from '../pages/watch/player/automation/auto-quality.js';
 window.YPP.FeatureManager.register(AutoQuality);
@@ -249,9 +249,9 @@ import { TabviewSidebar } from '../layouts/core/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
 
 // --- src/content/global/ui/global-bar/index.ts ---
-import { GlobalBarUI } from '../features/global-bar/global-bar-ui.js';
+import { GlobalBarUI } from '../features/global-player-bar/ui/global-bar-ui.js';
 window.YPP.FeatureManager.register(GlobalBarUI);
-import { GlobalPlayerBar } from '../features/global-bar/global-bar.js';
+import { GlobalPlayerBar } from '../features/global-player-bar/core/global-player-bar.js';
 window.YPP.FeatureManager.register(GlobalPlayerBar);
 
 // --- src/content/pages/watch/player/media-effects/video-filters/index.js ---

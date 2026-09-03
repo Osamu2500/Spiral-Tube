@@ -16,7 +16,7 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        'global-bar-external': resolve(__dirname, 'src/content/entry/global-bar-external.js')
+        'global-bar-external': resolve(__dirname, 'src/content/features/global-player-bar/external/index.js')
       },
       output: {
         entryFileNames: '[name].js',

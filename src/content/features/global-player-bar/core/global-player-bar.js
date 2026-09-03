@@ -1,24 +1,20 @@
-import '../../core/system/base-feature.js';
+import '../../../core/system/base-feature.js';
 /**
  * Global Player Bar — Orchestrator
  * Detects external <video> tags (non-YouTube) and injects a custom floating
  * player bar for speed/filters/PiP. Relies on GlobalBarUI and FilterPresets.
  */
-import css from './global-bar.css?inline';
-
-
+import css from '../styles/global-bar.css?inline';
 
 export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     static featureId = 'globalPlayerBar';
     static executionPhase = 'sequential-ui';
     static priority = 999;
 
-
     constructor() {
         super('GlobalPlayerBar');
         
         this.isYouTube = window.location.hostname.includes('youtube.com');
-        // this.observer = null;
         this.isDismissed = false;
         
         // ── Sub-modules ────────────────────────────────────────────────────

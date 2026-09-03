@@ -38,6 +38,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this.limiterNode = null;
         this.pannerNode = null;
         this.analyserNode = null;
+        this.nativeVolumeGain = null;
         this._eqNodes = [];          // 10 BiquadFilterNodes
         
         // State
@@ -228,8 +229,37 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     async enable() {
         await super.enable();
         this._loadSettings(this.settings);
+        
+        // Initial application if already connected
+        if (this._audioConnected && !this._bypassed) {
+            this._applyAllState();
+        }
 
-        // -- Keyboard Shortcuts --
+    onUpdate() {
+        this._loadSettings(this.settings);
+        if (this._audioConnected && !this._bypassed) {
+            this._applyAllState();
+        }
+    }
+    
+    _applyAllState() {
+        if (this.gainNode) this.gainNode.gain.setTargetAtTime(this._volumeGain, this.ctx.currentTime, 0.05);
+        if (this.widthMatrix) this.widthMatrix.widthGain.gain.setTargetAtTime(this._stereoWidth, this.ctx.currentTime, 0.05);
+        this._eqNodes.forEach((n, i) => { if (n) n.gain.setTargetAtTime(this._eqGains[i], this.ctx.currentTime, 0.05); });
+        this._applyCompressorState();
+        this.setMono(this._monoEnabled, this._bypassed);
+        if (this.reverbDryGain && this.reverbWetGain) {
+            const effectiveMix = (this._reverbEnv === 'None') ? 0.0 : this._reverbMix;
+            this.reverbDryGain.gain.setTargetAtTime(1.0 - effectiveMix, this.ctx.currentTime, 0.05);
+            this.reverbWetGain.gain.setTargetAtTime(effectiveMix, this.ctx.currentTime, 0.05);
+        }
+        if (this.phaseGainL) this.phaseGainL.gain.setTargetAtTime(this._invertL ? -1 : 1, this.ctx.currentTime, 0.05);
+        if (this.phaseGainR) this.phaseGainR.gain.setTargetAtTime(this._invertR ? -1 : 1, this.ctx.currentTime, 0.05);
+        if (this.agcNode) this.agcNode.ratio.setTargetAtTime(this._autoGain ? 10 : 1, this.ctx.currentTime, 0.05);
+        if (this.agcMakeup) this.agcMakeup.gain.setTargetAtTime(this._autoGain ? 4.0 : 1.0, this.ctx.currentTime, 0.05);
+    }
+
+    // -- Keyboard Shortcuts --
         this.addListener(document, 'keydown', (e) => {
             if (!this._audioConnected) return;
             if (e.target.matches('input, textarea, [contenteditable]')) return;
@@ -357,6 +387,8 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             
             if (this.agcNode) this.agcNode.ratio.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
             if (this.agcMakeup) this.agcMakeup.gain.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
+            
+            // Note: nativeVolumeGain is NOT bypassed here, so native volume still works
             
             // Restore Vinyl Mode
             if (this._boundVideo) {
@@ -620,6 +652,19 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // leaving no way to retry when the src finally became available.
         this.addListener(video, 'play', this._initHandler);
         this.addListener(video, 'volumechange', this._initHandler);
+        
+        // Ensure native volume changes map to our graph when active
+        this._nativeVolumeHandler = () => {
+            if (this._audioConnected && this.nativeVolumeGain && this.ctx) {
+                const target = video.muted ? 0 : video.volume;
+                // Only adjust if there's a difference to avoid unnecessary automation
+                if (Math.abs(this.nativeVolumeGain.gain.value - target) > 0.01) {
+                    this.nativeVolumeGain.gain.setTargetAtTime(target, this.ctx.currentTime, 0.05);
+                }
+            }
+        };
+        this.addListener(video, 'volumechange', this._nativeVolumeHandler);
+        
         if (!video.paused) this._initHandler();
     }
 
@@ -729,10 +774,16 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             this.agcNode.connect(this.agcMakeup);
             this.agcMakeup.connect(this.gainNode);
             this.gainNode.connect(this.limiterNode);
-            this.limiterNode.connect(this.analyserNode);
+            
+            // 4.6. Native Volume Sync Gain
+            this.nativeVolumeGain = this.ctx.createGain();
+            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
+            this.nativeVolumeGain.gain.value = (video && video.muted) ? 0 : (video ? video.volume : 1);
+            
+            this.limiterNode.connect(this.nativeVolumeGain);
+            this.nativeVolumeGain.connect(this.analyserNode);
             
             // Chain to AudioCompressor if it is active, otherwise go straight to destination
-            const video = this._boundVideo || window.YPP.DOMManager?.getVideo();
             if (video && video.__ypp_ext_compressor) {
                 this.analyserNode.connect(video.__ypp_ext_compressor.input);
                 video.__ypp_ext_compressor.output.connect(this.ctx.destination);

@@ -297,7 +297,26 @@ export class DomainMemoryUI {
 
         const video = ctx._getVideo();
         const activeHost = video?._capabilities?.host || ctx._domain;
-        const subtext = isHostMode ? `Server: ${activeHost}` : (isSeriesMode ? 'Series-level profile' : 'Site-wide profile');
+        
+        let subtext = isHostMode ? `Server: ${activeHost}` : (isSeriesMode ? 'Series-level profile' : 'Site-wide profile');
+        
+        // Advanced Domain Memory System: Display matched rule
+        if (ctx._activeMatchedType && ctx._activeMatchedType !== 'New') {
+            let displayKey = ctx._activeMatchedKey;
+            if (displayKey && displayKey.length > 30) displayKey = displayKey.substring(0, 27) + '...';
+            
+            if (ctx._activeMatchedType === 'Exact URL Match') {
+                subtext = `Rule: Exact URL Match`;
+            } else if (ctx._activeMatchedType === 'Wildcard Match') {
+                subtext = `Rule: Wildcard (${displayKey})`;
+            } else if (ctx._activeMatchedType === 'Series') {
+                subtext = `Rule: Series Path`;
+            } else if (ctx._activeMatchedType === 'Domain') {
+                subtext = `Rule: Site-wide`;
+            }
+        } else if (ctx._activeMatchedType === 'New') {
+            subtext = `Unsaved profile (${isSeriesMode ? 'Series' : 'Site-wide'})`;
+        }
 
         header.innerHTML = `
             <div style="display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0;">

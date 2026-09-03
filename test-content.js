@@ -1,0 +1,1 @@
+const { JSDOM } = require('jsdom'); const dom = new JSDOM('<!DOCTYPE html><p>Hello</p>', { runScripts: 'dangerously', url: 'https://www.youtube.com/' }); const fs = require('fs'); const code = fs.readFileSync('dist/content.js', 'utf8'); try { dom.window.eval(code); console.log('Successfully evaluated content.js'); } catch(e) { console.error('Error during eval:', e); }

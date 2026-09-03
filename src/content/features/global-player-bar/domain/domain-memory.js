@@ -239,8 +239,12 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
                 chrome.storage.local.set({ ypp_domain_profiles: allProfiles }).catch(() => {});
             }
 
-            const activeKey = this.getScopeKey();
-            const profile = allProfiles[activeKey];
+            const resolution = this.resolveProfile(allProfiles);
+            const profile = resolution.profile;
+            
+            // Expose active matched rule for UI to read
+            this._activeMatchedType = resolution.type;
+            this._activeMatchedKey = resolution.key;
 
             if (profile && profile.enabled !== false) {
                 this._domainProfile = profile;
@@ -253,9 +257,80 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
                 this._isRemembering = true; // Auto-remember ON by default
             }
             this._updateButtonStatus();
+            
+            // Sync top priority profiles to chrome.storage.sync
+            this._syncTopProfiles(allProfiles);
+            
         } catch (e) {
             window.YPP?.Utils?.log?.('Error loading domain profile: ' + e.message, 'DomainMemory', 'warn');
         }
+    }
+
+    /**
+     * Resolves the best matching profile based on priority:
+     * 1. Exact URL Match
+     * 2. Wildcard Path Match
+     * 3. Series Path Match
+     * 4. Domain Match
+     */
+    resolveProfile(allProfiles) {
+        if (!allProfiles) return { profile: null, key: null, type: null };
+        
+        let href = window.location.href;
+        if (window !== window.top) {
+            try { href = window.top.location.href; } catch(_) { href = document.referrer || href; }
+        }
+        
+        let exactUrl = href.split('?')[0].replace(/\/+$/, '');
+        exactUrl = exactUrl.replace(/^https?:\/\//, '');
+
+        let seriesPath = this.getSeriesPath();
+        let domain = this._domain;
+
+        if (allProfiles[exactUrl]) return { profile: allProfiles[exactUrl], key: exactUrl, type: 'Exact URL Match' };
+
+        let bestWildcard = null;
+        let bestWildcardLen = -1;
+        for (const k of Object.keys(allProfiles)) {
+            if (k.includes('*')) {
+                const regexStr = '^' + k.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*') + '$';
+                const regex = new RegExp(regexStr, 'i');
+                if (regex.test(href) || regex.test(exactUrl) || regex.test(exactUrl.replace(/^www\./, ''))) {
+                    if (k.length > bestWildcardLen) {
+                        bestWildcardLen = k.length;
+                        bestWildcard = k;
+                    }
+                }
+            }
+        }
+        if (bestWildcard) return { profile: allProfiles[bestWildcard], key: bestWildcard, type: 'Wildcard Match' };
+
+        if (allProfiles[seriesPath]) return { profile: allProfiles[seriesPath], key: seriesPath, type: 'Series' };
+        if (allProfiles[domain]) return { profile: allProfiles[domain], key: domain, type: 'Domain' };
+
+        const scopeKey = this.getScopeKey();
+        if (allProfiles[scopeKey]) return { profile: allProfiles[scopeKey], key: scopeKey, type: this._scopeMode };
+
+        return { profile: null, key: scopeKey, type: 'New' };
+    }
+
+    /**
+     * Syncs top priority/most recent profiles to chrome.storage.sync
+     * Strict quota limits apply, so we only sync the most recent ones.
+     */
+    async _syncTopProfiles(allProfiles) {
+        if (!chrome.storage.sync) return;
+        try {
+            const arr = Object.values(allProfiles).filter(p => p && p.lastUpdated);
+            arr.sort((a, b) => b.lastUpdated - a.lastUpdated);
+            // keep top 50 to stay well under 100KB limit
+            const top = arr.slice(0, 50);
+            const syncDict = {};
+            for (const p of top) {
+                if (p.scopeKey) syncDict[p.scopeKey] = p;
+            }
+            await chrome.storage.sync.set({ ypp_domain_profiles_sync: syncDict });
+        } catch (_) {}
     }
 
     /**
@@ -389,7 +464,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
      */
     _showRestoreToast(video) {
         const p = this._domainProfile;
-        const displayLabel = this._scopeMode === 'series' ? this.getSeriesPath().split('/').pop() || this._domain : this._domain;
+        const matchedType = this._activeMatchedType || 'Domain';
+        let displayLabel = this._activeMatchedKey || this._domain;
+        if (displayLabel.length > 35) displayLabel = displayLabel.substring(0, 32) + '...';
 
         // Build applied-settings summary
         const parts = [];
