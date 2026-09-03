@@ -628,7 +628,7 @@ function renderLayoutToggle(item, state) {
         hiddenInput.value = layout;
         updateVisuals(layout);
         hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
-        import('./popup-state.js').then(module => {
+        import('../core/popup-state.js').then(module => {
             if (module.saveSettings) module.saveSettings();
         });
     };

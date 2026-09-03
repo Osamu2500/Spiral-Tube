@@ -612,3 +612,5 @@ window.YPP.SettingsSchema = {
 };
 
 
+
+export const SettingsSchema = window.YPP.SettingsSchema;
