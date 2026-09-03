@@ -4,7 +4,7 @@ import {
     getSearchTab, getDeclutterTab, getSubscriptionsTab, getHistoryTab,
     getBookmarksTab, getAppearanceTab, getPopup_designTab, getAdvancedTab,
     getHotkeyTab, getGlobalTab
-} from '../schema/index.js';
+} from './index.js';
 
 export const CUSTOM_SLOT_RENDERERS = new Map();
 

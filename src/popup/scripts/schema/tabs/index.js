@@ -1,0 +1,15 @@
+export { getAdvancedTab } from './tab-advanced.js';
+export { getAppearanceTab } from './tab-appearance.js';
+export { getBookmarksTab } from './tab-bookmarks.js';
+export { getDeclutterTab } from './tab-declutter.js';
+export { getGlobalTab } from './tab-global.js';
+export { getHistoryTab } from './tab-history.js';
+export { getHomeTab } from './tab-home.js';
+export { getHotkeyTab } from './tab-hotkey.js';
+export { getModesTab } from './tab-modes.js';
+export { getPlayerTab } from './tab-player.js';
+export { getPopupDesignTab } from './tab-popup-design.js';
+export { getSearchTab } from './tab-search.js';
+export { getShortsTab } from './tab-shorts.js';
+export { getSpeedTab } from './tab-speed.js';
+export { getSubscriptionsTab } from './tab-subscriptions.js';

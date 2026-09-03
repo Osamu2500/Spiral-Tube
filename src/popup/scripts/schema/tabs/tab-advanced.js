@@ -1,4 +1,4 @@
-import { ICONS, P } from '../ui/popup-icons.js';
+import { ICONS, P } from '../../ui/popup-icons.js';
 
 export const getAdvancedTab = (t) => ({
     id: 'advanced',

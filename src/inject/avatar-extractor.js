@@ -18,14 +18,16 @@
                         el.setAttribute('data-ypp-avatar', d.thumbnail.url);
                     }
                 }
-            } catch(e) {}
+            } catch(e) {
+                console.warn('[YPP] Failed to extract avatar for item:', el, e);
+            }
         }
     }
     
     // Run once on load
     extractAvatars();
 
-    // Run on mutations (when the menu is opened/populated)
+    let debounceTimer = null;
     const observer = new MutationObserver((mutations) => {
         let shouldRun = false;
         try {
@@ -40,12 +42,19 @@
                 }
                 if (shouldRun) break;
             }
-        } catch (e) {}
-        if (shouldRun) extractAvatars();
+        } catch (e) {
+            console.warn('[YPP] Error in avatar mutation observer:', e);
+        }
+        if (shouldRun) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                extractAvatars();
+            }, 200);
+        }
     });
     
     // Observe the app root or document body
-    const root = window.YPP.DOMManager?.getAppRoot() || document.body;
+    const root = document.body;
     if (root) {
         observer.observe(root, { childList: true, subtree: true });
     }

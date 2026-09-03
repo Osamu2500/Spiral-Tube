@@ -212,7 +212,9 @@
                     window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
                         detail: { url: this._url, data }
                     }));
-                } catch(e) {}
+                } catch(e) {
+                    console.warn('[YPP] Failed to parse timedtext response', e);
+                }
             }
         });
         return originalXhrSend.apply(this, args);

@@ -5,7 +5,7 @@
  * Target: Extension Popup
  * Purpose: Defines the schema for the Player settings tab in the popup UI.
  */
-import { ICONS, P } from '../ui/popup-icons.js';
+import { ICONS, P } from '../../ui/popup-icons.js';
 
 export const getPlayerTab = (t) => ({
     id: 'player',

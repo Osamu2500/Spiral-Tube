@@ -1,4 +1,4 @@
-import { ICONS, P } from '../ui/popup-icons.js';
+import { ICONS, P } from '../../ui/popup-icons.js';
 
 export const getHotkeyTab = (t) => ({
     id: 'hotkey',

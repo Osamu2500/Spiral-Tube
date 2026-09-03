@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 // Basic mock to allow settings-schema to load in Node
 global.window = { YPP: {} };
-await import('../src/shared/config/settings-schema.js');
+await import('./settings-schema.js');
 
 describe('Settings Schema Validation', () => {
     let schema;
