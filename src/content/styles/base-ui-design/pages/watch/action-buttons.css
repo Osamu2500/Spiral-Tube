@@ -31,15 +31,34 @@ html.yt-spiral-tube-theme body ytd-watch-metadata div:has(> #subscribe-button) ~
 }
 
 /* --- 2. Base Squircle Shape (12px) --- */
-/* Target standalone buttons and segmented wrappers */
+/* Target standalone buttons, wrappers, and native elements to enforce 12px radius */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner ytd-button-renderer,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner ytd-segmented-like-dislike-button-renderer,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-segmented-like-dislike-button-view-model,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-shape,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-view-model,
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-shape button,
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-view-model button,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-download-button-view-model,
 html.yt-spiral-tube-theme body ytd-watch-metadata yt-download-button-view-model button,
 html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button {
   border-radius: 12px !important;
   border: none !important; 
+  /* Strip native background from wrappers just in case */
+  background: transparent !important;
+  background-color: transparent !important;
 }
+
+/* Neutralize native backgrounds, pseudo-elements, and touch ripples */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next::before,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next::after,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-touch-feedback-shape__fill,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-touch-feedback-shape__stroke,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-touch-feedback-shape {
+    display: none !important;
+}
+
 
 /* Ensure inner buttons of segmented control fill the wrapper correctly without rounding middle edges */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
@@ -57,35 +76,30 @@ html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button,
 html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model) button {
   background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
   color: var(--ypp-text-primary, #fff) !important;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease !important;
   will-change: transform;
 }
 
 /* Segmented Pill Wrapper */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
   overflow: hidden !important;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease !important;
 }
 
 /* For inner segmented buttons, let the wrapper hold the background, make buttons transparent */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
     background: transparent !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
 }
 
-/* Clear native icon backgrounds to prevent visual glitches */
-html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next__icon {
+/* Clear native backgrounds on inner segmented buttons to prevent visual glitches */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next__icon,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next {
     background: transparent !important;
+    background-color: transparent !important;
 }
 
 /* --- 4. Hover & Active States --- */
@@ -97,20 +111,17 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
   background: rgba(255, 255, 255, 0.15) !important;
   color: var(--ypp-primary-accent, #3ea6ff) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
 }
 
 /* Remove transform for segmented inner buttons so the wrapper doesn't clip them weirdly */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
     transform: none !important;
-    box-shadow: none !important;
 }
 
 /* Let the segmented wrapper itself scale on hover */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
 }
 
 /* Active State */

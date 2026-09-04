@@ -59,6 +59,7 @@ export class PlayerBarUI {
         
         this.setupInjectionObserver();
         this._startHeartbeat();
+        this.attemptInjection();
     }
 
     _scheduleRetry(attempt = 0) {
@@ -76,7 +77,7 @@ export class PlayerBarUI {
 
     _startHeartbeat() {
         if (this._heartbeatTimer) return;
-        this._heartbeatTimer = this.setInterval(() => {
+        this._heartbeatTimer = window.setInterval(() => {
             if (!this.isActive || document.hidden) return;
             const isShorts = window.location.pathname.startsWith('/shorts');
             const selector = isShorts ? 'ytd-reel-video-renderer[is-active] .ypp-player-controls' : '.ypp-player-controls';
@@ -89,7 +90,7 @@ export class PlayerBarUI {
 
     _stopHeartbeat() {
         if (this._heartbeatTimer) {
-            clearInterval(this._heartbeatTimer);
+            window.clearInterval(this._heartbeatTimer);
             this._heartbeatTimer = null;
         }
     }
@@ -254,6 +255,9 @@ export class PlayerBarUI {
                 if (!feature && config.key === 'volumeBoost') {
                     feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('VolumeBooster');
                 }
+                if (!feature && config.key === 'snapshotButton') {
+                    feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('SnapshotButton');
+                }
                 if (feature && feature.createButton) {
                     return feature.createButton(video);
                 }
@@ -388,3 +392,7 @@ export class PlayerBarUI {
         PlayerBarStyles.removeStyles();
     }
 }
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.PlayerBarUI = PlayerBarUI;

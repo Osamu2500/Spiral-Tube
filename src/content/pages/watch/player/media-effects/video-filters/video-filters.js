@@ -1,4 +1,5 @@
 import '../../../../../core/system/base-feature.js';
+import './video-filters.css';
 
 import { VideoFiltersOverlay } from './video-filters-overlay.js';
 import { VideoFiltersUI } from './video-filters-ui.js';

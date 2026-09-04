@@ -162,12 +162,6 @@ html ytd-backstage-post-renderer {
     padding: 16px !important;
     box-shadow: var(--ypp-shadow-base) !important;
 }
-/* Comment Inputs */
-html ytd-commentbox,
-html ytd-comment-simplebox-renderer {
-    background-color: var(--ypp-bg-surface) !important;
-    border-radius: var(--ypp-radius-lg) !important;
-    padding: 12px !important;
-}
+
 /* Hide AI Logo/Altered Content Badges */
 /* Catch-all for AI/Altered content badges on Player Page and elsewhere */

@@ -140,3 +140,7 @@ export class PlayerControls {
         });
     }
 };
+
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.PlayerControls = PlayerControls;

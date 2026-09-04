@@ -3,9 +3,10 @@ import '../../../core/system/base-feature.js';
  * @fileoverview
  * Feature: Comment Spam Filter
  * 
- * Target: /watch route.
+ * Target: /watch route, specifically the #comments section.
  * Purpose: Autodetects and dims/hides suspicious spam comments (crypto, telegram, whatsapp bots).
- * Users can add custom keywords and choose dim vs hide in settings.
+ * Users can add custom keywords and choose 'dim' vs 'hide' in settings.
+ * Confirmation: Does not affect unrelated files/functionality outside its scope.
  */
 export class CommentFilter extends window.YPP.features.BaseFeature {
     static featureId = 'commentFilter';
@@ -59,7 +60,7 @@ export class CommentFilter extends window.YPP.features.BaseFeature {
                 this.observer.start(comments);
             }
         } catch (e) {
-            this.utils?.log('Error enabling CommentFilter', 'COMMENT', 'error', e);
+            this.utils?.log?.('Error enabling CommentFilter', 'COMMENT', 'error', e);
         }
     }
 
@@ -132,11 +133,10 @@ export class CommentFilter extends window.YPP.features.BaseFeature {
                     const label = document.createElement('span');
                     label.className = 'ypp-spam-label';
                     label.textContent = '[Likely Spam]';
-                    label.style.cssText = 'color:#ff5555;font-size:12px;margin-left:8px;font-weight:bold;';
                     header.appendChild(label);
                 }
 
-                this.utils.log?.('Spam comment filtered', 'COMMENT');
+                this.utils?.log?.('Spam comment filtered', 'COMMENT');
             }
         });
     }

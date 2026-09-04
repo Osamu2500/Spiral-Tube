@@ -1,4 +1,5 @@
 import '../../../../../core/system/base-feature.js';
+import './volume-booster.css';
 
 import { VolumeBoosterUI } from './volume-booster-ui.js';
 import { EQ_BANDS, EQ_PRESETS } from './constants/eq-presets.js';
