@@ -76,16 +76,19 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
         styleNode.textContent = `
             body.ypp-ambient-mode-active html[dark="true"] #cinematics.ytd-watch-flexy,
             body.ypp-ambient-mode-active #cinematics.ytd-watch-flexy { 
-                width: 100% !important; 
-                height: 100% !important; 
+                /* Removed width/height 100% to let YouTube calculate the correct aspect ratio */
+                pointer-events: none !important;
             }
             body.ypp-ambient-mode-active div#cinematics { 
-                overflow: visible !important; 
+                /* Removed overflow: visible to prevent canvas bleeding into the page */
+                pointer-events: none !important;
             }
             body.ypp-ambient-mode-active #cinematics > div > canvas { 
                 transition: opacity 0.5s ease-in !important; 
                 filter: saturate(1.2) blur(${blur}px) !important; 
                 opacity: ${intensity} !important; 
+                transform: translateZ(0) !important;
+                will-change: transform, filter !important;
             }
             body.ypp-ambient-mode-active #cinematics > div > canvas:not([style*="height:"]) { 
                 filter: blur(10px) !important; 
