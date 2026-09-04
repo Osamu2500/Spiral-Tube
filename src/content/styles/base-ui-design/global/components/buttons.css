@@ -88,43 +88,7 @@ yt-download-button-view-model button:active {
   transform: scale(0.97) !important;
   box-shadow: var(--ypp-shadow-active) !important;
 }
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
-  border-radius: var(--ypp-button-radius, 12px) !important;
-  background: var(--ypp-surface-bg) !important;
-  box-shadow: var(--ypp-shadow-base) !important;
-  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
-  overflow: hidden !important;
-  /* Override YouTube's own border-radius CSS variable used inside yt-button-shape */
-  --yt-button-border-radius: var(--ypp-button-radius, 12px) !important;
-  --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
-}
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover {
-  box-shadow: var(--ypp-shadow-hover) !important;
-  transform: scale(1.06);
-}
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:active {
-  transform: scale(0.97) !important;
-  box-shadow: var(--ypp-shadow-active) !important;
-}
-/* Inner segmented buttons — squircle only the outer corners, leave the divider flat */
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
-  border-radius: var(--ypp-button-radius, 12px) 0 0 var(--ypp-button-radius, 12px) !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 0 var(--ypp-button-radius, 12px) var(--ypp-button-radius, 12px) 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
-  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
-}
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
-  background: var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.15)) !important;
-}
+
 button.ytSpecButtonShapeNextText {
   border-radius: var(--ypp-button-radius, 12px) !important;
   transition:
@@ -177,91 +141,7 @@ button.ytSpecButtonShapeNextText:active {
   transform: scale(1.05) !important;
 }
 
-/* ==========================================================================
-   Normalize YouTube Native "Call to Action" Download Button
-   Match standard tonal buttons when in default UI design
-   ========================================================================== */
-html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
-    yt-button-shape button[aria-label*="Download" i],
-    yt-button-shape button[title*="Download" i],
-    yt-button-view-model button[aria-label*="Download" i],
-    yt-button-view-model button[title*="Download" i],
-    ytd-download-button-renderer button,
-    yt-download-button-view-model button
-) {
-    background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
-    border: none !important;
-}
 
-/* Hover State */
-html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
-    yt-button-shape button[aria-label*="Download" i]:hover,
-    yt-button-shape button[title*="Download" i]:hover,
-    yt-button-view-model button[aria-label*="Download" i]:hover,
-    yt-button-view-model button[title*="Download" i]:hover,
-    ytd-download-button-renderer button:hover,
-    yt-download-button-view-model button:hover
-) {
-    background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important;
-    box-shadow: none !important;
-    transform: none !important;
-}
-
-/* Icon Color */
-html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
-    yt-button-shape button[aria-label*="Download" i],
-    yt-button-shape button[title*="Download" i],
-    yt-button-view-model button[aria-label*="Download" i],
-    yt-button-view-model button[title*="Download" i],
-    ytd-download-button-renderer button,
-    yt-download-button-view-model button
-) .yt-core-image {
-    fill: var(--yt-spec-text-primary) !important;
-}
-
-/* Text Color */
-html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
-    yt-button-shape button[aria-label*="Download" i],
-    yt-button-shape button[title*="Download" i],
-    yt-button-view-model button[aria-label*="Download" i],
-    yt-button-view-model button[title*="Download" i],
-    ytd-download-button-renderer button,
-    yt-download-button-view-model button
-) .yt-spec-button-shape-next__button-text-content {
-    color: var(--yt-spec-text-primary) !important;
-}
-
-/* Fix native YouTube hover turning action buttons blue */
-html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(#actions-inner, #top-level-buttons-computed) .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover .yt-core-image {
-    fill: var(--yt-spec-text-primary) !important;
-}
-
-html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(#actions-inner, #top-level-buttons-computed) .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover .yt-spec-button-shape-next__button-text-content {
-    color: var(--yt-spec-text-primary) !important;
-}
-
-/* Force circle-square shapes across default UI */
-html:not([data-ypp-ui-design]) body {
-    --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
-}
-
-/* Subscribe button shape override */
-html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer button,
-html:not([data-ypp-ui-design]) body yt-button-shape#subscribe-button button,
-html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer yt-button-shape button {
-    border-radius: var(--ypp-button-radius, 12px) !important;
-}
-
-/* Explicitly force action buttons to circle-square because native 100px overrides might exist */
-html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-shape button,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-view-model button,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
-    border-radius: var(--ypp-button-radius, 12px) !important;
-}
 
 
 /* Button Components */

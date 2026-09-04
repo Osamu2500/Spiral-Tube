@@ -121,28 +121,7 @@ html ytd-watch-metadata #owner {
   box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.2));
   margin-right: 12px;
 }
-html ytd-watch-metadata #actions {
-  background: var(--ypp-bg-glass, rgba(20, 20, 20, 0.8));
-  border: var(--ypp-glass-border, 1px solid rgba(255, 255, 255, 0.1));
-  border-radius: var(--ypp-radius-pill, 100px);
-  padding: 4px 8px;
-  box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.2));
-  display: flex;
-  align-items: center;
-}
-html ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button,
-html ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button,
-html ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
-  background: transparent !important;
-  color: var(--ypp-text-primary, #fff) !important;
-  transition: all 0.2s ease;
-}
-html ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button:hover,
-html ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
-  background: var(--ypp-bg-hover, rgba(255, 255, 255, 0.1)) !important;
-  color: var(--ypp-accent, #3ea6ff) !important;
-}
+
 /* ────────────────────────────────────────────────────────────────── */
 /* UI Shapes - Square Corners                                         */
 /* ────────────────────────────────────────────────────────────────── */
@@ -151,46 +130,7 @@ html ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segme
 /* UI Shapes - Extra Rounded UI                                       */
 /* ────────────────────────────────────────────────────────────────── */
 /* Moved to features/ui-tweaks/extra-rounded-ui.css */
-/* Fix for squished buttons in action bar (e.g. Download) */
-#top-level-buttons-computed > *,
-#top-level-buttons-computed yt-button-view-model,
-#top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) {
-    flex-shrink: 0 !important;
-}
-/* HARD OVERRIDE FOR PIPELINE HIDE */
-/* Fix huge gaps in Action Bar */
-html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata,
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
-    justify-content: flex-end !important;
-    flex-grow: 1 !important;
-    width: auto !important;
-}
-html[data-ypp-ui-design] body ytd-watch-metadata #top-level-buttons-computed,
-html[data-ypp-ui-design] body ytd-watch-metadata #flexible-item-buttons {
-    flex: 0 0 auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    justify-content: flex-end !important;
-}
-/* Universal Action Bar Layout Fix */
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
-    justify-content: flex-end !important;
-    gap: 8px !important;
-    width: 100% !important;
-    flex-wrap: nowrap !important;
-}
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > * {
-    flex-grow: 0 !important;
-    flex-shrink: 0 !important;
-}
-/* Hide YouTube's native spacer that separates buttons */
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner .spacer,
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > div:empty {
-    display: none !important;
-    width: 0 !important;
-    flex: 0 !important;
-}
-html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
+
 /* --- 10. EXTENDED COMPONENT COVERAGE --- */
 /* Shorts Shelves */
 html ytd-reel-shelf-renderer {

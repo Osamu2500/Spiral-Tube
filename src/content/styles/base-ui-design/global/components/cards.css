@@ -1,13 +1,482 @@
-/*  * Cards Component - Handles universal video card aesthetics, colors, typography, and visual styling. * DOES NOT INCLUDE: Layout logic, structural grids, or feature toggles. * Modifying this file only affects the visual appearance of video cards and thumbnails. */:is(  ytd-rich-item-renderer,  ytd-video-renderer,  ytd-playlist-renderer,  ytd-radio-renderer,  ytd-channel-renderer,  ytd-compact-video-renderer,  ytd-grid-video-renderer,  .ypp-grid-item,  yt-lockup-view-model:not(:is(      ytd-rich-item-renderer,      ytd-video-renderer,      ytd-playlist-renderer,      ytd-radio-renderer,      ytd-channel-renderer,      ytd-compact-video-renderer,      ytd-grid-video-renderer,      .ypp-grid-item    ) *)) {  background: transparent !important;  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 16px)) !important;  border: none !important;  padding: 0 !important; /* Edge to edge thumbnails */  box-shadow: none !important;  filter: var(--ypp-card-filter, none) !important;  transform: var(--ypp-card-transform, none) !important;  transition: var(--ypp-card-transition, all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)) !important;}/* Core Watch Metadata & Info Panels (Migrated from watch-layout.css) */:is(  ytd-watch-metadata,  ytd-comment-thread-renderer,  ytd-live-chat-renderer,  ytd-playlist-panel-renderer,  #channel-header,  ytd-c4-tabbed-header-renderer,  ytd-search-filter-renderer) {  background: var(--ypp-card-bg, transparent) !important;  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;  border: var(--ypp-card-border, 1px solid transparent) !important;  padding: var(--ypp-card-pad, 0px) !important;  box-shadow: var(--ypp-card-shadow, none) !important;  filter: var(--ypp-card-filter, none) !important;  transition: var(--ypp-card-transition, all 0.2s ease) !important;}:is(  ytd-watch-metadata,  ytd-comment-thread-renderer,  ytd-live-chat-renderer,  ytd-playlist-panel-renderer,  #channel-header,  ytd-c4-tabbed-header-renderer,  ytd-search-filter-renderer):hover {  background: var(--ypp-card-bg-hover, var(--ypp-card-bg, transparent)) !important;  border: var(--ypp-card-border-hover, var(--ypp-card-border, 1px solid transparent)) !important;  box-shadow: var(--ypp-card-shadow-hover, var(--ypp-card-shadow, none)) !important;  filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;}/* Inner Text Hooks for Card Styles */:is(  ytd-rich-item-renderer,  ytd-video-renderer,  ytd-compact-video-renderer,  ytd-grid-video-renderer,  .ypp-grid-item,  ytd-rich-grid-media,  ytd-playlist-renderer,  ytd-radio-renderer,  ytd-channel-renderer,  yt-lockup-view-model:not(ytd-watch-metadata *)) #video-title {  font-family: var(--ypp-card-title-font, var(--ypp-font-primary)) !important;}:is(  ytd-rich-item-renderer,  ytd-video-renderer,  ytd-compact-video-renderer,  ytd-grid-video-renderer,  .ypp-grid-item,  ytd-rich-grid-media,  ytd-playlist-renderer,  ytd-radio-renderer,  ytd-channel-renderer,  yt-lockup-view-model:not(ytd-watch-metadata *)) #metadata-line span,:is(  ytd-rich-item-renderer,  ytd-video-renderer,  ytd-compact-video-renderer,  ytd-grid-video-renderer,  .ypp-grid-item,  ytd-rich-grid-media,  ytd-playlist-renderer,  ytd-radio-renderer,  ytd-channel-renderer,  yt-lockup-view-model:not(ytd-watch-metadata *)) ytd-channel-name * {  color: var(--ypp-card-meta-color, var(--ypp-text-secondary)) !important;}/* Base Overrides for Cards elements like thumbnails */body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;}/* Permanent eye icon for Mark as Watched feature — hidden by default, visible on hover */.ypp-watched-icon-permanent {  position: absolute !important;  top: 8px !important;  left: 8px !important;  width: 30px !important;  height: 30px !important;  background: var(--ypp-bg-overlay, rgba(0, 0, 0, 0.75)) !important;  border-radius: 50% !important;  display: flex !important;  align-items: center !important;  justify-content: center !important;  cursor: pointer !important;  z-index: var(--ypp-z-popup) !important;  transition: background 0.2s, transform 0.2s, opacity 0.2s, visibility 0.2s !important;  opacity: 0 !important;  visibility: hidden !important;  pointer-events: none !important;  transform: scale(0.8) !important;}body ytd-rich-item-renderer:hover .ypp-watched-icon-permanent,body ytd-video-renderer:hover .ypp-watched-icon-permanent,body ytd-compact-video-renderer:hover .ypp-watched-icon-permanent,body ytd-grid-video-renderer:hover .ypp-watched-icon-permanent,body ytd-playlist-video-renderer:hover .ypp-watched-icon-permanent {  opacity: 1 !important;  visibility: visible !important;  pointer-events: auto !important;  transform: scale(1) !important;}.ypp-watched-icon-permanent:hover {  background: var(--ypp-accent, #3ea6ff) !important;  transform: scale(1.1) !important;}/* Video Cards - Reset Child Styling (Since parent now has card style) */body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-video-renderer,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-rich-grid-media,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-lockup-view-model,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer .ytLockupViewModelHost,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) {  background: transparent !important;  border: none !important;  border-radius: 0 !important;  box-shadow: none !important;  padding: 0 !important;  margin: 0 !important;  display: flex !important;  flex-direction: column !important;  flex: 1 1 auto !important;  height: 100% !important;  min-width: 0 !important;  width: 100% !important;}/* Thumbnail */body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-thumbnail,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail {  width: 100% !important;  aspect-ratio: 16/9 !important;  border-radius: var(--ypp-card-radius, 16px) var(--ypp-card-radius, 16px) 0 0 !important; /* Edge to edge */  overflow: hidden !important;  position: relative !important;  /* Fix thumbnail background bleeding */  background-color: transparent !important;  margin-bottom: 0 !important;}body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer ytd-thumbnail img,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail img {  width: 100% !important;  height: 100% !important;  object-fit: cover !important;  background-color: transparent !important;}/* Global thumbnail rounding — guard excludes playlist/library/history   so native list-row thumbnails keep their correct fixed sizing */body:not(:is(.ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-thumbnail {  border-radius: var(--ypp-radius-md);  overflow: hidden;  width: 100%;}html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {  border-radius: 12px !important;  overflow: hidden !important;  border: var(--ypp-surface-border) !important;}/* Card Details Padding (Outer wrapper) */body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #details,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupViewModelMetadata,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) .text-wrapper {  padding: 2px 10px 14px 10px !important;  margin-top: 0 !important; /* Prevent stacking with native margins */}/* Avatar Reset & Sizing */body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #avatar-link,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) #channel-thumbnail,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model) .ytLockupMetadataViewModelAvatar,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) a#avatar-link,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) a#channel-thumbnail,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info > a:first-child {  margin: 0 !important;  margin-right: 12px !important;  flex-shrink: 0 !important;  display: block !important;}body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #avatar,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-img-shadow#avatar,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-avatar-shape,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer .yt-spec-avatar-shape,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model yt-avatar-shape,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model .yt-spec-avatar-shape,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info a yt-img-shadow,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info a yt-avatar-shape {  width: 100% !important;  height: 100% !important;  border-radius: 12px !important; /* Squircle shape */  overflow: hidden !important;}/* Video Title Typography & Clamping */body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #video-title,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model h3,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="text-primary"],body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="TextPrimary"],body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model [class*="Title"],body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #video-title {  font-size: 1.4rem !important; /* Native Youtube size */  line-height: 2rem !important;  font-weight: 500 !important;  display: -webkit-box !important;  -webkit-line-clamp: 2 !important;  line-clamp: 2 !important;  -webkit-box-orient: vertical !important;  overflow: hidden !important;  max-height: 4rem !important;  color: var(--yt-spec-text-primary, #ffffff) !important;  letter-spacing: 0 !important;}/* Metadata */body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #metadata-line,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #channel-name,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #metadata-line,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-channel-name {  font-size: 1.3rem !important;  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.55)) !important;  line-height: 1.5 !important;  transition: color 0.2s ease !important;}body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #metadata-line,body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #channel-name,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover #metadata-line,body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover ytd-channel-name {  color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.8)) !important;}/* ===================================================================================   MIGRATED FROM BASE/CORE-STYLES-UI.CSS   =================================================================================== *//* Force restore video thumbnail images - override all backgrounds */html[data-ypp-theme] ytd-video-renderer .ytd-thumbnail,html[data-ypp-theme] ytd-grid-video-renderer .ytd-thumbnail,html[data-ypp-theme] ytd-rich-item-renderer .ytd-thumbnail,html[data-ypp-theme] ytd-compact-video-renderer .ytd-thumbnail,html[data-ypp-theme] ytd-playlist-video-renderer .ytd-thumbnail,html[data-ypp-theme] .ytd-thumbnail,html[data-ypp-theme] .ytd-thumbnail-renderer,html[data-ypp-theme] .ytd-thumbnail img,html[data-ypp-theme] .ytd-thumbnail a,html[data-ypp-theme] .ytd-thumbnail a img {  background: transparent !important;  background-color: transparent !important;  background-image: none !important;}html[data-ypp-theme] .ytd-thumbnail img,html[data-ypp-theme] .ytd-thumbnail a img,html[data-ypp-theme] .ytd-thumbnail-renderer img,html[data-ypp-theme] .ytd-thumbnail-renderer a img {  display: block !important;  visibility: visible !important;  opacity: 1 !important;  background: transparent !important;  background-color: transparent !important;  background-image: none !important;}/* Video Cards (Homepage & Sidebar) - Premium Hover Spring */html ytd-rich-item-renderer,html ytd-video-renderer,html ytd-compact-video-renderer {    transition: transform 0.4s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), filter 0.3s ease !important;    border-radius: 12px !important;}html ytd-rich-item-renderer:hover,html ytd-video-renderer:hover,html ytd-compact-video-renderer:hover {    transform: translateY(-4px) scale(1.015) !important;    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) !important;    will-change: transform;    z-index: 10;}html ytd-thumbnail {    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);    transition: box-shadow 0.4s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;}html ytd-rich-item-renderer:hover ytd-thumbnail,html ytd-compact-video-renderer:hover ytd-thumbnail {    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);}/* Fix 3-dots menu clickability during video previews */:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu {  z-index: 99 !important;  position: relative !important;  pointer-events: auto !important;}:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu ytd-menu-renderer {  display: block !important;}:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button {  background: rgba(0, 0, 0, 0.5) !important;  border-radius: 50% !important;  transition: all 0.2s ease !important;  width: 36px !important;  height: 36px !important;  display: flex !important;  align-items: center !important;  justify-content: center !important;  opacity: 0;}:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer):hover #menu yt-icon-button {  opacity: 1;}:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button:hover {  background: rgba(0, 0, 0, 0.8) !important;  transform: scale(1.1) !important;}:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon {  color: var(--ypp-text-primary, #fff) !important;}/* ==========================================================================
+/* 
+ * Cards Component - Handles universal video card aesthetics, colors, typography, and visual styling.
+ * DOES NOT INCLUDE: Layout logic, structural grids, or feature toggles.
+ * Modifying this file only affects the visual appearance of video cards and thumbnails.
+ */
+body:not(.ypp-watch-page) :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+) {
+  background: transparent !important;
+  border-radius: var(
+    --ypp-card-radius,
+    var(--ypp-border-radius-base, 16px)
+  ) !important;
+  border: none !important;
+  padding: 0 !important; /* Edge to edge thumbnails */
+  box-shadow: none !important;
+  filter: var(--ypp-card-filter, none) !important;
+  transform: var(--ypp-card-transform, none) !important;
+  transition: var(
+    --ypp-card-transition,
+    all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)
+  ) !important;
+}
+/* Inner Text Hooks for Card Styles */
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    ytd-rich-grid-media,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    yt-lockup-view-model:not(ytd-watch-metadata *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  )
+  #video-title {
+  font-family: var(--ypp-card-title-font, var(--ypp-font-primary)) !important;
+}
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    ytd-rich-grid-media,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    yt-lockup-view-model:not(ytd-watch-metadata *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  )
+  #metadata-line
+  span,
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    ytd-rich-grid-media,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    yt-lockup-view-model:not(ytd-watch-metadata *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  )
+  ytd-channel-name
+  * {
+  color: var(--ypp-card-meta-color, var(--ypp-text-secondary)) !important;
+}
+/* Base Overrides for Cards elements like thumbnails */
+body:not(.ypp-channel-page)
+  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: var(
+    --ypp-card-radius,
+    var(--ypp-border-radius-base, 12px)
+  ) !important;
+}
+/* Permanent eye icon for Mark as Watched feature — hidden by default, visible on hover */
+.ypp-watched-icon-permanent {
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: var(--ypp-bg-overlay, rgba(0, 0, 0, 0.75)) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: var(--ypp-z-popup) !important;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    opacity 0.2s,
+    visibility 0.2s !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(0.8) !important;
+}
+body:not(.ypp-watch-page) ytd-rich-item-renderer:hover .ypp-watched-icon-permanent,
+body:not(.ypp-watch-page) ytd-video-renderer:hover .ypp-watched-icon-permanent,
+body:not(.ypp-watch-page) ytd-compact-video-renderer:hover .ypp-watched-icon-permanent,
+body:not(.ypp-watch-page) ytd-grid-video-renderer:hover .ypp-watched-icon-permanent,
+body:not(.ypp-watch-page) ytd-playlist-video-renderer:hover .ypp-watched-icon-permanent {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: scale(1) !important;
+}
+.ypp-watched-icon-permanent:hover {
+  background: var(--ypp-accent, #3ea6ff) !important;
+  transform: scale(1.1) !important;
+}
+/* Video Cards - Reset Child Styling (Since parent now has card style) */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  ytd-video-renderer,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  ytd-rich-grid-media,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *),
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  .ytLockupViewModelHost,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+/* Thumbnail */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  ytd-thumbnail,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  ytd-thumbnail {
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  border-radius: var(--ypp-card-radius, 16px) var(--ypp-card-radius, 16px) 0 0 !important; /* Edge to edge */
+  overflow: hidden !important;
+  position: relative !important;
+  /* Fix thumbnail background bleeding */
+  background-color: transparent !important;
+  margin-bottom: 0 !important;
+}
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  ytd-thumbnail
+  img,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  ytd-thumbnail
+  img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  background-color: transparent !important;
+}
+/* Global thumbnail rounding — guard excludes playlist/library/history/watch
+   so native list-row thumbnails keep their correct fixed sizing */
+body:not(
+    :is(
+      .ypp-playlist-page,
+      .ypp-library-page,
+      .ypp-history-page,
+      .ypp-channel-page,
+      .ypp-watch-page
+    )
+  )
+  ytd-thumbnail {
+  border-radius: var(--ypp-radius-md);
+  overflow: hidden;
+  width: 100%;
+}
+html[data-ypp-card-style="technozen"]
+  body:not(.ypp-channel-page)
+  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: var(--ypp-surface-border) !important;
+}
+/* Card Details Padding (Outer wrapper) */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *))
+  #details,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *))
+  .ytLockupViewModelMetadata,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  .text-wrapper {
+  padding: 2px 10px 14px 10px !important;
+  margin-top: 0 !important; /* Prevent stacking with native margins */
+}
+/* Avatar Reset & Sizing */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *))
+  #avatar-link,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *))
+  #channel-thumbnail,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *))
+  .ytLockupMetadataViewModelAvatar,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  a#avatar-link,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  a#channel-thumbnail,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  #channel-info
+  > a:first-child {
+  margin: 0 !important;
+  margin-right: 12px !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+}
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  #avatar,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  yt-img-shadow#avatar,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  yt-avatar-shape,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  .yt-spec-avatar-shape,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  yt-avatar-shape,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  .yt-spec-avatar-shape,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  #channel-info
+  a
+  yt-img-shadow,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  #channel-info
+  a
+  yt-avatar-shape {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 12px !important; /* Squircle shape */
+  overflow: hidden !important;
+}
+/* Video Title Typography & Clamping */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  #video-title,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  h3,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  [class*="text-primary"],
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  [class*="TextPrimary"],
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *, #related *, #secondary *, ytd-watch-next-secondary-results-renderer *)
+  [class*="Title"],
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  #video-title {
+  font-size: 1.4rem !important; /* Native Youtube size */
+  line-height: 2rem !important;
+  font-weight: 500 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-height: 4rem !important;
+  color: var(--yt-spec-text-primary, #ffffff) !important;
+  letter-spacing: 0 !important;
+}
+/* Metadata */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  #metadata-line,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer
+  #channel-name,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  #metadata-line,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer)
+  ytd-channel-name {
+  font-size: 1.3rem !important;
+  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.55)) !important;
+  line-height: 1.5 !important;
+  transition: color 0.2s ease !important;
+}
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer:hover
+  #metadata-line,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page))
+  ytd-rich-item-renderer:hover
+  #channel-name,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover
+  #metadata-line,
+body.ypp-search-grid-mode:not(.ypp-watch-page)
+  :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover
+  ytd-channel-name {
+  color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.8)) !important;
+}
+/* ===================================================================================
+   MIGRATED FROM BASE/CORE-STYLES-UI.CSS
+   =================================================================================== */
+/* Force restore video thumbnail images - override all backgrounds */
+html[data-ypp-theme] ytd-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-grid-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-rich-item-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-compact-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-playlist-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail-renderer,
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a,
+html[data-ypp-theme] .ytd-thumbnail a img {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a img,
+html[data-ypp-theme] .ytd-thumbnail-renderer img,
+html[data-ypp-theme] .ytd-thumbnail-renderer a img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+/* Video Cards (Homepage & Sidebar) - Premium Hover Spring */
+body:not(.ypp-watch-page) ytd-rich-item-renderer,
+body:not(.ypp-watch-page) ytd-video-renderer,
+body:not(.ypp-watch-page) ytd-compact-video-renderer {
+  transition:
+    transform 0.4s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    filter 0.3s ease !important;
+  border-radius: 12px !important;
+}
+body:not(.ypp-watch-page) ytd-rich-item-renderer:hover,
+body:not(.ypp-watch-page) ytd-video-renderer:hover,
+body:not(.ypp-watch-page) ytd-compact-video-renderer:hover {
+  transform: translateY(-4px) scale(1.015) !important;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) !important;
+  will-change: transform;
+  z-index: 10;
+}
+body:not(.ypp-watch-page) ytd-thumbnail {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.4s
+    var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
+}
+body:not(.ypp-watch-page) ytd-rich-item-renderer:hover ytd-thumbnail,
+body:not(.ypp-watch-page) ytd-compact-video-renderer:hover ytd-thumbnail {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+/* Fix 3-dots menu clickability during video previews */
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    ytd-playlist-renderer
+  )
+  #menu {
+  z-index: 99 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    ytd-playlist-renderer
+  )
+  #menu
+  ytd-menu-renderer {
+  display: block !important;
+}
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    ytd-playlist-renderer
+  )
+  #menu
+  yt-icon-button {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0;
+}
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    ytd-playlist-renderer
+  ):hover
+  #menu
+  yt-icon-button {
+  opacity: 1;
+}
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    ytd-playlist-renderer
+  )
+  #menu
+  yt-icon-button:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+  transform: scale(1.1) !important;
+}
+body:not(.ypp-watch-page) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    ytd-playlist-renderer
+  )
+  #menu
+  yt-icon {
+  color: var(--ypp-text-primary, #fff) !important;
+}
+/* ==========================================================================
    PLAYLIST & OVERLAY BADGES
    ========================================================================== */
-body ytd-playlist-thumbnail {
+body:not(.ypp-watch-page) ytd-playlist-thumbnail {
   border-radius: var(--ypp-radius-md) !important;
   overflow: hidden !important;
   margin-bottom: 12px !important;
   position: relative !important;
 }
-body ytd-thumbnail-overlay-side-panel-renderer {
+body:not(.ypp-watch-page) ytd-thumbnail-overlay-side-panel-renderer {
   background: rgba(10, 10, 15, 0.6) !important;
   border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: var(--ypp-text-primary, #fff) !important;
@@ -19,14 +488,18 @@ body ytd-thumbnail-overlay-side-panel-renderer {
   align-items: center !important;
   justify-content: center !important;
 }
-body ytd-thumbnail-overlay-side-panel-renderer yt-formatted-string {
+body:not(.ypp-watch-page) ytd-thumbnail-overlay-side-panel-renderer yt-formatted-string {
   font-weight: 600 !important;
   font-size: 15px !important;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
-  font-family: 'Inter', sans-serif !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  font-family: "Inter", sans-serif !important;
 }
-body ytd-thumbnail-overlay-bottom-panel-renderer {
-  background: linear-gradient(to top, rgba(10, 10, 15, 0.95), transparent) !important;
+body:not(.ypp-watch-page) ytd-thumbnail-overlay-bottom-panel-renderer {
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 15, 0.95),
+    transparent
+  ) !important;
   padding: 16px 8px 8px 8px !important;
   display: flex !important;
   align-items: flex-end !important;
@@ -37,10 +510,11 @@ body ytd-thumbnail-overlay-bottom-panel-renderer {
 /* --- GRAYSCALE THUMBNAILS --- */
 body.ypp-grayscale-thumbs ytd-thumbnail img,
 body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
-    filter: grayscale(100%) !important;
-    transition: filter 0.3s ease !important;
+  filter: grayscale(100%) !important;
+  transition: filter 0.3s ease !important;
 }
-body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
 body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
-    filter: grayscale(0%) !important;
+  filter: grayscale(0%) !important;
 }
+
+

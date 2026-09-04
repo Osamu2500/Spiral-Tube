@@ -1,12 +1,12 @@
 /* ==========================================================================
-   WATCH PAGE - CHANNEL BAR (LAYOUT ONLY)
+   WATCH PAGE - CHANNEL BAR & SUBSCRIBE (Translucent Squircles)
    ========================================================================== 
-   Scope: This file handles the flex layout of the channel owner row 
-   (profile picture, channel name, subscribe button spacing).
-   WARNING: Do not place border-radius, background, or shape overrides here.
-   Those belong in UI theme components.
+   Scope: This file handles the layout and glassmorphic styling of the 
+   Channel Bar (Owner info) and the Subscribe button on the Watch Page.
+   It has been isolated from action buttons to ensure clear responsibilities.
 */
 
+/* --- 1. Top Row Layout --- */
 /* Container for the entire top row (Channel info + Actions) */
 ytd-watch-metadata #top-row,
 ytd-watch-metadata > div > div:first-child {
@@ -19,16 +19,51 @@ ytd-watch-metadata > div > div:first-child {
   gap: 16px !important;
 }
 
-/* Channel Owner Section Pill */
-ytd-watch-metadata #owner {
+/* Ensure channel bar elements align well inside the translucent squircle */
+html.yt-spiral-tube-theme body ytd-watch-metadata #owner {
+  padding: 8px 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 4px 16px 4px 4px !important;
 }
 
 #subscribe-button {
   margin-left: 20px !important;
   display: flex !important;
   align-items: center !important;
+}
+
+/* --- 2. Base Squircle Shape (12px) --- */
+html.yt-spiral-tube-theme body ytd-watch-metadata #owner,
+html.yt-spiral-tube-theme body ytd-watch-metadata #subscribe-button button,
+html.yt-spiral-tube-theme body ytd-watch-metadata ytd-subscribe-button-renderer button {
+  border-radius: 12px !important;
+  border: none !important; 
+}
+
+/* --- 3. Translucent Blur Backgrounds --- */
+html.yt-spiral-tube-theme body ytd-watch-metadata #owner,
+html.yt-spiral-tube-theme body ytd-watch-metadata #subscribe-button button,
+html.yt-spiral-tube-theme body ytd-watch-metadata ytd-subscribe-button-renderer button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  will-change: transform;
+}
+
+/* --- 4. Hover & Active States --- */
+html.yt-spiral-tube-theme body ytd-watch-metadata #subscribe-button button:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata ytd-subscribe-button-renderer button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: var(--ypp-primary-accent, #3ea6ff) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-ui-design] body ytd-watch-metadata #subscribe-button button:active,
+html[data-ypp-ui-design] body ytd-watch-metadata ytd-subscribe-button-renderer button:active {
+  transform: scale(0.95) !important;
 }

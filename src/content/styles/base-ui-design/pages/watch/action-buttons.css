@@ -1,34 +1,122 @@
 /* ==========================================================================
-   WATCH PAGE - ACTION BUTTONS (LAYOUT ONLY)
+   WATCH PAGE - ACTION BUTTONS (Translucent Squircles)
    ========================================================================== 
-   Scope: This file handles the flexbox row structure and alignment of the 
-   action buttons (Like, Share, Download, etc.) below the player.
-   It pushes them to the far right.
-   WARNING: Do not place border-radius, background, or shape overrides here.
-   Those belong in UI theme components.
+   Scope: This file handles the layout, shape, and glassmorphic styling
+   of the Action buttons (Like, Dislike, Share, Download, etc.) inside the 
+   actions container.
+   Note: Channel Bar and Subscribe button styles are in channel-bar.css.
 */
 
-/* Actions Menu Container (Handles both with and without ID) */
-#actions.ytd-watch-metadata,
-#actions-inner,
-#top-level-buttons-computed,
-#flexible-item-buttons,
-ytd-watch-metadata .item:last-of-type,
-ytd-watch-metadata ytd-menu-renderer,
-ytd-watch-metadata > div > div:first-child > *:last-child,
-ytd-watch-metadata div:has(> #subscribe-button) ~ div {
+/* --- 1. Layout Fixes --- */
+/* Push actions menu container to the right without breaking the DOM */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions.ytd-watch-metadata {
+    flex-grow: 1 !important; 
+    width: 100% !important; 
+    justify-content: flex-end !important; 
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner {
   display: flex !important;
   flex-direction: row !important;
   gap: 8px !important;
   align-items: center !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  flex-wrap: nowrap !important;
 }
-
-/* Push actions to the far right */
-ytd-watch-metadata #actions,
-ytd-watch-metadata .item:last-of-type,
-ytd-watch-metadata > div > div:first-child > *:last-child,
-ytd-watch-metadata div:has(> #subscribe-button) ~ div,
-#top-level-buttons-computed,
-#actions-inner {
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner > * {
+  flex-shrink: 0 !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata div:has(> #subscribe-button) ~ div {
   margin-left: auto !important;
 }
+
+/* --- 2. Base Squircle Shape (12px) --- */
+/* Target standalone buttons and segmented wrappers */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-shape button,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-view-model button,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-download-button-view-model button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button {
+  border-radius: 12px !important;
+  border: none !important; 
+}
+
+/* Ensure inner buttons of segmented control fill the wrapper correctly without rounding middle edges */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
+  border-radius: 12px 0 0 12px !important;
+  border: none !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: 0 12px 12px 0 !important;
+  border: none !important;
+}
+
+/* --- 3. Translucent Blur Backgrounds --- */
+/* Standalone action buttons */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model) button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  will-change: transform;
+}
+
+/* Segmented Pill Wrapper */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  overflow: hidden !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease !important;
+}
+
+/* For inner segmented buttons, let the wrapper hold the background, make buttons transparent */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Clear native icon backgrounds to prevent visual glitches */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next__icon {
+    background: transparent !important;
+}
+
+/* --- 4. Hover & Active States --- */
+/* Standalone buttons & Segmented Inner buttons hover */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: var(--ypp-primary-accent, #3ea6ff) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* Remove transform for segmented inner buttons so the wrapper doesn't clip them weirdly */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Let the segmented wrapper itself scale on hover */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* Active State */
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button:active,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:active,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:active {
+  transform: scale(0.95) !important;
+}
+

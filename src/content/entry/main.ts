@@ -643,10 +643,8 @@
                 }
                 const contextId = `${pathname}${videoParam}-${JSON.stringify(contextHashObj)}`;
                 
-                if (this._lastContextId === contextId) {
-                    // No context or theme change occurred; bypass heavy DOM updates
-                    return;
-                }
+                // Allow re-application of classes even if contextId is the same,
+                // because YouTube's SPA often wipes the body class string during navigation.
                 this._lastContextId = contextId;
                 this.context = newContext;
 
