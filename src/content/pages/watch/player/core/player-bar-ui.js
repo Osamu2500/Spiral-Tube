@@ -1,6 +1,12 @@
 import { PlayerBarStyles } from './player-bar-styles.js';
 import { PlayerBarOverflow } from './player-bar-overflow.js';
 
+/**
+ * Watch Page Player — Custom UI Manager
+ * Purpose: Handles the lifecycle, injection, and dynamic updating of the custom controls inside the YouTube video player.
+ * Scope: Manages DOM operations solely for `.ypp-player-controls` relative to YouTube's native `.ytp-chrome-controls`.
+ * Impact: Responsible for button orchestration, overflow menus, and settings sync.
+ */
 export class PlayerBarUI {
     static featureId = 'playerBarUI';
     static executionPhase = 'idle';

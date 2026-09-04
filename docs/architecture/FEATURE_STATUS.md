@@ -162,11 +162,7 @@ These features function, but contain architectural violations (leaking event lis
 *   **Status:** Needs Refactor. Contains architectural violations.
 *   **Architecture Notes:** Extends BaseFeature: Yes | WARNINGS: Raw addEventListener, Raw chrome.storage, Raw setTimeout polling, Missing DOM stamp guards
 
-### Deck Mode
-*   **File:** `content/features/pages/subscriptions/deck-mode.js`
-*   **What it does:** Provides a TweetDeck-style multi-column layout for the subscriptions feed based on user-defined folders.
-*   **Status:** Needs Refactor. Contains architectural violations.
-*   **Architecture Notes:** Extends BaseFeature: Yes | WARNINGS: Raw addEventListener, Missing DOM stamp guards
+
 
 ### Subscription Folders
 *   **File:** `content/features/pages/subscriptions/subscription-folders.js`

@@ -1,3 +1,8 @@
+/**
+ * Video Speed Controller: Shortcuts
+ * Manages global and local keyboard shortcuts for controlling video speed,
+ * scrubbing, and toggling the UI. Ensures inputs are not hijacked when typing.
+ */
 export class VscShortcuts {
     constructor(vsc) {
         this.vsc = vsc;
@@ -10,12 +15,12 @@ export class VscShortcuts {
         // If it's an empty array `[]`, it means they explicitly deleted all shortcuts, so respect that.
         if (this.vsc.settings.vscShortcuts === undefined) {
             return [
+                { action: 'showHide', key: 'V', value: 0 },
                 { action: 'decrease', key: 'Z', value: 0.25 },
                 { action: 'increase', key: 'X', value: 0.25 },
-                { action: 'rewind', key: 'S', value: 10 },
-                { action: 'advance', key: 'D', value: 10 },
-                { action: 'reset', key: 'R', value: 1.0 },
-                { action: 'showHide', key: 'V', value: 0 }
+                { action: 'rewind', key: 'W', value: 10 },
+                { action: 'advance', key: 'E', value: 10 },
+                { action: 'reset', key: 'A', value: 1.0 }
             ];
         }
         return this.vsc.settings.vscShortcuts || [];

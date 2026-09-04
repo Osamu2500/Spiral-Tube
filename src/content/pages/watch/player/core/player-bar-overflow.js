@@ -1,3 +1,9 @@
+/**
+ * Watch Page Player — Overflow Menu Manager
+ * Purpose: Manages the "More Actions" gear/overflow menu for custom player bar buttons.
+ * Scope: Handles the rendering and toggling of the overflow panel inside the YouTube player.
+ * Impact: Does not affect native YouTube menus, localized to custom features.
+ */
 export class PlayerBarOverflow {
     constructor(controlsHelper) {
         this.controlsHelper = controlsHelper;
@@ -16,11 +22,9 @@ export class PlayerBarOverflow {
             display: flex;
             flex-direction: column;
             position: fixed;
-            background: rgba(28, 28, 28, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(18, 18, 18, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 8px 0;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             z-index: 9999999;
@@ -134,6 +138,11 @@ export class PlayerBarOverflow {
         
         const gearSvg = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>`;
         this.toggle = this.controlsHelper.createButton(gearSvg, 'More Extension Actions', (e) => {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
             const isOpening = this.container.style.opacity === '0' || this.container.style.opacity === '';
             
             if (isOpening) {

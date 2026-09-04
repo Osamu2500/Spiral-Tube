@@ -1,11 +1,15 @@
-/* 
- * Buttons Component - Handles universal button styling, toggles, and action buttons. 
- * Does not affect outside scope. 
- */
+/* ==========================================================================
+   BUTTONS COMPONENT
+   Handles universal button styling, view toggles, and action buttons.
+   Scope: Does not affect outside scope.
+   ========================================================================== */
+
+/* ── 1. Base YouTube Action Buttons ─────────────────────────────────────── */
 
 .ytLikeButtonViewModelHost {
   margin-right: 5px;
 }
+
 .ytInlinePlayerControlsTopRightControlsCircleButton {
   background: var(--ypp-surface-bg) !important;
   border: var(--ypp-surface-border) !important;
@@ -17,6 +21,7 @@
   transform: scale(1.1) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
 }
+
 .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
 .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
   border: none;
@@ -27,26 +32,17 @@
 .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover {
   transform: scale(1.1) !important;
 }
-ytd-alert-with-button-renderer[type=INFO] {
-  box-shadow: var(--ypp-shadow-base) !important;
-  border-radius: var(--ypp-shape-lg, 16px);
-  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
-}
-ytd-thumbnail-overlay-toggle-button-renderer {
-  background: var(--ypp-surface-bg) !important;
-  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
-  border-radius: var(--ypp-button-radius, 12px) !important;
-}
-ytd-thumbnail-overlay-toggle-button-renderer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--ypp-shadow-hover) !important;
-}
-.ytPlayerQuickActionButtonsHost:not(:empty) {
-  background-color: var(--ypp-surface-bg) !important;
-}
+
 .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
   background: var(--ypp-surface-bg) !important;
 }
+
+ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: var(--ypp-shadow-base) !important;
+  border-radius: var(--ypp-squircle-radius, 8px);
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+
 ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   transition:
     transform var(--ypp-transition-bounce),
@@ -56,6 +52,7 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   overflow: hidden;
   cursor: pointer !important;
 }
+
 button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd),
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
@@ -63,7 +60,7 @@ yt-button-view-model button[aria-label*="Download" i],
 yt-button-view-model button[title*="Download" i],
 :is(ytd-download-button-renderer, yt-button-view-model) button,
 yt-download-button-view-model button {
-  border-radius: var(--ypp-button-radius, 12px) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
   background: var(--ypp-surface-bg) !important;
   box-shadow: var(--ypp-shadow-base) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
@@ -90,7 +87,7 @@ yt-download-button-view-model button:active {
 }
 
 button.ytSpecButtonShapeNextText {
-  border-radius: var(--ypp-button-radius, 12px) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
   transition:
     transform var(--ypp-transition-bounce),
     box-shadow var(--ypp-transition-bounce),
@@ -105,10 +102,28 @@ button.ytSpecButtonShapeNextText:active {
   transform: scale(0.97) !important;
   box-shadow: var(--ypp-shadow-active) !important;
 }
+
+/* ── 2. Thumbnail Overlay Buttons ───────────────────────────────────────── */
+
+ytd-thumbnail-overlay-toggle-button-renderer {
+  background: var(--ypp-surface-bg) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+}
+ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+}
+.ytPlayerQuickActionButtonsHost:not(:empty) {
+  background-color: var(--ypp-surface-bg) !important;
+}
+
+/* ── 3. Custom Extension Buttons ────────────────────────────────────────── */
+
 .ypp-btn-primary,
 .ypp-play-all-btn,
 .ypp-health-btn {
-  border-radius: var(--ypp-button-radius, 12px) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
   transition:
     transform var(--ypp-transition-bounce),
     box-shadow var(--ypp-transition-bounce),
@@ -126,8 +141,9 @@ button.ytSpecButtonShapeNextText:active {
   transform: scale(0.95) !important;
   box-shadow: var(--ypp-shadow-active) !important;
 }
+
 .ypp-pill-toggle {
-  border-radius: var(--ypp-button-radius, 12px) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
   background: var(--ypp-surface-bg, rgba(255, 255, 255, 0.1)) !important;
   border: var(--ypp-surface-border) !important;
   transition:
@@ -141,11 +157,6 @@ button.ytSpecButtonShapeNextText:active {
   transform: scale(1.05) !important;
 }
 
-
-
-
-/* Button Components */
-
 .ypp-btn {
   background: transparent;
   border: none;
@@ -154,23 +165,19 @@ button.ytSpecButtonShapeNextText:active {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  border-radius: var(--ypp-button-radius, 12px);
+  border-radius: var(--ypp-squircle-radius, 8px);
   color: var(--yt-spec-text-primary, #fff);
   transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .ypp-btn:hover {
   background-color: var(--ypp-bg-hover);
 }
-
-/* Nav buttons manage their own hover — don't let base .ypp-btn:hover override */
+.ypp-btn:active {
+  background-color: var(--ypp-bg-active);
+}
 
 .ypp-nav-btn.ypp-btn:hover {
   background-color: transparent;
-}
-
-.ypp-btn:active {
-  background-color: var(--ypp-bg-active);
 }
 
 .ypp-btn-icon {
@@ -180,7 +187,6 @@ button.ytSpecButtonShapeNextText:active {
   width: 24px;
   height: 24px;
 }
-
 .ypp-btn-icon svg {
   width: 100%;
   height: 100%;
@@ -188,9 +194,7 @@ button.ytSpecButtonShapeNextText:active {
   pointer-events: none;
 }
 
-/* ==========================================================================
-   VIEW MODE TOGGLE BUTTON STYLES
-   ========================================================================== */
+/* ── 4. View Mode Toggle Button Styles ──────────────────────────────────── */
 
 #ypp-view-toggle,
 .ypp-view-mode-toggle {
@@ -200,7 +204,7 @@ button.ytSpecButtonShapeNextText:active {
   margin-left: 12px;
   padding: 4px;
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
+  border-radius: 10px; /* Outer container could stay a bit larger */
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -212,7 +216,7 @@ button.ytSpecButtonShapeNextText:active {
   height: 34px;
   background: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--ypp-squircle-radius, 8px);
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition:
@@ -223,12 +227,10 @@ button.ytSpecButtonShapeNextText:active {
   transform: translateZ(0); /* Hardware Acceleration */
   will-change: transform, box-shadow, background-color, color;
 }
-
 .ypp-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--ypp-text-primary, #fff);
 }
-
 .ypp-toggle-btn.active {
   background: rgba(62, 166, 255, 0.2);
   color: #3ea6ff;
@@ -236,47 +238,43 @@ button.ytSpecButtonShapeNextText:active {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ==========================================================================
-/* =========================================================================
-   Inline channel buttons (Whitelist / Blacklist next to Subscribe) (Moved from badges.css)
-   ========================================================================= */
+/* ── 5. Inline Channel Buttons (Whitelist / Blacklist) ──────────────────── */
+
 .ypp-inline-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    height: 36px;
-    padding: 0 16px;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: 'Roboto', Arial, sans-serif;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 18px;
-    cursor: pointer;
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.85);
-    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    white-space: nowrap;
-    line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Roboto', Arial, sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--ypp-squircle-radius, 8px);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  line-height: 1;
 }
 .ypp-inline-btn:hover {
-    background: rgba(255,255,255,0.16);
-    color: var(--ypp-text-primary, #fff);
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--ypp-text-primary, #fff);
 }
 .ypp-inline-btn--active {
-    background: rgba(34,197,94,0.18);
-    border-color: rgba(34,197,94,0.45);
-    color: #4ade80;
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #4ade80;
 }
 .ypp-inline-btn--active:hover {
-    background: rgba(34,197,94,0.28);
+  background: rgba(34, 197, 94, 0.28);
 }
 .ypp-inline-btn--danger {
-    background: rgba(239,68,68,0.16);
-    border-color: rgba(239,68,68,0.4);
-    color: #f87171;
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
 }
 .ypp-inline-btn--danger:hover {
-    background: rgba(239,68,68,0.26);
+  background: rgba(239, 68, 68, 0.26);
 }
-
-

@@ -9,13 +9,7 @@ export const getHomeTab = (t) => ({
         title: t('section_feed_layout'),
         icon: ICONS.grid,
         items: [
-          {
-            type: 'toggle',
-            id: 'enableDeckMode',
-            label: 'Deck Mode',
-            desc: 'Multi-column grid for Subscriptions',
-            icon: ICONS.grid,
-          },
+
           {
             type: 'toggle',
             id: 'autoScaleLayout',
@@ -23,13 +17,7 @@ export const getHomeTab = (t) => ({
             desc: t('adapt_to_zoom_window_size'),
             icon: ICONS.autoScale,
           },
-          {
-            type: 'toggle',
-            id: 'enableSmartThumbnails',
-            label: 'Smart Thumbnails',
-            desc: 'AI powered thumbnail un-clickbaiting',
-            icon: ICONS.cleanSearch,
-          },
+
           {
             type: 'range',
             id: 'homeColumns',

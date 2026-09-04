@@ -1,16 +1,111 @@
 export const DEFAULT_SETTINGS = {
+
+  // --- Wired Feature Defaults ---
+  smartHistory: false,
+  dateFilterEnabled: false,
+  viewsFilterEnabled: false,
+  channelBlacklistEnabled: false,
+  channelWhitelistEnabled: false,
+  customCursor: 'default',
+  useSquareCorners: false,
+  customThemes: {},
+  customBackgroundImageBlur: 0,
+  customBackgroundImageBrightness: 1.0,
+  customBackgroundImageSaturation: 1.0,
+  fontScale: 100,
+  accentColor: '#ff4e45',
+  reduceAnimations: false,
+  netflixSubtitles: false,
+  volumeBalance: 0,
+  volumeEqBands: '[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]',
+  volumeMono: false,
+  volumeActiveEffect: 'none',
+  shortsVolumeNormalizer: true,
+  vscSpeedStep: 0.25,
+  vscControllerOpacity: 0.3,
+  cinemaFilterSepia: 0,
+  cinemaFilterGrayscale: 0,
+  cinemaFilterInvert: 0,
+  extraRoundedUI: false,
+  ambientIntensity: 0.6,
+  ambientBlur: 120,
+  audioModeEnabled: false,
+  videoResumer: true,
+  glassPlayerUI: true,
+  advancedShortcuts: [],
+  autoLikeSubscribedOnly: false,
+  autoLikeWaitAds: true,
+  autoLikeDelayType: 'seconds',
+  autoLikeDelaySeconds: 1,
+  autoLikeDelayPercent: 50,
+  autoLikeHumanize: false,
+  cleanMixUrls: false,
+  feedFilter_live_visible: true,
+  feedFilter_live_default: false,
+  feedFilter_streamed_visible: true,
+  feedFilter_streamed_default: false,
+  feedFilter_video_visible: true,
+  feedFilter_video_default: false,
+  feedFilter_shorts_visible: true,
+  feedFilter_shorts_default: false,
+  feedFilter_scheduled_visible: true,
+  feedFilter_scheduled_default: false,
+  feedFilter_notifon_visible: false,
+  feedFilter_notifon_default: false,
+  feedFilter_notifoff_visible: false,
+  feedFilter_notifoff_default: false,
+  feedFilter_posts_visible: false,
+  feedFilter_posts_default: false,
+  feedFilter_playlist_visible: false,
+  feedFilter_playlist_default: false,
+  feedFilter_unwatched_visible: true,
+  feedFilter_unwatched_default: false,
+  feedFilter_watched_visible: true,
+  feedFilter_watched_default: false,
+  feedFilter_search_visible: true,
+  feedFilter_search_default: '',
+  feedFilter_opt_multiselect: false,
+  feedFilter_opt_responsive: true,
+  feedFilter_page_subscriptions: true,
+  feedFilter_page_home: true,
+  feedFilter_page_shorts: true,
+  feedFilter_page_history: true,
+  feedFilter_page_playlists: true,
+  feedFilter_page_allplaylists: true,
+  feedFilter_page_hashtag: true,
+  blockedChannels: '',
+  blockedKeywords: '',
+  playlistDuration: true,
+  globalPlayerBarPosition: 'right',
+  gpb_showFullscreen: true,
+  splitScrolling: false,
+  enableFilterBar: false,
+  enableChannelHealth: false,
+  popupUiTheme: 'liquid-glass',
+  youtubePageTheme: 'default',
+  hideAiLogo: false,
+
   schemaVersion: 2,
-  // Theme
   premiumTheme: true,
+  premiumLogo: true,
+  // Theme
+
+  // Image Background Theme
+
+  // Advanced Theming
+
+  // Layout
+
+  // Visibility
+  // (Removed hideShorts and hideSearchShorts - combined into aggressiveShortsBlock)
+
+  extensionLanguage: 'en',
+  // Theme
   enableThemeEffects: true,
-  gridAnimator: true,
   enableAccountMenu: true,
   activeTheme: 'default',
   cardStyle: 'glass',
   trueBlack: false,
-  hideScrollbar: false,
-  customScrollbar: false,
-  grayscaleThumbnails: false,
 
   // Image Background Theme
   customBackgroundImage: null,
@@ -20,10 +115,8 @@ export const DEFAULT_SETTINGS = {
   // Advanced Theming
 
   // Layout
-  layout: true,
-  grid4x4: false,
   autoScaleLayout: true,
-  enableDeckMode: false,
+
   homeColumns: 0, // 0 = auto (driven by AutoScaleGrid), 1–10 = manual override
   searchColumns: 4,
   channelColumns: 4,
@@ -44,14 +137,10 @@ export const DEFAULT_SETTINGS = {
   feedFilter: true,
   hideLiveStreams: false,
   hideUpcoming: false,
-  hidePosts: false,
+  hideMemberships: false,
   hideMembersOnly: false, // Hide members-only videos
   feedFilterKeywords: '',
   // Per-page toggles for FeedFilter (Advanced Mode)
-  feedFilterHome: true,
-  feedFilterSubs: true,
-  feedFilterSearch: true,
-  feedFilterChannel: true,
   // Per-page toggles for MetadataFilters (Advanced Mode)
   metaFilterHome: true,
   metaFilterSubs: true,
@@ -64,7 +153,6 @@ export const DEFAULT_SETTINGS = {
   shortsFilterChannel: true,
   shortsFilterRelated: true,
   // On-page controls
-  hoverBlacklistPill: true,
   hideOnPageControls: false,
   hideWatched: false,
   hideWatchedMode: 'dim',
@@ -76,7 +164,6 @@ export const DEFAULT_SETTINGS = {
   hideWatchedSubs: true,
   hideWatchedSearch: true,
   hideWatchedRelated: true,
-  enableMarkWatched: true,
   hideMerch: false,
   hideComments: false,
   hideLiveChat: false,
@@ -97,7 +184,6 @@ export const DEFAULT_SETTINGS = {
   hideUploadButton: false, // Header upload button
   hideTrending: false, // Trending guide entries
   hideFeed: false, // Homepage feed
-  hideShortsInteraction: false, // Shorts like/comment bar
   aggressiveShortsBlock: false, // Nuke shorts everywhere
   autoVideoFilter: true,
   hidePlayerTopics: false,
@@ -118,17 +204,12 @@ export const DEFAULT_SETTINGS = {
   autoCinema: false,
 
   autoQuality: 'highres',
-  enablePiP: true,
 
   enableSnapshot: true,
   enableLoop: true,
   enableRemainingTime: true,
   enableVolumeBoost: true,
   volumeLevel: 1,
-  volumeWidener: false,
-  volumeWarmth: 0,
-  volumeBoostBass: 0,
-  volumeBoostTreble: 0,
 
   // Search Redesign
   searchGrid: true,
@@ -154,9 +235,6 @@ export const DEFAULT_SETTINGS = {
   shortsAutoScroll: false,
   redirectShorts: false,
   stopShortsLooping: false,
-  hideShortVideos: false,
-  minVideoDuration: 2,
-  maxVideoDuration: 0,
   
   hideClickbaitEnabled: false,
   hideClickbaitEmojis: true,
@@ -213,8 +291,6 @@ export const DEFAULT_SETTINGS = {
   autoPiP: false,
 
   // Player Automation
-  autoSkipAds: false,
-  autoSkipPromos: false,
   autoPlayNext: false,
 
   // New Features
@@ -250,12 +326,10 @@ export const DEFAULT_SETTINGS = {
   intentionalDelay: false,
   intentionalDelayTime: 3,
   ambientMode: false,
-  audioCompressor: false,
   autoPause: false,
   commentFilter: false,
   commentFilterAction: 'dim', // 'dim' | 'hide'
   commentFilterCustomKeywords: '', // comma-separated user keywords
-  contextMenu: true,
   enableBookmarks: true,
 
   // Study Mode
@@ -265,7 +339,6 @@ export const DEFAULT_SETTINGS = {
   seamlessMode: false,
 
   // Stats Visualizer
-  statsVisualizer: false,
 
   // Watch Time Alert
   watchTimeAlert: false,
@@ -305,28 +378,18 @@ export const DEFAULT_SETTINGS = {
   ],
 
   // Onboarding
-  hasSeenOnboarding: false,
 
   // --- YouTube Pro Plus Ported Settings ---
-  premiumLogo: true,
 
   resumeBadges: true,
-  liquidGlassTheme: false,
 
   // --- New UserStyles & GreasyFork Features ---
   realCinemaMode: true,
   showLiveStreamTime: true,
   twoColumnSubscriptions: true,
 
-
   saveSupremeUI: true,
-  enableRealCinemaMode: true,
-  enableLiveStreamTime: true,
-  enableTwoColumnSubscriptions: true,
 
-  enableSaveSupremeUI: true,
-  enableCustomizeYouTubeUI: true,
 
-  enableTabviewSidebar: false,
-
+  // enableTabviewSidebar removed; merged into seamlessMode
 };

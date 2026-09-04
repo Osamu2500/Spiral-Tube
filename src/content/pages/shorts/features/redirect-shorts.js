@@ -1,11 +1,12 @@
 import '../../../core/system/base-feature.js';
+
 /**
  * @fileoverview
  * Redirect Shorts
  * 
- * Target: /shorts route.
- * Purpose: Intercepts /shorts/ URLs and redirects them to the standard /watch?v= player.
- * Uses SPA navigation when possible to avoid full page reloads.
+ * Target: /shorts/* paths.
+ * Scope: Safely redirects YouTube Shorts URLs to the standard Watch player.
+ * Safety: Does not affect unrelated files, routes, or features. Confined to Shorts path checks.
  */
 export class RedirectShorts extends window.YPP.features.BaseFeature {
     static featureId = 'redirectShorts';
@@ -14,16 +15,17 @@ export class RedirectShorts extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('RedirectShorts');
-        this.checkRedirect = this.checkRedirect.bind(this);
     }
 
-    getConfigKey() { return 'redirectShorts'; }
+    // --- Core Lifecycle ---
+
+    getConfigKey() { 
+        return 'redirectShorts'; 
+    }
 
     async enable() {
         await super.enable();
-        // Check immediately on load
         this.checkRedirect();
-        // Also listen for SPA navigations
         this.addListener(window, 'yt-navigate-start', this.checkRedirect);
     }
 
@@ -36,30 +38,38 @@ export class RedirectShorts extends window.YPP.features.BaseFeature {
         this.checkRedirect();
     }
 
-    checkRedirect() {
+    // --- Feature Logic ---
+
+    checkRedirect = () => {
         if (!this.settings?.redirectShorts) return;
 
-        if (location.pathname.startsWith('/shorts/')) {
-            const videoId = location.pathname.split('/shorts/')[1]?.split('/')[0];
+        const path = location.pathname;
+        if (!path.startsWith('/shorts/')) return;
 
-            if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
-                this.utils?.log('Redirecting Short to Watch:', videoId, 'RedirectShorts');
-                
-                // Construct the new URL
-                const targetUrl = `/watch?v=${videoId}`;
-                
-                // Attempt an elegant SPA redirect first
-                const app = document.querySelector('ytd-app');
-                if (app && typeof app.fire === 'function') {
-                    app.fire('yt-navigate', { endpoint: { commandMetadata: { webCommandMetadata: { url: targetUrl } } } });
-                } else {
-                    // Fallback to fast location replace
-                    location.replace(targetUrl);
-                }
-            } else if (videoId) {
-                this.utils?.log('Invalid video ID format:', videoId, 'RedirectShorts', 'warn');
+        const videoId = path.split('/shorts/')[1]?.split('/')[0];
+
+        // Ensure valid YouTube video ID length (11 characters)
+        if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+            this.utils?.log(`Redirecting Short to Watch: ${videoId}`, 'RedirectShorts', 'info');
+            
+            const targetUrl = `/watch?v=${videoId}`;
+            const app = document.querySelector('ytd-app');
+            
+            // Try SPA redirect first to avoid full page reload
+            if (app && typeof app.fire === 'function') {
+                app.fire('yt-navigate', { 
+                    endpoint: { 
+                        commandMetadata: { 
+                            webCommandMetadata: { url: targetUrl } 
+                        } 
+                    } 
+                });
+            } else {
+                // Fallback navigation
+                location.replace(targetUrl);
             }
+        } else if (videoId) {
+            this.utils?.log(`Invalid video ID format: ${videoId}`, 'RedirectShorts', 'warn');
         }
-    }
-};
-
+    };
+}

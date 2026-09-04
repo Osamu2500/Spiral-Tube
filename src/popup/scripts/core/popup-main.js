@@ -95,13 +95,11 @@ registerSlot('autoLikeSlot', (container, state) => {
         
         <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; flex-shrink: 0;">
             <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeSubscribedOnly" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Subscribed Only">Subs</button>
-            <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeChannelLists" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Use Channel Lists">Lists</button>
             <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeWaitAds" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Wait for Ads">Ads</button>
             <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeHumanize" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Humanize Delay">Human</button>
             <button type="button" id="autoLikeDelayTypeBtn" class="view-mode-btn" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Switch between Seconds / Percent">% / s</button>
         </div>
         <input type="hidden" id="autoLikeSubscribedOnly" />
-        <input type="hidden" id="autoLikeChannelLists" />
         <input type="hidden" id="autoLikeWaitAds" />
         <input type="hidden" id="autoLikeHumanize" />
         <input type="hidden" id="autoLikeDelayType" value="seconds" />

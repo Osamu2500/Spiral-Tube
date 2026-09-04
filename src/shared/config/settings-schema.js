@@ -20,24 +20,19 @@ window.YPP.SettingsSchema = {
     //   values  - array of allowed values for strings (enum-like)
     // =========================================================================
     schema: Object.freeze({
-        schemaVersion:       { type: 'number',  default: 2 },
         // --- Theme ---
-        premiumTheme:        { type: 'boolean', default: true },
-        premiumLogo:         { type: 'boolean', default: false },
         // Canonical names: "Theme" (background color) / "UI Design" (page overlay) / "Card Styles" (card shapes)
         // activeTheme controls the background color theme — loaded from dist/themes/
         // Keys not found in dist/themes/ fall back to dist/ui-styles/ (see theme.js _getThemeUrl)
         activeTheme:         { type: 'string',  default: 'default', values: ['abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'coffee', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'default', 'discord', 'dracula', 'ember', 'fluent', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'hacker', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'midnight', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'nord', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'sakura', 'steampunk', 'sunset', 'system', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'woodblock', 'y2k'] },
         trueBlack:           { type: 'boolean', default: false },
-        hideScrollbar:       { type: 'boolean', default: false },
         customCursor:        { type: 'string',  default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel'] },
 
         // --- Layout ---
         autoScaleLayout:     { type: 'boolean', default: true },
-        enableDeckMode:      { type: 'boolean', default: false },
+
         useSquareCorners:    { type: 'boolean', default: false },
-        grid4x4:             { type: 'boolean', default: false },
-        homeColumns:         { type: 'number',  default: 4, min: 0, max: 10 },
+        homeColumns:         { type: 'number',  default: 0, min: 0, max: 10 },
         searchColumns:       { type: 'number',  default: 4, min: 1, max: 8 },
         channelColumns:      { type: 'number',  default: 4, min: 0, max: 10 },
         subscriptionsColumns:{ type: 'number',  default: 4, min: 1, max: 8 },
@@ -75,9 +70,6 @@ window.YPP.SettingsSchema = {
         hideFeed:            { type: 'boolean', default: false },
         hideTrending:        { type: 'boolean', default: false },
         aggressiveShortsBlock: { type: 'boolean', default: false },
-        hideShortVideos:     { type: 'boolean', default: false },
-        minVideoDuration:    { type: 'number',  default: 5, min: 0, max: 60 },
-        maxVideoDuration:    { type: 'number',  default: 0, min: 0, max: 300 }, // 0 = disabled
 
         hideClickbaitEnabled: { type: 'boolean', default: false },
         hideClickbaitEmojis:  { type: 'boolean', default: true },
@@ -85,44 +77,38 @@ window.YPP.SettingsSchema = {
 
         // --- Customization ---
         customThemes:        { type: 'object',  default: {} },
-        customBackgroundImage:           { type: 'string', default: '' },
+        customBackgroundImage:           { type: 'string', default: null },
         customBackgroundImageIntensity:  { type: 'number', default: 0.6, min: 0.1, max: 1.0 },
         customBackgroundImageBlur:       { type: 'number', default: 0, min: 0, max: 20 },
         customBackgroundImageBrightness: { type: 'number', default: 1.0, min: 0.2, max: 2.0 },
         customBackgroundImageSaturation: { type: 'number', default: 1.0, min: 0, max: 3.0 },
         customBackgroundImageExtractColors:{ type: 'boolean', default: true },
-        enableCustomCSS:     { type: 'boolean', default: false },
-        customCSSCode:       { type: 'string',  default: '' },
         fontScale:           { type: 'number',  default: 100, min: 80, max: 130 },
         accentColor:         { type: 'string',  default: '#ff4e45' },
-        enableAnimations:    { type: 'boolean', default: true },
         reduceAnimations:    { type: 'boolean', default: false },
 
         enableThemeEffects:  { type: 'boolean', default: true },
-        reducedMotion:       { type: 'boolean', default: false },
-        cardStyle:           { type: 'string',  default: 'default', values: ['default','abyss','aurora','autumn','bloodmoon','blue-sky','brutalism','cairo-red','cherry','christmas','claymorphism','coffee','colorize','compact','crystal-glass','cyberpunk','deepspace','discord','dracula','elevated','ember','flat','fluent','folder','frosted','frutiger-aero','galaxy','glass','glassmorphism','gothic','grunge','hacker','harry-potter','hologram','holographic','ice-blue','immersive-glass','kawaii','liquid-glass','material','matrix','maximalism','midnight','minimalism','minimalist','nature','nebula','neo-brutalism','neon','neumorphic','nord','ocean','origami','outrun','pink','polaroid','retro-wave','retro','retrowave-green','sakura','skeuomorphic','spring','steampunk','summer','sunset','technozen','terminalism','vaporwave','vintage','winter','woodblock','y2k'] },
-        customScrollbar:     { type: 'boolean', default: false },
-        grayscaleThumbnails: { type: 'boolean', default: false },
+        cardStyle:           { type: 'string',  default: 'glass', values: ['default','abyss','aurora','autumn','bloodmoon','blue-sky','brutalism','cairo-red','cherry','christmas','claymorphism','coffee','colorize','compact','crystal-glass','cyberpunk','deepspace','discord','dracula','elevated','ember','flat','fluent','folder','frosted','frutiger-aero','galaxy','glass','glassmorphism','gothic','grunge','hacker','harry-potter','hologram','holographic','ice-blue','immersive-glass','kawaii','liquid-glass','material','matrix','maximalism','midnight','minimalism','minimalist','nature','nebula','neo-brutalism','neon','neumorphic','nord','ocean','origami','outrun','pink','polaroid','retro-wave','retro','retrowave-green','sakura','skeuomorphic','spring','steampunk','summer','sunset','technozen','terminalism','vaporwave','vintage','winter','woodblock','y2k'] },
 
         // --- Player ---
         netflixSubtitles:    { type: 'boolean', default: false },
         autoCinema:          { type: 'boolean', default: false },
 
-        enablePiP:           { type: 'boolean', default: true },
 
         enableSnapshot:      { type: 'boolean', default: true },
         enableLoop:          { type: 'boolean', default: true },
         enableRemainingTime: { type: 'boolean', default: true },
         enableVolumeBoost:   { type: 'boolean', default: true },
         volumeLevel:         { type: 'number',  default: 1, min: 1, max: 6 },
-        volumeBoostBass:     { type: 'number',  default: 0, min: -12, max: 12 },
-        volumeBoostTreble:   { type: 'number',  default: 0, min: -12, max: 12 },
         volumeBalance:       { type: 'number',  default: 0, min: -1, max: 1 },
-        volumeEqBands:       { type: 'string',  default: '[0,0,0,0,0,0,0,0,0,0]' },
+        volumeEqBands:       { type: 'string',  default: '[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]' },
         volumeMono:          { type: 'boolean', default: false },
         volumeActiveEffect:  { type: 'string',  default: 'none', values: ['none', 'radio', 'robot', 'echo', 'underwater', 'vinyl'] },
 
         // --- Search ---
+        schemaVersion:       { type: 'number',  default: 2 },
+        premiumTheme:        { type: 'boolean', default: true },
+        premiumLogo:         { type: 'boolean', default: true },
         searchGrid:          { type: 'boolean', default: true },
 
         // --- Player Automation ---
@@ -132,16 +118,13 @@ window.YPP.SettingsSchema = {
         // --- Shorts Tools ---
         shortsAutoScroll:    { type: 'boolean', default: false },
         shortsVolumeNormalizer:{ type: 'boolean', default: true },
-        hideShortsInteraction: { type: 'boolean', default: false },
 
         // --- Player Tools ---
         enableCustomSpeed:       { type: 'boolean', default: true },
         enableCinemaFilters:     { type: 'boolean', default: true },
         enableGlobalPlayerBar:   { type: 'boolean', default: true },
         // Video Speed Controller (Advanced)
-        enableVideoSpeedController: { type: 'boolean', default: true },
         vscSpeedStep:            { type: 'number',  default: 0.25, min: 0.05, max: 1.0 },
-        vscPreferredSpeed:       { type: 'number',  default: 2.0, min: 0.1, max: 16.0 },
         vscRememberSpeed:        { type: 'boolean', default: true },
         vscAudioSupport:         { type: 'boolean', default: false },
         vscHideByDefault:        { type: 'boolean', default: false },
@@ -161,8 +144,6 @@ window.YPP.SettingsSchema = {
 
 
         // --- Night Mode ---
-        blueLight:           { type: 'number',  default: 0, min: 0, max: 100 },
-        dim:                 { type: 'number',  default: 0, min: 0, max: 100 },
 
         // --- Focus Modes ---
         zenMode:             { type: 'boolean', default: false },
@@ -179,10 +160,8 @@ window.YPP.SettingsSchema = {
 
         // --- Player UI Enhancements ---
         extraRoundedUI:      { type: 'boolean', default: false },
-        saveSupremeUI:       { type: 'boolean', default: false },
-        smallSettingsMenu:   { type: 'boolean', default: false },
+        saveSupremeUI:       { type: 'boolean', default: true },
 
-        retroLogo:           { type: 'boolean', default: false },
         ambientMode:         { type: 'boolean', default: false },
         ambientIntensity:    { type: 'number',  default: 0.6, min: 0.1, max: 1.0 },
         ambientBlur:         { type: 'number',  default: 120, min: 20, max: 200 },
@@ -191,35 +170,36 @@ window.YPP.SettingsSchema = {
         enableBookmarks:     { type: 'boolean', default: true },
         videoResumer:        { type: 'boolean', default: true },
         autoPause:           { type: 'boolean', default: false },
-        commentFilter:       { type: 'boolean', default: true },
+        commentFilter:       { type: 'boolean', default: false },
         commentFilterAction: { type: 'string', default: 'dim', values: ['dim', 'hide'] },
         commentFilterCustomKeywords: { type: 'string', default: '' },
-        contextMenu:         { type: 'boolean', default: true },
         enableAccountMenu:   { type: 'boolean', default: true },
         playlistRedesign:    { type: 'boolean', default: true },
         glassPlayerUI:       { type: 'boolean', default: true },
-        seamlessMode:        { type: 'boolean', default: false },
-        miniPlayer:          { type: 'boolean', default: false },
         redirectShorts:      { type: 'boolean', default: false },
 
-        // --- Watch Time Alert ---
         watchTimeAlert:      { type: 'boolean', default: false },
         watchTimeAlertHours: { type: 'number',  default: 2, min: 1, max: 8 },
-
-        // --- Stats ---
-        enableStatsForNerds: { type: 'boolean', default: false },
-
-        // --- Subscription Organizer (legacy) ---
-
-
         // --- Keyboard Shortcuts ---
         keyboardShortcuts:      { type: 'boolean', default: true },
-        advancedShortcuts:      { type: 'array', default: [] },
-        
+        advancedShortcuts:      { type: 'array',   default: [] },
         // Video Speed Controller Shortcuts
-        vscShortcuts:           { type: 'array', default: [] },
-
-        // --- Content Visibility (missing from original schema) ---
+        vscShortcuts:           { type: 'array', default: [
+            { action: 'showHide',       key: 'V',  value: null },
+            { action: 'decrease',       key: 'Z',  value: 0.25 },
+            { action: 'increase',       key: 'X',  value: 0.25 },
+            { action: 'rewind',         key: 'W',  value: 10 },
+            { action: 'advance',        key: 'E',  value: 10 },
+            { action: 'reset',          key: 'A',  value: 1.0 },
+            { action: 'preferred',      key: 'Q',  value: 2.0 },
+            { action: 'mute',           key: '',   value: null },
+            { action: 'decreaseVolume', key: '',   value: null },
+            { action: 'increaseVolume', key: '',   value: null },
+            { action: 'pause',          key: '',   value: null },
+            { action: 'setMarker',      key: '',   value: null },
+            { action: 'jumpMarker',     key: '',   value: null },
+        ] },
+        // --- Content Visibility ---
         feedFilter:          { type: 'boolean', default: true },
         hideLiveStreams:     { type: 'boolean', default: false },
         hideUpcoming:        { type: 'boolean', default: false },
@@ -255,15 +235,13 @@ window.YPP.SettingsSchema = {
         copyLinkSearch:      { type: 'boolean', default: true },
         copyLinkRelated:     { type: 'boolean', default: true },
         autoLikeSubscribedOnly: { type: 'boolean', default: false },
-        autoLikeChannelLists:   { type: 'boolean', default: false },
         autoLikeWaitAds:        { type: 'boolean', default: true },
         autoLikeDelayType:      { type: 'string',  default: 'seconds', values: ['seconds', 'percent'] },
         autoLikeDelaySeconds:   { type: 'number',  default: 1, min: 0, max: 300 },
         autoLikeDelayPercent:   { type: 'number',  default: 50, min: 0, max: 100 },
         autoLikeHumanize:       { type: 'boolean', default: false },
-        autoQuality:         { type: 'boolean', default: false },
+        autoQuality:         { type: 'string',  default: 'highres', values: ['auto', 'highres', 'hd2160', 'hd1440', 'hd1080', 'hd720', 'large', 'medium', 'small', 'tiny'] },
         intentionalDelay:    { type: 'boolean', default: false },
-        markWatched:         { type: 'boolean', default: true  },
         hideVoiceSearch:     { type: 'boolean', default: false },
         cleanMixUrls:        { type: 'boolean', default: false },
         stopShortsLooping:   { type: 'boolean', default: false },
@@ -310,10 +288,6 @@ window.YPP.SettingsSchema = {
         blockedKeywords:     { type: 'string',  default: '' },
 
         // --- Per-Page Toggles: Feed Filter (Advanced Mode) ---
-        feedFilterHome:      { type: 'boolean', default: true },
-        feedFilterSubs:      { type: 'boolean', default: true },
-        feedFilterSearch:    { type: 'boolean', default: true },
-        feedFilterChannel:   { type: 'boolean', default: true },
 
         // --- Per-Page Toggles: Metadata Filters (Advanced Mode) ---
         metaFilterHome:      { type: 'boolean', default: true },
@@ -328,7 +302,6 @@ window.YPP.SettingsSchema = {
         shortsFilterRelated: { type: 'boolean', default: true },
 
         // --- On-Page Controls ---
-        hoverBlacklistPill:  { type: 'boolean', default: true },
         hideOnPageControls:  { type: 'boolean', default: false },
 
         // --- Playlist & History (missing from original schema) ---
@@ -367,7 +340,7 @@ window.YPP.SettingsSchema = {
         pb_native_fullscreen:{ type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
 
         // --- Sidebar Layout ---
-        sidebarLayout:       { type: 'string',  default: 'compact', values: ['macro', 'mini', 'compact', 'regular', 'spacious', 'huge', 'expanded'] },
+        sidebarLayout:       { type: 'string',  default: 'spacious', values: ['macro', 'mini', 'compact', 'regular', 'spacious', 'huge', 'expanded'] },
         splitScrolling:      { type: 'boolean', default: false },
 
         // --- Search Layout ---
@@ -383,37 +356,45 @@ window.YPP.SettingsSchema = {
         // --- Subscription Manager extras ---
         enableFilterBar:     { type: 'boolean', default: false },
         enableChannelHealth: { type: 'boolean', default: false },
-        enableDeckMode:      { type: 'boolean', default: false },
+
 
         // --- UI Redesigns (popup Customization tab) ---
         popupUiTheme:        { type: 'string', default: 'liquid-glass', values: ['default', 'abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'crystal-glass', 'cyberpunk', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'harry-potter', 'hologram', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'minimalism', 'nature', 'neo-brutalism', 'neumorphic', 'ocean', 'origami', 'outrun', 'retro', 'retro-wave', 'steampunk', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'sakura', 'woodblock', 'y2k'] },
         youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'fluent', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'steampunk', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'sakura', 'woodblock', 'y2k'] },
-        cardStyle:           { type: 'string',  default: 'default', values: ['default','abyss','aurora','autumn','bloodmoon','blue-sky','brutalism','cairo-red','cherry','christmas','claymorphism','coffee','colorize','compact','crystal-glass','cyberpunk','deepspace','discord','dracula','elevated','ember','flat','fluent','folder','frosted','frutiger-aero','galaxy','glass','glassmorphism','gothic','grunge','hacker','harry-potter','hologram','holographic','ice-blue','immersive-glass','kawaii','liquid-glass','material','matrix','maximalism','midnight','minimalism','minimalist','nature','nebula','neo-brutalism','neon','neumorphic','nord','ocean','origami','outrun','pink','polaroid','retro-wave','retro','retrowave-green','sakura','skeuomorphic','spring','steampunk','summer','sunset','technozen','terminalism','vaporwave','vintage','winter','woodblock','y2k'] },
-        cursorStyle:         { type: 'string', default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel', 'roblox', 'valorant-v', 'zoro-sword'] },
-        fontFamily:          { type: 'string', default: 'Roboto', values: ['Roboto', 'Inter', 'Outfit', 'Comic Sans MS'] },
+        cardStyle:           { type: 'string',  default: 'glass', values: ['default','abyss','aurora','autumn','bloodmoon','blue-sky','brutalism','cairo-red','cherry','christmas','claymorphism','coffee','colorize','compact','crystal-glass','cyberpunk','deepspace','discord','dracula','elevated','ember','flat','fluent','folder','frosted','frutiger-aero','galaxy','glass','glassmorphism','gothic','grunge','hacker','harry-potter','hologram','holographic','ice-blue','immersive-glass','kawaii','liquid-glass','material','matrix','maximalism','midnight','minimalism','minimalist','nature','nebula','neo-brutalism','neon','neumorphic','nord','ocean','origami','outrun','pink','polaroid','retro-wave','retro','retrowave-green','sakura','skeuomorphic','spring','steampunk','summer','sunset','technozen','terminalism','vaporwave','vintage','winter','woodblock','y2k'] },
 
         // --- New UserStyles & GreasyFork Features ---
         realCinemaMode:               { type: 'boolean', default: true },
         showLiveStreamTime:           { type: 'boolean', default: true },
         twoColumnSubscriptions:       { type: 'boolean', default: true },
 
-        saveSupremeUI:                { type: 'boolean', default: true },
-        enableRealCinemaMode:         { type: 'boolean', default: true },
-        enableLiveStreamTime:         { type: 'boolean', default: true },
-        enableTwoColumnSubscriptions: { type: 'boolean', default: true },
-
-
-        enableSaveSupremeUI:          { type: 'boolean', default: true },
-        enableCustomizeYouTubeUI:     { type: 'boolean', default: true },
-
-        enableTabviewSidebar:         { type: 'boolean', default: false },
-
+        // enableTabviewSidebar removed; merged into seamlessMode
         enableCustomSidebar:          { type: 'boolean', default: true },
-        layout:                       { type: 'boolean', default: true },
         historyColumns:               { type: 'number',  default: 4, min: 1, max: 10 },
         cinematicMode:                { type: 'boolean', default: false },
         hidePromoShelves:             { type: 'boolean', default: false },
+        hideMemberships:              { type: 'boolean', default: false },
         hideMembersOnly:              { type: 'boolean', default: false },
+        // --- Features: Declutter filters ---
+        channelWhitelistEnabled:      { type: 'boolean', default: false },
+        channelBlacklistEnabled:      { type: 'boolean', default: false },
+        viewsFilterEnabled:           { type: 'boolean', default: false },
+        dateFilterEnabled:            { type: 'boolean', default: false },
+        dateFilterOlderThreshold:     { type: 'number',  default: 0, min: 0, max: 3650 },
+
+        // --- Features: Mark Watched / History ---
+        smartHistory:                 { type: 'boolean', default: false },
+        enableHeaderButton:           { type: 'boolean', default: true  },
+        hideTopBarOnPlayer:           { type: 'boolean', default: false },
+
+        // --- Features: Player Automation ---
+        autoLikeThreshold:            { type: 'number',  default: 50,  min: 0, max: 100 },
+
+        // --- Features: Audio ---
+
+        // --- Features: UI ---
+        extensionLanguage:            { type: 'string',  default: 'en', values: ['en', 'es', 'fr', 'de', 'ja'] },
+        hideAiLogo:                   { type: 'boolean', default: false },
         headerNavEnabled:             { type: 'boolean', default: true },
         hideSearchMixes:              { type: 'boolean', default: false },
         hideSearchPlaylists:          { type: 'boolean', default: false },
@@ -425,12 +406,9 @@ window.YPP.SettingsSchema = {
         hidePlayerBranding:           { type: 'boolean', default: false },
         hideUselessGuideLinks:        { type: 'boolean', default: false },
         hidePaidPromotion:            { type: 'boolean', default: false },
-        volumeWidener:                { type: 'boolean', default: false },
-        volumeWarmth:                 { type: 'number',  default: 0, min: -10, max: 10 },
         intentionalDelayTime:         { type: 'number',  default: 3, min: 0, max: 60 },
-        statsVisualizer:              { type: 'boolean', default: false },
         shortcut_studyMode:           { type: 'string',  default: '' },
-        shortcut_seamlessMode:        { type: 'string',  default: 'Shift+S' },
+        shortcut_seamlessMode:        { type: 'string',  default: 'Shift+E' },
         shortcut_focusMode:           { type: 'string',  default: 'Shift+F' },
         shortcut_cinemaMode:          { type: 'string',  default: 'Shift+C' },
         shortcut_minimalMode:         { type: 'string',  default: 'Shift+M' },
@@ -438,17 +416,12 @@ window.YPP.SettingsSchema = {
         shortcut_loop:                { type: 'string',  default: 'Shift+L' },
         shortcut_pip:                 { type: 'string',  default: 'Shift+P' },
         shortcut_ambientMode:         { type: 'string',  default: 'Shift+A' },
-        hasSeenOnboarding:            { type: 'boolean', default: false },
         resumeBadges:                 { type: 'boolean', default: true },
-        liquidGlassTheme:             { type: 'boolean', default: false },
-        hideAiLogo:                   { type: 'boolean', default: false },
+
         hideVideoTitle:               { type: 'boolean', default: false },
         hideChannelBar:               { type: 'boolean', default: false },
         hideVideoDescription:         { type: 'boolean', default: false },
         hideActionButtons:            { type: 'boolean', default: false },
-    // UI Shapes
-    useSquareCorners: { type: 'boolean', default: false },
-    extraRoundedUI: { type: 'boolean', default: false },
     }),
 
     // =========================================================================

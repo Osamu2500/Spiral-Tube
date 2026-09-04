@@ -1,1 +1,177 @@
-/*  * Chips Component - Handles styling for filter chips, tags, and chip lists. * Does not affect outside scope.  *//* ── Chip Cloud Bar (the "All / Gaming / Music" filter row) ─────────────── */yt-chip-cloud-renderer,ytd-feed-filter-chip-bar-renderer {  background: var(--ypp-chip-bar-bg, transparent) !important;  border-bottom: var(--ypp-chip-bar-border, none) !important;  padding: var(--ypp-chip-bar-padding, 0) !important;  transition: background 0.3s ease !important;}/* ── Individual Chips ───────────────────────────────────────────────────── */yt-chip-cloud-chip-renderer,yt-chip-cloud-chip-renderer.style-scope {  background: var(--ypp-chip-bg, var(--ypp-glass-bg-hover, rgba(255, 255, 255, 0.1))) !important;  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;  border: var(--ypp-chip-border, 1px solid transparent) !important;  color: var(--ypp-chip-color, var(--ypp-text-color, inherit)) !important;  box-shadow: var(--ypp-chip-shadow, none) !important;  transition:    background var(--ypp-transition-smooth),    border-color var(--ypp-transition-smooth),    box-shadow var(--ypp-transition-smooth),    transform var(--ypp-transition-bounce) !important;}yt-chip-cloud-chip-renderer:hover {  background: var(--ypp-chip-bg-hover, var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.18))) !important;  border: var(--ypp-chip-border-hover, var(--ypp-chip-border, 1px solid transparent)) !important;  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;  transform: translateY(-1px) scale(1.03) !important;}/* ── Active / Selected Chip ─────────────────────────────────────────────── */yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"],yt-chip-cloud-chip-renderer[aria-selected="true"] {  background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;  color: var(--ypp-chip-active-color, #fff) !important;  border: var(--ypp-chip-active-border, 1px solid transparent) !important;  box-shadow: var(--ypp-chip-active-shadow, var(--ypp-shadow-base, none)) !important;  transform: none !important;}yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"]:hover,yt-chip-cloud-chip-renderer[aria-selected="true"]:hover {  background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;  filter: brightness(1.1) !important;}/* ── Search Chip Filters (Results page) ─────────────────────────────────── */ytd-search-filter-renderer a,ytd-search-filter-renderer a:visited {  background: var(--ypp-chip-bg, var(--ypp-glass-bg-hover, rgba(255, 255, 255, 0.1))) !important;  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;  border: var(--ypp-chip-border, 1px solid transparent) !important;  color: var(--ypp-chip-color, var(--ypp-text-color, inherit)) !important;  box-shadow: var(--ypp-chip-shadow, none) !important;  transition:    background var(--ypp-transition-smooth),    box-shadow var(--ypp-transition-smooth),    transform var(--ypp-transition-bounce) !important;}ytd-search-filter-renderer a:hover {  background: var(--ypp-chip-bg-hover, var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.18))) !important;  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;  transform: translateY(-1px) !important;}/* ── Hashtag / Topic Chips (on video pages) ─────────────────────────────── */a.ytd-hashtag,ytd-hashtag a {  background: var(--ypp-chip-bg, transparent) !important;  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;  border: var(--ypp-chip-border, 1px solid transparent) !important;  color: var(--ypp-chip-color, var(--ypp-primary-accent, inherit)) !important;  padding: 2px 8px !important;  transition:    background var(--ypp-transition-smooth),    transform var(--ypp-transition-bounce) !important;}a.ytd-hashtag:hover,ytd-hashtag a:hover {  background: var(--ypp-chip-bg-hover, var(--ypp-glass-bg-hover, rgba(255, 255, 255, 0.1))) !important;  transform: translateY(-1px) !important;}/* ── Legacy Chip Shape Classes (used across many designs) ───────────────── */.yt-chip-shape,.ytChipShapeChip {  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;  background: var(--ypp-chip-bg, var(--ypp-glass-bg-hover, rgba(255, 255, 255, 0.1))) !important;  border: var(--ypp-chip-border, 1px solid transparent) !important;  box-shadow: var(--ypp-chip-shadow, none) !important;  transition:    background var(--ypp-transition-smooth),    box-shadow var(--ypp-transition-smooth),    transform var(--ypp-transition-bounce) !important;}.yt-chip-shape:hover,.ytChipShapeChip:hover {  background: var(--ypp-chip-bg-hover, var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.18))) !important;  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;  transform: scale(1.05) !important;}/* ── Chip Container Bar (#chips) ────────────────────────────────────────── */ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),ytd-browse[page-subtype=home] #chips {  background: var(--ypp-chip-bar-bg, transparent) !important;  border-radius: var(--ypp-chip-bar-radius, var(--ypp-border-radius-base, 12px)) !important;  box-shadow: var(--ypp-chip-bar-shadow, none) !important;  transition: background 0.3s ease !important;}/* Fix the filter chips globally *//* =========================================================================   Channel chip styles (popup whitelist/blacklist chip UI) (Moved from badges.css)   ========================================================================= */.ypp-chip-list {    display: flex;    flex-wrap: wrap;    gap: 6px;    min-height: 32px;    padding: 4px 0;}.ypp-chip {    display: inline-flex;    align-items: center;    gap: 5px;    padding: 4px 10px;    border-radius: 99px;    background: rgba(255,255,255,0.1);    border: 1px solid rgba(255,255,255,0.15);    font-size: 12px;    color: rgba(255,255,255,0.85);    max-width: 200px;    font-family: 'Roboto', Arial, sans-serif;}.ypp-chip span {    overflow: hidden;    text-overflow: ellipsis;    white-space: nowrap;}.ypp-chip-remove {    background: none;    border: none;    cursor: pointer;    opacity: 0.55;    color: inherit;    padding: 0;    font-size: 14px;    line-height: 1;    flex-shrink: 0;}.ypp-chip-remove:hover {    opacity: 1;}.ypp-chip-add-row {    display: flex;    gap: 6px;    margin-top: 6px;    align-items: center;}.ypp-chip-add-input {    flex: 1;    padding: 6px 10px;    border-radius: 8px;    border: 1px solid rgba(255,255,255,0.15);    background: rgba(255,255,255,0.07);    color: rgba(255,255,255,0.9);    font-size: 12px;    font-family: 'Roboto', Arial, sans-serif;    outline: none;}.ypp-chip-add-input:focus {    border-color: rgba(255,255,255,0.3);    background: rgba(255,255,255,0.1);}.ypp-chip-add-btn {    padding: 6px 12px;    border-radius: 8px;    border: 1px solid rgba(255,255,255,0.2);    background: rgba(255,255,255,0.1);    color: rgba(255,255,255,0.85);    font-size: 12px;    font-family: 'Roboto', Arial, sans-serif;    cursor: pointer;    white-space: nowrap;    transition: background 0.15s;}.ypp-chip-add-btn:hover {    background: rgba(255,255,255,0.18);}
+/* ==========================================================================
+   CHIPS COMPONENT
+   Handles styling for filter chips, tags, and chip lists globally.
+   Scope: Target YouTube native chips, search filters, and custom extension chips.
+   ========================================================================== */
+
+/* ── 1. Base Chip Containers ────────────────────────────────────────────── */
+
+yt-chip-cloud-renderer,
+ytd-feed-filter-chip-bar-renderer {
+  background: var(--ypp-chip-bar-bg, transparent) !important;
+  border-bottom: var(--ypp-chip-bar-border, none) !important;
+  padding: var(--ypp-chip-bar-padding, 0) !important;
+  transition: background 0.3s ease !important;
+}
+
+ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+ytd-browse[page-subtype=home] #chips {
+  background: var(--ypp-chip-bar-bg, transparent) !important;
+  border-radius: var(--ypp-chip-bar-radius, 8px) !important;
+  box-shadow: var(--ypp-chip-bar-shadow, none) !important;
+  transition: background 0.3s ease !important;
+}
+
+/* ── 2. Unified Native Chip Styles (Squircle Shape) ─────────────────────── */
+
+yt-chip-cloud-chip-renderer,
+yt-chip-cloud-chip-renderer.style-scope,
+ytd-search-filter-renderer a,
+ytd-search-filter-renderer a:visited,
+.yt-chip-shape,
+.ytChipShapeChip {
+  background: var(--ypp-chip-bg, var(--ypp-glass-bg-hover, rgba(255, 255, 255, 0.1))) !important;
+  border-radius: var(--ypp-chip-radius, 8px) !important;
+  border: var(--ypp-chip-border, 1px solid transparent) !important;
+  color: var(--ypp-chip-color, var(--ypp-text-color, inherit)) !important;
+  box-shadow: var(--ypp-chip-shadow, none) !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    border-color var(--ypp-transition-smooth),
+    box-shadow var(--ypp-transition-smooth),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+yt-chip-cloud-chip-renderer:hover,
+ytd-search-filter-renderer a:hover,
+.yt-chip-shape:hover,
+.ytChipShapeChip:hover {
+  background: var(--ypp-chip-bg-hover, var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.18))) !important;
+  border: var(--ypp-chip-border-hover, var(--ypp-chip-border, 1px solid transparent)) !important;
+  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;
+  transform: translateY(-1px) scale(1.03) !important;
+}
+
+/* ── 3. Hashtag / Topic Chips ───────────────────────────────────────────── */
+
+a.ytd-hashtag,
+ytd-hashtag a {
+  background: var(--ypp-chip-bg, transparent) !important;
+  border-radius: var(--ypp-chip-radius, 8px) !important;
+  border: var(--ypp-chip-border, 1px solid transparent) !important;
+  color: var(--ypp-chip-color, var(--ypp-primary-accent, inherit)) !important;
+  padding: 2px 8px !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+a.ytd-hashtag:hover,
+ytd-hashtag a:hover {
+  background: var(--ypp-chip-bg-hover, var(--ypp-glass-bg-hover, rgba(255, 255, 255, 0.1))) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── 4. Active / Selected State Overrides ───────────────────────────────── */
+
+yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"],
+yt-chip-cloud-chip-renderer[aria-selected="true"] {
+  background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;
+  color: var(--ypp-chip-active-color, #fff) !important;
+  border: var(--ypp-chip-active-border, 1px solid transparent) !important;
+  box-shadow: var(--ypp-chip-active-shadow, var(--ypp-shadow-base, none)) !important;
+  transform: none !important;
+}
+
+yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"]:hover,
+yt-chip-cloud-chip-renderer[aria-selected="true"]:hover {
+  background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* ── 5. Custom Extension Chips (Whitelist/Blacklist UI) ─────────────────── */
+
+.ypp-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 0;
+}
+
+.ypp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--ypp-chip-radius, 8px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 200px;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.ypp-chip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ypp-chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.55;
+  color: inherit;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ypp-chip-remove:hover {
+  opacity: 1;
+}
+
+.ypp-chip-add-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  align-items: center;
+}
+
+.ypp-chip-add-input {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-family: 'Roboto', Arial, sans-serif;
+  outline: none;
+}
+
+.ypp-chip-add-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ypp-chip-add-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  font-family: 'Roboto', Arial, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.ypp-chip-add-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}

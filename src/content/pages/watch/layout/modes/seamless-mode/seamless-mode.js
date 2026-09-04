@@ -4,31 +4,33 @@ import { DOMTransactionManager } from './dom-transaction-manager.js';
 import { ActionButtonsController } from './action-buttons-controller.js';
 import { ChannelBarController } from './channel-bar-controller.js';
 import { RelatedGridController } from './related-grid-controller.js';
+import { TabviewSidebarController } from './tabview-sidebar-controller.js';
 
 /**
  * @fileoverview
- * Seamless Mode Orchestrator
+ * Seamless Layout Engine (formerly Seamless Mode Orchestrator)
  * Integrates multiple sub-controllers to relentlessly enforce a specific layout structure on the YouTube Watch Page.
+ * Now manages both the Grid layouts and the Tabview Sidebar UI to prevent DOM conflicts.
  */
 export class SeamlessMode extends window.YPP.features.BaseFeature {
     static featureId = 'seamlessMode';
     static executionPhase = 'idle';
     static priority = 999;
 
-    getConfigKey() { return 'seamlessMode'; }
+    getConfigKey() { return null; } // Custom handling based on multiple settings
     
     constructor() {
         super('seamlessMode');
         
-        this.logger = new TelemetryLogger('SeamlessModeOrchestrator');
+        this.logger = new TelemetryLogger('SeamlessLayoutEngine');
         this.txManager = new DOMTransactionManager(this.logger);
         this.actionController = new ActionButtonsController(this.logger);
         this.channelBarController = new ChannelBarController(this.logger);
         this.gridController = new RelatedGridController(this.logger);
+        this.tabviewController = new TabviewSidebarController(this.logger);
         
         this.isEnabled = false;
         this.isWatchPage = false;
-        this.spaObserver = null;
         
         this._bindContexts();
     }
@@ -38,13 +40,44 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         this.disable = this.disable.bind(this);
         this.onPageChange = this.onPageChange.bind(this);
         this._executeMacroLayoutSwap = this._executeMacroLayoutSwap.bind(this);
+        this._onTabviewChanged = this._onTabviewChanged.bind(this);
+    }
+
+    async update(settings) {
+        let settingsChanged = false;
+        const oldSettings = { ...this.settings };
+        if (settings) {
+            for (const key in settings) {
+                if (settings[key] !== this.settings[key]) {
+                    settingsChanged = true;
+                    break;
+                }
+            }
+        }
+        
+        this.settings = { ...this.settings, ...settings };
+
+        const shouldBeEnabled = Boolean(this.settings.seamlessMode);
+
+        if (shouldBeEnabled && !this.isEnabled) {
+            this.logger.info('Enabling Seamless Layout Engine');
+            this._abortController = new AbortController();
+            await this.enable();
+        } else if (!shouldBeEnabled && this.isEnabled) {
+            this.logger.info('Disabling Seamless Layout Engine');
+            if (this._abortController) this._abortController.abort();
+            await this.disable();
+        } else if (this.isEnabled && settingsChanged) {
+            this._triggerSettingWatchers(this.settings, oldSettings);
+            this._executeMacroLayoutSwap();
+        }
     }
 
     enable() {
         if (this.isEnabled) return;
         this.isEnabled = true;
         
-        this.logger.info('Initializing Enterprise Layout Engine v1.0...');
+        this.logger.info('Initializing Enterprise Layout Engine v2.0 (with Tabview)...');
         
         this._checkPageContext();
         if (this.isWatchPage) {
@@ -52,6 +85,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         }
         
         this._startGlobalObserver();
+        this.addListener(document, 'ypp-tabview-changed', this._onTabviewChanged);
     }
 
     disable() {
@@ -62,6 +96,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         
         this._deactivateEngines();
         this._stopGlobalObserver();
+        this.removeListener(document, 'ypp-tabview-changed', this._onTabviewChanged);
         
         super.disable();
     }
@@ -83,16 +118,21 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
     }
 
     _activateEngines() {
+        this.tabviewController.enable();
+        
         this._executeMacroLayoutSwap();
-        this.actionController.enable();
-        this.channelBarController.enable();
-        this.gridController.enable();
+        
+        if (this.settings.seamlessMode) {
+            this.actionController.enable();
+            this.channelBarController.enable();
+        }
     }
 
     _deactivateEngines() {
         this.actionController.disable();
         this.channelBarController.disable();
         this.gridController.disable();
+        this.tabviewController.disable();
         this.txManager.rollbackAll();
     }
 
@@ -122,6 +162,11 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         }
     }
 
+    _onTabviewChanged(e) {
+        if (!this.isEnabled || !this.isWatchPage) return;
+        this._executeMacroLayoutSwap();
+    }
+
     _executeMacroLayoutSwap() {
         if (!this.isEnabled || !this.isWatchPage) return;
 
@@ -137,21 +182,27 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
             const below = document.querySelector('#below');
             const related = document.querySelector('#related');
 
-            if (!below || !related) {
-                this.logger.warn('Macro swap aborted: Missing #below or #related content nodes');
-                return;
-            }
+            if (!below || !related) return;
 
-            this.txManager.moveNode('swap-below', below, secondaryInner);
-            this.txManager.moveNode('swap-related', related, primaryInner);
+            const isSeamless = Boolean(this.settings.seamlessMode);
+            const activeTab = this.tabviewController.getActiveTab();
 
-            try {
-                const tabviewFeature = window.YPP?.featureManager?.getFeature('tabviewSidebar');
-                if (tabviewFeature && typeof tabviewFeature.onUpdate === 'function') {
-                    tabviewFeature.onUpdate();
+            if (isSeamless) {
+                if (activeTab === 'comments' || activeTab === 'info') {
+                    // Comments/Info go to Sidebar, Related goes to Primary (Grid)
+                    this.txManager.moveNode('swap-below', below, secondaryInner);
+                    this.txManager.moveNode('swap-related', related, primaryInner);
+                    this.gridController.enable();
+                } else if (activeTab === 'related') {
+                    // Related goes to Sidebar
+                    this.gridController.disable();
+                    this.txManager.moveNode('swap-related', related, secondaryInner);
+                    // 'below' returns to primary
+                    this.txManager.moveNode('swap-below', below, primaryInner);
                 }
-            } catch (e) {
-                this.logger.warn('Failed to coordinate with TabviewSidebar:', e);
+            } else {
+                // Should have been disabled, but if reached here, rollback
+                this.txManager.rollbackAll();
             }
         });
     }

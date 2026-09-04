@@ -1,3 +1,7 @@
+/**
+ * Video Speed Controller (Main)
+ * Manages playback speed manipulation and handles the core integration with HTML5 media elements.
+ */
 import '../../../../../core/system/base-feature.js';
 import { VscUI } from './vsc-ui.js';
 import { VscShortcuts } from './vsc-shortcuts.js';
@@ -15,6 +19,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         this._lastActiveVideo = null;
         this.ui = new VscUI(this);
         this.shortcuts = new VscShortcuts(this);
+        this._pageScriptInjected = false;
     }
 
     getConfigKey() {
@@ -26,63 +31,118 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         
         this.utils?.log('Enabling Global Video Speed Controller', 'VSC');
         
-        // Inject page script for forced speed to make sure it always works natively
+        // Inject inline page script for forced speed to make sure it always works natively
         if (this.settings?.vscForceSpeed !== false) {
-            const scriptId = 'ypp-vsc-page-script';
-            if (!document.getElementById(scriptId)) {
-                const script = document.createElement('script');
-                script.id = scriptId;
-                script.src = chrome.runtime.getURL('src/content/pages/watch/player/enhancements/video-speed-controller/vsc-page-script.js');
-                (document.head || document.documentElement).appendChild(script);
+            this.injectPageScript();
+            this.syncSpeedToPage();
+        }
+
+        this.watchSetting('vscForceSpeed', (newVal) => {
+            if (newVal) {
+                this.injectPageScript();
+                this.syncSpeedToPage();
+            } else {
+                this.disablePageScript();
             }
-        }
-        
-        // Scan and observe using centralized engine
-        const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('video-speed-controller', selector, (elements) => {
-                elements.forEach(node => {
-                    if (node.tagName === 'VIDEO' || (this.settings?.vscAudioSupport && node.tagName === 'AUDIO')) {
-                        this.ui.attachToVideo(node);
+        });
+
+        this.watchSetting('vscHideByDefault', (newVal) => {
+            const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
+            document.querySelectorAll(selector).forEach(video => {
+                const state = this.controllers.get(video);
+                if (state) {
+                    if (newVal) {
+                        state.controller.style.display = 'none';
+                        state.controller.classList.add('ypp-vsc-hidden');
+                    } else {
+                        state.controller.style.display = 'flex';
+                        state.controller.classList.remove('ypp-vsc-hidden');
+                        this.ui.hideControllerDelay(video);
                     }
-                });
-            }, true); // immediate=true scans for existing videos automatically
-        } else {
-            // Fallback for external sites without sharedObserver
-            this.scanForVideos();
-            this._fallbackScanner = (e) => {
-                if (e.target && (e.target.tagName === 'VIDEO' || (this.settings?.vscAudioSupport && e.target.tagName === 'AUDIO'))) {
-                    this.scanForVideos();
                 }
-            };
-            this.addListener(document, 'play', this._fallbackScanner, true);
-            this.addListener(document, 'loadeddata', this._fallbackScanner, true);
-        }
+            });
+        });
+
+        const setupObserver = () => {
+            if (window.YPP.sharedObserver) {
+                window.YPP.sharedObserver.unregister('video-speed-controller');
+            }
+            
+            const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
+            if (window.YPP.sharedObserver) {
+                window.YPP.sharedObserver.register('video-speed-controller', selector, (elements) => {
+                    elements.forEach(node => {
+                        if (node.tagName === 'VIDEO' || (this.settings?.vscAudioSupport && node.tagName === 'AUDIO')) {
+                            this.ui.attachToVideo(node);
+                        }
+                    });
+                }, true); // immediate=true scans for existing videos automatically
+            } else {
+                // Fallback for external sites without sharedObserver
+                this.scanForVideos();
+                if (this._fallbackScanner) {
+                    this.removeListener(document, 'play', this._fallbackScanner, true);
+                    this.removeListener(document, 'loadeddata', this._fallbackScanner, true);
+                }
+                this._fallbackScanner = (e) => {
+                    if (e.target && (e.target.tagName === 'VIDEO' || (this.settings?.vscAudioSupport && e.target.tagName === 'AUDIO'))) {
+                        this.scanForVideos();
+                    }
+                };
+                this.addListener(document, 'play', this._fallbackScanner, true);
+                this.addListener(document, 'loadeddata', this._fallbackScanner, true);
+            }
+        };
+
+        // Scan and observe initially
+        setupObserver();
+
+        this.watchSetting('vscAudioSupport', () => {
+            setupObserver();
+        });
 
         // Global keyboard shortcuts are now handled via shortcuts class
         this.shortcuts.register();
 
-        // Cross-tab sync listener
-        if (this.settings?.vscRememberSpeed !== false) {
-            this._storageListener = (changes, area) => {
-                // The settings are stored under the 'settings' key in chrome.storage.local
-                if (area === 'local' && changes.settings && changes.settings.newValue) {
-                    const newSpeed = changes.settings.newValue.vscLastSpeed;
-                    if (newSpeed && Math.abs(newSpeed - this.settings.vscLastSpeed) > 0.01) {
-                        this.settings.vscLastSpeed = newSpeed;
-                        const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
-                        document.querySelectorAll(selector).forEach(video => {
-                            if (Math.abs(video.playbackRate - newSpeed) > 0.01) {
-                                video.playbackRate = newSpeed;
-                                const state = this.controllers.get(video);
-                                if (state) state.display.textContent = newSpeed.toFixed(2);
-                            }
-                        });
-                    }
+        this.watchSetting('vscRememberSpeed', (newVal) => {
+            if (newVal === false) {
+                if (this._storageListener) {
+                    chrome.storage.onChanged.removeListener(this._storageListener);
+                    this._storageListener = null;
                 }
-            };
-            chrome.storage.onChanged.addListener(this._storageListener);
+            } else {
+                if (!this._storageListener) {
+                    this.setupCrossTabSync();
+                }
+            }
+        });
+
+        // Cross-tab sync listener setup
+        if (this.settings?.vscRememberSpeed !== false) {
+            this.setupCrossTabSync();
         }
+    }
+
+    setupCrossTabSync() {
+        if (this._storageListener) return;
+        this._storageListener = (changes, area) => {
+            // The settings are stored under the 'settings' key in chrome.storage.local
+            if (area === 'local' && changes.settings && changes.settings.newValue) {
+                const newSpeed = changes.settings.newValue.vscLastSpeed;
+                if (newSpeed && Math.abs(newSpeed - (this.settings.vscLastSpeed || 1)) > 0.01) {
+                    this.settings.vscLastSpeed = newSpeed;
+                    const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
+                    document.querySelectorAll(selector).forEach(video => {
+                        if (Math.abs(video.playbackRate - newSpeed) > 0.01) {
+                            video.playbackRate = newSpeed;
+                            const state = this.controllers.get(video);
+                            if (state) state.display.textContent = newSpeed.toFixed(2);
+                        }
+                    });
+                }
+            }
+        };
+        chrome.storage.onChanged.addListener(this._storageListener);
     }
 
     async disable() {
@@ -265,6 +325,77 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
             }
         });
         return largest;
+    }
+
+    injectPageScript() {
+        if (this._pageScriptInjected) return;
+        if (document.getElementById('ypp-vsc-page-script')) return;
+
+        const scriptContent = `
+            (function() {
+                if (window.__ypp_vsc_injected) return;
+                window.__ypp_vsc_injected = true;
+            
+                let forcedSpeed = null;
+                let isForcing = false;
+            
+                window.addEventListener('ypp-vsc-force-speed', (e) => {
+                    forcedSpeed = e.detail.speed;
+                    isForcing = !!e.detail.enabled;
+                    
+                    if (isForcing && forcedSpeed) {
+                        const medias = document.querySelectorAll('video, audio');
+                        medias.forEach(media => {
+                            if (Math.abs(media.playbackRate - forcedSpeed) > 0.01) {
+                                try {
+                                    const originalSetter = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'playbackRate').set;
+                                    originalSetter.call(media, forcedSpeed);
+                                } catch (err) {}
+                            }
+                        });
+                    }
+                });
+            
+                const originalDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'playbackRate');
+                if (!originalDescriptor) return;
+            
+                const originalSet = originalDescriptor.set;
+                
+                Object.defineProperty(HTMLMediaElement.prototype, 'playbackRate', {
+                    get: originalDescriptor.get,
+                    set: function(val) {
+                        if (isForcing && forcedSpeed !== null) {
+                            if (Math.abs(val - forcedSpeed) > 0.01) {
+                                return; // Blocked
+                            }
+                        }
+                        return originalSet.call(this, val);
+                    },
+                    configurable: true,
+                    enumerable: true
+                });
+            })();
+        `;
+
+        const script = document.createElement('script');
+        script.id = 'ypp-vsc-page-script';
+        script.textContent = scriptContent;
+        (document.head || document.documentElement).appendChild(script);
+        this._pageScriptInjected = true;
+    }
+
+    syncSpeedToPage() {
+        if (!this.settings?.vscForceSpeed) return;
+        const speed = this.settings.vscLastSpeed || 1.0;
+        window.dispatchEvent(new CustomEvent('ypp-vsc-force-speed', {
+            detail: { enabled: true, speed: speed }
+        }));
+    }
+
+    disablePageScript() {
+        window.dispatchEvent(new CustomEvent('ypp-vsc-force-speed', {
+            detail: { enabled: false, speed: null }
+        }));
     }
 }
 

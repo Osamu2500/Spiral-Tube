@@ -1,17 +1,36 @@
 import '../../../core/system/base-feature.js';
+
 /**
- * Auto Scale Grid
+ * @file auto-scale-grid.js
+ * @description Auto Scale Grid Feature
  * Adjusts the global grid UI scale (fonts/spacing) and auto column count based on window size.
  * 
  * IMPORTANT: AutoScaleGrid ONLY controls the home page in auto mode (homeColumns === 0).
  * It publishes --ypp-dynamic-cols which layout-manager reads on each applyGridLayout() call.
  * It signals layout-manager by dispatching a synthetic 'resize' event, which triggers
  * layout-manager's debounced resize listener — clean, decoupled, no circular calls.
+ * 
+ * Scope: Does not affect unrelated pages or layout structures outside of home page auto-scale.
  */
 export class AutoScaleGrid extends window.YPP.features.BaseFeature {
     static featureId = 'autoScaleLayout';
     static executionPhase = 'post-layout';
     static priority = 4;
+
+    /**
+     * Column Breakpoints based on container width
+     * @readonly
+     */
+    static CONFIG = {
+        BREAKPOINTS: [
+            { minWidth: 2100, cols: 6 },
+            { minWidth: 1800, cols: 5 },
+            { minWidth: 1400, cols: 4 },
+            { minWidth: 1000, cols: 3 },
+            { minWidth: 600,  cols: 2 },
+            { minWidth: 0,    cols: 1 }
+        ]
+    };
 
     constructor() {
         super('AutoScaleGrid');
@@ -33,10 +52,13 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
     }
 
     async disable() {
-        // Reset scale and clear the dynamic cols let document.documentElement.style.setProperty('--ypp-auto-scale', 1);
+        // Reset scale and clear the dynamic cols
+        document.documentElement.style.setProperty('--ypp-auto-scale', 1);
         document.documentElement.style.removeProperty('--ypp-dynamic-cols');
+        
         this.cleanupEvents();
         this._resizeListener = null;
+        
         // Signal layout-manager to fall back to manual/default columns
         window.dispatchEvent(new Event('resize'));
     }
@@ -60,6 +82,7 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
      * based on window/grid width, and sets the UI scale factor.
      * Only runs when autoScaleLayout is true.
      * Only publishes --ypp-dynamic-cols on the home page (/ or /index).
+     * @private
      */
     _applyScale() {
         if (!this.settings || !this.settings.autoScaleLayout) return;
@@ -87,13 +110,13 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
                 width = gridRenderer.clientWidth;
             }
 
-            let cols = 4;
-            if (width >= 2100) cols = 6;
-            else if (width >= 1800) cols = 5;
-            else if (width >= 1400) cols = 4;
-            else if (width >= 1000) cols = 3;
-            else if (width >= 600)  cols = 2;
-            else cols = 1;
+            let cols = 4; // Default fallback
+            for (const breakpoint of AutoScaleGrid.CONFIG.BREAKPOINTS) {
+                if (width >= breakpoint.minWidth) {
+                    cols = breakpoint.cols;
+                    break;
+                }
+            }
 
             // Publish for layout-manager to consume via applyGridLayout()
             document.documentElement.style.setProperty('--ypp-dynamic-cols', cols);

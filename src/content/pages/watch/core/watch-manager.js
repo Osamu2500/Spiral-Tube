@@ -266,17 +266,6 @@ class WatchPageManager extends window.YPP.BasePageManager {
 
   _cleanupDOM() {
     const classesToRemove = [
-      // Note: 'ypp-sidebar-spacious' is the current name — 'compact' was the old name
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       'ypp-cinema-mode',
       'ypp-minimal-mode',
       'ypp-zen-mode',

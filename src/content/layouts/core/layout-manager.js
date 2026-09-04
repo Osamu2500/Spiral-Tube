@@ -1,14 +1,13 @@
 import '../../core/system/base-feature.js';
 /**
- * Layout Manager (Grid)
+ * @file layout-manager.js
+ * @description Layout Manager (Grid) Feature.
  * Enforces a configurable grid layout on the YouTube Home, Search, Channel,
- * and Subscriptions pages.
- * Optimized for performance using requestAnimationFrame and CSS classes.
+ * and Subscriptions pages. optimized for performance using requestAnimationFrame and CSS classes.
+ * 
+ * Does not affect unrelated pages or player rendering.
  */
 import '../../styles/base-ui-design/global/layouts/grid-layout.css';
-
-
-
 
 export class GridLayoutManager extends window.YPP.features.BaseFeature {
     static featureId = 'gridLayoutManager';
@@ -35,10 +34,8 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
         APP_CONTAINER: 'ytd-app',
         GRID_RENDERER: 'ytd-rich-grid-renderer, yt-rich-grid-renderer, yt-rich-grid-view-model',
         GRID_CONTENTS: '#contents',
-        GRID_ITEMS: 'ytd-rich-item-renderer, ytd-rich-grid-media, yt-lockup-view-model, yt-rich-item-view-model',
-        GRID_ROWS: 'ytd-rich-grid-row'
+        GRID_ITEMS: 'ytd-rich-item-renderer, ytd-rich-grid-media, yt-lockup-view-model, yt-rich-item-view-model'
     };
-
 
     constructor() {
         super('GridLayoutManager');
@@ -62,6 +59,7 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
 
         // Bind methods for performance
         this._boundApplyLayout = this.applyGridLayout.bind(this);
+        this._debouncedApply = this._debouncedApply.bind(this);
     }
 
     /**
@@ -128,47 +126,25 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
         if (!settings) return;
         
         const root = document.documentElement;
+        
+        // Consolidate updating CSS variables based on settings keys
+        const columnSettingsMap = {
+            homeColumns: ['--ypp-home-columns', '--ypp-active-columns'],
+            searchColumns: ['--ypp-search-columns'],
+            subscriptionsColumns: ['--ypp-subscriptions-columns'],
+            channelColumns: ['--ypp-channel-columns'],
+            historyColumns: ['--ypp-history-columns']
+        };
 
-        // Home page manual column count
-        const homeCols = Number(settings.homeColumns || 0);
-        if (homeCols > 0) {
-            root.style.setProperty('--ypp-home-columns', homeCols);
-            root.style.setProperty('--ypp-active-columns', homeCols);
-        } else {
-            root.style.removeProperty('--ypp-home-columns');
-            root.style.removeProperty('--ypp-active-columns');
-        }
-
-        // Search page
-        const searchCols = Number(settings.searchColumns || 0);
-        if (searchCols > 0) {
-            root.style.setProperty('--ypp-search-columns', searchCols);
-        } else {
-            root.style.removeProperty('--ypp-search-columns');
-        }
-
-        // Subscriptions page
-        const subsCols = Number(settings.subscriptionsColumns || 0);
-        if (subsCols > 0) {
-            root.style.setProperty('--ypp-subscriptions-columns', subsCols);
-        } else {
-            root.style.removeProperty('--ypp-subscriptions-columns');
-        }
-
-        // Channel / @handle pages
-        const channelCols = Number(settings.channelColumns || 0);
-        if (channelCols > 0) {
-            root.style.setProperty('--ypp-channel-columns', channelCols);
-        } else {
-            root.style.removeProperty('--ypp-channel-columns');
-        }
-
-        // History page
-        const historyCols = Number(settings.historyColumns || 0);
-        if (historyCols > 0) {
-            root.style.setProperty('--ypp-history-columns', historyCols);
-        } else {
-            root.style.removeProperty('--ypp-history-columns');
+        for (const [settingKey, cssVars] of Object.entries(columnSettingsMap)) {
+            const cols = Number(settings[settingKey] || 0);
+            cssVars.forEach(cssVar => {
+                if (cols > 0) {
+                    root.style.setProperty(cssVar, cols);
+                } else {
+                    root.style.removeProperty(cssVar);
+                }
+            });
         }
     }
 
@@ -179,7 +155,7 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
         this.observer.register(
             'layout-manager',
             'ytd-rich-grid-renderer, ytd-rich-item-renderer, ytd-continuation-item-renderer',
-            () => this._debouncedApply(),
+            this._debouncedApply,
             false
         );
 
@@ -187,26 +163,10 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
     }
 
     /**
-     * Apply layout changes using RAF for smooth updates
-     * @private
-     */
-    _debouncedApply() {
-        if (this._rafId) {
-            cancelAnimationFrame(this._rafId);
-        }
-        
-        this._rafId = requestAnimationFrame(() => {
-            this.applyGridLayout();
-            this._rafId = null;
-        });
-    }
-
-    /**
      * Add window resize listener with debouncing
      */
     addResizeListener() {
-        const applyFn = () => this.applyGridLayout();
-        const resizeListener = this.utils.debounce(applyFn, GridLayoutManager.CONFIG.DEBOUNCE_DELAY);
+        const resizeListener = this.utils.debounce(this._boundApplyLayout, GridLayoutManager.CONFIG.DEBOUNCE_DELAY);
         this.addListener(window, 'resize', resizeListener);
     }
 
@@ -229,105 +189,51 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
         const contents = gridRenderer.querySelector(GridLayoutManager.SELECTORS.GRID_CONTENTS);
         if (!contents) return false;
 
-        // ── Determine column count per page type ──────────────────────────────
         const path = window.location.pathname;
-        let cols;
-
-        if (path.startsWith('/@') || path.startsWith('/channel') || path.startsWith('/c/')) {
-            // Channel page
-            cols = Number(this.settings?.channelColumns || 4);
-        } else if (path.startsWith('/results')) {
-            // Search page
-            cols = Number(this.settings?.searchColumns || 4);
-        } else if (path === '/feed/subscriptions') {
-            // Subscriptions page
-            cols = Number(this.settings?.subscriptionsColumns || 4);
-        } else if (path === '/feed/history') {
-            // History page
-            cols = Number(this.settings?.historyColumns || 4);
-        } else {
-            // Home page
-            const manualCols = Number(this.settings?.homeColumns || 0);
-
-            if (manualCols > 0) {
-                // Manual override wins — ignore AutoScaleGrid entirely
-                cols = manualCols;
-            } else {
-                // Auto mode: read --ypp-dynamic-cols published by AutoScaleGrid
-                const dynamicCols = document.documentElement.style.getPropertyValue('--ypp-dynamic-cols');
-                cols = dynamicCols ? parseInt(dynamicCols, 10) : 4;
-            }
-        }
+        const cols = this._determineColumnCount(path);
 
         this.utils.log?.('applyGridLayout cols=' + cols + ' path=' + path, 'LAYOUT');
 
-        // cols === 0 should never happen now, but guard just in case
+        // guard clause
         if (!cols || cols === 0) {
-            contents.classList.remove('ypp-grid-container');
-            contents.style.removeProperty('grid-template-columns');
-            contents.style.removeProperty('grid-auto-flow');
-            contents.removeAttribute('data-ypp-cols');
-            this._processedContainers.delete(contents);
+            this._resetContainerStyles(contents);
             return true;
         }
 
-        // Apply ypp-grid-item to newly loaded items
-        const items = contents.querySelectorAll(GridLayoutManager.SELECTORS.GRID_ITEMS);
-        items.forEach(item => {
-            // Skip nested renderers or items inside a shelf
-            if (item.closest('ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-reel-shelf-renderer')) {
-                item.classList.remove('ypp-grid-item');
-                return;
-            }
-            if (item.parentElement && item.parentElement.closest('.ypp-grid-item')) {
-                item.classList.remove('ypp-grid-item');
-                return;
-            }
-            if (!item.classList.contains('ypp-grid-item')) {
-                item.classList.add('ypp-grid-item');
-            }
-        });
+        this._applyItemClasses(contents);
 
         // Performance: skip if already processed at the same column count
         if (this._processedContainers.has(contents)) {
             const lastCols = parseInt(contents.getAttribute('data-ypp-cols'), 10);
             if (lastCols !== cols || !contents.style.gridTemplateColumns) {
-                contents.setAttribute('data-ypp-cols', cols);
-                contents.style.setProperty('grid-template-columns', `repeat(${cols}, minmax(0, 1fr))`, 'important');
-                contents.style.setProperty('grid-auto-flow', 'dense', 'important');
-                
-                const manualCols = Number(this.settings?.homeColumns || 0);
-                if (manualCols > 0) {
-                    document.documentElement.style.setProperty('--ypp-active-columns', cols);
-                    document.documentElement.style.removeProperty('--ypp-dynamic-cols');
-                } else {
-                    document.documentElement.style.removeProperty('--ypp-active-columns');
-                }
-                
-                document.documentElement.style.setProperty('--ypp-grid-column-min', `${Math.floor(100 / cols)}vw`);
+                this._setContainerStyles(contents, cols);
             }
             return true;
         }
 
         // First-time apply
         contents.classList.add('ypp-grid-container');
-        contents.setAttribute('data-ypp-cols', cols);
-        contents.style.setProperty('grid-template-columns', `repeat(${cols}, minmax(0, 1fr))`, 'important');
-        contents.style.setProperty('grid-auto-flow', 'dense', 'important');
-        
-        const manualColsFirstTime = Number(this.settings?.homeColumns || 0);
-        if (manualColsFirstTime > 0) {
-            document.documentElement.style.setProperty('--ypp-active-columns', cols);
-            document.documentElement.style.removeProperty('--ypp-dynamic-cols');
-        } else {
-            document.documentElement.style.removeProperty('--ypp-active-columns');
-        }
-        
-        document.documentElement.style.setProperty('--ypp-grid-column-min', `${Math.floor(100 / cols)}vw`);
-
+        this._setContainerStyles(contents, cols);
         this._processedContainers.add(contents);
 
         return true;
+    }
+
+    // ─── PRIVATE HELPERS ───────────────────────────────────────────────────
+
+    /**
+     * Apply layout changes using RAF for smooth updates
+     * @private
+     */
+    _debouncedApply() {
+        if (this._rafId) {
+            cancelAnimationFrame(this._rafId);
+        }
+        
+        this._rafId = requestAnimationFrame(() => {
+            this.applyGridLayout();
+            this._rafId = null;
+        });
     }
 
     /**
@@ -343,6 +249,92 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
                path === '/feed/subscriptions' ||
                path === '/feed/history' ||
                path.startsWith('/results');
+    }
+
+    /**
+     * Determine the number of columns to use based on the current page path
+     * @private
+     * @param {string} path - current window pathname
+     * @returns {number} column count
+     */
+    _determineColumnCount(path) {
+        if (path.startsWith('/@') || path.startsWith('/channel') || path.startsWith('/c/')) {
+            return Number(this.settings?.channelColumns || 4);
+        }
+        if (path.startsWith('/results')) {
+            return Number(this.settings?.searchColumns || 4);
+        }
+        if (path === '/feed/subscriptions') {
+            return Number(this.settings?.subscriptionsColumns || 4);
+        }
+        if (path === '/feed/history') {
+            return Number(this.settings?.historyColumns || 4);
+        }
+        
+        // Home page logic
+        const manualCols = Number(this.settings?.homeColumns || 0);
+        if (manualCols > 0) {
+            // Manual override wins — ignore AutoScaleGrid entirely
+            return manualCols;
+        }
+        
+        // Auto mode: read --ypp-dynamic-cols published by AutoScaleGrid
+        const dynamicCols = document.documentElement.style.getPropertyValue('--ypp-dynamic-cols');
+        return dynamicCols ? parseInt(dynamicCols, 10) : 4;
+    }
+
+    /**
+     * Resets the container styles to default
+     * @private
+     */
+    _resetContainerStyles(contents) {
+        contents.classList.remove('ypp-grid-container');
+        contents.style.removeProperty('grid-template-columns');
+        contents.style.removeProperty('grid-auto-flow');
+        contents.removeAttribute('data-ypp-cols');
+        this._processedContainers.delete(contents);
+    }
+
+    /**
+     * Applies correct CSS styles and data attributes to the container
+     * @private
+     */
+    _setContainerStyles(contents, cols) {
+        contents.setAttribute('data-ypp-cols', cols);
+        contents.style.setProperty('grid-template-columns', `repeat(${cols}, minmax(0, 1fr))`, 'important');
+        contents.style.setProperty('grid-auto-flow', 'dense', 'important');
+        
+        const manualCols = Number(this.settings?.homeColumns || 0);
+        if (manualCols > 0) {
+            document.documentElement.style.setProperty('--ypp-active-columns', cols);
+            document.documentElement.style.removeProperty('--ypp-dynamic-cols');
+        } else {
+            document.documentElement.style.removeProperty('--ypp-active-columns');
+        }
+        
+        document.documentElement.style.setProperty('--ypp-grid-column-min', `${Math.floor(100 / cols)}vw`);
+    }
+
+    /**
+     * Applies standard classes to the grid items
+     * @private
+     */
+    _applyItemClasses(contents) {
+        const items = contents.querySelectorAll(GridLayoutManager.SELECTORS.GRID_ITEMS);
+        items.forEach(item => {
+            // Skip nested renderers or items inside a shelf
+            if (item.closest('ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-reel-shelf-renderer')) {
+                item.classList.remove('ypp-grid-item');
+                return;
+            }
+            if (item.parentElement && item.parentElement.closest('.ypp-grid-item')) {
+                item.classList.remove('ypp-grid-item');
+                return;
+            }
+            if (!item.classList.contains('ypp-grid-item')) {
+                item.classList.add('ypp-grid-item');
+            }
+        });
     }
 
     /**
@@ -362,20 +354,10 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
         this._processedContainers = new WeakSet();
 
         const containers = document.querySelectorAll('.ypp-grid-container, #contents[data-ypp-cols]');
-        containers.forEach(el => {
-            el.classList.remove('ypp-grid-container');
-            el.removeAttribute('data-ypp-cols');
-            el.style.removeProperty('grid-template-columns');
-            el.style.removeProperty('grid-auto-flow');
-        });
+        containers.forEach(el => this._resetContainerStyles(el));
         
         const items = document.querySelectorAll('.ypp-grid-item');
         items.forEach(el => el.classList.remove('ypp-grid-item'));
-        
-        const rows = document.querySelectorAll(GridLayoutManager.SELECTORS.GRID_ROWS);
-        rows.forEach(row => {
-            row.style.display = '';
-        });
 
         this.utils.log?.('Cleanup complete', 'LAYOUT', 'debug');
     }

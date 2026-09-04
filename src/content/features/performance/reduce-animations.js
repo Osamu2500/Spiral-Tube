@@ -413,16 +413,11 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
     _onNavigateFinish() {
         if (!this._isTamed) return;
         
+        // Only clear tooltips to prevent orphaned UI elements
         const tooltips = document.querySelectorAll('.ytp-tooltip');
         tooltips.forEach(t => t.remove());
 
-        const hiddenIframes = document.querySelectorAll('iframe[style*="visibility: hidden"], iframe[style*="display: none"]');
-        hiddenIframes.forEach(f => {
-            f.src = 'about:blank';
-            f.remove();
-        });
-
-        this.utils?.log?.('Memory Guard: Cleared detached nodes on navigation.', 'REDUCE-ANIM', 'debug');
+        this.utils?.log?.('Memory Guard: Cleared detached tooltips on navigation.', 'REDUCE-ANIM', 'debug');
     }
 }
 

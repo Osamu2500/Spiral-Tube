@@ -1,3 +1,9 @@
+/**
+ * Watch Page Player — Styles Manager
+ * Purpose: Injects and manages dynamic/static CSS styles for the Custom Player Bar.
+ * Scope: Strictly scoped to overriding YouTube's native `.ytp-` classes and our `.ypp-player-controls`.
+ * Impact: Responsible for hiding native buttons when they are replaced by our custom buttons.
+ */
 export class PlayerBarStyles {
     static injectStaticStyles() {
         if (document.getElementById('ypp-player-static-styles')) return;

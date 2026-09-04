@@ -1,1 +1,17 @@
-/*  * Dialogs Component - Handles core structure for dialogs, modals, and overlays. * Does not affect outside scope.  */:is(  tp-yt-paper-dialog,  yt-error-screen,  ytd-popup-container,  .ytd-popup-container) {  background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-base-background))) !important;  border-radius: var(--ypp-dialog-radius, var(--ypp-border-radius-base, 12px)) !important;  border: var(--ypp-dialog-border, var(--ypp-surface-border, 1px solid transparent)) !important;  box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover, none)) !important;  }
+/* ==========================================================================
+   DIALOGS COMPONENT
+   Handles core structure for dialogs, modals, and overlays.
+   Scope: Does not affect outside scope.
+   ========================================================================== */
+
+:is(
+  tp-yt-paper-dialog,
+  yt-error-screen,
+  ytd-popup-container,
+  .ytd-popup-container
+) {
+  background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-base-background))) !important;
+  border-radius: var(--ypp-dialog-radius, var(--ypp-squircle-radius-lg, 12px)) !important;
+  border: var(--ypp-dialog-border, var(--ypp-surface-border, 1px solid transparent)) !important;
+  box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover, none)) !important;
+}

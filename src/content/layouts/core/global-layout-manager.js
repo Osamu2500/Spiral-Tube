@@ -38,12 +38,9 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideActionButtons:     'ypp-hide-action-buttons',
             hideFeed:              'ypp-hide-feed',              // Moved from HomePageManager
 
-
-            cinematicMode:         'ypp-real-cinema-mode', // Improve cinematic mode on watch page
-            realCinemaMode:        'ypp-real-cinema-mode', // Explicit theater real cinema mode
             showLiveStreamTime:    'ypp-live-stream-time', // Live stream time counter
             twoColumnSubscriptions:'ypp-two-column-subs',  // Two rows in subs feed
-            enableDeckMode:        'ypp-deck-mode',
+
 
             hideCountryCode:       'ypp-hide-country-code',
             hideThanksDonate:      'ypp-hide-thanks-donate',
@@ -113,6 +110,13 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
                 document.body.classList.remove(cssClass);
                 if (key === 'hideScrollbar') document.documentElement.classList.remove(cssClass);
             }
+        }
+        
+        // Handle real-cinema-mode explicitly to prevent toggle mapping collisions
+        if (this.settings.cinematicMode || this.settings.realCinemaMode) {
+            document.body.classList.add('ypp-real-cinema-mode');
+        } else {
+            document.body.classList.remove('ypp-real-cinema-mode');
         }
         
         this._updateDynamicToggles();

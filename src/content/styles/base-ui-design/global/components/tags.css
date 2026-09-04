@@ -2,7 +2,7 @@
    TAG BUTTONS & POPOVERS
    ========================================================================== */
 
-/* Tag Button on Thumbnail */
+/* ── 1. Tag Button on Thumbnail ─────────────────────────────────────────── */
 
 ytd-thumbnail .ypp-tag-btn {
   position: absolute;
@@ -10,7 +10,7 @@ ytd-thumbnail .ypp-tag-btn {
   left: 8px;
   width: 28px;
   height: 28px;
-  border-radius: var(--ypp-border-radius-base, 8px);
+  border-radius: var(--ypp-squircle-radius, 8px);
   background: var(--ypp-surface-bg);
   border: var(--ypp-surface-border);
   color: var(--ypp-text-secondary);
@@ -47,13 +47,13 @@ ytd-thumbnail:hover .ypp-tag-btn {
   transform: translateY(0);
 }
 
-/* Tag Popover */
+/* ── 2. Tag Popover ─────────────────────────────────────────────────────── */
 
 .ypp-tag-popover {
   position: absolute;
   background: var(--ypp-bg-surface);
   border: var(--ypp-surface-border);
-  border-radius: var(--ypp-border-radius-base, 12px);
+  border-radius: var(--ypp-squircle-radius, 8px);
   padding: 8px;
   box-shadow: var(--ypp-shadow-float);
   z-index: var(--ypp-z-popup);
@@ -68,7 +68,7 @@ ytd-thumbnail:hover .ypp-tag-btn {
 
 .ypp-tag-option {
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: var(--ypp-squircle-radius, 8px);
   color: var(--ypp-text-secondary);
   font-size: 1.3rem;
   cursor: pointer;
@@ -78,14 +78,4 @@ ytd-thumbnail:hover .ypp-tag-btn {
 .ypp-tag-option:hover {
   background: var(--ypp-surface-bg-hover);
   color: var(--ypp-text-primary);
-}
-
-@keyframes ypp-fade-in {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ypp-fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }

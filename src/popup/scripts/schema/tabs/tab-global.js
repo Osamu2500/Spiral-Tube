@@ -31,19 +31,5 @@ export const getGlobalTab = (t) => ({
           },
         ],
       },
-      {
-        title: t('api_integrations'),
-        subtitle: 'Third-party service connections',
-        icon: ICONS.settingsSync,
-        items: [
-          {
-            type: 'toggle',
-            id: 'adSkipper',
-            label: t('ad_skipper'),
-            desc: t('skip_video_ads_automatically'),
-            icon: P('M5 4l10 8-10 8V4z M19 5v14'),
-          },
-        ],
-      },
     ],
   });

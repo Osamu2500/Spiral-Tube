@@ -1,26 +1,36 @@
-/* 
- * Panels Component - Handles engagement and side panels styling.
- * Does not affect outside scope. 
- */
+/* ==========================================================================
+   PANELS COMPONENT
+   Handles engagement and side panels styling.
+   Scope: Does not affect outside scope.
+   ========================================================================== */
+
+/* ── 1. Anchored Shorts Panels ──────────────────────────────────────────── */
+
 .anchored-panel.ytd-shorts {
   background: var(--ypp-surface-bg) !important;
   padding: 5px;
   border: var(--ypp-surface-border) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
   box-shadow: var(--ypp-shadow-active) !important;
   margin-top: 15px !important;
 }
+
+/* ── 2. Engagement Panels ───────────────────────────────────────────────── */
+
 ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
   border-bottom: none;
 }
+
 ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
   background: none !important;
 }
+
 ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
   border: var(--ypp-surface-border) !important;
 }
+
 #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
   border: var(--ypp-surface-border) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
 }

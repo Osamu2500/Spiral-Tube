@@ -24,13 +24,6 @@ export const getModesTab = (t) => ({
             desc: 'Custom colors and styling',
             icon: ICONS.cinema,
           },
-          {
-            type: 'toggle',
-            id: 'enableTabviewSidebar',
-            label: t('tabview_sidebar'),
-            desc: t('tabview_sidebar_desc'),
-            icon: ICONS.sidebar,
-          },
         ],
       },
       {

@@ -1,3 +1,8 @@
+/**
+ * Video Speed Controller: UI
+ * Handles the creation, attachment, and event binding of the custom on-screen 
+ * speed controller interface that overlays HTML5 video/audio elements.
+ */
 export class VscUI {
     constructor(vsc) {
         this.vsc = vsc;
@@ -134,7 +139,7 @@ export class VscUI {
         this.vsc.addListener(video, 'ratechange', (e) => this.vsc.handleRateChange(video, e));
 
         const triggerShow = () => {
-            if (this.vsc.settings?.vscHideController) return;
+            if (this.vsc.settings?.vscHideByDefault) return;
             this.showController(video);
             this.hideControllerDelay(video);
         };
@@ -171,7 +176,7 @@ export class VscUI {
         });
         this.vsc.addListener(controller, 'mouseleave', () => this.hideControllerDelay(video));
 
-        if (this.vsc.settings?.vscHideController) {
+        if (this.vsc.settings?.vscHideByDefault) {
             controller.style.display = 'none';
             controller.classList.add('ypp-vsc-hidden');
         } else {

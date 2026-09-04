@@ -59,13 +59,6 @@ export const getHistoryTab = (t) => ({
           },
           {
             type: 'toggle',
-            id: 'autoResume',
-            label: t('auto_resume_videos'),
-            desc: t('automatically_resume_from_last_watched_timestamp'),
-            icon: ICONS.wheel,
-          },
-          {
-            type: 'toggle',
             id: 'resumeBadges',
             label: t('resume_badges'),
             desc: t('show_resume_progress_on_thumbnails'),

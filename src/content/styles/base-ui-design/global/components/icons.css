@@ -1,17 +1,20 @@
-/* 
- * Icons Component - Handles custom icon button styling.
- * Does not affect outside scope. 
- */
+/* ==========================================================================
+   ICONS COMPONENT
+   Handles custom extension icon button styling.
+   Scope: Does not affect outside scope.
+   ========================================================================== */
+
 .ypp-gpb-btn,
 .ypp-action-btn,
 .ypp-icon-btn {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
   background: transparent !important;
   transition:
     transform var(--ypp-transition-bounce),
     box-shadow var(--ypp-transition-bounce),
     background var(--ypp-transition-bounce) !important;
 }
+
 .ypp-gpb-btn:hover,
 .ypp-action-btn:hover,
 .ypp-icon-btn:hover {
@@ -19,6 +22,7 @@
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.1) !important;
 }
+
 .ypp-gpb-btn:active,
 .ypp-action-btn:active,
 .ypp-icon-btn:active {

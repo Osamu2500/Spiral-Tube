@@ -1,11 +1,12 @@
 import '../../../../core/system/base-feature.js';
+
 /**
  * @fileoverview
  * Stop Shorts Looping
  * 
- * Target: /shorts route.
- * Purpose: Monitors Shorts videos and removes the 'loop' attribute to prevent infinite playback.
- * Automatically attaches to new active reels as the user scrolls.
+ * Target: /shorts/* paths.
+ * Scope: Strictly enforces the removal of the 'loop' attribute on active Shorts videos.
+ * Safety: Uses a localized MutationObserver confined to the active video element.
  */
 export class StopShortsLooping extends window.YPP.features.BaseFeature {
     static featureId = 'stopShortsLooping';
@@ -14,12 +15,28 @@ export class StopShortsLooping extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('StopShortsLooping');
-        this.handleVideoAdded = this.handleVideoAdded.bind(this);
-        this.preventLoop = this.preventLoop.bind(this);
         this._isMonitoring = false;
+        
+        // Use a dedicated mutation observer to violently enforce no-loop 
+        // if YouTube tries to re-add the attribute dynamically.
+        this._videoMutationObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'loop') {
+                    const video = mutation.target;
+                    if (video.hasAttribute('loop')) {
+                        video.loop = false;
+                        video.removeAttribute('loop');
+                    }
+                }
+            }
+        });
     }
 
-    getConfigKey() { return 'stopShortsLooping'; }
+    // --- Core Lifecycle ---
+
+    getConfigKey() { 
+        return 'stopShortsLooping'; 
+    }
 
     async enable() {
         await super.enable();
@@ -42,6 +59,8 @@ export class StopShortsLooping extends window.YPP.features.BaseFeature {
         }
     }
 
+    // --- Feature Logic ---
+
     startMonitoring() {
         if (this._isMonitoring) return;
         
@@ -63,38 +82,45 @@ export class StopShortsLooping extends window.YPP.features.BaseFeature {
     stopMonitoring() {
         if (!this._isMonitoring) return;
         this.observer.unregister('shorts-loop-monitor');
+        this._videoMutationObserver.disconnect();
+        
         document.querySelectorAll('video[data-ypp-no-loop]').forEach(video => {
             video.removeAttribute('data-ypp-no-loop');
+            // Restore original state gracefully if they want to let it loop again
+            video.loop = true;
+            video.setAttribute('loop', '');
         });
         this._isMonitoring = false;
     }
 
-    handleVideoAdded(elements) {
+    handleVideoAdded = (elements) => {
         if (!elements) return;
         elements.forEach(video => {
             this.attachToVideo(video);
             this.preventLoop({ target: video });
         });
-    }
+    };
 
     attachToVideo(video) {
         if (!video || video.hasAttribute('data-ypp-no-loop')) return;
         
         video.setAttribute('data-ypp-no-loop', 'true');
         this.addListener(video, 'play', this.preventLoop);
+        
+        // Strict attribute enforcement
+        this._videoMutationObserver.observe(video, { attributes: true, attributeFilter: ['loop'] });
     }
 
-    preventLoop(e) {
+    preventLoop = (e) => {
         const video = e.target;
         if (!video) return;
 
         const reel = video.closest('ytd-reel-video-renderer');
         if (!reel) return;
 
-        if (video.loop) {
+        if (video.loop || video.hasAttribute('loop')) {
             video.loop = false;
             video.removeAttribute('loop');
         }
-    }
-};
-
+    };
+}

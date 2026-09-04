@@ -1,1 +1,427 @@
-/*  * Menus Component - Handles standard popup menus and dropdowns. * Does not affect outside scope.  */ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {  background-color: var(--ypp-menu-bg, black) !important;  margin-right: 10px;  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;}#trigger.tp-yt-paper-menu-button {  padding: 10px !important;  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;}#trigger.tp-yt-paper-menu-button:hover {  transform: scale(1.1) !important;  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;}.ytLockupMetadataViewModelMenuButton {  overflow: visible !important;}.ytLockupMetadataViewModelMenuButton button-view-model,.ytLockupMetadataViewModelMenuButton button {  opacity: 1 !important;  visibility: visible !important;  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  transition: background var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;}.ytLockupMetadataViewModelMenuButton button:hover {  background: var(--ypp-surface-bg-hover, var(--yt-spec-10-percent-layer)) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;  transform: none !important;}.ytLockupMetadataViewModelMenuButton yt-interaction .fill,.ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {  background: transparent !important;  opacity: 0 !important;}#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {  margin: 10px;  border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;}#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {  transform: scale(1.02);  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;}ytd-simple-menu-header-renderer {  background: none !important;}ytd-menu-popup-renderer,ytd-video-preview,#contentWrapper.tp-yt-iron-dropdown > *,ytd-multi-page-menu-renderer {  background: var(--ypp-menu-bg, var(--ypp-bg-surface, linear-gradient(135deg, rgba(22, 22, 26, 0.85), rgba(14, 14, 18, 0.95)))) !important;  border-radius: var(--ypp-menu-radius, var(--ypp-radius-xl, 18px)) !important;  border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover, 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12))) !important;  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;  max-height: 80vh !important;  overflow-y: auto !important;  max-width: none !important;}.tp-yt-paper-tooltip[style-target=tooltip] {  border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active, 0 4px 12px rgba(0, 0, 0, 0.3))) !important;  background: var(--ypp-menu-bg, var(--ypp-bg-surface, rgba(15, 15, 15, 0.92))) !important;  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  color: var(--ypp-text-primary, var(--yt-spec-text-primary)) !important;}tp-yt-paper-listbox {  padding: 10px !important;  background: transparent !important;}ytd-menu-service-item-renderer,.yt-list-item-view-model__container--tappable,tp-yt-paper-item.ytd-menu-service-item-download-renderer {  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;}ytd-menu-service-item-renderer:hover,.yt-list-item-view-model__container--tappable:hover,tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {  transform: scale(1.04) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;}ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,.ytContextualSheetLayoutHost {  background: none !important;  padding: 13px !important;}html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  padding: 7px 10px;}tp-yt-paper-listbox.yt-dropdown-menu {  background: transparent !important;}tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {  background: none !important;}tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;}a.yt-simple-endpoint.yt-dropdown-menu {  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;}a.yt-simple-endpoint.yt-dropdown-menu:hover {  transform: scale(1.05) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;}#ypp-top-bar {  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;  border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-base)) !important;}tp-yt-paper-toast {  background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;  border-radius: var(--ypp-dialog-radius, var(--ypp-border-radius-base, 12px)) !important;  box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover)) !important;  border: var(--ypp-dialog-border, var(--ypp-surface-border)) !important;  }/* ==========================================================================   3. ACCOUNT MENU — Orbital Layout   ==========================================================================   All styles scoped to the custom .ypp-account-menu panel   and the dropdown host overrides needed to display it.   Feature-specific CSS (multi-select, cinematic, intentional delay,   scrollbar, etc.) lives in their respective feature CSS files.   ══════════════════════════════════════════════ *//* Ensure the dropdown host is wide enough and not clipped */html tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),html tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),html ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),html ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {    overflow: visible !important;    background: transparent !important;    border: none !important;    box-shadow: none !important;    animation: none !important;}tp-yt-iron-dropdown ytd-multi-page-menu-renderer[data-ypp-cloaked],tp-yt-iron-dropdown ytd-multi-page-menu-renderer[data-ypp-redesigned],ytd-popup-container ytd-multi-page-menu-renderer[data-ypp-cloaked],ytd-popup-container ytd-multi-page-menu-renderer[data-ypp-redesigned] {    overflow: visible !important;    min-width: 320px !important;    background: transparent !important;    box-shadow: none !important;    padding: 0 !important;}/* The custom panel itself */.ypp-account-menu {    width: 320px;    background: linear-gradient(135deg, rgba(22, 22, 26, 0.72), rgba(14, 14, 18, 0.82));    border-radius: 18px;    border: 1px solid rgba(255, 255, 255, 0.1);    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);    overflow: hidden;    font-family: 'Roboto', Arial, sans-serif;    color: rgba(255, 255, 255, 0.92);    position: relative;}/* Pop-in animation */@keyframes ypp-menu-pop {    0%   { opacity: 0; transform: scale(0.92) translateY(-10px); }    100% { opacity: 1; transform: scale(1) translateY(0); }}/* Satellite hover interaction */.ypp-satellite {    opacity: 0.8;    transition: opacity 0.2s ease;}.ypp-satellite:hover {    opacity: 1;    z-index: 10;}.ypp-satellite:hover .ypp-letter-avatar {    box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55) !important;    transform: scale(1.15);}/* Letter avatar transition */.ypp-letter-avatar {    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;}/* Active account name / handle */.ypp-active-name {    font-size: 17px;    font-weight: 600;    color: var(--ypp-text-primary, #fff);    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);}.ypp-active-handle {    font-size: 13px;    color: rgba(255, 255, 255, 0.55);    margin-top: 3px;}.ypp-channel-link {    display: inline-block;    font-size: 13px;    color: #3ea6ff;    text-decoration: none;    margin-top: 10px;    padding: 5px 16px;    background: rgba(62, 166, 255, 0.1);    border-radius: 20px;    border: 1px solid rgba(62, 166, 255, 0.2);    transition: background 0.15s, border-color 0.15s;}.ypp-channel-link:hover {    background: rgba(62, 166, 255, 0.18);    border-color: rgba(62, 166, 255, 0.35);    text-decoration: none;}/* --- Compact Settings Menu --- */body.ypp-small-settings-menu #contentContainer.tp-yt-app-drawer[swipe-open]::after {    display: none !important;}body.ypp-small-settings-menu .ytp-panel-menu {    display: block !important;}body.ypp-small-settings-menu .ytp-menuitem:not(.ytp-menuitem-with-footer) {    display: flex !important;    align-items: center !important;    height: 30px !important;    border-radius: 4px !important;}body.ypp-small-settings-menu .ytp-menuitem-label {    flex: 1 !important;}/* Dropdown animation for menu items */.ypp-more-items {    display: none;    overflow: hidden;    animation: ypp-fade-down 0.2s ease forwards;}.ypp-more-items.open {    display: block;}.ypp-chevron {    transition: transform 0.2s ease;    margin-left: auto;}@keyframes ypp-fade-down {    from { opacity: 0; transform: translateY(-5px); }    to { opacity: 1; transform: translateY(0); }}/* YouTube Dropdowns & Custom Popups */html tp-yt-iron-dropdown {  border-radius: var(--ypp-border-radius-base, 16px) !important;  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.08)) !important;  box-shadow: var(--ypp-shadow-float, 0 16px 48px rgba(0,0,0,0.6)) !important;}html tp-yt-paper-listbox,html ytd-active-account-header-renderer {  background: transparent !important;}/* Popup Inner Structure Overrides */html ytd-multi-page-menu-renderer {  padding: 8px 0 !important;}html ytd-active-account-header-renderer {  padding: 16px !important;  margin-bottom: 8px !important;}/* Hide native bottom borders inside header */html ytd-active-account-header-renderer #header {  border-bottom: none !important;}html ytd-multi-page-menu-renderer #separator,html ytd-menu-popup-renderer ytd-menu-service-item-renderer[has-separator] {  background-color: var(--ypp-surface-border, rgba(255, 255, 255, 0.05)) !important;  margin: 4px 16px !important;  height: 1px !important;}/* Popup Typography Hierarchy */html ytd-active-account-header-renderer #account-name {  font-weight: 600 !important;  font-size: 1.5rem !important;  margin-bottom: 2px !important;  color: var(--ypp-text-primary, #fff) !important;}html ytd-active-account-header-renderer #account-byline,html ytd-active-account-header-renderer #channel-handle {  opacity: 0.65 !important;  font-weight: 400 !important;  font-size: 1.3rem !important;}/* Entry Animation */@keyframes ypp-popup-enter {  0% { opacity: 0; transform: scale(0.95) translateY(-4px); }  100% { opacity: 1; transform: scale(1) translateY(0); }}html tp-yt-iron-dropdown {  animation: ypp-popup-enter 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;  animation-delay: 80ms !important;  animation-fill-mode: both !important;   transform-origin: top right !important;}/* Custom Themed Scrollbar for Popups */html ytd-multi-page-menu-renderer ::-webkit-scrollbar,html tp-yt-iron-dropdown ::-webkit-scrollbar {  width: 4px !important;  background: transparent !important;}html ytd-multi-page-menu-renderer ::-webkit-scrollbar-track,html tp-yt-iron-dropdown ::-webkit-scrollbar-track {  background: transparent !important;}html ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb,html tp-yt-iron-dropdown ::-webkit-scrollbar-thumb {  background-color: rgba(255, 255, 255, 0.15) !important;  border-radius: 4px !important;}html ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb:hover,html tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {  background-color: rgba(255, 255, 255, 0.3) !important;}/* 3. Pop-up Menus Redesign (3-dot menus) */body tp-yt-paper-listbox {  border-radius: 16px !important;  background: rgba(25, 25, 25, 0.8) !important;  border: 1px solid rgba(255, 255, 255, 0.08) !important;  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5) !important;}/* Added micro-animations on hovering menu items */body ytd-menu-service-item-renderer,body ytd-menu-navigation-item-renderer {  border-radius: 8px !important;  margin: 4px 8px !important;  transition:    background-color 0.2s ease,    transform 0.2s ease !important;}body ytd-menu-service-item-renderer:hover,body ytd-menu-navigation-item-renderer:hover {  background-color: rgba(255, 255, 255, 0.12) !important;  transform: translateX(4px) !important;}/* ===================================================================================   MIGRATED FROM BASE/CORE-STYLES-UI.CSS   =================================================================================== *//* Fix dropdown z-indexes to ensure they stay above custom UI */ytd-popup-container {    z-index: 2147483647 !important;}/* Fix scrolling on some native popups */.tp-yt-iron-dropdown {  max-height: 100vh !important;}/* Context Menus & Popups - Double Bezel OLED */html ytd-menu-popup-renderer,html tp-yt-paper-dialog {    background: rgba(10, 11, 16, 0.85) !important;    border: 1px solid rgba(255, 255, 255, 0.12) !important;    border-top-color: rgba(255, 255, 255, 0.25) !important;    border-radius: 16px !important;    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;}/* Menu Items Hover Physics */html ytd-menu-service-item-renderer:hover,html ytd-menu-navigation-item-renderer:hover,html .ytp-menuitem:hover {    background: rgba(255, 255, 255, 0.08) !important;    border-radius: 8px !important;    margin: 0 4px !important;    transform: scale(1.02) !important;    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) !important;}
+/* ==========================================================================
+   MENUS COMPONENT
+   Handles standard popup menus and dropdowns.
+   Scope: Does not affect outside scope.
+   ========================================================================== */
+
+/* ── 1. Thumbnail Overlay Menu Buttons ──────────────────────────────────── */
+
+ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
+  background-color: var(--ypp-menu-bg, black) !important;
+  margin-right: 10px;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+}
+
+#trigger.tp-yt-paper-menu-button {
+  padding: 10px !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
+}
+
+#trigger.tp-yt-paper-menu-button:hover {
+  transform: scale(1.1) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+}
+
+/* ── 2. Lockup Metadata Menus ───────────────────────────────────────────── */
+
+.ytLockupMetadataViewModelMenuButton {
+  overflow: visible !important;
+}
+
+.ytLockupMetadataViewModelMenuButton button-view-model,
+.ytLockupMetadataViewModelMenuButton button {
+  opacity: 1 !important;
+  visibility: visible !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  transition: background var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+
+.ytLockupMetadataViewModelMenuButton button:hover {
+  background: var(--ypp-surface-bg-hover, var(--yt-spec-10-percent-layer)) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+  transform: none !important;
+}
+
+.ytLockupMetadataViewModelMenuButton yt-interaction .fill,
+.ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* ── 3. Multi-Page Menu Sections (Popups) ───────────────────────────────── */
+
+#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+  margin: 10px;
+  border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+
+#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+  transform: scale(1.02);
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+}
+
+ytd-simple-menu-header-renderer {
+  background: none !important;
+}
+
+/* Base Popup Styles */
+ytd-menu-popup-renderer,
+ytd-video-preview,
+#contentWrapper.tp-yt-iron-dropdown > *,
+ytd-multi-page-menu-renderer {
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, linear-gradient(135deg, rgba(22, 22, 26, 0.85), rgba(14, 14, 18, 0.95)))) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover, 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12))) !important;
+  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
+  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  max-width: none !important;
+}
+
+/* ── 4. Tooltips & Small Floating Items ─────────────────────────────────── */
+
+.tp-yt-paper-tooltip[style-target=tooltip] {
+  border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active, 0 4px 12px rgba(0, 0, 0, 0.3))) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, rgba(15, 15, 15, 0.92))) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary)) !important;
+}
+
+tp-yt-paper-listbox {
+  padding: 10px !important;
+  background: transparent !important;
+}
+
+ytd-menu-service-item-renderer,
+.yt-list-item-view-model__container--tappable,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+
+ytd-menu-service-item-renderer:hover,
+.yt-list-item-view-model__container--tappable:hover,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  transform: scale(1.04) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+}
+
+ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
+.ytContextualSheetLayoutHost {
+  background: none !important;
+  padding: 13px !important;
+}
+
+html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  padding: 7px 10px;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu {
+  background: transparent !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
+  background: none !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+}
+
+a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+
+a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+}
+
+/* ── 5. Top Bar & Toasts ────────────────────────────────────────────────── */
+
+#ypp-top-bar {
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
+  border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-base)) !important;
+}
+
+tp-yt-paper-toast {
+  background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover)) !important;
+  border: var(--ypp-dialog-border, var(--ypp-surface-border)) !important;
+}
+
+/* ==========================================================================
+   6. ACCOUNT MENU — Orbital Layout
+   ==========================================================================
+   All styles scoped to the custom .ypp-account-menu panel
+   and the dropdown host overrides needed to display it.
+   ========================================================================== */
+
+/* Ensure the dropdown host is wide enough and not clipped */
+html tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
+html ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {
+  overflow: visible !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+tp-yt-iron-dropdown ytd-multi-page-menu-renderer[data-ypp-cloaked],
+tp-yt-iron-dropdown ytd-multi-page-menu-renderer[data-ypp-redesigned],
+ytd-popup-container ytd-multi-page-menu-renderer[data-ypp-cloaked],
+ytd-popup-container ytd-multi-page-menu-renderer[data-ypp-redesigned] {
+  overflow: visible !important;
+  min-width: 320px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* The custom panel itself */
+.ypp-account-menu {
+  width: 320px;
+  background: linear-gradient(135deg, rgba(22, 22, 26, 0.72), rgba(14, 14, 18, 0.82));
+  border-radius: var(--ypp-squircle-radius-lg, 12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.92);
+  position: relative;
+}
+
+/* Pop-in animation */
+@keyframes ypp-menu-pop {
+  0% { opacity: 0; transform: scale(0.92) translateY(-10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Satellite hover interaction */
+.ypp-satellite {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.ypp-satellite:hover {
+  opacity: 1;
+  z-index: 10;
+}
+.ypp-satellite:hover .ypp-letter-avatar {
+  box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55) !important;
+  transform: scale(1.15);
+}
+
+/* Letter avatar transition */
+.ypp-letter-avatar {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+/* Active account name / handle */
+.ypp-active-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ypp-text-primary, #fff);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.ypp-active-handle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 3px;
+}
+
+.ypp-channel-link {
+  display: inline-block;
+  font-size: 13px;
+  color: #3ea6ff;
+  text-decoration: none;
+  margin-top: 10px;
+  padding: 5px 16px;
+  background: rgba(62, 166, 255, 0.1);
+  border-radius: var(--ypp-squircle-radius-lg, 12px);
+  border: 1px solid rgba(62, 166, 255, 0.2);
+  transition: background 0.15s, border-color 0.15s;
+}
+.ypp-channel-link:hover {
+  background: rgba(62, 166, 255, 0.18);
+  border-color: rgba(62, 166, 255, 0.35);
+  text-decoration: none;
+}
+
+/* ── 7. Compact Settings Menu ───────────────────────────────────────────── */
+
+body.ypp-small-settings-menu #contentContainer.tp-yt-app-drawer[swipe-open]::after {
+  display: none !important;
+}
+body.ypp-small-settings-menu .ytp-panel-menu {
+  display: block !important;
+}
+body.ypp-small-settings-menu .ytp-menuitem:not(.ytp-menuitem-with-footer) {
+  display: flex !important;
+  align-items: center !important;
+  height: 30px !important;
+  border-radius: 4px !important;
+}
+body.ypp-small-settings-menu .ytp-menuitem-label {
+  flex: 1 !important;
+}
+
+/* Dropdown animation for menu items */
+.ypp-more-items {
+  display: none;
+  overflow: hidden;
+  animation: ypp-fade-down 0.2s ease forwards;
+}
+.ypp-more-items.open {
+  display: block;
+}
+.ypp-chevron {
+  transition: transform 0.2s ease;
+  margin-left: auto;
+}
+@keyframes ypp-fade-down {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* YouTube Dropdowns & Custom Popups */
+html tp-yt-iron-dropdown {
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.08)) !important;
+  box-shadow: var(--ypp-shadow-float, 0 16px 48px rgba(0,0,0,0.6)) !important;
+}
+html tp-yt-paper-listbox,
+html ytd-active-account-header-renderer {
+  background: transparent !important;
+}
+
+/* Popup Inner Structure Overrides */
+html ytd-multi-page-menu-renderer {
+  padding: 8px 0 !important;
+}
+html ytd-active-account-header-renderer {
+  padding: 16px !important;
+  margin-bottom: 8px !important;
+}
+/* Hide native bottom borders inside header */
+html ytd-active-account-header-renderer #header {
+  border-bottom: none !important;
+}
+html ytd-multi-page-menu-renderer #separator,
+html ytd-menu-popup-renderer ytd-menu-service-item-renderer[has-separator] {
+  background-color: var(--ypp-surface-border, rgba(255, 255, 255, 0.05)) !important;
+  margin: 4px 16px !important;
+  height: 1px !important;
+}
+
+/* Popup Typography Hierarchy */
+html ytd-active-account-header-renderer #account-name {
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 2px !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+html ytd-active-account-header-renderer #account-byline,
+html ytd-active-account-header-renderer #channel-handle {
+  opacity: 0.65 !important;
+  font-weight: 400 !important;
+  font-size: 1.3rem !important;
+}
+
+/* Entry Animation */
+@keyframes ypp-popup-enter {
+  0% { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+html tp-yt-iron-dropdown {
+  animation: ypp-popup-enter 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  animation-delay: 80ms !important;
+  animation-fill-mode: both !important;
+  transform-origin: top right !important;
+}
+
+/* Custom Themed Scrollbar for Popups */
+html ytd-multi-page-menu-renderer ::-webkit-scrollbar,
+html tp-yt-iron-dropdown ::-webkit-scrollbar {
+  width: 4px !important;
+  background: transparent !important;
+}
+html ytd-multi-page-menu-renderer ::-webkit-scrollbar-track,
+html tp-yt-iron-dropdown ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb,
+html tp-yt-iron-dropdown ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 4px !important;
+}
+html ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb:hover,
+html tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ── 8. Pop-up Menus Redesign (3-dot menus) ─────────────────────────────── */
+
+body tp-yt-paper-listbox {
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  background: rgba(25, 25, 25, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Added micro-animations on hovering menu items */
+body ytd-menu-service-item-renderer,
+body ytd-menu-navigation-item-renderer {
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  margin: 4px 8px !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+body ytd-menu-service-item-renderer:hover,
+body ytd-menu-navigation-item-renderer:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Fix dropdown z-indexes to ensure they stay above custom UI */
+ytd-popup-container {
+  z-index: 2147483647 !important;
+}
+
+/* Fix scrolling on some native popups */
+.tp-yt-iron-dropdown {
+  max-height: 100vh !important;
+}
+
+/* Context Menus & Popups - Double Bezel OLED */
+html ytd-menu-popup-renderer,
+html tp-yt-paper-dialog {
+  background: rgba(10, 11, 16, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Menu Items Hover Physics */
+html ytd-menu-service-item-renderer:hover,
+html ytd-menu-navigation-item-renderer:hover,
+html .ytp-menuitem:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  margin: 0 4px !important;
+  transform: scale(1.02) !important;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}

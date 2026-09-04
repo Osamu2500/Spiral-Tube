@@ -82,7 +82,7 @@ This file serves as a wayfinding index for AI agents and developers. It maps eve
 - search-view-mode.js: `F:\Youtube 2.0\src\content\features\pages\search\search-view-mode.js`
 - channel-health.js: `F:\Youtube 2.0\src\content\features\pages\subscriptions\channel-health.js`
 - context-menu.js: `F:\Youtube 2.0\src\content\features\pages\subscriptions\context-menu.js`
-- deck-mode.js: `F:\Youtube 2.0\src\content\features\pages\subscriptions\deck-mode.js`
+
 - filter-bar.js: `F:\Youtube 2.0\src\content\features\pages\subscriptions\filter-bar.js`
 - folder-storage.js: `F:\Youtube 2.0\src\content\features\pages\subscriptions\folder-storage.js`
 - folder-ui.js: `F:\Youtube 2.0\src\content\features\pages\subscriptions\folder-ui.js`
