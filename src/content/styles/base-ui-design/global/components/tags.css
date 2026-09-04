@@ -1,0 +1,91 @@
+/* ==========================================================================
+   TAG BUTTONS & POPOVERS
+   ========================================================================== */
+
+/* Tag Button on Thumbnail */
+
+ytd-thumbnail .ypp-tag-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ypp-border-radius-base, 8px);
+  background: var(--ypp-surface-bg);
+  border: var(--ypp-surface-border);
+  color: var(--ypp-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px) translateZ(0);
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  will-change: opacity, transform, background-color, box-shadow;
+  z-index: var(--ypp-z-card-hover);
+}
+
+.ypp-tag-btn:hover {
+  background: var(--ypp-accent);
+  color: var(--ypp-text-primary, #fff);
+  box-shadow: var(--ypp-shadow-hover);
+}
+
+.ypp-tag-btn.tagged {
+  opacity: 1;
+  transform: translateY(0);
+  background: var(--ypp-accent-glow);
+  color: var(--ypp-accent);
+  border-color: var(--ypp-accent);
+}
+
+body:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn,
+ytd-thumbnail:hover .ypp-tag-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tag Popover */
+
+.ypp-tag-popover {
+  position: absolute;
+  background: var(--ypp-bg-surface);
+  border: var(--ypp-surface-border);
+  border-radius: var(--ypp-border-radius-base, 12px);
+  padding: 8px;
+  box-shadow: var(--ypp-shadow-float);
+  z-index: var(--ypp-z-popup);
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: ypp-fade-in 0.15s ease-out;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+.ypp-tag-option {
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--ypp-text-secondary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.ypp-tag-option:hover {
+  background: var(--ypp-surface-bg-hover);
+  color: var(--ypp-text-primary);
+}
+
+@keyframes ypp-fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ypp-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

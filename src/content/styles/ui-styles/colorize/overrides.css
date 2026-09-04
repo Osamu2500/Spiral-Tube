@@ -139,13 +139,6 @@ html[data-ypp-ui-design="colorize"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
-/* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: var(--ypp-shape-primary, 10px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-  backdrop-filter: blur(5px) !important;
-}
-
 /* COLORIZE ECOSYSTEM PAYLOAD V10 */
 
 /* =========================================

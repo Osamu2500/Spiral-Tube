@@ -5,7 +5,7 @@ import '../../core/system/base-feature.js';
  * and Subscriptions pages.
  * Optimized for performance using requestAnimationFrame and CSS classes.
  */
-import '../styles/grid-layout.css';
+import '../../styles/base-ui-design/global/layouts/grid-layout.css';
 
 
 

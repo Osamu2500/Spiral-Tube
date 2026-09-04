@@ -1,0 +1,143 @@
+/* 
+   ==========================================================================
+   CORE FRAMEWORK - TOKENS
+   These are the fallback variables. 
+   When a UI Design is applied (e.g. data-ypp-ui-design="nature"), it will 
+   override these variables to transform the entire layout.
+   ========================================================================== 
+*/
+
+:root {
+  /* Topbar / Masthead Layout */
+  --ypp-header-margin: 16px;
+  --ypp-header-height: 56px;
+
+  /* Root-level variables for Core Framework base layer */
+  
+  /* --- Surface & Backgrounds (Glassmorphic) --- */
+  --ypp-bg-base: #0f0f0f;
+  --ypp-bg-surface: rgba(20, 20, 20, 0.65);
+  --ypp-surface-bg: rgba(20, 20, 20, 0.65);
+  --ypp-surface-bg-hover: rgba(255, 255, 255, 0.1);
+  --ypp-surface-bg-active: rgba(255, 255, 255, 0.18);
+  --ypp-surface-border: 1px solid rgba(255, 255, 255, 0.08);
+  --ypp-glass-border: rgba(255, 255, 255, 0.08);
+  --ypp-glass-highlight: rgba(255, 255, 255, 0.05);
+  --ypp-glass-tint: rgba(20, 20, 20, 0.65);
+  --ypp-glass-blur: blur(16px);
+  
+  /* Semantic Component Aliases */
+  --ypp-menu-bg: var(--ypp-bg-surface);
+  --ypp-menu-radius: var(--ypp-shape-lg);
+  --ypp-menu-shadow: var(--ypp-shadow-float);
+  --ypp-card-bg: var(--ypp-bg-surface);
+  --ypp-card-backdrop-filter: none;
+  --ypp-panel-bg: var(--ypp-bg-surface);
+  --ypp-dialog-bg: var(--ypp-bg-surface);
+  --ypp-dialog-radius: var(--ypp-shape-xl);
+  --ypp-dialog-border: var(--ypp-glass-border);
+  --ypp-dialog-shadow: var(--ypp-shadow-float);
+  --ypp-dialog-backdrop-filter: none;
+  /* --- Shadows (Glassmorphic Glows) --- */
+  --ypp-shadow-base:   0 8px 32px rgba(0, 0, 0, 0.3);
+  --ypp-shadow-hover:  0 12px 40px rgba(0, 0, 0, 0.4);
+  --ypp-shadow-active: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --ypp-shadow-card:   0 8px 32px rgba(0, 0, 0, 0.3);
+  --ypp-shadow-float:  0 16px 48px rgba(0, 0, 0, 0.5);
+  --ypp-shadow-glow:   0 0 24px rgba(62, 166, 255, 0.2);
+
+  /* --- Transitions --- */
+  --ypp-transition-bounce: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ypp-transition-fast:   0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  
+  /* --- Easing Physics --- */
+  --ypp-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ypp-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Typography --- */
+  --ypp-font-primary: "Roboto", "Arial", sans-serif;
+  --ypp-font-heading: "Roboto", "Arial", sans-serif;
+  --ypp-text-primary: #f1f1f1;
+  --ypp-text-color: var(--yt-spec-text-primary, #f1f1f1);
+  --ypp-text-secondary: #aaaaaa;
+  --ypp-text-transform: none;
+  --ypp-letter-spacing: normal;
+  --ypp-primary-accent: var(--yt-spec-call-to-action, #3ea6ff);
+  
+  /* --- Geometry & Shapes (Squircle Scale) --- */
+  --ypp-shape-sm: 6px;
+  --ypp-shape-md: 10px;
+  --ypp-shape-lg: 16px;
+  --ypp-shape-xl: 24px;
+  
+  /* Semantic Aliases mapped to Squircles */
+  --ypp-button-radius: 10px;    
+  --ypp-shape-primary: 16px;    
+  
+  --ypp-border-radius-base: 16px;
+  --ypp-border-radius-pill: 999px;
+  --ypp-border-radius-sharp: 6px;
+
+  /* Topbar-specific radius tokens */
+  --ypp-radius-btn: 10px;       
+  --ypp-radius-xl: 24px;        
+
+  /* --- Override YouTube's native button border-radius variables GLOBALLY --- */
+  --yt-button-border-radius: 10px !important;
+  --yt-spec-button-shape-next-border-radius: 10px !important;
+}
+
+/* ==========================================================================
+   It ONLY applies when a custom design is selected to keep the Core Framework purely agnostic.
+   ========================================================================== */
+
+html[data-ypp-theme],
+html[data-ypp-theme] body,
+html[data-ypp-theme][dark],
+html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]),
+html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) body,
+html[data-ypp-ui-design]:not([data-ypp-ui-design="default"])[dark],
+html.yt-spiral-tube-theme,
+html.yt-spiral-tube-theme body,
+html.yt-spiral-tube-theme[dark] {
+  /* Backgrounds */
+  --yt-spec-base-background: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-general-background-a: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-general-background-b: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-general-background-c: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-menu-background: var(--ypp-bg-surface, var(--ypp-surface-bg, #212121)) !important;
+  --yt-spec-raised-background: var(--ypp-bg-surface, var(--ypp-surface-bg, #212121)) !important;
+  
+  /* Make these transparent to allow our global backgrounds to show */
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-additive-background: transparent !important;
+  
+  /* Text */
+  --yt-spec-text-primary: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, var(--ypp-text-primary, #aaa)) !important;
+  --yt-spec-text-disabled: var(--ypp-text-secondary, #aaa) !important;
+  --yt-spec-text-primary-inverse: var(--ypp-bg-base, #000) !important;
+  
+  /* Accent Colors */
+  --ypp-accent: var(--ypp-accent-primary, #3ea6ff) !important;
+  --ypp-accent-hover: var(--ypp-accent-glow, #65b8ff) !important;
+  --yt-spec-static-brand-red: var(--ypp-accent-primary, #f00) !important;
+  --paper-toggle-button-checked-bar-color: var(--ypp-accent-primary, #3ea6ff) !important;
+  --paper-toggle-button-checked-button-color: var(--ypp-accent-primary, #3ea6ff) !important;
+
+  /* Icons & Accents */
+  --yt-spec-icon-inactive: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+  --yt-spec-icon-disabled: var(--ypp-text-secondary, #aaa) !important;
+  --yt-spec-brand-icon-inactive: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+  --yt-spec-icon-active-other: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #fff))) !important;
+  --yt-spec-brand-icon-active: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #fff))) !important;
+  --yt-spec-icon-badge-color: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #fff))) !important;
+  --yt-spec-call-to-action: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #3ea6ff))) !important;
+  --yt-spec-wordmark-text: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+  --ytd-searchbox-text-color: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+
+  /* Override YouTube's own button border-radius CSS variables — squircle globally
+     (Also set on :root above for instant application before ThemeManager fires) */
+  --yt-button-border-radius: 12px !important;
+  --yt-spec-button-shape-next-border-radius: 12px !important;
+}

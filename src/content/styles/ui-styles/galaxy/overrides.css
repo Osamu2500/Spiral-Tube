@@ -2377,16 +2377,6 @@ html[data-ypp-ui-design="galaxy"] ytd-reel-video-renderer {
   box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
 
-html[data-ypp-ui-design="galaxy"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
-  border-radius: var(--ypp-shape-primary, 50%) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-}
-
-html[data-ypp-ui-design="galaxy"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.1) !important;
-}
-
 html[data-ypp-ui-design="galaxy"] .ytd-reel-video-renderer .overlay-dir {
   background: linear-gradient(to top, #0d1b2eaa 0%, transparent 40%) !important;
 }

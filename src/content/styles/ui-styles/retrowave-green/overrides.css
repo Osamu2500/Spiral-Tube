@@ -178,13 +178,6 @@ html[data-ypp-ui-design="retrowave-green"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
-/* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: var(--ypp-shape-primary, 0) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-  backdrop-filter: blur(5px) !important;
-}
-
 /* Retrowave-Green Terminal Dialogs & Popups */
 
 /* Share/Save Modals */

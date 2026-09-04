@@ -117,7 +117,7 @@ body.ypp-compact-player-ui .ypp-gpb-btn:hover svg {
 }
 
 /* 4. Custom Player Bar & Buttons Compact Adaptation */
-body.ypp-compact-player-ui .ypp-player-controls:not(.ypp-floating-action-bar) {
+body.ypp-compact-player-ui .ypp-player-controls {
   height: var(--ypp-compact-bar-height, 36px) !important;
   padding: 0 2px !important;
   gap: 2px !important;
@@ -157,16 +157,7 @@ body.ypp-compact-player-ui .ypp-speed-btn {
   justify-content: center !important;
 }
 
-body.ypp-compact-player-ui .ypp-floating-action-bar {
-  gap: 6px !important;
-  padding: 8px 6px !important;
-  border-radius: 20px !important;
-}
 
-body.ypp-compact-player-ui .ypp-floating-action-bar .ypp-action-btn:not([hidden]):not([style*="none"]) {
-  width: var(--ypp-compact-btn-width, 34px) !important;
-  height: var(--ypp-compact-btn-width, 34px) !important;
-}
 
 /* 5. Progress Bar Alignment */
 body.ypp-compact-player-ui .ytp-progress-bar-container {

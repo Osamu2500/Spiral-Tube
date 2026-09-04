@@ -1,0 +1,121 @@
+/* 
+   ==========================================================================
+   CORE FRAMEWORK - ENTRY POINT
+   This stylesheet is always injected. It sets up the core structural CSS
+   rules mapping to YouTube's DOM using CSS Variables. 
+   UI Designs act as simple variable overlays on top of this framework.
+   ========================================================================== 
+*/
+
+/* --- GROUP 1: BASE / CORE --- */
+@import './base/core-styles-ui.css';
+@import './base/tokens.css';
+@import './base/animations.css';
+
+/* --- GROUP 2: STRUCTURAL LAYOUTS --- */
+@import './global/layouts/layout.css';
+@import './global/layouts/components.css';
+@import './global/layouts/global-overrides.css';
+@import './global/layouts/grid-layout.css';
+@import './global/layouts/navbar.css';
+@import './global/layouts/sidebar.css';
+
+/* --- GROUP 3: BASE COMPONENTS --- */
+@import './global/components/badges.css';
+@import './global/components/buttons.css';
+@import './global/components/cards.css';
+@import './global/components/pills.css';
+@import './global/components/tags.css';
+@import './global/components/separators.css';
+@import './global/components/dialogs.css';
+@import './global/components/icons.css';
+@import './global/components/menus.css';
+@import './global/components/panels.css';
+@import './global/components/account-menus.css';
+@import './global/components/notifications.css';
+
+/* --- GROUP 4: PAGE-SPECIFIC BASE GRIDS & CONTEXTS --- */
+@import './pages/home/home-layout.css';
+@import './pages/shorts/layout.css';
+@import './pages/subscriptions/layout.css';
+@import './pages/channels/layout.css';
+@import './pages/playlist/layout.css';
+@import './pages/history/layout.css';
+@import './pages/watch/watch-layout.css';
+
+/* --- GROUP 5: FEATURES & UI TWEAKS --- */
+
+/* Global Features */
+@import '../../features/declutter/index.css';
+@import '../../features/subscription-folders/subscription-folders.css';
+@import '../../features/cinematic/cinematic.css';
+
+/* UI Tweaks */
+@import '../../features/ui-tweaks/premium-logo.css';
+@import '../../features/ui-tweaks/retro-logo.css';
+@import '../../features/ui-tweaks/save-supreme-ui.css';
+@import '../../features/ui-tweaks/compact-settings-menu.css';
+@import '../../features/ui-tweaks/square-corners.css';
+@import '../../features/ui-tweaks/extra-rounded-ui.css';
+@import '../../features/ui-tweaks/youtube-rounded.css';
+@import '../../features/ui-tweaks/grayscale-thumbnails.css';
+@import '../../features/ui-tweaks/custom-scrollbar.css';
+@import '../../features/ui-tweaks/integrations.css';
+@import '../../features/ui-tweaks/dual-accent.css';
+
+/* Shared Feed Features */
+@import '../../pages/shared-feed/components/shorts-shelf/shorts-shelf.css';
+@import '../../pages/shared-feed/tracking/resume-badges.css';
+@import '../../pages/shared-feed/tracking/watched-indicator.css';
+@import '../../pages/shared-feed/typography/full-video-titles.css';
+@import '../../pages/shared-feed/features/multi-select/multi-select.css';
+
+/* Watch Page Declutter & Features */
+
+@import './pages/watch/comments.css';
+@import './pages/watch/livechat.css';
+@import './pages/watch/action-buttons.css';
+@import './pages/watch/channel-bar.css';
+@import './pages/watch/watch-alert.css';
+
+/* Watch Modes & Enhancements */
+@import '../../pages/watch/layout/modes/css/cinema-mode.css';
+@import '../../pages/watch/layout/modes/css/minimal-mode.css';
+@import '../../pages/watch/layout/modes/css/study-mode.css';
+@import '../../pages/watch/layout/modes/css/ambient-mode.css';
+@import '../../pages/watch/layout/modes/css/pip-mode.css';
+@import '../../pages/watch/layout/modes/css/cinematic-mode.css';
+@import '../../pages/watch/layout/modes/css/sidebar-mode.css';
+@import '../../pages/watch/layout/modes/css/deck-mode.css';
+@import '../../pages/watch/layout/seamless-mode/seamless-mode.css';
+
+/* Player Sub-Components */
+@import './pages/watch/progress-bar.css';
+@import './pages/watch/base-native-overrides.css';
+@import './pages/watch/custom-bar-ui.css';
+@import '../../pages/watch/player/controls/live-stream-time.css';
+@import '../../pages/watch/player/controls/time-dashboard.css';
+
+/* Player Enhancements */
+@import '../../pages/watch/player/enhancements/rounded-player.css';
+@import '../../pages/watch/player/enhancements/netflix-subtitles.css';
+@import '../../pages/watch/player/enhancements/subtitles.css';
+@import '../../pages/watch/player/enhancements/flex-width-player.css';
+@import '../../pages/watch/player/enhancements/compact-player.css';
+@import '../../pages/watch/player/enhancements/real-cinema-mode.css';
+@import '../../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css';
+
+/* Home & Shorts Declutter */
+
+/* Search Page & Card Styles */
+@import './pages/search/search-grid-mode.css';
+@import './pages/search/search-grid-cards.css';
+@import './pages/search/search-list-mode.css';
+@import './pages/search/search-layout-densities.css';
+@import '../../features/ui-tweaks/search-immersive-cards.css';
+@import '../../features/ui-tweaks/search-default-card-compat.css';
+@import './pages/search/search-card-compat.css';
+
+/* Subscription Features */
+@import '../../pages/subscriptions/features/grid-layout/two-column-subs.css';
+@import '../../pages/subscriptions/features/channel-health/channel-health.css';

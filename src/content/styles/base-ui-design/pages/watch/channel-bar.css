@@ -1,0 +1,34 @@
+/* ==========================================================================
+   WATCH PAGE - CHANNEL BAR (LAYOUT ONLY)
+   ========================================================================== 
+   Scope: This file handles the flex layout of the channel owner row 
+   (profile picture, channel name, subscribe button spacing).
+   WARNING: Do not place border-radius, background, or shape overrides here.
+   Those belong in UI theme components.
+*/
+
+/* Container for the entire top row (Channel info + Actions) */
+ytd-watch-metadata #top-row,
+ytd-watch-metadata > div > div:first-child {
+  margin-top: 16px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+
+/* Channel Owner Section Pill */
+ytd-watch-metadata #owner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 4px 16px 4px 4px !important;
+}
+
+#subscribe-button {
+  margin-left: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+}

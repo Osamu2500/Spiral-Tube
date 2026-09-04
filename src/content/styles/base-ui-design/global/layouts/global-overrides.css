@@ -1,0 +1,126 @@
+/* ==========================================================================
+   GLOBAL LAYOUT OVERRIDES & FIXES
+   Scope: High-level DOM structure fixes (e.g. forcing body to be transparent 
+   so custom background gradients can show through), and universal keyframes.
+   ========================================================================== */
+
+/* 1. Global Transparency Fixes (Allows Body Backgrounds to Show) */
+html body,
+html:root body,
+html:root[dark] body {
+  background-color: transparent !important;
+  overflow-x: hidden !important;
+}
+
+html ytd-app,
+html #page-manager,
+html ytd-masthead,
+html #masthead-container,
+html tp-yt-app-header,
+html tp-yt-app-header-layout,
+html ytd-feed-filter-chip-bar-renderer,
+html #chips-wrapper,
+html ytd-guide-renderer,
+html ytd-mini-guide-renderer,
+html tp-yt-app-drawer,
+html #guide-content {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 2. Utility Classes */
+.ypp-filter-hidden {
+  display: none !important;
+}
+
+.ypp-zen-shadow {
+  transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* 3. Global Hide Rules for Annoying Renderers */
+body:not(.ypp-channel-page) ytd-rich-section-renderer #title-container,
+body ytd-feed-nudge-renderer {
+  display: none !important;
+}
+
+/* 4. Global Hover / Focus States */
+ytd-searchbox input:focus-visible {
+  outline: 2px solid var(--ypp-accent-blue, #3ea6ff);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(62, 166, 255, 0.2);
+}
+
+html yt-chip-cloud-chip-renderer[selected],
+html yt-chip-cloud-chip-renderer.iron-selected {
+  --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.15) !important;
+  --yt-spec-button-chip-background-hover: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+
+/* 5. Generic Context Menu Items (Used in multiple places) */
+.ypp-ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 7px;
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.ypp-ctx-item:hover {
+  background: rgba(255,255,255,0.07);
+  color: white;
+}
+
+.ypp-ctx-danger {
+  color: rgba(255,90,80,0.8);
+}
+
+.ypp-ctx-danger:hover {
+  background: rgba(255,78,69,0.1);
+  color: #ff6b6b;
+}
+
+/* 6. Universal Keyframes (Used by Card Themes) */
+@keyframes ypp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ypp-summer-heat {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ypp-sun-pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes ypp-winter-shimmer {
+  0% { transform: rotate(45deg) translateY(-200%); }
+  20% { transform: rotate(45deg) translateY(200%); }
+  100% { transform: rotate(45deg) translateY(200%); }
+}
+
+@keyframes ypp-spring-bloom {
+  0% { box-shadow: 0 8px 24px rgba(255, 150, 180, 0.1), inset 0 0 10px rgba(255, 180, 200, 0); }
+  100% { box-shadow: 0 8px 24px rgba(255, 150, 180, 0.2), inset 0 0 20px rgba(255, 180, 200, 0.2); }
+}
+
+@keyframes ypp-autumn-leaves {
+  0% { background-position: 0% 0%; border-left-color: rgba(220, 120, 40, 0.7); }
+  50% { background-position: 100% 50%; border-left-color: rgba(200, 60, 20, 0.8); }
+  100% { background-position: 0% 100%; border-left-color: rgba(180, 140, 30, 0.7); }
+}

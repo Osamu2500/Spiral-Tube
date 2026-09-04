@@ -1,0 +1,45 @@
+/* src/content/styles/pages/home.css */
+
+/* 
+ * HOME PAGE STYLING
+ * Handles home feed specific overrides, custom grid gaps for responsiveness,
+ * and custom extension features injected on the home page (Tags, Separators).
+ * Note: Core grid layout, cards, and sidebars are handled in component files.
+ */
+
+
+
+
+
+/* ===================================================================================
+   RESPONSIVE GRID GAPS (Overrides components/cards.css variables via media queries)
+   =================================================================================== */
+
+@media (max-width: 1600px) {
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 20px 14px !important;
+  }
+}
+@media (max-width: 1200px) {
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 18px 12px !important;
+  }
+}
+@media (max-width: 900px) {
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 16px 10px !important;
+  }
+}
+@media (max-width: 640px) {
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
+    gap: 16px !important;
+  }
+}

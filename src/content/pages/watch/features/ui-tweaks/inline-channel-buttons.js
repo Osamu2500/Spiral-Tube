@@ -1,14 +1,11 @@
 import '../../../../core/system/base-feature.js';
+
 /**
  * @fileoverview
- * InlineChannelButtons
+ * InlineChannelButtons Feature
  * 
  * Target: /watch route and channel pages.
  * Purpose: Injects "Whitelist" and "Blacklist" pill buttons next to the Subscribe button.
- * Mirrors the reference extension's channel-whitelist-button.js / channel-blacklist-button.js approach.
- * 
- * Placement: immediately after ytd-subscribe-button-renderer
- * Trigger: page:changed event + sharedObserver for subscribe button
  */
 export class InlineChannelButtons extends window.YPP.features.BaseFeature {
     static featureId = 'inlineChannelButtons';
@@ -25,21 +22,18 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         this._injectDebounce = null;
     }
 
-    getConfigKey() { return 'channelBlacklistEnabled'; } // only show if blacklist is used
+    getConfigKey() { return 'channelBlacklistEnabled'; } 
 
     async enable() {
         await super.enable();
 
-        // Initial inject
         this._scheduleInject();
 
-        // Re-inject on SPA navigation
         this.onBusEvent('app:pageChange', () => {
             this._cleanup();
             this._scheduleInject();
         });
 
-        // Also watch for subscribe button being added dynamically
         if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.register(
                 'inline-channel-btns-observer',
@@ -76,7 +70,6 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
 
     _getChannelPath() {
         const path = window.location.pathname;
-        // On watch page, parse from channel link
         if (path === '/watch') {
             const channelLink = document.querySelector(
                 '#owner a.yt-simple-endpoint, ytd-channel-name a.yt-simple-endpoint, ' +
@@ -84,13 +77,11 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
             );
             if (channelLink) {
                 const href = channelLink.getAttribute('href') || '';
-                // Normalise to /@ form
                 const m = href.match(/\/([@a-zA-Z0-9_.-]+)/);
                 return m ? m[0].toLowerCase() : null;
             }
             return null;
         }
-        // On channel pages use the current path directly
         return path.toLowerCase().replace(/\/$/, '');
     }
 
@@ -116,7 +107,6 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         const hideControls = settings.hideOnPageControls;
         if (hideControls) return;
 
-        // Find subscribe button as anchor point
         const subscribeBtn = document.querySelector(InlineChannelButtons.SUBSCRIBE_SELECTOR);
         if (!subscribeBtn) return;
 
@@ -126,7 +116,6 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         const container = this._buildButtonContainer(channelPath, settings);
         container.id = InlineChannelButtons.INJECT_ID;
 
-        // Insert after subscribe button
         subscribeBtn.insertAdjacentElement('afterend', container);
         this._updateButtonStates(container, channelPath, settings);
     }
@@ -135,12 +124,11 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         const wrap = document.createElement('div');
         wrap.style.cssText = 'display:inline-flex;align-items:center;gap:6px;margin-left:8px;';
 
-        // Whitelist button
         if (settings.channelWhitelistEnabled !== false) {
             const wlBtn = document.createElement('button');
             wlBtn.className = 'ypp-inline-btn ypp-inline-whitelist-btn';
             wlBtn.dataset.channel = channelPath;
-            wlBtn.title = `Add this channel to your whitelist — their videos won't be filtered (Shorts are always filtered).`;
+            wlBtn.title = `Add this channel to your whitelist — their videos won't be filtered.`;
             wlBtn.addEventListener('click', e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -150,12 +138,11 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
             wrap.appendChild(wlBtn);
         }
 
-        // Blacklist button
         if (settings.channelBlacklistEnabled !== false) {
             const blBtn = document.createElement('button');
             blBtn.className = 'ypp-inline-btn ypp-inline-blacklist-btn';
             blBtn.dataset.channel = channelPath;
-            blBtn.title = `Add this channel to your blacklist — their videos will always be hidden everywhere.`;
+            blBtn.title = `Add this channel to your blacklist — their videos will always be hidden.`;
             blBtn.addEventListener('click', e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -206,20 +193,17 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         const blChannels = this._parseChannelList(settings.channelBlacklist || '');
 
         if (wlChannels.has(channelPath)) {
-            // Remove from whitelist
             const newList = (settings.channelWhitelist || '').split('\n')
                 .filter(c => c.trim().toLowerCase() !== channelPath && c.trim().toLowerCase() !== channelPath.replace(/^\//, ''))
                 .join('\n');
             window.YPP.utils?.settings?.set('channelWhitelist', newList);
         } else {
-            // Remove from blacklist first (can't be on both)
             if (blChannels.has(channelPath)) {
                 const newBl = (settings.channelBlacklist || '').split('\n')
                     .filter(c => c.trim().toLowerCase() !== channelPath)
                     .join('\n');
                 window.YPP.utils?.settings?.set('channelBlacklist', newBl);
             }
-            // Add to whitelist
             const newList = ((settings.channelWhitelist || '') + '\n' + channelPath).trim();
             window.YPP.utils?.settings?.set('channelWhitelist', newList);
             if (!settings.channelWhitelistEnabled) {
@@ -234,20 +218,17 @@ export class InlineChannelButtons extends window.YPP.features.BaseFeature {
         const wlChannels = this._parseChannelList(settings.channelWhitelist || '');
 
         if (blChannels.has(channelPath)) {
-            // Remove from blacklist
             const newList = (settings.channelBlacklist || '').split('\n')
                 .filter(c => c.trim().toLowerCase() !== channelPath)
                 .join('\n');
             window.YPP.utils?.settings?.set('channelBlacklist', newList);
         } else {
-            // Remove from whitelist first
             if (wlChannels.has(channelPath)) {
                 const newWl = (settings.channelWhitelist || '').split('\n')
                     .filter(c => c.trim().toLowerCase() !== channelPath)
                     .join('\n');
                 window.YPP.utils?.settings?.set('channelWhitelist', newWl);
             }
-            // Add to blacklist
             const newList = ((settings.channelBlacklist || '') + '\n' + channelPath).trim();
             window.YPP.utils?.settings?.set('channelBlacklist', newList);
             if (!settings.channelBlacklistEnabled) {

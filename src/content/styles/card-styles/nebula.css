@@ -1,114 +1,1 @@
-html[data-ypp-ui-design="nebula"] ytd-rich-grid-media,
-html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer,
-html[data-ypp-ui-design="nebula"] ytd-video-renderer,
-html[data-ypp-ui-design="nebula"] ytd-grid-video-renderer,
-html[data-ypp-ui-design="nebula"] ytd-playlist-renderer {
-  background: var(--nebula-glass-bg) !important;
-  border: 1px solid var(--nebula-glass-border) !important;
-  border-radius: 40px 12px 60px 12px !important;
-  padding: 12px !important;
-  box-sizing: border-box !important;
-  transition: all 0.35s var(--nebula-ease-out) !important;
-  box-shadow: 0 4px 20px rgba(4, 2, 13, 0.4) !important;
-}
-
-html[data-ypp-ui-design="nebula"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="nebula"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="nebula"] ytd-grid-video-renderer:hover,
-html[data-ypp-ui-design="nebula"] ytd-playlist-renderer:hover {
-  background: var(--nebula-glass-bg-hover) !important;
-  border-color: var(--nebula-glass-border-hover) !important;
-  box-shadow: var(--nebula-glow-cyan), 0 8px 32px rgba(4, 2, 13, 0.6) !important;
-  transform: translateY(-6px) !important;
-}
-
-html[data-ypp-ui-design="nebula"] ytd-thumbnail {
-  border-radius: 40px 12px 60px 12px !important;
-  overflow: hidden !important;
-}
-
-html[data-ypp-ui-design="nebula"] #video-title {
-  color: var(--nebula-text-primary) !important;
-  font-weight: 600 !important;
-}
-
-html[data-ypp-ui-design="nebula"] ytd-rich-grid-media:hover #video-title {
-  color: var(--nebula-accent-cyan) !important;
-  text-shadow: 0 0 8px rgba(0, 245, 212, 0.4) !important;
-}
-
-html[data-ypp-ui-design="nebula"] #metadata-line span,
-html[data-ypp-ui-design="nebula"] #channel-name {
-  color: var(--nebula-text-secondary) !important;
-}
-
-html[data-ypp-ui-design="nebula"] ytd-thumbnail-overlay-time-status-renderer {
-  background: rgba(4, 2, 13, 0.85) !important;
-  border: 1px solid var(--nebula-glass-border) !important;
-  border-radius: 40px 12px 60px 12px !important;
-  color: var(--nebula-accent-cyan) !important;
-  font-weight: 700 !important;
-}
-
-/* Safe Visibility Text Shadow */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] #video-title {
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
-}
-
-/* GLOBAL REDESIGN INJECT - nebula */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] #video-title,
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] .yt-core-attributed-string,
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] #metadata-line span,
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] .ytd-channel-name,
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] yt-formatted-string.ytd-video-renderer,
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] ytd-video-meta-block span { 
-  color: #ff00ff !important; 
-  text-shadow: none !important;
-}
-
-/* GLOBAL REDESIGN V3 INJECT - nebula */
-/* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
-  will-change: transform, clip-path, background-color, border-radius;
-  transform: translateZ(0);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-}
-
-/* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
-  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
-  z-index: 10;
-}
-
-/* Thematic Typography */
-
-/* Thematic Thumbnail Filters */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  filter: none !important;
-  transition: filter 0.4s ease !important;
-}
-
-/* Clear filters on thumbnail hover */
-
-/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
-/* V4 Glassmorphic Container */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
-  background: rgba(72, 61, 139, 0.3) !important;
-  border-radius: 40px 12px 60px 12px !important;
-  border: 1px solid rgba(255, 0, 255, 0.3) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-}
-
-/* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
-  background: rgba(72, 61, 139, 0.3) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
-  }
-
-/* V4 Border Radius on Thumbnails */
+html[data-ypp-ui-design="nebula"] ytd-rich-grid-media,html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer,html[data-ypp-ui-design="nebula"] ytd-video-renderer,html[data-ypp-ui-design="nebula"] ytd-grid-video-renderer,html[data-ypp-ui-design="nebula"] ytd-playlist-renderer {  background: var(--nebula-glass-bg) !important;  border: 1px solid var(--nebula-glass-border) !important;  border-radius: 40px 12px 60px 12px !important;  padding: 12px !important;  box-sizing: border-box !important;  transition: all 0.35s var(--nebula-ease-out) !important;  box-shadow: 0 4px 20px rgba(4, 2, 13, 0.4) !important;}html[data-ypp-ui-design="nebula"] ytd-rich-grid-media:hover,html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer:hover,html[data-ypp-ui-design="nebula"] ytd-video-renderer:hover,html[data-ypp-ui-design="nebula"] ytd-grid-video-renderer:hover,html[data-ypp-ui-design="nebula"] ytd-playlist-renderer:hover {  background: var(--nebula-glass-bg-hover) !important;  border-color: var(--nebula-glass-border-hover) !important;  box-shadow: var(--nebula-glow-cyan), 0 8px 32px rgba(4, 2, 13, 0.6) !important;  transform: translateY(-6px) !important;}html[data-ypp-ui-design="nebula"] ytd-thumbnail {  border-radius: 40px 12px 60px 12px !important;  overflow: hidden !important;}html[data-ypp-ui-design="nebula"] #video-title {  color: var(--nebula-text-primary) !important;  font-weight: 600 !important;}html[data-ypp-ui-design="nebula"] ytd-rich-grid-media:hover #video-title {  color: var(--nebula-accent-cyan) !important;  text-shadow: 0 0 8px rgba(0, 245, 212, 0.4) !important;}html[data-ypp-ui-design="nebula"] #metadata-line span,html[data-ypp-ui-design="nebula"] #channel-name {  color: var(--nebula-text-secondary) !important;}html[data-ypp-ui-design="nebula"] ytd-thumbnail-overlay-time-status-renderer {  background: rgba(4, 2, 13, 0.85) !important;  border: 1px solid var(--nebula-glass-border) !important;  border-radius: 40px 12px 60px 12px !important;  color: var(--nebula-accent-cyan) !important;  font-weight: 700 !important;}/* Safe Visibility Text Shadow */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] #video-title {    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;}/* GLOBAL REDESIGN INJECT - nebula */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] #video-title,html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] .yt-core-attributed-string,html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] #metadata-line span,html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] .ytd-channel-name,html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] yt-formatted-string.ytd-video-renderer,html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] ytd-video-meta-block span {   color: #ff00ff !important;   text-shadow: none !important;}/* GLOBAL REDESIGN V3 INJECT - nebula *//* GPU Acceleration & Base Transitions for Smooth Morphing */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {  will-change: transform, clip-path, background-color, border-radius;  transform: translateZ(0);  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;}/* Hover Interaction: 3D Tilt & Glows */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;  z-index: 10;}/* Thematic Typography *//* Thematic Thumbnail Filters */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {  filter: none !important;  transition: filter 0.4s ease !important;}/* Clear filters on thumbnail hover *//* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM *//* V4 Glassmorphic Container */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {  background: rgba(72, 61, 139, 0.3) !important;  border-radius: 40px 12px 60px 12px !important;  border: 1px solid rgba(255, 0, 255, 0.3) !important;  -webkit-clip-path: none !important;  clip-path: none !important;}/* V4 Glassmorphic Hover State */html[data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"][data-ypp-card-style="nebula"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {  background: rgba(72, 61, 139, 0.3) !important;  }/* V4 Border Radius on Thumbnails */

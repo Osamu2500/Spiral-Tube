@@ -1,0 +1,62 @@
+/* ========================================================
+   SEAMLESS MODE (Sidebar Comments)
+   ======================================================== */
+
+/* Decrease gap between player/sidebar and topbar */
+body.ypp-seamless-mode ytd-watch-flexy[flexy] {
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+}
+
+/* Ensure #below takes full width of the sidebar */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #below {
+    width: 100% !important;
+}
+
+/* Move Related Videos under the Video */
+body.ypp-seamless-mode #primary-inner #related {
+    margin-top: 24px !important;
+    padding: 0 !important;
+}
+
+/* Custom scrollbar for sidebar comments */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar {
+    width: 6px;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar-thumb {
+    background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer));
+    border-radius: 3px;
+}
+
+/* Action Buttons Controller (Seamless Mode) */
+body.ypp-seamless-actions-active ytd-watch-metadata #top-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    overflow: visible !important;
+    max-height: none !important;
+}
+body.ypp-seamless-actions-active ytd-watch-metadata #owner {
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: 12px !important;
+}
+body.ypp-seamless-actions-active ytd-watch-metadata #actions {
+    margin-top: 12px !important;
+    padding-top: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    overflow: visible !important;
+    max-width: none !important;
+}
+body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 8px !important;
+}

@@ -1,0 +1,45 @@
+/* ==========================================================================
+   PROGRESS BAR REDESIGN & FIXES
+   ========================================================================== */
+
+/* ── Progress Bar: Prevent Blue FOUC ──────────────────────────────────────
+   Root cause: base/core-styles-ui.css overrides --yt-spec-brand-icon-active
+   to our accent blue (#3ea6ff). YouTube's player reads that variable on
+   initial render (before its own JS color-init runs), causing a blue flash.
+   Fix: force red unconditionally here — no JS-added class needed, so this
+   applies the moment the stylesheet is parsed, eliminating the flash.
+   Theme-specific overrides (ui-styles/<theme>/overrides.css) use higher-specificity
+   data-ypp-ui-design selectors and will still correctly override this.
+   ─────────────────────────────────────────────────────────────────────── */
+.html5-video-player .ytp-play-progress,
+.html5-video-player .ytp-swatch-background-color,
+.html5-video-player .ytp-scrubber-button {
+  background: #ff0000 !important;
+  background-color: #ff0000 !important;
+}
+
+/* Force YouTube Native Variables to Red for the player (kills ambient mode dynamic colors) */
+* {
+  --yt-spec-static-brand-red: #ff0000 !important;
+  --yt-spec-call-to-action: #ff0000 !important;
+  --ytp-swatch-background-color: #ff0000 !important;
+  --ytp-swatch-background-color-secondary: rgba(255, 0, 0, 0.4) !important;
+}
+
+/* Remove the weird blue color from YouTube Native Progress Bar */
+yt-page-navigation-progress, 
+#progress.yt-page-navigation-progress {
+  display: none !important;
+}
+
+
+/* Revert Progress Bar Style Toggle */
+body.ypp-revert-progress-bar .ytp-play-progress,
+body.ypp-revert-progress-bar #progress.ytd-thumbnail-overlay-resume-playback-renderer,
+body.ypp-revert-progress-bar .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment,
+body.ypp-revert-progress-bar .ytChapteredProgressBarChapteredPlayerBarChapterSeen,
+body.ypp-revert-progress-bar .ytChapteredProgressBarChapteredPlayerBarFill,
+body.ypp-revert-progress-bar .ytSliderSliderPrimary,
+body.ypp-revert-progress-bar .thumbnail-overlay-resume-playback-progress {
+  background: #f00 !important;
+}

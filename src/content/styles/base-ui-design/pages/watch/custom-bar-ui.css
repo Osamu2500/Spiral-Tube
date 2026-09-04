@@ -1,0 +1,187 @@
+/* ==========================================================================
+   CUSTOM PLAYER CONTROLS (BAR UI)
+   Scope: Styles the custom controls injected into the YouTube player 
+   (e.g. custom action buttons, playback speed segmented pills).
+   ========================================================================== */
+
+/* ── Player Controls Container (Global Bar) ── */
+@keyframes ypp-bar-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ypp-player-controls {
+  display: flex;
+  align-items: center;
+  /* Margins calibrated for the new insertion point: before .ytp-settings-button, 
+     after the autoplay/CC cluster. Left gap separates us from native left buttons; 
+     right gap gives breathing room before the settings gear icon. */
+  margin-left: 4px;
+  margin-right: 4px;
+  gap: 8px;
+  padding: 4px 6px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  animation: ypp-bar-pop-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  will-change: transform, opacity;
+  z-index: 60;
+}
+
+/* ── Responsive Adaptation for Player Controls ── */
+@media (max-width: 860px) {
+  /* At smaller sizes, pop the custom controls above the bottom bar to prevent overlap with time display */
+  .ypp-player-controls {
+    position: absolute;
+    bottom: 54px; /* Above the progress bar */
+    right: 12px;
+    background: rgba(20, 20, 20, 0.8) !important;
+    backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px;
+    padding: 6px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Ultra-compact mode for very small windows/zoom */
+  .ypp-player-controls {
+    gap: 4px;
+    padding: 4px 8px;
+    bottom: 48px;
+  }
+  .ypp-action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+  .ypp-speed-controls {
+    gap: 0;
+  }
+  .ypp-speed-btn {
+    padding: 3px 5px;
+    font-size: 9px;
+  }
+}
+
+.ypp-player-controls:hover {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ── Action Buttons ── */
+.ypp-action-btn {
+  width: 36px;
+  height: 36px;
+  padding: 7px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.85;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.2s ease;
+  will-change: transform, opacity, background-color;
+}
+
+.ypp-action-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: var(--ypp-surface-bg-hover);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.ypp-action-btn:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.ypp-action-btn:hover::before {
+  opacity: 1;
+}
+
+.ypp-action-btn:active {
+  transform: scale(0.88);
+  transition-duration: 0.08s;
+}
+
+.ypp-action-btn svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+  transition: filter 0.18s ease;
+}
+
+.ypp-action-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+.ypp-action-btn.active svg {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+/* ── Speed Controls — Segmented Pill ── */
+.ypp-speed-controls {
+  display: flex;
+  gap: 2px;
+  background: transparent !important;
+  padding: 4px;
+  border-radius: 20px;
+  border: none !important;
+  box-shadow: none !important;
+  margin-left: 4px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ypp-speed-controls:hover {
+  transform: translateY(-2px);
+}
+
+.ypp-speed-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 10px;
+  font-weight: 600;
+  font-family: "Inter", "Roboto", sans-serif;
+  cursor: pointer;
+  padding: 3px 7px;
+  border-radius: 6px;
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  letter-spacing: 0.2px;
+}
+
+.ypp-speed-btn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ypp-speed-btn.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 800;
+  box-shadow: none;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}

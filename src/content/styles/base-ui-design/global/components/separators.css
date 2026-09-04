@@ -1,0 +1,41 @@
+/* ==========================================================================
+   FEED SEPARATORS
+   ========================================================================== */
+
+.ypp-feed-separator {
+  grid-column: 1 / -1; /* Span full width of grid */
+  padding: 24px 0 12px 0;
+  margin-top: 24px;
+  border-bottom: 1px solid var(--ypp-glass-border);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ypp-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.ypp-feed-separator:hover {
+  color: var(--ypp-accent);
+}
+
+.ypp-feed-separator::after {
+  content: "";
+  display: block;
+  margin-left: 12px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.ypp-feed-separator.collapsed::after {
+  transform: rotate(-45deg);
+}
+
+.ypp-section-hidden {
+  display: none !important;
+}

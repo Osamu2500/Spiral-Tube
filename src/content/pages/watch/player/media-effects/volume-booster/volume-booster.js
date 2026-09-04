@@ -234,31 +234,6 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         if (this._audioConnected && !this._bypassed) {
             this._applyAllState();
         }
-
-    onUpdate() {
-        this._loadSettings(this.settings);
-        if (this._audioConnected && !this._bypassed) {
-            this._applyAllState();
-        }
-    }
-    
-    _applyAllState() {
-        if (this.gainNode) this.gainNode.gain.setTargetAtTime(this._volumeGain, this.ctx.currentTime, 0.05);
-        if (this.widthMatrix) this.widthMatrix.widthGain.gain.setTargetAtTime(this._stereoWidth, this.ctx.currentTime, 0.05);
-        this._eqNodes.forEach((n, i) => { if (n) n.gain.setTargetAtTime(this._eqGains[i], this.ctx.currentTime, 0.05); });
-        this._applyCompressorState();
-        this.setMono(this._monoEnabled, this._bypassed);
-        if (this.reverbDryGain && this.reverbWetGain) {
-            const effectiveMix = (this._reverbEnv === 'None') ? 0.0 : this._reverbMix;
-            this.reverbDryGain.gain.setTargetAtTime(1.0 - effectiveMix, this.ctx.currentTime, 0.05);
-            this.reverbWetGain.gain.setTargetAtTime(effectiveMix, this.ctx.currentTime, 0.05);
-        }
-        if (this.phaseGainL) this.phaseGainL.gain.setTargetAtTime(this._invertL ? -1 : 1, this.ctx.currentTime, 0.05);
-        if (this.phaseGainR) this.phaseGainR.gain.setTargetAtTime(this._invertR ? -1 : 1, this.ctx.currentTime, 0.05);
-        if (this.agcNode) this.agcNode.ratio.setTargetAtTime(this._autoGain ? 10 : 1, this.ctx.currentTime, 0.05);
-        if (this.agcMakeup) this.agcMakeup.gain.setTargetAtTime(this._autoGain ? 4.0 : 1.0, this.ctx.currentTime, 0.05);
-    }
-
     // -- Keyboard Shortcuts --
         this.addListener(document, 'keydown', (e) => {
             if (!this._audioConnected) return;
@@ -311,6 +286,30 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         };
 
         findAndInit();
+    }
+
+    onUpdate() {
+        this._loadSettings(this.settings);
+        if (this._audioConnected && !this._bypassed) {
+            this._applyAllState();
+        }
+    }
+    
+    _applyAllState() {
+        if (this.gainNode) this.gainNode.gain.setTargetAtTime(this._volumeGain, this.ctx.currentTime, 0.05);
+        if (this.widthMatrix) this.widthMatrix.widthGain.gain.setTargetAtTime(this._stereoWidth, this.ctx.currentTime, 0.05);
+        this._eqNodes.forEach((n, i) => { if (n) n.gain.setTargetAtTime(this._eqGains[i], this.ctx.currentTime, 0.05); });
+        this._applyCompressorState();
+        this.setMono(this._monoEnabled, this._bypassed);
+        if (this.reverbDryGain && this.reverbWetGain) {
+            const effectiveMix = (this._reverbEnv === 'None') ? 0.0 : this._reverbMix;
+            this.reverbDryGain.gain.setTargetAtTime(1.0 - effectiveMix, this.ctx.currentTime, 0.05);
+            this.reverbWetGain.gain.setTargetAtTime(effectiveMix, this.ctx.currentTime, 0.05);
+        }
+        if (this.phaseGainL) this.phaseGainL.gain.setTargetAtTime(this._invertL ? -1 : 1, this.ctx.currentTime, 0.05);
+        if (this.phaseGainR) this.phaseGainR.gain.setTargetAtTime(this._invertR ? -1 : 1, this.ctx.currentTime, 0.05);
+        if (this.agcNode) this.agcNode.ratio.setTargetAtTime(this._autoGain ? 10 : 1, this.ctx.currentTime, 0.05);
+        if (this.agcMakeup) this.agcMakeup.gain.setTargetAtTime(this._autoGain ? 4.0 : 1.0, this.ctx.currentTime, 0.05);
     }
 
     async disable() {
@@ -930,7 +929,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
         return btn;
     }
-};
+}
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};

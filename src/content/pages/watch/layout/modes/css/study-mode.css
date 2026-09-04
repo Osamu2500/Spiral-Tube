@@ -1,0 +1,29 @@
+/* =========================================================================
+   STUDY MODE
+   ========================================================================= */
+
+body.ypp-study-mode #ypp-study-notes {
+    width: var(--ytd-watch-flexy-sidebar-width, 402px);
+    margin-left: 24px;
+    flex-shrink: 0;
+    margin-top: 24px;
+}
+
+@media (max-width: 1000px) {
+    body.ypp-study-mode #ypp-study-notes {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+/* ==========================================================================
+   DOPAMINE DETOX (STUDY MODE FEATURE)
+   ========================================================================== */
+body.ypp-dopamine-detox ytd-topbar-logo-renderer,
+body.ypp-dopamine-detox ytd-subscribe-button-renderer,
+body.ypp-dopamine-detox yt-icon,
+body.ypp-dopamine-detox .yt-spec-button-shape-next,
+body.ypp-dopamine-detox ytd-badge-supported-renderer {
+    filter: grayscale(100%) !important;
+}

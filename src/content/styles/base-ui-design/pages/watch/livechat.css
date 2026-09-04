@@ -1,0 +1,40 @@
+/* 
+   ==========================================================================
+   LIVE CHAT PAGE
+   Styles for the live chat panel (docked and popout).
+   ========================================================================== 
+*/
+/* ===================================================================================
+   MIGRATED FROM BASE/CORE-STYLES-UI.CSS
+   =================================================================================== */
+yt-live-chat-app,
+yt-live-chat-renderer {
+  /* Core panel styling inherited from watch/layout.css universal component */
+  overflow: hidden !important;
+}
+yt-live-chat-text-message-renderer,
+yt-live-chat-paid-message-renderer,
+yt-live-chat-membership-item-renderer {
+  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
+  border-radius: var(--ypp-border-radius-base, 12px) !important;
+  margin: 4px 8px !important;
+  padding: 8px !important;
+  transition:
+    transform var(--ypp-transition-bounce),
+    background var(--ypp-transition-bounce) !important;
+}
+yt-live-chat-text-message-renderer:hover {
+  background: var(
+    --ypp-surface-bg-hover,
+    var(--yt-spec-20-percent-layer)
+  ) !important;
+  transform: scale(1.02) !important;
+}
+#ticker.yt-live-chat-renderer {
+  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
+}
+#message-input.yt-live-chat-text-input-field-renderer {
+  background: var(--ypp-surface-bg, var(--yt-spec-10-percent-layer)) !important;
+  border-radius: var(--ypp-border-radius-base, 12px) !important;
+  padding: 5px 15px !important;
+}

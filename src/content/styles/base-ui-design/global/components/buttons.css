@@ -1,0 +1,402 @@
+/* 
+ * Buttons Component - Handles universal button styling, toggles, and action buttons. 
+ * Does not affect outside scope. 
+ */
+
+.ytLikeButtonViewModelHost {
+  margin-right: 5px;
+}
+.ytInlinePlayerControlsTopRightControlsCircleButton {
+  background: var(--ypp-surface-bg) !important;
+  border: var(--ypp-surface-border) !important;
+  box-shadow: var(--ypp-shadow-base) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+  cursor: pointer !important;
+}
+.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+}
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
+  border: none;
+  box-shadow: var(--ypp-shadow-active) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.1) !important;
+}
+ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: var(--ypp-shadow-base) !important;
+  border-radius: var(--ypp-shape-lg, 16px);
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+ytd-thumbnail-overlay-toggle-button-renderer {
+  background: var(--ypp-surface-bg) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
+}
+ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+}
+.ytPlayerQuickActionButtonsHost:not(:empty) {
+  background-color: var(--ypp-surface-bg) !important;
+}
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
+  background: var(--ypp-surface-bg) !important;
+}
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+  transition:
+    transform var(--ypp-transition-bounce),
+    box-shadow var(--ypp-transition-bounce),
+    background var(--ypp-transition-bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+}
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd),
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-view-model button[aria-label*="Download" i],
+yt-button-view-model button[title*="Download" i],
+:is(ytd-download-button-renderer, yt-button-view-model) button,
+yt-download-button-view-model button {
+  border-radius: var(--ypp-button-radius, 12px) !important;
+  background: var(--ypp-surface-bg) !important;
+  box-shadow: var(--ypp-shadow-base) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+}
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+yt-button-view-model button[aria-label*="Download" i]:hover,
+yt-button-view-model button[title*="Download" i]:hover,
+:is(ytd-download-button-renderer, yt-button-view-model) button:hover,
+yt-download-button-view-model button:hover {
+  box-shadow: var(--ypp-shadow-hover) !important;
+  transform: scale(1.06);
+}
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active,
+yt-button-shape button[aria-label*="Download" i]:active,
+yt-button-shape button[title*="Download" i]:active,
+yt-button-view-model button[aria-label*="Download" i]:active,
+yt-button-view-model button[title*="Download" i]:active,
+:is(ytd-download-button-renderer, yt-button-view-model) button:active,
+yt-download-button-view-model button:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--ypp-shadow-active) !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  border-radius: var(--ypp-button-radius, 12px) !important;
+  background: var(--ypp-surface-bg) !important;
+  box-shadow: var(--ypp-shadow-base) !important;
+  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
+  overflow: hidden !important;
+  /* Override YouTube's own border-radius CSS variable used inside yt-button-shape */
+  --yt-button-border-radius: var(--ypp-button-radius, 12px) !important;
+  --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:hover {
+  box-shadow: var(--ypp-shadow-hover) !important;
+  transform: scale(1.06);
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--ypp-shadow-active) !important;
+}
+/* Inner segmented buttons — squircle only the outer corners, leave the divider flat */
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
+  border-radius: var(--ypp-button-radius, 12px) 0 0 var(--ypp-button-radius, 12px) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: 0 var(--ypp-button-radius, 12px) var(--ypp-button-radius, 12px) 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+  background: var(--ypp-surface-bg-active, rgba(255, 255, 255, 0.15)) !important;
+}
+button.ytSpecButtonShapeNextText {
+  border-radius: var(--ypp-button-radius, 12px) !important;
+  transition:
+    transform var(--ypp-transition-bounce),
+    box-shadow var(--ypp-transition-bounce),
+    background var(--ypp-transition-bounce) !important;
+}
+button.ytSpecButtonShapeNextText:hover {
+  background: var(--ypp-surface-bg) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+  transform: scale(1.05);
+}
+button.ytSpecButtonShapeNextText:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--ypp-shadow-active) !important;
+}
+.ypp-btn-primary,
+.ypp-play-all-btn,
+.ypp-health-btn {
+  border-radius: var(--ypp-button-radius, 12px) !important;
+  transition:
+    transform var(--ypp-transition-bounce),
+    box-shadow var(--ypp-transition-bounce),
+    background var(--ypp-transition-bounce) !important;
+}
+.ypp-btn-primary:hover,
+.ypp-play-all-btn:hover,
+.ypp-health-btn:hover {
+  box-shadow: var(--ypp-shadow-hover) !important;
+  transform: scale(1.05) !important;
+}
+.ypp-btn-primary:active,
+.ypp-play-all-btn:active,
+.ypp-health-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--ypp-shadow-active) !important;
+}
+.ypp-pill-toggle {
+  border-radius: var(--ypp-button-radius, 12px) !important;
+  background: var(--ypp-surface-bg, rgba(255, 255, 255, 0.1)) !important;
+  border: var(--ypp-surface-border) !important;
+  transition:
+    transform var(--ypp-transition-bounce),
+    box-shadow var(--ypp-transition-bounce),
+    background var(--ypp-transition-bounce) !important;
+}
+.ypp-pill-toggle:hover {
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.2)) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ==========================================================================
+   Normalize YouTube Native "Call to Action" Download Button
+   Match standard tonal buttons when in default UI design
+   ========================================================================== */
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i],
+    yt-button-shape button[title*="Download" i],
+    yt-button-view-model button[aria-label*="Download" i],
+    yt-button-view-model button[title*="Download" i],
+    ytd-download-button-renderer button,
+    yt-download-button-view-model button
+) {
+    background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
+    border: none !important;
+}
+
+/* Hover State */
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i]:hover,
+    yt-button-shape button[title*="Download" i]:hover,
+    yt-button-view-model button[aria-label*="Download" i]:hover,
+    yt-button-view-model button[title*="Download" i]:hover,
+    ytd-download-button-renderer button:hover,
+    yt-download-button-view-model button:hover
+) {
+    background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Icon Color */
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i],
+    yt-button-shape button[title*="Download" i],
+    yt-button-view-model button[aria-label*="Download" i],
+    yt-button-view-model button[title*="Download" i],
+    ytd-download-button-renderer button,
+    yt-download-button-view-model button
+) .yt-core-image {
+    fill: var(--yt-spec-text-primary) !important;
+}
+
+/* Text Color */
+html:not([data-ypp-ui-design]) body :is(#actions-inner, #top-level-buttons-computed, #flexible-item-buttons, ytd-watch-metadata) :is(
+    yt-button-shape button[aria-label*="Download" i],
+    yt-button-shape button[title*="Download" i],
+    yt-button-view-model button[aria-label*="Download" i],
+    yt-button-view-model button[title*="Download" i],
+    ytd-download-button-renderer button,
+    yt-download-button-view-model button
+) .yt-spec-button-shape-next__button-text-content {
+    color: var(--yt-spec-text-primary) !important;
+}
+
+/* Fix native YouTube hover turning action buttons blue */
+html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(#actions-inner, #top-level-buttons-computed) .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
+html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover .yt-core-image {
+    fill: var(--yt-spec-text-primary) !important;
+}
+
+html:not([data-ypp-ui-design]) body ytd-watch-metadata :is(#actions-inner, #top-level-buttons-computed) .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover .yt-spec-button-shape-next__button-text-content {
+    color: var(--yt-spec-text-primary) !important;
+}
+
+/* Force circle-square shapes across default UI */
+html:not([data-ypp-ui-design]) body {
+    --yt-spec-button-shape-next-border-radius: var(--ypp-button-radius, 12px) !important;
+}
+
+/* Subscribe button shape override */
+html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer button,
+html:not([data-ypp-ui-design]) body yt-button-shape#subscribe-button button,
+html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer yt-button-shape button {
+    border-radius: var(--ypp-button-radius, 12px) !important;
+}
+
+/* Explicitly force action buttons to circle-square because native 100px overrides might exist */
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-shape button,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-view-model button,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
+    border-radius: var(--ypp-button-radius, 12px) !important;
+}
+
+
+/* Button Components */
+
+.ypp-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: var(--ypp-button-radius, 12px);
+  color: var(--yt-spec-text-primary, #fff);
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-btn:hover {
+  background-color: var(--ypp-bg-hover);
+}
+
+/* Nav buttons manage their own hover — don't let base .ypp-btn:hover override */
+
+.ypp-nav-btn.ypp-btn:hover {
+  background-color: transparent;
+}
+
+.ypp-btn:active {
+  background-color: var(--ypp-bg-active);
+}
+
+.ypp-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.ypp-btn-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   VIEW MODE TOGGLE BUTTON STYLES
+   ========================================================================== */
+
+#ypp-view-toggle,
+.ypp-view-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, box-shadow, background-color, color;
+}
+
+.ypp-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ypp-text-primary, #fff);
+}
+
+.ypp-toggle-btn.active {
+  background: rgba(62, 166, 255, 0.2);
+  color: #3ea6ff;
+  border: 1px solid rgba(62, 166, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+/* =========================================================================
+   Inline channel buttons (Whitelist / Blacklist next to Subscribe) (Moved from badges.css)
+   ========================================================================= */
+.ypp-inline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', Arial, sans-serif;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.85);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1;
+}
+.ypp-inline-btn:hover {
+    background: rgba(255,255,255,0.16);
+    color: var(--ypp-text-primary, #fff);
+}
+.ypp-inline-btn--active {
+    background: rgba(34,197,94,0.18);
+    border-color: rgba(34,197,94,0.45);
+    color: #4ade80;
+}
+.ypp-inline-btn--active:hover {
+    background: rgba(34,197,94,0.28);
+}
+.ypp-inline-btn--danger {
+    background: rgba(239,68,68,0.16);
+    border-color: rgba(239,68,68,0.4);
+    color: #f87171;
+}
+.ypp-inline-btn--danger:hover {
+    background: rgba(239,68,68,0.26);
+}
+
+

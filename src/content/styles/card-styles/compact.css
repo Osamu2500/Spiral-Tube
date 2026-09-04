@@ -1,86 +1,1 @@
-/* Compact Cards */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(
-  ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
- ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
-) {
-    padding: 4px !important;
-    margin-bottom: 8px !important;
-    border-radius: 12px !important;
-}
-
-/* Text Visibility Overrides */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #video-title,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .yt-core-attributed-string--link-inherit-color,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
-    color: #111111 !important;
-}
-
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] ytd-channel-name .yt-core-attributed-string,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata-line .yt-core-attributed-string,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .ytd-channel-name,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata-line span {
-    color: #606060 !important;
-}
-
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] yt-icon.ytd-badge-supported-renderer {
-    color: #606060 !important;
-    fill: #606060 !important;
-}
-
-/* GLOBAL REDESIGN INJECT - compact */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #video-title,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .yt-core-attributed-string,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata-line span,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .ytd-channel-name,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] yt-formatted-string.ytd-video-renderer,
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] ytd-video-meta-block span { 
-  color: #cccccc !important; 
-  text-shadow: none !important;
-}
-
-/* GLOBAL REDESIGN V3 INJECT - compact */
-/* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
-  will-change: transform, clip-path, background-color, border-radius;
-  transform: translateZ(0);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-}
-
-/* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
-  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
-  z-index: 10;
-}
-
-/* Thematic Typography */
-
-/* Thematic Thumbnail Filters */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  filter: none !important;
-  transition: filter 0.4s ease !important;
-}
-
-/* Clear filters on thumbnail hover */
-
-/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
-/* V4 Glassmorphic Container */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
-  background: rgba(42, 42, 42, 0.4) !important;
-  border-radius: 12px !important;
-  border: 1px solid rgba(204, 204, 204, 0.2) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-}
-
-/* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
-  background: rgba(42, 42, 42, 0.4) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
-  }
-
-/* V4 Border Radius on Thumbnails */
+/* Compact Cards */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(  ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) {    padding: 4px !important;    margin-bottom: 8px !important;    border-radius: 12px !important;}/* Text Visibility Overrides */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #video-title,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .yt-core-attributed-string--link-inherit-color,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {    color: #111111 !important;}html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] ytd-channel-name .yt-core-attributed-string,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata-line .yt-core-attributed-string,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .ytd-channel-name,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata-line span {    color: #606060 !important;}html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] yt-icon.ytd-badge-supported-renderer {    color: #606060 !important;    fill: #606060 !important;}/* GLOBAL REDESIGN INJECT - compact */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #video-title,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .yt-core-attributed-string,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] #metadata-line span,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] .ytd-channel-name,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] yt-formatted-string.ytd-video-renderer,html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] ytd-video-meta-block span {   color: #cccccc !important;   text-shadow: none !important;}/* GLOBAL REDESIGN V3 INJECT - compact *//* GPU Acceleration & Base Transitions for Smooth Morphing */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {  will-change: transform, clip-path, background-color, border-radius;  transform: translateZ(0);  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;}/* Hover Interaction: 3D Tilt & Glows */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;  z-index: 10;}/* Thematic Typography *//* Thematic Thumbnail Filters */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {  filter: none !important;  transition: filter 0.4s ease !important;}/* Clear filters on thumbnail hover *//* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM *//* V4 Glassmorphic Container */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {  background: rgba(42, 42, 42, 0.4) !important;  border-radius: 12px !important;  border: 1px solid rgba(204, 204, 204, 0.2) !important;  -webkit-clip-path: none !important;  clip-path: none !important;}/* V4 Glassmorphic Hover State */html[data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"][data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {  background: rgba(42, 42, 42, 0.4) !important;  }/* V4 Border Radius on Thumbnails */

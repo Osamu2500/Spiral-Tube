@@ -347,13 +347,6 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
-/* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: var(--ypp-shape-primary, 28px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-  backdrop-filter: blur(5px) !important;
-}
-
 /* Kawaii Share & Clip Dialogs */
 /* Target the main dialog container */
 html[data-ypp-card-style="kawaii"] ytd-unified-share-panel-renderer,
@@ -4043,24 +4036,6 @@ html[data-ypp-card-style="kawaii"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: 0 15px 40px rgba(255,158,187,0.3) !important;
-}
-
-/* Shorts Action Buttons (Right Side Pill) */
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions,
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions {
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  border-radius: var(--ypp-shape-primary, 40px) !important;
-  box-shadow: 0 5px 15px rgba(255,158,187,0.4) !important;
-}
-
-/* Individual Action Buttons */
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer, html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer {
-  transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
-}
-
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover, html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover, html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover, html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover {
-  transform: scale(1.15) !important;
 }
 
 /* Shorts Overlay Title & Info */

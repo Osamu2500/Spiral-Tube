@@ -1,0 +1,126 @@
+/* ============================================================
+   VIDEO CARDS IN GRID — Mirrored from homepage ytd-rich-item-renderer
+   ============================================================ */
+
+/* Card shell: identical glassmorphic style to homepage cards */
+
+/* Thumbnails - identical to homepage card thumbnails */
+
+/* Thumbnails - identical to homepage card thumbnails */
+
+/* BUG 2: Cards overlapping and bleeding into each other */
+
+/* Video Title - identical to homepage card title */
+
+/* ── 2. MASTER GRID — lives on the section-list, not the item section ─── */
+
+/* Architecture:
+     ytd-section-list-renderer > #contents   ← CSS GRID (this rule)
+       ytd-item-section-renderer             ← display:contents (transparent)
+         ytd-item-section-renderer > #contents ← display:contents (transparent)
+           ytd-video-renderer                ← GRID CELL
+*/
+
+/* Flatten item-section wrappers so video cards land directly in master grid */
+
+/* BUG 3: Staggered/misaligned middle cards (Image 3) */
+
+/* BUG 4 & OPTION B: Force full width for shelf renderers */
+
+/* OPTION A: Hide completely if clean search or hide search shelves is on */
+
+/* ── 4. FULL-WIDTH ITEMS (ads, continuation, non-card types) ─────── */
+
+/* ============================================================
+   VIDEO CARDS IN GRID — Mirrored from homepage ytd-rich-item-renderer
+   ============================================================ */
+
+/* Card shell: identical glassmorphic style to homepage cards */
+
+/* Video Title - identical to homepage card title */
+
+/* ==========================================================================
+   LIST MODE — Restore YouTube's native horizontal card layout
+   ========================================================================== */
+
+/* Show description snippet in list mode */
+
+/* Glass Badges (Duration, Quality) on Thumbnail */
+/* Explicit class applied by JS for individual items */
+
+/* CHIPS REDESIGN (GLOBAL) - Removed per user request */
+
+/* (Responsive search grid breakpoints consolidated at line 1924 above) */
+
+/* --- 1. Global Shorts Kill Switch --- */
+
+/* Strictly hide any container that looks like a Shorts shelf or contains Shorts metadata */
+
+/* --- 2. Force Full Width for Non-Card Elements --- */
+
+/*
+   Any renderer that is NOT a card must span the full grid width.
+   We explicitly exclude known card types (.ypp-grid-item targets them in JS).
+*/
+
+/* --- 3. Gap Cleanup --- */
+
+/* Hide entire section wrappers that contain hidden Shorts shelves to prevent empty grid gaps */
+
+/* ===================================================================================
+   17. DYNAMIC GRID LAYOUT (Home, Subscriptions, Channels)
+   =================================================================================== */
+
+/* Ensure individual items fill the grid cell and override YouTube's flex-basis constraints */
+
+/* -------------------------------------------------------------------------
+** GLOBALS FOR VIDEO PREVIEWS
+** Ensures native hover previews always sit on top of custom thumbnail z-indexes
+--------------------------------------------------------------------------- */
+
+body #video-preview,
+body ytd-video-preview,
+body #inline-preview-player {
+  z-index: var(--ypp-z-card-hover) !important;
+}
+
+/* Thumbnail wrapper must maintain 16:9 and span full width */
+
+/* Hide native stacked background graphics for playlists to match flat video cards */
+body yt-lockup-view-model .yt-lockup-view-model-wiz__background,
+body yt-lockup-view-model .yt-lockup-view-model-wiz__content-background,
+body yt-lockup-view-model .yt-lockup-view-model-wiz__content-image {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  -webkit-clip-path: none !important;
+  clip-path: none !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
+}
+body yt-lockup-view-model .yt-lockup-view-model-wiz__content-image::before,
+body yt-lockup-view-model .yt-lockup-view-model-wiz__content-image::after {
+  display: none !important;
+}
+
+/* Structure the text-wrapper into a grid layout (without avatar column) */
+
+/* Title */
+
+/* Channel Name */
+
+/* Metadata / Video Count */
+
+/* Hide clutter */
+
+/* For older playlist renderers (ytd-grid-playlist-renderer) */
+body ytd-playlist-thumbnail .style-scope.ytd-playlist-thumbnail,
+body ytd-playlist-thumbnail #background {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body ytd-playlist-thumbnail::before,
+body ytd-playlist-thumbnail::after {
+  display: none !important;
+}
+

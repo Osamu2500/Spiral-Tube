@@ -1,0 +1,193 @@
+/* src/content/styles/pages/history.css */
+
+/* 
+ * HISTORY PAGE STYLING
+ * Focuses on the history analytics dashboard and page-specific layout.
+ */
+
+/* ==========================================================================
+   HISTORY GRID REDESIGN - STACK MATCH WITH SEARCH GRID
+   ========================================================================== */
+
+/* 1. Main Grid Container setup */
+ytd-browse[page-subtype="history"] #contents.ytd-section-list-renderer {
+    display: block !important;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 24px !important;
+}
+
+/* 2. Date Section Headers */
+ytd-browse[page-subtype="history"] ytd-item-section-renderer {
+    margin-bottom: 40px !important;
+    border-bottom: none !important;
+    display: block !important;
+}
+
+ytd-browse[page-subtype="history"] #subheader {
+    margin-bottom: 24px !important;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--ypp-surface-border);
+}
+
+ytd-browse[page-subtype="history"] #title.ytd-item-section-renderer {
+    margin-top: 24px !important;
+    margin-bottom: 16px !important;
+}
+
+/* 2.5 Layout Constraints for Primary/Secondary */
+ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer {
+    max-width: 1800px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
+ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #primary {
+    max-width: none !important;
+    flex: 1 !important;
+    padding-right: 24px !important;
+}
+ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #secondary {
+    width: 380px !important;
+    min-width: 380px !important;
+    flex: none !important;
+}
+
+/* 3. Grid Layout Properties */
+ytd-browse[page-subtype="history"] ytd-item-section-renderer #contents {
+    display: grid !important;
+    grid-template-columns: repeat(var(--ypp-history-columns, 4), minmax(0, 1fr)) !important;
+    gap: 24px 16px !important;
+    padding-top: 8px !important;
+    grid-auto-flow: dense !important;
+    align-items: start !important;
+}
+
+@media (max-width: 1600px) {
+    ytd-browse[page-subtype="history"] ytd-item-section-renderer #contents {
+        grid-template-columns: repeat(var(--ypp-history-columns, 4), minmax(0, 1fr)) !important;
+    }
+}
+
+/* ==========================================================================
+   RIGHT SIDEBAR REDESIGN
+   ========================================================================== */
+ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #secondary,
+#history-analytics-renderer {
+    padding: 24px !important;
+    margin-top: 0 !important;
+    position: sticky !important;
+    top: 80px !important;
+    overflow: hidden !important;
+}
+
+ytd-browse[page-subtype="history"] #secondary:hover {
+    border-color: var(--ypp-accent-primary, rgba(62, 166, 255, 0.3)) !important;
+    box-shadow: var(--ypp-shadow-hover, 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(62, 166, 255, 0.1)) !important;
+}
+
+ytd-browse[page-subtype="history"] .analytics-card,
+ytd-browse[page-subtype="history"] .stat-card {
+    border: var(--ypp-surface-border) !important;
+}
+
+/* Searchbox wrapper in history */
+ytd-browse[page-subtype="history"] #secondary tp-yt-paper-input {
+    padding: 8px 16px !important;
+    margin-bottom: 24px !important;
+}
+
+/* ===================================================================================
+   LIBRARY & HISTORY PAGE — Restore native YouTube list layout
+   These pages use ytd-playlist-video-renderer which must NOT be touched by
+   the grid/card rules above. All overrides below undo any leakage.
+   =================================================================================== */
+
+/* Reset the grid layout override that leaks from the home grid */
+body:not(.cinematic-home).ypp-library-page ytd-rich-grid-renderer,
+body:not(.cinematic-home).ypp-history-page ytd-rich-grid-renderer {
+  display: revert !important;
+  grid-template-columns: revert !important;
+  padding: revert !important;
+}
+
+/* Restore playlist video rows to native horizontal list format */
+body.ypp-library-page ytd-playlist-video-renderer,
+body.ypp-history-page ytd-playlist-video-renderer {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 60px !important;
+  box-sizing: border-box !important;
+}
+
+/* Restore thumbnail to fixed sidebar size */
+body.ypp-library-page ytd-playlist-video-renderer ytd-thumbnail,
+body.ypp-history-page ytd-playlist-video-renderer ytd-thumbnail {
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  height: 68px !important;
+  flex-shrink: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  aspect-ratio: unset !important;
+}
+
+/* Restore metadata visibility */
+body.ypp-library-page ytd-playlist-video-renderer #meta,
+body.ypp-library-page ytd-playlist-video-renderer #index,
+body.ypp-library-page ytd-playlist-video-renderer #video-title,
+body.ypp-history-page ytd-playlist-video-renderer #meta,
+body.ypp-history-page ytd-playlist-video-renderer #index,
+body.ypp-history-page ytd-playlist-video-renderer #video-title {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-height: unset !important;
+  -webkit-box-orient: unset !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+}
+
+/* History & Library page — restore compact video renderer list layout */
+body.ypp-history-page ytd-video-renderer,
+body.ypp-library-page ytd-video-renderer {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.ypp-history-page ytd-video-renderer ytd-thumbnail,
+body.ypp-library-page ytd-video-renderer ytd-thumbnail {
+  width: 168px !important;
+  min-width: 168px !important;
+  max-width: 168px !important;
+  height: 94px !important;
+  flex-shrink: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  aspect-ratio: unset !important;
+}
+
+body.ypp-history-page ytd-video-renderer #dismissible,
+body.ypp-library-page ytd-video-renderer #dismissible {
+  flex-direction: row !important;
+}
+
+body.ypp-history-page ytd-video-renderer #video-title,
+body.ypp-library-page ytd-video-renderer #video-title {
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  max-height: unset !important;
+}
+

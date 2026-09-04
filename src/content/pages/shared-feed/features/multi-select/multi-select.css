@@ -1,245 +1,1 @@
-/* 
- * Multi-Select Component - Handles multi-select checkbox UI overlay.
- * Does not affect outside scope. 
- */
-
-.ypp-ms-checkbox {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  position: absolute !important;
-  top: 8px !important;
-  left: 8px !important;
-  width: 28px !important;
-  height: 28px !important;
-  background: var(--ypp-glass-bg) !important;
-  border: 2px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: 6px !important;
-  z-index: 2147483646 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  opacity: 0 !important;
-  transform: scale(0.8) !important;
-  transition: opacity 0.2s, transform 0.2s, background 0.2s, border-color 0.2s !important;
-  pointer-events: auto !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
-}
-
-/* Show on hover — only when the feature is enabled */
-body.ypp-ms-feature-enabled ytd-rich-item-renderer:hover .ypp-ms-checkbox,
-body.ypp-ms-feature-enabled ytd-video-renderer:hover .ypp-ms-checkbox,
-body.ypp-ms-feature-enabled ytd-compact-video-renderer:hover .ypp-ms-checkbox,
-body.ypp-ms-feature-enabled ytd-grid-video-renderer:hover .ypp-ms-checkbox,
-body.ypp-ms-feature-enabled ytd-playlist-video-renderer:hover .ypp-ms-checkbox,
-body.ypp-ms-feature-enabled yt-lockup-view-model:hover .ypp-ms-checkbox,
-body.ypp-ms-feature-enabled ytd-lockup-view-model:hover .ypp-ms-checkbox,
-body.ypp-ms-active .ypp-ms-checkbox {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
-.ypp-ms-checkbox.ypp-ms-checked {
-  background: var(--ypp-accent, #3ea6ff) !important;
-  border-color: var(--ypp-accent, #3ea6ff) !important;
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
-/* Physical overlay — covers the card but sits below the checkbox stacking context */
-.ypp-ms-card-overlay {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 90 !important; /* Below the checkbox (100) but above the video thumbnail */
-  cursor: pointer !important;
-  background: transparent !important;
-  display: none !important;
-  pointer-events: none !important; /* Never blocks events in hover-only mode */
-}
-
-/* Always show overlay when mode is active — invisible but captures clicks */
-body.ypp-ms-active .ypp-ms-card-overlay {
-  display: block !important;
-  pointer-events: auto !important; /* Activate click blocking only when mode is ON */
-}
-
-/* Ensure the card has relative positioning for the overlay to anchor to */
-ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer,
-ytd-grid-video-renderer, ytd-playlist-video-renderer, ytd-playlist-panel-video-renderer,
-ytd-reel-item-renderer, yt-lockup-view-model, ytd-lockup-view-model {
-  position: relative !important;
-}
-
-.ypp-ms-check-icon {
-  stroke: white !important;
-  opacity: 0 !important;
-  transform: scale(0) !important;
-  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.2, 0, 0, 1.5) !important;
-}
-
-.ypp-ms-checkbox.ypp-ms-checked .ypp-ms-check-icon {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
-/* Selected Card Highlight */
-.ypp-ms-selected {
-  outline: 2px solid var(--ypp-accent, #3ea6ff) !important;
-  outline-offset: -2px !important;
-  border-radius: var(--ypp-radius-md, 12px) !important;
-  background: rgba(62, 166, 255, 0.08) !important;
-}
-
-/* Action Bar — slides up from the bottom */
-.ypp-ms-bar {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  position: fixed !important;
-  bottom: 96px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: var(--ypp-glass-bg) !important;
-  backdrop-filter: var(--ypp-glass-blur) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 48px !important;
-  padding: 10px 20px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 16px !important;
-  z-index: 2147483647 !important;
-  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-  will-change: transform, opacity !important;
-  animation: ypp-ms-bar-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-@keyframes ypp-ms-bar-in {
-  from { opacity: 0; transform: translateX(-50%) translateY(40px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-.ypp-ms-bar-info {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  color: white !important;
-  font-family: 'Roboto', sans-serif !important;
-  padding-right: 16px !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-.ypp-ms-count {
-  background: var(--ypp-accent, #3ea6ff) !important;
-  color: #000 !important;
-  font-weight: 600 !important;
-  border-radius: var(--ypp-shape-lg, 16px) !important;
-  padding: 2px 10px !important;
-  font-size: 14px !important;
-}
-
-.ypp-ms-label {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  white-space: nowrap !important;
-}
-
-.ypp-ms-bar-actions {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-
-/* ─── Glowing Badge Buttons ──────────────────────────────────────────────── */
-
-/* Color tokens per variant */
-.ypp-ms-btn[data-variant="info"]    { --badge-color: 59, 130, 246;  }  /* blue     */
-.ypp-ms-btn[data-variant="purple"]  { --badge-color: 139, 92, 246;  }  /* violet   */
-.ypp-ms-btn[data-variant="warning"] { --badge-color: 234, 179, 8;   }  /* amber    */
-.ypp-ms-btn[data-variant="error"]   { --badge-color: 239, 68, 68;   }  /* red      */
-.ypp-ms-btn[data-variant="success"] { --badge-color: 34, 197, 94;   }  /* green    */
-.ypp-ms-btn[data-variant="ghost"]   { --badge-color: 148, 163, 184; }  /* slate    */
-
-/* Base pill */
-.ypp-ms-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 7px !important;
-  padding: 6px 14px 6px 10px !important;
-  border-radius: 9999px !important;
-  border: 1px solid rgba(var(--badge-color, 148,163,184), 0.35) !important;
-  background: rgba(var(--badge-color, 148,163,184), 0.10) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-family: 'Roboto', sans-serif !important;
-  font-size: 12.5px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.01em !important;
-  cursor: pointer !important;
-  white-space: nowrap !important;
-  position: relative !important;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.15s ease !important;
-  box-shadow: 0 0 0 0 rgba(var(--badge-color, 148,163,184), 0) !important;
-}
-
-/* Glow + lift on hover */
-.ypp-ms-btn:hover {
-  background: rgba(var(--badge-color, 148,163,184), 0.20) !important;
-  border-color: rgba(var(--badge-color, 148,163,184), 0.6) !important;
-  box-shadow:
-    0 0 10px 2px rgba(var(--badge-color, 148,163,184), 0.30),
-    0 0 24px 4px rgba(var(--badge-color, 148,163,184), 0.15) !important;
-  transform: translateY(-1px) !important;
-  color: var(--ypp-text-primary, #fff) !important;
-}
-
-.ypp-ms-btn:active {
-  transform: translateY(0) !important;
-  box-shadow: 0 0 6px 1px rgba(var(--badge-color, 148,163,184), 0.25) !important;
-}
-
-/* Pulsing dot */
-.ypp-ms-dot {
-  display: inline-block !important;
-  width: 7px !important;
-  height: 7px !important;
-  border-radius: 50% !important;
-  flex-shrink: 0 !important;
-  background: rgb(var(--badge-color, 148,163,184)) !important;
-  box-shadow: 0 0 6px 1px rgba(var(--badge-color, 148,163,184), 0.7) !important;
-  animation: ypp-badge-pulse 2s ease-in-out infinite !important;
-}
-
-@keyframes ypp-badge-pulse {
-  0%, 100% {
-    opacity: 1;
-    box-shadow: 0 0 5px 1px rgba(var(--badge-color, 148,163,184), 0.7);
-  }
-  50% {
-    opacity: 0.55;
-    box-shadow: 0 0 10px 3px rgba(var(--badge-color, 148,163,184), 0.3);
-  }
-}
-
-/* Clear button (ghost variant) — slightly subdued */
-.ypp-ms-btn-clear {
-  opacity: 0.8 !important;
-}
-.ypp-ms-btn-clear:hover {
-  opacity: 1 !important;
-}
-
-/* Busy state for action bar buttons */
-.ypp-ms-btn-busy {
-  opacity: 0.45 !important;
-  pointer-events: none !important;
-}
-
-
+/*  * Multi-Select Component - Handles multi-select checkbox UI overlay. * Does not affect outside scope.  */.ypp-ms-checkbox {  position: absolute !important;  top: 8px !important;  left: 8px !important;  width: 28px !important;  height: 28px !important;  background: var(--ypp-glass-bg) !important;  border: 2px solid rgba(255, 255, 255, 0.6) !important;  border-radius: 6px !important;  z-index: 2147483646 !important;  cursor: pointer !important;  display: flex !important;  align-items: center !important;  justify-content: center !important;  opacity: 0 !important;  transform: scale(0.8) !important;  transition: opacity 0.2s, transform 0.2s, background 0.2s, border-color 0.2s !important;  pointer-events: auto !important;  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;}/* Show on hover — only when the feature is enabled */body.ypp-ms-feature-enabled ytd-rich-item-renderer:hover .ypp-ms-checkbox,body.ypp-ms-feature-enabled ytd-video-renderer:hover .ypp-ms-checkbox,body.ypp-ms-feature-enabled ytd-compact-video-renderer:hover .ypp-ms-checkbox,body.ypp-ms-feature-enabled ytd-grid-video-renderer:hover .ypp-ms-checkbox,body.ypp-ms-feature-enabled ytd-playlist-video-renderer:hover .ypp-ms-checkbox,body.ypp-ms-feature-enabled yt-lockup-view-model:hover .ypp-ms-checkbox,body.ypp-ms-feature-enabled ytd-lockup-view-model:hover .ypp-ms-checkbox,body.ypp-ms-active .ypp-ms-checkbox {  opacity: 1 !important;  transform: scale(1) !important;}.ypp-ms-checkbox.ypp-ms-checked {  background: var(--ypp-accent, #3ea6ff) !important;  border-color: var(--ypp-accent, #3ea6ff) !important;  opacity: 1 !important;  transform: scale(1) !important;}/* Physical overlay — covers the card but sits below the checkbox stacking context */.ypp-ms-card-overlay {  position: absolute !important;  top: 0 !important;  left: 0 !important;  width: 100% !important;  height: 100% !important;  z-index: 90 !important; /* Below the checkbox (100) but above the video thumbnail */  cursor: pointer !important;  background: transparent !important;  display: none !important;  pointer-events: none !important; /* Never blocks events in hover-only mode */}/* Always show overlay when mode is active — invisible but captures clicks */body.ypp-ms-active .ypp-ms-card-overlay {  display: block !important;  pointer-events: auto !important; /* Activate click blocking only when mode is ON */}/* Ensure the card has relative positioning for the overlay to anchor to */ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer,ytd-grid-video-renderer, ytd-playlist-video-renderer, ytd-playlist-panel-video-renderer,ytd-reel-item-renderer, yt-lockup-view-model, ytd-lockup-view-model {  position: relative !important;}.ypp-ms-check-icon {  stroke: white !important;  opacity: 0 !important;  transform: scale(0) !important;  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.2, 0, 0, 1.5) !important;}.ypp-ms-checkbox.ypp-ms-checked .ypp-ms-check-icon {  opacity: 1 !important;  transform: scale(1) !important;}/* Selected Card Highlight */.ypp-ms-selected {  outline: 2px solid var(--ypp-accent, #3ea6ff) !important;  outline-offset: -2px !important;  border-radius: var(--ypp-radius-md, 12px) !important;  background: rgba(62, 166, 255, 0.08) !important;}/* Action Bar — slides up from the bottom */.ypp-ms-bar {  position: fixed !important;  bottom: 96px !important;  left: 50% !important;  transform: translateX(-50%) !important;  background: var(--ypp-glass-bg) !important;  border: 1px solid rgba(255, 255, 255, 0.2) !important;  border-radius: 48px !important;  padding: 10px 20px !important;  display: flex !important;  align-items: center !important;  gap: 16px !important;  z-index: 2147483647 !important;  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;  will-change: transform, opacity !important;  animation: ypp-ms-bar-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards !important;  opacity: 1 !important;  visibility: visible !important;}@keyframes ypp-ms-bar-in {  from { opacity: 0; transform: translateX(-50%) translateY(40px); }  to   { opacity: 1; transform: translateX(-50%) translateY(0); }}.ypp-ms-bar-info {  display: flex !important;  align-items: center !important;  gap: 8px !important;  color: white !important;  font-family: 'Roboto', sans-serif !important;  padding-right: 16px !important;  border-right: 1px solid rgba(255, 255, 255, 0.15) !important;}.ypp-ms-count {  background: var(--ypp-accent, #3ea6ff) !important;  color: #000 !important;  font-weight: 600 !important;  border-radius: var(--ypp-shape-lg, 16px) !important;  padding: 2px 10px !important;  font-size: 14px !important;}.ypp-ms-label {  font-size: 14px !important;  font-weight: 500 !important;  white-space: nowrap !important;}.ypp-ms-bar-actions {  display: flex !important;  align-items: center !important;  gap: 8px !important;}/* ─── Glowing Badge Buttons ──────────────────────────────────────────────── *//* Color tokens per variant */.ypp-ms-btn[data-variant="info"]    { --badge-color: 59, 130, 246;  }  /* blue     */.ypp-ms-btn[data-variant="purple"]  { --badge-color: 139, 92, 246;  }  /* violet   */.ypp-ms-btn[data-variant="warning"] { --badge-color: 234, 179, 8;   }  /* amber    */.ypp-ms-btn[data-variant="error"]   { --badge-color: 239, 68, 68;   }  /* red      */.ypp-ms-btn[data-variant="success"] { --badge-color: 34, 197, 94;   }  /* green    */.ypp-ms-btn[data-variant="ghost"]   { --badge-color: 148, 163, 184; }  /* slate    *//* Base pill */.ypp-ms-btn {  display: inline-flex !important;  align-items: center !important;  gap: 7px !important;  padding: 6px 14px 6px 10px !important;  border-radius: 9999px !important;  border: 1px solid rgba(var(--badge-color, 148,163,184), 0.35) !important;  background: rgba(var(--badge-color, 148,163,184), 0.10) !important;  color: rgba(255, 255, 255, 0.9) !important;  font-family: 'Roboto', sans-serif !important;  font-size: 12.5px !important;  font-weight: 500 !important;  letter-spacing: 0.01em !important;  cursor: pointer !important;  white-space: nowrap !important;  position: relative !important;  transition:    background 0.2s ease,    border-color 0.2s ease,    box-shadow 0.2s ease,    transform 0.15s ease !important;  box-shadow: 0 0 0 0 rgba(var(--badge-color, 148,163,184), 0) !important;}/* Glow + lift on hover */.ypp-ms-btn:hover {  background: rgba(var(--badge-color, 148,163,184), 0.20) !important;  border-color: rgba(var(--badge-color, 148,163,184), 0.6) !important;  box-shadow:    0 0 10px 2px rgba(var(--badge-color, 148,163,184), 0.30),    0 0 24px 4px rgba(var(--badge-color, 148,163,184), 0.15) !important;  transform: translateY(-1px) !important;  color: var(--ypp-text-primary, #fff) !important;}.ypp-ms-btn:active {  transform: translateY(0) !important;  box-shadow: 0 0 6px 1px rgba(var(--badge-color, 148,163,184), 0.25) !important;}/* Pulsing dot */.ypp-ms-dot {  display: inline-block !important;  width: 7px !important;  height: 7px !important;  border-radius: 50% !important;  flex-shrink: 0 !important;  background: rgb(var(--badge-color, 148,163,184)) !important;  box-shadow: 0 0 6px 1px rgba(var(--badge-color, 148,163,184), 0.7) !important;  animation: ypp-badge-pulse 2s ease-in-out infinite !important;}@keyframes ypp-badge-pulse {  0%, 100% {    opacity: 1;    box-shadow: 0 0 5px 1px rgba(var(--badge-color, 148,163,184), 0.7);  }  50% {    opacity: 0.55;    box-shadow: 0 0 10px 3px rgba(var(--badge-color, 148,163,184), 0.3);  }}/* Clear button (ghost variant) — slightly subdued */.ypp-ms-btn-clear {  opacity: 0.8 !important;}.ypp-ms-btn-clear:hover {  opacity: 1 !important;}/* Busy state for action bar buttons */.ypp-ms-btn-busy {  opacity: 0.45 !important;  pointer-events: none !important;}

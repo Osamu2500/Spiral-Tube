@@ -1,0 +1,83 @@
+/* ==========================================================================
+   WATCH ALERT COMPONENT
+   Scope: Styles the floating alert box that appears on the watch page
+   (e.g. for notifications, feature toggles).
+   ========================================================================== */
+
+.ypp-watch-alert {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ypp-surface-bg);
+  border: 1px solid var(--ypp-primary-accent, rgba(255, 170, 0, 0.35));
+  border-top-color: var(--ypp-primary-accent);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: var(--ypp-shadow-card);
+  max-width: 360px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: var(--ypp-z-popup);
+}
+
+.ypp-watch-alert.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ypp-watch-alert-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.ypp-watch-alert-body {
+  flex: 1;
+}
+
+.ypp-watch-alert-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 200, 0, 0.9);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ypp-watch-alert-msg {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.ypp-watch-alert-msg strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.ypp-watch-alert-close {
+  background: var(--ypp-surface-bg);
+  border: var(--ypp-surface-border);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.ypp-watch-alert-close:hover {
+  background: var(--ypp-surface-bg-hover);
+  color: #fff;
+}

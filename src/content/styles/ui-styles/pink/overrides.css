@@ -128,13 +128,6 @@ html[data-ypp-ui-design="pink"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-/* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: var(--ypp-shape-primary, 20px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-  backdrop-filter: blur(5px) !important;
-}
-
 /* PINK ECOSYSTEM PAYLOAD V10 */
 
 /* =========================================

@@ -1,0 +1,99 @@
+/* Layout Toggles */
+
+/* --- Smart Layout Collapsing for ytd-watch-metadata --- */
+/* Removes padding if elements are hidden */
+
+/* Completely collapse ytd-watch-metadata if all major children are hidden */
+
+/* Hide Comments */
+
+/* Hide Live Chat */
+
+/* Hide Related Feed (Watch Page Sidebar) */
+
+/* Expand Primary Column when Related is hidden (and no Live Chat) */
+
+/* If Live Chat is active, we cannot completely hide secondary or expand primary fully without overlapping */
+
+/* Hide Merch Shelf */
+
+/* Hide Fundraiser / Donations */
+
+/* Hide End Screens */
+
+/* Hide Memberships */
+
+/* Hide Fundraiser / Donations */
+
+/* Hide End Screens */
+
+/* Hide Memberships */
+
+/* Hide Upload Button */
+
+/* --- LIST MODE — Restore YouTube's native horizontal card layout --- */
+/* Show description snippet in list mode */
+
+/* Glass Badges (Duration, Quality) on Thumbnail */
+/* Explicit class applied by JS for individual items */
+
+/* CHIPS REDESIGN (GLOBAL) - Removed per user request */
+
+/* (Responsive search grid breakpoints consolidated at line 1924 above) */
+
+/* --- 4X4 GRID LAYOUT - ENHANCED STYLING --- */
+/* Force 4-column CSS Grid on home feed */
+
+/* Hide row wrappers to allow direct grid children */
+
+/* Style individual video cards for grid */
+
+/* Hide parent section of Shorts shelves to prevent gaps */
+
+/* Ensure video thumbnails scale properly */
+
+/* Video metadata styling */
+
+/* Card hover effects for grid items */
+
+
+
+/* ===================================================================================
+   6b. SEARCH REDESIGN — Supplement (Playlist Wrappers & Misc)
+   Grid flattening is handled in section 6 above.
+   =================================================================================== */
+
+/* Playlist Specific Badge Overlays moved to components/cards/cards.css */
+/* Premium Playlist Side Panel Overlay moved to components/cards/cards.css */
+/* Mix/Radio Premium Overlay moved to components/cards/cards.css */
+
+/* Ensure chip bar doesn't interfere with grid */
+body ytd-feed-filter-chip-bar-renderer {
+  margin-bottom: 24px;
+}
+
+
+
+/* --- PLAYLIST FEED PAGE ENHANCEMENTS --- */
+/* (Moved to pages/playlist/styles/layout.css) */
+
+/* --- GRAYSCALE THUMBNAILS (Moved to components/cards/cards.css) --- */
+
+/* --- HOMESCREEN HIDE FEATURES (DOM Stamping & Pure CSS) --- */
+/* Hide Watched */
+
+/* Hover — full reveal on intentional hover */
+
+/* Generic Hidden Class (Used by BaseFilterFeature) */
+
+/* Hide Mixes */
+
+/* Hide Shorts */
+
+/* Hide Playlists */
+
+/* Hide Feed / Explore / Trending */
+
+
+
+/* --- Two Rows/Columns in Subscriptions Feed (Moved to pages/subscriptions/styles/layout.css) --- */
