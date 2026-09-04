@@ -544,6 +544,7 @@ html[data-ypp-ui-design="colorize"] #masthead-container,
 html[data-ypp-ui-design="colorize"] ytd-masthead {
   background: linear-gradient(to right, rgba(0,0,0,0.9), hsl(207, 80%, 55%)88) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
@@ -593,6 +594,7 @@ html[data-ypp-ui-design="colorize"] .sbdd_b,
 html[data-ypp-ui-design="colorize"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
@@ -620,6 +622,7 @@ html[data-ypp-ui-design="colorize"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="colorize"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;

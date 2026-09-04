@@ -1,4 +1,4 @@
-import '../../filters/base-filter-feature.js';
+import '../../../../features/declutter/global/filters/core/base-filter-feature.js';
 export class ChannelWhitelist extends window.YPP.features.BaseFilterFeature {
     static featureId = 'channelWhitelist';
     static executionPhase = 'idle';

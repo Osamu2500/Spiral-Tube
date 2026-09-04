@@ -199,6 +199,7 @@ html[data-ypp-ui-design="bloodmoon"] ytd-reel-video-renderer {
 html[data-ypp-theme="bloodmoon"] tp-yt-paper-dialog,
 html[data-ypp-theme="bloodmoon"] ytd-popup-container {
   -webkit-backdrop-filter: blur(22px) !important;
+  -webkit-backdrop-filter: blur(22px) !important;
   backdrop-filter: blur(22px) !important;
   border-radius: var(--ypp-shape-primary, var(--bm-r-md)) !important;
   box-shadow: var(--bm-glow-blood), 0 24px 60px rgba(6, 2, 5, 0.9) !important;
@@ -578,6 +579,7 @@ html[data-ypp-ui-design="bloodmoon"] ytd-mini-guide-entry-renderer {
 
 html[data-ypp-theme="bloodmoon"] ytd-masthead {
   -webkit-backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
   backdrop-filter: blur(18px) !important;
   box-shadow: 0 2px 20px rgba(192, 21, 42, 0.15), 0 0 0 1px rgba(192, 21, 42, 0.05) !important;
 }
@@ -738,6 +740,7 @@ html[data-ypp-card-style="bloodmoon"] .ytp-scrubber-button {
    ========================================================= */
 
 html[data-ypp-theme="bloodmoon"] #secondary-inner.ytd-watch-flexy {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--bm-r-lg)) !important;

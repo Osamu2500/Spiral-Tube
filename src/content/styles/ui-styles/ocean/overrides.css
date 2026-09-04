@@ -593,6 +593,7 @@ html[data-ypp-ui-design="ocean"] ytd-playlist-panel-video-renderer,
 html[data-ypp-ui-design="ocean"] ytd-video-renderer,
 html[data-ypp-ui-design="ocean"] ytd-grid-video-renderer {
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
   backdrop-filter: blur(var(--blur)) !important;
 }
 
@@ -941,6 +942,7 @@ html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-comment-view-model,
 html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-channel-name,
 html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-video-owner-renderer {
   -webkit-backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 12px rgba(0, 188, 212, 0.2);
@@ -1010,6 +1012,7 @@ html[data-ypp-ui-design="ocean"] ytd-comment-simplebox-renderer {
 }
 
 html[data-ypp-ui-design="ocean"] ytd-comment-thread-renderer {
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
   backdrop-filter: blur(var(--blur)) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1229,6 +1232,7 @@ html[data-ypp-ui-design="ocean"] .ytSearchboxComponentDesktop .ytSearchboxCompon
 html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBoxDark,
 html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBox,
 html[data-ypp-ui-design="ocean"] ytd-searchbox #container {
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
   backdrop-filter: blur(var(--blur)) !important;
   border-radius: var(--ypp-shape-primary, 50px) !important;

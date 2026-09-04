@@ -30,6 +30,7 @@ html[data-ypp-ui-design="steampunk"] {
   --ypp-card-shadow:                0 4px 12px #5c403320 !important;
   --ypp-card-shadow-hover:          0 8px 24px #5c403340 !important;
   --ypp-card--webkit-backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   --ypp-card-backdrop-filter-hover: none !important;
 }

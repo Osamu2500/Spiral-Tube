@@ -413,6 +413,7 @@ html[data-ypp-card-style="ice-blue"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="ice-blue"] ytd-masthead {
   border-radius: var(--ypp-shape-primary, 0) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 0 4px 20px rgba(0, 188, 212, 0.2) !important;
 }
@@ -481,6 +482,7 @@ html[data-ypp-ui-design="ice-blue"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-design="ice-blue"] #masthead-container,
 html[data-ypp-ui-design="ice-blue"] ytd-masthead {
   -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 0 0 10px hsl(100, 80%, 55%), 0 0 20px hsl(100, 80%, 55%) !important;
 }
@@ -530,6 +532,7 @@ html[data-ypp-ui-design="ice-blue"] .sbdd_b,
 html[data-ypp-ui-design="ice-blue"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 20px 0 20px 0) !important;
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 0 10px hsl(100, 80%, 55%), 0 0 20px hsl(100, 80%, 55%) !important;
 }
@@ -557,6 +560,7 @@ html[data-ypp-ui-design="ice-blue"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="ice-blue"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 20px 0 20px 0) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 0 0 10px hsl(100, 80%, 55%), 0 0 20px hsl(100, 80%, 55%) !important;

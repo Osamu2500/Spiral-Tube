@@ -14,13 +14,17 @@ html[data-ypp-ui-design="glassmorphism"] {
   
   /* Glassmorphism Structural Tokens */
   --ypp-menu--webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
   --ypp-dialog--webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   --ypp-card--webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   --ypp-card-backdrop-filter-hover: blur(24px) saturate(200%) !important;
   --ypp-player-control--webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   
   --ypp-card-bg: rgba(255, 255, 255, 0.05) !important;

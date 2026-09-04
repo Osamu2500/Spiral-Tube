@@ -1,0 +1,823 @@
+d assets
+d assets/fonts
+f assets/fonts/inter-400.woff2 (80 lines)
+f assets/fonts/inter-500.woff2 (92 lines)
+f assets/fonts/inter-600.woff2 (95 lines)
+f assets/fonts/inter-700.woff2 (102 lines)
+f assets/fonts/inter-800.woff2 (103 lines)
+d assets/icons
+f assets/icons/icon-128.png (145 lines)
+f assets/icons/icon-16.png (8 lines)
+f assets/icons/icon-32.png (10 lines)
+f assets/icons/icon-48.png (19 lines)
+f assets/icons/icon-v2.png (2002 lines)
+f assets/icons/icon.svg (8 lines)
+d background
+d background/core
+f background/core/message-router.ts (66 lines)
+d background/handlers
+f background/handlers/color-handler.ts (88 lines)
+f background/handlers/settings-handler.ts (90 lines)
+f background/handlers/timer-handler.ts (64 lines)
+d background/services
+f background/services/context-menu.ts (46 lines)
+f background/services/drive-sync.ts (137 lines)
+d background/utils
+f background/utils/settings.ts (11 lines)
+f background/index.ts (55 lines)
+d content
+d content/components
+d content/components/account-menus
+f content/components/account-menus/account-menu-data.js (255 lines)
+f content/components/account-menus/account-menu-ui.js (366 lines)
+f content/components/account-menus/account-menu.js (738 lines)
+d content/components/buttons
+f content/components/buttons/button.js (51 lines)
+d content/components/panels
+f content/components/panels/panel.js (62 lines)
+d content/core
+d content/core/data
+f content/core/data/watched-store.js (96 lines)
+d content/core/dom
+f content/core/dom/dom-api.js (71 lines)
+f content/core/dom/dom-observer.ts (537 lines)
+f content/core/dom/element-cache.js (180 lines)
+f content/core/dom/youtube-elements.js (72 lines)
+d content/core/events
+f content/core/events/event-bus.js (112 lines)
+f content/core/events/event-delegator.js (119 lines)
+f content/core/events/hotkeys-manager.js (157 lines)
+f content/core/events/keyboard-shortcuts.js (225 lines)
+d content/core/system
+f content/core/system/base-feature.js (394 lines)
+f content/core/system/base-page-manager.js (62 lines)
+f content/core/system/error-handler.js (63 lines)
+f content/core/system/feature-manager.ts (403 lines)
+f content/core/system/storage-manager.js (214 lines)
+d content/core/utils
+f content/core/utils/youtube-parsers.js (291 lines)
+d content/entry
+f content/entry/index.ts (267 lines)
+f content/entry/main.ts (912 lines)
+d content/features
+d content/features/cinematic
+f content/features/cinematic/cinematic.css (319 lines)
+d content/features/declutter
+d content/features/declutter/global
+d content/features/declutter/global/filters
+d content/features/declutter/global/filters/core
+f content/features/declutter/global/filters/core/base-filter-feature.js (136 lines)
+f content/features/declutter/global/filters/core/filter-ui-interactions.js (483 lines)
+f content/features/declutter/global/filters/core/filters-manager.js (239 lines)
+d content/features/declutter/global/filters/features
+f content/features/declutter/global/filters/features/blocklist-filter.js (191 lines)
+f content/features/declutter/global/filters/features/clickbait-filter.js (92 lines)
+f content/features/declutter/global/filters/features/duration-filter.js (83 lines)
+f content/features/declutter/global/filters/features/feed-filter.js (172 lines)
+f content/features/declutter/global/filters/features/hide-metrics.js (69 lines)
+f content/features/declutter/global/filters/features/hide-watched.js (129 lines)
+f content/features/declutter/global/filters/features/live-filter.js (72 lines)
+f content/features/declutter/global/filters/features/mixes-filter.js (71 lines)
+f content/features/declutter/global/filters/features/playlists-filter.js (71 lines)
+f content/features/declutter/global/filters/features/screen-filters.js (87 lines)
+f content/features/declutter/global/filters/features/shorts-filter.js (88 lines)
+f content/features/declutter/global/filters/features/shorts-remover.js (323 lines)
+f content/features/declutter/global/filters/features/upload-date-filter.js (94 lines)
+f content/features/declutter/global/filters/features/views-filter.js (87 lines)
+f content/features/declutter/global/filters/index.js (21 lines)
+f content/features/declutter/global/global-declutter.css (484 lines)
+f content/features/declutter/global/shorts-killer.css (22 lines)
+d content/features/declutter/pages
+d content/features/declutter/pages/home
+f content/features/declutter/pages/home/home-declutter.css (66 lines)
+d content/features/declutter/pages/search
+f content/features/declutter/pages/search/search-declutter.css (77 lines)
+d content/features/declutter/pages/shorts
+f content/features/declutter/pages/shorts/shorts-declutter.css (180 lines)
+d content/features/declutter/pages/watch
+f content/features/declutter/pages/watch/watch-declutter.css (365 lines)
+f content/features/declutter/index.css (14 lines)
+d content/features/global-player-bar
+d content/features/global-player-bar/core
+f content/features/global-player-bar/core/global-player-bar.js (162 lines)
+d content/features/global-player-bar/domain
+f content/features/global-player-bar/domain/domain-memory-ui.js (806 lines)
+f content/features/global-player-bar/domain/domain-memory.js (853 lines)
+d content/features/global-player-bar/external
+f content/features/global-player-bar/external/iframe-bridge.js (337 lines)
+f content/features/global-player-bar/external/index.js (141 lines)
+f content/features/global-player-bar/external/utils-mock.js (171 lines)
+d content/features/global-player-bar/styles
+f content/features/global-player-bar/styles/global-bar.css (1 lines)
+d content/features/global-player-bar/ui
+f content/features/global-player-bar/ui/global-bar-draggable.js (47 lines)
+f content/features/global-player-bar/ui/global-bar-events.js (226 lines)
+f content/features/global-player-bar/ui/global-bar-icons.js (64 lines)
+f content/features/global-player-bar/ui/global-bar-state.js (216 lines)
+f content/features/global-player-bar/ui/global-bar-ui.js (397 lines)
+d content/features/misc
+f content/features/misc/clean-mix-urls.js (42 lines)
+d content/features/navigation
+f content/features/navigation/header-button.js (325 lines)
+f content/features/navigation/header-nav.js (313 lines)
+d content/features/performance
+f content/features/performance/reduce-animations.js (432 lines)
+d content/features/subscription-folders
+f content/features/subscription-folders/subscription-folders.css (1 lines)
+d content/features/ui-managers
+f content/features/ui-managers/index.js (2 lines)
+f content/features/ui-managers/thumbnail-color-manager.js (394 lines)
+f content/features/ui-managers/ui-manager.js (123 lines)
+d content/features/ui-tweaks
+f content/features/ui-tweaks/compact-settings-menu.css (25 lines)
+f content/features/ui-tweaks/custom-scrollbar.css (34 lines)
+f content/features/ui-tweaks/customize-youtube-ui.js (73 lines)
+f content/features/ui-tweaks/dual-accent.css (20 lines)
+f content/features/ui-tweaks/extra-rounded-ui.css (37 lines)
+f content/features/ui-tweaks/grayscale-thumbnails.css (30 lines)
+f content/features/ui-tweaks/integrations.css (160 lines)
+f content/features/ui-tweaks/premium-logo.css (40 lines)
+f content/features/ui-tweaks/premium-logo.js (27 lines)
+f content/features/ui-tweaks/retro-logo.css (21 lines)
+f content/features/ui-tweaks/save-supreme-ui.css (84 lines)
+f content/features/ui-tweaks/save-supreme-ui.js (51 lines)
+f content/features/ui-tweaks/search-default-card-compat.css (77 lines)
+f content/features/ui-tweaks/search-immersive-cards.css (1 lines)
+f content/features/ui-tweaks/square-corners.css (12 lines)
+f content/features/ui-tweaks/theme.js (1081 lines)
+f content/features/ui-tweaks/youtube-rounded.css (148 lines)
+d content/layouts
+d content/layouts/core
+f content/layouts/core/global-layout-manager.js (172 lines)
+f content/layouts/core/layout-manager.js (385 lines)
+f content/layouts/core/tabview-sidebar.js (232 lines)
+d content/pages
+d content/pages/home
+d content/pages/home/features
+f content/pages/home/features/home-organizer.js (370 lines)
+d content/pages/home/modes
+d content/pages/home/modes/cinematic-mode
+f content/pages/home/modes/cinematic-mode/cinematic-controller.js (677 lines)
+f content/pages/home/modes/cinematic-mode/cinematic-mode.js (79 lines)
+f content/pages/home/modes/cinematic-mode/constants.js (11 lines)
+f content/pages/home/modes/cinematic-mode/hero-manager.js (287 lines)
+f content/pages/home/modes/cinematic-mode/hover-simulator.js (186 lines)
+f content/pages/home/modes/cinematic-mode/observer-manager.js (44 lines)
+f content/pages/home/index.js (3 lines)
+d content/pages/playlist
+d content/pages/playlist/features
+f content/pages/playlist/features/duration-calculator.js (517 lines)
+f content/pages/playlist/features/reverse-playlist.js (130 lines)
+d content/pages/playlist/layout
+d content/pages/playlist/layout/playlist-redesign
+f content/pages/playlist/layout/playlist-redesign/constants.js (14 lines)
+f content/pages/playlist/layout/playlist-redesign/data-extractor.js (131 lines)
+f content/pages/playlist/layout/playlist-redesign/event-handler.js (343 lines)
+f content/pages/playlist/layout/playlist-redesign/playlist-redesign.js (200 lines)
+f content/pages/playlist/layout/playlist-redesign/ui-builder.js (257 lines)
+f content/pages/playlist/index.js (4 lines)
+d content/pages/search
+d content/pages/search/features
+f content/pages/search/features/search-observer.js (468 lines)
+f content/pages/search/features/search-utils.js (122 lines)
+d content/pages/search/layout
+f content/pages/search/layout/search-redesign.js (323 lines)
+f content/pages/search/layout/search-view-mode.js (79 lines)
+d content/pages/search/styles
+f content/pages/search/styles/search-grid-mode-backup.css (1505 lines)
+f content/pages/search/index.js (2 lines)
+f content/pages/search/search-manager.js (76 lines)
+d content/pages/shared-feed
+d content/pages/shared-feed/components
+d content/pages/shared-feed/components/shorts-shelf
+f content/pages/shared-feed/components/shorts-shelf/shorts-shelf.css (113 lines)
+d content/pages/shared-feed/components/video-cards
+f content/pages/shared-feed/components/video-cards/card-pipeline.js (435 lines)
+f content/pages/shared-feed/components/video-cards/channel-columns.js (34 lines)
+f content/pages/shared-feed/components/video-cards/copy-link.js (258 lines)
+d content/pages/shared-feed/features
+d content/pages/shared-feed/features/channel-filters
+f content/pages/shared-feed/features/channel-filters/channel-blacklist.js (95 lines)
+f content/pages/shared-feed/features/channel-filters/channel-whitelist.js (113 lines)
+d content/pages/shared-feed/features/multi-select
+f content/pages/shared-feed/features/multi-select/multi-select.css (1 lines)
+f content/pages/shared-feed/features/multi-select/multi-select.js (1268 lines)
+d content/pages/shared-feed/layout
+f content/pages/shared-feed/layout/auto-scale-grid.js (113 lines)
+f content/pages/shared-feed/layout/feed-grid-columns.js (59 lines)
+f content/pages/shared-feed/layout/grid-animator.js (107 lines)
+d content/pages/shared-feed/tracking
+f content/pages/shared-feed/tracking/resume-badges.css (10 lines)
+f content/pages/shared-feed/tracking/resume-badges.js (206 lines)
+f content/pages/shared-feed/tracking/watched-indicator.css (35 lines)
+d content/pages/shared-feed/typography
+f content/pages/shared-feed/typography/full-video-titles.css (83 lines)
+d content/pages/shared-feed/utils
+f content/pages/shared-feed/utils/filter-presets.js (67 lines)
+f content/pages/shared-feed/index.js (12 lines)
+d content/pages/shorts
+d content/pages/shorts/features
+d content/pages/shorts/features/playback
+f content/pages/shorts/features/playback/auto-scroll.js (247 lines)
+f content/pages/shorts/features/playback/stop-looping.js (101 lines)
+f content/pages/shorts/features/playback/volume-normalizer.js (126 lines)
+f content/pages/shorts/features/redirect-shorts.js (66 lines)
+f content/pages/shorts/index.js (5 lines)
+d content/pages/subscriptions
+d content/pages/subscriptions/features
+d content/pages/subscriptions/features/channel-health
+f content/pages/subscriptions/features/channel-health/channel-health-api.js (579 lines)
+f content/pages/subscriptions/features/channel-health/channel-health-db.js (104 lines)
+f content/pages/subscriptions/features/channel-health/channel-health-ui.js (802 lines)
+f content/pages/subscriptions/features/channel-health/channel-health.css (1 lines)
+f content/pages/subscriptions/features/channel-health/channel-health.js (71 lines)
+f content/pages/subscriptions/features/channel-health/custom-dialog.js (168 lines)
+d content/pages/subscriptions/features/grid-layout
+f content/pages/subscriptions/features/grid-layout/two-column-subs.css (17 lines)
+f content/pages/subscriptions/features/grid-layout/two-column-subscriptions.js (57 lines)
+f content/pages/subscriptions/features/filter-bar.js (15 lines)
+d content/pages/subscriptions/layout
+f content/pages/subscriptions/layout/subscriptions-bar.js (51 lines)
+f content/pages/subscriptions/index.js (6 lines)
+d content/pages/watch
+d content/pages/watch/components
+d content/pages/watch/components/comments
+f content/pages/watch/components/comments/comment-filter.js (144 lines)
+d content/pages/watch/features
+d content/pages/watch/features/history
+f content/pages/watch/features/history/continue-watching.js (133 lines)
+f content/pages/watch/features/history/smart-history.js (258 lines)
+f content/pages/watch/features/history/watch-history.js (243 lines)
+d content/pages/watch/features/time-management
+f content/pages/watch/features/time-management/watch-time-alert.js (155 lines)
+f content/pages/watch/features/time-management/watch-time-limit.js (32 lines)
+d content/pages/watch/features/ui-tweaks
+f content/pages/watch/features/ui-tweaks/auto-hide-topbar.js (91 lines)
+f content/pages/watch/features/ui-tweaks/inline-channel-buttons.js (240 lines)
+d content/pages/watch/layout
+d content/pages/watch/layout/modes
+d content/pages/watch/layout/modes/css
+f content/pages/watch/layout/modes/css/ambient-mode.css (22 lines)
+f content/pages/watch/layout/modes/css/cinema-mode.css (108 lines)
+f content/pages/watch/layout/modes/css/cinematic-mode.css (1 lines)
+f content/pages/watch/layout/modes/css/deck-mode.css (1 lines)
+f content/pages/watch/layout/modes/css/minimal-mode.css (55 lines)
+f content/pages/watch/layout/modes/css/pip-mode.css (18 lines)
+f content/pages/watch/layout/modes/css/sidebar-mode.css (1 lines)
+f content/pages/watch/layout/modes/css/study-mode.css (29 lines)
+f content/pages/watch/layout/modes/focus-mode.js (387 lines)
+f content/pages/watch/layout/modes/watch-redesign.js (198 lines)
+f content/pages/watch/layout/modes/zen-mode.js (303 lines)
+d content/pages/watch/layout/seamless-mode
+f content/pages/watch/layout/seamless-mode/action-buttons-controller.js (29 lines)
+f content/pages/watch/layout/seamless-mode/channel-bar-controller.js (89 lines)
+f content/pages/watch/layout/seamless-mode/dom-transaction-manager.js (90 lines)
+f content/pages/watch/layout/seamless-mode/dynamic-css-matrix-engine.js (121 lines)
+f content/pages/watch/layout/seamless-mode/polymer-data-overrider.js (38 lines)
+f content/pages/watch/layout/seamless-mode/quad-observer-system.js (56 lines)
+f content/pages/watch/layout/seamless-mode/related-grid-controller.js (237 lines)
+f content/pages/watch/layout/seamless-mode/seamless-mode.css (63 lines)
+f content/pages/watch/layout/seamless-mode/seamless-mode.js (159 lines)
+f content/pages/watch/layout/seamless-mode/shadow-dom-piercing-engine.js (40 lines)
+f content/pages/watch/layout/seamless-mode/telemetry-logger.js (36 lines)
+d content/pages/watch/layout/study-mode
+f content/pages/watch/layout/study-mode/note-panel.js (274 lines)
+f content/pages/watch/layout/study-mode/session-timer.js (93 lines)
+f content/pages/watch/layout/study-mode/smart-captions.js (50 lines)
+f content/pages/watch/layout/study-mode/speed-panel.js (228 lines)
+f content/pages/watch/layout/study-mode/study-mode.js (182 lines)
+d content/pages/watch/player
+d content/pages/watch/player/automation
+f content/pages/watch/player/automation/auto-cinema.js (394 lines)
+f content/pages/watch/player/automation/auto-like.js (384 lines)
+f content/pages/watch/player/automation/auto-pause.js (351 lines)
+f content/pages/watch/player/automation/auto-pip.js (365 lines)
+f content/pages/watch/player/automation/auto-quality.js (250 lines)
+f content/pages/watch/player/automation/auto-subtitles.js (456 lines)
+f content/pages/watch/player/automation/index.js (7 lines)
+f content/pages/watch/player/automation/video-resumer.js (649 lines)
+d content/pages/watch/player/controls
+f content/pages/watch/player/controls/bookmarks.js (133 lines)
+f content/pages/watch/player/controls/live-stream-time.css (12 lines)
+f content/pages/watch/player/controls/loop-button.js (92 lines)
+f content/pages/watch/player/controls/snapshot-button.js (329 lines)
+f content/pages/watch/player/controls/time-dashboard.css (22 lines)
+d content/pages/watch/player/core
+f content/pages/watch/player/core/player-bar-overflow.js (203 lines)
+f content/pages/watch/player/core/player-bar-styles.js (77 lines)
+f content/pages/watch/player/core/player-bar-ui.js (391 lines)
+f content/pages/watch/player/core/player-controls.js (143 lines)
+d content/pages/watch/player/enhancements
+d content/pages/watch/player/enhancements/video-speed-controller
+f content/pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css (1 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/video-speed-controller.js (274 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/vsc-audio-support.js (16 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/vsc-force-speed.js (102 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/vsc-hide-by-default.js (16 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/vsc-remember-speed.js (16 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/vsc-shortcuts.js (157 lines)
+f content/pages/watch/player/enhancements/video-speed-controller/vsc-ui.js (246 lines)
+f content/pages/watch/player/enhancements/compact-player.css (210 lines)
+f content/pages/watch/player/enhancements/flex-width-player.css (24 lines)
+f content/pages/watch/player/enhancements/intentional-delay.js (240 lines)
+f content/pages/watch/player/enhancements/live-stream-time.js (48 lines)
+f content/pages/watch/player/enhancements/netflix-subtitles.css (102 lines)
+f content/pages/watch/player/enhancements/real-cinema-mode.css (28 lines)
+f content/pages/watch/player/enhancements/real-cinema-mode.js (51 lines)
+f content/pages/watch/player/enhancements/rounded-player.css (26 lines)
+f content/pages/watch/player/enhancements/split-scrolling.js (374 lines)
+f content/pages/watch/player/enhancements/subtitles.css (31 lines)
+f content/pages/watch/player/enhancements/time-display.js (267 lines)
+d content/pages/watch/player/media-effects
+d content/pages/watch/player/media-effects/ambient-mode
+f content/pages/watch/player/media-effects/ambient-mode/ambient-mode.js (113 lines)
+f content/pages/watch/player/media-effects/ambient-mode/audio-mode.js (341 lines)
+d content/pages/watch/player/media-effects/video-filters
+d content/pages/watch/player/media-effects/video-filters/ui
+f content/pages/watch/player/media-effects/video-filters/ui/tab-adjust.js (472 lines)
+f content/pages/watch/player/media-effects/video-filters/ui/tab-presets.js (201 lines)
+f content/pages/watch/player/media-effects/video-filters/video-filters-overlay.js (909 lines)
+f content/pages/watch/player/media-effects/video-filters/video-filters-presets.js (1750 lines)
+f content/pages/watch/player/media-effects/video-filters/video-filters-ui.js (325 lines)
+f content/pages/watch/player/media-effects/video-filters/video-filters.css (1 lines)
+f content/pages/watch/player/media-effects/video-filters/video-filters.js (516 lines)
+d content/pages/watch/player/media-effects/volume-booster
+d content/pages/watch/player/media-effects/volume-booster/constants
+f content/pages/watch/player/media-effects/volume-booster/constants/eq-presets.js (26 lines)
+d content/pages/watch/player/media-effects/volume-booster/modules
+f content/pages/watch/player/media-effects/volume-booster/modules/audio-dynamics.js (67 lines)
+f content/pages/watch/player/media-effects/volume-booster/modules/audio-eq.js (44 lines)
+f content/pages/watch/player/media-effects/volume-booster/modules/audio-fx.js (808 lines)
+f content/pages/watch/player/media-effects/volume-booster/modules/audio-spatial.js (162 lines)
+d content/pages/watch/player/media-effects/volume-booster/ui
+f content/pages/watch/player/media-effects/volume-booster/ui/tab-dynamics.js (61 lines)
+f content/pages/watch/player/media-effects/volume-booster/ui/tab-eq.js (90 lines)
+f content/pages/watch/player/media-effects/volume-booster/ui/tab-fx.js (99 lines)
+f content/pages/watch/player/media-effects/volume-booster/ui/tab-spatial.js (121 lines)
+f content/pages/watch/player/media-effects/volume-booster/volume-booster-ui.js (1146 lines)
+f content/pages/watch/player/media-effects/volume-booster/volume-booster.css (1 lines)
+f content/pages/watch/player/media-effects/volume-booster/volume-booster.js (943 lines)
+f content/pages/watch/index.js (47 lines)
+f content/pages/watch/watch-manager.js (452 lines)
+d content/styles
+d content/styles/base-ui-design
+d content/styles/base-ui-design/base
+f content/styles/base-ui-design/base/animations.css (149 lines)
+f content/styles/base-ui-design/base/core-styles-ui.css (73 lines)
+f content/styles/base-ui-design/base/tokens.css (144 lines)
+d content/styles/base-ui-design/global
+d content/styles/base-ui-design/global/components
+f content/styles/base-ui-design/global/components/account-menus.css (1 lines)
+f content/styles/base-ui-design/global/components/badges.css (1 lines)
+f content/styles/base-ui-design/global/components/buttons.css (403 lines)
+f content/styles/base-ui-design/global/components/cards.css (47 lines)
+f content/styles/base-ui-design/global/components/dialogs.css (1 lines)
+f content/styles/base-ui-design/global/components/icons.css (27 lines)
+f content/styles/base-ui-design/global/components/menus.css (1 lines)
+f content/styles/base-ui-design/global/components/notifications.css (1 lines)
+f content/styles/base-ui-design/global/components/panels.css (26 lines)
+f content/styles/base-ui-design/global/components/pills.css (1 lines)
+f content/styles/base-ui-design/global/components/separators.css (42 lines)
+f content/styles/base-ui-design/global/components/tags.css (92 lines)
+d content/styles/base-ui-design/global/layouts
+f content/styles/base-ui-design/global/layouts/components.css (234 lines)
+f content/styles/base-ui-design/global/layouts/global-overrides.css (127 lines)
+f content/styles/base-ui-design/global/layouts/grid-layout.css (455 lines)
+f content/styles/base-ui-design/global/layouts/layout-grid.css (127 lines)
+f content/styles/base-ui-design/global/layouts/layout.css (100 lines)
+f content/styles/base-ui-design/global/layouts/navbar.css (1 lines)
+f content/styles/base-ui-design/global/layouts/sidebar.css (1 lines)
+d content/styles/base-ui-design/pages
+d content/styles/base-ui-design/pages/channels
+f content/styles/base-ui-design/pages/channels/layout.css (26 lines)
+d content/styles/base-ui-design/pages/history
+f content/styles/base-ui-design/pages/history/layout.css (194 lines)
+d content/styles/base-ui-design/pages/home
+f content/styles/base-ui-design/pages/home/home-layout.css (46 lines)
+d content/styles/base-ui-design/pages/playlist
+f content/styles/base-ui-design/pages/playlist/layout.css (1 lines)
+d content/styles/base-ui-design/pages/search
+f content/styles/base-ui-design/pages/search/search-card-compat.css (104 lines)
+f content/styles/base-ui-design/pages/search/search-grid-cards.css (241 lines)
+f content/styles/base-ui-design/pages/search/search-grid-mode.css (1505 lines)
+f content/styles/base-ui-design/pages/search/search-layout-densities.css (356 lines)
+f content/styles/base-ui-design/pages/search/search-list-mode.css (59 lines)
+d content/styles/base-ui-design/pages/shorts
+f content/styles/base-ui-design/pages/shorts/layout.css (135 lines)
+d content/styles/base-ui-design/pages/subscriptions
+f content/styles/base-ui-design/pages/subscriptions/layout.css (11 lines)
+d content/styles/base-ui-design/pages/watch
+f content/styles/base-ui-design/pages/watch/action-buttons.css (35 lines)
+f content/styles/base-ui-design/pages/watch/base-native-overrides.css (153 lines)
+f content/styles/base-ui-design/pages/watch/channel-bar.css (35 lines)
+f content/styles/base-ui-design/pages/watch/comments.css (64 lines)
+f content/styles/base-ui-design/pages/watch/custom-bar-ui.css (188 lines)
+f content/styles/base-ui-design/pages/watch/livechat.css (41 lines)
+f content/styles/base-ui-design/pages/watch/progress-bar.css (46 lines)
+f content/styles/base-ui-design/pages/watch/watch-alert.css (84 lines)
+f content/styles/base-ui-design/pages/watch/watch-layout.css (8 lines)
+f content/styles/base-ui-design/index.css (122 lines)
+d content/styles/card-styles
+f content/styles/card-styles/abyss.css (1 lines)
+f content/styles/card-styles/aurora.css (1 lines)
+f content/styles/card-styles/autumn.css (1 lines)
+f content/styles/card-styles/bloodmoon.css (1 lines)
+f content/styles/card-styles/blue-sky.css (1 lines)
+f content/styles/card-styles/brutalism.css (1 lines)
+f content/styles/card-styles/cairo-red.css (1 lines)
+f content/styles/card-styles/cherry.css (1 lines)
+f content/styles/card-styles/christmas.css (1 lines)
+f content/styles/card-styles/claymorphism.css (1 lines)
+f content/styles/card-styles/coffee.css (1 lines)
+f content/styles/card-styles/colorize.css (1 lines)
+f content/styles/card-styles/compact.css (1 lines)
+f content/styles/card-styles/crystal-glass.css (1 lines)
+f content/styles/card-styles/cyberpunk.css (1 lines)
+f content/styles/card-styles/deepspace.css (1 lines)
+f content/styles/card-styles/default.css (1 lines)
+f content/styles/card-styles/discord.css (1 lines)
+f content/styles/card-styles/dracula.css (1 lines)
+f content/styles/card-styles/elevated.css (1 lines)
+f content/styles/card-styles/ember.css (1 lines)
+f content/styles/card-styles/flat.css (1 lines)
+f content/styles/card-styles/fluent.css (1 lines)
+f content/styles/card-styles/frosted.css (1 lines)
+f content/styles/card-styles/frutiger-aero.css (1 lines)
+f content/styles/card-styles/galaxy.css (1 lines)
+f content/styles/card-styles/glass.css (1 lines)
+f content/styles/card-styles/glassmorphism.css (1 lines)
+f content/styles/card-styles/gothic.css (1 lines)
+f content/styles/card-styles/grunge.css (1 lines)
+f content/styles/card-styles/hacker.css (1 lines)
+f content/styles/card-styles/harry-potter.css (1 lines)
+f content/styles/card-styles/hologram.css (1 lines)
+f content/styles/card-styles/holographic.css (1 lines)
+f content/styles/card-styles/ice-blue.css (1 lines)
+f content/styles/card-styles/immersive.css (1 lines)
+f content/styles/card-styles/kawaii.css (60 lines)
+f content/styles/card-styles/liquid-glass.css (1 lines)
+f content/styles/card-styles/material.css (1 lines)
+f content/styles/card-styles/matrix.css (1 lines)
+f content/styles/card-styles/maximalism.css (1 lines)
+f content/styles/card-styles/midnight.css (1 lines)
+f content/styles/card-styles/minimalism.css (1 lines)
+f content/styles/card-styles/minimalist.css (1 lines)
+f content/styles/card-styles/nature.css (1 lines)
+f content/styles/card-styles/nebula.css (1 lines)
+f content/styles/card-styles/neo-brutalism.css (1 lines)
+f content/styles/card-styles/neon.css (1 lines)
+f content/styles/card-styles/neumorphic.css (1 lines)
+f content/styles/card-styles/nord.css (1 lines)
+f content/styles/card-styles/ocean.css (1 lines)
+f content/styles/card-styles/origami.css (1 lines)
+f content/styles/card-styles/outrun.css (1 lines)
+f content/styles/card-styles/pink.css (1 lines)
+f content/styles/card-styles/polaroid.css (95 lines)
+f content/styles/card-styles/retro-wave.css (1 lines)
+f content/styles/card-styles/retro.css (1 lines)
+f content/styles/card-styles/retrowave-green.css (1 lines)
+f content/styles/card-styles/sakura.css (1 lines)
+f content/styles/card-styles/skeuomorphic.css (1 lines)
+f content/styles/card-styles/spring.css (1 lines)
+f content/styles/card-styles/steampunk.css (1 lines)
+f content/styles/card-styles/summer.css (1 lines)
+f content/styles/card-styles/sunset.css (1 lines)
+f content/styles/card-styles/technozen.css (1 lines)
+f content/styles/card-styles/terminalism.css (1 lines)
+f content/styles/card-styles/vaporwave.css (1 lines)
+f content/styles/card-styles/vintage.css (1 lines)
+f content/styles/card-styles/winter.css (1 lines)
+f content/styles/card-styles/woodblock.css (1 lines)
+f content/styles/card-styles/y2k.css (1 lines)
+d content/styles/themes
+f content/styles/themes/abyss.css (134 lines)
+f content/styles/themes/aurora.css (36 lines)
+f content/styles/themes/autumn.css (12 lines)
+f content/styles/themes/bloodmoon.css (12 lines)
+f content/styles/themes/blue-sky.css (64 lines)
+f content/styles/themes/brutalism.css (84 lines)
+f content/styles/themes/cairo-red.css (12 lines)
+f content/styles/themes/cherry.css (64 lines)
+f content/styles/themes/christmas.css (12 lines)
+f content/styles/themes/claymorphism.css (64 lines)
+f content/styles/themes/coffee.css (58 lines)
+f content/styles/themes/colorize.css (12 lines)
+f content/styles/themes/crystal-glass.css (64 lines)
+f content/styles/themes/cyberpunk.css (64 lines)
+f content/styles/themes/deepspace.css (12 lines)
+f content/styles/themes/default.css (114 lines)
+f content/styles/themes/discord.css (57 lines)
+f content/styles/themes/dracula.css (48 lines)
+f content/styles/themes/ember.css (58 lines)
+f content/styles/themes/fluent.css (12 lines)
+f content/styles/themes/frutiger-aero.css (64 lines)
+f content/styles/themes/galaxy.css (13 lines)
+f content/styles/themes/glassmorphism.css (36 lines)
+f content/styles/themes/gothic.css (13 lines)
+f content/styles/themes/grunge.css (13 lines)
+f content/styles/themes/hacker-green.css (64 lines)
+f content/styles/themes/hacker.css (47 lines)
+f content/styles/themes/harry-potter.css (68 lines)
+f content/styles/themes/hologram.css (100 lines)
+f content/styles/themes/ice-blue.css (64 lines)
+f content/styles/themes/kawaii.css (64 lines)
+f content/styles/themes/liquid-glass.css (39 lines)
+f content/styles/themes/material.css (36 lines)
+f content/styles/themes/matrix.css (13 lines)
+f content/styles/themes/maximalism.css (36 lines)
+f content/styles/themes/midnight.css (64 lines)
+f content/styles/themes/minimalism.css (36 lines)
+f content/styles/themes/nature.css (12 lines)
+f content/styles/themes/nebula.css (12 lines)
+f content/styles/themes/neo-brutalism.css (64 lines)
+f content/styles/themes/neumorphic.css (79 lines)
+f content/styles/themes/nord.css (58 lines)
+f content/styles/themes/ocean.css (81 lines)
+f content/styles/themes/origami.css (64 lines)
+f content/styles/themes/outrun.css (12 lines)
+f content/styles/themes/pink.css (21 lines)
+f content/styles/themes/retro-wave.css (13 lines)
+f content/styles/themes/retro.css (122 lines)
+f content/styles/themes/retrowave-green.css (12 lines)
+f content/styles/themes/sakura.css (184 lines)
+f content/styles/themes/steampunk.css (64 lines)
+f content/styles/themes/sunset.css (63 lines)
+f content/styles/themes/technozen.css (90 lines)
+f content/styles/themes/terminalism.css (36 lines)
+f content/styles/themes/vaporwave.css (13 lines)
+f content/styles/themes/vintage.css (129 lines)
+f content/styles/themes/woodblock.css (64 lines)
+f content/styles/themes/y2k.css (64 lines)
+d content/styles/ui-styles
+d content/styles/ui-styles/abyss
+f content/styles/ui-styles/abyss/index.css (32 lines)
+d content/styles/ui-styles/aurora
+f content/styles/ui-styles/aurora/index.css (42 lines)
+d content/styles/ui-styles/autumn
+f content/styles/ui-styles/autumn/index.css (42 lines)
+f content/styles/ui-styles/autumn/overrides.css (481 lines)
+d content/styles/ui-styles/blood-moon
+f content/styles/ui-styles/blood-moon/index.css (29 lines)
+f content/styles/ui-styles/blood-moon/overrides.css (211 lines)
+d content/styles/ui-styles/bloodmoon
+f content/styles/ui-styles/bloodmoon/index.css (51 lines)
+f content/styles/ui-styles/bloodmoon/overrides.css (760 lines)
+d content/styles/ui-styles/blue-sky
+f content/styles/ui-styles/blue-sky/index.css (76 lines)
+f content/styles/ui-styles/blue-sky/overrides.css (813 lines)
+d content/styles/ui-styles/brutalism
+f content/styles/ui-styles/brutalism/index.css (52 lines)
+f content/styles/ui-styles/brutalism/overrides.css (3278 lines)
+d content/styles/ui-styles/cairo-red
+f content/styles/ui-styles/cairo-red/index.css (48 lines)
+f content/styles/ui-styles/cairo-red/manifest.json (10 lines)
+f content/styles/ui-styles/cairo-red/overrides.css (258 lines)
+d content/styles/ui-styles/cherry
+f content/styles/ui-styles/cherry/index.css (48 lines)
+f content/styles/ui-styles/cherry/manifest.json (8 lines)
+f content/styles/ui-styles/cherry/overrides.css (361 lines)
+d content/styles/ui-styles/christmas
+f content/styles/ui-styles/christmas/index.css (50 lines)
+f content/styles/ui-styles/christmas/overrides.css (318 lines)
+d content/styles/ui-styles/claymorphism
+f content/styles/ui-styles/claymorphism/index.css (52 lines)
+f content/styles/ui-styles/claymorphism/overrides.css (1960 lines)
+d content/styles/ui-styles/colorize
+f content/styles/ui-styles/colorize/index.css (42 lines)
+f content/styles/ui-styles/colorize/overrides.css (716 lines)
+d content/styles/ui-styles/crystal-glass
+f content/styles/ui-styles/crystal-glass/index.css (52 lines)
+f content/styles/ui-styles/crystal-glass/manifest.json (10 lines)
+f content/styles/ui-styles/crystal-glass/overrides.css (862 lines)
+d content/styles/ui-styles/cyberpunk
+f content/styles/ui-styles/cyberpunk/index.css (57 lines)
+f content/styles/ui-styles/cyberpunk/overrides.css (4483 lines)
+d content/styles/ui-styles/deepspace
+f content/styles/ui-styles/deepspace/index.css (51 lines)
+f content/styles/ui-styles/deepspace/overrides.css (251 lines)
+d content/styles/ui-styles/default
+f content/styles/ui-styles/default/index.css (12 lines)
+d content/styles/ui-styles/fluent
+f content/styles/ui-styles/fluent/index.css (42 lines)
+f content/styles/ui-styles/fluent/manifest.json (9 lines)
+f content/styles/ui-styles/fluent/overrides.css (715 lines)
+d content/styles/ui-styles/frutiger-aero
+f content/styles/ui-styles/frutiger-aero/index.css (56 lines)
+f content/styles/ui-styles/frutiger-aero/overrides.css (904 lines)
+d content/styles/ui-styles/galaxy
+f content/styles/ui-styles/galaxy/index.css (46 lines)
+f content/styles/ui-styles/galaxy/overrides.css (2397 lines)
+d content/styles/ui-styles/glassmorphism
+f content/styles/ui-styles/glassmorphism/index.css (42 lines)
+d content/styles/ui-styles/gothic
+f content/styles/ui-styles/gothic/index.css (46 lines)
+f content/styles/ui-styles/gothic/overrides.css (2225 lines)
+d content/styles/ui-styles/grunge
+f content/styles/ui-styles/grunge/index.css (46 lines)
+f content/styles/ui-styles/grunge/overrides.css (2234 lines)
+d content/styles/ui-styles/harry-potter
+f content/styles/ui-styles/harry-potter/index.css (88 lines)
+f content/styles/ui-styles/harry-potter/manifest.json (17 lines)
+f content/styles/ui-styles/harry-potter/overrides.css (1700 lines)
+d content/styles/ui-styles/hologram
+f content/styles/ui-styles/hologram/index.css (46 lines)
+f content/styles/ui-styles/hologram/overrides.css (2413 lines)
+d content/styles/ui-styles/ice-blue
+f content/styles/ui-styles/ice-blue/index.css (42 lines)
+f content/styles/ui-styles/ice-blue/manifest.json (10 lines)
+f content/styles/ui-styles/ice-blue/overrides.css (640 lines)
+d content/styles/ui-styles/kawaii
+f content/styles/ui-styles/kawaii/index.css (56 lines)
+f content/styles/ui-styles/kawaii/overrides.css (4103 lines)
+d content/styles/ui-styles/liquid-glass
+f content/styles/ui-styles/liquid-glass/index.css (64 lines)
+f content/styles/ui-styles/liquid-glass/manifest.json (17 lines)
+f content/styles/ui-styles/liquid-glass/overrides.css (1475 lines)
+d content/styles/ui-styles/material
+f content/styles/ui-styles/material/index.css (42 lines)
+f content/styles/ui-styles/material/overrides.css (151 lines)
+d content/styles/ui-styles/matrix
+f content/styles/ui-styles/matrix/index.css (46 lines)
+f content/styles/ui-styles/matrix/overrides.css (2275 lines)
+d content/styles/ui-styles/maximalism
+f content/styles/ui-styles/maximalism/index.css (55 lines)
+f content/styles/ui-styles/maximalism/overrides.css (216 lines)
+d content/styles/ui-styles/minimalism
+f content/styles/ui-styles/minimalism/index.css (48 lines)
+f content/styles/ui-styles/minimalism/overrides.css (162 lines)
+d content/styles/ui-styles/nature
+f content/styles/ui-styles/nature/index.css (66 lines)
+d content/styles/ui-styles/nebula
+f content/styles/ui-styles/nebula/index.css (52 lines)
+f content/styles/ui-styles/nebula/overrides.css (299 lines)
+d content/styles/ui-styles/neo-brutalism
+f content/styles/ui-styles/neo-brutalism/index.css (46 lines)
+f content/styles/ui-styles/neo-brutalism/overrides.css (2230 lines)
+d content/styles/ui-styles/neumorphic
+f content/styles/ui-styles/neumorphic/index.css (48 lines)
+f content/styles/ui-styles/neumorphic/overrides.css (813 lines)
+d content/styles/ui-styles/ocean
+f content/styles/ui-styles/ocean/index.css (74 lines)
+f content/styles/ui-styles/ocean/overrides.css (1280 lines)
+d content/styles/ui-styles/origami
+f content/styles/ui-styles/origami/index.css (46 lines)
+f content/styles/ui-styles/origami/overrides.css (2236 lines)
+d content/styles/ui-styles/outrun
+f content/styles/ui-styles/outrun/index.css (49 lines)
+f content/styles/ui-styles/outrun/overrides.css (276 lines)
+d content/styles/ui-styles/pink
+f content/styles/ui-styles/pink/index.css (42 lines)
+f content/styles/ui-styles/pink/manifest.json (10 lines)
+f content/styles/ui-styles/pink/overrides.css (643 lines)
+d content/styles/ui-styles/player-retouch
+f content/styles/ui-styles/player-retouch/index.css (29 lines)
+f content/styles/ui-styles/player-retouch/overrides.css (151 lines)
+d content/styles/ui-styles/retro
+f content/styles/ui-styles/retro/index.css (151 lines)
+f content/styles/ui-styles/retro/overrides.css (1164 lines)
+d content/styles/ui-styles/retro-wave
+f content/styles/ui-styles/retro-wave/index.css (46 lines)
+f content/styles/ui-styles/retro-wave/overrides.css (2258 lines)
+d content/styles/ui-styles/retrowave-green
+f content/styles/ui-styles/retrowave-green/index.css (42 lines)
+f content/styles/ui-styles/retrowave-green/manifest.json (10 lines)
+f content/styles/ui-styles/retrowave-green/overrides.css (798 lines)
+d content/styles/ui-styles/sakura
+f content/styles/ui-styles/sakura/index.css (46 lines)
+f content/styles/ui-styles/sakura/overrides.css (1268 lines)
+d content/styles/ui-styles/shared
+f content/styles/ui-styles/shared/index.css (29 lines)
+f content/styles/ui-styles/shared/overrides.css (18 lines)
+f content/styles/ui-styles/shared/timeline-visibility.css (51 lines)
+d content/styles/ui-styles/steampunk
+f content/styles/ui-styles/steampunk/index.css (46 lines)
+f content/styles/ui-styles/steampunk/overrides.css (2242 lines)
+d content/styles/ui-styles/technozen
+f content/styles/ui-styles/technozen/index.css (89 lines)
+f content/styles/ui-styles/technozen/overrides.css (1042 lines)
+d content/styles/ui-styles/terminalism
+f content/styles/ui-styles/terminalism/index.css (49 lines)
+f content/styles/ui-styles/terminalism/overrides.css (572 lines)
+d content/styles/ui-styles/vaporwave
+f content/styles/ui-styles/vaporwave/index.css (46 lines)
+f content/styles/ui-styles/vaporwave/overrides.css (2249 lines)
+d content/styles/ui-styles/vintage
+f content/styles/ui-styles/vintage/index.css (169 lines)
+d content/styles/ui-styles/woodblock
+f content/styles/ui-styles/woodblock/index.css (46 lines)
+f content/styles/ui-styles/woodblock/overrides.css (2240 lines)
+d content/styles/ui-styles/y2k
+f content/styles/ui-styles/y2k/index.css (46 lines)
+f content/styles/ui-styles/y2k/overrides.css (2460 lines)
+d inject
+f inject/avatar-extractor.js (62 lines)
+f inject/page-bridge.js (224 lines)
+f inject/ytcfg-bridge.js (26 lines)
+d options
+f options/options.css (118 lines)
+f options/options.html (115 lines)
+f options/options.js (112 lines)
+d popup
+d popup/lib
+f popup/lib/anime.min.js (8 lines)
+d popup/scripts
+d popup/scripts/components
+f popup/scripts/components/index.js (40 lines)
+f popup/scripts/components/inline-sliders.js (245 lines)
+f popup/scripts/components/page-buttons.js (289 lines)
+f popup/scripts/components/theme-selector.js (939 lines)
+f popup/scripts/components/visual-grids.js (180 lines)
+d popup/scripts/core
+f popup/scripts/core/popup-main.js (1632 lines)
+f popup/scripts/core/popup-state.js (252 lines)
+d popup/scripts/features
+f popup/scripts/features/backup-tools.js (138 lines)
+f popup/scripts/features/bookmarks-manager.js (125 lines)
+f popup/scripts/features/domain-memory.js (670 lines)
+f popup/scripts/features/global-blocklist.js (150 lines)
+f popup/scripts/features/history-widget.js (257 lines)
+f popup/scripts/features/index.js (18 lines)
+f popup/scripts/features/player-bar-organizer.js (121 lines)
+d popup/scripts/schema
+d popup/scripts/schema/tabs
+f popup/scripts/schema/tabs/index.js (16 lines)
+f popup/scripts/schema/tabs/tab-advanced.js (127 lines)
+f popup/scripts/schema/tabs/tab-appearance.js (4 lines)
+f popup/scripts/schema/tabs/tab-bookmarks.js (4 lines)
+f popup/scripts/schema/tabs/tab-declutter.js (498 lines)
+f popup/scripts/schema/tabs/tab-global.js (50 lines)
+f popup/scripts/schema/tabs/tab-history.js (114 lines)
+f popup/scripts/schema/tabs/tab-home.js (49 lines)
+f popup/scripts/schema/tabs/tab-hotkey.js (33 lines)
+f popup/scripts/schema/tabs/tab-modes.js (118 lines)
+f popup/scripts/schema/tabs/tab-player.js (422 lines)
+f popup/scripts/schema/tabs/tab-popup-design.js (10 lines)
+f popup/scripts/schema/tabs/tab-search.js (41 lines)
+f popup/scripts/schema/tabs/tab-shorts.js (81 lines)
+f popup/scripts/schema/tabs/tab-speed.js (62 lines)
+f popup/scripts/schema/tabs/tab-subscriptions.js (91 lines)
+f popup/scripts/schema/index.js (40 lines)
+d popup/scripts/ui
+f popup/scripts/ui/popup-animations.js (276 lines)
+f popup/scripts/ui/popup-glow.js (47 lines)
+f popup/scripts/ui/popup-icons.js (117 lines)
+f popup/scripts/ui/popup-renderer.js (1207 lines)
+f popup/scripts/ui/popup-ui.js (448 lines)
+d popup/styles
+d popup/styles/components
+f popup/styles/components/bookmarks.css (110 lines)
+f popup/styles/components/history.css (287 lines)
+f popup/styles/components/popup-chips.css (74 lines)
+f popup/styles/components/popup-themes.css (915 lines)
+d popup/styles/core
+f popup/styles/core/fonts.css (38 lines)
+f popup/styles/core/popup-animations.css (508 lines)
+f popup/styles/core/popup-extracted.css (350 lines)
+f popup/styles/core/popup.css (2922 lines)
+f popup/styles/core/theme-vars.css (105 lines)
+d popup/templates
+f popup/templates/card-btns.html (73 lines)
+f popup/templates/popup-btns.html (73 lines)
+f popup/templates/theme-btns.html (73 lines)
+f popup/popup.html (1111 lines)
+d shared
+d shared/config
+d shared/config/constants
+f shared/config/constants/core.js (77 lines)
+f shared/config/constants/index.js (39 lines)
+f shared/config/constants/selectors.js (184 lines)
+f shared/config/constants/themes.js (678 lines)
+f shared/config/default-settings.js (333 lines)
+f shared/config/settings-schema.js (617 lines)
+f shared/config/settings.test.js (37 lines)
+d shared/locales
+f shared/locales/ar.js (492 lines)
+f shared/locales/de.js (492 lines)
+f shared/locales/en.js (492 lines)
+f shared/locales/es.js (492 lines)
+f shared/locales/fr.js (492 lines)
+f shared/locales/hi.js (492 lines)
+f shared/locales/i18n.js (126 lines)
+f shared/locales/id.js (492 lines)
+f shared/locales/it.js (492 lines)
+f shared/locales/ja.js (492 lines)
+f shared/locales/ko.js (492 lines)
+f shared/locales/nl.js (492 lines)
+f shared/locales/pl.js (492 lines)
+f shared/locales/pt.js (492 lines)
+f shared/locales/ru.js (492 lines)
+f shared/locales/sv.js (492 lines)
+f shared/locales/th.js (492 lines)
+f shared/locales/tr.js (492 lines)
+f shared/locales/vi.js (492 lines)
+f shared/locales/zh.js (492 lines)
+d shared/utils
+d shared/utils/modules
+f shared/utils/modules/core.js (205 lines)
+f shared/utils/modules/debug.js (13 lines)
+f shared/utils/modules/dom.js (424 lines)
+f shared/utils/modules/storage.js (110 lines)
+f shared/utils/modules/ui.js (242 lines)
+f shared/utils/dom-manager.js (98 lines)
+f shared/utils/index.js (15 lines)
+f global.d.ts (8 lines)

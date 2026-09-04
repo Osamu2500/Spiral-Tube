@@ -122,6 +122,7 @@ html[data-ypp-ui-design="harry-potter"]::after {
 /* Glassmorphism Backdrop Containers */
 html[data-ypp-ui-design="harry-potter"] :is(ytd-playlist-panel-renderer, ytd-expandable-metadata-renderer, ytd-unified-share-panel-renderer, ytd-add-to-playlist-renderer, ytd-settings-options-renderer, ytd-account-settings-renderer) {
   -webkit-backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: var(--hp-shadow-float) !important;
@@ -132,6 +133,7 @@ html[data-ypp-ui-design="harry-potter"] ytd-guide-renderer,
 html[data-ypp-ui-design="harry-potter"] #guide-content,
 html[data-ypp-ui-design="harry-potter"] #guide-inner-content,
 html[data-ypp-ui-design="harry-potter"] ytd-mini-guide-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
 }
@@ -657,6 +659,7 @@ html[data-ypp-ui-design="harry-potter"] tp-yt-paper-dialog.ytd-popup-container {
 html[data-ypp-ui-design="harry-potter"] #masthead-container,
 html[data-ypp-ui-design="harry-potter"] #container.ytd-masthead,
 html[data-ypp-ui-design="harry-potter"] ytd-masthead {
+  -webkit-backdrop-filter: blur(24px) saturate(1.15) !important;
   -webkit-backdrop-filter: blur(24px) saturate(1.15) !important;
   backdrop-filter: blur(24px) saturate(1.15) !important;
   box-shadow:
@@ -1667,6 +1670,7 @@ html[data-ypp-ui-design="harry-potter"] ytd-watch-metadata #description-inline-e
    ========================================================= */
 html[data-ypp-ui-design="harry-potter"] #ypp-eq-panel,
 html[data-ypp-ui-design="harry-potter"] #ypp-cinema-panel {
+  -webkit-backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   background: linear-gradient(135deg, rgba(16, 15, 12, 0.96) 0%, rgba(20, 18, 14, 0.92) 100%) !important;

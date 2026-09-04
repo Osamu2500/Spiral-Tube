@@ -14,10 +14,13 @@ html[data-ypp-ui-design="aurora"] {
   
   /* Aurora Structural Tokens */
   --ypp-menu--webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
   --ypp-dialog--webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   --ypp-card--webkit-backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
   --ypp-card-backdrop-filter-hover: blur(12px) !important;
   

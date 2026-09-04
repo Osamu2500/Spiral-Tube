@@ -2061,6 +2061,8 @@ html[data-ypp-ui-design="galaxy"] tp-yt-paper-dialog, html[data-ypp-ui-design="g
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
   -webkit--webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
@@ -2154,6 +2156,7 @@ html[data-ypp-ui-design="galaxy"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 0 30px rgba(138,43,226,0.4) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
 }
 
@@ -2174,6 +2177,7 @@ html[data-ypp-ui-design="galaxy"] ytd-notification-topbar-button-renderer yt-ico
 html[data-ypp-ui-design="galaxy"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 0 30px rgba(138,43,226,0.4) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
 }

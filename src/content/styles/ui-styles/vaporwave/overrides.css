@@ -334,6 +334,7 @@ html[data-ypp-card-style="vaporwave"] ytd-multi-page-menu-renderer, html[data-yp
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
   -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -348,6 +349,7 @@ html[data-ypp-card-style="vaporwave"] ytd-menu-popup-renderer, html[data-ypp-ui-
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
@@ -364,6 +366,7 @@ html[data-ypp-card-style="vaporwave"] tp-yt-paper-dialog, html[data-ypp-ui-desig
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
   -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -378,6 +381,7 @@ html[data-ypp-card-style="vaporwave"] ytd-notification-renderer, html[data-ypp-u
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
@@ -405,6 +409,7 @@ html[data-ypp-card-style="vaporwave"] #channel-header, html[data-ypp-ui-design="
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
@@ -1937,6 +1942,7 @@ html[data-ypp-card-style="vaporwave"] .vaporwave-exotic-class-250, html[data-ypp
 html[data-ypp-ui-design="vaporwave"] tp-yt-paper-dialog, html[data-ypp-ui-design="vaporwave"] ytd-menu-popup-renderer, html[data-ypp-ui-design="vaporwave"] tp-yt-iron-dropdown, html[data-ypp-ui-design="vaporwave"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="vaporwave"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
 }

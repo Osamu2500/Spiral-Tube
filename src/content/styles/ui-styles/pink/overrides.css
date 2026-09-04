@@ -485,6 +485,7 @@ html[data-ypp-ui-design="pink"] #masthead-container,
 html[data-ypp-ui-design="pink"] ytd-masthead {
   background: repeating-linear-gradient(45deg, hsl(134, 80%, 55%)22, hsl(134, 80%, 55%)22 10px, hsl(268, 70%, 45%)22 10px, hsl(268, 70%, 45%)22 20px), rgba(20,20,20, 0.9) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -534,6 +535,7 @@ html[data-ypp-ui-design="pink"] .sbdd_b,
 html[data-ypp-ui-design="pink"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 30px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -561,6 +563,7 @@ html[data-ypp-ui-design="pink"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="pink"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 30px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;

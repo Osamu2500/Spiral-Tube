@@ -18,6 +18,7 @@ html[data-ypp-ui-design="deepspace"] ::-webkit-scrollbar-thumb {
 html[data-ypp-ui-design="deepspace"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="deepspace"] ytd-popup-container {
   -webkit-backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
   backdrop-filter: blur(24px) !important;
   border-radius: var(--ypp-shape-primary, var(--ds-r-md)) !important;
   box-shadow: var(--ds-glow-blue), 0 24px 60px rgba(0, 0, 5, 0.9) !important;
@@ -175,6 +176,7 @@ html[data-ypp-card-style="deepspace"] yt-icon:hover, html[data-ypp-ui-design="de
 html[data-ypp-ui-design="deepspace"] ytd-mini-guide-renderer,
 html[data-ypp-ui-design="deepspace"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
   -webkit-backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
 }
 
@@ -182,12 +184,14 @@ html[data-ypp-ui-design="deepspace"] tp-yt-iron-dropdown,
 html[data-ypp-ui-design="deepspace"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="deepspace"] ytd-menu-popup-renderer {
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   border-radius: var(--ypp-shape-primary, var(--ds-r-md)) !important;
   box-shadow: var(--ds-glow-blue), 0 16px 40px rgba(0, 0, 5, 0.8) !important;
 }
 
 html[data-ypp-ui-design="deepspace"] ytd-masthead {
+  -webkit-backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 2px 20px rgba(0, 0, 5, 0.8) !important;
@@ -223,12 +227,14 @@ html[data-ypp-ui-design="deepspace"] .ytp-volume-slider-handle {
 
 html[data-ypp-ui-design="deepspace"] .ytp-settings-menu {
   -webkit-backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, var(--ds-r-md)) !important;
   box-shadow: var(--ds-glow-blue) !important;
 }
 
 html[data-ypp-ui-design="deepspace"] #secondary-inner.ytd-watch-flexy {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--ds-r-lg)) !important;

@@ -239,6 +239,7 @@ html[data-ypp-ui-design="cherry"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="cherry"] tp-yt-paper-listbox,
 html[data-ypp-ui-design="cherry"] .ytp-popup {
   -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--cherry-radius)) !important;
   box-shadow: var(--cherry-shadow-soft) !important;
@@ -300,6 +301,7 @@ html[data-ypp-ui-design="cherry"] ytd-comment-simplebox-renderer {
 
 html[data-ypp-ui-design="cherry"] yt-live-chat-renderer,
 html[data-ypp-ui-design="cherry"] yt-live-chat-header-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--cherry-radius)) !important;

@@ -106,37 +106,30 @@
                     this.featureManager.init(this.settings);
                 }
 
-                // Initialize Page Managers
+                // Initialize Page Managers Dynamically
+                this.pageManagers = [];
                 if (window.YPP.managers) {
-                    this.globalLayoutManager = window.YPP.managers.GlobalLayoutManager
-                        ? new window.YPP.managers.GlobalLayoutManager(this.Utils, this.settings)
-                        : null;
-                    if (this.globalLayoutManager) {
-                        this.globalLayoutManager.activate(window.location.href);
-                    }
+                    Object.keys(window.YPP.managers).forEach((managerName: string) => {
+                        const ManagerClass = window.YPP.managers[managerName];
+                        if (typeof ManagerClass !== 'function') return;
 
-                    this.pageManagers = [];
-                    // Only instantiate managers that actually exist after the architecture split
-                    if (window.YPP.managers.WatchPageManager) {
-                        this.pageManagers.push(new window.YPP.managers.WatchPageManager(this.Utils, this.settings));
-                    }
-                    if (window.YPP.managers.SearchPageManager) {
-                        this.pageManagers.push(new window.YPP.managers.SearchPageManager(this.Utils, this.settings));
-                    }
-                    
-                    if (window.YPP.managers.ThumbnailColorManager) {
-                        const initColorManager = () => {
-                            this.thumbnailColorManager = new window.YPP.managers.ThumbnailColorManager();
-                            this.thumbnailColorManager.updateSettings(this.settings);
-                        };
-                        if (window.requestIdleCallback) {
-                            requestIdleCallback(initColorManager);
-                        } else {
-                            setTimeout(initColorManager, 500);
+                        if (managerName === 'GlobalLayoutManager') {
+                            this.globalLayoutManager = new ManagerClass(this.Utils, this.settings);
+                            this.globalLayoutManager.activate(window.location.href);
+                        } else if (managerName === 'ThumbnailColorManager') {
+                            const initColorManager = () => {
+                                this.thumbnailColorManager = new ManagerClass();
+                                this.thumbnailColorManager.updateSettings(this.settings);
+                            };
+                            if (window.requestIdleCallback) {
+                                requestIdleCallback(initColorManager);
+                            } else {
+                                setTimeout(initColorManager, 500);
+                            }
+                        } else if (managerName.endsWith('PageManager')) {
+                            this.pageManagers.push(new ManagerClass(this.Utils, this.settings));
                         }
-                    }
-                } else {
-                    this.pageManagers = [];
+                    });
                 }
 
                 // Wait for body before updating context

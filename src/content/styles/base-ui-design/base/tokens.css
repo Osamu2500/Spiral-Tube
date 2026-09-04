@@ -31,12 +31,14 @@
   --ypp-menu-radius: var(--ypp-shape-lg);
   --ypp-menu-shadow: var(--ypp-shadow-float);
   --ypp-card-bg: var(--ypp-bg-surface);
+  --ypp-card--webkit-backdrop-filter: none;
   --ypp-card-backdrop-filter: none;
   --ypp-panel-bg: var(--ypp-bg-surface);
   --ypp-dialog-bg: var(--ypp-bg-surface);
   --ypp-dialog-radius: var(--ypp-shape-xl);
   --ypp-dialog-border: var(--ypp-glass-border);
   --ypp-dialog-shadow: var(--ypp-shadow-float);
+  --ypp-dialog--webkit-backdrop-filter: none;
   --ypp-dialog-backdrop-filter: none;
   /* --- Shadows (Glassmorphic Glows) --- */
   --ypp-shadow-base:   0 8px 32px rgba(0, 0, 0, 0.3);

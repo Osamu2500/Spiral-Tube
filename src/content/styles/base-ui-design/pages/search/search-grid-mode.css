@@ -770,6 +770,7 @@ body.ypp-search-grid-mode ytd-channel-renderer {
 
 body.ypp-search-grid-mode ytd-channel-renderer {
   -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
   backdrop-filter: blur(24px) saturate(1.2) !important;
   background: linear-gradient(
     135deg,
@@ -1113,6 +1114,7 @@ body.ypp-search-grid-mode ytd-item-section-renderer.ytd-section-list-renderer[is
 
 body.ypp-search-grid-mode #left-arrow-button,
 body.ypp-search-grid-mode #right-arrow-button {
+  -webkit-backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   background: rgba(10, 10, 10, 0.8);

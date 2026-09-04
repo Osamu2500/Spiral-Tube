@@ -97,6 +97,7 @@ html[data-ypp-card-style="fluent"] ::-webkit-scrollbar-thumb {
 html[data-ypp-card-style="fluent"] ytd-masthead,
 html[data-ypp-ui-design="fluent"] ytd-masthead {
   -webkit-backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 
@@ -289,6 +290,7 @@ html[data-ypp-ui-design="fluent"] ytd-compact-video-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
 
@@ -309,6 +311,7 @@ html[data-ypp-card-style="fluent"] yt-img-shadow, html[data-ypp-card-style="flue
 /* 7. Masthead (Header) & Global Navigation */
 html[data-ypp-card-style="fluent"] ytd-masthead, html[data-ypp-ui-design="fluent"] ytd-masthead {
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
@@ -340,6 +343,7 @@ html[data-ypp-ui-design="fluent"] ytd-comment-thread-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
 
@@ -352,6 +356,7 @@ html[data-ypp-card-style="fluent"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="fluent"] .ytp-chrome-bottom {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
@@ -372,11 +377,13 @@ html[data-ypp-card-style="fluent"] tp-yt-paper-dialog, html[data-ypp-card-style=
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
 
 html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="fluent"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
@@ -386,6 +393,7 @@ html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer, html[data-ypp-u
 html[data-ypp-card-style="fluent"] #channel-header,
 html[data-ypp-ui-design="fluent"] #channel-header {
   border-radius: var(--ypp-shape-primary, 8px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
@@ -426,6 +434,7 @@ html[data-ypp-card-style="fluent"] ytd-watch-metadata, html[data-ypp-ui-design="
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
 
@@ -445,6 +454,7 @@ html[data-ypp-card-style="fluent"] ytd-miniplayer, html[data-ypp-ui-design="flue
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
 
@@ -452,6 +462,7 @@ html[data-ypp-card-style="fluent"] ytd-miniplayer, html[data-ypp-ui-design="flue
 html[data-ypp-card-style="fluent"] .ytp-settings-menu, html[data-ypp-ui-design="fluent"] .ytp-settings-menu {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   }
@@ -472,6 +483,7 @@ html[data-ypp-card-style="fluent"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="fluent"] ytd-masthead {
   -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
   backdrop-filter: blur(30px) saturate(200%) !important;
   border-radius: var(--ypp-shape-primary, var(--flu-radius)) !important;
   box-shadow: var(--flu-shadow) !important;
@@ -487,6 +499,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-paper-dialog,
 html[data-ypp-card-style="fluent"] ytd-popup-container,
 html[data-ypp-ui-design="fluent"] ytd-popup-container {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
   -webkit-backdrop-filter: blur(30px) !important;
   backdrop-filter: blur(30px) !important;
   animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
@@ -506,6 +519,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-paper-tooltip {
 html[data-ypp-card-style="fluent"] tp-yt-paper-toast,
 html[data-ypp-ui-design="fluent"] tp-yt-paper-toast {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
   -webkit-backdrop-filter: blur(30px) !important;
   backdrop-filter: blur(30px) !important;
 }
@@ -541,6 +555,7 @@ html[data-ypp-ui-design="fluent"] ytd-background-promo-renderer yt-icon {
 html[data-ypp-card-style="fluent"] ytd-mini-guide-renderer,
 html[data-ypp-ui-design="fluent"] ytd-mini-guide-renderer {
   -webkit-backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
   backdrop-filter: blur(30px) !important;
 }
 
@@ -553,6 +568,7 @@ html[data-ypp-ui-design="fluent"] ytd-mini-guide-entry-renderer {
 /* Navbar Overhaul for fluent */
 html[data-ypp-ui-design="fluent"] #masthead-container,
 html[data-ypp-ui-design="fluent"] ytd-masthead {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 0 0 10px hsl(52, 80%, 55%), 0 0 20px hsl(52, 80%, 55%) !important;
@@ -603,6 +619,7 @@ html[data-ypp-ui-design="fluent"] .sbdd_b,
 html[data-ypp-ui-design="fluent"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 10px 30px 10px 30px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 0 10px hsl(52, 80%, 55%), 0 0 20px hsl(52, 80%, 55%) !important;
 }
@@ -631,6 +648,7 @@ html[data-ypp-ui-design="fluent"] #avatar-btn yt-img-shadow {
 html[data-ypp-ui-design="fluent"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 10px 30px 10px 30px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 0 0 10px hsl(52, 80%, 55%), 0 0 20px hsl(52, 80%, 55%) !important;
 }
@@ -642,6 +660,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-iron-dropdown ytd-multi-page-menu-render
 ========================================= */
 html[data-ypp-card-style="fluent"] ytd-playlist-panel-renderer,
 html[data-ypp-ui-design="fluent"] ytd-playlist-panel-renderer {
+  -webkit-backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: 8px;

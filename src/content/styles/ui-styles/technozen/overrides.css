@@ -167,6 +167,7 @@ html[data-ypp-ui-design="technozen"] .ypp-nav-btn.active {
 
 html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-toolbar {
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   background:
     linear-gradient(
@@ -574,6 +575,7 @@ html[data-ypp-ui-design="technozen"] ytd-video-preview,
 html[data-ypp-ui-design="technozen"] #contentWrapper.tp-yt-iron-dropdown > *,
 html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog {
   -webkit-backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--shadow-hover) !important;
@@ -642,6 +644,7 @@ html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="technozen"] ytd-hotkey-dialog-renderer,
 html[data-ypp-ui-design="technozen"] ytd-multi-page-menu-renderer {
   -webkit-backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
   box-shadow: 0px 12px 48px rgba(90, 191, 71, 0.25), inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
@@ -702,6 +705,7 @@ html[data-ypp-ui-design="technozen"] #subheader.ytd-engagement-panel-title-heade
 
 html[data-ypp-ui-design="technozen"] .anchored-panel.ytd-shorts {
   -webkit-backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--shadow-hover) !important;
@@ -721,6 +725,7 @@ html[data-ypp-ui-design="technozen"] ytd-playlist-renderer {
 }
 
 html[data-ypp-ui-design="technozen"] #channel-header.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: var(--shadow-base) !important;
@@ -774,6 +779,7 @@ html[data-ypp-ui-design="technozen"] ytd-comments-header-renderer[engagement-pan
 }
 
 html[data-ypp-ui-design="technozen"] #guide-wrapper.ytd-app {
+  -webkit-backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
@@ -849,6 +855,7 @@ html[data-ypp-ui-design="technozen"] #endpoint.yt-simple-endpoint.ytd-guide-entr
 }
 
 html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-sidebar {
+  -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
   -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
   backdrop-filter: blur(40px) saturate(1.4) !important;
   background:
@@ -1010,6 +1017,7 @@ html[data-ypp-ui-design="technozen"] .ytSearchboxComponentDesktop .ytSearchboxCo
 
 html[data-ypp-ui-design="technozen"] .ytSearchboxComponentSuggestionsContainer,
 html[data-ypp-ui-design="technozen"] ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: var(--shadow-hover) !important;

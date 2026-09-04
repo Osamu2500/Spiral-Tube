@@ -51,23 +51,23 @@
 @import '../../features/cinematic/cinematic.css';
 
 /* UI Tweaks */
-@import '../../features/ui-tweaks/premium-logo.css';
-@import '../../features/ui-tweaks/retro-logo.css';
-@import '../../features/ui-tweaks/save-supreme-ui.css';
-@import '../../features/ui-tweaks/compact-settings-menu.css';
-@import '../../features/ui-tweaks/square-corners.css';
-@import '../../features/ui-tweaks/extra-rounded-ui.css';
-@import '../../features/ui-tweaks/youtube-rounded.css';
-@import '../../features/ui-tweaks/grayscale-thumbnails.css';
-@import '../../features/ui-tweaks/custom-scrollbar.css';
-@import '../../features/ui-tweaks/integrations.css';
-@import '../../features/ui-tweaks/dual-accent.css';
+@import '../../features/ui-tweaks/branding/premium-logo.css';
+@import '../../features/ui-tweaks/branding/retro-logo.css';
+@import '../../features/ui-tweaks/layout/save-supreme-ui.css';
+@import '../../features/ui-tweaks/theme/compact-settings-menu.css';
+@import '../../features/ui-tweaks/layout/square-corners.css';
+@import '../../features/ui-tweaks/layout/extra-rounded-ui.css';
+@import '../../features/ui-tweaks/layout/youtube-rounded.css';
+@import '../../features/ui-tweaks/theme/grayscale-thumbnails.css';
+@import '../../features/ui-tweaks/theme/custom-scrollbar.css';
+@import '../../features/ui-tweaks/layout/integrations.css';
+@import '../../features/ui-tweaks/theme/dual-accent.css';
 
 /* Shared Feed Features */
 @import '../../pages/shared-feed/components/shorts-shelf/shorts-shelf.css';
-@import '../../pages/shared-feed/tracking/resume-badges.css';
-@import '../../pages/shared-feed/tracking/watched-indicator.css';
-@import '../../pages/shared-feed/typography/full-video-titles.css';
+@import '../../pages/shared-feed/features/tracking/resume-badges.css';
+@import '../../pages/shared-feed/features/tracking/watched-indicator.css';
+@import '../../pages/shared-feed/features/typography/full-video-titles.css';
 @import '../../pages/shared-feed/features/multi-select/multi-select.css';
 
 /* Watch Page Declutter & Features */
@@ -87,7 +87,7 @@
 @import '../../pages/watch/layout/modes/css/cinematic-mode.css';
 @import '../../pages/watch/layout/modes/css/sidebar-mode.css';
 @import '../../pages/watch/layout/modes/css/deck-mode.css';
-@import '../../pages/watch/layout/seamless-mode/seamless-mode.css';
+@import '../../pages/watch/layout/modes/seamless-mode/seamless-mode.css';
 
 /* Player Sub-Components */
 @import './pages/watch/progress-bar.css';
@@ -112,8 +112,8 @@
 @import './pages/search/search-grid-cards.css';
 @import './pages/search/search-list-mode.css';
 @import './pages/search/search-layout-densities.css';
-@import '../../features/ui-tweaks/search-immersive-cards.css';
-@import '../../features/ui-tweaks/search-default-card-compat.css';
+@import '../../features/ui-tweaks/layout/search-immersive-cards.css';
+@import '../../features/ui-tweaks/layout/search-default-card-compat.css';
 @import './pages/search/search-card-compat.css';
 
 /* Subscription Features */

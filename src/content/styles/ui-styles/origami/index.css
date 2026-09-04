@@ -30,6 +30,7 @@ html[data-ypp-ui-design="origami"] {
   --ypp-card-shadow:                0 4px 12px #f4f4f020 !important;
   --ypp-card-shadow-hover:          0 8px 24px #f4f4f040 !important;
   --ypp-card--webkit-backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   --ypp-card-backdrop-filter-hover: none !important;
 }

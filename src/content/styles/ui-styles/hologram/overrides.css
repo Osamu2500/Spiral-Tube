@@ -337,6 +337,7 @@ html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
   -webkit-backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -348,6 +349,7 @@ html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp
 html[data-ypp-card-style="hologram"] ytd-menu-popup-renderer, html[data-ypp-ui-design="hologram"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
@@ -361,6 +363,7 @@ html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
   -webkit-backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -372,6 +375,7 @@ html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design
 html[data-ypp-card-style="hologram"] ytd-notification-renderer, html[data-ypp-ui-design="hologram"] ytd-notification-renderer {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
@@ -396,6 +400,7 @@ html[data-ypp-card-style="hologram"] ytd-notification-renderer, html[data-ypp-ui
 html[data-ypp-card-style="hologram"] #channel-header, html[data-ypp-ui-design="hologram"] #channel-header {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
@@ -1953,6 +1958,7 @@ html[data-ypp-card-style="hologram"] yt-img-shadow, html[data-ypp-card-style="ho
 html[data-ypp-card-style="hologram"] ytd-masthead, html[data-ypp-ui-design="hologram"] ytd-masthead {
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(255, 0, 255, 0.2) !important;
   -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
@@ -2001,11 +2007,13 @@ html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-card-styl
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
   -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="hologram"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
@@ -2015,6 +2023,7 @@ html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp
 html[data-ypp-card-style="hologram"] #channel-header,
 html[data-ypp-ui-design="hologram"] #channel-header {
   border-radius: var(--ypp-shape-primary, 16px) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
@@ -2082,6 +2091,7 @@ html[data-ypp-ui-design="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design=
   border-radius: var(--ypp-shape-primary, 10px) !important;
   box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
 }
 
@@ -2138,6 +2148,7 @@ html[data-ypp-ui-design="hologram"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-design="hologram"] #masthead-container,
 html[data-ypp-ui-design="hologram"] ytd-masthead {
   -webkit-backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
   backdrop-filter: blur(15px) !important;
   box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;
 }
@@ -2150,6 +2161,7 @@ html[data-ypp-ui-design="hologram"] #container.ytd-searchbox,
 html[data-ypp-ui-design="hologram"] ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: inset 0 0 10px rgba(0,255,255,0.2), 0 0 10px rgba(0,255,255,0.2) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
@@ -2174,6 +2186,7 @@ html[data-ypp-ui-design="hologram"] #voice-search-button {
 html[data-ypp-ui-design="hologram"] .sbdd_b,
 html[data-ypp-ui-design="hologram"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 10px 40px rgba(0,255,255,0.2) !important;

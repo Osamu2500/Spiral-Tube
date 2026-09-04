@@ -176,6 +176,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-nav-btn.active {
 
 html[data-ypp-ui-design="liquid-glass"] .ypp-filter-dropdown {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
@@ -188,6 +189,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-filter-dropdown:hover {
 html[data-ypp-ui-design="liquid-glass"] .ypp-video-controls,
 html[data-ypp-ui-design="liquid-glass"] .ypp-shadow-panel {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   box-shadow: var(--lg-shadow-card) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
@@ -197,6 +199,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-shadow-panel {
 html[data-ypp-ui-design="liquid-glass"] .ypp-badge,
 html[data-ypp-ui-design="liquid-glass"] .ypp-value-display {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-highlight) !important;
@@ -205,12 +208,14 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-value-display {
 html[data-ypp-ui-design="liquid-glass"] .ypp-organizer-modal,
 html[data-ypp-ui-design="liquid-glass"] .ypp-modal-content {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 32px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-toolbar {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
 }
@@ -220,6 +225,7 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-btn-tool,
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-col-switcher {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   transition: transform var(--lg-spring), background var(--lg-spring) !important;
@@ -344,6 +350,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-
 /* Like & Dislike Unified Segmented Pill */
 html[data-ypp-ui-design="liquid-glass"] segmented-like-dislike-button-view-model {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
@@ -362,6 +369,7 @@ html[data-ypp-ui-design="liquid-glass"] segmented-like-dislike-button-view-model
 
 /* Chip Cloud / Category Shelf Pills */
 html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -387,6 +395,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-compact-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
@@ -416,6 +425,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer yt-avatar-shape 
 html[data-ypp-ui-design="liquid-glass"] span.ytd-thumbnail-overlay-time-status-renderer,
 html[data-ypp-ui-design="liquid-glass"] .yt-badge-shape--thumbnail-default {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.4) !important;
@@ -426,6 +436,7 @@ html[data-ypp-ui-design="liquid-glass"] .yt-badge-shape--thumbnail-default {
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-rich-grid-slim-media #dismissible,
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-item-renderer #dismissible {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -470,6 +481,7 @@ html[data-ypp-ui-design="liquid-glass"] .immersive-header-container.ytd-playlist
 
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
 }
@@ -483,6 +495,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-dialog-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-confirm-dialog-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-report-form-modal-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 32px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -492,6 +505,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-report-form-modal-renderer {
 
 /* The Page Dimming Scrim */
 html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-overlay-backdrop {
+  -webkit-backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(6px) !important;
   backdrop-filter: blur(6px) !important;
 }
@@ -689,6 +703,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-dropdown,
 html[data-ypp-ui-design="liquid-glass"] ytd-settings-options-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-account-settings-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -700,6 +715,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-dropdown > ytd-menu-popup-ren
 html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-dropdown > #contentWrapper > ytd-menu-popup-renderer,
 html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
@@ -733,6 +749,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-menu-navigation-item-renderer:hover 
 /* Share Panel & Add to Playlist Dialog Box */
 html[data-ypp-ui-design="liquid-glass"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-add-to-playlist-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 32px) !important;
@@ -769,6 +786,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-filter-card:hover {
 /* Main Container */
 html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -782,6 +800,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer {
 /* Hover Controls Scrim */
 html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer .ytp-miniplayer-ui {
   -webkit-backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }
 
@@ -794,6 +813,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer .ytp-miniplayer-button {
 
 /* Masthead Container Pill */
 html[data-ypp-ui-design="liquid-glass"] ytd-masthead #container {
+  -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
   -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
   backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -824,6 +844,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-topbar-logo-renderer:hover {
 /* Acrylic Search Bar Container */
 html[data-ypp-ui-design="liquid-glass"] #container.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: var(--ypp-shape-primary, 2000px 0 0 2000px) !important;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -839,6 +860,7 @@ html[data-ypp-ui-design="liquid-glass"] #container.ytd-searchbox:focus-within::a
 }
 
 html[data-ypp-ui-design="liquid-glass"] #search-icon-legacy.ytd-searchbox {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, 0 2000px 2000px 0) !important;
@@ -866,6 +888,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download"
 html[data-ypp-ui-design="liquid-glass"] yt-icon-badge-shape .badge {
   border-radius: var(--ypp-shape-primary, 2000px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }
 
@@ -876,6 +899,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-notification-topbar-button-renderer.
 
 html[data-ypp-ui-design="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.08) !important;
@@ -885,6 +909,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-notification-topbar-button-renderer.
 html[data-ypp-ui-design="liquid-glass"] tp-yt-app-drawer #drawer.tp-yt-app-drawer,
 html[data-ypp-ui-design="liquid-glass"] ytd-guide-renderer {
   -webkit-backdrop-filter: var(--lg-blur-panel) !important;
+  -webkit-backdrop-filter: var(--lg-blur-panel) !important;
   backdrop-filter: var(--lg-blur-panel) !important;
   box-shadow: var(--lg-border-top-light), 4px 0 32px rgba(0, 0, 0, 0.4) !important;
 }
@@ -893,6 +918,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-guide-renderer {
 html[data-ypp-ui-design="liquid-glass"] yt-page-navigation-progress,
 html[data-ypp-ui-design="liquid-glass"] #ticker.ytd-app,
 html[data-ypp-ui-design="liquid-glass"] ytd-app > div.style-scope.ytd-app {
+  -webkit-backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
@@ -906,6 +932,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-app > div.style-scope.ytd-app {
 html[data-ypp-ui-design="liquid-glass"] #ypp-eq-panel,
 html[data-ypp-ui-design="liquid-glass"] #ypp-cinema-panel {
   -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -913,6 +940,7 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-cinema-panel {
 
 html[data-ypp-ui-design="liquid-glass"] #ypp-global-player-bar,
 html[data-ypp-ui-design="liquid-glass"] .ypp-global-bar {
+  -webkit-backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: var(--ypp-shape-primary, 28px) !important;
@@ -934,6 +962,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-eq-vslider {
 html[data-ypp-ui-design="liquid-glass"] .ypp-eq-preset-btn,
 html[data-ypp-ui-design="liquid-glass"] .ypp-cinema-tab-btn,
 html[data-ypp-ui-design="liquid-glass"] .ypp-vcp-compare-toggle {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -979,6 +1008,7 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-duration-grid {
 /* Paper Toast (Bottom left notifications) */
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-toast {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-modal) !important;
@@ -986,6 +1016,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-toast {
 
 /* Generic Tooltips */
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip .tooltip {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
@@ -995,6 +1026,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip .tooltip {
 /* Banner Fade Overlay */
 
 html[data-ypp-ui-design="liquid-glass"] #channel-header-container.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
@@ -1010,6 +1042,7 @@ html[data-ypp-ui-design="liquid-glass"] #channel-header ytd-avatar-shape #avatar
 
 /* Channel Tabs Navigation Bar */
 html[data-ypp-ui-design="liquid-glass"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -1029,6 +1062,7 @@ html[data-ypp-ui-design="liquid-glass"] #selection-bar.paper-tabs {
 /* Sort Menu Button */
 html[data-ypp-ui-design="liquid-glass"] #sort-menu.ytd-comments {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
+  -webkit-backdrop-filter: var(--lg-blur-surface) !important;
   backdrop-filter: var(--lg-blur-surface) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
@@ -1041,6 +1075,7 @@ html[data-ypp-ui-design="liquid-glass"] #sort-menu.ytd-comments:hover {
 /* Acrylic Comment Input Box */
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-simplebox-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-dialog-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1090,6 +1125,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-creator-heart-renderer {
 html[data-ypp-ui-design="liquid-glass"] ytd-backstage-post-thread-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-post-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
@@ -1110,6 +1146,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-backstage-image-renderer {
 
 html[data-ypp-ui-design="liquid-glass"] .choice-info.ytd-backstage-poll-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth) !important;
@@ -1127,6 +1164,7 @@ html[data-ypp-ui-design="liquid-glass"] .progress-bar.ytd-backstage-poll-rendere
 /* Shorts Shelf Frosted Container */
 html[data-ypp-ui-design="liquid-glass"] ytd-rich-shelf-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
@@ -1135,6 +1173,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-rich-shelf-renderer {
 
 html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
@@ -1142,6 +1181,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
 
 html[data-ypp-ui-design="liquid-glass"] #left-arrow.ytd-feed-filter-chip-bar-renderer,
 html[data-ypp-ui-design="liquid-glass"] #right-arrow.ytd-feed-filter-chip-bar-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -1155,6 +1195,7 @@ html[data-ypp-ui-design="liquid-glass"] #right-arrow.ytd-feed-filter-chip-bar-re
 
 html[data-ypp-ui-design="liquid-glass"] ytd-live-chat-frame,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 28px) !important;
@@ -1171,6 +1212,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-live-chat-membership-item-renderer {
 /* Luminescent Glass Prisms for Superchats */
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-paid-message-renderer,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-paid-sticker-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1222,6 +1264,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-button:active {
 
 /* Play button — larger, more prominent glass pill */
 html[data-ypp-ui-design="liquid-glass"] .ytp-play-button {
+  -webkit-backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -1288,6 +1331,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-volume-slider-handle {
 /* Chapter Hover Preview Glass Cards */
 html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip {
   -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
+  -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
   backdrop-filter: blur(56px) saturate(240%) !important;
   background: linear-gradient(var(--lg-shine-modal), rgba(255, 255, 255, 0.08)) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1299,6 +1343,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip {
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-timed-markers-dial-tooltip {
   -webkit-backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
@@ -1309,6 +1354,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip-image-inner-div {
 
 /* Player Settings Panel */
 html[data-ypp-ui-design="liquid-glass"] .ytp-panel-menu {
+  -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
   -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
   backdrop-filter: blur(56px) saturate(240%) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1326,6 +1372,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-menuitem:hover {
 
 /* Captions / Subtitles */
 html[data-ypp-ui-design="liquid-glass"] .caption-window {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
@@ -1349,6 +1396,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-channel-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-playlist-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-shelf-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
   border-radius: var(--ypp-shape-primary, 26px) !important;
@@ -1361,6 +1409,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-shelf-renderer {
 /* Shorts Video Player Inner container */
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer[is-active] {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-shadow-card) !important;
@@ -1368,6 +1417,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer[is-active] {
 
 /* Avatar / Channel Info */
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer #channel-info {
+  -webkit-backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1382,6 +1432,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer #progress-bar-li
 /* Comments Overlay Modal inside Shorts */
 html[data-ypp-ui-design="liquid-glass"] ytd-engagement-panel-section-list-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 24px 0 0 24px) !important;
   box-shadow: var(--lg-shadow-modal) !important;
@@ -1389,6 +1440,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-engagement-panel-section-list-render
 
 /* Subscribe Button */
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -1408,6 +1460,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer[subscribed
 html[data-ypp-ui-design="liquid-glass"] ytd-watch-metadata #description,
 html[data-ypp-ui-design="liquid-glass"] ytd-text-inline-expander {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-top-light) !important;
@@ -1418,6 +1471,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-text-inline-expander {
 
 /* Channel Bar Specular Liquid Glass Card */
 html[data-ypp-ui-design="liquid-glass"] #owner {
+  -webkit-backdrop-filter: var(--lg-blur-surface) !important;
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
   backdrop-filter: var(--lg-blur-surface) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -1430,6 +1484,7 @@ html[data-ypp-ui-design="liquid-glass"] #owner:hover {
 
 /* Chapter Markers / Key Moments */
 html[data-ypp-ui-design="liquid-glass"] ytd-macro-markers-list-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
@@ -1446,6 +1501,7 @@ html[data-ypp-ui-design="liquid-glass"] #related {
 html[data-ypp-ui-design="liquid-glass"] #secondary.ytd-watch-flexy ytd-compact-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] #related ytd-compact-video-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-shadow-card) !important;
@@ -1455,12 +1511,14 @@ html[data-ypp-ui-design="liquid-glass"] #related ytd-compact-video-renderer {
 /* Up Next Badge */
 html[data-ypp-ui-design="liquid-glass"] .badge-style-type-simple .badge {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 /* Watch Page Playlist Panel Sidebar */
 html[data-ypp-ui-design="liquid-glass"] #secondary-inner ytd-playlist-panel-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, 28px) !important;

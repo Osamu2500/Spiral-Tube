@@ -39,6 +39,7 @@ html[data-ypp-ui-design="nebula"] ::-webkit-scrollbar-thumb:hover {
 html[data-ypp-ui-design="nebula"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="nebula"] ytd-popup-container {
   -webkit-backdrop-filter: blur(20px) saturate(1.6) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.6) !important;
   backdrop-filter: blur(20px) saturate(1.6) !important;
   border-radius: var(--ypp-shape-primary, var(--nebula-r-lg)) !important;
   box-shadow: var(--nebula-glow-purple), 0 24px 60px rgba(4, 2, 13, 0.8) !important;
@@ -196,6 +197,7 @@ html[data-ypp-card-style="nebula"] yt-icon:hover, html[data-ypp-ui-design="nebul
 html[data-ypp-ui-design="nebula"] ytd-mini-guide-renderer,
 html[data-ypp-ui-design="nebula"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
   -webkit-backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
   backdrop-filter: blur(14px) !important;
 }
 
@@ -208,12 +210,14 @@ html[data-ypp-ui-design="nebula"] tp-yt-iron-dropdown,
 html[data-ypp-ui-design="nebula"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="nebula"] ytd-menu-popup-renderer {
   -webkit-backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, var(--nebula-r-lg)) !important;
   box-shadow: var(--nebula-glow-purple), 0 16px 40px rgba(4, 2, 13, 0.7) !important;
 }
 
 html[data-ypp-ui-design="nebula"] ytd-masthead {
+  -webkit-backdrop-filter: blur(16px) saturate(1.4) !important;
   -webkit-backdrop-filter: blur(16px) saturate(1.4) !important;
   backdrop-filter: blur(16px) saturate(1.4) !important;
   box-shadow: 0 4px 24px rgba(4, 2, 13, 0.6), 0 1px 0 rgba(155, 93, 229, 0.2) !important;
@@ -253,6 +257,7 @@ html[data-ypp-ui-design="nebula"] .ytp-volume-slider-handle {
 
 html[data-ypp-ui-design="nebula"] .ytp-settings-menu {
   -webkit-backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, var(--nebula-r-md)) !important;
   box-shadow: var(--nebula-glow-purple) !important;
@@ -270,6 +275,7 @@ html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer {
 }
 
 html[data-ypp-ui-design="nebula"] #secondary-inner.ytd-watch-flexy {
+  -webkit-backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, var(--nebula-r-lg)) !important;
