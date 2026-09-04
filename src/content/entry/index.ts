@@ -5,6 +5,7 @@ import './core-init.ts';
 const modules = import.meta.glob([
     '../pages/**/*.js',
     '../features/**/*.js',
+    '!../features/*/external/**/*.js',
     '../layouts/**/*.js',
     '../components/**/*.js'
 ], { eager: true });
