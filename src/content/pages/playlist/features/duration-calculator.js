@@ -43,15 +43,7 @@ export class PlaylistDuration extends window.YPP.features.BaseFeature {
           resolve({});
         }
       }, 1000);
-      if (!document.getElementById('ypp-ytcfg-bridge')) {
-        const script = document.createElement('script');
-        script.id = 'ypp-ytcfg-bridge';
-        script.src = chrome.runtime.getURL('src/inject/ytcfg-bridge.js');
-        document.documentElement.appendChild(script);
-      }
-      setTimeout(() => {
-        window.postMessage({ type: 'YPP_YTCFG_REQUEST', reqId: reqId }, '*');
-      }, 50);
+      window.postMessage({ type: 'YPP_YTCFG_REQUEST', reqId: reqId }, '*');
     });
   }
 

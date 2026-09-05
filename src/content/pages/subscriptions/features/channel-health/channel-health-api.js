@@ -9,7 +9,7 @@ import { CustomDialog } from './custom-dialog.js';
 
 export class ChannelHealthAPI {
     static _extractYtInitialData(text) {
-        const markers = ['let ytInitialData = ', 'window["ytInitialData"] = ', 'window.ytInitialData = '];
+        const markers = ['var ytInitialData = ', 'let ytInitialData = ', 'window["ytInitialData"] = ', 'window.ytInitialData = '];
         for (const marker of markers) {
             const startIdx = text.indexOf(marker);
             if (startIdx !== -1) {
@@ -33,8 +33,12 @@ export class ChannelHealthAPI {
      * Reads YouTube's internal `ytcfg` object from the page context by injecting
      * a short-lived <script> tag that posts the config values back via postMessage.
      */
+    static _ytConfigPromise = null;
+
     static getYoutubeConfig() {
-        return new Promise(resolve => {
+        if (this._ytConfigPromise) return this._ytConfigPromise;
+        
+        this._ytConfigPromise = new Promise(resolve => {
             const reqId = Math.random().toString(36).slice(2);
             let resolved = false;
 
@@ -54,21 +58,14 @@ export class ChannelHealthAPI {
                     resolved = true;
                     window.removeEventListener('message', listener);
                     window.YPP.Utils?.log('getYoutubeConfig timed out. Returning empty config.', 'CHANNEL-HEALTH', 'warn');
+                    // Reset promise so next call tries again if it failed
+                    this._ytConfigPromise = null;
                     resolve({}); 
                 }
             }, 1500);
-
-            if (!document.getElementById('ypp-ytcfg-bridge')) {
-                const script = document.createElement('script');
-                script.id = 'ypp-ytcfg-bridge';
-                script.src = chrome.runtime.getURL('src/inject/ytcfg-bridge.js');
-                document.documentElement.appendChild(script);
-            }
-
-            setTimeout(() => {
-                window.postMessage({ type: 'YPP_YTCFG_REQUEST', reqId: reqId }, '*');
-            }, 50);
+            window.postMessage({ type: 'YPP_YTCFG_REQUEST', reqId: reqId }, '*');
         });
+        return this._ytConfigPromise;
     }
 
     static async fetchSubscriptions(onProgress) {
@@ -307,160 +304,145 @@ export class ChannelHealthAPI {
         return false;
     }
 
-    static async fetchRSS(channelId) {
+    static _getTabUrl(channelId, tab) {
+        if (channelId.startsWith('UC')) return `https://www.youtube.com/channel/${channelId}/${tab}`;
+        if (channelId.startsWith('@'))  return `https://www.youtube.com/${channelId}/${tab}`;
+        return `https://www.youtube.com/${channelId}/${tab}`; // Fallback for legacy custom URLs
+    }
+
+    static async fetchLatestVideo(channelId) {
         try {
             const controller = new AbortController();
-            const tid = setTimeout(() => controller.abort(), this.RSS_TIMEOUT_MS);
-            const res = await fetch(`/feeds/videos.xml?channel_id=${channelId}`, { signal: controller.signal });
+            const tid = setTimeout(() => controller.abort(), 10000);
+            const url = this._getTabUrl(channelId, 'videos');
+            const res = await fetch(url, { signal: controller.signal });
             clearTimeout(tid);
-            return await res.text();
-        } catch (e) {
-            throw e;
-        }
-    }
+            
+            if (!res.ok) return null;
+            const html = await res.text();
+            const data = this._extractYtInitialData(html);
+            if (!data) return null;
 
-    /**
-     * Parses an RSS feed XML text and returns the latest regular video and latest Short separately.
-     * RSS entries that link to /shorts/ are classified as Shorts; others as regular videos.
-     * Returns { latestVideo: {pubTime, text} | null, latestShort: {pubTime, text} | null }
-     */
-    static parseRSS(rssText) {
-        let latestVideo = null;
-        let latestShort = null;
+            const strData = JSON.stringify(data);
+            if (!strData.includes('"videoId"')) return null;
 
-        // Regex to extract all <entry> blocks
-        const entryRegex = /<entry>([\/\S\s]*?)<\/entry>/g;
-        let match;
-        while ((match = entryRegex.exec(rssText)) !== null) {
-            const entryText = match[1];
-            const pubMatch = entryText.match(/<published>([^<]+)<\/published>/);
-            const linkMatch = entryText.match(/<link[^>]+href="([^"]+)"/);
-            if (!pubMatch || !linkMatch) continue;
+            const rxPub  = /"publishedTimeText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
+            const rxDate = /"dateText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
+            const rxContent = /"text"\s*:\s*\{"content"\s*:\s*"([^"]+\s+ago)"/gi;
+            
+            let m;
+            while ((m = rxPub.exec(strData))  !== null) return m[1];
+            while ((m = rxDate.exec(strData)) !== null) return m[1];
+            while ((m = rxContent.exec(strData)) !== null) return m[1];
 
-            const pubTime = new Date(pubMatch[1]).getTime();
-            if (isNaN(pubTime)) continue;
-
-            const link = linkMatch[1];
-            const text = new Date(pubTime).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-            const isShort = link.includes('/shorts/');
-
-            if (isShort) {
-                if (!latestShort || pubTime > latestShort.pubTime) {
-                    latestShort = { pubTime, text };
-                }
-            } else {
-                if (!latestVideo || pubTime > latestVideo.pubTime) {
-                    latestVideo = { pubTime, text };
+            // Fallback: extract the videoId and fetch its watch page to get the exact date
+            const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+            if (videoIdMatch) {
+                const videoId = videoIdMatch[1];
+                const watchController = new AbortController();
+                const watchTid = setTimeout(() => watchController.abort(), 10000);
+                const watchRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: watchController.signal });
+                clearTimeout(watchTid);
+                
+                if (watchRes.ok) {
+                    const watchHtml = await watchRes.text();
+                    const dateTextMatch = watchHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
+                    const publishMatch = watchHtml.match(/"publishDate":"([^"]+)"/);
+                    const uploadMatch = watchHtml.match(/"uploadDate":"([^"]+)"/);
+                    
+                    let dateStr = null;
+                    if (dateTextMatch) dateStr = dateTextMatch[1];
+                    else if (publishMatch) dateStr = publishMatch[1];
+                    else if (uploadMatch) dateStr = uploadMatch[1];
+                    
+                    if (dateStr) {
+                        dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
+                        return dateStr;
+                    }
                 }
             }
-        }
 
-        return { latestVideo, latestShort };
+            return 'Has Videos'; // Ultimate Fallback
+        } catch (e) {
+            return 'Error';
+        }
     }
+
+    static async scanShorts(channelId) {
+        try {
+            const controller = new AbortController();
+            const tid = setTimeout(() => controller.abort(), 10000);
+            const url = this._getTabUrl(channelId, 'shorts');
+            const res = await fetch(url, { signal: controller.signal });
+            clearTimeout(tid);
+            
+            if (!res.ok) return null;
+            const html = await res.text();
+            const data = this._extractYtInitialData(html);
+            if (!data) return null;
+
+            const strData = JSON.stringify(data);
+            const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+            if (!videoIdMatch) return null; // No shorts found
+
+            const videoId = videoIdMatch[1];
+            
+            // Fetch the watch page for the latest short to get its date
+            const shortController = new AbortController();
+            const shortTid = setTimeout(() => shortController.abort(), 10000);
+            const shortRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: shortController.signal });
+            clearTimeout(shortTid);
+            
+            if (!shortRes.ok) return 'Has Shorts';
+            const shortHtml = await shortRes.text();
+            
+            const dateTextMatch = shortHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
+            const publishMatch = shortHtml.match(/"publishDate":"([^"]+)"/);
+            const uploadMatch = shortHtml.match(/"uploadDate":"([^"]+)"/);
+            
+            let dateStr = null;
+            if (dateTextMatch) dateStr = dateTextMatch[1];
+            else if (publishMatch) dateStr = publishMatch[1];
+            else if (uploadMatch) dateStr = uploadMatch[1];
+            
+            if (dateStr) {
+                dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
+                return dateStr;
+            }
+
+            return 'Has Shorts';
+        } catch (e) {
+            return 'Error';
+        }
+    }
+
+
 
     static parseRelativeTime(text) {
         if (!text) return null;
         const m = text.match(/(\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago/i);
-        if (!m) return null;
-        const n    = parseInt(m[1], 10);
-        const unit = m[2].toLowerCase();
-        const unitMs = { second: 1000, minute: 60000, hour: 3600000, day: 86400000, week: 604800000, month: 2592000000, year: 31536000000 };
-        return n * (unitMs[unit] || 0);
+        if (m) {
+            const n    = parseInt(m[1], 10);
+            const unit = m[2].toLowerCase();
+            const unitMs = { second: 1000, minute: 60000, hour: 3600000, day: 86400000, week: 604800000, month: 2592000000, year: 31536000000 };
+            return n * (unitMs[unit] || 0);
+        }
+        
+        // Fallback for absolute dates (e.g. "23 Jul 2026")
+        const absTime = Date.parse(text);
+        if (!isNaN(absTime)) {
+            return Date.now() - absTime;
+        }
+
+        return null;
     }
 
-    static async deepScan(channelId) {
-        /**
-         * Fetches one channel tab page and returns { latest, oldest } where:
-         *   latest  = newest content relative time string (e.g., "3 weeks ago", "2 years ago")
-         *   oldest  = oldest publishedTimeText found on the first page
-         */
-        const getTabInfo = async (url, contentKeys, hasContentLabel) => {
-            try {
-                const res = await fetch(url);
-                if (!res.ok) return { latest: 'None', oldest: null };
-                const html = await res.text();
-                const data = this._extractYtInitialData(html);
-                if (!data) return { latest: 'None', oldest: null };
-
-                const strData = JSON.stringify(data);
-                const hasContent = contentKeys.some(k => strData.includes(k));
-                if (!hasContent) return { latest: 'None', oldest: null };
-
-                // Collect all publishedTimeText / dateText in page order (newest → oldest)
-                const allTimes = [];
-                const rxPub  = /"publishedTimeText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
-                const rxDate = /"dateText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
-                let m;
-                while ((m = rxPub.exec(strData))  !== null) allTimes.push(m[1]);
-                while ((m = rxDate.exec(strData)) !== null) allTimes.push(m[1]);
-
-                if (allTimes.length === 0) return { latest: hasContentLabel, oldest: null };
-
-                const firstText = allTimes[0];
-                const latest    = firstText || hasContentLabel;
-                const oldest    = allTimes.length > 1 ? allTimes[allTimes.length - 1] : null;
-
-                return { latest, oldest };
-            } catch (e) {
-                return { latest: 'Error', oldest: null };
-            }
-        };
-
-        /**
-         * Fetches the channel videos tab sorted oldest-first (?sort=da) and
-         * returns the date text of the very first (oldest) video found.
-         */
-        const getOldestVideo = async () => {
-            try {
-                const res = await fetch(
-                    `https://www.youtube.com/channel/${channelId}/videos?view=0&sort=da&flow=grid`
-                );
-                if (!res.ok) return null;
-                const html = await res.text();
-                const data = this._extractYtInitialData(html);
-                if (!data) return null;
-
-                const strData = JSON.stringify(data);
-                if (!strData.includes('"videoId"')) return null;
-
-                const pubM  = strData.match(/"publishedTimeText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/);
-                const dateM = strData.match(/"dateText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/);
-                return (pubM && pubM[1]) || (dateM && dateM[1]) || null;
-            } catch (e) {
-                return null;
-            }
-        };
-
-        const [videosInfo, shortsInfo, communityInfo, oldestVideoText] = await Promise.all([
-            getTabInfo(
-                `https://www.youtube.com/channel/${channelId}/videos`,
-                ['"videoId"'],
-                'Has Videos'
-            ),
-            getTabInfo(
-                `https://www.youtube.com/channel/${channelId}/shorts`,
-                ['"videoId"'],
-                'Has Shorts'
-            ),
-            getTabInfo(
-                `https://www.youtube.com/channel/${channelId}/community`,
-                ['"postId"', '"backstagePostRenderer"'],
-                'Has Posts'
-            ),
-            getOldestVideo()
-        ]);
-
-        return {
-            lastVideoText:  videosInfo.latest,
-            lastShortText:  shortsInfo.latest,
-            lastPostText:   communityInfo.latest,
-            oldestPostText: communityInfo.oldest,
-            oldestVideoText
-        };
-    }
-
+    static _iframeActive = false;
 
     static async _tryIframeUnsubscribe(channelId) {
+        while (this._iframeActive) { await new Promise(r => setTimeout(r, 500)); }
+        this._iframeActive = true;
+        
         return new Promise(resolve => {
             const iframe = document.createElement('iframe');
             iframe.style.cssText = 'width:300px;height:300px;opacity:0.01;position:fixed;bottom:0;right:0;pointer-events:none;z-index:9999;border:0;';
@@ -471,6 +453,7 @@ export class ChannelHealthAPI {
                 if (!resolved) {
                     resolved = true;
                     iframe.remove();
+                    this._iframeActive = false;
                     resolve(false);
                 }
             }, 12000);
@@ -504,6 +487,7 @@ export class ChannelHealthAPI {
                                         resolved = true;
                                         clearTimeout(timeout);
                                         iframe.remove();
+                                        this._iframeActive = false;
                                         resolve(true);
                                     }
                                     return;
@@ -517,6 +501,7 @@ export class ChannelHealthAPI {
                     resolved = true;
                     clearTimeout(timeout);
                     iframe.remove();
+                    this._iframeActive = false;
                     resolve(false);
                 }
             };
@@ -537,8 +522,16 @@ export class ChannelHealthAPI {
 
         let successCount = 0;
         const failedChannels = [];
+        let isFirst = true;
 
         for (const c of channels) {
+            if (!isFirst) {
+                // Random delay between 600ms and 1500ms to avoid spam triggers
+                const delay = Math.floor(Math.random() * 900) + 600;
+                await new Promise(r => setTimeout(r, delay));
+            }
+            isFirst = false;
+
             let succeeded = await this._tryApiUnsubscribe(c, config);
 
             if (!succeeded) {

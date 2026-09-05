@@ -1,1 +1,585 @@
-/** * Channel Health Dashboard Styles * Owns: Styling for the Channel Health Dashboard modal and its contents. * Targets: Modal, Buttons, Stats, Channels, Checkboxes. * Does not affect functionality outside the Channel Health feature. *//* Modal Overlay & Base Content */.ypp-health-modal-overlay {    position: fixed !important;    top: 0 !important;    left: 0 !important;    width: 100vw !important;    height: 100vh !important;    z-index: 2147483647 !important;    display: flex !important;    justify-content: center !important;    align-items: center !important;    background: transparent !important;    pointer-events: auto !important;}.ypp-health-modal-content {    font-family: 'Inter', 'Outfit', sans-serif;    width: 95vw;    height: 95vh;    max-width: 1600px;    max-height: 900px;    border-radius: 24px;    display: flex;    flex-direction: column;    background: rgba(10, 10, 15, 0.85);    border: 1px solid rgba(255, 255, 255, 0.1);    overflow: hidden;    color: #f1f5f9;}/* Header */.ypp-health-header {    background: rgba(255, 255, 255, 0.1);    border-bottom: 1px solid rgba(255, 255, 255, 0.1);    border-radius: 24px 24px 0 0;    padding: 20px 32px;    display: flex;    justify-content: space-between;    align-items: center;    z-index: 10;    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);}.ypp-health-header-icon {    background: rgba(255, 255, 255, 0.08);    border: 1px solid rgba(255, 255, 255, 0.15);    border-radius: 16px;    padding: 10px;    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);}/* Buttons */.ypp-health-btn-scan {    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));    color: #a5b4fc;    border: 1px solid rgba(139,92,246,0.4);    padding: 8px 24px;    border-radius: 24px;    font-weight: 600;    font-size: 13px;    cursor: pointer;    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);    box-shadow: 0 4px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);}.ypp-health-btn-scan:hover {    transform: translateY(-2px);    background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3));    box-shadow: 0 6px 16px rgba(99,102,241,0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);    border-color: rgba(167,139,250,0.6);}.ypp-health-btn-unsub {    background: rgba(255, 78, 69, 0.1);    color: #ff6b6b;    border: 1px solid rgba(255, 78, 69, 0.25);    padding: 8px 20px;    border-radius: 24px;    font-weight: 500;    font-size: 13px;    cursor: pointer;    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 78, 69, 0.1);}.ypp-health-btn-unsub:hover {    background: rgba(255, 78, 69, 0.15);    border-color: rgba(255, 78, 69, 0.4);    transform: translateY(-1px);}.ypp-health-btn-close {    background: transparent;    border: none;    color: #94a3b8;    font-size: 28px;    width: 40px;    height: 40px;    border-radius: 50%;    cursor: pointer;    display: flex;    align-items: center;    justify-content: center;    transition: all 0.2s;    line-height: 1;}.ypp-health-btn-close:hover {    background: rgba(255, 255, 255, 0.1);    color: #fff;}/* Stats */.ypp-health-stat {    flex: 1;    background: rgba(255, 255, 255, 0.05);    border: 1px solid rgba(255, 255, 255, 0.1);    padding: 24px;    border-radius: 16px;    text-align: left;    cursor: pointer;    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);}.ypp-health-stat[data-filter="active"]:hover {    transform: translateY(-2px);    box-shadow: 0 8px 25px rgba(46, 213, 115, 0.15);    border-color: rgba(46, 213, 115, 0.3);}.ypp-health-stat[data-filter="warning"]:hover {    transform: translateY(-2px);    box-shadow: 0 8px 25px rgba(255, 179, 64, 0.15);    border-color: rgba(255, 179, 64, 0.3);}.ypp-health-stat[data-filter="dead"]:hover {    transform: translateY(-2px);    box-shadow: 0 8px 25px rgba(255, 78, 69, 0.15);    border-color: rgba(255, 78, 69, 0.3);}.ypp-health-stat-label {    color: #94a3b8;    font-size: 12px;    font-weight: 600;    text-transform: uppercase;    letter-spacing: 0.08em;    margin-bottom: 12px;    display: flex;    align-items: center;    gap: 6px;}.ypp-health-stat-value {    color: #f1f5f9;    font-size: 42px;    font-weight: 600;    line-height: 1;    letter-spacing: -1px;}/* Inputs & Selects */.ypp-health-input {    background: rgba(255, 255, 255, 0.05);    color: #f1f5f9;    border: 1px solid rgba(255, 255, 255, 0.08);    border-radius: 12px;    outline: none;    font-size: 13px;    transition: all 0.2s;}.ypp-health-input:focus {    border-color: rgba(99, 102, 241, 0.5);    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);}.ypp-health-select {    background: rgba(255, 255, 255, 0.1);    color: #f1f5f9;    border: 1px solid rgba(255, 255, 255, 0.08);    padding: 8px 12px;    border-radius: 10px;    cursor: pointer;    outline: none;    font-size: 13px;    font-weight: 500;    transition: all 0.2s;    appearance: none;    padding-right: 32px;    background-image: url('data:image/svg+xml;utf8,<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');    background-repeat: no-repeat;    background-position: right 12px center;}.ypp-health-select:hover {    background-color: rgba(255, 255, 255, 0.12);}.ypp-health-select option {    background: rgba(20, 20, 30, 0.9);    color: white;}/* Channel Row */.ypp-channel-health-row {    display: flex;    align-items: center;    padding: 14px 20px;    background: rgba(255, 255, 255, 0.05);    border: 1px solid rgba(255, 255, 255, 0.1);    border-radius: 16px;    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);    animation: ypp-fade-in 0.3s ease;    cursor: grab;}.ypp-channel-health-row:hover {    background: rgba(255, 255, 255, 0.08);    border-color: rgba(255, 255, 255, 0.15);    transform: translateX(4px);}.ypp-health-row-avatar {    width: 48px;    height: 48px;    border-radius: 50%;    object-fit: cover;    margin-right: 16px;    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);}.ypp-indiv-unsub-btn {    background: rgba(255, 255, 255, 0.05);    color: rgba(255, 255, 255, 0.8);    border: 1px solid rgba(255, 255, 255, 0.1);    border-radius: 20px;    padding: 6px 16px;    font-size: 12px;    font-weight: 600;    cursor: pointer;    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);}.ypp-indiv-unsub-btn:not(:disabled):hover {    background: linear-gradient(135deg, rgba(255, 78, 69, 0.15), rgba(255, 179, 64, 0.15));    border-color: rgba(255, 78, 69, 0.4);    color: #ff6b6b;    transform: translateY(-1px);}/* Visit Button */.ypp-health-btn-visit {    display: flex;    align-items: center;    gap: 6px;    background: rgba(255, 255, 255, 0.05);    color: rgba(255, 255, 255, 0.8);    border: 1px solid rgba(255, 255, 255, 0.1);    border-radius: 20px;    padding: 6px 14px;    font-size: 12px;    font-weight: 600;    text-decoration: none;    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);}.ypp-health-btn-visit:hover {    background: rgba(99, 102, 241, 0.15);    border-color: rgba(99, 102, 241, 0.4);    color: #818cf8;    transform: translateY(-1px);}/* Custom Checkbox */.ypp-custom-checkbox-label {    display: flex;    align-items: center;    gap: 8px;    cursor: pointer;    font-size: 13px;    font-weight: 500;    color: rgba(255, 255, 255, 0.6);    user-select: none;    position: relative;    padding-left: 24px;    margin-right: 8px;    transition: color 0.2s;}.ypp-custom-checkbox-label:hover {    color: rgba(255, 255, 255, 0.9);}.ypp-custom-checkbox-label .ypp-unsub-checkbox {    position: absolute;    opacity: 0;    cursor: pointer;    height: 0;    width: 0;}.ypp-custom-checkmark {    position: absolute;    top: 50%;    left: 0;    transform: translateY(-50%);    height: 18px;    width: 18px;    background-color: rgba(255, 255, 255, 0.05);    border: 1px solid rgba(255, 255, 255, 0.2);    border-radius: 4px;    transition: all 0.2s;}.ypp-custom-checkbox-label:hover .ypp-custom-checkmark {    border-color: rgba(99, 102, 241, 0.5);    background-color: rgba(255, 255, 255, 0.1);}.ypp-custom-checkbox-label .ypp-unsub-checkbox:checked ~ .ypp-custom-checkmark {    background-color: #6366f1;    border-color: #6366f1;}/* Checkmark Icon */.ypp-custom-checkmark:after {    content: "";    position: absolute;    display: none;    left: 6px;    top: 2px;    width: 4px;    height: 10px;    border: solid white;    border-width: 0 2px 2px 0;    transform: rotate(45deg);}.ypp-custom-checkbox-label .ypp-unsub-checkbox:checked ~ .ypp-custom-checkmark:after {    display: block;}@keyframes ypp-pulse {    0% { opacity: 1; }    50% { opacity: 0.4; }    100% { opacity: 1; }}/* ── Content Type Filter Buttons ─────────────────── */.ypp-ctype-btn {    display: inline-flex;    align-items: center;    gap: 5px;    padding: 6px 12px;    border-radius: 8px;    border: 1px solid rgba(255, 255, 255, 0.09);    background: rgba(255, 255, 255, 0.03);    color: #64748b;    font-size: 12px;    font-weight: 500;    cursor: pointer;    transition: all 0.15s ease;    font-family: inherit;    white-space: nowrap;    letter-spacing: 0.1px;}.ypp-ctype-btn:hover {    background: rgba(255, 255, 255, 0.07);    color: #94a3b8;    border-color: rgba(255, 255, 255, 0.14);}.ypp-ctype-btn.ypp-ctype-active {    background: rgba(255, 255, 255, 0.12);    border-color: rgba(255, 255, 255, 0.2);    color: #f1f5f9;    font-weight: 600;}/* ── Channel Content Pills ───────────────────── */.ypp-content-pills {    display: flex;    align-items: center;    gap: 5px;    margin-top: 7px;    flex-wrap: wrap;}.ypp-cpill {    display: inline-flex;    align-items: center;    gap: 5px;    padding: 4px 10px 4px 8px;    border-radius: 20px;    font-size: 11.5px;    font-weight: 600;    white-space: nowrap;    border: 1px solid transparent;    line-height: 1.3;    letter-spacing: -0.1px;    transition: box-shadow 0.2s, opacity 0.2s;}.ypp-cpill-active  {    background: rgba(46, 213, 115, 0.12);    border-color: rgba(46, 213, 115, 0.38);    color: #2ed573;    box-shadow: 0 0 10px rgba(46, 213, 115, 0.14);}.ypp-cpill-warning {    background: rgba(255, 179, 64, 0.12);    border-color: rgba(255, 179, 64, 0.38);    color: #ffb340;    box-shadow: 0 0 10px rgba(255, 179, 64, 0.1);}.ypp-cpill-dead {    background: rgba(255, 78, 69, 0.1);    border-color: rgba(255, 78, 69, 0.35);    color: #ff4e45;}.ypp-cpill-none    { background: rgba(255,255,255,0.015); border-color: rgba(255,255,255,0.05); color: #2d3f52; }.ypp-cpill-unknown { background: rgba(148,163,184,0.05);  border-color: rgba(148,163,184,0.1);  color: #3d5068; }
+/** * Channel Health Dashboard Styles * Owns: Styling for the Channel Health Dashboard modal and its contents. * Targets: Modal, Buttons, Stats, Channels, Checkboxes. * Does not affect functionality outside the Channel Health feature. *//* Modal Overlay & Base Content */
+.ypp-health-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    pointer-events: auto !important;
+}
+
+.ypp-health-modal-content {
+    font-family: 'Inter', 'Outfit', sans-serif;
+    width: 95vw;
+    height: 95vh;
+    max-width: 1600px;
+    max-height: 900px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(18, 18, 24, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 24px 48px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    color: #f1f5f9;
+}/* Header */.ypp-health-header {    background: rgba(255, 255, 255, 0.1);    border-bottom: 1px solid rgba(255, 255, 255, 0.1);    border-radius: 20px 20px 0 0;    padding: 14px 24px;    display: flex;    justify-content: space-between;    align-items: center;    z-index: 10;    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);}.ypp-health-header-icon {    background: rgba(255, 255, 255, 0.08);    border: 1px solid rgba(255, 255, 255, 0.15);    border-radius: 12px;    padding: 6px;    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);}/* Buttons */
+.ypp-health-btn-scan {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.ypp-health-btn-scan::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 14px 14px 0 0;
+}
+
+.ypp-health-btn-scan:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 6px 16px rgba(0, 0, 0, 0.4),
+        0 0 12px rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.ypp-health-btn-scan:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.ypp-health-btn-unsub {
+    background: linear-gradient(180deg, rgba(255, 78, 69, 0.18) 0%, rgba(220, 38, 38, 0.08) 100%);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    padding: 8px 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.ypp-health-btn-unsub::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 14px 14px 0 0;
+}
+
+.ypp-health-btn-unsub:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, rgba(255, 78, 69, 0.28) 0%, rgba(220, 38, 38, 0.18) 100%);
+    border-color: rgba(248, 113, 113, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 6px 16px rgba(0, 0, 0, 0.4),
+        0 0 12px rgba(255, 78, 69, 0.3);
+    color: #ffffff;
+}
+
+.ypp-health-btn-unsub:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.ypp-health-btn-secondary {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.ypp-health-btn-secondary:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ypp-health-btn-tertiary {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.0) 100%);
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-health-btn-tertiary:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+}
+
+/* Stats */
+.ypp-health-stat {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px;
+    border-radius: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.ypp-health-stat[data-filter="active"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(46, 213, 115, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-color: rgba(46, 213, 115, 0.4);
+    background: linear-gradient(180deg, rgba(46, 213, 115, 0.05) 0%, transparent 100%);
+}
+
+.ypp-health-stat[data-filter="warning"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255, 179, 64, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 179, 64, 0.4);
+    background: linear-gradient(180deg, rgba(255, 179, 64, 0.05) 0%, transparent 100%);
+}
+
+.ypp-health-stat[data-filter="dead"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255, 78, 69, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 78, 69, 0.4);
+    background: linear-gradient(180deg, rgba(255, 78, 69, 0.05) 0%, transparent 100%);
+}.ypp-health-stat-label {    color: #94a3b8;    font-size: 11px;    font-weight: 600;    text-transform: uppercase;    letter-spacing: 0.08em;    margin-bottom: 8px;    display: flex;    align-items: center;    gap: 6px;}.ypp-health-stat-value {    color: #f1f5f9;    font-size: 32px;    font-weight: 600;    line-height: 1;    letter-spacing: -1px;}/* Inputs & Selects */
+.ypp-health-input {
+    background: rgba(255, 255, 255, 0.03);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    outline: none;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.ypp-health-input:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.ypp-health-select {
+    background: rgba(255, 255, 255, 0.03);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s;
+    appearance: none;
+    padding-right: 32px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.ypp-health-select:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+}.ypp-health-select option {    background: rgba(20, 20, 30, 0.9);    color: white;}
+
+/* View Toggle Buttons */
+.ypp-view-btn {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.ypp-view-btn:hover {
+    color: #f1f5f9;
+}
+.ypp-view-btn.ypp-view-active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Channel Row (List View Default) */
+.ypp-channel-health-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: ypp-fade-in 0.3s ease;
+    cursor: grab;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+/* Grid View Layout Overrides */
+.ypp-grid-view {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
+    align-items: stretch;
+    align-content: start;
+}
+.ypp-grid-view .ypp-channel-health-row {
+    flex-direction: column;
+    padding: 24px 16px;
+    text-align: center;
+    height: auto;
+    position: relative;
+    border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-top: 4px solid var(--ypp-status-color, transparent) !important;
+}
+.ypp-grid-view .ypp-channel-health-row:hover {
+    transform: translateY(-4px);
+}
+.ypp-grid-view .ypp-channel-health-row .ypp-health-row-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    margin-right: 0 !important;
+    margin-bottom: 12px;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(2) {
+    margin-bottom: 20px;
+    align-items: center !important;
+}
+.ypp-grid-view .ypp-channel-health-row .ypp-content-pills {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: auto;
+    gap: 8px !important;
+    align-items: stretch !important;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > a,
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > button {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    padding: 6px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: auto;
+    background: transparent;
+    padding: 0;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > label > span:last-child {
+    display: none;
+}
+
+.ypp-channel-health-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+
+.ypp-health-row-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-right: 16px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.ypp-indiv-unsub-btn {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.ypp-indiv-unsub-btn:not(:disabled):hover {
+    background: linear-gradient(180deg, rgba(255, 78, 69, 0.15) 0%, rgba(220, 38, 38, 0.05) 100%);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.ypp-indiv-unsub-btn:not(:disabled):active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Visit Button */
+.ypp-health-btn-visit {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.ypp-health-btn-visit:hover {
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.15) 0%, rgba(79, 70, 229, 0.05) 100%);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: #c7d2fe;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.ypp-health-btn-visit:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Checkbox */.ypp-custom-checkbox-label {    display: flex;    align-items: center;    gap: 8px;    cursor: pointer;    font-size: 13px;    font-weight: 500;    color: rgba(255, 255, 255, 0.6);    user-select: none;    position: relative;    padding-left: 24px;    margin-right: 8px;    transition: color 0.2s;}.ypp-custom-checkbox-label:hover {    color: rgba(255, 255, 255, 0.9);}.ypp-custom-checkbox-label .ypp-unsub-checkbox {    position: absolute;    opacity: 0;    cursor: pointer;    height: 0;    width: 0;}.ypp-custom-checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    transition: all 0.2s;
+}.ypp-custom-checkbox-label:hover .ypp-custom-checkmark {    border-color: rgba(99, 102, 241, 0.5);    background-color: rgba(255, 255, 255, 0.1);}.ypp-custom-checkbox-label .ypp-unsub-checkbox:checked ~ .ypp-custom-checkmark {    background-color: #6366f1;    border-color: #6366f1;}/* Checkmark Icon */.ypp-custom-checkmark:after {    content: "";    position: absolute;    display: none;    left: 6px;    top: 2px;    width: 4px;    height: 10px;    border: solid white;    border-width: 0 2px 2px 0;    transform: rotate(45deg);}.ypp-custom-checkbox-label .ypp-unsub-checkbox:checked ~ .ypp-custom-checkmark:after {    display: block;}@keyframes ypp-pulse {    0% { opacity: 1; }    50% { opacity: 0.4; }    100% { opacity: 1; }}/* ── Content Type Filter Buttons ─────────────────── */.ypp-ctype-btn {    display: inline-flex;    align-items: center;    gap: 5px;    padding: 6px 12px;    border-radius: 8px;    border: 1px solid rgba(255, 255, 255, 0.09);    background: rgba(255, 255, 255, 0.03);    color: #64748b;    font-size: 12px;    font-weight: 500;    cursor: pointer;    transition: all 0.15s ease;    font-family: inherit;    white-space: nowrap;    letter-spacing: 0.1px;}.ypp-ctype-btn:hover {    background: rgba(255, 255, 255, 0.07);    color: #94a3b8;    border-color: rgba(255, 255, 255, 0.14);}.ypp-ctype-btn.ypp-ctype-active {    background: rgba(255, 255, 255, 0.12);    border-color: rgba(255, 255, 255, 0.2);    color: #f1f5f9;    font-weight: 600;}/* ── Channel Content Pills ───────────────────── */
+.ypp-content-pills {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 7px;
+    flex-wrap: wrap;
+}
+
+.ypp-cpill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+    transition: box-shadow 0.2s, opacity 0.2s;
+}
+
+.ypp-cpill-active  {
+    background: rgba(46, 213, 115, 0.15);
+    border-color: rgba(46, 213, 115, 0.4);
+    color: #2ed573;
+    box-shadow: 0 4px 12px rgba(46, 213, 115, 0.15);
+}
+
+.ypp-cpill-warning {
+    background: rgba(255, 179, 64, 0.15);
+    border-color: rgba(255, 179, 64, 0.4);
+    color: #ffb340;
+    box-shadow: 0 4px 12px rgba(255, 179, 64, 0.15);
+}.ypp-cpill-dead {    background: rgba(255, 78, 69, 0.1);    border-color: rgba(255, 78, 69, 0.35);    color: #ff4e45;}.ypp-cpill-none    { background: rgba(255,255,255,0.015); border-color: rgba(255,255,255,0.05); color: #2d3f52; }.ypp-cpill-unknown { background: rgba(148,163,184,0.05);  border-color: rgba(148,163,184,0.1);  color: #3d5068; }
+
+/* ── History Card ───────────────────────────── */
+.ypp-history-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-history-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.ypp-history-card-avatar {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 20px;
+    filter: grayscale(100%); 
+    opacity: 0.7; 
+    object-fit: cover; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.ypp-history-card:hover .ypp-history-card-avatar {
+    filter: grayscale(40%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.ypp-history-card-info {
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+    overflow: hidden; 
+    width: 100%;
+}
+
+.ypp-history-card-name {
+    color: rgba(255, 255, 255, 0.6); 
+    text-decoration: line-through; 
+    font-weight: 600; 
+    font-size: 16px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
+}
+
+.ypp-history-card:hover .ypp-history-card-name {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ypp-history-card-time {
+    color: #94a3b8; 
+    font-size: 13px; 
+    font-weight: 500;
+}
+
+/* ── Close Button ───────────────────────────── */
+.ypp-modal-close {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.ypp-modal-close:hover {
+    background: rgba(255, 78, 69, 0.15);
+    color: #ff4e45;
+    border-color: rgba(255, 78, 69, 0.3);
+    transform: scale(1.05);
+}
+
+/* ── Safe List Shield Button ───────────────────── */
+.ypp-health-shield-btn {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.ypp-health-shield-btn:hover {
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #3b82f6;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ypp-health-shield-btn.active {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ypp-health-shield-btn:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Error CPill */
+.ypp-cpill-error {
+    background: rgba(148, 163, 184, 0.1);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #94a3b8;
+}

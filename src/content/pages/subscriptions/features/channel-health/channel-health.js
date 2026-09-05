@@ -44,21 +44,21 @@ export class ChannelHealth extends window.YPP.features.BaseFeature {
         const btn = document.createElement('button');
         btn.id = 'ypp-channel-health-btn';
         btn.className = 'ypp-btn-primary';
-        btn.style.cssText = 'background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2)); color: #a5b4fc; border: 1px solid rgba(139,92,246,0.4); padding: 8px 18px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); margin-left: auto; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
+        btn.style.cssText = 'background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(37,99,235,0.2)); color: #93c5fd; border: 1px solid rgba(37,99,235,0.4); padding: 8px 18px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); margin-left: auto; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
         
         btn.innerHTML = String.raw`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Channel Health`;
         
         btn.addEventListener('mouseover', () => {
-            btn.style.background = 'linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3))';
+            btn.style.background = 'linear-gradient(135deg, rgba(59,130,246,0.3), rgba(37,99,235,0.3))';
             btn.style.transform = 'translateY(-2px)';
-            btn.style.boxShadow = '0 6px 16px rgba(99,102,241,0.2)';
-            btn.style.borderColor = 'rgba(167,139,250,0.6)';
+            btn.style.boxShadow = '0 6px 16px rgba(59,130,246,0.2)';
+            btn.style.borderColor = 'rgba(96,165,250,0.6)';
         });
         btn.addEventListener('mouseout', () => {
-            btn.style.background = 'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2))';
+            btn.style.background = 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(37,99,235,0.2))';
             btn.style.transform = 'translateY(0)';
             btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-            btn.style.borderColor = 'rgba(139,92,246,0.4)';
+            btn.style.borderColor = 'rgba(37,99,235,0.4)';
         });
         
         this.addListener(btn, 'click', () => {

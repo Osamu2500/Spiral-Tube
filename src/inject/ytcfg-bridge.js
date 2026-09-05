@@ -14,7 +14,8 @@
                         visitorData:   window.ytcfg?.get('VISITOR_DATA'),
                         clientVersion: window.ytcfg?.get('INNERTUBE_CLIENT_VERSION') || '2.20240101.01.00',
                         sessionIndex:  window.ytcfg?.get('SESSION_INDEX') || '0',
-                        pageId:        window.ytcfg?.get('DELEGATED_SESSION_ID') || window.ytcfg?.get('PAGE_ID')
+                        pageId:        window.ytcfg?.get('DELEGATED_SESSION_ID') || window.ytcfg?.get('PAGE_ID'),
+                        dataSyncId:    window.ytcfg?.get('DATASYNC_ID') || ''
                     }
                 }, '*');
             } catch (err) {
