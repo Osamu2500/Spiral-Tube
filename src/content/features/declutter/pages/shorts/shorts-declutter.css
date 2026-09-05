@@ -122,8 +122,7 @@ body.ypp-shorts-page.ypp-hide-podcasts yt-lockup-view-model:has(ytd-badge-suppor
 .ypp-hidden-duration {
   display: none !important;
 }
-html body .ypp-hidden,
-html body .ypp-hidden-by-pipeline {
+html body [data-ypp-hidden="1"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;

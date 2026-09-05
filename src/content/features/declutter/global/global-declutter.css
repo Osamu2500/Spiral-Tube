@@ -217,15 +217,14 @@ html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-
   pointer-events: auto;
 }
 
-.ypp-hidden {
+[data-ypp-hidden="1"] {
   display: none !important;
 }
 
 html body.ypp-watched-mode-hide [data-ypp-watched="1"],
 html[data-ypp-card-style] body.ypp-watched-mode-hide [data-ypp-watched="1"],
 html[data-ypp-card-style] body.ypp-watched-mode-hide ytd-rich-item-renderer[data-ypp-watched="1"],
-.ypp-hidden,
-.ypp-hidden-by-pipeline {
+[data-ypp-hidden="1"] {
   display: none !important;
 }
 
@@ -240,8 +239,7 @@ body.ypp-hide-useless-guide-links #guide-content #footer {
   display: none !important;
 }
 
-html body .ypp-hidden,
-html body .ypp-hidden-by-pipeline {
+html body [data-ypp-hidden="1"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
