@@ -93,7 +93,11 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
             'ytm-shorts-lockup-view-model'
         ]);
         if (container) {
-            container.style.setProperty('display', 'none', 'important');
+            if (window.YPP.utils?.filterPrimitives) {
+                window.YPP.utils.filterPrimitives.forceHide(container, 'Shorts');
+            } else {
+                container.style.setProperty('display', 'none', 'important');
+            }
             return true;
         }
         return false;
@@ -104,6 +108,12 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
             el.removeAttribute('data-ypp-is-short');
             el.style.removeProperty('display');
         });
+
+        if (window.YPP.utils?.filterPrimitives) {
+            document.querySelectorAll('[data-ypp-hidden-reason="Shorts"]').forEach(el => {
+                window.YPP.utils.filterPrimitives._clearState(el);
+            });
+        }
     }
 
     removeShortsFromDOM() {
