@@ -474,11 +474,11 @@ export class ChannelHealthScanner {
                     }
                     
                     doneCount++;
+                    overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: targetChannels.length, complete: false } }));
                     btn.textContent = `Scanning Shorts... (${doneCount}/${targetChannels.length})`;
                 }
             };
 
-            const CONCURRENCY_LIMIT = 5;
             const workers = Array.from({ length: Math.min(CONCURRENCY_LIMIT, targetChannels.length) }, async (_, i) => {
                 await new Promise(r => setTimeout(r, i * 100));
                 return worker();
