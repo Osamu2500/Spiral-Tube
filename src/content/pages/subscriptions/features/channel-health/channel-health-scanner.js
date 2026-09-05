@@ -444,6 +444,8 @@ export class ChannelHealthScanner {
                 return 'dead';
             };
 
+            let doneCount = 0;
+
             const worker = async () => {
                 while (currentIndex < targetChannels.length) {
                     const c = targetChannels[currentIndex++];
@@ -470,9 +472,13 @@ export class ChannelHealthScanner {
                             c.lastUploadText = c.videoInfo.text;
                         }
                     }
+                    
+                    doneCount++;
+                    btn.textContent = `Scanning Shorts... (${doneCount}/${targetChannels.length})`;
                 }
             };
 
+            const CONCURRENCY_LIMIT = 5;
             const workers = Array.from({ length: Math.min(CONCURRENCY_LIMIT, targetChannels.length) }, async (_, i) => {
                 await new Promise(r => setTimeout(r, i * 100));
                 return worker();
