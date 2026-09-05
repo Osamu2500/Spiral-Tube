@@ -65,6 +65,7 @@ window.YPP.SettingsSchema = {
         autoVideoFilter:     { type: 'boolean', default: true },
 
         // --- Content Filtering / Unhook ---
+        filterMode:          { type: 'string',  default: 'dim', values: ['dim', 'hide'] },
         hideAnnotations:     { type: 'boolean', default: false },
         hideRelated:         { type: 'boolean', default: false },
         hideFeed:            { type: 'boolean', default: false },

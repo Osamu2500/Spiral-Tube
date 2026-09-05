@@ -11,6 +11,7 @@ class FilterPrimitives {
      */
     static applyFilter(element, action, reason, channelPath = null) {
         if (!element || !element.isConnected) return;
+        if (element.dataset.yppUndoOverride === 'true') return;
         
         // 1. Resolve owning channel if not provided
         if (!channelPath && window.YPP.Utils?.youtubeParsers?.extractChannelFromContainer) {
@@ -84,6 +85,14 @@ class FilterPrimitives {
                 if (reason === 'Blacklisted channel' || reason === 'blacklist') {
                     badge.dataset.yppBadgeKind = 'blacklist';
                 }
+                
+                // Clicking the badge undoes the filter temporarily
+                badge.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    element.dataset.yppUndoOverride = 'true';
+                    FilterPrimitives._clearState(element);
+                });
                 
                 badgeTarget.appendChild(badge);
                 

@@ -140,6 +140,7 @@ export const DEFAULT_SETTINGS = {
   hideMemberships: false,
   hideMembersOnly: false, // Hide members-only videos
   feedFilterKeywords: '',
+  filterMode: 'dim',
   // Per-page toggles for FeedFilter (Advanced Mode)
   // Per-page toggles for MetadataFilters (Advanced Mode)
   metaFilterHome: true,

@@ -18,6 +18,8 @@ export class AutoHideTopbar extends window.YPP.features.BaseFeature {
         this._boundMouseMove = this._handleMouseMove.bind(this);
         this.isHoveringTop = false;
         this.resizeDebounce = null;
+        this._rafScheduled = false;
+        this._lastEvent = null;
     }
 
     getConfigKey() { return 'hideTopBarOnPlayer'; }
@@ -47,7 +49,7 @@ export class AutoHideTopbar extends window.YPP.features.BaseFeature {
             document.body.classList.add('ypp-hide-top-bar');
             this._triggerResize();
         }
-        document.addEventListener('mousemove', this._boundMouseMove);
+        document.addEventListener('mousemove', this._boundMouseMove, { passive: true });
     }
 
     _deactivate() {
@@ -56,10 +58,24 @@ export class AutoHideTopbar extends window.YPP.features.BaseFeature {
             document.body.classList.remove('ypp-show-top-bar');
             this._triggerResize();
         }
-        document.removeEventListener('mousemove', this._boundMouseMove);
+        document.removeEventListener('mousemove', this._boundMouseMove, { passive: true });
     }
 
     _handleMouseMove(e) {
+        this._lastEvent = e;
+        if (!this._rafScheduled) {
+            this._rafScheduled = true;
+            window.requestAnimationFrame(() => {
+                this._rafScheduled = false;
+                this._checkHoverState();
+            });
+        }
+    }
+
+    _checkHoverState() {
+        const e = this._lastEvent;
+        if (!e) return;
+
         if (e.clientY <= this.hoverArea) {
             if (!this.isHoveringTop) {
                 this.isHoveringTop = true;

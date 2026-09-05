@@ -92,26 +92,6 @@ export const getDeclutterTab = (t) => ({
             desc: t('always_hide_specific_channels'),
             icon: ICONS.blacklist,
           },
-          {
-            type: 'toggle',
-            id: 'viewsFilterEnabled',
-            class: 'span-2',
-            label: t('hide_low_view_videos'),
-            desc: t('filter_out_unpopular_content'),
-            icon: P(
-              'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'
-            ),
-            inlineSlot: `<div class=\"inline-slider-wrapper\" style=\"display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; min-width:0; padding-left:16px;\"><span style=\"font-size:10px; opacity:0.5; white-space:nowrap;\">Min:</span><input type=\"range\" id=\"viewsHideThresholdUI\" min=\"0\" max=\"11\" step=\"1\" style=\"flex:1; min-width:0;\"><span id=\"viewsHideThresholdValue\" style=\"font-size:10px; min-width:30px; opacity:0.7; text-align:right;\">Off</span></div><input type=\"hidden\" id=\"viewsHideThreshold\" value=\"0\" />`,
-          },
-          {
-            type: 'toggle',
-            id: 'dateFilterEnabled',
-            class: 'span-3',
-            label: t('filter_by_upload_date'),
-            desc: t('hide_videos_older_newer_than_n_days'),
-            icon: ICONS.calendar,
-            inlineSlot: `<div style="display:flex; flex:1; align-items:center; justify-content:space-evenly; gap:16px; margin-left:auto; width: 66.66%;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; width: 100%; justify-content:center;"><span style="font-size:10px; opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; width: 100%; justify-content:center;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />`,
-          },
         ],
       },
       {
