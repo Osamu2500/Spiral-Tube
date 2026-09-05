@@ -176,15 +176,17 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             target.removeAttribute('data-ypp-dim-by');
             target.removeAttribute('data-ypp-dim-reason');
             target.removeAttribute('data-ypp-dimmed');
+            target.removeAttribute('data-ypp-hidden');
             target.classList.remove('ypp-hidden', 'ypp-hidden-by-pipeline', 'ypp-dim-badge');
             target.style.removeProperty('display');
         }
 
         if (!forceReevaluate && target.hasAttribute('data-ypp-v3-processed')) {
             // Self-Healing: Re-apply visual states if YouTube's virtual DOM wiped the class/style
-            if (target.dataset.yppHiddenBy === 'CardPipeline') {
+            if (target.dataset.yppHiddenBy === 'CardPipeline' || target.dataset.yppHidden) {
                 if (target.style.display !== 'none' || !target.classList.contains('ypp-hidden')) {
                     target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
+                    target.dataset.yppHidden = '1';
                     target.style.display = 'none';
                 }
             } else if (target.dataset.yppDimBy === 'CardPipeline') {
@@ -199,19 +201,7 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         // 1. Extract unified metadata
         const context = this._extractContext(target);
 
-        // Whitelist short-circuit: whitelisted channels are never filtered
-        const whitelist = window.YPP.FeatureManager?.getFeature('channelWhitelist');
-        if (whitelist?.isEnabled && context.channelPath) {
-            const isExempt = this._isChannelWhitelisted(context.channelPath, whitelist);
-            const blacklist = window.YPP.FeatureManager?.getFeature('channelBlacklist');
-            const isBlacklisted = blacklist?.isEnabled && this._isChannelBlacklisted(context.channelPath, blacklist);
-            
-            if (isExempt && !isBlacklisted) {
-                this._unhideElement(target);
-                target.setAttribute('data-ypp-v3-processed', '1');
-                return;
-            }
-        }
+        // Whitelist short-circuit is now handled centrally in FilterPrimitives.applyFilter()
 
         // 2. Pass through all enabled filters
         const verdicts = [];
@@ -235,22 +225,7 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         this._applyVerdicts(target, verdicts, context);
     }
 
-    _isChannelWhitelisted(channelPath, whitelistFeature) {
-        const raw = whitelistFeature._settings?.channelWhitelist || '';
-        const list = Array.isArray(raw) 
-            ? raw 
-            : raw.split(/[\n,]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
-        const normalized = channelPath.toLowerCase();
-        return list.some(entry => normalized === entry || 
-                                   normalized.endsWith('/' + entry.replace(/^\/@?/, '')));
-    }
-
-    _isChannelBlacklisted(channelPath, blacklistFeature) {
-        const list = Array.from(blacklistFeature._channels || []);
-        const normalized = channelPath.toLowerCase();
-        return list.some(entry => normalized === entry || 
-                                   normalized.endsWith('/' + entry.replace(/^\/@?/, '')));
-    }
+    // _isChannelWhitelisted and _isChannelBlacklisted are now handled by FilterPrimitives
 
     _extractContext(card) {
         const parsers = window.YPP.Utils?.youtubeParsers;
@@ -396,7 +371,11 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
     _applyVerdicts(target, verdicts, context) {
         if (verdicts.length === 0) {
             // Unhide/Undim
-            this._unhideElement(target);
+            if (window.YPP.utils?.filterPrimitives) {
+                window.YPP.utils.filterPrimitives._clearState(target);
+            } else {
+                this._unhideElement(target);
+            }
             return;
         }
 
@@ -404,28 +383,36 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         const shouldHide = verdicts.some(v => v.action === 'hide');
         const reasons = verdicts.map(v => v.reason).filter(r => r).join(', ');
 
-        if (shouldHide) {
-            // Hard hide
-            if (target.dataset.yppDimmed) this._clearDimmedElement(target);
-            target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
-            target.dataset.yppHiddenReason = reasons;
-            target.dataset.yppHiddenBy = 'CardPipeline';
-            target.style.display = 'none'; // Ensure it's hidden
-            
-            try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
+        if (window.YPP.utils?.filterPrimitives) {
+            window.YPP.utils.filterPrimitives.applyFilter(target, shouldHide ? 'hide' : 'dim', reasons, context.channelPath);
         } else {
-            // Dim
-            target.classList.remove('ypp-hidden', 'ypp-hidden-by-pipeline');
-            delete target.dataset.yppHiddenReason;
-            delete target.dataset.yppHiddenBy;
-            target.style.removeProperty('display');
-            
-            target.dataset.yppDimBy = 'CardPipeline';
-            
-            if (window.YPP.utils?.filterUI?.applyDimMode) {
-                window.YPP.utils.filterUI.applyDimMode(target, reasons, context.channelPath);
+            // Fallback for mid-migration
+            if (shouldHide) {
+                // Hard hide
+                if (target.dataset.yppDimmed) this._clearDimmedElement(target);
+                target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
+                target.dataset.yppHidden = '1';
+                target.dataset.yppHiddenReason = reasons;
+                target.dataset.yppHiddenBy = 'CardPipeline';
+                target.style.display = 'none'; // Ensure it's hidden
+                
+                try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
+            } else {
+                // Dim
+                target.classList.remove('ypp-hidden', 'ypp-hidden-by-pipeline');
+                delete target.dataset.yppHiddenReason;
+                delete target.dataset.yppHiddenBy;
+                delete target.dataset.yppHidden;
+                target.style.removeProperty('display');
+                
+                target.dataset.yppDimBy = 'CardPipeline';
+                target.dataset.yppDimmed = '1';
+                
+                if (window.YPP.utils?.filterUI?.applyDimMode) {
+                    window.YPP.utils.filterUI.applyDimMode(target, reasons, context.channelPath);
+                }
+                try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
             }
-            try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
         }
     }
 

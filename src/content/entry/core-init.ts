@@ -4,6 +4,7 @@ import '../../shared/config/settings-schema.js';
 import '../core/system/error-handler.js';
 import '../core/dom/element-cache.js';
 import '../../shared/utils/index.js';
+import '../core/utils/filter-primitives.js';
 import '../core/utils/youtube-parsers.js';
 
 import '../core/events/event-bus.js';
