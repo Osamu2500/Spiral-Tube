@@ -203,7 +203,10 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         const whitelist = window.YPP.FeatureManager?.getFeature('channelWhitelist');
         if (whitelist?.isEnabled && context.channelPath) {
             const isExempt = this._isChannelWhitelisted(context.channelPath, whitelist);
-            if (isExempt) {
+            const blacklist = window.YPP.FeatureManager?.getFeature('channelBlacklist');
+            const isBlacklisted = blacklist?.isEnabled && this._isChannelBlacklisted(context.channelPath, blacklist);
+            
+            if (isExempt && !isBlacklisted) {
                 this._unhideElement(target);
                 target.setAttribute('data-ypp-v3-processed', '1');
                 return;
@@ -237,6 +240,13 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         const list = Array.isArray(raw) 
             ? raw 
             : raw.split(/[\n,]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+        const normalized = channelPath.toLowerCase();
+        return list.some(entry => normalized === entry || 
+                                   normalized.endsWith('/' + entry.replace(/^\/@?/, '')));
+    }
+
+    _isChannelBlacklisted(channelPath, blacklistFeature) {
+        const list = Array.from(blacklistFeature._channels || []);
         const normalized = channelPath.toLowerCase();
         return list.some(entry => normalized === entry || 
                                    normalized.endsWith('/' + entry.replace(/^\/@?/, '')));

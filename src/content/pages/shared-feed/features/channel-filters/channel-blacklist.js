@@ -6,7 +6,6 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
 
     constructor() {
         super('ChannelBlacklist');
-        this._boundProcess = this._processCards.bind(this);
         this._channels = new Set();
     }
 
@@ -24,6 +23,11 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         this._updateChannels(settings.channelBlacklist);
         if (settings.channelBlacklistEnabled) this.enable();
         else this.disable();
+        
+        if (this._isEnabled && window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.triggerGlobalReevaluation();
+        }
     }
     
     _updateChannels(text) {
@@ -42,53 +46,39 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         if (this._isEnabled) return;
         this._isEnabled = true;
         
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register(
-                'channel-blacklist',
-                'ytd-video-renderer, ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytd-lockup-view-model',
-                this._boundProcess
-            );
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) {
+                pipeline.registerFilter(this);
+                pipeline.triggerGlobalReevaluation();
+            }
         }
-        this._processCards();
     }
 
     async disable() {
         await super.disable();
         this._isEnabled = false;
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.unregister('channel-blacklist');
+        
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) {
+                if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
+                pipeline.triggerGlobalReevaluation();
+            }
         }
-        this._unhideAll();
-        document.querySelectorAll('[data-ypp-blacklist-processed]').forEach(el => {
-            el.removeAttribute('data-ypp-blacklist-processed');
-        });
     }
 
-    _processCards(elements = null) {
-        if (!this._isEnabled || !this._shouldRunOnCurrentPage() || this._channels.size === 0) return;
-        const cardsToProcess = elements || document.querySelectorAll('ytd-video-renderer, ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytd-lockup-view-model');
-        cardsToProcess.forEach(card => this._evaluateCard(card));
-    }
-
-    _evaluateCard(card) {
-        if (card.hasAttribute('hidden') || card.style.display === 'none') return;
-        if (card.hasAttribute('data-ypp-blacklist-processed')) return;
+    evaluate(context) {
+        if (!this._shouldRunOnCurrentPage() || this._channels.size === 0) return null;
         
-        const parsers = window.YPP.Utils.youtubeParsers;
-        if (!parsers) return;
-
-        const channelResult = parsers.extractChannelFromContainer(card);
-        if (!channelResult) return;
-        
-        const channels = Array.isArray(channelResult) ? channelResult : [channelResult];
+        const channels = context.channelPaths || [];
         const isBlacklisted = channels.some(ch => this._channels.has(ch));
 
         if (isBlacklisted) {
-            card.setAttribute('data-ypp-blacklist-processed', 'true');
-            this._hideElement(card, 'blacklist');
-        } else {
-            card.setAttribute('data-ypp-blacklist-processed', 'true');
+            return { action: 'hide', reason: 'blacklist' };
         }
+        
+        return null;
     }
 }
 window.YPP.features.ChannelBlacklist = ChannelBlacklist;
