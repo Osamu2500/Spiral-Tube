@@ -403,6 +403,18 @@ export class ChannelHealthUI {
                 sortResults();
             });
         });
+
+        // Stat Card Filters
+        const statCards = overlay.querySelectorAll('.ypp-health-stat');
+        statCards.forEach(stat => {
+            stat.addEventListener('click', () => {
+                if (filterSel && stat.dataset.filter) {
+                    filterSel.value = stat.dataset.filter;
+                    applyFilters();
+                    sortResults();
+                }
+            });
+        });
         
         // Load actual settings asynchronously
         ChannelHealthDB.getSettings().then(realSettings => {
