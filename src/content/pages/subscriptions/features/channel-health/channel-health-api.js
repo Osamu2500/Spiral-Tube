@@ -320,10 +320,10 @@ export class ChannelHealthAPI {
             const html = await res.text();
             clearTimeout(tid);
             const data = this._extractYtInitialData(html);
-            if (!data) return null;
+            if (!data) return 'Error';
 
             const strData = JSON.stringify(data);
-            if (!strData.includes('"videoId"')) return null;
+            if (!strData.includes('"videoId"')) return 'No Videos';
 
             const rxPub  = /"publishedTimeText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
             const rxDate = /"dateText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
@@ -335,30 +335,34 @@ export class ChannelHealthAPI {
             while ((m = rxContent.exec(strData)) !== null) return m[1];
 
             // Fallback: extract the videoId and fetch its watch page to get the exact date
-            const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
-            if (videoIdMatch) {
-                const videoId = videoIdMatch[1];
-                const watchController = new AbortController();
-                const watchTid = setTimeout(() => watchController.abort(), 10000);
-                const watchRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: watchController.signal });
-                if (!watchRes.ok) { clearTimeout(watchTid); }
-                else {
-                    const watchHtml = await watchRes.text();
-                    clearTimeout(watchTid);
-                    const dateTextMatch = watchHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
-                    const publishMatch = watchHtml.match(/"publishDate":"([^"]+)"/);
-                    const uploadMatch = watchHtml.match(/"uploadDate":"([^"]+)"/);
-                    
-                    let dateStr = null;
-                    if (dateTextMatch) dateStr = dateTextMatch[1];
-                    else if (publishMatch) dateStr = publishMatch[1];
-                    else if (uploadMatch) dateStr = uploadMatch[1];
-                    
-                    if (dateStr) {
-                        dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
-                        return dateStr;
+            try {
+                const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+                if (videoIdMatch) {
+                    const videoId = videoIdMatch[1];
+                    const watchController = new AbortController();
+                    const watchTid = setTimeout(() => watchController.abort(), 10000);
+                    const watchRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: watchController.signal });
+                    if (!watchRes.ok) { clearTimeout(watchTid); }
+                    else {
+                        const watchHtml = await watchRes.text();
+                        clearTimeout(watchTid);
+                        const dateTextMatch = watchHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
+                        const publishMatch = watchHtml.match(/"publishDate":"([^"]+)"/);
+                        const uploadMatch = watchHtml.match(/"uploadDate":"([^"]+)"/);
+                        
+                        let dateStr = null;
+                        if (dateTextMatch) dateStr = dateTextMatch[1];
+                        else if (publishMatch) dateStr = publishMatch[1];
+                        else if (uploadMatch) dateStr = uploadMatch[1];
+                        
+                        if (dateStr) {
+                            dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
+                            return dateStr;
+                        }
                     }
                 }
+            } catch (innerErr) {
+                window.YPP.Utils?.log('fetchLatestVideo watch page fallback error', 'CHANNEL-HEALTH', 'warn', innerErr);
             }
 
             return 'Has Videos'; // Ultimate Fallback
@@ -377,34 +381,38 @@ export class ChannelHealthAPI {
             const html = await res.text();
             clearTimeout(tid);
             const data = this._extractYtInitialData(html);
-            if (!data) return null;
+            if (!data) return 'Error';
 
             const strData = JSON.stringify(data);
             const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
-            if (!videoIdMatch) return null; // No shorts found
+            if (!videoIdMatch) return 'No Shorts';
 
             const videoId = videoIdMatch[1];
             
             // Fetch the watch page for the latest short to get its date
-            const shortController = new AbortController();
-            const shortTid = setTimeout(() => shortController.abort(), 10000);
-            const shortRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: shortController.signal });
-            if (!shortRes.ok) { clearTimeout(shortTid); return 'Has Shorts'; }
-            const shortHtml = await shortRes.text();
-            clearTimeout(shortTid);
-            
-            const dateTextMatch = shortHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
-            const publishMatch = shortHtml.match(/"publishDate":"([^"]+)"/);
-            const uploadMatch = shortHtml.match(/"uploadDate":"([^"]+)"/);
-            
-            let dateStr = null;
-            if (dateTextMatch) dateStr = dateTextMatch[1];
-            else if (publishMatch) dateStr = publishMatch[1];
-            else if (uploadMatch) dateStr = uploadMatch[1];
-            
-            if (dateStr) {
-                dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
-                return dateStr;
+            try {
+                const shortController = new AbortController();
+                const shortTid = setTimeout(() => shortController.abort(), 10000);
+                const shortRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: shortController.signal });
+                if (!shortRes.ok) { clearTimeout(shortTid); return 'Has Shorts'; }
+                const shortHtml = await shortRes.text();
+                clearTimeout(shortTid);
+                
+                const dateTextMatch = shortHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
+                const publishMatch = shortHtml.match(/"publishDate":"([^"]+)"/);
+                const uploadMatch = shortHtml.match(/"uploadDate":"([^"]+)"/);
+                
+                let dateStr = null;
+                if (dateTextMatch) dateStr = dateTextMatch[1];
+                else if (publishMatch) dateStr = publishMatch[1];
+                else if (uploadMatch) dateStr = uploadMatch[1];
+                
+                if (dateStr) {
+                    dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
+                    return dateStr;
+                }
+            } catch (innerErr) {
+                window.YPP.Utils?.log('scanShorts watch page error', 'CHANNEL-HEALTH', 'warn', innerErr);
             }
 
             return 'Has Shorts';

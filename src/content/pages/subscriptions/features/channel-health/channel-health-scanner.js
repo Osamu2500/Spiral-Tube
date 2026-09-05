@@ -310,13 +310,15 @@ export class ChannelHealthScanner {
                             return 'dead';
                         };
 
-                        if (videoText && videoText !== 'Error' && videoText !== 'Has Videos') {
+                        if (videoText && videoText !== 'Error' && videoText !== 'Has Videos' && videoText !== 'No Videos') {
                             const pubTime = now - (ChannelHealthAPI.parseRelativeTime(videoText) || 0);
                             c.videoInfo = { pubTime, text: videoText, status: classify(pubTime) };
                         } else if (videoText === 'Has Videos') {
                             c.videoInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Videos', status: 'warning' };
+                        } else if (videoText === 'No Videos') {
+                            c.videoInfo = { pubTime: -Infinity, text: 'No Videos', status: 'dead' };
                         } else if (videoText === 'Error') {
-                            c.videoInfo = { pubTime: -Infinity, text: 'No Videos', status: 'error' };
+                            c.videoInfo = { pubTime: -Infinity, text: 'Scan Failed', status: 'error' };
                         } else {
                             c.videoInfo = null;
                         }
@@ -488,13 +490,15 @@ export class ChannelHealthScanner {
                     const c = targetChannels[currentIndex++];
                     const shortText = await ChannelHealthAPI.scanShorts(c.id);
 
-                    if (shortText && shortText !== 'Error' && shortText !== 'Has Shorts') {
+                    if (shortText && shortText !== 'Error' && shortText !== 'Has Shorts' && shortText !== 'No Shorts') {
                         const pubTime = now - (ChannelHealthAPI.parseRelativeTime(shortText) || 0);
                         c.shortInfo = { pubTime, text: shortText, status: classify(pubTime) };
                     } else if (shortText === 'Has Shorts') {
                         c.shortInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Shorts', status: 'warning' };
+                    } else if (shortText === 'No Shorts') {
+                        c.shortInfo = { pubTime: -Infinity, text: 'No Shorts', status: 'dead' };
                     } else if (shortText === 'Error') {
-                        c.shortInfo = { pubTime: -Infinity, text: 'No Shorts', status: 'error' };
+                        c.shortInfo = { pubTime: -Infinity, text: 'Scan Failed', status: 'error' };
                     } else {
                         c.shortInfo = null;
                     }
