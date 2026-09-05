@@ -26,111 +26,123 @@
     const channelIdCacheOrder = [];
     
     let channelIdCacheDirty = false;
-
-    function cacheInsert(store, orderList, key, value, max) {
-        if (!store.has(key)) {
-            orderList.push(key);
-            if (orderList.length > max) {
-                store.delete(orderList.shift());
-            }
-        }
-        store.set(key, value);
-    }
+    let videoCacheDirty = false;
 
     let flushScheduled = false;
     function flushCacheToDOM() {
-        if (flushScheduled || !channelIdCacheDirty) return;
+        if (flushScheduled || (!channelIdCacheDirty && !videoCacheDirty)) return;
         flushScheduled = true;
         Promise.resolve().then(() => {
             flushScheduled = false;
-            if (!channelIdCacheDirty) return;
             try {
                 const root = document.documentElement;
                 if (!root) return;
-                channelIdCacheDirty = false;
-                root.setAttribute('data-ypp-channelid-cache', JSON.stringify(Object.fromEntries(channelIdCache)));
+                if (channelIdCacheDirty) {
+                    channelIdCacheDirty = false;
+                    root.setAttribute('data-ypp-channelid-cache', JSON.stringify(Object.fromEntries(channelIdCache)));
+                }
+                if (videoCacheDirty) {
+                    videoCacheDirty = false;
+                    root.setAttribute('data-ypp-video-cache', JSON.stringify(Object.fromEntries(cache)));
+                }
             } catch (_) {}
         });
     }
 
     /**
-     * Process ytInitialData when it becomes available using a non-blocking iterative BFS.
-     * Prevents UI stutter by yielding to the browser if parsing takes > 12ms.
+     * Defensive, depth-limited iterative walk through YouTube's undocumented JSON schema.
+     * Every property access is wrapped in try/catch to survive schema changes.
      */
-    function processInitialData(data) {
+    function walkRendererTree(data, startDepth = 0) {
         if (!data || typeof data !== 'object') return;
         
-        const queue = [data];
+        const stack = [[data, startDepth]];
         const visited = new WeakSet();
         const MAX_TIME_MS = 12;
 
         function processChunk() {
             const start = performance.now();
             
-            while (queue.length > 0) {
+            while (stack.length > 0) {
                 if (performance.now() - start > MAX_TIME_MS) {
                     setTimeout(processChunk, 0); // Yield and resume
                     return;
                 }
 
-                const obj = queue.shift();
-                if (!obj || typeof obj !== 'object' || visited.has(obj)) continue;
+                const [obj, depth] = stack.pop();
+                if (!obj || typeof obj !== 'object' || visited.has(obj) || depth > 30) continue;
                 visited.add(obj);
 
                 if (Array.isArray(obj)) {
-                    for (let i = 0; i < obj.length; i++) queue.push(obj[i]);
+                    for (let i = obj.length - 1; i >= 0; i--) {
+                        stack.push([obj[i], depth + 1]);
+                    }
                     continue;
                 }
 
-                const videoId =
-                    obj.videoId ||
-                    obj.playlistVideoRenderer?.videoId ||
-                    obj.gridVideoRenderer?.videoId ||
-                    obj.compactVideoRenderer?.videoId ||
-                    obj.richItemRenderer?.content?.videoRenderer?.videoId;
+                // Defensive extraction
+                let videoId = null;
+                try { videoId = obj.videoId; } catch(e) {}
+                if (!videoId) { try { videoId = obj.playlistVideoRenderer?.videoId; } catch(e) {} }
+                if (!videoId) { try { videoId = obj.gridVideoRenderer?.videoId; } catch(e) {} }
+                if (!videoId) { try { videoId = obj.compactVideoRenderer?.videoId; } catch(e) {} }
+                if (!videoId) { try { videoId = obj.richItemRenderer?.content?.videoRenderer?.videoId; } catch(e) {} }
 
-                const browseId = 
-                    obj.browseId ||
-                    obj.channelId ||
-                    obj.navigationEndpoint?.browseEndpoint?.browseId ||
-                    obj.gridChannelRenderer?.channelId;
+                let browseId = null;
+                try { browseId = obj.browseId; } catch(e) {}
+                if (!browseId) { try { browseId = obj.channelId; } catch(e) {} }
+                if (!browseId) { try { browseId = obj.navigationEndpoint?.browseEndpoint?.browseId; } catch(e) {} }
+                if (!browseId) { try { browseId = obj.gridChannelRenderer?.channelId; } catch(e) {} }
 
-                const channelHandle =
-                    obj.ownerText?.runs?.[0]?.navigationEndpoint?.commandMetadata?.webCommandMetadata?.url ||
-                    obj.shortBylineText?.runs?.[0]?.navigationEndpoint?.commandMetadata?.webCommandMetadata?.url ||
-                    obj.longBylineText?.runs?.[0]?.navigationEndpoint?.commandMetadata?.webCommandMetadata?.url;
+                let channelHandle = null;
+                try { channelHandle = obj.ownerText?.runs?.[0]?.navigationEndpoint?.commandMetadata?.webCommandMetadata?.url; } catch(e) {}
+                if (!channelHandle) { try { channelHandle = obj.shortBylineText?.runs?.[0]?.navigationEndpoint?.commandMetadata?.webCommandMetadata?.url; } catch(e) {} }
+                if (!channelHandle) { try { channelHandle = obj.longBylineText?.runs?.[0]?.navigationEndpoint?.commandMetadata?.webCommandMetadata?.url; } catch(e) {} }
 
                 if (channelHandle) {
-                    const normalized = channelHandle.toLowerCase().replace(/^https:\/\/www\.youtube\.com/, '');
-                    
-                    if (videoId) {
-                        cacheInsert(cache, videoCacheOrder, videoId, normalized, VIDEO_CACHE_MAX);
-                    }
-                    if (browseId && typeof browseId === 'string' && browseId.startsWith('UC')) {
-                        const key = ('/channel/' + browseId).toLowerCase();
-                        if (channelIdCache.get(key) !== normalized) {
-                            cacheInsert(channelIdCache, channelIdCacheOrder, key, normalized, CHANNEL_ID_CACHE_MAX);
-                            channelIdCacheDirty = true;
+                    try {
+                        const normalized = channelHandle.toLowerCase().replace(/^https:\/\/www\.youtube\.com/, '');
+                        
+                        if (videoId) {
+                            if (cache.get(videoId) !== normalized) {
+                                cacheInsert(cache, videoCacheOrder, videoId, normalized, VIDEO_CACHE_MAX);
+                                videoCacheDirty = true;
+                            }
                         }
-                    }
+                        if (browseId && typeof browseId === 'string' && browseId.startsWith('UC')) {
+                            const key = ('/channel/' + browseId).toLowerCase();
+                            if (channelIdCache.get(key) !== normalized) {
+                                cacheInsert(channelIdCache, channelIdCacheOrder, key, normalized, CHANNEL_ID_CACHE_MAX);
+                                channelIdCacheDirty = true;
+                            }
+                        }
+                    } catch(e) {}
                 }
 
-                // Add children to queue, skipping expensive unneeded nodes if possible
-                const keys = Object.keys(obj);
-                for (let i = 0; i < keys.length; i++) {
-                    const key = keys[i];
-                    // Optimization: Skip deep tracking metadata and internal context
-                    if (key === 'responseContext' || key === 'trackingParams') continue;
-                    
-                    const val = obj[key];
-                    if (val && typeof val === 'object') queue.push(val);
-                }
+                try {
+                    const keys = Object.keys(obj);
+                    for (let i = keys.length - 1; i >= 0; i--) {
+                        const key = keys[i];
+                        if (key === 'responseContext' || key === 'trackingParams') continue;
+                        
+                        let val;
+                        try { val = obj[key]; } catch(e) { continue; }
+                        
+                        if (val && typeof val === 'object') {
+                            stack.push([val, depth + 1]);
+                        }
+                    }
+                } catch(e) {}
             }
             
             flushCacheToDOM();
         }
 
         processChunk();
+    }
+
+    function processInitialData(data) {
+        walkRendererTree(data, 0);
     }
 
     // Intercept ytInitialData assignment (fires early on page loads)

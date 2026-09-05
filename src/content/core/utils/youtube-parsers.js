@@ -259,9 +259,9 @@ window.YPP.Utils.youtubeParsers = (function() {
             if (paths.length > 1) return paths;
         }
 
-        // 2. Fallback: look up videoId in the page-bridge channelCache
-        const channelCache = window.YPP?.channelCache;
-        if (channelCache && channelCache.size > 0) {
+        // 2. Fallback: look up videoId in the MAIN-world DOM cache
+        const root = document.documentElement;
+        if (root.hasAttribute('data-ypp-video-cache')) {
             const videoLink = container.querySelector('a[href*="/watch?v="]') ||
                               container.querySelector('a[href*="/shorts/"]');
             if (videoLink) {
@@ -269,8 +269,9 @@ window.YPP.Utils.youtubeParsers = (function() {
                     const url = new URL(videoLink.href || videoLink.getAttribute('href'), window.location.origin);
                     const videoId = url.searchParams.get('v') ||
                                     url.pathname.split('/shorts/')[1]?.split('?')[0];
-                    if (videoId && channelCache.has(videoId)) {
-                        return channelCache.get(videoId);
+                    if (videoId) {
+                        const cache = JSON.parse(root.getAttribute('data-ypp-video-cache'));
+                        if (cache[videoId]) return cache[videoId];
                     }
                 } catch (_) {}
             }
