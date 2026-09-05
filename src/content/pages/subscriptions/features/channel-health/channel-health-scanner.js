@@ -316,7 +316,7 @@ export class ChannelHealthScanner {
                         } else if (videoText === 'Has Videos') {
                             c.videoInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Videos', status: 'warning' };
                         } else if (videoText === 'Error') {
-                            c.videoInfo = { pubTime: Infinity, text: 'No Videos', status: 'error' };
+                            c.videoInfo = { pubTime: -Infinity, text: 'No Videos', status: 'error' };
                         } else {
                             c.videoInfo = null;
                         }
@@ -417,14 +417,47 @@ export class ChannelHealthScanner {
 
     static async runShortsScan(overlay, filterSel, sortSel, searchInput) {
         const btn = overlay.querySelector('#ypp-health-search-shorts-btn');
-        if (!this.lastScanChannels) {
-            alert('Please run a full Scan Videos first to load your channels.');
-            return;
-        }
-
+        const resultsEl = overlay.querySelector('#ypp-health-results');
         const originalText = btn.textContent;
+
         btn.textContent = 'Scanning Shorts...';
         btn.disabled = true;
+
+        if (!this.lastScanChannels) {
+            resultsEl.innerHTML = `
+                <div id="ypp-scan-status" style="text-align:center; color:#aaa; margin-top:40px; font-size:14px;">
+                    <div style="margin-bottom:12px;">Fetching subscriptions list...</div>
+                    <div id="ypp-scan-progress" style="font-size:12px; color:#777;"></div>
+                </div>`;
+            const statusEl = overlay.querySelector('#ypp-scan-status div');
+            
+            try {
+                this.lastScanChannels = await ChannelHealthAPI.fetchSubscriptions((count) => {
+                    if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
+                });
+            } catch (e) {
+                window.YPP.Utils?.log('Error fetching subscriptions for shorts scan', 'CHANNEL-HEALTH', 'error', e);
+                this.lastScanChannels = [];
+            }
+            
+            if (this.lastScanChannels.length === 0) {
+                resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
+                btn.textContent = originalText;
+                btn.disabled = false;
+                return;
+            }
+            
+            resultsEl.innerHTML = `
+                <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
+            `;
+            const resultsListEl = overlay.querySelector('#ypp-health-results-list');
+            for(let i=0; i<Math.min(this.lastScanChannels.length, 12); i++) {
+                const skel = document.createElement('div');
+                skel.className = 'ypp-channel-health-row-skeleton';
+                skel.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;animation:ypp-pulse 1.5s infinite ease-in-out;';
+                resultsListEl.appendChild(skel);
+            }
+        }
 
         try {
             const targetChannels = this.lastScanChannels;
@@ -461,13 +494,13 @@ export class ChannelHealthScanner {
                     } else if (shortText === 'Has Shorts') {
                         c.shortInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Shorts', status: 'warning' };
                     } else if (shortText === 'Error') {
-                        c.shortInfo = { pubTime: Infinity, text: 'No Shorts', status: 'error' };
+                        c.shortInfo = { pubTime: -Infinity, text: 'No Shorts', status: 'error' };
                     } else {
                         c.shortInfo = null;
                     }
 
                     if (c.shortInfo) {
-                        const videoPubTime = c.videoInfo ? c.videoInfo.pubTime : 0;
+                        const videoPubTime = c.videoInfo ? c.videoInfo.pubTime : -Infinity;
                         const shortPubTime = c.shortInfo.pubTime;
 
                         if (shortPubTime > videoPubTime) {
@@ -478,7 +511,15 @@ export class ChannelHealthScanner {
                             c.status = c.videoInfo.status;
                             c.lastUpload = now - videoPubTime;
                             c.lastUploadText = c.videoInfo.text;
+                        } else {
+                            c.status = c.shortInfo.status;
+                            c.lastUpload = now - shortPubTime;
+                            c.lastUploadText = c.shortInfo.text;
                         }
+                    } else if (!c.videoInfo) {
+                        c.status = 'dead';
+                        c.lastUpload = Infinity;
+                        c.lastUploadText = 'Unknown';
                     }
                     
                     doneCount++;
