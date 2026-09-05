@@ -316,10 +316,9 @@ export class ChannelHealthAPI {
             const tid = setTimeout(() => controller.abort(), 10000);
             const url = this._getTabUrl(channelId, 'videos');
             const res = await fetch(url, { signal: controller.signal });
-            clearTimeout(tid);
-            
-            if (!res.ok) return null;
+            if (!res.ok) { clearTimeout(tid); return null; }
             const html = await res.text();
+            clearTimeout(tid);
             const data = this._extractYtInitialData(html);
             if (!data) return null;
 
@@ -342,10 +341,10 @@ export class ChannelHealthAPI {
                 const watchController = new AbortController();
                 const watchTid = setTimeout(() => watchController.abort(), 10000);
                 const watchRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: watchController.signal });
-                clearTimeout(watchTid);
-                
-                if (watchRes.ok) {
+                if (!watchRes.ok) { clearTimeout(watchTid); }
+                else {
                     const watchHtml = await watchRes.text();
+                    clearTimeout(watchTid);
                     const dateTextMatch = watchHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
                     const publishMatch = watchHtml.match(/"publishDate":"([^"]+)"/);
                     const uploadMatch = watchHtml.match(/"uploadDate":"([^"]+)"/);
@@ -374,10 +373,9 @@ export class ChannelHealthAPI {
             const tid = setTimeout(() => controller.abort(), 10000);
             const url = this._getTabUrl(channelId, 'shorts');
             const res = await fetch(url, { signal: controller.signal });
-            clearTimeout(tid);
-            
-            if (!res.ok) return null;
+            if (!res.ok) { clearTimeout(tid); return null; }
             const html = await res.text();
+            clearTimeout(tid);
             const data = this._extractYtInitialData(html);
             if (!data) return null;
 
@@ -391,10 +389,9 @@ export class ChannelHealthAPI {
             const shortController = new AbortController();
             const shortTid = setTimeout(() => shortController.abort(), 10000);
             const shortRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: shortController.signal });
-            clearTimeout(shortTid);
-            
-            if (!shortRes.ok) return 'Has Shorts';
+            if (!shortRes.ok) { clearTimeout(shortTid); return 'Has Shorts'; }
             const shortHtml = await shortRes.text();
+            clearTimeout(shortTid);
             
             const dateTextMatch = shortHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
             const publishMatch = shortHtml.match(/"publishDate":"([^"]+)"/);

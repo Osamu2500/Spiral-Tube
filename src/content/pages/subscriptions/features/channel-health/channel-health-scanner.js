@@ -268,7 +268,7 @@ export class ChannelHealthScanner {
                     processChannelUI(c);
                 });
             } else {
-                const CONCURRENCY_LIMIT = 3;
+                const CONCURRENCY_LIMIT = 10;
                 let currentIndex = 0;
                 
                 let healthCache = await ChannelHealthDB.getScanCache();
@@ -366,7 +366,7 @@ export class ChannelHealthScanner {
                 };
 
                 const workers = Array.from({ length: Math.min(CONCURRENCY_LIMIT, channels.length) }, async (_, i) => {
-                    await new Promise(r => setTimeout(r, i * 200));
+                    await new Promise(r => setTimeout(r, i * 100));
                     return worker();
                 });
                 await Promise.all(workers);
@@ -430,7 +430,7 @@ export class ChannelHealthScanner {
             }
 
             const now = Date.now();
-            const CONCURRENCY_LIMIT = 3;
+            const CONCURRENCY_LIMIT = 10;
             let currentIndex = 0;
             const MS_IN_DAY = 24 * 60 * 60 * 1000;
             const settings = this.currentSettings;
@@ -472,7 +472,7 @@ export class ChannelHealthScanner {
             };
 
             const workers = Array.from({ length: Math.min(CONCURRENCY_LIMIT, targetChannels.length) }, async (_, i) => {
-                await new Promise(r => setTimeout(r, i * 200));
+                await new Promise(r => setTimeout(r, i * 100));
                 return worker();
             });
             await Promise.all(workers);
