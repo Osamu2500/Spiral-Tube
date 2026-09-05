@@ -119,32 +119,36 @@ export class ChannelHealthUI {
                         </div>
                         <div style="display: flex; gap: 10px; margin-bottom: 16px; align-items: center;">
                             <div style="display: flex; gap: 8px; margin-right: auto; flex-shrink:0;">
-                                <button id="ypp-health-select-all-btn" class="ypp-health-btn-secondary" style="background: rgba(255,255,255,0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 16px; border-radius: 14px; font-size: 13px; font-weight: 500; cursor: pointer;">Select All Visible</button>
-                                <button id="ypp-health-unselect-all-btn" class="ypp-health-btn-tertiary" style="background: rgba(255,255,255,0.02); color: #94a3b8; border: 1px solid rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 14px; font-size: 13px; font-weight: 500; cursor: pointer;">Unselect All</button>
-                                <button id="ypp-health-unsub-btn-bottom" class="ypp-health-btn-unsub" style="display: none; background: rgba(255, 78, 69, 0.15); color: #ff6b6b; border: 1px solid rgba(255, 78, 69, 0.4); padding: 8px 16px; border-radius: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;">Unsubscribe Selected</button>
+                                <button id="ypp-health-select-all-btn" class="ypp-health-btn-secondary" style="background: rgba(255,255,255,0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer;">Select All Visible</button>
+                                <button id="ypp-health-unselect-all-btn" class="ypp-health-btn-tertiary" style="background: rgba(255,255,255,0.02); color: #94a3b8; border: 1px solid rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer;">Unselect All</button>
+                                <button id="ypp-health-unsub-btn-bottom" class="ypp-health-btn-unsub" style="display: none; background: rgba(255, 78, 69, 0.15); color: #ff6b6b; border: 1px solid rgba(255, 78, 69, 0.4); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;">Unsubscribe Selected</button>
                             </div>
-                            <div style="display:flex;gap:3px;align-items:center;flex-shrink:0;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:3px;">
-                                <button class="ypp-ctype-btn ypp-ctype-active" data-ctype="all" style="border-radius:10px;padding:5px 11px;">All</button>
-                                <button class="ypp-ctype-btn" data-ctype="video" style="border-radius:10px;padding:5px 11px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:0.9"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>Videos</button>
-                                <button class="ypp-ctype-btn" data-ctype="short" style="border-radius:10px;padding:5px 11px;"><svg width="9" height="11" viewBox="0 0 18 24" fill="currentColor" style="flex-shrink:0;opacity:0.9"><rect x="0" y="0" width="18" height="24" rx="4"/><path d="M6.5 8.5l6 3.5-6 3.5V8.5z" fill="rgba(0,0,0,0.45)"/></svg>Shorts</button>
+                            <div style="display:flex;gap:3px;align-items:center;flex-shrink:0;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:3px;">
+                                <button class="ypp-ctype-btn ypp-ctype-active" data-ctype="all" style="border-radius:6px;padding:5px 11px;">All</button>
+                                <button class="ypp-ctype-btn" data-ctype="video" style="border-radius:6px;padding:5px 11px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;opacity:0.9"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>Videos</button>
+                                <button class="ypp-ctype-btn" data-ctype="short" style="border-radius:6px;padding:5px 11px;"><svg width="9" height="11" viewBox="0 0 18 24" fill="currentColor" style="flex-shrink:0;opacity:0.9"><rect x="0" y="0" width="18" height="24" rx="4"/><path d="M6.5 8.5l6 3.5-6 3.5V8.5z" fill="rgba(0,0,0,0.45)"/></svg>Shorts</button>
                             </div>
                             <div style="position: relative; flex: 1; max-width: 200px; display: flex; align-items: center;">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" style="position: absolute; left: 14px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <input type="text" class="ypp-health-input" id="ypp-health-search-input" placeholder="Search channels..." style="width: 100%; padding: 10px 16px 10px 38px; border-radius: 14px;"/>
+                                <input type="text" class="ypp-health-input" id="ypp-health-search-input" placeholder="Search channels..." style="width: 100%; padding: 10px 16px 10px 38px; border-radius: 8px;"/>
                             </div>
 
-                            <select id="ypp-health-filter-dropdown" class="ypp-health-select" style="border-radius: 14px;">
+                            <select id="ypp-health-filter-dropdown" class="ypp-health-select" style="border-radius: 8px;">
                                 <option value="all">All Statuses</option>
                                 <option value="active">Active</option>
                                 <option value="warning">Inactive</option>
                                 <option value="dead">Dead</option>
                                 <option value="error">Failed Scan</option>
                             </select>
-                            <select id="ypp-health-sort-dropdown" class="ypp-health-select" style="border-radius: 14px;">
+                            <select id="ypp-health-sort-dropdown" class="ypp-health-select" style="border-radius: 8px;">
                                 <option value="latest">Latest First</option>
                                 <option value="oldest">Oldest First</option>
                                 <option value="az">Alphabetical</option>
                             </select>
+                            <button id="ypp-health-view-toggle-btn" class="ypp-health-btn-secondary" style="background: rgba(255,255,255,0.03); color: #94a3b8; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" title="Toggle Grid/List View">
+                                <svg id="ypp-view-icon-grid" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                <svg id="ypp-view-icon-list" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                            </button>
                         </div>
                         <div id="ypp-health-results" class="ypp-scroll-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 8px;">
                             <div style="text-align: center; color: #666; margin-top: 60px; font-size: 16px; font-weight: 500;">
@@ -324,6 +328,25 @@ export class ChannelHealthUI {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        });
+
+        // View Toggle Logic
+        const viewToggleBtn = overlay.querySelector('#ypp-health-view-toggle-btn');
+        const gridIcon = overlay.querySelector('#ypp-view-icon-grid');
+        const listIcon = overlay.querySelector('#ypp-view-icon-list');
+        
+        viewToggleBtn?.addEventListener('click', () => {
+            const resultsContainer = overlay.querySelector('#ypp-health-results');
+            if (resultsContainer) {
+                const isGrid = resultsContainer.classList.toggle('ypp-grid-view');
+                if (isGrid) {
+                    gridIcon.style.display = 'none';
+                    listIcon.style.display = 'block';
+                } else {
+                    gridIcon.style.display = 'block';
+                    listIcon.style.display = 'none';
+                }
+            }
         });
 
         // Filtering and Sorting

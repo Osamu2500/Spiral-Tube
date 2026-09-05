@@ -330,9 +330,29 @@
     width: auto;
     background: transparent;
     padding: 0;
+    margin: 0;
 }
 .ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > label > span:last-child {
     display: none;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > .ypp-health-shield-btn {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+}
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > .ypp-health-shield-btn.active {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
 }
 
 .ypp-channel-health-row:hover {
