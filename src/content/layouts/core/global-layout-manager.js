@@ -127,11 +127,41 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         
         const path = window.location.pathname;
         let pageType = '';
-        if (path === '/' || path === '/index') pageType = 'Home';
-        else if (path.startsWith('/feed/subscriptions')) pageType = 'Subs';
-        else if (path.startsWith('/results')) pageType = 'Search';
-        else if (path.startsWith('/watch') || path.startsWith('/shorts')) pageType = 'Related';
-        else if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) pageType = 'Channel';
+        
+        // Clear all previous page contexts
+        document.body.classList.remove(
+            'ypp-home-page',
+            'ypp-subs-page',
+            'ypp-search-page',
+            'ypp-watch-page',
+            'ypp-shorts-page',
+            'ypp-channel-page'
+        );
+        
+        if (path === '/' || path === '/index') {
+            pageType = 'Home';
+            document.body.classList.add('ypp-home-page');
+        }
+        else if (path.startsWith('/feed/subscriptions')) {
+            pageType = 'Subs';
+            document.body.classList.add('ypp-subs-page');
+        }
+        else if (path.startsWith('/results')) {
+            pageType = 'Search';
+            document.body.classList.add('ypp-search-page');
+        }
+        else if (path.startsWith('/watch')) {
+            pageType = 'Related';
+            document.body.classList.add('ypp-watch-page');
+        }
+        else if (path.startsWith('/shorts')) {
+            pageType = 'Related';
+            document.body.classList.add('ypp-shorts-page');
+        }
+        else if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) {
+            pageType = 'Channel';
+            document.body.classList.add('ypp-channel-page');
+        }
 
         const isFeatureActive = (baseKey) => {
             if (!this.settings[baseKey]) return false;
