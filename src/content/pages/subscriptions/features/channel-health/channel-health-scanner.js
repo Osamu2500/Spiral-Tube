@@ -31,17 +31,42 @@ export class ChannelHealthScanner {
             let channels = [];
             const skipFullScan = skipFetch && this.lastScanChannels;
             
+            let isFetchingSubscriptions = false;
+            let startProcessing = null;
+            let startedProcessing = false;
+            let updateCountersRef = null;
+
             if (skipFullScan) {
                 channels = this.lastScanChannels;
                 if (statusEl) statusEl.remove();
                 btn.textContent = 'Updating UI...';
             } else {
-                channels = await ChannelHealthAPI.fetchSubscriptions((count) => {
-                    if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
+                isFetchingSubscriptions = true;
+                ChannelHealthAPI.fetchSubscriptions(
+                    (count) => {
+                        if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
+                    },
+                    (batch) => {
+                        channels.push(...batch);
+                        if (startProcessing && !startedProcessing) {
+                            startedProcessing = true;
+                            startProcessing();
+                        }
+                    }
+                ).then((allChannels) => {
+                    isFetchingSubscriptions = false;
+                    this.lastScanChannels = allChannels;
+                    if (allChannels.length === 0) {
+                        resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
+                        btn.textContent = 'Scan Complete';
+                        btn.disabled = false;
+                        btn.style.opacity = '1';
+                    }
+                    if (updateCountersRef) updateCountersRef();
                 });
             }
 
-            if (channels.length === 0) {
+            if (skipFullScan && channels.length === 0) {
                 resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
                 btn.textContent = 'Scan Complete';
                 btn.disabled = false;
@@ -49,12 +74,13 @@ export class ChannelHealthScanner {
                 return;
             }
 
-            resultsEl.innerHTML = `
-                <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
-            `;
-            if (statusEl) statusEl.remove();
+            startProcessing = async () => {
+                resultsEl.innerHTML = `
+                    <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
+                `;
+                if (statusEl) statusEl.remove();
 
-            const resultsListEl = overlay.querySelector('#ypp-health-results-list');
+                const resultsListEl = overlay.querySelector('#ypp-health-results-list');
             
             // Add skeleton loaders
             for(let i=0; i<Math.min(channels.length, 12); i++) {
@@ -78,9 +104,9 @@ export class ChannelHealthScanner {
                 overlay.querySelector('#ypp-health-active').textContent  = activeCount;
                 overlay.querySelector('#ypp-health-warning').textContent = warningCount;
                 overlay.querySelector('#ypp-health-dead').textContent    = deadCount;
-                btn.textContent = `Scanning… ${doneCount}/${channels.length}`;
+                btn.textContent = `Scanning… ${doneCount}/${isFetchingSubscriptions ? '?' : channels.length}`;
                 
-                if (doneCount >= channels.length) {
+                if (doneCount >= channels.length && !isFetchingSubscriptions) {
                     overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: channels.length, complete: true } }));
                     const exportBtn = overlay.querySelector('#ypp-health-export-btn');
                     if (exportBtn) {
@@ -100,6 +126,7 @@ export class ChannelHealthScanner {
                     }
                 }
             };
+            updateCountersRef = updateCounters;
 
             const safeList = await ChannelHealthDB.getSafeList();
 
@@ -365,15 +392,21 @@ export class ChannelHealthScanner {
                 };
 
                 const worker = async () => {
-                    while (currentIndex < channels.length) {
-                        const c = channels[currentIndex++];
-                        await fetchChannel(c);
+                    while (true) {
+                        if (currentIndex < channels.length) {
+                            const c = channels[currentIndex++];
+                            if (c) await fetchChannel(c);
+                        } else if (isFetchingSubscriptions) {
+                            await new Promise(r => setTimeout(r, 200));
+                        } else {
+                            break;
+                        }
                     }
                 };
 
-                const workers = Array.from({ length: Math.min(CONCURRENCY_LIMIT, channels.length) }, async (_, i) => {
-                    await new Promise(r => setTimeout(r, i * 100));
-                    return worker();
+                const numWorkers = isFetchingSubscriptions ? CONCURRENCY_LIMIT : Math.min(CONCURRENCY_LIMIT, channels.length);
+                const workers = Array.from({ length: numWorkers }, async () => {
+                    await worker();
                 });
                 await Promise.all(workers);
                 
@@ -425,44 +458,60 @@ export class ChannelHealthScanner {
         btn.textContent = 'Scanning Shorts...';
         btn.disabled = true;
 
-        if (!this.lastScanChannels) {
-            resultsEl.innerHTML = `
-                <div id="ypp-scan-status" style="text-align:center; color:#aaa; margin-top:40px; font-size:14px;">
-                    <div style="margin-bottom:12px;">Fetching subscriptions list...</div>
-                    <div id="ypp-scan-progress" style="font-size:12px; color:#777;"></div>
-                </div>`;
-            const statusEl = overlay.querySelector('#ypp-scan-status div');
-            
-            try {
-                this.lastScanChannels = await ChannelHealthAPI.fetchSubscriptions((count) => {
-                    if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
+            let isFetchingSubscriptions = false;
+            let startProcessing = null;
+            let startedProcessing = false;
+
+            if (skipFullScan) {
+                this.lastScanChannels = this.lastScanChannels || [];
+                if (statusEl) statusEl.remove();
+            } else {
+                this.lastScanChannels = [];
+                isFetchingSubscriptions = true;
+                ChannelHealthAPI.fetchSubscriptions(
+                    (count) => {
+                        if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
+                    },
+                    (batch) => {
+                        this.lastScanChannels.push(...batch);
+                        if (startProcessing && !startedProcessing) {
+                            startedProcessing = true;
+                            startProcessing();
+                        }
+                    }
+                ).then(() => {
+                    isFetchingSubscriptions = false;
+                }).catch(e => {
+                    isFetchingSubscriptions = false;
+                    window.YPP.Utils?.log('Error fetching subscriptions for shorts scan', 'CHANNEL-HEALTH', 'error', e);
                 });
+            }
             } catch (e) {
                 window.YPP.Utils?.log('Error fetching subscriptions for shorts scan', 'CHANNEL-HEALTH', 'error', e);
                 this.lastScanChannels = [];
             }
             
-            if (this.lastScanChannels.length === 0) {
+            
+            if (skipFullScan && this.lastScanChannels.length === 0) {
                 resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
                 btn.textContent = originalText;
                 btn.disabled = false;
                 return;
             }
-            
-            resultsEl.innerHTML = `
-                <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
-            `;
-            const resultsListEl = overlay.querySelector('#ypp-health-results-list');
-            for(let i=0; i<Math.min(this.lastScanChannels.length, 12); i++) {
-                const skel = document.createElement('div');
-                skel.className = 'ypp-channel-health-row-skeleton';
-                skel.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;animation:ypp-pulse 1.5s infinite ease-in-out;';
-                resultsListEl.appendChild(skel);
-            }
-        }
 
-        try {
-            const targetChannels = this.lastScanChannels;
+            startProcessing = async () => {
+                const targetChannels = this.lastScanChannels;
+                
+                resultsEl.innerHTML = `
+                    <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
+                `;
+                const resultsListEl = overlay.querySelector('#ypp-health-results-list');
+                for(let i=0; i<Math.min(targetChannels.length, 12); i++) {
+                    const skel = document.createElement('div');
+                    skel.className = 'ypp-channel-health-row-skeleton';
+                    skel.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;animation:ypp-pulse 1.5s infinite ease-in-out;';
+                    resultsListEl.appendChild(skel);
+                }
             
             if (targetChannels.length === 0) {
                 btn.textContent = 'No channels found';
@@ -486,9 +535,10 @@ export class ChannelHealthScanner {
             let doneCount = 0;
 
             const worker = async () => {
-                while (currentIndex < targetChannels.length) {
-                    const c = targetChannels[currentIndex++];
-                    const shortText = await ChannelHealthAPI.scanShorts(c.id);
+                while (true) {
+                    if (currentIndex < targetChannels.length) {
+                        const c = targetChannels[currentIndex++];
+                        const shortText = await ChannelHealthAPI.scanShorts(c.id);
 
                     if (shortText && shortText !== 'Error' && shortText !== 'Has Shorts' && shortText !== 'No Shorts') {
                         const pubTime = now - (ChannelHealthAPI.parseRelativeTime(shortText) || 0);
@@ -528,17 +578,30 @@ export class ChannelHealthScanner {
                     
                     doneCount++;
                     overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: targetChannels.length, complete: false } }));
-                    btn.textContent = `Scanning Shorts... (${doneCount}/${targetChannels.length})`;
+                    btn.textContent = `Scanning Shorts... (${doneCount}/${isFetchingSubscriptions ? '?' : targetChannels.length})`;
+                } else if (isFetchingSubscriptions) {
+                    await new Promise(r => setTimeout(r, 200));
+                } else {
+                    break;
                 }
-            };
+            }
+        };
 
-            const workers = Array.from({ length: Math.min(CONCURRENCY_LIMIT, targetChannels.length) }, async (_, i) => {
+            const numWorkers = isFetchingSubscriptions ? CONCURRENCY_LIMIT : Math.min(CONCURRENCY_LIMIT, targetChannels.length);
+            const workers = Array.from({ length: numWorkers }, async (_, i) => {
                 await new Promise(r => setTimeout(r, i * 100));
                 return worker();
             });
             await Promise.all(workers);
 
             await this.runScan(overlay, filterSel, sortSel, searchInput, true);
+
+        };
+
+        if (skipFullScan && this.lastScanChannels.length > 0) {
+            startedProcessing = true;
+            startProcessing();
+        }
 
         } catch (e) {
             window.YPP.Utils?.log('Shorts scan error', 'CHANNEL-HEALTH', 'error', e);

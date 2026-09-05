@@ -68,12 +68,13 @@ export class ChannelHealthAPI {
         return this._ytConfigPromise;
     }
 
-    static async fetchSubscriptions(onProgress) {
+    static async fetchSubscriptions(onProgress, onBatchReceived) {
         const ytConfig = await this.getYoutubeConfig();
         const channels = [];
         const seenIds = new Set();
 
         const extractChannelsFromData = (data) => {
+            const batch = [];
             let token = null;
             const walkNode = (obj) => {
                 if (!obj || typeof obj !== 'object') return;
@@ -90,12 +91,14 @@ export class ChannelHealthAPI {
                             Object.values(o).forEach(walkForUnsub);
                         };
                         walkForUnsub(r.subscribeButton || r);
-                        channels.push({
+                        const channelData = {
                             id: r.channelId,
                             name: r.title?.simpleText || 'Unknown',
                             icon: r.thumbnail?.thumbnails?.pop()?.url || '',
                             unsubParams
-                        });
+                        };
+                        channels.push(channelData);
+                        batch.push(channelData);
                     }
                     return;
                 }
@@ -106,6 +109,9 @@ export class ChannelHealthAPI {
                 Object.values(obj).forEach(walkNode);
             };
             walkNode(data);
+            if (onBatchReceived && batch.length > 0) {
+                onBatchReceived(batch);
+            }
             return token;
         };
 
