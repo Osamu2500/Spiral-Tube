@@ -133,6 +133,7 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
             const combinedSelector = SHORTS_PATTERNS.join(', ');
             const elements = document.querySelectorAll(combinedSelector);
             elements.forEach(el => {
+                if (el.hasAttribute('data-ypp-is-short')) return;
                 if (this._isShortsElement(el)) {
                     if (this._hideShortsContainer(el)) {
                         el.setAttribute('data-ypp-is-short', 'true');
@@ -145,7 +146,7 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
             if (window.location.pathname === '/results') {
                 document.querySelectorAll('a[href^="/shorts/"]').forEach(link => {
                     const videoEl = link.closest('ytd-video-renderer, ytd-compact-video-renderer, ytm-video-with-context-renderer');
-                    if (videoEl && this._hideShortsContainer(videoEl)) {
+                    if (videoEl && !videoEl.hasAttribute('is-search') && this._hideShortsContainer(videoEl)) {
                         videoEl.setAttribute('is-search', 'true');
                         removed++;
                     }
@@ -207,6 +208,7 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
     _removeShortsChips() {
         const chips = document.querySelectorAll("yt-chip-cloud-chip-renderer");
         chips.forEach(chip => {
+            if (chip.hasAttribute('data-ypp-is-short')) return;
             const textElement = chip.querySelector("#text");
             if (textElement && textElement.innerText.trim() === "Shorts") {
                 if (this._hideShortsContainer(chip)) {
@@ -223,6 +225,7 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
         );
         
         elementsToCheck.forEach(el => {
+            if (el.hasAttribute('data-ypp-is-short')) return;
             if (this._isShortsElement(el)) {
                 if (this._hideShortsContainer(el)) {
                     el.setAttribute('data-ypp-is-short', 'true');
@@ -272,11 +275,11 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
 
         let removed = 0;
         elements.forEach(el => {
-            if (!el) return;
+            if (!el || el.hasAttribute('data-ypp-is-short')) return;
             
             // Search specific shorts videos if enabled
             if (window.location.pathname === '/results' && el.tagName?.toLowerCase() === 'ytd-video-renderer') {
-                if (el.querySelector('a[href^="/shorts/"]')) {
+                if (!el.hasAttribute('is-search') && el.querySelector('a[href^="/shorts/"]')) {
                     if (this._hideShortsContainer(el)) {
                         el.setAttribute('is-search', 'true');
                         removed++;
