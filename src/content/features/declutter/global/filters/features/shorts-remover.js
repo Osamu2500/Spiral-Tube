@@ -250,7 +250,7 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
             ? 'ytd-rich-item-renderer, yt-lockup-view-model, yt-collection-shelf-view-model, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer'
             : 'ytd-rich-item-renderer, yt-lockup-view-model, yt-collection-shelf-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer';
 
-        this.observer.register(
+        this.registerObserver(
             'shorts-monitor',
             monitorSelector,
             this.handleShortsAdded,
@@ -261,7 +261,7 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
 
     stopShortsMonitoring() {
         if (this._isMonitoringShorts) {
-            this.observer.unregister('shorts-monitor');
+            this.unregisterObserver('shorts-monitor');
             this._isMonitoringShorts = false;
             this.utils?.log('Stopped Shorts monitoring', 'ShortsRemover');
         }
