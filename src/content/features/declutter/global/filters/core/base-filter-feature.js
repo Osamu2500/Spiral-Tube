@@ -63,7 +63,6 @@ export class BaseFilterFeature extends window.YPP.features.BaseFeature {
                 el.dataset.yppHiddenReason = reason;
             }
         }
-        }
         el.dataset.yppHiddenBy = this.constructor.name;
         this._hiddenElements.add(el);
         
