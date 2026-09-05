@@ -176,10 +176,14 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         if (!forceReevaluate && target.hasAttribute('data-ypp-v3-processed')) {
             // Self-Healing: Re-apply visual states if YouTube's virtual DOM wiped the class/style
             if (target.dataset.yppHiddenBy === 'CardPipeline') {
-                target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
-                target.style.display = 'none';
+                if (target.style.display !== 'none' || !target.classList.contains('ypp-hidden')) {
+                    target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
+                    target.style.display = 'none';
+                }
             } else if (target.dataset.yppDimBy === 'CardPipeline') {
-                target.classList.add('ypp-dim-badge');
+                if (!target.classList.contains('ypp-dim-badge')) {
+                    target.classList.add('ypp-dim-badge');
+                }
                 // Ensure opacity is applied since we rely on class mostly, but just in case
             }
             return;
