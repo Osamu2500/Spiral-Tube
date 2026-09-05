@@ -28,6 +28,17 @@
     let channelIdCacheDirty = false;
     let videoCacheDirty = false;
 
+    function cacheInsert(cacheMap, orderArr, key, value, maxItems) {
+        if (!cacheMap.has(key)) {
+            orderArr.push(key);
+            if (orderArr.length > maxItems) {
+                const oldest = orderArr.shift();
+                cacheMap.delete(oldest);
+            }
+        }
+        cacheMap.set(key, value);
+    }
+
     let flushScheduled = false;
     function flushCacheToDOM() {
         if (flushScheduled || (!channelIdCacheDirty && !videoCacheDirty)) return;
