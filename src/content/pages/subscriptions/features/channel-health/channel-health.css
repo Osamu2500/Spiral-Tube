@@ -245,7 +245,7 @@
 }
 
 /* Grid View Layout Overrides */
-.ypp-grid-view {
+.ypp-grid-view #ypp-health-results-list {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 16px;
@@ -271,7 +271,7 @@
     margin-right: 0 !important;
     margin-bottom: 12px;
 }
-.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(2) {
     margin-bottom: 20px;
     align-items: center !important;
 }
@@ -279,7 +279,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-.ypp-grid-view .ypp-channel-health-row > div:nth-child(4) {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) {
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
@@ -287,8 +287,8 @@
     gap: 8px !important;
     align-items: stretch !important;
 }
-.ypp-grid-view .ypp-channel-health-row > div:nth-child(4) > a,
-.ypp-grid-view .ypp-channel-health-row > div:nth-child(4) > button:not(.ypp-health-shield-btn) {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > a,
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > button:not(.ypp-health-shield-btn) {
     flex: 1;
     min-width: 0;
     justify-content: center;
@@ -298,7 +298,7 @@
     display: flex;
     align-items: center;
 }
-.ypp-grid-view .ypp-channel-health-row > label {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > label {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -307,10 +307,10 @@
     padding: 0;
     margin: 0;
 }
-.ypp-grid-view .ypp-channel-health-row > label > span:last-child {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > label > span:last-child {
     display: none;
 }
-.ypp-grid-view .ypp-channel-health-row > div:nth-child(4) > .ypp-health-shield-btn {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > .ypp-health-shield-btn {
     position: absolute;
     top: 12px;
     left: 12px;
@@ -325,7 +325,7 @@
     justify-content: center;
     flex: none;
 }
-.ypp-grid-view .ypp-channel-health-row > div:nth-child(4) > .ypp-health-shield-btn.active {
+.ypp-grid-view .ypp-channel-health-row > div:nth-child(3) > .ypp-health-shield-btn.active {
     background: rgba(59, 130, 246, 0.15);
     border-color: rgba(59, 130, 246, 0.3);
 }
