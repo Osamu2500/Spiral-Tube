@@ -261,10 +261,14 @@ export class ChannelHealthScanner {
 
             if (skipFullScan) {
                 channels.forEach(c => {
-                    c.postInfo = null;
-                    if (c.status === 'active') activeCount++;
-                    else if (c.status === 'warning') warningCount++;
+                    let cStatus = c.status;
+                    if (currentContentType === 'video') cStatus = c.videoInfo ? c.videoInfo.status : 'dead';
+                    else if (currentContentType === 'short') cStatus = c.shortInfo ? c.shortInfo.status : 'dead';
+
+                    if (cStatus === 'active') activeCount++;
+                    else if (cStatus === 'warning') warningCount++;
                     else deadCount++;
+                    
                     processChannelUI(c);
                 });
             } else {
