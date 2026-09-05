@@ -45,8 +45,8 @@ export class BaseFilterFeature extends window.YPP.features.BaseFeature {
         }
         
         if (useDimMode) {
-            if (window.YPP.utils?.filterUI?.applyDimMode) {
-                window.YPP.utils.filterUI.applyDimMode(el, reason, channelPath);
+            if (window.YPP.utils?.filterPrimitives) {
+                window.YPP.utils.filterPrimitives.applyFilter(el, 'dim', reason, channelPath);
             }
             this._hiddenElements.add(el);
             this._emitHiddenEvent(el, reason);
@@ -55,9 +55,14 @@ export class BaseFilterFeature extends window.YPP.features.BaseFeature {
             return;
         }
 
-        el.classList.add('ypp-hidden', `ypp-hidden-by-${this.constructor.name.toLowerCase()}`);
-        if (reason) {
-            el.dataset.yppHiddenReason = reason;
+        if (window.YPP.utils?.filterPrimitives) {
+            window.YPP.utils.filterPrimitives.applyFilter(el, 'hide', reason, channelPath);
+        } else {
+            el.classList.add('ypp-hidden', `ypp-hidden-by-${this.constructor.name.toLowerCase()}`);
+            if (reason) {
+                el.dataset.yppHiddenReason = reason;
+            }
+        }
         }
         el.dataset.yppHiddenBy = this.constructor.name;
         this._hiddenElements.add(el);

@@ -385,34 +385,6 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
 
         if (window.YPP.utils?.filterPrimitives) {
             window.YPP.utils.filterPrimitives.applyFilter(target, shouldHide ? 'hide' : 'dim', reasons, context.channelPath);
-        } else {
-            // Fallback for mid-migration
-            if (shouldHide) {
-                // Hard hide
-                if (target.dataset.yppDimmed) this._clearDimmedElement(target);
-                target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
-                target.dataset.yppHidden = '1';
-                target.dataset.yppHiddenReason = reasons;
-                target.dataset.yppHiddenBy = 'CardPipeline';
-                target.style.display = 'none'; // Ensure it's hidden
-                
-                try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
-            } else {
-                // Dim
-                target.classList.remove('ypp-hidden', 'ypp-hidden-by-pipeline');
-                delete target.dataset.yppHiddenReason;
-                delete target.dataset.yppHiddenBy;
-                delete target.dataset.yppHidden;
-                target.style.removeProperty('display');
-                
-                target.dataset.yppDimBy = 'CardPipeline';
-                target.dataset.yppDimmed = '1';
-                
-                if (window.YPP.utils?.filterUI?.applyDimMode) {
-                    window.YPP.utils.filterUI.applyDimMode(target, reasons, context.channelPath);
-                }
-                try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
-            }
         }
     }
 

@@ -67,11 +67,40 @@ class FilterPrimitives {
 
                 element.dataset.yppDimmed = '1';
                 
-                // Phase 4 will inject reason badges here. For now, defer to existing applyDimMode.
-                if (window.YPP.utils?.filterUI?.applyDimMode) {
-                    window.YPP.utils.filterUI.applyDimMode(element, reason, channelPath);
+                // 1. Locate badge target
+                const badgeTarget = element.querySelector('#dismissible') || 
+                                    element.querySelector('ytd-thumbnail') || 
+                                    element.querySelector('ytm-thumbnail-cover-view-model') || 
+                                    element;
+                                    
+                // 2. Create the badge natively
+                badgeTarget.dataset.yppBadgeTarget = '1';
+                const badge = document.createElement('div');
+                badge.className = 'ypp-dim-badge';
+                if (reason) badge.innerHTML = `<span class="ypp-badge-reason">${reason}</span>`;
+                
+                // Attach channel context if available
+                if (channelPath) badge.dataset.yppChannelPath = channelPath;
+                if (reason === 'Blacklisted channel' || reason === 'blacklist') {
+                    badge.dataset.yppBadgeKind = 'blacklist';
                 }
+                
+                badgeTarget.appendChild(badge);
+                
+                // 3. Delegate complex interactive UI (Whitelist/Undo timers) to the UI module
+                if (window.YPP.utils?.filterUI?.renderButtons) {
+                    window.YPP.utils.filterUI.renderButtons(badge, reason, channelPath);
+                }
+                
                 try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: 1 }); } catch (_) {}
+            } else {
+                // If already dimmed, ensure buttons are attached (e.g. if badge was rendered before buttons were ready)
+                if (window.YPP.utils?.filterUI?.renderButtons) {
+                    const existingBadge = element.querySelector('.ypp-dim-badge');
+                    if (existingBadge && !existingBadge.querySelector('.ypp-badge-buttons')) {
+                        window.YPP.utils.filterUI.renderButtons(existingBadge, reason, channelPath);
+                    }
+                }
             }
         }
     }
@@ -138,6 +167,8 @@ class FilterPrimitives {
             }
         }
         delete el.dataset.yppDimBy;
+        el.querySelectorAll('[data-ypp-badge-target]').forEach(t => delete t.dataset.yppBadgeTarget);
+        if (el.dataset.yppBadgeTarget) delete el.dataset.yppBadgeTarget;
     }
 }
 

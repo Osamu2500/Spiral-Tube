@@ -140,38 +140,20 @@ class FilterUIManager {
         return btn;
     }
 
-    static createDimBadge(reason, channelPath) {
-        const badge = document.createElement('div');
-        badge.className = 'ypp-dim-badge';
-        badge.innerHTML = reason ? `<span class="ypp-badge-reason">${reason}</span>` : '';
-      
-        if (reason === 'Blacklisted channel' || reason === 'blacklist') {
-          badge.dataset.yppBadgeKind = 'blacklist';
-          if (channelPath) {
-              this.getOrCreateBadgeButtonRow(badge).appendChild(this.createUnblacklistButton(channelPath));
-          }
-          return badge;
-        }
-      
-        if (channelPath) {
-          this.getOrCreateBadgeButtonRow(badge).appendChild(this.createWhitelistButton(channelPath));
-        }
-        return badge;
-    }
-
-    static applyDimMode(element, reason, channelPathRaw) {
-        if (element.dataset.yppDimmed) return;
-        
+    static renderButtons(badgeNode, reason, channelPathRaw) {
+        if (!badgeNode || !badgeNode.isConnected) return;
         const channelPath = Array.isArray(channelPathRaw) ? channelPathRaw[0] : channelPathRaw;
-    
-        const badgeTarget = element.querySelector('#dismissible') || 
-                            element.querySelector('ytd-thumbnail') || 
-                            element.querySelector('ytm-thumbnail-cover-view-model') || 
-                            element;
-        
-        element.dataset.yppDimmed = '1';
-        badgeTarget.dataset.yppBadgeTarget = '1';
-        badgeTarget.appendChild(this.createDimBadge(reason, channelPath));
+
+        if (reason === 'Blacklisted channel' || reason === 'blacklist') {
+            if (channelPath) {
+                this.getOrCreateBadgeButtonRow(badgeNode).appendChild(this.createUnblacklistButton(channelPath));
+            }
+            return;
+        }
+
+        if (channelPath) {
+            this.getOrCreateBadgeButtonRow(badgeNode).appendChild(this.createWhitelistButton(channelPath));
+        }
     }
 }
 
@@ -487,12 +469,9 @@ class HoverPillManager {
 // Ensure HoverPillManager binds its events globally on module execution
 HoverPillManager.instance;
 
-// --- Expose for backwards compatibility ---
-export function createDimBadge(reason, channelPath) {
-    return FilterUIManager.createDimBadge(reason, channelPath);
-}
-export function applyDimMode(element, reason, channelPathRaw) {
-    return FilterUIManager.applyDimMode(element, reason, channelPathRaw);
+// --- Expose for backwards compatibility where necessary ---
+export function renderButtons(badgeNode, reason, channelPathRaw) {
+    return FilterUIManager.renderButtons(badgeNode, reason, channelPathRaw);
 }
 export function removeBadgeAnimated(badge) {
     return FilterUIManager.removeBadgeAnimated(badge);
@@ -500,4 +479,4 @@ export function removeBadgeAnimated(badge) {
 
 window.YPP = window.YPP || {};
 window.YPP.utils = window.YPP.utils || {};
-window.YPP.utils.filterUI = { applyDimMode, createDimBadge, removeBadgeAnimated };
+window.YPP.utils.filterUI = { renderButtons, removeBadgeAnimated };
