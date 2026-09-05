@@ -312,7 +312,7 @@ export class ChannelHealthScanner {
                         } else if (videoText === 'Has Videos') {
                             c.videoInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Videos', status: 'warning' };
                         } else if (videoText === 'Error') {
-                            c.videoInfo = { pubTime: Infinity, text: 'Error', status: 'error' };
+                            c.videoInfo = { pubTime: Infinity, text: 'No Videos', status: 'error' };
                         } else {
                             c.videoInfo = null;
                         }
@@ -423,10 +423,10 @@ export class ChannelHealthScanner {
         btn.disabled = true;
 
         try {
-            const targetChannels = this.lastScanChannels.filter(c => c.status !== 'active');
+            const targetChannels = this.lastScanChannels;
             
             if (targetChannels.length === 0) {
-                btn.textContent = 'No inactive channels';
+                btn.textContent = 'No channels found';
                 setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 2000);
                 return;
             }
@@ -456,6 +456,10 @@ export class ChannelHealthScanner {
                         c.shortInfo = { pubTime, text: shortText, status: classify(pubTime) };
                     } else if (shortText === 'Has Shorts') {
                         c.shortInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Shorts', status: 'warning' };
+                    } else if (shortText === 'Error') {
+                        c.shortInfo = { pubTime: Infinity, text: 'No Shorts', status: 'error' };
+                    } else {
+                        c.shortInfo = null;
                     }
 
                     if (c.shortInfo) {

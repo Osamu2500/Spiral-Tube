@@ -397,6 +397,7 @@ export class ChannelHealthUI {
                 ctypeBtns.forEach(b => b.classList.remove('ypp-ctype-active'));
                 btn.classList.add('ypp-ctype-active');
                 overlay._currentContentType = btn.dataset.ctype;
+                overlay.dataset.ctype = btn.dataset.ctype;
                 applyFilters();
                 sortResults();
             });
