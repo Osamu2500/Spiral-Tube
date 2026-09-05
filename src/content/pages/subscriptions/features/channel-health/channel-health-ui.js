@@ -18,13 +18,13 @@ export class ChannelHealthUI {
     static async openModal() {
         if (document.getElementById('ypp-health-modal')) return;
 
-        const settings = await ChannelHealthDB.getSettings();
-        ChannelHealthScanner.currentSettings = settings;
-
         const overlay = document.createElement('div');
         overlay.className = 'ypp-health-modal-overlay open';
         overlay.id = 'ypp-health-modal';
         document.documentElement.appendChild(overlay);
+
+        const settings = await ChannelHealthDB.getSettings();
+        ChannelHealthScanner.currentSettings = settings;
 
         overlay.innerHTML = String.raw`
             <div class="ypp-health-modal-content ypp-organizer-modal">
