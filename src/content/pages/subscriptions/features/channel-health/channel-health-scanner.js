@@ -382,6 +382,8 @@ export class ChannelHealthScanner {
             btn.disabled = false;
             btn.style.opacity = '1';
 
+            if (sortSel) sortSel.dispatchEvent(new Event('change'));
+
             if (!overlay._checkboxListenerAttached) {
                 overlay._checkboxListenerAttached = true;
                 resultsEl.addEventListener('change', (e) => {
