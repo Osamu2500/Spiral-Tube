@@ -23,7 +23,8 @@ export class ChannelHealthUI {
         overlay.id = 'ypp-health-modal';
         document.documentElement.appendChild(overlay);
 
-        const settings = await ChannelHealthDB.getSettings();
+        // Use default settings for initial render to show popup instantly
+        const settings = { activeDays: 30, deadDays: 90 };
         ChannelHealthScanner.currentSettings = settings;
 
         overlay.innerHTML = String.raw`
@@ -105,7 +106,7 @@ export class ChannelHealthUI {
                     <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
                         <div style="display: flex; gap: 24px; margin-bottom: 24px;">
                             <div class="ypp-health-stat" data-filter="active">
-                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#2ed573;"></div> Active (< ${settings.activeDays} days)</div>
+                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#2ed573;"></div> Active (< <span id="ypp-health-active-days-label">${settings.activeDays}</span> days)</div>
                                 <div class="ypp-health-stat-value" id="ypp-health-active">0</div>
                             </div>
                             <div class="ypp-health-stat" data-filter="warning">
@@ -113,7 +114,7 @@ export class ChannelHealthUI {
                                 <div class="ypp-health-stat-value" style="color: rgba(241, 245, 249, 0.8);" id="ypp-health-warning">0</div>
                             </div>
                             <div class="ypp-health-stat" data-filter="dead">
-                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#ff4e45;"></div> Dead (> ${settings.deadDays} days)</div>
+                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#ff4e45;"></div> Dead (> <span id="ypp-health-dead-days-label">${settings.deadDays}</span> days)</div>
                                 <div class="ypp-health-stat-value" style="color: rgba(241, 245, 249, 0.5);" id="ypp-health-dead">0</div>
                             </div>
                         </div>
@@ -401,6 +402,21 @@ export class ChannelHealthUI {
                 applyFilters();
                 sortResults();
             });
+        });
+        
+        // Load actual settings asynchronously
+        ChannelHealthDB.getSettings().then(realSettings => {
+            ChannelHealthScanner.currentSettings = realSettings;
+            
+            const activeInput = overlay.querySelector('#ypp-setting-active-days');
+            const deadInput = overlay.querySelector('#ypp-setting-dead-days');
+            const activeLabel = overlay.querySelector('#ypp-health-active-days-label');
+            const deadLabel = overlay.querySelector('#ypp-health-dead-days-label');
+
+            if (activeInput) activeInput.value = realSettings.activeDays;
+            if (deadInput) deadInput.value = realSettings.deadDays;
+            if (activeLabel) activeLabel.textContent = realSettings.activeDays;
+            if (deadLabel) deadLabel.textContent = realSettings.deadDays;
         });
     }
 }
