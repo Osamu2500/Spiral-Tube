@@ -41,6 +41,23 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
     async enable() {
         await super.enable();
         try {
+            if (window.YPP?.Utils?.addStyle) {
+                window.YPP.Utils.addStyle(`
+                    .ypp-native-cloaked {
+                        position: fixed !important;
+                        top: -9999px !important;
+                        left: -9999px !important;
+                        width: 1px !important;
+                        height: 1px !important;
+                        opacity: 0 !important;
+                        visibility: hidden !important;
+                        pointer-events: none !important;
+                        z-index: -9999 !important;
+                        overflow: hidden !important;
+                    }
+                `, 'ypp-account-menu-cloaking-style');
+            }
+
             // Track which topbar button was clicked to definitively separate Account from Notifications!
             this.addListener(document, 'click', e => {
                 // Walk up from the click target to find either the avatar button
@@ -227,17 +244,7 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
 
         const cloakEl = (child) => {
             if (child.classList && child.classList.contains('ypp-account-menu')) return;
-            // Use visibility:hidden + 1x1 pixel clip — stronger than opacity
-            child.style.setProperty('position', 'fixed', 'important');
-            child.style.setProperty('top', '-9999px', 'important');
-            child.style.setProperty('left', '-9999px', 'important');
-            child.style.setProperty('width', '1px', 'important');
-            child.style.setProperty('height', '1px', 'important');
-            child.style.setProperty('opacity', '0', 'important');
-            child.style.setProperty('visibility', 'hidden', 'important');
-            child.style.setProperty('pointer-events', 'none', 'important');
-            child.style.setProperty('z-index', '-9999', 'important');
-            child.style.setProperty('overflow', 'hidden', 'important');
+            child.classList.add('ypp-native-cloaked');
         };
 
         Array.from(menu.children).forEach(cloakEl);
@@ -695,16 +702,7 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
         this._currentMenu = null;
 
         const uncloakEl = (el) => {
-            el.style.removeProperty('position');
-            el.style.removeProperty('opacity');
-            el.style.removeProperty('visibility');
-            el.style.removeProperty('pointer-events');
-            el.style.removeProperty('z-index');
-            el.style.removeProperty('top');
-            el.style.removeProperty('left');
-            el.style.removeProperty('width');
-            el.style.removeProperty('height');
-            el.style.removeProperty('overflow');
+            el.classList.remove('ypp-native-cloaked');
         };
 
         document.querySelectorAll('[data-ypp-redesigned]').forEach(el => {

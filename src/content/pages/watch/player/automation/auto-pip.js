@@ -135,7 +135,7 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
     
     _setupIntersectionObserver() {
         this._teardownIntersectionObserver();
-        this._observer = new IntersectionObserver((entries) => {
+        this._boundVisibilityCb = (entries) => {
             entries.forEach(entry => {
                 if (document.hidden || !this.isEnabled || !this.utils.isWatchPage()) return;
                 
@@ -147,22 +147,16 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
                     this._boundAutoPiP('visible');
                 }
             });
-        }, { threshold: 0.1 });
-        
-        const player = document.getElementById('movie_player');
-        if (player) {
-            this._observer.observe(player);
-        } else {
-            this.utils.pollFor(() => document.getElementById('movie_player'), 5000, 500)
-                .then(p => { if (p && this._observer) this._observer.observe(p); })
-                .catch(() => {});
+        };
+        if (window.YPP?.Utils?.VideoVisibilityTracker) {
+            window.YPP.Utils.VideoVisibilityTracker.subscribe(this._boundVisibilityCb);
         }
     }
     
     _teardownIntersectionObserver() {
-        if (this._observer) {
-            this._observer.disconnect();
-            this._observer = null;
+        if (this._boundVisibilityCb && window.YPP?.Utils?.VideoVisibilityTracker) {
+            window.YPP.Utils.VideoVisibilityTracker.unsubscribe(this._boundVisibilityCb);
+            this._boundVisibilityCb = null;
         }
     }
 

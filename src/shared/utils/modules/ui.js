@@ -216,14 +216,31 @@ export const makePopupZoomInvariant = (panel) => {
     applyZoom();
     const onResize = () => applyZoom();
     window.addEventListener('resize', onResize, { passive: true });
-    const observer = new MutationObserver(() => {
+    const observer = new IntersectionObserver(() => {
         if (!panel.isConnected) {
             window.removeEventListener('resize', onResize);
             observer.disconnect();
         }
     });
-    if (document.body) observer.observe(document.body, { childList: true, subtree: true });
-    if (document.documentElement) observer.observe(document.documentElement, { childList: true, subtree: true });
+    observer.observe(panel);
+    
+    // Fallback watcher on its direct parent just in case it never intersected
+    const fallbackObserver = new MutationObserver(() => {
+        if (!panel.isConnected) {
+            window.removeEventListener('resize', onResize);
+            fallbackObserver.disconnect();
+            observer.disconnect();
+        }
+    });
+    
+    // Defer the parent fallback setup to ensure panel is appended
+    requestAnimationFrame(() => {
+        if (panel.parentNode) {
+            fallbackObserver.observe(panel.parentNode, { childList: true });
+        } else {
+            fallbackObserver.observe(getPopupPortal(), { childList: true });
+        }
+    });
 };
 
 export const positionPopupBesideVideo = (panel, triggerBtn, video, panelW) => {

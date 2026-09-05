@@ -421,3 +421,41 @@ export const createSVG = (viewBox, pathData, className = '') => {
         return svg;
     };
 
+export const VideoVisibilityTracker = (() => {
+    let observer = null;
+    let subscribers = 0;
+    
+    return {
+        subscribe(callback) {
+            subscribers++;
+            if (!observer) {
+                observer = new IntersectionObserver((entries) => {
+                    if (window.YPP?.events) window.YPP.events.emit('video:visibility', entries);
+                }, { threshold: 0.1 });
+                const tryObserve = () => {
+                    const player = document.getElementById('movie_player');
+                    if (player) {
+                        if (observer) observer.observe(player);
+                    } else if (subscribers > 0) {
+                        setTimeout(tryObserve, 500);
+                    }
+                };
+                tryObserve();
+            }
+            if (window.YPP?.events) {
+                window.YPP.events.on('video:visibility', callback);
+            }
+        },
+        unsubscribe(callback) {
+            if (window.YPP?.events) {
+                window.YPP.events.off('video:visibility', callback);
+            }
+            subscribers = Math.max(0, subscribers - 1);
+            if (subscribers === 0 && observer) {
+                observer.disconnect();
+                observer = null;
+            }
+        }
+    };
+})();
+

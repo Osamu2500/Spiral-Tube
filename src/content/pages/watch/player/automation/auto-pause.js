@@ -72,8 +72,8 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         }
         
         // V2: Attention Tracking
-        this.addListener(document, 'mousemove', this.idleHandler);
-        this.addListener(document, 'keydown', this.idleHandler);
+        this.addListener(document, 'mousemove', this.idleHandler, { passive: true });
+        this.addListener(document, 'keydown', this.idleHandler, { passive: true });
     }
 
     /**
@@ -81,7 +81,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
      */
     async disable() {
         await super.disable();
-        if (this.fadeInterval) clearInterval(this.fadeInterval);
+        if (this.fadeInterval) cancelAnimationFrame(this.fadeInterval);
         if (this._resumeDelayTimer) { clearTimeout(this._resumeDelayTimer); this._resumeDelayTimer = null; }
         this._teardownIntersectionObserver();
         
@@ -205,7 +205,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         this._teardownIntersectionObserver();
         // PAUSE-BUG-2: Reset the ready flag each time we set up the observer
         this._observerReady = false;
-        this._observer = new IntersectionObserver((entries) => {
+        this._boundVisibilityCb = (entries) => {
             // PAUSE-BUG-2: Ignore the initial synchronous fire that happens on observe()
             if (!this._observerReady) return;
             entries.forEach(entry => {
@@ -220,24 +220,18 @@ export class AutoPause extends window.YPP.features.BaseFeature {
                     this._triggerResume();
                 }
             });
-        }, { threshold: 0.1 });
-        
-        const player = document.getElementById('movie_player');
-        if (player) {
-            this._observer.observe(player);
-        } else {
-            this.utils.pollFor(() => document.getElementById('movie_player'), AutoPause.CONFIG.POLL_TIMEOUT, AutoPause.CONFIG.POLL_INTERVAL)
-                .then(p => { if (p && this._observer) this._observer.observe(p); })
-                .catch(() => {});
+        };
+        if (window.YPP?.Utils?.VideoVisibilityTracker) {
+            window.YPP.Utils.VideoVisibilityTracker.subscribe(this._boundVisibilityCb);
         }
         // PAUSE-BUG-2: Allow a short delay before the observer can trigger actions
         setTimeout(() => { this._observerReady = true; }, AutoPause.CONFIG.OBSERVER_DELAY);
     }
     
     _teardownIntersectionObserver() {
-        if (this._observer) {
-            this._observer.disconnect();
-            this._observer = null;
+        if (this._boundVisibilityCb && window.YPP?.Utils?.VideoVisibilityTracker) {
+            window.YPP.Utils.VideoVisibilityTracker.unsubscribe(this._boundVisibilityCb);
+            this._boundVisibilityCb = null;
         }
     }
 
@@ -283,7 +277,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     }
     
     _fadeVolumeAndPause() {
-        if (this.fadeInterval) clearInterval(this.fadeInterval);
+        if (this.fadeInterval) { cancelAnimationFrame(this.fadeInterval); this.fadeInterval = null; }
         
         if (this.originalVolume === null) {
             this.originalVolume = this.video.volume;
@@ -291,34 +285,38 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         
         const fadeStep = this.originalVolume / 10; // Fade in 10 steps
         
-        this.fadeInterval = this.setInterval(() => {
+        const fadeLoop = () => {
             if (this.video.volume - fadeStep > 0) {
                 this.video.volume -= fadeStep;
+                this.fadeInterval = requestAnimationFrame(fadeLoop);
             } else {
                 this.video.volume = 0;
                 this.video.pause();
-                clearInterval(this.fadeInterval);
+                this.fadeInterval = null;
             }
-        }, AutoPause.CONFIG.FADE_INTERVAL); // 500ms total fade time
+        };
+        this.fadeInterval = requestAnimationFrame(fadeLoop);
     }
     
     _fadeVolumeIn() {
-        if (this.fadeInterval) clearInterval(this.fadeInterval);
+        if (this.fadeInterval) { cancelAnimationFrame(this.fadeInterval); this.fadeInterval = null; }
         
         if (this.originalVolume === null) return;
         
         const targetVolume = this.originalVolume;
         const fadeStep = targetVolume / 10;
         
-        this.fadeInterval = this.setInterval(() => {
+        const fadeLoop = () => {
             if (this.video.volume + fadeStep < targetVolume) {
                 this.video.volume += fadeStep;
+                this.fadeInterval = requestAnimationFrame(fadeLoop);
             } else {
                 this.video.volume = targetVolume;
                 this.originalVolume = null;
-                clearInterval(this.fadeInterval);
+                this.fadeInterval = null;
             }
-        }, AutoPause.CONFIG.FADE_INTERVAL); // 500ms total fade time
+        };
+        this.fadeInterval = requestAnimationFrame(fadeLoop);
     }
     
     // --- V2 Features ---
