@@ -67,21 +67,27 @@ export class CommentFilter extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         if (this.observer) this.observer.unregister('spam_comments');
-        const action = this.settings?.commentFilterAction || 'dim';
-        if (action === 'dim') {
-            document.querySelectorAll('.ypp-spam-comment').forEach(el => {
-                el.classList.remove('ypp-spam-comment');
-                el.style.opacity = '';
-                el.style.transition = '';
-                el.style.display = '';
+        if (window.YPP.utils?.filterPrimitives) {
+            document.querySelectorAll('ytd-comment-thread-renderer[data-ypp-hidden-reason="Spam Comment"], ytd-comment-thread-renderer[data-ypp-dimmed]').forEach(el => {
+                window.YPP.utils.filterPrimitives._clearState(el);
             });
         } else {
-            document.querySelectorAll('.ypp-spam-comment').forEach(el => {
-                el.classList.remove('ypp-spam-comment');
-                el.style.display = '';
-            });
+            const action = this.settings?.commentFilterAction || 'dim';
+            if (action === 'dim') {
+                document.querySelectorAll('.ypp-spam-comment').forEach(el => {
+                    el.classList.remove('ypp-spam-comment');
+                    el.style.opacity = '';
+                    el.style.transition = '';
+                    el.style.display = '';
+                });
+            } else {
+                document.querySelectorAll('.ypp-spam-comment').forEach(el => {
+                    el.classList.remove('ypp-spam-comment');
+                    el.style.display = '';
+                });
+            }
+            document.querySelectorAll('.ypp-spam-label').forEach(el => el.remove());
         }
-        document.querySelectorAll('.ypp-spam-label').forEach(el => el.remove());
         
         // TEARDOWN: remove processed stamps so re-enabling works
         document.querySelectorAll('ytd-comment-thread-renderer[data-ypp-processed]').forEach(el => {
@@ -115,25 +121,29 @@ export class CommentFilter extends window.YPP.features.BaseFeature {
             const isSpam = this._activePatterns.some(pattern => pattern.test(text));
 
             if (isSpam) {
-                container.classList.add('ypp-spam-comment');
-
-                if (action === 'hide') {
-                    container.style.display = 'none';
+                if (window.YPP.utils?.filterPrimitives) {
+                    window.YPP.utils.filterPrimitives.applyFilter(container, action, 'Spam Comment');
                 } else {
-                    // 'dim' mode — fade + hover to reveal
-                    container.style.opacity = '0.35';
-                    container.style.transition = 'opacity 0.2s';
-                    this.addListener(container, 'mouseenter', () => container.style.opacity = '1');
-                    this.addListener(container, 'mouseleave', () => container.style.opacity = '0.35');
-                }
-
-                // Visual indicator label
-                const header = container.querySelector('#header-author, #author-thumbnail');
-                if (header && !container.querySelector('.ypp-spam-label')) {
-                    const label = document.createElement('span');
-                    label.className = 'ypp-spam-label';
-                    label.textContent = '[Likely Spam]';
-                    header.appendChild(label);
+                    container.classList.add('ypp-spam-comment');
+    
+                    if (action === 'hide') {
+                        container.style.display = 'none';
+                    } else {
+                        // 'dim' mode — fade + hover to reveal
+                        container.style.opacity = '0.35';
+                        container.style.transition = 'opacity 0.2s';
+                        this.addListener(container, 'mouseenter', () => container.style.opacity = '1');
+                        this.addListener(container, 'mouseleave', () => container.style.opacity = '0.35');
+                    }
+    
+                    // Visual indicator label
+                    const header = container.querySelector('#header-author, #author-thumbnail');
+                    if (header && !container.querySelector('.ypp-spam-label')) {
+                        const label = document.createElement('span');
+                        label.className = 'ypp-spam-label';
+                        label.textContent = '[Likely Spam]';
+                        header.appendChild(label);
+                    }
                 }
 
                 this.utils?.log?.('Spam comment filtered', 'COMMENT');
