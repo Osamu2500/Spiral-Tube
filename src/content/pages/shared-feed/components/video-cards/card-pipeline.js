@@ -104,6 +104,13 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
     }
 
     /**
+     * Called by individual filters to unregister themselves from the pipeline.
+     */
+    unregisterFilter(filterInstance) {
+        this._filters = this._filters.filter(f => f !== filterInstance);
+    }
+
+    /**
      * Called by filters when settings change to force a global re-evaluation
      */
     triggerGlobalReevaluation() {
