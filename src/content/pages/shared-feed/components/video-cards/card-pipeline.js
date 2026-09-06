@@ -109,6 +109,24 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 false
             );
         }
+
+        // Constant checking heartbeat: 
+        // YouTube sometimes mutates text nodes internally without triggering element-level observers.
+        // This ensures cards are continually verified against filters.
+        if (!this._heartbeat) {
+            this._heartbeat = setInterval(() => {
+                if (!this.isEnabled) return;
+                const cards = document.querySelectorAll(CardPipeline.CARD_SELECTORS);
+                // Use requestIdleCallback if available so we don't drop frames during scrolling
+                if (window.requestIdleCallback) {
+                    window.requestIdleCallback(() => {
+                        cards.forEach(card => this.evaluateCard(card));
+                    }, { timeout: 500 });
+                } else {
+                    cards.forEach(card => this.evaluateCard(card));
+                }
+            }, 2000);
+        }
     }
 
     async disable() {
@@ -117,6 +135,11 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             window.YPP.sharedObserver.unregister('v3-card-pipeline');
             window.YPP.sharedObserver.unregister('v3-pipeline-progress');
             window.YPP.sharedObserver.unregister('v3-pipeline-badges-titles');
+        }
+
+        if (this._heartbeat) {
+            clearInterval(this._heartbeat);
+            this._heartbeat = null;
         }
     }
 
@@ -222,8 +245,9 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             target.style.removeProperty('display');
         }
 
-        if (!forceReevaluate && target.hasAttribute('data-ypp-v3-processed')) {
+        if (target.hasAttribute('data-ypp-v3-processed')) {
             // Self-Healing: Re-apply visual states if YouTube's virtual DOM wiped the class/style
+            // We do this immediately before full re-evaluation to prevent visual flickering
             if (target.dataset.yppHiddenBy === 'CardPipeline' || target.dataset.yppHidden) {
                 if (target.style.display !== 'none' || !target.classList.contains('ypp-hidden')) {
                     target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
@@ -234,9 +258,8 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 if (!target.classList.contains('ypp-dim-badge')) {
                     target.classList.add('ypp-dim-badge');
                 }
-                // Ensure opacity is applied since we rely on class mostly, but just in case
             }
-            return;
+            // We no longer `return;` here. We fully re-evaluate the card every time!
         }
 
         // 1. Extract unified metadata
