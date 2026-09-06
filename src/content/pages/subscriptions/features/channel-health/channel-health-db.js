@@ -2,7 +2,7 @@ import { ChannelHealthAPI } from './channel-health-api.js';
 
 export class ChannelHealthDB {
     static DB_NAME_PREFIX = 'YPP_ChannelHealth';
-    static DB_VERSION = 1;
+    static DB_VERSION = 2;
     static _accountId = null;
     
     static async _getAccountId() {
