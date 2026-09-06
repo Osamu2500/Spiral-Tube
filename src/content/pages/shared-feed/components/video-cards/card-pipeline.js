@@ -45,7 +45,6 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
 
     async enable() {
         await super.enable();
-        this.isEnabled = true;
 
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.register(
@@ -90,7 +89,14 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             window.YPP.sharedObserver.unregister('v3-card-pipeline');
             window.YPP.sharedObserver.unregister('v3-pipeline-progress');
         }
-        this.isEnabled = false;
+    }
+
+    onPageChange() {
+        // Re-evaluate all cards after SPA navigation since filters are page-specific
+        if (this.isEnabled) {
+            // Small delay to allow YouTube's DOM to settle after navigation
+            setTimeout(() => this.triggerGlobalReevaluation(), 200);
+        }
     }
 
     /**

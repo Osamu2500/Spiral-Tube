@@ -16,21 +16,22 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
         this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/', '/watch', '/shorts'];
     }
 
-    getConfigKey() { return 'feedFilter'; }
+    getConfigKey() { return null; }
+
+    _getCurrentPageType() {
+        const path = window.location.pathname;
+        if (path === '/' || path === '/index') return 'Home';
+        if (path.startsWith('/feed/subscriptions')) return 'Subs';
+        if (path.startsWith('/results')) return 'Search';
+        if (path.startsWith('/watch') || path.startsWith('/shorts')) return 'Related';
+        if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) return 'Channel';
+        return '';
+    }
 
     _shouldRunOnCurrentPage() {
-        const path = window.location.pathname;
-        let pageType = '';
-        if (path === '/' || path === '/index') pageType = 'Home';
-        else if (path.startsWith('/feed/subscriptions')) pageType = 'Subs';
-        else if (path.startsWith('/results')) pageType = 'Search';
-        else if (path.startsWith('/watch') || path.startsWith('/shorts')) pageType = 'Related';
-        else if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) pageType = 'Channel';
-        
+        if (!this.settings?.feedFilter) return false;
+        const pageType = this._getCurrentPageType();
         if (!pageType) return false;
-        
-        // Store for use in evaluate()
-        this._lastPageType = pageType;
         return this.settings?.[`feedFilter${pageType}`] !== false;
     }
 
@@ -63,7 +64,7 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
     evaluate(context) {
         if (!context.card || !context.card.isConnected) return null;
         
-        const pageType = this._lastPageType || '';
+        const pageType = this._getCurrentPageType();
         const isFeatureActive = (baseKey) => {
             if (!this.settings?.[baseKey]) return false; // Global toggle off
             if (pageType && this.settings?.[`${baseKey}${pageType}`] === false) return false; // Page toggle off

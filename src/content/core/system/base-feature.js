@@ -65,11 +65,6 @@ window.YPP.features.BaseFeature = class BaseFeature {
         
         this.settings = { ...this.settings, ...settings };
 
-        // Fallback for features that extend BaseFeature but implement run() instead of update()/enable()
-        if (typeof this.run === 'function' && this.run !== window.YPP.features.BaseFeature.prototype.run) {
-            return this.run(settings);
-        }
-
         const configKey = this.getConfigKey();
         
         let shouldBeEnabled = true;
@@ -93,7 +88,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
         } else if (this.isEnabled && settingsChanged) {
             this._triggerSettingWatchers(this.settings, oldSettings);
             if (typeof this.onUpdate === 'function') {
-                await this.onUpdate(settings, oldSettings);
+                await this.onUpdate(this.settings, oldSettings);
             }
         }
     }

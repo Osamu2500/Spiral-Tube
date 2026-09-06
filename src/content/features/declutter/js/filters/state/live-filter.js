@@ -15,7 +15,7 @@ export class LiveFilter extends window.YPP.features.BaseFilterFeature {
         this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/', '/watch', '/shorts'];
     }
 
-    getConfigKey() { return 'hideLiveStreams'; }
+    getConfigKey() { return null; }
 
     _getCurrentPageType() {
         const path = window.location.pathname;
@@ -36,8 +36,8 @@ export class LiveFilter extends window.YPP.features.BaseFilterFeature {
         return this.settings[`hideLiveStreams${pageType}`] !== false;
     }
 
-    async run(settings, oldSettings) {
-        if (this._isEnabled && window.YPP.FeatureManager) {
+    onUpdate(newSettings, oldSettings) {
+        if (window.YPP.FeatureManager) {
             const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }

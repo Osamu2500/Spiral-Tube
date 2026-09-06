@@ -24,9 +24,7 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
         this._blockedKeywordRegexes = [];
     }
 
-    getConfigKey() {
-        return 'blockedChannels'; // fallback; enable() handles the actual logic
-    }
+    getConfigKey() { return null; } // Always active; enable() decides if there's any work to do
 
     _shouldRunOnCurrentPage() {
         const path = window.location.pathname;
@@ -60,13 +58,11 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
     }
 
     async enable() {
-        if (!this.settings) return;
+        await super.enable();
 
-        this._blockedChannels = this._parseList(this.settings.blockedChannels);
-        this._blockedKeywords = this._parseList(this.settings.blockedKeywords);
+        this._blockedChannels = this._parseList(this.settings?.blockedChannels);
+        this._blockedKeywords = this._parseList(this.settings?.blockedKeywords);
         this._blockedKeywordRegexes = this._buildKeywordRegexes(this._blockedKeywords);
-
-        if (this._blockedChannels.length === 0 && this._blockedKeywords.length === 0) return;
 
         this.utils?.log(
             `Enabled with ${this._blockedChannels.length} channels, ${this._blockedKeywords.length} keywords blocked.`,
@@ -75,10 +71,7 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
 
         if (window.YPP.FeatureManager) {
             const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
-            if (pipeline) {
-                pipeline.registerFilter(this);
-                pipeline.triggerGlobalReevaluation();
-            }
+            if (pipeline) pipeline.registerFilter(this);
         }
         
         // Secondary check for Shorts (not in CardPipeline's CARD_SELECTORS)
@@ -130,10 +123,10 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
         });
     }
 
-    async run(settings, oldSettings) {
+    onUpdate(newSettings, oldSettings) {
         // Rebuild lists when settings change
-        this._blockedChannels = this._parseList(settings?.blockedChannels);
-        this._blockedKeywords = this._parseList(settings?.blockedKeywords);
+        this._blockedChannels = this._parseList(newSettings?.blockedChannels);
+        this._blockedKeywords = this._parseList(newSettings?.blockedKeywords);
         this._blockedKeywordRegexes = this._buildKeywordRegexes(this._blockedKeywords);
 
         if (window.YPP.FeatureManager) {

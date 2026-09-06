@@ -19,18 +19,24 @@ export class ScreenFilters extends window.YPP.features.BaseFeature {
     }
 
     async enable() {
+        await super.enable();
         this._updateFilters();
     }
 
     async disable() {
-        if (this.filterOverlay) {
-            this.filterOverlay.remove();
-            this.filterOverlay = null;
-        }
+        await super.disable();
+        this._removeOverlay();
     }
 
     async onUpdate() {
         this._updateFilters();
+    }
+
+    _removeOverlay() {
+        if (this.filterOverlay) {
+            this.filterOverlay.remove();
+            this.filterOverlay = null;
+        }
     }
 
     _updateFilters() {
@@ -39,7 +45,7 @@ export class ScreenFilters extends window.YPP.features.BaseFeature {
         const dim = s.dim || 0;
 
         if (blueLight === 0 && dim === 0) {
-            this.disable();
+            this._removeOverlay();
             return;
         }
 
