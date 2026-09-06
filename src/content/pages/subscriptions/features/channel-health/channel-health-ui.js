@@ -103,7 +103,7 @@ export class ChannelHealthUI {
                     </div>
                 </div>
 
-                <div class="ypp-organizer-body" style="flex-direction: row; padding: 32px; overflow: hidden; display: flex; flex: 1; background: transparent; gap: 32px;">
+                <div class="ypp-organizer-body" style="zoom: 0.90; flex-direction: row; padding: 32px; overflow: hidden; display: flex; flex: 1; background: transparent; gap: 32px;">
                     <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
                         <div style="display: flex; gap: 24px; margin-bottom: 24px;">
                             <div class="ypp-health-stat" data-filter="active">
