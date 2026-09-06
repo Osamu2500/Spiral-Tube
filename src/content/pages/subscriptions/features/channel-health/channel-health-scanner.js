@@ -1,50 +1,73 @@
 /**
  * Channel Health Scanner
- * Owns: The logic for scanning YouTube channels for Video and Shorts health.
- * Does not affect functionality outside the Channel Health feature.
+ * Purpose: Manages the background worker queue and API coordination for scanning YouTube channels.
+ * Scope: Coordinates data fetching (videos/shorts), state management, and updates UI progress counters.
+ * Note: DOM row creation is delegated to ChannelHealthRowBuilder.
+ * Confirmation: This file exclusively targets the Channel Health Dashboard and does NOT affect any unrelated YouTube functionalities or other extension features.
  */
 import { ChannelHealthAPI } from './channel-health-api.js';
 import { ChannelHealthDB } from './channel-health-db.js';
 import { ChannelHealthActions } from './channel-health-actions.js';
+import { ChannelHealthRowBuilder } from './channel-health-row-builder.js';
 
 export class ChannelHealthScanner {
     // Shared state
     static currentSettings = { activeDays: 30, deadDays: 90 };
     static lastScanChannels = null;
 
-    static async runScan(overlay, filterSel, sortSel, searchInput, skipFetch = false) {
-        const btn = overlay.querySelector('#ypp-health-scan-btn');
+    static async fetchOnly(overlay, filterSel, sortSel, searchInput) {
+        return this.runScan(overlay, filterSel, sortSel, searchInput, false, 'none');
+    }
+
+    static async runScan(overlay, filterSel, sortSel, searchInput, reRenderOnly = false, scanType = 'video') {
+        const isShorts = scanType === 'short';
+        const isFetchOnly = scanType === 'none';
+        const btnId = isFetchOnly ? '#ypp-health-fetch-list-btn' : (isShorts ? '#ypp-health-search-shorts-btn' : '#ypp-health-scan-btn');
+        const btn = overlay.querySelector(btnId);
         const resultsEl = overlay.querySelector('#ypp-health-results');
-        
-        btn.textContent = 'Scanning...';
+
+        if (isFetchOnly) {
+            btn.textContent = 'Fetching...';
+        } else {
+            btn.textContent = isShorts ? 'Scanning Shorts...' : 'Scanning...';
+        }
         btn.disabled = true;
         btn.style.opacity = '0.5';
-        resultsEl.innerHTML = `
-            <div id="ypp-scan-status" style="text-align:center; color:#aaa; margin-top:40px; font-size:14px;">
-                <div style="margin-bottom:12px;">Fetching subscriptions list...</div>
-                <div id="ypp-scan-progress" style="font-size:12px; color:#777;"></div>
-            </div>`;
-
-        const statusEl = overlay.querySelector('#ypp-scan-status div');
 
         try {
-            let channels = [];
-            const skipFullScan = skipFetch && this.lastScanChannels;
-            
+            const hasChannels = this.lastScanChannels && this.lastScanChannels.length > 0;
+            const skipFetch = reRenderOnly || (hasChannels && !isFetchOnly);
+            const skipWorkerPool = reRenderOnly && hasChannels;
+
+            let channels = skipFetch ? this.lastScanChannels : [];
             let isFetchingSubscriptions = false;
             let startProcessing = null;
             let startedProcessing = false;
             let updateCountersRef = null;
 
-            if (skipFullScan) {
-                channels = this.lastScanChannels;
+            if (!skipFetch) {
+                resultsEl.innerHTML = `
+                    <div id="ypp-scan-status" style="text-align:center; color:#aaa; margin-top:40px; font-size:14px;">
+                        <div style="margin-bottom:12px;">Fetching subscriptions list...</div>
+                        <div id="ypp-scan-progress" style="font-size:12px; color:#777;"></div>
+                    </div>`;
+            }
+
+            const statusEl = overlay.querySelector('#ypp-scan-status div');
+
+            if (skipFetch) {
                 if (statusEl) statusEl.remove();
-                btn.textContent = 'Updating UI...';
+                if (reRenderOnly) btn.textContent = 'Updating...';
             } else {
                 isFetchingSubscriptions = true;
+
+                // IMPORTANT: fetchSubscriptions is called AFTER startProcessing is defined below,
+                // so the batch callback can safely call startProcessing().
+                // We use a deferred start pattern: define the callback ref first, then assign.
                 ChannelHealthAPI.fetchSubscriptions(
                     (count) => {
-                        if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
+                        const el = overlay.querySelector('#ypp-scan-status div');
+                        if (el) el.textContent = `Fetching subscriptions... (${count} found so far)`;
                     },
                     (batch) => {
                         channels.push(...batch);
@@ -57,557 +80,336 @@ export class ChannelHealthScanner {
                     isFetchingSubscriptions = false;
                     this.lastScanChannels = allChannels;
                     if (allChannels.length === 0) {
-                        resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
-                        btn.textContent = 'Scan Complete';
+                        resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255,78,69,0.8);margin-top:40px;">No subscriptions found.</div>';
+                        btn.textContent = isFetchOnly ? 'Fetch Complete' : 'Scan Complete';
                         btn.disabled = false;
                         btn.style.opacity = '1';
                     }
                     if (updateCountersRef) updateCountersRef();
+                }).catch(() => {
+                    isFetchingSubscriptions = false;
                 });
             }
 
-            if (skipFullScan && channels.length === 0) {
-                resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
-                btn.textContent = 'Scan Complete';
+            if (skipFetch && channels.length === 0) {
+                resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255,78,69,0.8);margin-top:40px;">No subscriptions found.</div>';
+                btn.textContent = isFetchOnly ? 'Fetch Complete' : 'Scan Complete';
                 btn.disabled = false;
                 btn.style.opacity = '1';
                 return;
             }
 
+            // startProcessing is defined HERE — after fetchSubscriptions is called but before
+            // any batch can actually arrive (JS is single-threaded, batches arrive on next tick).
             startProcessing = async () => {
-                resultsEl.innerHTML = `
-                    <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
-                `;
-                if (statusEl) statusEl.remove();
-
-                const resultsListEl = overlay.querySelector('#ypp-health-results-list');
-            
-            // Add skeleton loaders
-            for(let i=0; i<Math.min(channels.length, 12); i++) {
-                const skel = document.createElement('div');
-                skel.className = 'ypp-health-skeleton-row';
-                skel.innerHTML = `
-                    <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.05);margin-right:16px;"></div>
-                    <div style="flex:1;">
-                        <div style="width:40%;height:14px;background:rgba(255,255,255,0.05);border-radius:4px;margin-bottom:8px;"></div>
-                        <div style="width:25%;height:10px;background:rgba(255,255,255,0.05);border-radius:4px;"></div>
-                    </div>
-                `;
-                skel.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;animation:ypp-pulse 1.5s infinite ease-in-out;';
-                resultsListEl.appendChild(skel);
-            }
-
-            const now = Date.now();
-            let activeCount = 0, warningCount = 0, deadCount = 0, doneCount = 0;
-
-            const updateCounters = () => {
-                overlay.querySelector('#ypp-health-active').textContent  = activeCount;
-                overlay.querySelector('#ypp-health-warning').textContent = warningCount;
-                overlay.querySelector('#ypp-health-dead').textContent    = deadCount;
-                btn.textContent = `Scanning… ${doneCount}/${isFetchingSubscriptions ? '?' : channels.length}`;
-                
-                if (doneCount >= channels.length && !isFetchingSubscriptions) {
-                    overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: channels.length, complete: true } }));
-                    const exportBtn = overlay.querySelector('#ypp-health-export-btn');
-                    if (exportBtn) {
-                        exportBtn.style.display = 'inline-block';
-                        exportBtn.onclick = () => {
-                            const csvContent = "data:text/csv;charset=utf-8," 
-                                + "Channel Name,Channel URL,Last Upload Date,Statusn"
-                                + channels.map(c => `"${(c.name || '').replace(/"/g, '""')}","https://youtube.com/channel/${c.id}","${c.lastUploadText}","${c.status}"`).join("n");
-                            const encodedUri = encodeURI(csvContent);
-                            const link = document.createElement("a");
-                            link.setAttribute("href", encodedUri);
-                            link.setAttribute("download", "youtube_channel_health.csv");
-                            document.body.appendChild(link);
-                            link.click();
-                            link.remove();
-                        };
+                try {
+                    // Set up results list
+                    let resultsListEl = overlay.querySelector('#ypp-health-results-list');
+                    if (!resultsListEl) {
+                        resultsEl.innerHTML = `<div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>`;
+                        resultsListEl = overlay.querySelector('#ypp-health-results-list');
+                    } else if (!skipFetch && !reRenderOnly) {
+                        resultsListEl.innerHTML = '';
                     }
-                }
-            };
-            updateCountersRef = updateCounters;
+                    if (statusEl) statusEl.remove();
 
-            const safeList = await ChannelHealthDB.getSafeList();
-
-            const buildRow = (c) => {
-                const colorMap = { active: '#2ed573', warning: '#ffb340', dead: '#ff4e45', error: '#94a3b8' };
-                const color = colorMap[c.status] || '#94a3b8';
-
-                const row = document.createElement('div');
-                row.className = 'ypp-channel-health-row';
-                row.dataset.status          = c.status;
-                row.dataset.name            = c.name;
-                row.dataset.uploadTime      = c.lastUpload != null ? c.lastUpload : Infinity;
-                row.dataset.videoStatus     = c.videoInfo?.status || 'none';
-                row.dataset.shortStatus     = c.shortInfo?.status || 'none';
-                row.dataset.postStatus      = 'unknown';
-                row.dataset.videoUploadTime = c.videoInfo ? (now - c.videoInfo.pubTime) : Infinity;
-                row.dataset.shortUploadTime = c.shortInfo ? (now - c.shortInfo.pubTime) : Infinity;
-                row.style.borderLeft = '4px solid ' + color;
-                row.style.setProperty('--ypp-status-color', color);
-
-                const img = document.createElement('img');
-                img.src = c.icon || '';
-                img.className = 'ypp-health-row-avatar';
-                img.onerror = function() { this.style.display = 'none'; };
-                row.appendChild(img);
-
-                const infoDiv = document.createElement('div');
-                infoDiv.style.cssText = 'flex:1;min-width:0;';
-
-                const nameDiv = document.createElement('div');
-                nameDiv.style.cssText = 'color:#f1f5f9;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.2px;';
-                nameDiv.textContent = c.name;
-                infoDiv.appendChild(nameDiv);
-
-                // Content Pills: Video | Short
-                const PILL_ICONS = {
-                    video: `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>`,
-                    short: `<svg width="9" height="12" viewBox="0 0 18 24" fill="currentColor" style="flex-shrink:0"><rect x="0" y="0" width="18" height="24" rx="4"/><path d="M6.5 8.5l6 3.5-6 3.5V8.5z" fill="rgba(0,0,0,0.45)"/></svg>`
-                };
-
-                const createPill = (type, info) => {
-                    if (!info || !info.text) return null;
-                    const pill = document.createElement('div');
-                    pill.className = `ypp-cpill ypp-cpill-${info.status}`;
-                    pill.dataset.type = type;
-                    pill.innerHTML = `${PILL_ICONS[type]}<span>${info.text}</span>`;
-                    return pill;
-                };
-
-                const pillsDiv = document.createElement('div');
-                pillsDiv.className = 'ypp-content-pills';
-                const vPill = createPill('video', c.videoInfo);
-                const sPill = createPill('short', c.shortInfo);
-                if (vPill) pillsDiv.appendChild(vPill);
-                if (sPill) pillsDiv.appendChild(sPill);
-                infoDiv.appendChild(pillsDiv);
-
-                row.appendChild(infoDiv);
-
-                const actionsDiv = document.createElement('div');
-                actionsDiv.style.cssText = 'display:flex;align-items:center;gap:12px;flex-shrink:0;';
-
-                const visitLink = document.createElement('a');
-                visitLink.href = '/channel/' + c.id;
-                visitLink.target = '_blank';
-                visitLink.className = 'ypp-health-btn-visit';
-                visitLink.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Visit`;
-                actionsDiv.appendChild(visitLink);
-
-                const label = document.createElement('label');
-                label.className = 'ypp-custom-checkbox-label';
-                const cb = document.createElement('input');
-                cb.type = 'checkbox';
-                cb.className = 'ypp-unsub-checkbox';
-                cb.value = c.id;
-                cb.dataset.params = c.unsubParams || '';
-                const isSafe = safeList.includes(c.id);
-                if (isSafe) cb.disabled = true;
-
-                const checkmark = document.createElement('span');
-                checkmark.className = 'ypp-custom-checkmark';
-                if (isSafe) checkmark.style.opacity = '0.3';
-
-                label.appendChild(cb);
-                label.appendChild(checkmark);
-                const textSpan = document.createElement('span');
-                textSpan.textContent = 'Select';
-                label.appendChild(textSpan);
-                actionsDiv.appendChild(label);
-
-                const shieldBtn = document.createElement('button');
-                shieldBtn.className = `ypp-health-shield-btn ${isSafe ? 'active' : ''}`;
-                shieldBtn.title = isSafe ? "Remove from Safe List" : "Add to Safe List";
-                shieldBtn.innerHTML = isSafe ? 
-                    `<svg width="18" height="18" viewBox="0 0 24 24" fill="#3b82f6" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>` : 
-                    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`;
-                shieldBtn.addEventListener('click', async () => {
-                    const nowSafe = await ChannelHealthDB.toggleSafeList(c.id);
-                    if (nowSafe !== null) {
-                        shieldBtn.classList.toggle('active', nowSafe);
-                        shieldBtn.innerHTML = nowSafe ? 
-                            `<svg width="18" height="18" viewBox="0 0 24 24" fill="#3b82f6" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>` : 
-                            `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`;
-                        shieldBtn.title = nowSafe ? "Remove from Safe List" : "Add to Safe List";
-                        cb.disabled = nowSafe;
-                        checkmark.style.opacity = nowSafe ? '0.3' : '1';
-                        if (nowSafe) cb.checked = false;
-                        resultsEl.dispatchEvent(new Event('change'));
+                    // Show skeleton rows immediately so UI feels responsive right away
+                    if (!skipFetch) {
+                        const skeletonCount = Math.min(channels.length || 12, 12);
+                        for (let i = 0; i < skeletonCount; i++) {
+                            const skel = document.createElement('div');
+                            skel.className = 'ypp-health-skeleton-row';
+                            skel.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;animation:ypp-pulse 1.5s infinite ease-in-out;gap:16px;';
+                            skel.innerHTML = `
+                                <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.06);flex-shrink:0;"></div>
+                                <div style="flex:1;">
+                                    <div style="width:38%;height:13px;background:rgba(255,255,255,0.06);border-radius:4px;margin-bottom:9px;"></div>
+                                    <div style="width:22%;height:10px;background:rgba(255,255,255,0.04);border-radius:4px;"></div>
+                                </div>`;
+                            resultsListEl.appendChild(skel);
+                        }
                     }
-                });
-                actionsDiv.appendChild(shieldBtn);
 
-                const indivBtn = document.createElement('button');
-                indivBtn.className = 'ypp-indiv-unsub-btn';
-                indivBtn.textContent = 'Unsubscribe';
-                indivBtn.addEventListener('click', () => ChannelHealthActions.individualUnsubscribe(c.id, c.unsubParams, c.name, row, indivBtn));
-                actionsDiv.appendChild(indivBtn);
+                    const now = Date.now();
+                    let activeCount = 0, warningCount = 0, deadCount = 0, errorCount = 0, doneCount = 0;
 
-                row.appendChild(actionsDiv);
-                return row;
-            };
-
-            const currentContentType = overlay._currentContentType || 'all';
-
-            const processChannelUI = (c) => {
-                doneCount++;
-                const skel = resultsListEl?.querySelector('.ypp-health-skeleton-row');
-                if (skel) skel.remove();
-
-                const row = buildRow(c);
-                
-                let show = true;
-                if (filterSel && filterSel.value !== 'all') {
-                    let rowStatus;
-                    if      (currentContentType === 'video') rowStatus = row.dataset.videoStatus || 'dead';
-                    else if (currentContentType === 'short') rowStatus = row.dataset.shortStatus || 'dead';
-                    else if (currentContentType === 'post')  rowStatus = row.dataset.postStatus  || 'dead';
-                    else                                     rowStatus = row.dataset.status;
-
-                    if (rowStatus !== filterSel.value) show = false;
-                }
-                
-                if (show && searchInput && searchInput.value) {
-                    if (!c.name.toLowerCase().includes(searchInput.value.toLowerCase())) show = false;
-                }
-                
-                row.style.display = show ? 'flex' : 'none';
-                if (resultsListEl && !skipFullScan) {
-                    resultsListEl.appendChild(row);
-                } else if (resultsListEl && skipFullScan) {
-                    // For skipFullScan, we must batch them or just append. 
-                    resultsListEl.appendChild(row);
-                }
-                updateCounters();
-                if (!skipFullScan && doneCount % 5 === 0) {
-                    overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: channels.length, complete: false } }));
-                }
-            };
-
-            if (skipFullScan) {
-                channels.forEach(c => {
-                    let cStatus = c.status;
-                    if (currentContentType === 'video') cStatus = c.videoInfo ? c.videoInfo.status : 'dead';
-                    else if (currentContentType === 'short') cStatus = c.shortInfo ? c.shortInfo.status : 'dead';
-
-                    if (cStatus === 'active') activeCount++;
-                    else if (cStatus === 'warning') warningCount++;
-                    else deadCount++;
-                    
-                    processChannelUI(c);
-                });
-            } else {
-                const CONCURRENCY_LIMIT = 10;
-                let currentIndex = 0;
-                
-                let healthCache = await ChannelHealthDB.getScanCache();
-                if (!healthCache) healthCache = {};
-                let cacheUpdated = false;
-
-                const fetchChannel = async (c) => {
-                    const cached = healthCache[c.id];
-                    const VERY_SHORT_TTL = 60 * 60 * 1000;
-                    if (cached && (now - cached.timestamp < VERY_SHORT_TTL) && cached.videoInfo) {
-                        c.videoInfo  = cached.videoInfo;
-                        c.shortInfo  = null;
-                        c.postInfo   = null;
+                    const updateCounters = () => {
+                        overlay.querySelector('#ypp-health-active').textContent  = activeCount;
+                        overlay.querySelector('#ypp-health-warning').textContent = warningCount;
+                        overlay.querySelector('#ypp-health-dead').textContent    = deadCount;
+                        if (overlay.querySelector('#ypp-health-error')) {
+                            overlay.querySelector('#ypp-health-error').textContent = errorCount;
+                        }
                         
-                        c.lastUpload = now - c.videoInfo.pubTime;
-                        c.lastUploadText = c.videoInfo.text;
-                        c.status = c.videoInfo.status;
+                        if (isFetchOnly) {
+                            btn.textContent = `Fetching… ${doneCount}`;
+                        } else {
+                            btn.textContent = `Scanning… ${doneCount}/${isFetchingSubscriptions ? '?' : channels.length}`;
+                        }
                         
-                        if      (c.status === 'active')  activeCount++;
-                        else if (c.status === 'warning') warningCount++;
-                        else                             deadCount++;
-                        processChannelUI(c);
-                        return;
-                    }
+                        const titleEl = overlay.querySelector('.ypp-modal-title');
+                        if (titleEl) {
+                            titleEl.textContent = `Channel Health Dashboard (${channels.length} channels)`;
+                        }
 
-                    try {
-                        const videoText = await ChannelHealthAPI.fetchLatestVideo(c.id);
+                        if (doneCount >= channels.length && !isFetchingSubscriptions) {
+                            overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: channels.length, complete: true } }));
+                            const exportBtn = overlay.querySelector('#ypp-health-export-btn');
+                            if (exportBtn) {
+                                exportBtn.style.display = 'inline-block';
+                                exportBtn.onclick = () => {
+                                    const csvContent = "data:text/csv;charset=utf-8,"
+                                        + "Channel Name,Channel URL,Last Upload Date,Status\n"
+                                        + channels.map(c => `"${(c.name || '').replace(/"/g, '""')}","https://youtube.com/channel/${c.id}","${c.lastUploadText}","${c.status}"`).join("\n");
+                                    const link = document.createElement("a");
+                                    link.setAttribute("href", encodeURI(csvContent));
+                                    link.setAttribute("download", "youtube_channel_health.csv");
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    link.remove();
+                                };
+                            }
+                        }
+                    };
+                    updateCountersRef = updateCounters;
 
-                        const settings = this.currentSettings;
-                        const MS_IN_DAY = 24 * 60 * 60 * 1000;
-                        const classify = (pubTime) => {
-                            const diff = now - pubTime;
-                            if (diff < settings.activeDays * MS_IN_DAY) return 'active';
-                            if (diff < settings.deadDays * MS_IN_DAY) return 'warning';
-                            return 'dead';
+                    const safeList = await ChannelHealthDB.getSafeList();
+
+                    const processChannelUI = (c) => {
+                        doneCount++;
+                        // Read content type fresh every call — never stale from closure
+                        const currentContentType = overlay._currentContentType || 'all';
+
+                        const existingRow = document.getElementById('ypp-row-' + c.id);
+                        const row = ChannelHealthRowBuilder.buildRow(c, safeList, resultsEl);
+
+                        let show = true;
+                        if (filterSel && filterSel.value !== 'all') {
+                            let rowStatus;
+                            if      (currentContentType === 'video') rowStatus = row.dataset.videoStatus || 'dead';
+                            else if (currentContentType === 'short') rowStatus = row.dataset.shortStatus || 'dead';
+                            else if (currentContentType === 'post')  rowStatus = row.dataset.postStatus  || 'dead';
+                            else                                     rowStatus = row.dataset.status;
+                            if (rowStatus !== filterSel.value) show = false;
+                        }
+
+                        if (show && searchInput && searchInput.value) {
+                            if (!c.name.toLowerCase().includes(searchInput.value.toLowerCase())) show = false;
+                        }
+
+                        row.style.display = show ? 'flex' : 'none';
+
+                        if (overlay.classList.contains('ypp-grid-view')) {
+                            row.classList.add('ypp-grid-view');
+                        }
+
+                        const list = overlay.querySelector('#ypp-health-results-list');
+                        if (list) {
+                            if (existingRow) {
+                                list.replaceChild(row, existingRow);
+                            } else {
+                                // Swap out the first skeleton placeholder if any remain
+                                const skel = list.querySelector('.ypp-health-skeleton-row');
+                                if (skel) {
+                                    list.replaceChild(row, skel);
+                                } else {
+                                    list.appendChild(row);
+                                }
+                            }
+                        }
+                        updateCounters();
+                        if (!skipWorkerPool && doneCount % 5 === 0) {
+                            overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: channels.length, complete: false } }));
+                        }
+                    };
+
+                    if (skipWorkerPool) {
+                        channels.forEach(c => {
+                            const currentContentType = overlay._currentContentType || 'all';
+                            let cStatus = c.status;
+                            if (currentContentType === 'video') cStatus = c.videoInfo ? c.videoInfo.status : 'dead';
+                            else if (currentContentType === 'short') cStatus = c.shortInfo ? c.shortInfo.status : 'dead';
+
+                            if (cStatus === 'active') activeCount++;
+                            else if (cStatus === 'warning') warningCount++;
+                            else deadCount++;
+
+                            processChannelUI(c);
+                        });
+                    } else {
+                        const CONCURRENCY_LIMIT = 10;
+                        let currentIndex = 0;
+
+                        // Persistent cache removed per user request for fresh scans
+
+                        const fetchChannel = async (c) => {
+                            if (scanType === 'none') {
+                                c.status = 'none';
+                                processChannelUI(c);
+                                return;
+                            }
+
+                            try {
+                                let resultText = null;
+                                let attempts = 0;
+                                const maxAttempts = 3;
+                                
+                                while (attempts < maxAttempts) {
+                                    resultText = isShorts
+                                        ? await ChannelHealthAPI.scanShorts(c.id)
+                                        : await ChannelHealthAPI.fetchLatestVideo(c.id);
+                                        
+                                    if (resultText !== 'Error') break;
+                                    
+                                    attempts++;
+                                    if (attempts < maxAttempts) {
+                                        // Exponential backoff: 1s, 2s
+                                        await new Promise(r => setTimeout(r, attempts * 1000));
+                                    }
+                                }
+
+                                const settings = this.currentSettings;
+                                const MS_IN_DAY = 24 * 60 * 60 * 1000;
+                                const classify = (pubTime) => {
+                                    const diff = Date.now() - pubTime;
+                                    if (diff < settings.activeDays * MS_IN_DAY) return 'active';
+                                    if (diff < settings.deadDays * MS_IN_DAY) return 'warning';
+                                    return 'dead';
+                                };
+
+                                if (resultText && resultText !== 'No Videos' && resultText !== 'No Shorts' && resultText !== 'Error' && resultText !== 'Failed to scan') {
+                                    const pubTime = Date.now() - (ChannelHealthAPI.parseRelativeTime(resultText) || 0);
+                                    if (isShorts) c.shortInfo = { pubTime, text: resultText, status: classify(pubTime) };
+                                    else          c.videoInfo = { pubTime, text: resultText, status: classify(pubTime) };
+                                } else if (resultText === 'Failed to scan' || resultText === 'Error') {
+                                    if (isShorts) c.shortInfo = { pubTime: -Infinity, text: 'Failed to scan', status: 'error' };
+                                    else          c.videoInfo = { pubTime: -Infinity, text: 'Failed to scan', status: 'error' };
+                                } else {
+                                    const fallback = isShorts ? 'No Shorts' : 'No Videos';
+                                    if (isShorts) c.shortInfo = { pubTime: -Infinity, text: fallback, status: 'dead' };
+                                    else          c.videoInfo = { pubTime: -Infinity, text: fallback, status: 'dead' };
+                                }
+
+                                c.postInfo = null;
+
+                                const targetInfo = isShorts ? c.shortInfo : c.videoInfo;
+                                if (targetInfo && targetInfo.pubTime > -Infinity) {
+                                    c.lastUpload     = Date.now() - targetInfo.pubTime;
+                                    c.lastUploadText = targetInfo.text;
+                                    c.status         = targetInfo.status;
+                                } else {
+                                    c.lastUpload     = Infinity;
+                                    c.lastUploadText = targetInfo ? targetInfo.text : (isShorts ? 'No Shorts' : 'No Videos');
+                                    c.status         = targetInfo ? targetInfo.status : 'dead';
+                                }
+
+                                if      (c.status === 'active')  activeCount++;
+                                else if (c.status === 'warning') warningCount++;
+                                else if (c.status === 'dead')    deadCount++;
+                                else if (c.status === 'error')   errorCount++;
+                                // No persistent cache write
+
+                            } catch (e) {
+                                const fallback = isShorts ? 'No Shorts' : 'No Videos';
+                                if (isShorts) c.shortInfo = { pubTime: -Infinity, text: fallback, status: 'dead' };
+                                else          c.videoInfo = { pubTime: -Infinity, text: fallback, status: 'dead' };
+                                c.postInfo       = null;
+                                c.status         = 'dead';
+                                c.lastUploadText = fallback;
+                                c.lastUpload     = Infinity;
+                                deadCount++;
+                            }
+                            processChannelUI(c);
                         };
 
-                        if (videoText && videoText !== 'Error' && videoText !== 'Has Videos' && videoText !== 'No Videos') {
-                            const pubTime = now - (ChannelHealthAPI.parseRelativeTime(videoText) || 0);
-                            c.videoInfo = { pubTime, text: videoText, status: classify(pubTime) };
-                        } else if (videoText === 'Has Videos') {
-                            c.videoInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Videos', status: 'warning' };
-                        } else if (videoText === 'No Videos') {
-                            c.videoInfo = { pubTime: -Infinity, text: 'No Videos', status: 'dead' };
-                        } else if (videoText === 'Error') {
-                            c.videoInfo = { pubTime: -Infinity, text: 'Scan Failed', status: 'error' };
-                        } else {
-                            c.videoInfo = null;
-                        }
+                        const worker = async () => {
+                            while (true) {
+                                if (currentIndex < channels.length) {
+                                    const c = channels[currentIndex++];
+                                    if (c) await fetchChannel(c);
+                                } else if (isFetchingSubscriptions) {
+                                    await new Promise(r => setTimeout(r, 200));
+                                } else {
+                                    break;
+                                }
+                            }
+                        };
 
-                        c.shortInfo = null;
-                        c.postInfo  = null;
+                        const numWorkers = isFetchingSubscriptions ? CONCURRENCY_LIMIT : Math.min(CONCURRENCY_LIMIT, channels.length);
+                        const workers = Array.from({ length: numWorkers }, (_, i) =>
+                            new Promise(r => setTimeout(r, i * 80)).then(() => worker())
+                        );
+                        await Promise.all(workers);
 
-                        if (c.videoInfo) {
-                            c.lastUpload     = now - c.videoInfo.pubTime;
-                            c.lastUploadText = c.videoInfo.text;
-                            c.status         = c.videoInfo.status;
-                        } else {
-                            c.lastUpload     = Infinity;
-                            c.lastUploadText = 'No Videos';
-                            c.status         = 'dead';
-                        }
 
-                        if      (c.status === 'active')  activeCount++;
-                        else if (c.status === 'warning') warningCount++;
-                        else                             deadCount++;
 
-                        if (c.lastUploadText !== 'Error') {
-                            healthCache[c.id] = {
-                                videoInfo:       c.videoInfo,
-                                shortInfo:       null,
-                                status:          c.status,
-                                lastUpload:      c.lastUpload,
-                                lastUploadText:  c.lastUploadText,
-                                timestamp:       now
-                            };
-                            cacheUpdated = true;
-                        }
-
-                    } catch (e) {
-                        c.videoInfo  = null;
-                        c.shortInfo  = null;
-                        c.postInfo   = null;
-                        c.status     = 'error';
-                        c.lastUploadText = 'Error';
-                        c.lastUpload = Infinity;
-                        deadCount++;
+                        this.lastScanChannels = channels;
                     }
-                    processChannelUI(c);
-                };
 
-                const worker = async () => {
-                    while (true) {
-                        if (currentIndex < channels.length) {
-                            const c = channels[currentIndex++];
-                            if (c) await fetchChannel(c);
-                        } else if (isFetchingSubscriptions) {
-                            await new Promise(r => setTimeout(r, 200));
-                        } else {
-                            break;
-                        }
+                    if (isFetchOnly) {
+                        btn.textContent = `Fetch Complete (${channels.length})`;
+                    } else if (!skipWorkerPool) {
+                        btn.textContent = `Scan Complete (${channels.length})`;
+                    } else {
+                        btn.textContent = `Updated (${channels.length})`;
                     }
-                };
 
-                const numWorkers = isFetchingSubscriptions ? CONCURRENCY_LIMIT : Math.min(CONCURRENCY_LIMIT, channels.length);
-                const workers = Array.from({ length: numWorkers }, async () => {
-                    await worker();
-                });
-                await Promise.all(workers);
-                
-                if (cacheUpdated) {
-                    await ChannelHealthDB.saveScanCache(healthCache);
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+
+                    if (sortSel) sortSel.dispatchEvent(new Event('change'));
+
+                    if (!overlay._checkboxListenerAttached) {
+                        overlay._checkboxListenerAttached = true;
+                        resultsEl.addEventListener('change', (e) => {
+                            if (!e.target.classList.contains('ypp-unsub-checkbox')) return;
+                            const n = resultsEl.querySelectorAll('.ypp-unsub-checkbox:checked').length;
+                            const unsubBtn = overlay.querySelector('#ypp-health-unsub-btn');
+                            const unsubBtnBottom = overlay.querySelector('#ypp-health-unsub-btn-bottom');
+                            if (unsubBtn) {
+                                unsubBtn.textContent = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
+                                unsubBtn.style.display = n > 0 ? 'inline-block' : 'none';
+                            }
+                            if (unsubBtnBottom) {
+                                unsubBtnBottom.textContent = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
+                                unsubBtnBottom.style.display = n > 0 ? 'inline-block' : 'none';
+                            }
+                        });
+                    }
+
+                } catch (e) {
+                    window.YPP.Utils?.log('runScan worker error', 'CHANNEL-HEALTH', 'error', e);
+                    btn.textContent = 'Error';
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
                 }
-                
-                this.lastScanChannels = channels;
-            } 
+            }; // end startProcessing
 
-            btn.textContent = `Scan Complete (${channels.length})`;
-            btn.disabled = false;
-            btn.style.opacity = '1';
-
-            if (sortSel) sortSel.dispatchEvent(new Event('change'));
-
-            if (!overlay._checkboxListenerAttached) {
-                overlay._checkboxListenerAttached = true;
-                resultsEl.addEventListener('change', (e) => {
-                    if (!e.target.classList.contains('ypp-unsub-checkbox')) return;
-                    const n = resultsEl.querySelectorAll('.ypp-unsub-checkbox:checked').length;
-                    const unsubBtn = overlay.querySelector('#ypp-health-unsub-btn');
-                    const unsubBtnBottom = overlay.querySelector('#ypp-health-unsub-btn-bottom');
-
-                    if (unsubBtn) {
-                        unsubBtn.textContent = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
-                        unsubBtn.style.display = n > 0 ? 'inline-block' : 'none';
-                    }
-                    if (unsubBtnBottom) {
-                        unsubBtnBottom.textContent = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
-                        unsubBtnBottom.style.display = n > 0 ? 'inline-block' : 'none';
-                    }
-                });
+            // Trigger immediately if we're doing a skip-fetch re-render
+            if (skipFetch && channels.length > 0) {
+                startedProcessing = true;
+                startProcessing();
             }
 
         } catch (e) {
             window.YPP.Utils?.log('runScan error', 'CHANNEL-HEALTH', 'error', e);
-            btn.textContent = 'Error';
-            btn.disabled = false;
-            btn.style.opacity = '1';
+            const btn2 = overlay.querySelector(isShorts ? '#ypp-health-search-shorts-btn' : '#ypp-health-scan-btn');
+            if (btn2) { btn2.textContent = 'Error'; btn2.disabled = false; btn2.style.opacity = '1'; }
         }
     }
 
+    /**
+     * Trigger a Shorts-only scan. Fully independent of the Video scan.
+     */
     static async runShortsScan(overlay, filterSel, sortSel, searchInput) {
-        const btn = overlay.querySelector('#ypp-health-search-shorts-btn');
-        const resultsEl = overlay.querySelector('#ypp-health-results');
-        const originalText = btn.textContent;
+        overlay._currentContentType = 'short';
 
-        btn.textContent = 'Scanning Shorts...';
-        btn.disabled = true;
+        // Reflect the tab change in the UI
+        const ctypeBtns = overlay.querySelectorAll('.ypp-ctype-btn');
+        ctypeBtns.forEach(b => b.classList.remove('ypp-ctype-active'));
+        const shortBtn = Array.from(ctypeBtns).find(b => b.dataset.ctype === 'short');
+        if (shortBtn) shortBtn.classList.add('ypp-ctype-active');
 
-            let isFetchingSubscriptions = false;
-            let startProcessing = null;
-            let startedProcessing = false;
-
-            if (skipFullScan) {
-                this.lastScanChannels = this.lastScanChannels || [];
-                if (statusEl) statusEl.remove();
-            } else {
-                this.lastScanChannels = [];
-                isFetchingSubscriptions = true;
-                ChannelHealthAPI.fetchSubscriptions(
-                    (count) => {
-                        if (statusEl) statusEl.textContent = `Fetching subscriptions list... (${count} found so far)`;
-                    },
-                    (batch) => {
-                        this.lastScanChannels.push(...batch);
-                        if (startProcessing && !startedProcessing) {
-                            startedProcessing = true;
-                            startProcessing();
-                        }
-                    }
-                ).then(() => {
-                    isFetchingSubscriptions = false;
-                }).catch(e => {
-                    isFetchingSubscriptions = false;
-                    window.YPP.Utils?.log('Error fetching subscriptions for shorts scan', 'CHANNEL-HEALTH', 'error', e);
-                });
-            }
-            } catch (e) {
-                window.YPP.Utils?.log('Error fetching subscriptions for shorts scan', 'CHANNEL-HEALTH', 'error', e);
-                this.lastScanChannels = [];
-            }
-            
-            
-            if (skipFullScan && this.lastScanChannels.length === 0) {
-                resultsEl.innerHTML = '<div style="text-align:center;color:rgba(255, 78, 69, 0.8);margin-top:40px;">No subscriptions found.</div>';
-                btn.textContent = originalText;
-                btn.disabled = false;
-                return;
-            }
-
-            startProcessing = async () => {
-                const targetChannels = this.lastScanChannels;
-                
-                resultsEl.innerHTML = `
-                    <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
-                `;
-                const resultsListEl = overlay.querySelector('#ypp-health-results-list');
-                for(let i=0; i<Math.min(targetChannels.length, 12); i++) {
-                    const skel = document.createElement('div');
-                    skel.className = 'ypp-channel-health-row-skeleton';
-                    skel.style.cssText = 'display:flex;align-items:center;padding:14px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;animation:ypp-pulse 1.5s infinite ease-in-out;';
-                    resultsListEl.appendChild(skel);
-                }
-            
-            if (targetChannels.length === 0) {
-                btn.textContent = 'No channels found';
-                setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 2000);
-                return;
-            }
-
-            const now = Date.now();
-            const CONCURRENCY_LIMIT = 10;
-            let currentIndex = 0;
-            const MS_IN_DAY = 24 * 60 * 60 * 1000;
-            const settings = this.currentSettings;
-
-            const classify = (pubTime) => {
-                const diff = now - pubTime;
-                if (diff < settings.activeDays * MS_IN_DAY) return 'active';
-                if (diff < settings.deadDays * MS_IN_DAY) return 'warning';
-                return 'dead';
-            };
-
-            let doneCount = 0;
-
-            const worker = async () => {
-                while (true) {
-                    if (currentIndex < targetChannels.length) {
-                        const c = targetChannels[currentIndex++];
-                        const shortText = await ChannelHealthAPI.scanShorts(c.id);
-
-                    if (shortText && shortText !== 'Error' && shortText !== 'Has Shorts' && shortText !== 'No Shorts') {
-                        const pubTime = now - (ChannelHealthAPI.parseRelativeTime(shortText) || 0);
-                        c.shortInfo = { pubTime, text: shortText, status: classify(pubTime) };
-                    } else if (shortText === 'Has Shorts') {
-                        c.shortInfo = { pubTime: now - (settings.activeDays * MS_IN_DAY + 1), text: 'Has Shorts', status: 'warning' };
-                    } else if (shortText === 'No Shorts') {
-                        c.shortInfo = { pubTime: -Infinity, text: 'No Shorts', status: 'dead' };
-                    } else if (shortText === 'Error') {
-                        c.shortInfo = { pubTime: -Infinity, text: 'Scan Failed', status: 'error' };
-                    } else {
-                        c.shortInfo = null;
-                    }
-
-                    if (c.shortInfo) {
-                        const videoPubTime = c.videoInfo ? c.videoInfo.pubTime : -Infinity;
-                        const shortPubTime = c.shortInfo.pubTime;
-
-                        if (shortPubTime > videoPubTime) {
-                            c.status = c.shortInfo.status;
-                            c.lastUpload = now - shortPubTime;
-                            c.lastUploadText = c.shortInfo.text;
-                        } else if (c.videoInfo) {
-                            c.status = c.videoInfo.status;
-                            c.lastUpload = now - videoPubTime;
-                            c.lastUploadText = c.videoInfo.text;
-                        } else {
-                            c.status = c.shortInfo.status;
-                            c.lastUpload = now - shortPubTime;
-                            c.lastUploadText = c.shortInfo.text;
-                        }
-                    } else if (!c.videoInfo) {
-                        c.status = 'dead';
-                        c.lastUpload = Infinity;
-                        c.lastUploadText = 'Unknown';
-                    }
-                    
-                    doneCount++;
-                    overlay.dispatchEvent(new CustomEvent('scanProgress', { detail: { done: doneCount, total: targetChannels.length, complete: false } }));
-                    btn.textContent = `Scanning Shorts... (${doneCount}/${isFetchingSubscriptions ? '?' : targetChannels.length})`;
-                } else if (isFetchingSubscriptions) {
-                    await new Promise(r => setTimeout(r, 200));
-                } else {
-                    break;
-                }
-            }
-        };
-
-            const numWorkers = isFetchingSubscriptions ? CONCURRENCY_LIMIT : Math.min(CONCURRENCY_LIMIT, targetChannels.length);
-            const workers = Array.from({ length: numWorkers }, async (_, i) => {
-                await new Promise(r => setTimeout(r, i * 100));
-                return worker();
-            });
-            await Promise.all(workers);
-
-            await this.runScan(overlay, filterSel, sortSel, searchInput, true);
-
-        };
-
-        if (skipFullScan && this.lastScanChannels.length > 0) {
-            startedProcessing = true;
-            startProcessing();
-        }
-
-        } catch (e) {
-            window.YPP.Utils?.log('Shorts scan error', 'CHANNEL-HEALTH', 'error', e);
-        } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
+        return this.runScan(overlay, filterSel, sortSel, searchInput, false, 'short');
     }
 }

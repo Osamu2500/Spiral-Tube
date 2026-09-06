@@ -38,8 +38,9 @@ export class ChannelHealthUI {
                     </div>
                     <div style="display: flex; gap: 12px; align-items: center;">
                         <div style="display: flex; align-items: center; gap: 8px;">
-                            <button id="ypp-health-scan-btn" class="ypp-health-btn-scan">Scan Videos</button>
-                            <button id="ypp-health-search-shorts-btn" class="ypp-health-btn-secondary" style="background: rgba(255,255,255,0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer;">Scan Shorts</button>
+                            <button id="ypp-health-fetch-list-btn" class="ypp-health-btn-scan" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">Fetch List</button>
+                            <button id="ypp-health-scan-btn" class="ypp-health-btn-scan ypp-disabled-btn" style="opacity: 0.5; cursor: not-allowed; transition: all 0.3s;">Scan Videos</button>
+                            <button id="ypp-health-search-shorts-btn" class="ypp-health-btn-secondary ypp-disabled-btn" style="background: rgba(255,255,255,0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: not-allowed; opacity: 0.5; transition: all 0.3s;">Scan Shorts</button>
                         </div>
                         <button id="ypp-health-unsub-btn" class="ypp-health-btn-unsub" style="display: none;">Unsubscribe Selected</button>
                         
@@ -116,6 +117,10 @@ export class ChannelHealthUI {
                             <div class="ypp-health-stat" data-filter="dead">
                                 <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#ff4e45;"></div> Dead (> <span id="ypp-health-dead-days-label">${settings.deadDays}</span> days)</div>
                                 <div class="ypp-health-stat-value" style="color: rgba(241, 245, 249, 0.5);" id="ypp-health-dead">0</div>
+                            </div>
+                            <div class="ypp-health-stat" data-filter="error">
+                                <div class="ypp-health-stat-label"><div style="width:6px; height:6px; border-radius:50%; background:#94a3b8;"></div> Failed Scans</div>
+                                <div class="ypp-health-stat-value" style="color: rgba(241, 245, 249, 0.4);" id="ypp-health-error">0</div>
                             </div>
                         </div>
                         <div style="display: flex; gap: 10px; margin-bottom: 16px; align-items: center;">
@@ -205,13 +210,45 @@ export class ChannelHealthUI {
         const searchInput = overlay.querySelector('#ypp-health-search-input');
         const ctypeBtns = overlay.querySelectorAll('.ypp-ctype-btn');
 
+        const fetchListBtn = overlay.querySelector('#ypp-health-fetch-list-btn');
         const scanBtn = overlay.querySelector('#ypp-health-scan-btn');
+        const scanShortsBtn = overlay.querySelector('#ypp-health-search-shorts-btn');
+
+        let isListFetched = false;
+
+        fetchListBtn.addEventListener('click', async () => {
+            fetchListBtn.style.opacity = '0.5';
+            fetchListBtn.style.cursor = 'not-allowed';
+            fetchListBtn.textContent = 'Fetching...';
+            
+            await ChannelHealthScanner.fetchOnly(overlay, filterSel, sortSel, searchInput);
+            
+            isListFetched = true;
+            fetchListBtn.style.display = 'none'; // Hide fetch button once done
+            
+            // Enable scan buttons
+            scanBtn.classList.remove('ypp-disabled-btn');
+            scanBtn.style.opacity = '1';
+            scanBtn.style.cursor = 'pointer';
+            
+            scanShortsBtn.classList.remove('ypp-disabled-btn');
+            scanShortsBtn.style.opacity = '1';
+            scanShortsBtn.style.cursor = 'pointer';
+        });
+
         scanBtn.addEventListener('click', () => {
+            if (!isListFetched) {
+                alert("Please run 'Fetch List' first to load your channels.");
+                return;
+            }
             ChannelHealthScanner.runScan(overlay, filterSel, sortSel, searchInput, false);
         });
 
-        const scanShortsBtn = overlay.querySelector('#ypp-health-search-shorts-btn');
         scanShortsBtn.addEventListener('click', () => {
+            if (!isListFetched) {
+                alert("Please run 'Fetch List' first to load your channels.");
+                return;
+            }
             ChannelHealthScanner.runShortsScan(overlay, filterSel, sortSel, searchInput);
         });
 
@@ -351,19 +388,58 @@ export class ChannelHealthUI {
         });
 
         // Filtering and Sorting
+        /**
+         * Fast in-place filter: toggles row visibility without rebuilding any DOM.
+         * Only falls back to runScan(skipFetch=true) when no rows exist yet (first load).
+         */
         const applyFilters = () => {
-            if (ChannelHealthScanner.lastScanChannels) {
-                ChannelHealthScanner.runScan(overlay, filterSel, sortSel, searchInput, true);
-            }
+            const list = overlay.querySelector('#ypp-health-results-list');
+            if (!list || !ChannelHealthScanner.lastScanChannels) return;
+
+            const filterVal = filterSel?.value || 'all';
+            const searchVal = searchInput?.value.toLowerCase().trim() || '';
+            const ct = overlay._currentContentType || 'all';
+
+            let activeCount = 0, warningCount = 0, deadCount = 0;
+
+            list.querySelectorAll('.ypp-channel-health-row').forEach(row => {
+                // Determine which status applies for the current content type view
+                let status;
+                if      (ct === 'video') status = row.dataset.videoStatus || 'dead';
+                else if (ct === 'short') status = row.dataset.shortStatus || 'dead';
+                else                     status = row.dataset.status || 'dead';
+
+                const nameMatch = !searchVal || (row.dataset.name || '').toLowerCase().includes(searchVal);
+                const statusMatch = filterVal === 'all' || status === filterVal;
+
+                const visible = nameMatch && statusMatch;
+                row.style.display = visible ? 'flex' : 'none';
+
+                if (visible) {
+                    if      (status === 'active')  activeCount++;
+                    else if (status === 'warning') warningCount++;
+                    else                           deadCount++;
+                }
+            });
+
+            // Update stat counters to reflect visible rows
+            const activeEl  = overlay.querySelector('#ypp-health-active');
+            const warningEl = overlay.querySelector('#ypp-health-warning');
+            const deadEl    = overlay.querySelector('#ypp-health-dead');
+            if (activeEl)  activeEl.textContent  = activeCount;
+            if (warningEl) warningEl.textContent = warningCount;
+            if (deadEl)    deadEl.textContent    = deadCount;
+
+            sortResults();
         };
         
         const sortResults = () => {
             const list = overlay.querySelector('#ypp-health-results-list');
             if (!list) return;
             const rows = Array.from(list.querySelectorAll('.ypp-channel-health-row'));
-            const sortVal = sortSel.value;
+            const sortVal = sortSel?.value || 'latest';
             rows.sort((a, b) => {
-                if (sortVal === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+                if (sortVal === 'az') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
                 let tA = Infinity, tB = Infinity;
                 const ct = overlay._currentContentType || 'all';
                 if (ct === 'video') { tA = parseInt(a.dataset.videoUploadTime, 10); tB = parseInt(b.dataset.videoUploadTime, 10); }
@@ -373,8 +449,8 @@ export class ChannelHealthUI {
                 if (isNaN(tA)) tA = Infinity;
                 if (isNaN(tB)) tB = Infinity;
                 
-                if (sortVal === 'latest') return tA - tB; // smallest diff first
-                if (sortVal === 'oldest') return tB - tA; // largest diff first
+                if (sortVal === 'latest') return tA - tB; // smallest diff (most recent) first
+                if (sortVal === 'oldest') return tB - tA;
                 return 0;
             });
             rows.forEach(r => list.appendChild(r));
@@ -387,10 +463,12 @@ export class ChannelHealthUI {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 applyFilters();
-            }, 300);
+            }, 200); // 200ms debounce — feels instant
         });
 
-        sortSel?.addEventListener('change', sortResults);
+        sortSel?.addEventListener('change', () => {
+            sortResults();
+        });
 
         // Content Type Switcher
         ctypeBtns.forEach(btn => {
@@ -399,8 +477,7 @@ export class ChannelHealthUI {
                 btn.classList.add('ypp-ctype-active');
                 overlay._currentContentType = btn.dataset.ctype;
                 overlay.dataset.ctype = btn.dataset.ctype;
-                applyFilters();
-                sortResults();
+                applyFilters(); // filter + sort for new content type
             });
         });
 
@@ -411,7 +488,6 @@ export class ChannelHealthUI {
                 if (filterSel && stat.dataset.filter) {
                     filterSel.value = stat.dataset.filter;
                     applyFilters();
-                    sortResults();
                 }
             });
         });

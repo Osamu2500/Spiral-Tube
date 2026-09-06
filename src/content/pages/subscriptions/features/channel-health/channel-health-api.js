@@ -8,25 +8,58 @@
 import { CustomDialog } from './custom-dialog.js';
 
 export class ChannelHealthAPI {
+    /**
+     * Fast extraction of ytInitialData using indexOf (native C-speed string search).
+     * YouTube always places ytInitialData as a JSON object followed by ;</script>
+     * We look for the end marker first (fast), then parse only the relevant slice.
+     */
     static _extractYtInitialData(text) {
-        const markers = ['var ytInitialData = ', 'let ytInitialData = ', 'window["ytInitialData"] = ', 'window.ytInitialData = '];
+        const markers = [
+            'var ytInitialData = ',
+            'let ytInitialData = ',
+            'window["ytInitialData"] = ',
+            'window.ytInitialData = '
+        ];
         for (const marker of markers) {
             const startIdx = text.indexOf(marker);
-            if (startIdx !== -1) {
-                const jsonStart = startIdx + marker.length;
-                const endIdx = text.indexOf('</script>', jsonStart);
-                if (endIdx !== -1) {
-                    let jsonText = text.slice(jsonStart, endIdx).trim();
-                    if (jsonText.endsWith(';')) jsonText = jsonText.slice(0, -1);
-                    try {
-                        return JSON.parse(jsonText);
-                    } catch(e) {
-                        console.error('ChannelHealthAPI: Failed to parse ytInitialData', e);
-                    }
-                }
+            if (startIdx === -1) continue;
+            const jsonStart = startIdx + marker.length;
+
+            // Fast path: look for ;</script> which YouTube always uses
+            let endIdx = text.indexOf(';</script>', jsonStart);
+            if (endIdx === -1) {
+                // Fallback: plain </script>
+                endIdx = text.indexOf('</script>', jsonStart);
+            }
+            if (endIdx === -1) continue;
+
+            let jsonText = text.slice(jsonStart, endIdx).trim();
+            if (jsonText.endsWith(';')) jsonText = jsonText.slice(0, -1);
+            try {
+                return JSON.parse(jsonText);
+            } catch (e) {
+                // Try next marker
             }
         }
         return null;
+    }
+
+    /**
+     * Fetch a URL with an AbortController timeout.
+     * Returns Response or throws on timeout/network error.
+     * No retry — callers handle fallback logic themselves.
+     */
+    static async _fetchWithTimeout(url, timeoutMs = 10000) {
+        const controller = new AbortController();
+        const tid = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+            const res = await fetch(url, { signal: controller.signal });
+            clearTimeout(tid);
+            return res;
+        } catch (e) {
+            clearTimeout(tid);
+            throw e;
+        }
     }
 
     /**
@@ -316,122 +349,261 @@ export class ChannelHealthAPI {
         return `https://www.youtube.com/${channelId}/${tab}`; // Fallback for legacy custom URLs
     }
 
-    static async fetchLatestVideo(channelId) {
-        try {
-            const controller = new AbortController();
-            const tid = setTimeout(() => controller.abort(), 10000);
-            const url = this._getTabUrl(channelId, 'videos');
-            const res = await fetch(url, { signal: controller.signal });
-            if (!res.ok) { clearTimeout(tid); return null; }
-            const html = await res.text();
-            clearTimeout(tid);
-            const data = this._extractYtInitialData(html);
-            if (!data) return 'Error';
+    /**
+     * Normalize a date string: strip "Premiered", "Streamed live on", etc. prefixes.
+     */
+    static _normalizeDateStr(s) {
+        return s.replace(/^(Premiered|Streamed live on|Streamed|Scheduled for|Starts)\s+/i, '').trim();
+    }
 
-            const strData = JSON.stringify(data);
-            if (!strData.includes('"videoId"')) return 'No Videos';
-
-            const rxPub  = /"publishedTimeText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
-            const rxDate = /"dateText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
-            const rxContent = /"text"\s*:\s*\{"content"\s*:\s*"([^"]+\s+ago)"/gi;
-            
+    /**
+     * Finds the most recent date string among all matches in the JSON data.
+     * This prevents getting stuck on an old "featured" or "trailer" video.
+     */
+    static _getNewestDateFromStr(strData) {
+        const rxPub  = /"publishedTimeText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
+        const rxDate = /"dateText"\s*:\s*\{"simpleText"\s*:\s*"([^"]+)"/g;
+        const rxContent = /"text"\s*:\s*\{"content"\s*:\s*"([^"]+\s+ago)"/gi;
+        const rxLabel = /"accessibilityData"\s*:\s*\{"label"\s*:\s*"[^"]*?(\d+\s+(?:second|minute|hour|day|week|month|year)s?\s+ago)/gi;
+        
+        let bestTime = Infinity;
+        let bestStr = null;
+        
+        const checkMatch = (rx) => {
             let m;
-            while ((m = rxPub.exec(strData))  !== null) return m[1];
-            while ((m = rxDate.exec(strData)) !== null) return m[1];
-            while ((m = rxContent.exec(strData)) !== null) return m[1];
+            while ((m = rx.exec(strData)) !== null) {
+                const text = m[1];
+                const time = this.parseRelativeTime(text);
+                // We want the smallest elapsed time (the newest video)
+                if (time !== null && time >= 0 && time < bestTime) {
+                    bestTime = time;
+                    bestStr = text;
+                }
+            }
+        };
+        
+        checkMatch(rxPub);
+        checkMatch(rxDate);
+        checkMatch(rxContent);
+        checkMatch(rxLabel);
+        
+        if (bestStr) {
+            return this._normalizeDateStr(bestStr);
+        }
+        return null;
+    }
 
-            // Fallback: extract the videoId and fetch its watch page to get the exact date
-            try {
-                const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
-                if (videoIdMatch) {
-                    const videoId = videoIdMatch[1];
-                    const watchController = new AbortController();
-                    const watchTid = setTimeout(() => watchController.abort(), 10000);
-                    const watchRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: watchController.signal });
-                    if (!watchRes.ok) { clearTimeout(watchTid); }
-                    else {
-                        const watchHtml = await watchRes.text();
-                        clearTimeout(watchTid);
-                        const dateTextMatch = watchHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
-                        const publishMatch = watchHtml.match(/"publishDate":"([^"]+)"/);
-                        const uploadMatch = watchHtml.match(/"uploadDate":"([^"]+)"/);
-                        
-                        let dateStr = null;
-                        if (dateTextMatch) dateStr = dateTextMatch[1];
-                        else if (publishMatch) dateStr = publishMatch[1];
-                        else if (uploadMatch) dateStr = uploadMatch[1];
-                        
-                        if (dateStr) {
-                            dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
-                            return dateStr;
-                        }
+    static async _fetchInnerTubeTab(channelId, params) {
+        try {
+            const ytConfig = await window.YPP.Utils?.getInnerTubeConfig();
+            if (!ytConfig || !ytConfig.apiKey) return null;
+            
+            const res = await fetch(`/youtubei/v1/browse?key=${ytConfig.apiKey}`, {
+                method: 'POST',
+                headers: await this._getApiHeaders(ytConfig),
+                credentials: 'include',
+                body: JSON.stringify({
+                    context: ytConfig.context,
+                    browseId: channelId,
+                    params: params
+                })
+            });
+            
+            if (!res.ok) return null;
+            return await res.json();
+        } catch (e) {
+            return null;
+        }
+    }
+
+    static async _fetchRssDate(channelId, isShorts) {
+        try {
+            const res = await this._fetchWithTimeout(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, 10000);
+            if (!res.ok) return null;
+            const xml = await res.text();
+            
+            // A simple regex approach to find the first entry that matches our criteria
+            const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+            let m;
+            while ((m = entryRegex.exec(xml)) !== null) {
+                const entry = m[1];
+                const isShortLink = entry.includes('youtube.com/shorts/');
+                
+                if ((isShorts && isShortLink) || (!isShorts && !isShortLink)) {
+                    const pubMatch = entry.match(/<published>([^<]+)<\/published>/);
+                    if (pubMatch) {
+                        return this._normalizeDateStr(pubMatch[1]);
                     }
                 }
-            } catch (innerErr) {
-                window.YPP.Utils?.log('fetchLatestVideo watch page fallback error', 'CHANNEL-HEALTH', 'warn', innerErr);
             }
-
-            return 'Has Videos'; // Ultimate Fallback
+            return null;
         } catch (e) {
-            return 'Error';
+            return null;
         }
     }
 
-    static async scanShorts(channelId) {
+    static async _fetchDateFromWatchPage(videoId) {
         try {
             const controller = new AbortController();
-            const tid = setTimeout(() => controller.abort(), 10000);
-            const url = this._getTabUrl(channelId, 'shorts');
-            const res = await fetch(url, { signal: controller.signal });
+            const tid = setTimeout(() => controller.abort(), 8000);
+            const res = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: controller.signal });
             if (!res.ok) { clearTimeout(tid); return null; }
             const html = await res.text();
             clearTimeout(tid);
-            const data = this._extractYtInitialData(html);
-            if (!data) return 'Error';
-
-            const strData = JSON.stringify(data);
-            const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
-            if (!videoIdMatch) return 'No Shorts';
-
-            const videoId = videoIdMatch[1];
             
-            // Fetch the watch page for the latest short to get its date
-            try {
-                const shortController = new AbortController();
-                const shortTid = setTimeout(() => shortController.abort(), 10000);
-                const shortRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, { signal: shortController.signal });
-                if (!shortRes.ok) { clearTimeout(shortTid); return 'Has Shorts'; }
-                const shortHtml = await shortRes.text();
-                clearTimeout(shortTid);
-                
-                const dateTextMatch = shortHtml.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
-                const publishMatch = shortHtml.match(/"publishDate":"([^"]+)"/);
-                const uploadMatch = shortHtml.match(/"uploadDate":"([^"]+)"/);
-                
-                let dateStr = null;
-                if (dateTextMatch) dateStr = dateTextMatch[1];
-                else if (publishMatch) dateStr = publishMatch[1];
-                else if (uploadMatch) dateStr = uploadMatch[1];
-                
-                if (dateStr) {
-                    dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
-                    return dateStr;
-                }
-            } catch (innerErr) {
-                window.YPP.Utils?.log('scanShorts watch page error', 'CHANNEL-HEALTH', 'warn', innerErr);
+            const dateTextMatch = html.match(/"dateText":\{"simpleText":"([^"]+)"\}/);
+            const publishMatch = html.match(/"publishDate":"([^"]+)"/);
+            const uploadMatch = html.match(/"uploadDate":"([^"]+)"/);
+            
+            let dateStr = null;
+            if (dateTextMatch) dateStr = dateTextMatch[1];
+            else if (publishMatch) dateStr = publishMatch[1];
+            else if (uploadMatch) dateStr = uploadMatch[1];
+            
+            if (dateStr) {
+                dateStr = dateStr.replace(/^(Premiered|Streamed live on)\s+/i, '');
+                return dateStr;
+            }
+            return null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    /**
+     * Fetch the latest video date for a channel's /videos tab.
+     */
+    static async fetchLatestVideo(channelId) {
+        try {
+            let videoId = null;
+
+            // 1. Try InnerTube API (Fastest, lightest)
+            // EgZ2aWRlb3PyBgQKAjoA is standard params for Videos tab
+            const innerTubeData = await this._fetchInnerTubeTab(channelId, 'EgZ2aWRlb3PyBgQKAjoA');
+            if (innerTubeData) {
+                const strData = JSON.stringify(innerTubeData);
+                const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+                if (!videoIdMatch) return 'No Videos';
+                videoId = videoIdMatch[1];
+
+                const newestDate = this._getNewestDateFromStr(strData);
+                if (newestDate) return newestDate;
             }
 
-            return 'Has Shorts';
+            // 2. Try Watch Page Fallback BEFORE HTML fetch if we already have the videoId from InnerTube
+            if (videoId) {
+                const watchDate = await this._fetchDateFromWatchPage(videoId);
+                if (watchDate) return watchDate;
+            }
+
+            // 3. Try HTML Fetch (Legacy) if InnerTube completely failed
+            if (!videoId) {
+                const url = this._getTabUrl(channelId, 'videos');
+                const res = await this._fetchWithTimeout(url, 12000);
+                if (!res.ok) throw new Error('HTML Fetch failed');
+                const html = await res.text();
+                
+                const data = this._extractYtInitialData(html);
+                if (data) {
+                    const strData = JSON.stringify(data);
+                    const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+                    if (!videoIdMatch) return 'No Videos';
+                    videoId = videoIdMatch[1];
+                    
+                    const newestDate = this._getNewestDateFromStr(strData);
+                    if (newestDate) return newestDate;
+                    
+                    // Watch Page Fallback again since we now have videoId
+                    const watchDate = await this._fetchDateFromWatchPage(videoId);
+                    if (watchDate) return watchDate;
+                }
+            }
+
+            // 4. Ultimate Fallback: RSS Feed
+            const rssDate = await this._fetchRssDate(channelId, false);
+            if (rssDate) return rssDate;
+
+            return 'Failed to scan'; // Ultimate Fallback
         } catch (e) {
-            return 'Error';
+            // Ultimate Fallback on error: RSS Feed
+            const rssDate = await this._fetchRssDate(channelId, false);
+            if (rssDate) return rssDate;
+            
+            return 'Failed to scan';
         }
     }
 
 
+
+    /**
+     * Scan a channel's /shorts tab for their latest short and its date.
+     */
+    static async scanShorts(channelId) {
+        try {
+            let videoId = null;
+
+            // 1. Try InnerTube API (Fastest, lightest)
+            // EgZzaG9ydHPyBgUKA5oBAA== is standard params for Shorts tab
+            const innerTubeData = await this._fetchInnerTubeTab(channelId, 'EgZzaG9ydHPyBgUKA5oBAA==');
+            if (innerTubeData) {
+                const strData = JSON.stringify(innerTubeData);
+                const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+                if (!videoIdMatch) return 'No Shorts';
+                videoId = videoIdMatch[1];
+
+                const newestDate = this._getNewestDateFromStr(strData);
+                if (newestDate) return newestDate;
+            }
+
+            // 2. Try Watch Page Fallback
+            if (videoId) {
+                const watchDate = await this._fetchDateFromWatchPage(videoId);
+                if (watchDate) return watchDate;
+            }
+
+            // 3. Try HTML Fetch (Legacy) if InnerTube failed
+            if (!videoId) {
+                const url = this._getTabUrl(channelId, 'shorts');
+                const res = await this._fetchWithTimeout(url, 12000);
+                if (!res.ok) throw new Error('HTML Fetch failed');
+                
+                const html = await res.text();
+                const data = this._extractYtInitialData(html);
+                if (data) {
+                    const strData = JSON.stringify(data);
+                    const videoIdMatch = strData.match(/"videoId":"([^"]+)"/);
+                    if (!videoIdMatch) return 'No Shorts';
+                    videoId = videoIdMatch[1];
+                    
+                    const newestDate = this._getNewestDateFromStr(strData);
+                    if (newestDate) return newestDate;
+                    
+                    const watchDate = await this._fetchDateFromWatchPage(videoId);
+                    if (watchDate) return watchDate;
+                }
+            }
+
+            // 4. Ultimate Fallback: RSS Feed
+            const rssDate = await this._fetchRssDate(channelId, true);
+            if (rssDate) return rssDate;
+
+            return 'Failed to scan'; // Ultimate Fallback
+        } catch (e) {
+            // Ultimate Fallback on error: RSS Feed
+            const rssDate = await this._fetchRssDate(channelId, true);
+            if (rssDate) return rssDate;
+            
+            return 'Failed to scan';
+        }
+    }
 
     static parseRelativeTime(text) {
         if (!text) return null;
-        const m = text.match(/(\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago/i);
+
+        // Normalize prefixes first
+        const normalized = this._normalizeDateStr(text);
+
+        const m = normalized.match(/(\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago/i);
         if (m) {
             const n    = parseInt(m[1], 10);
             const unit = m[2].toLowerCase();
@@ -439,8 +611,8 @@ export class ChannelHealthAPI {
             return n * (unitMs[unit] || 0);
         }
         
-        // Fallback for absolute dates (e.g. "23 Jul 2026")
-        const absTime = Date.parse(text);
+        // Fallback for absolute dates (e.g. "Jul 23, 2026", "2026-07-23")
+        const absTime = Date.parse(normalized);
         if (!isNaN(absTime)) {
             return Date.now() - absTime;
         }
