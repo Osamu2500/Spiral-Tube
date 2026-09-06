@@ -292,15 +292,24 @@ export class ChannelHealthScanner {
 
                                 c.postInfo = null;
 
-                                const targetInfo = isShorts ? c.shortInfo : c.videoInfo;
-                                if (targetInfo && targetInfo.pubTime > -Infinity) {
-                                    c.lastUpload     = Date.now() - targetInfo.pubTime;
-                                    c.lastUploadText = targetInfo.text;
-                                    c.status         = targetInfo.status;
+                                const vInfo = c.videoInfo || { pubTime: -Infinity, text: 'No Videos', status: 'dead' };
+                                const sInfo = c.shortInfo || { pubTime: -Infinity, text: 'No Shorts', status: 'dead' };
+                                let overallInfo = vInfo;
+                                if (sInfo.pubTime > vInfo.pubTime) overallInfo = sInfo;
+
+                                if (overallInfo.pubTime > -Infinity) {
+                                    c.lastUpload     = Date.now() - overallInfo.pubTime;
+                                    c.lastUploadText = overallInfo.text;
+                                    c.status         = overallInfo.status;
                                 } else {
                                     c.lastUpload     = Infinity;
-                                    c.lastUploadText = targetInfo ? targetInfo.text : (isShorts ? 'No Shorts' : 'No Videos');
-                                    c.status         = targetInfo ? targetInfo.status : 'dead';
+                                    if (vInfo.status === 'error' || sInfo.status === 'error') {
+                                        c.lastUploadText = 'Failed to scan';
+                                        c.status         = 'error';
+                                    } else {
+                                        c.lastUploadText = 'No Content';
+                                        c.status         = 'dead';
+                                    }
                                 }
 
                                 if      (c.status === 'active')  activeCount++;
@@ -313,11 +322,27 @@ export class ChannelHealthScanner {
                                 const fallback = isShorts ? 'No Shorts' : 'No Videos';
                                 if (isShorts) c.shortInfo = { pubTime: -Infinity, text: fallback, status: 'dead' };
                                 else          c.videoInfo = { pubTime: -Infinity, text: fallback, status: 'dead' };
+                                
+                                const vInfo = c.videoInfo || { pubTime: -Infinity, text: 'No Videos', status: 'dead' };
+                                const sInfo = c.shortInfo || { pubTime: -Infinity, text: 'No Shorts', status: 'dead' };
+                                let overallInfo = vInfo;
+                                if (sInfo.pubTime > vInfo.pubTime) overallInfo = sInfo;
+
                                 c.postInfo       = null;
-                                c.status         = 'dead';
-                                c.lastUploadText = fallback;
-                                c.lastUpload     = Infinity;
-                                deadCount++;
+                                if (overallInfo.pubTime > -Infinity) {
+                                    c.lastUpload     = Date.now() - overallInfo.pubTime;
+                                    c.lastUploadText = overallInfo.text;
+                                    c.status         = overallInfo.status;
+                                } else {
+                                    c.lastUpload     = Infinity;
+                                    c.lastUploadText = fallback;
+                                    c.status         = 'dead';
+                                }
+                                
+                                if      (c.status === 'active')  activeCount++;
+                                else if (c.status === 'warning') warningCount++;
+                                else if (c.status === 'dead')    deadCount++;
+                                else if (c.status === 'error')   errorCount++;
                             }
                             processChannelUI(c);
                         };

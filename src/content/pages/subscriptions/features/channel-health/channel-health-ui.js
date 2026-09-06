@@ -400,7 +400,7 @@ export class ChannelHealthUI {
             const searchVal = searchInput?.value.toLowerCase().trim() || '';
             const ct = overlay._currentContentType || 'all';
 
-            let activeCount = 0, warningCount = 0, deadCount = 0;
+            let activeCount = 0, warningCount = 0, deadCount = 0, errorCount = 0;
 
             list.querySelectorAll('.ypp-channel-health-row').forEach(row => {
                 // Determine which status applies for the current content type view
@@ -415,10 +415,11 @@ export class ChannelHealthUI {
                 const visible = nameMatch && statusMatch;
                 row.style.display = visible ? 'flex' : 'none';
 
-                if (visible) {
+                if (nameMatch) {
                     if      (status === 'active')  activeCount++;
                     else if (status === 'warning') warningCount++;
-                    else                           deadCount++;
+                    else if (status === 'dead')    deadCount++;
+                    else if (status === 'error')   errorCount++;
                 }
             });
 
@@ -426,9 +427,11 @@ export class ChannelHealthUI {
             const activeEl  = overlay.querySelector('#ypp-health-active');
             const warningEl = overlay.querySelector('#ypp-health-warning');
             const deadEl    = overlay.querySelector('#ypp-health-dead');
+            const errorEl   = overlay.querySelector('#ypp-health-error');
             if (activeEl)  activeEl.textContent  = activeCount;
             if (warningEl) warningEl.textContent = warningCount;
             if (deadEl)    deadEl.textContent    = deadCount;
+            if (errorEl)   errorEl.textContent   = errorCount;
 
             sortResults();
         };
