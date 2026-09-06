@@ -695,6 +695,9 @@
                     toggleClass(this.settings?.hidePromoShelves, 'ypp-hide-promos');
                     toggleClass(this.settings?.hideExploreTopics, 'ypp-hide-explore-topics');
                     
+                    // TS1 Imported Features
+                    toggleClass(this.settings?.hideMostRelevant, 'ypp-hide-most-relevant');
+                    
                     const newClassName = Array.from(classes).join(' ');
                     if (originalClassName !== newClassName) {
                         document.body.className = newClassName;

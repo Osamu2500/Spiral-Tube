@@ -1,0 +1,53 @@
+/* Styles for Native Dropdown Filters */
+
+.ypp-dropdown-filter-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 8px 12px;
+    background: transparent;
+    border-bottom: 1px solid var(--yt-spec-10-percent-layer, rgba(255,255,255,0.1));
+    z-index: 10;
+}
+
+/* Sidebar specific overrides */
+.ypp-filter-sidebar {
+    padding: 8px 24px;
+    margin-bottom: 4px;
+}
+
+.ypp-dropdown-filter-input {
+    width: 100%;
+    background: var(--yt-spec-badge-chip-background, rgba(255,255,255,0.1));
+    color: var(--yt-spec-text-primary, #fff);
+    border: none;
+    border-radius: 18px;
+    padding: 8px 32px 8px 16px;
+    font-size: 1.4rem;
+    outline: none;
+    transition: background 0.2s ease;
+}
+
+.ypp-dropdown-filter-input:focus {
+    background: var(--yt-spec-brand-background-solid, #272727);
+}
+
+.ypp-dropdown-filter-clear {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--yt-spec-text-secondary, #aaa);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.ypp-filter-sidebar .ypp-dropdown-filter-clear {
+    right: 32px;
+}
+
+.ypp-dropdown-filter-clear:hover {
+    color: var(--yt-spec-text-primary, #fff);
+}

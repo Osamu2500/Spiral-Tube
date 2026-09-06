@@ -33,6 +33,8 @@
 @import './global/components/panels.css';
 @import './global/components/account-menus.css';
 @import './global/components/notifications.css';
+@import './components/feed-filter-bar.css';
+@import '../../components/native-dropdown-filters/style.css';
 
 /* --- GROUP 4: PAGE-SPECIFIC BASE GRIDS & CONTEXTS --- */
 @import './pages/home/home-layout.css';
@@ -47,7 +49,7 @@
 /* --- GROUP 5: FEATURES & UI TWEAKS --- */
 
 /* Global Features */
-@import '../../features/declutter/index.css';
+@import '../../features/declutter/css/index.css';
 @import '../../features/subscription-folders/subscription-folders.css';
 @import '../../features/cinematic/cinematic.css';
 

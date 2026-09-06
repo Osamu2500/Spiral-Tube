@@ -46,14 +46,7 @@ export const getSubscriptionsTab = (t) => ({
           { type: 'toggle', id: 'feedFilter_playlist_visible', label: t('playlist') },
         ],
       },
-      {
-        title: t('filter_chips_status'),
-        icon: ICONS.watched,
-        items: [
-          { type: 'toggle', id: 'feedFilter_notifon_visible', label: t('notification_on') },
-          { type: 'toggle', id: 'feedFilter_notifoff_visible', label: t('notification_off') },
-        ],
-      },
+
       {
         title: t('layout_tools'),
         icon: ICONS.secSubsLayout,

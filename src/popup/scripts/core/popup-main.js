@@ -1073,7 +1073,8 @@ const initApp = async () => {
         safeInit(components.initSearchViewMode);
         safeInit(components.initHideWatchedModePill);
         safeInit(components.initHideWatchedPageButtons);
-        safeInit(components.initMetaFilterPageButtons);
+        safeInit(components.initViewsFilterPageButtons);
+        safeInit(components.initDateFilterPageButtons);
         safeInit(components.initShortsFilterPageButtons);
         safeInit(components.initPlaylistsPageButtons);
         safeInit(components.initMixesPageButtons);

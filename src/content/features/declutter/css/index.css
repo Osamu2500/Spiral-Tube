@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Declutter Features Barrel
+   ========================================================================== */
+
+/* Global Declutter Rules */
+@import './global/layout.css';
+@import './global/navigation.css';
+@import './global/player-overlay.css';
+@import './global/shorts-killer.css';
+
+/* Page-Specific Declutter Rules */
+@import './pages/home.css';
+@import './pages/search.css';
+@import './pages/shorts.css';
+@import './pages/watch.css';

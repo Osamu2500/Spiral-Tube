@@ -1,0 +1,10 @@
+/* ==========================================================================
+   DECLUTTER: Navigation & Header
+   ========================================================================== */
+
+body.ypp-hide-upload-button #buttons ytd-topbar-menu-button-renderer:has(svg path[d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"]),
+body.ypp-hide-upload-button ytd-masthead #buttons ytd-topbar-menu-button-renderer:nth-child(1),
+body.ypp-hide-upload-button ytd-masthead [aria-label="Create"],
+body.ypp-hide-upload-button ytd-masthead a[href*="/upload"] {
+  display: none !important;
+}
