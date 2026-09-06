@@ -19,6 +19,15 @@ body.ypp-watch-page.ypp-hide-top-bar ytd-app {
   --ytd-masthead-height: 0px !important;
 }
 
+body.ypp-watch-page.ypp-hide-top-bar #page-manager {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+html:has(body.ypp-watch-page.ypp-hide-top-bar) {
+  --ytd-masthead-height: 0px !important;
+}
+
 body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata #title,
 body.ypp-watch-page.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
 body.ypp-watch-page.ypp-hide-video-title ytd-video-primary-info-renderer #title,

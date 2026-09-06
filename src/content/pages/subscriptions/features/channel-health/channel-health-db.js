@@ -47,8 +47,17 @@ export class ChannelHealthDB {
                     store.createIndex('unsubTime', 'unsubTime', { unique: false });
                 }
             };
+            req.onblocked = () => {
+                window.YPP?.Utils?.log('DB Upgrade Blocked', 'CHANNEL-HEALTH', 'error', 'Close other YouTube tabs to upgrade database');
+                alert('YouTube Clean Feed: Database upgrade blocked! Please refresh all your open YouTube tabs so the extension can update.');
+                reject(new Error('DB_BLOCKED'));
+            };
             req.onsuccess = () => {
                 this._db = req.result;
+                this._db.onversionchange = () => {
+                    this._db.close();
+                    this._db = null;
+                };
                 resolve(this._db);
             };
             req.onerror = () => reject(req.error);
