@@ -46,6 +46,12 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
     async enable() {
         await super.enable();
 
+        // Fix Race Condition: Delay observer registration by 1 microtask.
+        // This ensures all other filters (which also `await super.enable()` during 
+        // startup) have time to resume and call `pipeline.registerFilter()` before 
+        // the initial DOM scan runs.
+        await Promise.resolve();
+
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.register(
                 'v3-card-pipeline',
@@ -295,7 +301,7 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 const titleEl = card.querySelector('#video-title, #video-title-link, .ytd-compact-radio-renderer #video-title, yt-formatted-string#video-title, [class*="metadata-title"]');
                 if (titleEl) {
                     const titleText = titleEl.textContent.trim().toLowerCase();
-                    if (titleText.startsWith('mix ') || titleText.startsWith('mix-') || titleText.startsWith('mix –') || titleText === 'mix' || titleText === 'my mix' || titleText === 'youtube mix') {
+                    if (/^mix[\s\-_–—:()[\]]/i.test(titleText) || titleText === 'mix' || titleText === 'my mix' || titleText === 'youtube mix') {
                         return true;
                     }
                 }
