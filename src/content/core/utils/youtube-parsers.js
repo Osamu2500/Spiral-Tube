@@ -158,6 +158,12 @@ window.YPP.Utils.youtubeParsers = (function() {
 
     function extractViewCount(text) {
         const s = String(text).replace(BIDI_MARKS_REGEX, '').trim();
+        
+        // Handle "No views" edge cases explicitly before digit checks
+        if (/^(no views|нет просмотров|nincs megtekintés|ingen visningar|aucune vue|sem visualiza|sin vistas|ninguna visualizaci)/i.test(s)) {
+            return { views: 0, confidence: 'high' };
+        }
+        
         if (!/\d/.test(s)) return NaN;
 
         let body = s;

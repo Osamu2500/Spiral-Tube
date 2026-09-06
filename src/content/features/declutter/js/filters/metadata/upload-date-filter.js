@@ -30,37 +30,25 @@ export class UploadDateFilter extends window.YPP.features.BaseFilterFeature {
         return false;
     }
 
-    _triggerPipeline() {
+    onUpdate(newSettings, oldSettings) {
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
 
-    async run(settings, oldSettings) {
-        if (this._isEnabled) this._triggerPipeline();
-    }
-
     async enable() {
         await super.enable();
-        if (this._isEnabled) return;
-        this._isEnabled = true;
-        
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
-            if (pipeline) {
-                pipeline.registerFilter(this);
-                pipeline.triggerGlobalReevaluation();
-            }
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
+            if (pipeline) pipeline.registerFilter(this);
         }
     }
 
     async disable() {
         await super.disable();
-        this._isEnabled = false;
-        
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();

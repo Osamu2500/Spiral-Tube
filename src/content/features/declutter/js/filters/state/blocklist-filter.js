@@ -74,7 +74,7 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
         );
 
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 pipeline.registerFilter(this);
                 pipeline.triggerGlobalReevaluation();
@@ -99,7 +99,7 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
         this._blockedKeywordRegexes = [];
 
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();
@@ -137,7 +137,7 @@ export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
         this._blockedKeywordRegexes = this._buildKeywordRegexes(this._blockedKeywords);
 
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }

@@ -15,7 +15,7 @@ export class MixesFilter extends window.YPP.features.BaseFilterFeature {
         this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/', '/watch', '/shorts'];
     }
 
-    getConfigKey() { return 'hideMixes'; }
+    getConfigKey() { return null; }
 
     _getCurrentPageType() {
         const path = window.location.pathname;
@@ -35,9 +35,9 @@ export class MixesFilter extends window.YPP.features.BaseFilterFeature {
         return this.settings[`hideMixes${pageType}`] !== false;
     }
 
-    async run(settings, oldSettings) {
-        if (this._isEnabled && window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+    onUpdate(newSettings, oldSettings) {
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
@@ -45,7 +45,7 @@ export class MixesFilter extends window.YPP.features.BaseFilterFeature {
     async enable() {
         await super.enable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.registerFilter(this);
         }
     }
@@ -53,7 +53,7 @@ export class MixesFilter extends window.YPP.features.BaseFilterFeature {
     async disable() {
         await super.disable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();

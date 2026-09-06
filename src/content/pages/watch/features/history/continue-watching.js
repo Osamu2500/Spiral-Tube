@@ -87,16 +87,24 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
             video.setAttribute('data-ypp-processed', 'true');
 
             // Check if it has the red resume playback bar and it is partially filled
-            const resumeBar = video.querySelector("ytd-thumbnail-overlay-resume-playback-renderer #progress");
+            const resumeBar = video.querySelector("ytd-thumbnail-overlay-resume-playback-renderer #progress, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, yt-progress-bar-view-model .yt-progress-bar-view-model-progress, [class*='progress-bar-view-model-progress']");
+            
             if (resumeBar) {
-                const width = resumeBar.style.width;
+                let pct = 0;
+                if (resumeBar.style.width) {
+                    pct = parseFloat(resumeBar.style.width);
+                } else if (resumeBar.style.transform && resumeBar.style.transform.includes('scaleX')) {
+                    const scaleMatch = resumeBar.style.transform.match(/scaleX\(([\d.]+)\)/);
+                    if (scaleMatch) pct = parseFloat(scaleMatch[1]) * 100;
+                }
+
                 // Only care if it's partially watched (e.g., between 5% and 95%)
-                if (width && width !== '100%') {
+                if (pct > 5 && pct < 95) {
                     video.classList.add("previously-watched-video");
                     
-                    const titleEl = video.querySelector('#video-title');
+                    const titleEl = video.querySelector('#video-title, .yt-core-attributed-string');
                     const title = titleEl ? titleEl.textContent.trim() : 'a video';
-                    const linkEl = video.querySelector('a#thumbnail');
+                    const linkEl = video.querySelector('a#thumbnail, a.ytd-thumbnail');
                     const url = linkEl ? linkEl.href : null;
                     
                     // Only notify once per video URL to avoid spam

@@ -34,32 +34,25 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
         return this.settings?.[`feedFilter${pageType}`] !== false;
     }
 
-    _triggerPipeline() {
+    onUpdate(newSettings, oldSettings) {
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
-    }
-
-    async run(settings, oldSettings) {
-        if (this.isEnabled) this._triggerPipeline();
     }
 
     async enable() {
         await super.enable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
-            if (pipeline) {
-                pipeline.registerFilter(this);
-                pipeline.triggerGlobalReevaluation();
-            }
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
+            if (pipeline) pipeline.registerFilter(this);
         }
     }
 
     async disable() {
         await super.disable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();

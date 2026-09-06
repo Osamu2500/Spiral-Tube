@@ -23,7 +23,7 @@ export class ClickbaitFilter extends window.YPP.features.BaseFilterFeature {
     async enable() {
         await super.enable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.registerFilter(this);
         }
     }
@@ -31,14 +31,14 @@ export class ClickbaitFilter extends window.YPP.features.BaseFilterFeature {
     async disable() {
         await super.disable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
 
-    async run(settings, oldSettings) {
-        if (this.isEnabled && window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+    onUpdate(newSettings, oldSettings) {
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }

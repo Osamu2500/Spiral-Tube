@@ -38,7 +38,7 @@ export class LiveFilter extends window.YPP.features.BaseFilterFeature {
 
     async run(settings, oldSettings) {
         if (this._isEnabled && window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
@@ -46,7 +46,7 @@ export class LiveFilter extends window.YPP.features.BaseFilterFeature {
     async enable() {
         await super.enable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.registerFilter(this);
         }
     }
@@ -54,7 +54,7 @@ export class LiveFilter extends window.YPP.features.BaseFilterFeature {
     async disable() {
         await super.disable();
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();

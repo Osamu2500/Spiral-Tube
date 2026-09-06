@@ -25,7 +25,7 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         else this.disable();
         
         if (this._isEnabled && window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
@@ -47,7 +47,7 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         this._isEnabled = true;
         
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 pipeline.registerFilter(this);
                 pipeline.triggerGlobalReevaluation();
@@ -60,7 +60,7 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         this._isEnabled = false;
         
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();

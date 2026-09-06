@@ -11,7 +11,7 @@ export class FeedFilterBarLayout extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('FeedFilterBarLayout');
-        this.pageSubtypes = ['home', 'subscriptions', 'history', 'channels'];
+        this.pageSubtypes = ['subscriptions'];
     }
 
     async enable() {

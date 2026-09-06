@@ -195,6 +195,9 @@ export class ShortsRemover extends window.YPP.features.BaseFeature {
         
         if (element.querySelector('ytd-rich-grid-slim-media, ytd-reel-item-renderer, yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"], span[aria-label="Shorts"], ytd-badge-supported-renderer[aria-label="Shorts"]')) return true;
         
+        const badges = Array.from(element.querySelectorAll('[class*="badge-shape-wiz"]'));
+        if (badges.some(b => b.textContent.trim().toUpperCase() === 'SHORTS' || b.querySelector('path[d^="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33"]'))) return true;
+        
         const ariaLabel = element.getAttribute('aria-label');
         if (ariaLabel?.toLowerCase() === 'shorts') return true;
         

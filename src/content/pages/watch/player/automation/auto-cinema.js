@@ -321,9 +321,10 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
                         filterStr = 'contrast(1.05) saturate(1.05)';
                     }
                     
-                    if (video.style.filter !== filterStr) {
+                    if (this._lastHdrFilter !== filterStr) {
                         video.style.transition = 'filter 0.8s ease';
                         video.style.filter = filterStr;
+                        this._lastHdrFilter = filterStr;
                     }
                 }
             } catch(e) {

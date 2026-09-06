@@ -42,7 +42,7 @@ export class FeedFilterBarFeature extends window.YPP.features.BaseFeature {
         };
 
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.registerFilter(this);
         }
     }
@@ -53,7 +53,7 @@ export class FeedFilterBarFeature extends window.YPP.features.BaseFeature {
         if (container) container.innerHTML = '';
         
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) {
                 if (typeof pipeline.unregisterFilter === 'function') pipeline.unregisterFilter(this);
                 pipeline.triggerGlobalReevaluation();
@@ -156,13 +156,15 @@ export class FeedFilterBarFeature extends window.YPP.features.BaseFeature {
 
     refreshFilters() {
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
 
     evaluate(context) {
         if (!this.isEnabled) return null;
+        
+        if (!window.location.pathname.startsWith('/feed/subscriptions')) return null;
         
         // Only run if we actually have active filters or a search query
         if (this.activeFilters.size === 0 && this.searchQuery === '') return null;

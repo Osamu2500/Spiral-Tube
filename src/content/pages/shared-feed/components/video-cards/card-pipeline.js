@@ -11,7 +11,7 @@ import '../../../../core/system/base-feature.js';
  * It combines the verdicts of all filters to apply a single, comprehensive UI action.
  */
 export class CardPipeline extends window.YPP.features.BaseFeature {
-    static featureId = 'cardPipeline';
+    static featureId = 'CardPipeline';
     static executionPhase = 'idle';
     static priority = 1; // Runs first
 
@@ -67,7 +67,8 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                     '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
                     'yt-progress-bar-view-model',
                     '.yt-progress-bar-view-model-progress',
-                    // ytw-* era: newer YouTube rollout (per-account, never gate behind pathname)
+                    '[class*="progress-bar-view-model-progress"]',
+                    '[class*="badge-shape-wiz"]', // For dynamic 'WATCHED' badges
                     '.ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress'
                 ].join(', '),
                 (nodes) => {
@@ -100,6 +101,11 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             this._filters.push(filterInstance);
             // Sort by priority (higher priority runs first)
             this._filters.sort((a, b) => (b.constructor.priority || 10) - (a.constructor.priority || 10));
+            
+            // Re-evaluate existing cards asynchronously so filter.isEnabled flag can become true
+            setTimeout(() => {
+                if (this.isEnabled) this.triggerGlobalReevaluation();
+            }, 50);
         }
     }
 
@@ -232,12 +238,82 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         const ctx = {
             card: card,
             isPost: card.tagName.toLowerCase().includes('post-renderer') || card.tagName.toLowerCase().includes('post-thread'),
-            isShort: !!(card.querySelector('ytd-reel-item-renderer') || card.classList.contains('ypp-is-short')),
-            isMix: !!(card.querySelector('[class*="content-id-RD"], a[href*="start_radio"], a[href*="list=RD"], a[href*="list=AL"], [overlay-style="MIX"]') || card.tagName.toLowerCase().includes('radio-renderer') || card.classList.contains('ypp-is-mix') || (card.querySelector('#video-title, #video-title-link') && /^Mix\s*[-–—]/i.test(card.querySelector('#video-title, #video-title-link').textContent.trim())) || Array.from(card.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge')).some(el => el.textContent.trim().toLowerCase() === 'mix')),
-            isPlaylist: !!(card.querySelector('[class*="content-id-PL"], a[href*="list=PL"], [overlay-style="PLAYLIST"]') || card.tagName.toLowerCase().includes('playlist-renderer') || card.classList.contains('ypp-is-playlist')),
-            isLive: !!card.querySelector('.badge-style-type-live-now, ytd-badge-supported-renderer[is-live], badge-shape.yt-badge-shape--thumbnail-live, badge-shape.yt-badge-shape--live, badge-shape.ytBadgeShapeThumbnailLive, badge-shape.ytBadgeShapeLive, ytd-thumbnail-overlay-time-status-renderer[overlay-style="LIVE"]'),
-            isUpcoming: !!card.querySelector('[overlay-style="UPCOMING"], .badge-style-type-simple[aria-label*="Premiere"]'),
-            isMembersOnly: !!card.querySelector('.badge-style-type-members-only, [aria-label*="Members only"], ytd-badge-supported-renderer[class*="members"]'),
+            isShort: (() => {
+                if (card.querySelector('ytd-reel-item-renderer') || card.classList.contains('ypp-is-short')) return true;
+                const anchor = card.querySelector('a#thumbnail, a.ytd-thumbnail');
+                if (anchor && anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('/shorts/')) return true;
+                const badges = Array.from(card.querySelectorAll('[class*="badge-shape-wiz"]'));
+                return badges.some(b => b.textContent.trim().toUpperCase() === 'SHORTS' || b.querySelector('path[d^="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33"]'));
+            })(),
+            isMix: (() => {
+                if (card.querySelector([
+                    '[class*="content-id-RD"]',
+                    'a[href*="start_radio"]',
+                    'a[href*="list=RD"]',
+                    'a[href*="list=AL"]',
+                    '[overlay-style="MIX"]'
+                ].join(', '))) return true;
+                if (card.tagName.toLowerCase().includes('radio-renderer')) return true;
+                if (card.classList.contains('ypp-is-mix')) return true;
+                
+                const titleEl = card.querySelector('#video-title, #video-title-link');
+                if (titleEl) {
+                    const titleText = titleEl.textContent.trim().toLowerCase();
+                    if (/^mix\s*[-–—]/i.test(titleText) || titleText === 'mix' || titleText === 'my mix' || titleText === 'youtube mix') {
+                        return true;
+                    }
+                }
+
+                const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+                return badges.some(b => {
+                    const t = b.textContent.trim().toLowerCase();
+                    return t === 'mix' || t === 'my mix' || t === 'youtube mix';
+                });
+            })(),
+            isPlaylist: (() => {
+                if (card.querySelector('[class*="content-id-PL"], a[href*="list=PL"], [overlay-style="PLAYLIST"]')) return true;
+                if (card.tagName.toLowerCase().includes('playlist-renderer') || card.classList.contains('ypp-is-playlist')) return true;
+                return false;
+            })(),
+            isLive: (() => {
+                if (card.querySelector([
+                    '.badge-style-type-live-now',
+                    'ytd-badge-supported-renderer[is-live]',
+                    'badge-shape.yt-badge-shape--thumbnail-live',
+                    'badge-shape.yt-badge-shape--live',
+                    'badge-shape.ytBadgeShapeThumbnailLive',
+                    'badge-shape.ytBadgeShapeLive',
+                    'ytd-thumbnail-overlay-time-status-renderer[overlay-style="LIVE"]',
+                    '[aria-label="LIVE"]',
+                    '.yt-badge-shape-wiz--live',
+                    '.yt-badge-shape-wiz--thumbnail-live',
+                    '.badge-shape-wiz--live',
+                    '.badge-shape-wiz--thumbnail-live'
+                ].join(', '))) return true;
+                
+                const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-time-status-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+                return badges.some(b => {
+                    const text = b.textContent.trim().toUpperCase();
+                    return text === 'LIVE' || text === 'В ЭФИРЕ' || text === 'EN VIVO' || text === 'AO VIVO' || text === 'DIRECTO' || text === 'ПРЯМАЯ ТРАНСЛЯЦИЯ';
+                });
+            })(),
+            isUpcoming: (() => {
+                if (card.querySelector('[overlay-style="UPCOMING"], .badge-style-type-simple[aria-label*="Premiere"], [aria-label*="Premiere" i], [aria-label*="Upcoming" i]')) return true;
+                const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-time-status-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+                return badges.some(b => {
+                    const t = b.textContent.trim().toUpperCase();
+                    return t === 'PREMIERE' || t === 'UPCOMING' || t.includes('PREMIERING');
+                });
+            })(),
+            isMembersOnly: (() => {
+                if (card.querySelector('.badge-style-type-members-only, [aria-label*="Members only" i], ytd-badge-supported-renderer[class*="members"]')) return true;
+                const badges = Array.from(card.querySelectorAll('badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+                return badges.some(b => b.textContent.trim().toUpperCase() === 'MEMBERS ONLY');
+            })(),
+            isPodcast: (() => {
+                const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+                return badges.some(b => b.textContent.trim().toUpperCase() === 'PODCAST');
+            })(),
             
             // Textual data
             title: '',
@@ -308,8 +384,19 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 }
             }
             
-            if (ctx.views === undefined && !ctx.isLive && !ctx.isUpcoming) {
-                ctx.fullyParsed = false; // Missing views on a regular video means it hasn't loaded
+            // Handle "No views" explicitly from aria-label
+            if (ctx.views === undefined && titleEl && titleEl.getAttribute('aria-label')) {
+                const aria = titleEl.getAttribute('aria-label').toLowerCase();
+                if (/no views|нет просмотров|nincs megtekintés|ingen visningar|aucune vue|sem visualiza|sin vistas/.test(aria)) {
+                    ctx.views = 0;
+                }
+            }
+            
+            if (ctx.views === undefined && !ctx.isLive && !ctx.isUpcoming && !ctx.isMix && !ctx.isPlaylist && !ctx.isPodcast) {
+                const isAd = card.querySelector('.badge-style-type-ad, [class*="ad-badge"], [class*="badge-shape-wiz"]');
+                if (!isAd || !isAd.textContent.toLowerCase().includes('ad')) {
+                    ctx.fullyParsed = false; // Missing views on a regular video means it hasn't loaded
+                }
             }
 
             // Age
@@ -322,48 +409,91 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                     ctx.ageDays = fallbackAge;
                 }
             }
-            else if (!ctx.isLive && !ctx.isUpcoming) ctx.fullyParsed = false; // Missing age
+            else if (!ctx.isLive && !ctx.isUpcoming && !ctx.isMix && !ctx.isPlaylist && !ctx.isPodcast) {
+                const isAd = card.querySelector('.badge-style-type-ad, [class*="ad-badge"], [class*="badge-shape-wiz"]');
+                if (!isAd || !isAd.textContent.toLowerCase().includes('ad')) {
+                    ctx.fullyParsed = false; // Missing age
+                }
+            }
             
-            // Duration
-            const timeSpan = parsers._findTimeSpan(card);
-            if (timeSpan) ctx.durationSeconds = parsers.parseDuration(timeSpan.textContent);
+            // Duration (Note: Duration filters were removed from the extension)
+            ctx.durationSeconds = undefined;
         }
 
-        // Progress bar - handle all 3 renderer eras:
-        // Legacy: ytd-thumbnail-overlay-resume-playback-renderer #progress
-        // New: .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment / yt-progress-bar-view-model
-        // ytw-* era: .ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress
-        const progressBar = card.querySelector([
-            '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
-            '.yt-progress-bar-view-model-progress',
-            'ytd-thumbnail-overlay-resume-playback-renderer #progress',
-            'ytd-thumbnail-overlay-resume-playback-renderer [id="progress"]',
-            '.thumbnail-overlay-resume-playback-progress',
-            'yt-progress-bar-view-model',
-            // ytw-* overlay era
-            '.ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress'
-        ].join(', '));
-        if (progressBar) {
-            const widthStr = progressBar.style.width;
-            if (widthStr && widthStr.includes('%')) {
-                ctx.progressPercent = parseFloat(widthStr);
-            } else if (progressBar.getAttribute('aria-valuenow')) {
-                ctx.progressPercent = parseFloat(progressBar.getAttribute('aria-valuenow'));
-            } else {
-                // Fallback: Rendered box geometry vs parent width (catches CSS variable / class styling)
-                try {
-                    const rect = progressBar.getBoundingClientRect();
-                    const parent = progressBar.parentElement;
-                    if (rect.width > 0 && parent && parent.clientWidth > 0) {
-                        const pct = Math.round((rect.width / parent.clientWidth) * 100);
-                        if (pct > 0 && pct <= 100) ctx.progressPercent = pct;
-                    }
-                } catch (e) {}
+        // Progress bar - handle all renderer eras
+        let foundPct = null;
+        
+        // 1. Explicit WATCHED badge
+        const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+        if (badges.some(b => b.textContent.trim().toUpperCase() === 'WATCHED')) {
+            foundPct = 100;
+        }
+
+        // 2. Scan progress bar elements
+        if (foundPct === null) {
+            const progressBars = Array.from(card.querySelectorAll([
+                '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
+                '.yt-progress-bar-view-model-progress',
+                'ytd-thumbnail-overlay-resume-playback-renderer #progress',
+                'ytd-thumbnail-overlay-resume-playback-renderer [id="progress"]',
+                '.thumbnail-overlay-resume-playback-progress',
+                'yt-progress-bar-view-model',
+                '[class*="progress-bar-view-model-progress"]',
+                '.ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress'
+            ].join(', ')));
+
+            for (const pb of progressBars) {
+                // Check inline style for width %
+                const styleStr = pb.getAttribute('style') || '';
+                const widthMatch = styleStr.match(/width:\s*([\d.]+)%/i);
+                if (widthMatch) {
+                    foundPct = parseFloat(widthMatch[1]);
+                    break;
+                }
+                
+                // Check aria-valuenow
+                if (pb.hasAttribute('aria-valuenow')) {
+                    foundPct = parseFloat(pb.getAttribute('aria-valuenow'));
+                    break;
+                }
+
+                // Check transform: scaleX(0.X)
+                const transformMatch = styleStr.match(/transform:\s*scaleX\(([\d.]+)\)/i);
+                if (transformMatch) {
+                    foundPct = parseFloat(transformMatch[1]) * 100;
+                    break;
+                }
+            }
+
+            // 3. Fallback: Geometry vs Parent (Only if element is visible and not the outer host)
+            if (foundPct === null) {
+                for (const pb of progressBars) {
+                    if (pb.tagName.toLowerCase() === 'yt-progress-bar-view-model') continue; // Outer container doesn't reflect actual progress
+                    try {
+                        const rect = pb.getBoundingClientRect();
+                        const parent = pb.parentElement;
+                        if (rect.width > 0 && parent && parent.clientWidth > 0) {
+                            const pct = Math.round((rect.width / parent.clientWidth) * 100);
+                            if (pct > 0 && pct <= 100) {
+                                foundPct = pct;
+                                break;
+                            }
+                        }
+                    } catch (e) {}
+                }
             }
         }
+        ctx.progressPercent = foundPct;
 
         // Currently Playing
-        ctx.isCurrentlyPlaying = !!card.querySelector('ytd-thumbnail-overlay-now-playing-renderer[now-playing-badge], .ytd-thumbnail-overlay-now-playing-renderer[now-playing]');
+        ctx.isCurrentlyPlaying = (() => {
+            if (card.querySelector('ytd-thumbnail-overlay-now-playing-renderer[now-playing-badge], .ytd-thumbnail-overlay-now-playing-renderer[now-playing]')) return true;
+            const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-time-status-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
+            return badges.some(b => {
+                const t = b.textContent.trim().toUpperCase();
+                return t === 'NOW PLAYING' || t === 'PLAYING';
+            });
+        })();
 
         return ctx;
     }

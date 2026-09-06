@@ -68,25 +68,10 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         });
 
         this._startPolling();
-        this._autoEnableCC();
-
-        // SUBS-UP-4: After 5s, warn user if no captions appear
-        this._ccToastShown = false;
-        this._ccCheckTimer = setTimeout(() => {
-            if (this.isEnabled && this._customContainer && !this._customContainer.classList.contains('active')) {
-                if (!this._ccToastShown) {
-                    this._ccToastShown = true;
-                    this.utils.createToast?.('🎬 Netflix Subtitles: No captions detected. Press C to enable CC.', 'info', 7000);
-                }
-            }
-        }, 5000);
     }
 
     async disable() {
         await super.disable();
-
-        // Clear CC check timer
-        if (this._ccCheckTimer) { clearTimeout(this._ccCheckTimer); this._ccCheckTimer = null; }
 
         // Step 1: Immediately hide the custom container
         if (this._customContainer) {
@@ -134,7 +119,6 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         // SUB-BUG-3: Increment version so any in-flight poll callbacks are discarded
         this._navVersion++;
         this._startPolling();
-        this._autoEnableCC();
     }
 
     // Shared polling logic used by enable() and _handleNavigation()
@@ -172,14 +156,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         }
     }
 
-    _autoEnableCC() {
-        if (!this.isEnabled) return;
-        const ccBtn = document.querySelector('.ytp-subtitles-button');
-        if (ccBtn && ccBtn.getAttribute('aria-pressed') === 'false') {
-            ccBtn.click();
-            this.utils.log?.('Auto-enabled captions', 'SUBS');
-        }
-    }
+    // _autoEnableCC was removed to respect native YouTube CC preferences
 
     _initRenderer(player, native) {
         if (!this._abortController || this._abortController.signal.aborted) return;

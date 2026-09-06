@@ -57,13 +57,18 @@ export class RedirectShorts extends window.YPP.features.BaseFeature {
             
             // Try SPA redirect first to avoid full page reload
             if (app && typeof app.fire === 'function') {
-                app.fire('yt-navigate', { 
-                    endpoint: { 
-                        commandMetadata: { 
-                            webCommandMetadata: { url: targetUrl } 
+                try {
+                    app.fire('yt-navigate', { 
+                        endpoint: { 
+                            commandMetadata: { 
+                                webCommandMetadata: { url: targetUrl } 
+                            } 
                         } 
-                    } 
-                });
+                    });
+                } catch (e) {
+                    this.utils?.log(`SPA redirect failed, falling back to replace: ${e.message}`, 'RedirectShorts', 'warn');
+                    location.replace(targetUrl);
+                }
             } else {
                 // Fallback navigation
                 location.replace(targetUrl);

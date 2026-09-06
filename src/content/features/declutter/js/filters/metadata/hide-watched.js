@@ -14,10 +14,12 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         super('HideWatched');
     }
 
-    getConfigKey() { return 'hideWatched'; }
+    getConfigKey() { return null; }
 
     /** Per-page toggle check */
     _shouldRunOnCurrentPage() {
+        if (!this.settings?.hideWatched) return false;
+        
         const path = window.location.pathname;
         const s = this.settings || {};
 
@@ -42,7 +44,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         this._unsubscribeStore = window.YPP.WatchedStore?.onChange?.((change) => {
             if (!this.isEnabled || !this._shouldRunOnCurrentPage()) return;
             if (window.YPP.FeatureManager) {
-                const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+                const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
                 if (pipeline) pipeline.triggerGlobalReevaluation();
             }
         });
@@ -50,13 +52,13 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         // React to user manually marking from the MarkWatched feature
         this.onBusEvent('watched:updated', () => {
             if (this._shouldRunOnCurrentPage() && window.YPP.FeatureManager) {
-                const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+                const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
                 if (pipeline) pipeline.triggerGlobalReevaluation();
             }
         });
 
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.registerFilter(this);
         }
     }
@@ -70,14 +72,14 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         }
 
         if (window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
 
     async onUpdate(newSettings, oldSettings) {
         if (this.isEnabled && window.YPP.FeatureManager) {
-            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            const pipeline = window.YPP.featureManager?.getFeature('CardPipeline');
             if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
