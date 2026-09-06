@@ -80,6 +80,28 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 false,
                 false
             );
+
+            // Catch asynchronously loaded titles/badges for Mixes and Playlists
+            window.YPP.sharedObserver.register(
+                'v3-pipeline-badges-titles',
+                [
+                    '#video-title',
+                    '#video-title-link',
+                    'ytd-thumbnail-overlay-bottom-panel-renderer',
+                    'badge-shape',
+                    '[class*="badge-shape-wiz"]',
+                    'a[href*="list="]'
+                ].join(', '),
+                (nodes) => {
+                    if (!this.isEnabled) return;
+                    nodes.forEach(node => {
+                        const card = node.closest(CardPipeline.CARD_SELECTORS);
+                        if (card) this.evaluateCard(card, true);
+                    });
+                },
+                false,
+                false
+            );
         }
     }
 
@@ -88,6 +110,7 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.unregister('v3-card-pipeline');
             window.YPP.sharedObserver.unregister('v3-pipeline-progress');
+            window.YPP.sharedObserver.unregister('v3-pipeline-badges-titles');
         }
     }
 
@@ -252,30 +275,56 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 return badges.some(b => b.textContent.trim().toUpperCase() === 'SHORTS' || b.querySelector('path[d^="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33"]'));
             })(),
             isMix: (() => {
+                // 1. Tag-name fast path
+                const tag = card.tagName.toLowerCase();
+                if (tag.includes('radio-renderer')) return true;
+
+                // 2. class/attribute markers
+                if (card.classList.contains('ypp-is-mix')) return true;
                 if (card.querySelector([
                     '[class*="content-id-RD"]',
                     'a[href*="start_radio"]',
                     'a[href*="list=RD"]',
                     'a[href*="list=AL"]',
-                    '[overlay-style="MIX"]'
+                    '[overlay-style="MIX"]',
+                    'ytd-compact-radio-renderer',
+                    'ytd-radio-renderer'
                 ].join(', '))) return true;
-                if (card.tagName.toLowerCase().includes('radio-renderer')) return true;
-                if (card.classList.contains('ypp-is-mix')) return true;
-                
-                const titleEl = card.querySelector('#video-title, #video-title-link');
+
+                // 3. Title starts with "Mix"
+                const titleEl = card.querySelector('#video-title, #video-title-link, .ytd-compact-radio-renderer #video-title, yt-formatted-string#video-title, [class*="metadata-title"]');
                 if (titleEl) {
                     const titleText = titleEl.textContent.trim().toLowerCase();
-                    if (/^mix\s*[-–—]/i.test(titleText) || titleText === 'mix' || titleText === 'my mix' || titleText === 'youtube mix') {
+                    if (titleText.startsWith('mix ') || titleText.startsWith('mix-') || titleText.startsWith('mix –') || titleText === 'mix' || titleText === 'my mix' || titleText === 'youtube mix') {
                         return true;
                     }
                 }
 
-                const badges = Array.from(card.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer, badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"]'));
-                return badges.some(b => {
+                // 4. Thumbnail overlay "Mix" text badge (bottom panel)
+                const overlayPanels = card.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer');
+                for (const panel of overlayPanels) {
+                    const t = panel.textContent.trim().toLowerCase();
+                    if (t === 'mix' || t === 'my mix' || t === 'youtube mix' || t.includes(' mix') || t.startsWith('mix ')) return true;
+                }
+
+                // 5. Any badge-shape text says "Mix"
+                const badges = card.querySelectorAll('badge-shape, ytd-badge-supported-renderer, .badge, .yt-badge, [class*="badge-shape-wiz"], yt-formatted-string[class*="badge"]');
+                for (const b of badges) {
                     const t = b.textContent.trim().toLowerCase();
-                    return t === 'mix' || t === 'my mix' || t === 'youtube mix';
-                });
+                    if (t === 'mix' || t === 'my mix' || t === 'youtube mix') return true;
+                }
+
+                // 6. Thumbnail href check
+                const links = card.querySelectorAll('a[href]');
+                for (const link of links) {
+                    const href = link.getAttribute('href') || '';
+                    // Some playlists are RD... some are RDTM... etc. AL is for album mixes.
+                    if (href.includes('list=RD') || href.includes('list=AL') || href.includes('start_radio')) return true;
+                }
+
+                return false;
             })(),
+
             isPlaylist: (() => {
                 if (card.querySelector('[class*="content-id-PL"], a[href*="list=PL"], [overlay-style="PLAYLIST"]')) return true;
                 if (card.tagName.toLowerCase().includes('playlist-renderer') || card.classList.contains('ypp-is-playlist')) return true;
