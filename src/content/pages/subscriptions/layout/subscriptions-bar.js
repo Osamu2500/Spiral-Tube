@@ -40,6 +40,7 @@ export class SubscriptionsBar extends window.YPP.features.BaseFeature {
 
         const bar = document.createElement('div');
         bar.id = 'ypp-subscriptions-bar';
+        bar.style.background = 'transparent';
         
         container.appendChild(bar);
     }
