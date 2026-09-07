@@ -268,6 +268,11 @@ const injectZeroJSCSS = () => {
       ytd-guide-entry-renderer:has(a[href*="/feed/trending"]),
       ytd-mini-guide-entry-renderer:has(a[href*="/feed/trending"]),
       ytd-guide-entry-renderer:has(a[href*="/feed/explore"]),
+      ytd-rich-section-renderer:has(yt-chip-cloud-renderer),
+      ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
+      ytd-rich-section-renderer:has(yt-related-chip-cloud-renderer),
+      ytd-rich-section-renderer:has(ytd-search-query-renderer),
+      ytd-rich-section-renderer:has([class*="ytChipsShelfViewModel"]),
       ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)),
       ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)):has(ytd-shelf-renderer) {
         ${action}
