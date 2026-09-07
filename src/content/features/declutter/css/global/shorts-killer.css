@@ -2,13 +2,7 @@
    SHORTS KILLER
    ========================================================================= */
 
-/* Nuke Shorts — Aggressive removal from all pages */
-body.yt-spiral-tube-theme ytd-rich-shelf-renderer[is-shorts],
-body.yt-spiral-tube-theme ytd-reel-shelf-renderer,
-body.yt-spiral-tube-theme ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
-body.yt-spiral-tube-theme ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
-    display: none !important;
-}
+/* Shorts hiding logic is now fully handled dynamically in injectZeroJSCSS based on user settings. */
 
 /* Hide Shorts Interaction Bar */
 ytd-reel-player-overlay-renderer {

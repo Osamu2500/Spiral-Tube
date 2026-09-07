@@ -141,6 +141,8 @@ const injectZeroJSCSS = () => {
       ytd-reel-shelf-renderer, 
       ytm-reel-shelf-renderer,
       ytd-rich-shelf-renderer[is-shorts],
+      ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+      ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
       ytd-rich-item-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
       ytd-rich-item-renderer:has(a[href^="/shorts"]),
       ytd-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
@@ -234,7 +236,26 @@ const injectZeroJSCSS = () => {
       ytd-backstage-post-thread-renderer,
       ytd-rich-item-renderer:has(ytd-post-renderer),
       ytd-rich-item-renderer:has(ytd-backstage-post-thread-renderer),
-      ytd-item-section-renderer:has(ytd-post-renderer) {
+      ytd-item-section-renderer:has(ytd-post-renderer),
+      ytd-rich-section-renderer:has(ytd-post-renderer),
+      ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) {
+        ${action}
+      }
+    `;
+  }
+
+  if (prefs.hidePromosEnabled) {
+    const action = prefs.hidePromosMode === 'dim' ? 'opacity: 0.2 !important;' : 'display: none !important;';
+    css += `
+      ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer),
+      ytd-rich-section-renderer:has(ytd-statement-banner-renderer),
+      ytd-rich-section-renderer:has(ytd-compact-promoted-video-renderer),
+      ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer),
+      ytd-rich-section-renderer:has(.badge-style-type-ad),
+      ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer),
+      ytd-rich-section-renderer:has(ytd-game-card-renderer),
+      ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)),
+      ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)):has(ytd-shelf-renderer) {
         ${action}
       }
     `;
