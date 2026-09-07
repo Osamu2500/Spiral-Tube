@@ -66,8 +66,10 @@
 @import '../../features/ui-tweaks/layout/integrations.css';
 @import '../../features/ui-tweaks/theme/dual-accent.css';
 
-/* Shared Feed Features */
-@import '../../pages/shared-feed/components/shorts-shelf/shorts-shelf.css';
+/* Shared Feed — Shelf Components (horizontal layout fixes) */
+@import '../../pages/shared-feed/components/index.css';
+
+/* Shared Feed — Features */
 @import '../../pages/shared-feed/features/tracking/resume-badges.css';
 @import '../../pages/shared-feed/features/tracking/watched-indicator.css';
 @import '../../pages/shared-feed/features/typography/full-video-titles.css';
@@ -107,7 +109,6 @@
 @import '../../pages/watch/player/enhancements/real-cinema-mode.css';
 @import '../../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css';
 
-/* Home & Shorts Declutter */
 
 /* Search Page & Card Styles */
 @import './pages/search/search-grid-mode.css';

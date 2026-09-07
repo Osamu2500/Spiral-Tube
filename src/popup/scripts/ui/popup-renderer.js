@@ -148,9 +148,11 @@ function renderToggle(item, state) {
     const info = document.createElement('div');
     info.style.cursor = 'pointer';
     info.className = 'info';
+    info.style.cssText = 'display: flex; flex-direction: row; align-items: center; flex: 1; min-width: 0;';
+
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
-    nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
+    nameEl.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;';
     nameEl.textContent = item.label;
     if (item.desc) {
         attachHoverTooltip(info, item.desc);
@@ -161,12 +163,25 @@ function renderToggle(item, state) {
         b.className = 'new-feature-badge';
         nameEl.appendChild(b);
     }
-    if (item.inlineSlot) {
-        const b = document.createElement('span');
-        b.innerHTML = item.inlineSlot;
-        nameEl.appendChild(b);
-    }
     info.appendChild(nameEl);
+
+    if (item.inlineSlot) {
+        const slotWrap = document.createElement('div');
+        const isWideSlot = item.class && (item.class.includes('span-4') || item.class.includes('span-3') || item.class.includes('span-2'));
+        if (isWideSlot) {
+            // Wide/Medium cards: slot goes OUTSIDE .info so it wraps to its own full-width row
+            slotWrap.className = 'inline-slot-row';
+            slotWrap.innerHTML = item.inlineSlot;
+            // append after toggle (will be inserted after card.appendChild(label) below)
+            card._pendingSlot = slotWrap;
+        } else {
+            // Narrow cards (span-2 custom-flex-card etc.): keep existing inline layout
+            slotWrap.style.cssText = 'display: flex; flex: 1; min-width: 0; justify-content: flex-end; align-items: center; margin-left: 16px;';
+            slotWrap.innerHTML = item.inlineSlot;
+            info.appendChild(slotWrap);
+        }
+    }
+    
     card.appendChild(info);
 
     // Toggle
@@ -180,6 +195,12 @@ function renderToggle(item, state) {
     span.className = 'slider';
     label.appendChild(span);
     card.appendChild(label);
+
+    // Append wide inline slot AFTER toggle (so it wraps below on its own row)
+    if (card._pendingSlot) {
+        card.appendChild(card._pendingSlot);
+        delete card._pendingSlot;
+    }
 
     if (item.bottomSlot) {
         const bottom = document.createElement('div');

@@ -13,32 +13,51 @@ const escapeHTML = (str) => {
 
 
 export function initpagebuttons(document, state, ui, updateSetting, notifyThemeChange, saveSettings) {
-  function initHideWatchedModePill() {
-      const btns = document.querySelectorAll('.hw-mode-btn');
-      const hiddenInput = document.getElementById('hideWatchedMode');
-      if (!btns.length || !hiddenInput) return;
+  function initFeatureModeButtons() {
+      const btns = document.querySelectorAll('.feature-mode-btn');
+      if (!btns.length) return;
   
-      const applyMode = (mode) => {
-        hiddenInput.value = mode;
+      const applyMode = (feature, mode) => {
+        const hiddenInput = document.getElementById(`${feature}Mode`);
+        if (hiddenInput) hiddenInput.value = mode;
+
         btns.forEach((b) => {
-          const isActive = b.dataset.mode === mode;
-          b.classList.toggle('active', isActive);
-          b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
-          b.style.color = isActive ? 'var(--accent, #3ea6ff)' : 'rgba(255,255,255,0.5)';
+          if (b.dataset.feature === feature) {
+            const isActive = b.dataset.mode === mode;
+            b.classList.toggle('active', isActive);
+            b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
+            b.style.color = isActive ? 'var(--accent, #3ea6ff)' : 'rgba(255,255,255,0.5)';
+          }
         });
       };
   
       chrome.storage.local.get('settings', (data) => {
-        const mode = data.settings?.hideWatchedMode || 'dim';
-        applyMode(mode);
+        const settings = data.settings || {};
+        
+        // Find all unique features that have these buttons
+        const features = new Set();
+        btns.forEach(b => features.add(b.dataset.feature));
+
+        features.forEach(feature => {
+          const modeKey = `${feature}Mode`;
+          // Default to 'hide' for shorts/mixes etc if not set, or 'dim' for hideWatched for legacy reasons
+          const defaultMode = feature === 'hideWatched' ? 'dim' : 'hide';
+          const mode = settings[modeKey] || defaultMode;
+          applyMode(feature, mode);
+        });
       });
   
       btns.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          // Prevent the toggle from activating the main switch when clicking the mode pills inside the inline slot
+          e.preventDefault();
+          e.stopPropagation();
+
+          const feature = btn.dataset.feature;
           const mode = btn.dataset.mode;
-          applyMode(mode);
+          applyMode(feature, mode);
           chrome.runtime.sendMessage(
-            { action: 'PATCH_SETTINGS', payload: { hideWatchedMode: mode } },
+            { action: 'PATCH_SETTINGS', payload: { [`${feature}Mode`]: mode } },
             () => {
               if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
             }
@@ -142,15 +161,6 @@ export function initpagebuttons(document, state, ui, updateSetting, notifyThemeC
           const nextState = !btn.classList.contains('active');
   
           btn.classList.toggle('active', nextState);
-          if (nextState) {
-            btn.style.background = 'rgba(255, 78, 69, 0.18)';
-            btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
-            btn.style.color = '#fff';
-          } else {
-            btn.style.background = 'rgba(255, 255, 255, 0.04)';
-            btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-            btn.style.color = 'rgba(255, 255, 255, 0.5)';
-          }
   
           chrome.runtime.sendMessage(
             { action: 'PATCH_SETTINGS', payload: { [key]: nextState } },
@@ -173,15 +183,6 @@ export function initpagebuttons(document, state, ui, updateSetting, notifyThemeC
           const key = keyPrefix + page.charAt(0).toUpperCase() + page.slice(1);
           const isActive = settings[key] !== false;
           btn.classList.toggle('active', isActive);
-          if (isActive) {
-            btn.style.background = 'rgba(255, 78, 69, 0.18)';
-            btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
-            btn.style.color = '#fff';
-          } else {
-            btn.style.background = 'rgba(255, 255, 255, 0.04)';
-            btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-            btn.style.color = 'rgba(255, 255, 255, 0.5)';
-          }
         });
       };
   
@@ -195,17 +196,7 @@ export function initpagebuttons(document, state, ui, updateSetting, notifyThemeC
           const page = btn.dataset.page;
           const key = keyPrefix + page.charAt(0).toUpperCase() + page.slice(1);
           const nextState = !btn.classList.contains('active');
-  
           btn.classList.toggle('active', nextState);
-          if (nextState) {
-            btn.style.background = 'rgba(255, 78, 69, 0.18)';
-            btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
-            btn.style.color = '#fff';
-          } else {
-            btn.style.background = 'rgba(255, 255, 255, 0.04)';
-            btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-            btn.style.color = 'rgba(255, 255, 255, 0.5)';
-          }
   
           chrome.runtime.sendMessage(
             { action: 'PATCH_SETTINGS', payload: { [key]: nextState } },
@@ -226,7 +217,7 @@ export function initpagebuttons(document, state, ui, updateSetting, notifyThemeC
   const initDateFilterPageButtons = createPageButtonInitializer('.date-page-btn', 'dateFilter');
 
   return {
-    initHideWatchedModePill,
+    initFeatureModeButtons,
     initHideWatchedPageButtons,
     initViewsFilterPageButtons,
     initDateFilterPageButtons,

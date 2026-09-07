@@ -48,6 +48,28 @@
             "css": [
                 "dist/style.css"
             ],
+            "run_at": "document_start",
+            "all_frames": false,
+            "js": [
+                "src/content/features/declutter/js/hider-engine/env.js",
+                "src/content/features/declutter/js/hider-engine/utils.js",
+                "src/content/features/declutter/js/hider-engine/whitelist-utils.js",
+                "src/content/features/declutter/js/hider-engine/state.js",
+                "src/content/features/declutter/js/hider-engine/warning.js",
+                "src/content/features/declutter/js/hider-engine/parsers.js",
+                "src/content/features/declutter/js/hider-engine/filters.js",
+                "src/content/features/declutter/js/hider-engine/channel-whitelist-button.js",
+                "src/content/features/declutter/js/hider-engine/channel-blacklist-button.js",
+                "src/content/features/declutter/js/hider-engine/init.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.youtube.com/*"
+            ],
+            "css": [
+                "dist/style.css"
+            ],
             "run_at": "document_end",
             "all_frames": false,
             "js": [

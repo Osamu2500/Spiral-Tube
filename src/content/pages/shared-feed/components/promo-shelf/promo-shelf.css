@@ -1,0 +1,151 @@
+/* 
+ * ==========================================================================
+ * PROMO / STATEMENT BANNER SHELF COMPONENT
+ * Handles promotional banners, statement banners, brand video shelves,
+ * and background promo renderers that YouTube injects mid-feed.
+ *
+ * These elements use:
+ *   ytd-statement-banner-renderer
+ *   ytd-brand-video-singleton-renderer
+ *   ytd-compact-promoted-video-renderer
+ *   ytd-background-promo-renderer
+ *   ytd-promoted-sparkles-web-renderer
+ *
+ * Strategy: Constrain banner height to max 220px, force cover-fit on
+ * background images, center content vertically. This prevents them from
+ * taking up half the viewport.
+ * ==========================================================================
+ */
+
+/* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
+ytd-rich-section-renderer:has(ytd-statement-banner-renderer),
+ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer),
+ytd-rich-section-renderer:has(ytd-compact-promoted-video-renderer),
+ytd-rich-section-renderer:has(ytd-background-promo-renderer),
+ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer) {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 4px 0 12px !important;
+  margin: 4px 0 !important;
+}
+
+/* ── 2. STATEMENT BANNER ────────────────────────────────────────────────── */
+ytd-statement-banner-renderer {
+  width: 100% !important;
+  max-height: 220px !important;
+  min-height: 100px !important;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+ytd-statement-banner-renderer #background,
+ytd-statement-banner-renderer #banner-image,
+ytd-statement-banner-renderer img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 14px !important;
+}
+
+ytd-statement-banner-renderer #content,
+ytd-statement-banner-renderer #action-container,
+ytd-statement-banner-renderer #text-container {
+  position: relative !important;
+  z-index: 2 !important;
+  padding: 16px 24px !important;
+  max-width: 60% !important;
+}
+
+/* ── 3. BRAND VIDEO SINGLETON ───────────────────────────────────────────── */
+ytd-brand-video-singleton-renderer {
+  width: 100% !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  max-height: 280px !important;
+}
+
+ytd-brand-video-singleton-renderer ytd-thumbnail {
+  aspect-ratio: 16 / 9 !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 280px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+ytd-brand-video-singleton-renderer ytd-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* ── 4. COMPACT PROMOTED VIDEO ──────────────────────────────────────────── */
+ytd-compact-promoted-video-renderer {
+  width: 100% !important;
+  max-height: 180px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+ytd-compact-promoted-video-renderer ytd-thumbnail {
+  flex: 0 0 200px !important;
+  width: 200px !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+ytd-compact-promoted-video-renderer ytd-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* ── 5. BACKGROUND PROMO / SPARKLES ────────────────────────────────────── */
+ytd-background-promo-renderer,
+ytd-promoted-sparkles-web-renderer {
+  width: 100% !important;
+  max-height: 200px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  box-sizing: border-box !important;
+}
+
+ytd-background-promo-renderer img,
+ytd-promoted-sparkles-web-renderer img {
+  width: 100% !important;
+  max-height: 200px !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+}
+
+/* ── 6. AD BADGE: always visible and correctly positioned ───────────────── */
+ytd-statement-banner-renderer .badge-style-type-ad,
+ytd-compact-promoted-video-renderer .badge-style-type-ad,
+ytd-promoted-sparkles-web-renderer .badge-style-type-ad {
+  position: relative !important;
+  z-index: 10 !important;
+  display: inline-flex !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  padding: 2px 6px !important;
+}

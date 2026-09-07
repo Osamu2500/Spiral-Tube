@@ -1,112 +1,180 @@
 /* 
  * ==========================================================================
  * SHORTS SHELF COMPONENT
- * Handles the display of the Shorts Shelf in the main feed and channels.
- * Extracts Shorts-specific logic from grid-layout.css for better organization.
+ * Handles the display of the Shorts shelf in the home feed and all pages.
+ *
+ * Strategy: The outer grid assigns grid-column: 1/-1 (full-row span) and
+ * display: block to the shelf container (via grid-layout.css). This file
+ * rebuilds the INNER layout as a contained horizontal flex-scroller so
+ * individual Short thumbnails never inherit the outer grid context and
+ * never blow up to full-width.
  * ==========================================================================
  */
 
-/* Ensure Shorts Shelf properly spans the grid */
-.ypp-grid-container ytd-rich-section-renderer,
-.ypp-grid-container ytd-rich-shelf-renderer {
-  grid-column: 1 / -1 !important;
+/* ── 1. SHELF CONTAINER ─────────────────────────────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts],
+ytd-reel-shelf-renderer,
+ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
   width: 100% !important;
   max-width: 100% !important;
-  margin: 24px 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 8px 0 16px !important;
+  margin: 8px 0 !important;
 }
 
-/* Container Spacing & Gap */
-.ypp-grid-container ytd-rich-shelf-renderer #contents {
+/* ── 2. TITLE ROW (shelf header) ────────────────────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #title-container,
+ytd-reel-shelf-renderer #title-container {
   display: flex !important;
-  gap: 16px !important;
-  padding-bottom: 8px !important; /* For hover shadow clearance */
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 0 12px 0 !important;
+  width: 100% !important;
 }
 
-/* 
- * Responsive Shorts Columns (Decoupled from main feed) 
- * This ensures Shorts perfectly fit the container width without being cut off
- */
-:root { --ypp-shorts-columns: 6; }
-@media (max-width: 1300px) { :root { --ypp-shorts-columns: 5; } }
-@media (max-width: 1000px) { :root { --ypp-shorts-columns: 4; } }
-@media (max-width: 700px) { :root { --ypp-shorts-columns: 3; } }
+/* ── 3. INNER CONTENTS: horizontal scroller row ─────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #contents,
+ytd-reel-shelf-renderer #contents,
+ytd-rich-shelf-renderer[is-shorts] ytd-reel-shelf-renderer #contents {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 10px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 4px 2px 12px 2px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  /* Thin styled scrollbar */
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
+}
 
-/* 
- * Force Shorts Items to fit perfectly using percentage math.
- * Now that the grid-layout.css conflict is removed, this will correctly
- * calculate the exact width needed to fit all shorts without clipping.
+ytd-rich-shelf-renderer[is-shorts] #contents::-webkit-scrollbar,
+ytd-reel-shelf-renderer #contents::-webkit-scrollbar {
+  height: 4px !important;
+}
+ytd-rich-shelf-renderer[is-shorts] #contents::-webkit-scrollbar-track,
+ytd-reel-shelf-renderer #contents::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+ytd-rich-shelf-renderer[is-shorts] #contents::-webkit-scrollbar-thumb,
+ytd-reel-shelf-renderer #contents::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+/* ── 4. EACH SHORT ITEM: fixed-width portrait card ──────────────────────── */
+/*
+ * Responsive widths via CSS custom property --ypp-short-item-w.
+ * Defaults to 170px; shrinks at narrower viewports.
  */
-.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer,
-.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer {
-  width: calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
+:root {
+  --ypp-short-item-w: 170px;
+}
+@media (max-width: 1300px) { :root { --ypp-short-item-w: 155px; } }
+@media (max-width: 1000px) { :root { --ypp-short-item-w: 140px; } }
+@media (max-width:  700px) { :root { --ypp-short-item-w: 120px; } }
+
+ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer,
+ytd-reel-shelf-renderer ytd-rich-item-renderer,
+ytd-rich-shelf-renderer[is-shorts] ytd-reel-item-renderer,
+ytd-reel-shelf-renderer ytd-reel-item-renderer,
+ytd-rich-shelf-renderer[is-shorts] yt-lockup-view-model,
+ytd-reel-shelf-renderer yt-lockup-view-model {
+  flex: 0 0 var(--ypp-short-item-w) !important;
+  width: var(--ypp-short-item-w) !important;
   min-width: 0 !important;
-  max-width: none !important;
-  flex: 0 0 calc((100% - (16px * (var(--ypp-shorts-columns, 6) - 1))) / var(--ypp-shorts-columns, 6)) !important;
+  max-width: var(--ypp-short-item-w) !important;
   margin: 0 !important;
+  box-sizing: border-box !important;
+  /* Reset any global card transforms that could clash */
+  transform: none !important;
+  position: relative !important;
 }
 
-/* Fix Aspect Ratio and Layout of the Shorts Thumbnail */
-.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer ytd-thumbnail,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer ytd-thumbnail,
-.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer ytd-thumbnail,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
+/* Hover lift (subtle, to avoid layout shift) */
+ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer:hover,
+ytd-reel-shelf-renderer ytd-rich-item-renderer:hover {
+  transform: translateY(-3px) !important;
+  transition: transform 0.25s ease !important;
+}
+
+/* ── 5. THUMBNAIL: 9:16 portrait aspect ratio ───────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] ytd-thumbnail,
+ytd-reel-shelf-renderer ytd-thumbnail,
+ytd-rich-shelf-renderer[is-shorts] ytd-reel-item-renderer ytd-thumbnail,
+ytd-reel-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
+  width: 100% !important;
   aspect-ratio: 9 / 16 !important;
   height: auto !important;
-  border-radius: var(--ypp-radius-md, 12px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  display: block !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  transition: box-shadow 0.25s ease !important;
 }
 
-.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer:hover ytd-thumbnail,
-.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer:hover ytd-thumbnail,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer:hover ytd-thumbnail {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* Ensure the image scales properly within the 9:16 aspect ratio */
-.ypp-grid-container ytd-rich-section-renderer ytd-thumbnail img,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-thumbnail img {
+ytd-rich-shelf-renderer[is-shorts] ytd-thumbnail img,
+ytd-reel-shelf-renderer ytd-thumbnail img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--ypp-radius-md, 12px) !important;
+  border-radius: 12px !important;
+  display: block !important;
 }
 
-/* Title Area Styling */
-.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer #video-title,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer #video-title,
-.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer #video-title,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer #video-title {
-  font-size: 1.4rem !important;
-  line-height: 2rem !important;
+ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer:hover ytd-thumbnail,
+ytd-reel-shelf-renderer ytd-rich-item-renderer:hover ytd-thumbnail {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ── 6. TITLE / METADATA ────────────────────────────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #video-title,
+ytd-reel-shelf-renderer #video-title,
+ytd-rich-shelf-renderer[is-shorts] .yt-lockup-view-model-wiz__title,
+ytd-reel-shelf-renderer .yt-lockup-view-model-wiz__title {
+  font-size: 1.3rem !important;
+  line-height: 1.8rem !important;
   font-weight: 600 !important;
-  margin-top: 12px !important;
-  color: var(--yt-spec-text-primary) !important;
+  margin-top: 8px !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
   text-transform: none !important;
-  -webkit-line-clamp: 2 !important;
+  /* Clamp to 2 lines */
   display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
+  max-height: 3.6rem !important;
 }
 
-/* Metadata Styling (Views & Time) */
-.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer #metadata-line,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer #metadata-line,
-.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer #metadata-line,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer #metadata-line {
-  font-size: 1.2rem !important;
-  color: var(--yt-spec-text-secondary) !important;
-  margin-top: 4px !important;
+ytd-rich-shelf-renderer[is-shorts] #metadata-line,
+ytd-reel-shelf-renderer #metadata-line {
+  font-size: 1.1rem !important;
+  color: var(--yt-spec-text-secondary, rgba(255,255,255,0.6)) !important;
+  margin-top: 2px !important;
 }
 
-/* Hide Unnecessary Elements from Shorts */
-.ypp-grid-container ytd-rich-section-renderer ytd-rich-item-renderer #avatar-link,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-rich-item-renderer #avatar-link,
-.ypp-grid-container ytd-rich-section-renderer ytd-reel-item-renderer #avatar-link,
-.ypp-grid-container ytd-rich-shelf-renderer ytd-reel-item-renderer #avatar-link {
+/* ── 7. HIDE AVATAR (clutter on portrait cards) ─────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #avatar-link,
+ytd-reel-shelf-renderer #avatar-link {
   display: none !important;
+}
+
+/* ── 8. SAFETY: override any global grid-item rules that would break shorts ─ */
+/* (mirrors the Shorts Safety Reset in grid-layout.css but scoped to shelf) */
+ytd-rich-shelf-renderer[is-shorts] #dismissible,
+ytd-reel-shelf-renderer #dismissible {
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  height: auto !important;
+}
+
+ytd-rich-shelf-renderer[is-shorts] #dismissible::before,
+ytd-reel-shelf-renderer #dismissible::before {
+  display: none !important;
+  content: none !important;
 }

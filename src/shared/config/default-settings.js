@@ -166,21 +166,43 @@ export const DEFAULT_SETTINGS = {
   hideWatchedSubs: true,
   hideWatchedSearch: true,
   hideWatchedRelated: true,
+
+  hideMixesHome: true,
+  hideMixesChannel: true,
+  hideMixesSubs: true,
+  hideMixesSearch: true,
+  hideMixesRelated: true,
+
+  hidePlaylists: false,
+  hidePlaylistsHome: true,
+  hidePlaylistsChannel: true,
+  hidePlaylistsSubs: true,
+  hidePlaylistsSearch: true,
+  hidePlaylistsRelated: true,
+
+  hidePodcasts: false,
+  hidePodcastsHome: true,
+  hidePodcastsChannel: true,
+  hidePodcastsSubs: true,
+  hidePodcastsSearch: true,
+  hidePodcastsRelated: true,
+
+  hidePosts: false,
+  hidePostsHome: true,
+  hidePostsChannel: true,
+  hidePostsSubs: true,
+  hidePostsSearch: true,
+  hidePostsRelated: true,
   hideMerch: false,
   hideComments: false,
   hideLiveChat: false,
   hideFundraiser: false,
   headerNavEnabled: true,
   hideEndScreens: false,
-  hideSearchShelves: true,
-  hideSearchMixes: false,
-  hideSearchPlaylists: false,
-  hideSearchPodcasts: false,
-  hideSearchMusic: false,
-  hideSearchTopics: false,
-  hideChannelCards: false,
+  hideSearchTopics: false, // Search Topics Filter Chip Bar
+  hideSearchShelves: true, // Auto-removes those terrible "For You" shelves inside Search
+  hideChannelCards: false, // E.g. Top result is sometimes a channel card
   hideCards: false, // Player video card pop-ups
-  hideAnnotations: false, // Player on-screen annotations
   hideRelated: false, // Watch page related sidebar
   hideVoiceSearch: false, // Header microphone icon
   hideUploadButton: false, // Header upload button

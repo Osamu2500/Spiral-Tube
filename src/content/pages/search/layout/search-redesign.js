@@ -161,8 +161,8 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 () => this._isEnabled,
                 SearchRedesign.CLASSES
             );
-            const hasDeclutter = this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.hideSearchShorts || this._settings.hideSearchMixes || this._settings.hideSearchPlaylists || this._settings.hideSearchPodcasts || this._settings.hideSearchMusic || this._settings.aggressiveShortsBlock;
-            if (this._settings.searchGrid || this._settings.searchLayout || hasDeclutter) {
+            
+            if (this._settings.searchGrid) {
                 // Apply the selected search layout size via data attribute
                 const layoutSize = this._settings.searchLayout || 'regular';
                 document.body.setAttribute('data-ypp-search-layout', layoutSize);

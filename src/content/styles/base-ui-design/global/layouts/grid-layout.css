@@ -347,23 +347,29 @@ body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-histor
 /* Override YouTube's own --ytd-rich-grid-items-per-row at EVERY level.
    YouTube's polymer JS sets this variable on the renderer AND on individual rows/items.
    Setting it to 'auto' makes calc(100%/auto) resolve as invalid, which browsers discard. */
-/* Neuter YouTube's own grid variable — only on pages that use our grid */
-body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-renderer,
+/* Neuter YouTube's own grid variable — only on pages that use our grid,
+   and ONLY for main grid items (not shelves).
+   This preserves YouTube's native math for Playables, Posts, etc. inside section renderers. */
 body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)) ytd-rich-grid-row,
-body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)):not(.cinematic-home) ytd-rich-item-renderer {
+body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)):not(.cinematic-home) ytd-rich-grid-renderer > #contents > ytd-rich-item-renderer {
   --ytd-rich-grid-items-per-row: auto !important;
-  --ytd-rich-grid-posts-per-row: auto !important;
 }
 
 /* ytd-rich-section-renderer: wide promo/shelf cards injected mid-scroll by YouTube.
    Force them to span the full grid row so they never break column flow.
    If empty (e.g. Shorts shelf hidden inside), hide them entirely to prevent blank rows. */
-body:not(.ypp-channel-page) ytd-rich-section-renderer {
+body:not(.ypp-channel-page) ytd-rich-section-renderer,
+body:not(.ypp-channel-page) ytd-rich-shelf-renderer,
+body:not(.ypp-channel-page) ytd-reel-shelf-renderer {
   grid-column: 1 / -1 !important;
   width: 100% !important;
 }
+
+
 /* Hide section renderers that are completely empty (all children hidden) */
-body:not(.ypp-channel-page) ytd-rich-section-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))) {
+body:not(.ypp-channel-page) ytd-rich-section-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))),
+body:not(.ypp-channel-page) ytd-rich-shelf-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))),
+body:not(.ypp-channel-page) ytd-reel-shelf-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))) {
   display: none !important;
 }
 
@@ -373,7 +379,7 @@ body:not(.ypp-channel-page) ytd-rich-section-renderer:not(:has(*:not([style*="di
    so YouTube's own calc(100% / var(--ytd-rich-grid-items-per-row)) resolves as invalid. */
 /* Individual Video Items - Premium Glassmorphic Card.
    Guard: skip on playlist / library / history pages */
-body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)):not(.cinematic-home) ytd-rich-item-renderer {
+body:not(:is(.cinematic-home, .ypp-playlist-page, .ypp-library-page, .ypp-history-page, .ypp-channel-page)):not(.cinematic-home) ytd-rich-item-renderer:not(ytd-rich-section-renderer ytd-rich-item-renderer):not(ytd-rich-shelf-renderer ytd-rich-item-renderer):not(ytd-reel-shelf-renderer ytd-rich-item-renderer) {
   width: 100% !important;
   min-width: 0 !important;
   max-width: 100% !important;

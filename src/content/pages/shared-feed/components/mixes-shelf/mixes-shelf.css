@@ -1,0 +1,136 @@
+/* 
+ * ==========================================================================
+ * MIXES / AUTO-PLAYLIST SHELF COMPONENT
+ * Handles "My Mix", "Radio", and auto-generated playlist shelves that
+ * appear in the home feed using ytd-compact-radio-renderer or
+ * ytd-radio-renderer as their items.
+ *
+ * Strategy: Render as a horizontal flex-scroller — mirroring native
+ * YouTube's own treatment of these shelves — with fixed-width 16:9
+ * thumbnail cards (200px wide).
+ * ==========================================================================
+ */
+
+/* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
+ytd-rich-section-renderer:has(ytd-compact-radio-renderer),
+ytd-rich-section-renderer:has(ytd-radio-renderer),
+ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer),
+ytd-rich-shelf-renderer:has(ytd-radio-renderer) {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 8px 0 16px !important;
+  margin: 8px 0 !important;
+}
+
+/* ── 2. INNER CONTENTS: horizontal scroller ─────────────────────────────── */
+ytd-rich-section-renderer:has(ytd-compact-radio-renderer) #contents,
+ytd-rich-section-renderer:has(ytd-radio-renderer) #contents,
+ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) #contents,
+ytd-rich-shelf-renderer:has(ytd-radio-renderer) #contents {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 12px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 4px 4px 14px 4px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 20px, black calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 20px, black calc(100% - 40px), transparent 100%);
+}
+
+ytd-rich-section-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrollbar,
+ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrollbar {
+  height: 4px !important;
+}
+ytd-rich-section-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrollbar-track,
+ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+ytd-rich-section-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrollbar-thumb,
+ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+/* ── 3. EACH MIX CARD ───────────────────────────────────────────────────── */
+:root { --ypp-mix-card-w: 220px; }
+@media (max-width: 1200px) { :root { --ypp-mix-card-w: 196px; } }
+@media (max-width: 900px)  { :root { --ypp-mix-card-w: 170px; } }
+
+ytd-compact-radio-renderer,
+ytd-radio-renderer,
+ytd-rich-section-renderer:has(ytd-compact-radio-renderer) ytd-rich-item-renderer,
+ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) ytd-rich-item-renderer {
+  flex: 0 0 var(--ypp-mix-card-w) !important;
+  width: var(--ypp-mix-card-w) !important;
+  min-width: 0 !important;
+  max-width: var(--ypp-mix-card-w) !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+  transition: transform 0.25s ease !important;
+}
+
+ytd-compact-radio-renderer:hover,
+ytd-radio-renderer:hover {
+  transform: translateY(-3px) !important;
+}
+
+/* ── 4. MIX THUMBNAIL: 16:9 ─────────────────────────────────────────────── */
+ytd-compact-radio-renderer ytd-thumbnail,
+ytd-radio-renderer ytd-thumbnail {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  display: block !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+}
+
+ytd-compact-radio-renderer ytd-thumbnail img,
+ytd-radio-renderer ytd-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  display: block !important;
+}
+
+/* ── 5. MIX TITLE / META ────────────────────────────────────────────────── */
+ytd-compact-radio-renderer #video-title,
+ytd-radio-renderer #video-title,
+ytd-compact-radio-renderer .title,
+ytd-radio-renderer .title {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  line-height: 1.8rem !important;
+  margin-top: 8px !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+}
+
+ytd-compact-radio-renderer #long-byline,
+ytd-radio-renderer #long-byline,
+ytd-compact-radio-renderer #metadata-line,
+ytd-radio-renderer #metadata-line {
+  font-size: 1.1rem !important;
+  color: var(--yt-spec-text-secondary, rgba(255,255,255,0.6)) !important;
+  margin-top: 2px !important;
+}
+
+/* ── 6. HIDE VIDEO COUNT OVERLAY ON THUMBNAIL (optional clutter) ────────── */
+ytd-compact-radio-renderer ytd-thumbnail-overlay-bottom-panel-renderer,
+ytd-radio-renderer ytd-thumbnail-overlay-bottom-panel-renderer {
+  border-radius: 0 0 8px 8px !important;
+}

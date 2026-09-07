@@ -340,7 +340,6 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         hideLiveChat: 'Toggle Live Chat',
         aggressiveShortsBlock: 'Toggle Shorts Remover',
         hideEndScreens: 'Toggle End Screens',
-        hideAnnotations: 'Toggle Annotations',
         hideMixes: 'Toggle Mixes',
         hideWatched: 'Toggle Watched Videos',
         hideMerch: 'Toggle Merch & Offers',
@@ -1071,7 +1070,7 @@ const initApp = async () => {
 
         safeInit(components.initPremiumAccentDropdown);
         safeInit(components.initSearchViewMode);
-        safeInit(components.initHideWatchedModePill);
+        safeInit(components.initFeatureModeButtons);
         safeInit(components.initHideWatchedPageButtons);
         safeInit(components.initViewsFilterPageButtons);
         safeInit(components.initDateFilterPageButtons);

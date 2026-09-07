@@ -1,0 +1,20 @@
+/* ==========================================================================
+   SHARED FEED SHELF COMPONENTS — Barrel
+   Imports all horizontal shelf layout/rendering fixes in the correct
+   cascade order. Each file handles one YouTube shelf type.
+   ========================================================================== */
+
+/* 1. Shorts shelf — 9:16 portrait horizontal scroller */
+@import './shorts-shelf/shorts-shelf.css';
+
+/* 2. Playables / Games shelf — 1:1 square horizontal scroller */
+@import './playables-shelf/playables-shelf.css';
+
+/* 3. Community Posts shelf — responsive auto-fill card grid */
+@import './posts-shelf/posts-shelf.css';
+
+/* 4. Mixes / Radio shelf — 16:9 horizontal scroller */
+@import './mixes-shelf/mixes-shelf.css';
+
+/* 5. Promo / Statement Banner shelf — height-capped banner */
+@import './promo-shelf/promo-shelf.css';

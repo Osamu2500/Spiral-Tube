@@ -109,9 +109,12 @@ export function loadSettings(updateUICallbacks) {
                         el.value = state.settings[key] || defaultSettings[key] || '';
                     } else if (el.type === 'hidden') {
                         el.value = state.settings[key] !== undefined ? state.settings[key] : (defaultSettings[key] !== undefined ? defaultSettings[key] : el.value);
-                        if (key === 'hideWatchedMode') {
+                        // Restore the active state of all feature-mode-btn pills generically
+                        // Key format is `${featureId}Mode`, e.g. hideWatchedMode, hideMixesMode
+                        if (key.endsWith('Mode')) {
+                            const featureId = key.slice(0, -4); // strip "Mode"
                             const mode = el.value;
-                            document.querySelectorAll('.hw-mode-btn').forEach((/** @type {any} */ b) => {
+                            document.querySelectorAll(`.feature-mode-btn[data-feature="${featureId}"]`).forEach((/** @type {any} */ b) => {
                                 const isActive = b.dataset.mode === mode;
                                 b.classList.toggle('active', isActive);
                                 b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';

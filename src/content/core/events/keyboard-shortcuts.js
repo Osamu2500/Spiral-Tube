@@ -52,7 +52,6 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             hideLiveChat: 'Live Chat Visibility',
             aggressiveShortsBlock: 'Shorts Remover',
             hideEndScreens: 'End Screens Visibility',
-            hideAnnotations: 'Annotations',
             enableVolumeBoost: 'Volume Booster',
             enableCinemaFilters: 'Video Filters',
             enableCustomSpeed: 'Custom Speed',
