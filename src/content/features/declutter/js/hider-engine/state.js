@@ -52,6 +52,7 @@ const prefs = {
   hidePostsSearch: true,
   hidePostsRelated: true,
   hidePromosEnabled: false,
+  hideTrendingEnabled: false,
   dateFilterNewerThreshold: 0,
   dateFilterOlderThreshold: 0,
   dateFilterHomeEnabled: false,
@@ -105,6 +106,7 @@ const FILTER_REAPPLY_KEYS = new Set([
   'hidePodcastsMode',
   'hidePostsMode',
   'hidePromosMode',
+  'hideTrendingMode',
   'dateFilterNewerThreshold',
   'dateFilterOlderThreshold',
   'dateFilterHomeEnabled',
@@ -282,6 +284,7 @@ function updatePrefsFromYPP(s) {
   prefs.hidePostsRelated = s.hidePostsRelated ?? true;
 
   prefs.hidePromosEnabled = s.hidePromoShelves ?? false;
+  prefs.hideTrendingEnabled = s.hideTrending ?? false;
 
   prefs.hideWatchedMode = s.hideWatchedMode || 'dim';
   prefs.viewsFilterEnabledMode = s.viewsFilterEnabledMode || 'hide';
@@ -295,6 +298,7 @@ function updatePrefsFromYPP(s) {
   prefs.hidePodcastsMode = s.hidePodcastsMode || 'hide';
   prefs.hidePostsMode = s.hidePostsMode || 'hide';
   prefs.hidePromosMode = s.hidePromosMode || 'hide';
+  prefs.hideTrendingMode = s.hideTrendingMode || 'hide';
 
   prefs.tutorialCompleted = true; // disable tutorial
   prefs.channelWhitelistEnabled = s.channelWhitelistEnabled ?? true;

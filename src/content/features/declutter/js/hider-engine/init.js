@@ -253,7 +253,21 @@ const injectZeroJSCSS = () => {
       ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer),
       ytd-rich-section-renderer:has(.badge-style-type-ad),
       ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer),
-      ytd-rich-section-renderer:has(ytd-game-card-renderer),
+      ytd-rich-section-renderer:has(ytd-game-card-renderer) {
+        ${action}
+      }
+    `;
+  }
+
+  if (prefs.hideTrendingEnabled) {
+    const action = prefs.hideTrendingMode === 'dim' ? 'opacity: 0.2 !important;' : 'display: none !important;';
+    css += `
+      ytd-rich-section-renderer:has(a[href*="/trending"]),
+      ytd-rich-section-renderer:has(a[href*="/explore"]),
+      ytd-rich-section-renderer:has(yt-icon[icon="yt-icons:trending"]),
+      ytd-guide-entry-renderer:has(a[href*="/feed/trending"]),
+      ytd-mini-guide-entry-renderer:has(a[href*="/feed/trending"]),
+      ytd-guide-entry-renderer:has(a[href*="/feed/explore"]),
       ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)),
       ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)):has(ytd-shelf-renderer) {
         ${action}
