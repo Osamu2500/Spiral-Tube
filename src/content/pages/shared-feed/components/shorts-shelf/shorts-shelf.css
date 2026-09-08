@@ -16,6 +16,7 @@ ytd-rich-shelf-renderer[is-shorts],
 ytd-reel-shelf-renderer,
 ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
 ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
+  --ytd-rich-grid-item-margin: 0px !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
