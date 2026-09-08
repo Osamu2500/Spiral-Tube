@@ -58,19 +58,15 @@ ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) #contents::-webkit-scrol
   border-radius: 4px !important;
 }
 
-/* ── 3. EACH MIX CARD ───────────────────────────────────────────────────── */
-:root { --ypp-mix-card-w: 220px; }
-@media (max-width: 1200px) { :root { --ypp-mix-card-w: 196px; } }
-@media (max-width: 900px)  { :root { --ypp-mix-card-w: 170px; } }
-
+/* ── 3. EACH MIX CARD: dynamic width to fill screen ───────────────────── */
 ytd-compact-radio-renderer,
 ytd-radio-renderer,
 ytd-rich-section-renderer:has(ytd-compact-radio-renderer) ytd-rich-item-renderer,
 ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer) ytd-rich-item-renderer {
-  flex: 0 0 var(--ypp-mix-card-w) !important;
-  width: var(--ypp-mix-card-w) !important;
-  min-width: 0 !important;
-  max-width: var(--ypp-mix-card-w) !important;
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 180px !important;
+  max-width: none !important;
   margin: 0 !important;
   box-sizing: border-box !important;
   border-radius: 10px !important;

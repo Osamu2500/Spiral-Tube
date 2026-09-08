@@ -36,8 +36,23 @@ ytd-horizontal-card-list-renderer {
   box-sizing: border-box !important;
 }
 
-/* YouTube's native #items already handles the horizontal layout correctly.
-   We only ensure it isn't constrained by our global variable overrides. */
+/* ── 3. FLEX LAYOUT TO FILL SCREEN ──────────────────────────────────────── */
 ytd-horizontal-card-list-renderer #items {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 12px !important;
+  width: 100% !important;
   box-sizing: border-box !important;
+}
+
+ytd-horizontal-card-list-renderer ytd-game-card-renderer,
+ytd-horizontal-card-list-renderer ytd-macro-markers-list-item-renderer,
+ytd-horizontal-card-list-renderer ytd-search-query-renderer,
+ytd-horizontal-card-list-renderer yt-lockup-view-model {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 150px !important;
+  max-width: none !important;
+  margin: 0 !important;
 }
