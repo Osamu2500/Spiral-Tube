@@ -367,12 +367,8 @@ body:not(.ypp-channel-page) ytd-reel-shelf-renderer {
 }
 
 
-/* Hide section renderers that are completely empty (all children hidden) */
-body:not(.ypp-channel-page) ytd-rich-section-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))),
-body:not(.ypp-channel-page) ytd-rich-shelf-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))),
-body:not(.ypp-channel-page) ytd-reel-shelf-renderer:not(:has(*:not([style*="display: none"]))):not(:has(*:not(.ypp-filter-hidden))) {
-  display: none !important;
-}
+/* Hide section renderers that are completely empty (all children hidden)
+   [Removed for performance: using :has(*:not(...)) on massive DOM trees freezes the browser] */
 
 /* ==========================================================================
    DYNAMIC FLEX LAYOUT FOR SHELVES (Fixes right-side empty gaps)

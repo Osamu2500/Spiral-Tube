@@ -48,11 +48,10 @@ body.ypp-shorts-page.ypp-hide-shorts :is(
 body.ypp-shorts-page.ypp-hide-shorts [data-ypp-is-short="true"] {
   display: none !important;
 }
-body.ypp-shorts-page.ypp-hide-shorts :is(
-  ytd-item-section-renderer:has(ytd-reel-shelf-renderer):not(:has(*:not(ytd-reel-shelf-renderer))),
-  ytd-item-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]):not(:has(*:not(ytd-rich-shelf-renderer[is-shorts]))),
-  ytd-section-list-renderer:has([is-shorts]):not(:has(*:not([is-shorts])))
-) {
+
+/* Search page specific */
+html[data-ypp-hide-shorts-shelf="true"] ytd-search ytd-reel-shelf-renderer,
+html[data-ypp-hide-shorts-shelf="true"] ytd-search ytd-rich-shelf-renderer[is-shorts] {
   display: none !important;
 }
 
