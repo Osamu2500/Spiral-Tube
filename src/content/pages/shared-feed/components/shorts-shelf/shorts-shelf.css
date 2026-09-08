@@ -2,27 +2,144 @@
  * ==========================================================================
  * SHORTS SHELF COMPONENT
  * ==========================================================================
- * Reverted to YouTube's native layout so shorts scale to fill the full width
- * of the screen natively. We only keep the margin reset here to prevent
- * the global grid-layout.css from pushing the shelf to the right.
+ * We rebuild the shorts shelf as a flex container so it doesn't get
+ * destroyed by the global grid-layout.css rules.
+ * To ensure it fills the screen edge-to-edge (no gap on right), 
+ * we use flex: 1 1 0 so all shorts share the row width equally.
  * ==========================================================================
  */
 
+/* ── 1. SHELF CONTAINER ─────────────────────────────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts],
+ytd-reel-shelf-renderer,
 ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
 ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
   --ytd-rich-grid-item-margin: 0px !important;
-  margin: 0 !important;
-  padding: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 8px 0 16px !important;
+  margin: 8px 0 !important;
+  display: block !important;
 }
 
-ytd-rich-shelf-renderer[is-shorts],
-ytd-reel-shelf-renderer {
-  --ytd-rich-grid-item-margin: 0px !important;
+/* ── 2. TITLE ROW (shelf header) ────────────────────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #title-container,
+ytd-reel-shelf-renderer #title-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 0 12px 0 !important;
   width: 100% !important;
-  max-width: 100% !important;
+}
+
+/* ── 3. INNER CONTENTS: horizontal scroller row ─────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #contents,
+ytd-reel-shelf-renderer #contents,
+ytd-rich-shelf-renderer[is-shorts] ytd-reel-shelf-renderer #contents {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 12px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 4px 2px 12px 2px !important;
+  width: 100% !important;
   box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
+}
+
+/* ── 4. EACH SHORT ITEM: dynamic width to fill screen ───────────────────── */
+ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer,
+ytd-reel-shelf-renderer ytd-rich-item-renderer,
+ytd-rich-shelf-renderer[is-shorts] ytd-reel-item-renderer,
+ytd-reel-shelf-renderer ytd-reel-item-renderer,
+ytd-rich-shelf-renderer[is-shorts] yt-lockup-view-model,
+ytd-reel-shelf-renderer yt-lockup-view-model {
+  flex: 1 1 0 !important; /* This makes them stretch evenly to fill the width */
+  width: auto !important;
+  min-width: 160px !important; /* Prevent them from getting too skinny on small screens */
+  max-width: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+  position: relative !important;
+}
+
+/* Hover lift */
+ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer:hover,
+ytd-reel-shelf-renderer ytd-rich-item-renderer:hover {
+  transform: translateY(-3px) !important;
+  transition: transform 0.25s ease !important;
+}
+
+/* ── 5. THUMBNAIL: 9:16 portrait aspect ratio ───────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] ytd-thumbnail,
+ytd-reel-shelf-renderer ytd-thumbnail,
+ytd-rich-shelf-renderer[is-shorts] ytd-reel-item-renderer ytd-thumbnail,
+ytd-reel-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
+  width: 100% !important;
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
   display: block !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  transition: box-shadow 0.25s ease !important;
+}
+
+ytd-rich-shelf-renderer[is-shorts] ytd-thumbnail img,
+ytd-reel-shelf-renderer ytd-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  display: block !important;
+}
+
+/* ── 6. TITLE / METADATA ────────────────────────────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #video-title,
+ytd-reel-shelf-renderer #video-title,
+ytd-rich-shelf-renderer[is-shorts] .yt-lockup-view-model-wiz__title,
+ytd-reel-shelf-renderer .yt-lockup-view-model-wiz__title {
+  font-size: 1.4rem !important;
+  line-height: 2rem !important;
+  font-weight: 600 !important;
+  margin-top: 8px !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  text-transform: none !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+ytd-rich-shelf-renderer[is-shorts] #metadata-line,
+ytd-reel-shelf-renderer #metadata-line {
+  font-size: 1.2rem !important;
+  color: var(--yt-spec-text-secondary, rgba(255,255,255,0.6)) !important;
+  margin-top: 4px !important;
+}
+
+/* ── 7. HIDE AVATAR (clutter on portrait cards) ─────────────────────────── */
+ytd-rich-shelf-renderer[is-shorts] #avatar-link,
+ytd-reel-shelf-renderer #avatar-link {
+  display: none !important;
+}
+
+/* ── 8. SAFETY: override any global grid-item rules that would break shorts ─ */
+ytd-rich-shelf-renderer[is-shorts] #dismissible,
+ytd-reel-shelf-renderer #dismissible {
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  height: auto !important;
+}
+
+ytd-rich-shelf-renderer[is-shorts] #dismissible::before,
+ytd-reel-shelf-renderer #dismissible::before {
+  display: none !important;
+  content: none !important;
 }
