@@ -119,7 +119,9 @@ ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) ytd-continuati
 /* Force the internal post layout to be vertical (Text on top, Image below) */
 ytd-post-renderer #body,
 ytd-shared-post-renderer #body,
-ytd-backstage-post-thread-renderer #body {
+ytd-backstage-post-thread-renderer #body,
+ytd-backstage-post-renderer #body,
+ytd-backstage-post-renderer > div {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
@@ -128,62 +130,109 @@ ytd-backstage-post-thread-renderer #body {
 /* Ensure text is above the image */
 ytd-post-renderer #post-text,
 ytd-post-renderer #content-text,
-ytd-shared-post-renderer #content-text {
+ytd-shared-post-renderer #content-text,
+ytd-backstage-post-renderer #content-text {
   order: 1 !important;
   margin-bottom: 12px !important;
+  width: 100% !important;
+  flex: none !important;
 }
 
 /* Image container below the text, spanning full width */
 ytd-post-renderer #content-attachment,
-ytd-shared-post-renderer #content-attachment {
+ytd-shared-post-renderer #content-attachment,
+ytd-backstage-post-renderer #content-attachment {
   order: 2 !important;
-  margin-top: 0 !important;
+  margin-top: 12px !important;
+  margin-left: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
+  height: auto !important;
+  min-height: 200px !important;
+  flex: none !important;
+}
+
+/* Reset any native constraints on the image wrapper so it can be full width */
+ytd-post-renderer ytd-backstage-image-renderer,
+ytd-backstage-post-renderer ytd-backstage-image-renderer,
+ytd-post-renderer #image-container,
+ytd-backstage-post-renderer #image-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-width: unset !important;
+  min-height: unset !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+}
+
+/* Make the image itself fill the container properly in resting state */
+ytd-post-renderer #content-attachment ytd-image,
+ytd-post-renderer #content-attachment img,
+ytd-shared-post-renderer #content-attachment ytd-image,
+ytd-shared-post-renderer #content-attachment img,
+ytd-backstage-post-renderer #content-attachment ytd-image,
+ytd-backstage-post-renderer #content-attachment img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 400px !important;
+  object-fit: cover !important;
 }
 
 /* Ensure the action bar (likes, comments) stays at the bottom */
 ytd-post-renderer #toolbar,
-ytd-shared-post-renderer #toolbar {
+ytd-shared-post-renderer #toolbar,
+ytd-backstage-post-renderer #toolbar {
   order: 3 !important;
   margin-top: 12px !important;
+  width: 100% !important;
 }
 
 /* ── 10. IMAGE HOVER POP-UP EFFECT ──────────────────────────────────────── */
-/* Ensure the card doesn't clip the zoomed image */
+/* CRITICAL: To allow the image to expand outside its box, ALL parents must have overflow: visible */
+ytd-rich-section-renderer:has(ytd-post-renderer),
+ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer),
+ytd-rich-section-renderer:has(ytd-backstage-post-renderer),
+ytd-rich-shelf-renderer:has(ytd-post-renderer),
+ytd-rich-item-renderer:has(ytd-post-renderer),
+ytd-rich-item-renderer:has(ytd-backstage-post-renderer),
 ytd-post-renderer,
 ytd-shared-post-renderer,
 ytd-backstage-post-thread-renderer,
-ytd-rich-item-renderer:has(ytd-post-renderer) {
+ytd-backstage-post-renderer,
+ytd-backstage-post-renderer #body,
+ytd-post-renderer #body,
+ytd-backstage-post-renderer #content-attachment,
+ytd-post-renderer #content-attachment {
   overflow: visible !important;
+  contain: none !important; /* YouTube uses CSS containment which blocks pop-outs */
 }
 
 /* The image itself (smooth transition, starting state) */
 ytd-post-renderer #content-attachment ytd-image,
 ytd-post-renderer #content-attachment img,
 ytd-shared-post-renderer #content-attachment ytd-image,
-ytd-shared-post-renderer #content-attachment img {
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease !important;
+ytd-shared-post-renderer #content-attachment img,
+ytd-backstage-post-renderer #content-attachment ytd-image,
+ytd-backstage-post-renderer #content-attachment img {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
   transform-origin: center center !important;
   position: relative !important;
   z-index: 1 !important;
-  border-radius: 8px !important;
 }
 
-/* Hover state: scale up and add drop shadow to "pop out" */
+/* Hover state: scale up drastically and add drop shadow to "pop out" */
+/* Using an aggressive scale and lifting it above EVERYTHING */
 ytd-post-renderer #content-attachment:hover ytd-image,
 ytd-post-renderer #content-attachment:hover img,
 ytd-shared-post-renderer #content-attachment:hover ytd-image,
-ytd-shared-post-renderer #content-attachment:hover img {
-  transform: scale(1.65) !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important;
-  z-index: 9999 !important;
-  /* Make sure the zoomed image stays above other cards */
-}
-
-/* Ensure the attachment container allows overflowing content during zoom */
-ytd-post-renderer #content-attachment,
-ytd-shared-post-renderer #content-attachment {
-  overflow: visible !important;
+ytd-shared-post-renderer #content-attachment:hover img,
+ytd-backstage-post-renderer #content-attachment:hover ytd-image,
+ytd-backstage-post-renderer #content-attachment:hover img {
+  transform: scale(2.0) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8) !important;
+  z-index: 2147483647 !important; /* Max z-index to stay above everything on the page */
+  border-radius: 12px !important;
 }
 
