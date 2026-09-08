@@ -116,12 +116,18 @@ ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) ytd-continuati
 }
 
 /* ── 9. MOBILE-LIKE UI FOR POSTS ────────────────────────────────────────── */
-/* Force the internal post layout to be vertical (Text on top, Image below) */
+/* 
+ * YouTube wraps the text and image in various containers (#body or #content).
+ * We must force the wrapper that holds BOTH of them into a column flexbox.
+ */
 ytd-post-renderer #body,
 ytd-shared-post-renderer #body,
 ytd-backstage-post-thread-renderer #body,
 ytd-backstage-post-renderer #body,
-ytd-backstage-post-renderer > div {
+ytd-post-renderer #content,
+ytd-shared-post-renderer #content,
+ytd-backstage-post-thread-renderer #content,
+ytd-backstage-post-renderer #content {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
@@ -131,7 +137,8 @@ ytd-backstage-post-renderer > div {
 ytd-post-renderer #post-text,
 ytd-post-renderer #content-text,
 ytd-shared-post-renderer #content-text,
-ytd-backstage-post-renderer #content-text {
+ytd-backstage-post-renderer #content-text,
+ytd-backstage-post-renderer #body /* Sometimes #body only holds text */ {
   order: 1 !important;
   margin-bottom: 12px !important;
   width: 100% !important;
@@ -216,23 +223,27 @@ ytd-shared-post-renderer #content-attachment ytd-image,
 ytd-shared-post-renderer #content-attachment img,
 ytd-backstage-post-renderer #content-attachment ytd-image,
 ytd-backstage-post-renderer #content-attachment img {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, object-fit 0.3s ease !important;
   transform-origin: center center !important;
   position: relative !important;
   z-index: 1 !important;
+  object-fit: cover !important; /* Start cropped/clean */
 }
 
 /* Hover state: scale up drastically and add drop shadow to "pop out" */
 /* Using an aggressive scale and lifting it above EVERYTHING */
+/* We also change object-fit to contain so the user sees the FULL uncropped image */
 ytd-post-renderer #content-attachment:hover ytd-image,
 ytd-post-renderer #content-attachment:hover img,
 ytd-shared-post-renderer #content-attachment:hover ytd-image,
 ytd-shared-post-renderer #content-attachment:hover img,
 ytd-backstage-post-renderer #content-attachment:hover ytd-image,
 ytd-backstage-post-renderer #content-attachment:hover img {
-  transform: scale(2.0) !important;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8) !important;
+  transform: scale(2.2) !important;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.9) !important;
   z-index: 2147483647 !important; /* Max z-index to stay above everything on the page */
   border-radius: 12px !important;
+  object-fit: contain !important; /* Uncrop the image on hover */
+  background: rgba(0,0,0,0.8) !important; /* Dark backdrop for the uncropped image */
 }
 
