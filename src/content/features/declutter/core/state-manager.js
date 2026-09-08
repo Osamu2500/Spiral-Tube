@@ -1,10 +1,7 @@
-const TIMING = {
-  DEBOUNCE_MUTATIONS: 100,
-  PAGE_CHANGE_DELAY: 100,
-  ELEMENT_POLL_INTERVAL: 50,
-};
+import { safeStorageSet } from '../utils/common.js';
+import { computeWhitelistUpdate } from '../utils/whitelist-utils.js';
 
-const prefs = {
+export const prefs = {
   extensionEnabled: true,
   hideThreshold: 0,
   hideHomeEnabled: true,
@@ -67,145 +64,23 @@ const prefs = {
   channelBlacklist: [],
   channelBlacklistEnabled: true,
   hideInterfaceElements: false,
+  
+  // Modes
+  hideWatchedMode: 'dim',
+  viewsFilterEnabledMode: 'hide',
+  dateFilterEnabledMode: 'hide',
+  hideShortsMode: 'hide',
+  hideMixesMode: 'hide',
+  hidePlaylistsMode: 'hide',
+  hideLivesMode: 'hide',
+  hideUpcomingMode: 'hide',
+  hidePodcastsMode: 'hide',
+  hidePostsMode: 'hide',
+  hidePromosMode: 'hide',
+  hideTrendingMode: 'hide'
 };
 
-const FILTER_REAPPLY_KEYS = new Set([
-  'hideThreshold',
-  'hideHomeEnabled',
-  'hideChannelEnabled',
-  'hideSearchEnabled',
-  'hideSubsEnabled',
-  'hideCorrEnabled',
-  'viewsHideThreshold',
-  'viewsHideHomeEnabled',
-  'viewsHideChannelEnabled',
-  'viewsHideSearchEnabled',
-  'viewsHideSubsEnabled',
-  'viewsHideCorrEnabled',
-  'hideShortsEnabled',
-  'hideShortsHome',
-  'hideShortsChannel',
-  'hideShortsSubs',
-  'hideShortsSearch',
-  'hideShortsRelated',
-  'hideShortsSearchEnabled',
-  'hideMixesEnabled',
-  'hidePlaylistsEnabled',
-  'hideLiveStreams',
-  'hideUpcoming',
-  'hidePodcasts',
-  'hidePosts',
-  'hideWatchedMode',
-  'viewsFilterEnabledMode',
-  'dateFilterEnabledMode',
-  'aggressiveShortsBlockMode',
-  'hideMixesMode',
-  'hidePlaylistsMode',
-  'hideLiveStreamsMode',
-  'hideUpcomingMode',
-  'hidePodcastsMode',
-  'hidePostsMode',
-  'hidePromosMode',
-  'hideTrendingMode',
-  'dateFilterNewerThreshold',
-  'dateFilterOlderThreshold',
-  'dateFilterHomeEnabled',
-  'dateFilterChannelEnabled',
-  'dateFilterSearchEnabled',
-  'dateFilterSubsEnabled',
-  'dateFilterCorrEnabled',
-  'channelWhitelist',
-  'channelWhitelistEnabled',
-  'channelBlacklist',
-  'channelBlacklistEnabled',
-]);
-
-const WHITELIST_REAPPLY_KEYS = new Set(['channelWhitelist', 'channelWhitelistEnabled']);
-
-function isChannelListed(channel) {
-  return channelListIncludes(channel, prefs.channelWhitelist);
-}
-
-function isChannelExempt(channel) {
-  return isChannelListed(channel) && !!prefs.channelWhitelistEnabled;
-}
-
-function isChannelPaused(channel) {
-  return isChannelListed(channel) && !prefs.channelWhitelistEnabled;
-}
-
-function isChannelOnBlacklist(channel) {
-  return channelListIncludes(channel, prefs.channelBlacklist);
-}
-
-function isChannelBlacklisted(channel) {
-  return isChannelOnBlacklist(channel) && !!prefs.channelBlacklistEnabled;
-}
-
-const CHANNEL_BLACKLIST_KEYS = { listKey: 'channelBlacklist', enabledKey: 'channelBlacklistEnabled' };
-const CHANNEL_WHITELIST_KEYS = { listKey: 'channelWhitelist', enabledKey: 'channelWhitelistEnabled' };
-
-function setChannelWhitelisted(channel, shouldWhitelist) {
-  const result = computeWhitelistUpdate(
-    channel,
-    shouldWhitelist,
-    prefs.channelWhitelist,
-    prefs.channelWhitelistEnabled,
-  );
-  if (!result) return null;
-
-  if (result.updates.channelWhitelist) prefs.channelWhitelist = result.list;
-  if (result.updates.channelWhitelistEnabled) prefs.channelWhitelistEnabled = true;
-
-  if (shouldWhitelist && result.changedChannels.length) {
-    const unblacklist = computeWhitelistUpdate(
-      result.changedChannels,
-      false,
-      prefs.channelBlacklist,
-      prefs.channelBlacklistEnabled,
-      CHANNEL_BLACKLIST_KEYS,
-    );
-    if (unblacklist && unblacklist.updates.channelBlacklist) {
-      prefs.channelBlacklist = unblacklist.list;
-      result.updates.channelBlacklist = unblacklist.list;
-    }
-  }
-
-  safeStorageSet('sync', result.updates);
-  return result;
-}
-
-function setChannelBlacklisted(channel, shouldBlacklist) {
-  const result = computeWhitelistUpdate(
-    channel,
-    shouldBlacklist,
-    prefs.channelBlacklist,
-    prefs.channelBlacklistEnabled,
-    CHANNEL_BLACKLIST_KEYS,
-  );
-  if (!result) return null;
-
-  if (result.updates.channelBlacklist) prefs.channelBlacklist = result.list;
-  if (result.updates.channelBlacklistEnabled) prefs.channelBlacklistEnabled = true;
-
-  if (shouldBlacklist && result.changedChannels.length) {
-    const unwhitelist = computeWhitelistUpdate(
-      result.changedChannels,
-      false,
-      prefs.channelWhitelist,
-      prefs.channelWhitelistEnabled,
-    );
-    if (unwhitelist && unwhitelist.updates.channelWhitelist) {
-      prefs.channelWhitelist = unwhitelist.list;
-      result.updates.channelWhitelist = unwhitelist.list;
-    }
-  }
-
-  safeStorageSet('sync', result.updates);
-  return result;
-}
-
-function updatePrefsFromYPP(s) {
+export function updatePrefsFromYPP(s) {
   prefs.extensionEnabled = true;
   
   if (!s.hideWatched) {
@@ -306,14 +181,13 @@ function updatePrefsFromYPP(s) {
   prefs.hideInterfaceElements = s.hideOnPageControls ?? false;
 }
 
-function initPrefs() {
+export function initPrefs() {
   return new Promise(resolve => {
     try {
       if (window.YPP && window.YPP.settings) {
         updatePrefsFromYPP(window.YPP.settings);
         resolve();
       } else {
-        // Read from local storage (where PATCH_SETTINGS writes to)
         chrome.storage.local.get('settings', localResult => {
           const localSettings = localResult.settings;
           if (localSettings && Object.keys(localSettings).length > 0) {
@@ -324,7 +198,6 @@ function initPrefs() {
             if (localSettings.channelBlacklistEnabled !== undefined) prefs.channelBlacklistEnabled = localSettings.channelBlacklistEnabled;
             resolve();
           } else {
-            // Fallback to sync if local is empty
             chrome.storage.sync.get('settings', syncResult => {
               const rawSettings = syncResult.settings || {};
               updatePrefsFromYPP(rawSettings);
@@ -339,50 +212,116 @@ function initPrefs() {
   });
 }
 
-function setupPrefsListener() {
-  try {
-    if (window.YPP && window.YPP.events) {
-      window.YPP.events.on('settings:updated', () => {
-         updatePrefsFromYPP(window.YPP.settings);
-         injectZeroJSCSS();
-         resetAppliedFilters(true);
-         startHiding(currentPath);
+class StateManager {
+  constructor() {
+    this.listeners = [];
+  }
+
+  onChange(callback) {
+    this.listeners.push(callback);
+  }
+
+  notify() {
+    this.listeners.forEach(cb => cb());
+  }
+
+  setupListeners() {
+    try {
+      if (window.YPP && window.YPP.events) {
+        window.YPP.events.on('settings:updated', () => {
+           updatePrefsFromYPP(window.YPP.settings);
+           this.notify();
+        });
+        window.YPP.events.on('watched:updated', () => {
+           updatePrefsFromYPP(window.YPP.settings);
+           this.notify();
+        });
+      }
+    } catch (e) {}
+
+    try {
+      chrome.storage.onChanged.addListener((changes, area) => {
+        if (area !== 'local') return;
+        const settingsChange = changes.settings;
+        if (!settingsChange || !settingsChange.newValue) return;
+
+        const newSettings = settingsChange.newValue;
+        updatePrefsFromYPP(newSettings);
+
+        if (newSettings.channelWhitelist) prefs.channelWhitelist = newSettings.channelWhitelist;
+        if (newSettings.channelWhitelistEnabled !== undefined) prefs.channelWhitelistEnabled = newSettings.channelWhitelistEnabled;
+        if (newSettings.channelBlacklist) prefs.channelBlacklist = newSettings.channelBlacklist;
+        if (newSettings.channelBlacklistEnabled !== undefined) prefs.channelBlacklistEnabled = newSettings.channelBlacklistEnabled;
+
+        this.notify();
       });
-      window.YPP.events.on('watched:updated', () => {
-         updatePrefsFromYPP(window.YPP.settings);
-         injectZeroJSCSS();
-         startHiding(currentPath);
-      });
+    } catch (e) {
+      // Chrome extension context not available
     }
-  } catch (e) {}
+  }
 }
 
-// Fix #1: Direct storage listener — works independently of window.YPP.events
-// This is the PRIMARY update path. When the popup saves settings via PATCH_SETTINGS,
-// the service worker writes to chrome.storage.local, which fires this listener.
-function setupStorageListener() {
-  try {
-    chrome.storage.onChanged.addListener((changes, area) => {
-      // Only care about local storage (that's where PATCH_SETTINGS writes)
-      if (area !== 'local') return;
-      const settingsChange = changes.settings;
-      if (!settingsChange || !settingsChange.newValue) return;
+export const stateManager = new StateManager();
 
-      const newSettings = settingsChange.newValue;
-      updatePrefsFromYPP(newSettings);
+const CHANNEL_BLACKLIST_KEYS = { listKey: 'channelBlacklist', enabledKey: 'channelBlacklistEnabled' };
+const CHANNEL_WHITELIST_KEYS = { listKey: 'channelWhitelist', enabledKey: 'channelWhitelistEnabled' };
 
-      // Also sync channel lists from new settings
-      if (newSettings.channelWhitelist) prefs.channelWhitelist = newSettings.channelWhitelist;
-      if (newSettings.channelWhitelistEnabled !== undefined) prefs.channelWhitelistEnabled = newSettings.channelWhitelistEnabled;
-      if (newSettings.channelBlacklist) prefs.channelBlacklist = newSettings.channelBlacklist;
-      if (newSettings.channelBlacklistEnabled !== undefined) prefs.channelBlacklistEnabled = newSettings.channelBlacklistEnabled;
+export function setChannelWhitelisted(channel, shouldWhitelist) {
+  const result = computeWhitelistUpdate(
+    channel,
+    shouldWhitelist,
+    prefs.channelWhitelist,
+    prefs.channelWhitelistEnabled,
+  );
+  if (!result) return null;
 
-      // Immediately re-apply CSS rules and re-run JS filters
-      injectZeroJSCSS();
-      resetAppliedFilters(true);
-      startHiding(currentPath);
-    });
-  } catch (e) {
-    logger.warn('setupStorageListener failed:', e);
+  if (result.updates.channelWhitelist) prefs.channelWhitelist = result.list;
+  if (result.updates.channelWhitelistEnabled) prefs.channelWhitelistEnabled = true;
+
+  if (shouldWhitelist && result.changedChannels.length) {
+    const unblacklist = computeWhitelistUpdate(
+      result.changedChannels,
+      false,
+      prefs.channelBlacklist,
+      prefs.channelBlacklistEnabled,
+      CHANNEL_BLACKLIST_KEYS,
+    );
+    if (unblacklist && unblacklist.updates.channelBlacklist) {
+      prefs.channelBlacklist = unblacklist.list;
+      result.updates.channelBlacklist = unblacklist.list;
+    }
   }
+
+  safeStorageSet('sync', result.updates);
+  return result;
+}
+
+export function setChannelBlacklisted(channel, shouldBlacklist) {
+  const result = computeWhitelistUpdate(
+    channel,
+    shouldBlacklist,
+    prefs.channelBlacklist,
+    prefs.channelBlacklistEnabled,
+    CHANNEL_BLACKLIST_KEYS,
+  );
+  if (!result) return null;
+
+  if (result.updates.channelBlacklist) prefs.channelBlacklist = result.list;
+  if (result.updates.channelBlacklistEnabled) prefs.channelBlacklistEnabled = true;
+
+  if (shouldBlacklist && result.changedChannels.length) {
+    const unwhitelist = computeWhitelistUpdate(
+      result.changedChannels,
+      false,
+      prefs.channelWhitelist,
+      prefs.channelWhitelistEnabled,
+    );
+    if (unwhitelist && unwhitelist.updates.channelWhitelist) {
+      prefs.channelWhitelist = unwhitelist.list;
+      result.updates.channelWhitelist = unwhitelist.list;
+    }
+  }
+
+  safeStorageSet('sync', result.updates);
+  return result;
 }

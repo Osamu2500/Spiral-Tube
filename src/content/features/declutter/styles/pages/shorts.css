@@ -1,0 +1,140 @@
+/* 
+ * ==========================================================================
+ * SHORTS DECLUTTER
+ * ========================================================================== 
+ */
+
+/* --- New Renderer Types (2024+) & Individual Shorts Videos --- */
+body.ypp-shorts-page.ypp-hide-shorts :is(
+  reels-video-with-pill-title-renderer,
+  ytd-reel-video-renderer,
+  grid-shelf-view-model,
+  ytd-reel-item-renderer,
+  ytd-rich-grid-slim-media,
+  ytd-shorts,
+  ytd-rich-item-renderer:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media, ytd-reel-item-renderer, ytm-reel-item-renderer, span[aria-label="Shorts"], yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"], ytd-badge-supported-renderer[aria-label="Shorts"])),
+  yt-lockup-view-model:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media, ytd-reel-item-renderer, yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"])),
+  ytd-video-renderer:has(:is(a[href*="/shorts"], span[aria-label="Shorts"], ytd-badge-supported-renderer[aria-label="Shorts"])),
+  ytd-grid-video-renderer:has(:is(a[href*="/shorts"], span#text[aria-label="Shorts"])),
+  ytd-compact-video-renderer:has(:is(a[href*="/shorts"], span[aria-label="Shorts"])),
+  ytd-playlist-video-renderer:has(a[href*="/shorts"])
+) {
+  display: none !important;
+}
+
+/* --- Navigation & Tabs --- */
+body.ypp-shorts-page.ypp-hide-shorts :is(
+  ytd-guide-entry-renderer:has(a[title="Shorts"]),
+  ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+  tp-yt-paper-tab:is([aria-label="Shorts"], [tab-title="Shorts"]),
+  yt-tab-shape[tab-title="Shorts"],
+  yt-chip-cloud-chip-renderer:has(a[href*="/shorts"])
+) {
+  display: none !important;
+}
+
+/* --- Shelf Title & Secondary Results & Feed --- */
+body.ypp-shorts-page.ypp-hide-shorts :is(
+  ytd-shelf-renderer:has(:is(span#title[aria-label*="Shorts"], div#title-container h2 span[aria-label*="Shorts"], a[href*="/shorts"], ytd-icon-button-renderer[aria-label="Shorts"])),
+  #related :is(ytd-reel-shelf-renderer, ytd-compact-video-renderer:has(a[href*="/shorts"])),
+  ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
+  ytd-rich-section-renderer:has([is-shorts]),
+  #grid-container ytd-rich-item-renderer:has(a[href*="/shorts"])
+) {
+  display: none !important;
+}
+
+/* --- Stamped Heuristic Shorts --- */
+body.ypp-shorts-page.ypp-hide-shorts [data-ypp-is-short="true"] {
+  display: none !important;
+}
+body.ypp-shorts-page.ypp-hide-shorts :is(
+  ytd-item-section-renderer:has(ytd-reel-shelf-renderer):not(:has(*:not(ytd-reel-shelf-renderer))),
+  ytd-item-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]):not(:has(*:not(ytd-rich-shelf-renderer[is-shorts]))),
+  ytd-section-list-renderer:has([is-shorts]):not(:has(*:not([is-shorts])))
+) {
+  display: none !important;
+}
+
+body.ypp-shorts-page.ypp-hide-shorts :is(
+  ytd-item-section-renderer:has(:is(ytd-reel-shelf-renderer, ytd-rich-shelf-renderer[is-shorts], ytd-shelf-renderer[is-shorts], ytd-shelf-renderer span#title[aria-label*="Shorts"])),
+  ytd-rich-section-renderer[is-shorts],
+  ytd-reel-shelf-renderer,
+  ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+  ytd-video-renderer:has(a[href^="/shorts/"]),
+  ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+  ytd-compact-video-renderer:has(a[href^="/shorts/"])
+) {
+    display: none !important;
+}
+body.ypp-shorts-page.ypp-hide-metrics #count.ytd-comments-header-renderer {
+    display: none !important;
+}
+body.ypp-shorts-page.ypp-hide-upload-button #buttons ytd-topbar-menu-button-renderer:has(svg path[d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"]),
+body.ypp-shorts-page.ypp-hide-upload-button ytd-masthead #buttons ytd-topbar-menu-button-renderer:nth-child(1),
+body.ypp-shorts-page.ypp-hide-upload-button ytd-masthead [aria-label="Create"],
+body.ypp-shorts-page.ypp-hide-upload-button ytd-masthead a[href*="/upload"] {
+  display: none !important;
+}
+
+body.ypp-shorts-page.ypp-hide-podcasts :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  yt-lockup-view-model
+):has(:is(a[href^="/podcast?"], ytd-badge-supported-renderer[aria-label="Podcast" i], ytd-badge-supported-renderer[aria-label="Podcasts" i])) {
+    display: none !important;
+}
+.ypp-hidden-duration {
+  display: none !important;
+}
+html body [data-ypp-hidden="1"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+
+/* --- Nuke Shorts (From shorts-blocker.css) --- */
+/* 
+ * Shorts Blocker Component
+ * Toggles for aggressively hiding Shorts from feeds and sidebars
+ */
+
+body.ypp-shorts-page.ypp-nuke-shorts :is(
+  ytd-rich-section-renderer[is-shorts],
+  ytd-rich-section-renderer:has(:is(ytd-rich-shelf-renderer, ytd-rich-grid-slim-media, ytd-reel-item-renderer)),
+  ytd-rich-item-renderer:has(:is(ytd-reel-item-renderer, ytd-rich-grid-slim-media, a[href*="/shorts"])),
+  yt-lockup-view-model:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media)),
+  ytd-reel-shelf-renderer,
+  ytd-guide-entry-renderer:has(a[href*="/shorts"]),
+  ytd-mini-guide-entry-renderer:has(a[href*="/shorts"]),
+  [is-shorts],
+  ytd-video-renderer:has(a[href*="/shorts"]),
+  ytd-compact-video-renderer:has(a[href*="/shorts"])
+) {
+  display: none !important;
+}
+
+.ypp-aggressive-shorts-block :is(
+  ytd-rich-item-renderer:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media)),
+  ytd-video-renderer:has(a[href*="/shorts"]),
+  ytd-grid-video-renderer:has(a[href*="/shorts"]),
+  ytd-compact-video-renderer:has(a[href*="/shorts"]),
+  ytd-playlist-video-renderer:has(a[href*="/shorts"]),
+  yt-lockup-view-model:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media)),
+  ytd-reel-shelf-renderer,
+  ytd-rich-shelf-renderer[is-shorts],
+  ytd-rich-section-renderer:has(:is(ytd-rich-shelf-renderer, ytd-rich-grid-slim-media)),
+  ytm-reel-shelf-renderer,
+  ytd-guide-entry-renderer:has(a[title="Shorts"]),
+  ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+  yt-tab-shape[tab-title="Shorts"]
+) {
+  display: none !important;
+}

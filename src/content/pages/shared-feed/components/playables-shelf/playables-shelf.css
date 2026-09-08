@@ -2,9 +2,107 @@
  * ==========================================================================
  * PLAYABLES / GAMES SHELF COMPONENT
  * ==========================================================================
- * YouTube's native Playables shelf styling is correct and matches the
- * user's requested layout perfectly.
- * Since we scoped our global CSS grid variables away from shelves,
- * the native YouTube layout works perfectly.
- * We leave this file empty to allow native styling to take over.
+ * Handles the YouTube Playables (mini-games) shelf that uses
+ * ytd-horizontal-card-list-renderer or ytd-game-card-renderer.
+ *
+ * Strategy: The outer grid assigns grid-column: 1/-1 and display: block
+ * to the shelf container (via grid-layout.css). This file rebuilds the
+ * INNER layout as a contained horizontal flex-scroller so game cards
+ * never inherit the outer grid context and never blow up to full-width.
+ * ==========================================================================
  */
+
+/* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
+ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer),
+ytd-rich-section-renderer:has(ytd-game-card-renderer),
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 8px 0 16px !important;
+  margin: 8px 0 !important;
+}
+
+/* ── 2. HORIZONTAL CARD LIST CONTAINER ──────────────────────────────────── */
+ytd-horizontal-card-list-renderer {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+ytd-horizontal-card-list-renderer #items,
+ytd-rich-section-renderer:has(ytd-game-card-renderer) #contents,
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) #contents {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 12px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 4px 2px 12px 2px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
+}
+
+ytd-horizontal-card-list-renderer #items::-webkit-scrollbar,
+ytd-rich-section-renderer:has(ytd-game-card-renderer) #contents::-webkit-scrollbar {
+  height: 4px !important;
+}
+ytd-horizontal-card-list-renderer #items::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+/* ── 3. EACH GAME CARD ──────────────────────────────────────────────────── */
+:root {
+  --ypp-game-card-w: 160px;
+}
+
+ytd-horizontal-card-list-renderer ytd-game-card-renderer,
+ytd-horizontal-card-list-renderer yt-lockup-view-model,
+ytd-horizontal-card-list-renderer ytd-rich-item-renderer,
+ytd-rich-section-renderer:has(ytd-game-card-renderer) ytd-game-card-renderer,
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) ytd-game-card-renderer {
+  flex: 0 0 var(--ypp-game-card-w) !important;
+  width: var(--ypp-game-card-w) !important;
+  min-width: 0 !important;
+  max-width: var(--ypp-game-card-w) !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ── 4. GAME THUMBNAIL: portrait card ───────────────────────────────────── */
+ytd-horizontal-card-list-renderer ytd-thumbnail,
+ytd-horizontal-card-list-renderer img.yt-core-image,
+ytd-game-card-renderer ytd-thumbnail,
+ytd-game-card-renderer img {
+  width: var(--ypp-game-card-w) !important;
+  height: var(--ypp-game-card-w) !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  display: block !important;
+  overflow: hidden !important;
+}
+
+/* ── 5. GAME CARD METADATA ──────────────────────────────────────────────── */
+ytd-game-card-renderer #title,
+ytd-game-card-renderer .title,
+ytd-game-card-renderer #game-title {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  margin-top: 6px !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+ytd-game-card-renderer #metadata,
+ytd-game-card-renderer .metadata-line {
+  font-size: 1.1rem !important;
+  color: var(--yt-spec-text-secondary, rgba(255,255,255,0.6)) !important;
+}

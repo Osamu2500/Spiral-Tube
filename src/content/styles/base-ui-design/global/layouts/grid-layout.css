@@ -363,6 +363,7 @@ body:not(.ypp-channel-page) ytd-rich-shelf-renderer,
 body:not(.ypp-channel-page) ytd-reel-shelf-renderer {
   grid-column: 1 / -1 !important;
   width: 100% !important;
+  display: block !important; /* Reset: prevent shelf children inheriting outer CSS grid context */
 }
 
 

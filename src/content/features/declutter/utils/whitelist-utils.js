@@ -1,10 +1,10 @@
-function channelListIncludes(channel, list) {
+export function channelListIncludes(channel, list) {
   if (!channel || !Array.isArray(list)) return false;
   if (Array.isArray(channel)) return channel.some(c => list.includes(c));
   return list.includes(channel);
 }
 
-function pluralizeChannelWord(channel) {
+export function pluralizeChannelWord(channel) {
   const isMulti = Array.isArray(channel) && channel.length > 1;
   return {
     channelWord: isMulti ? 'these channels' : 'this channel',
@@ -12,7 +12,7 @@ function pluralizeChannelWord(channel) {
   };
 }
 
-function computeWhitelistUpdate(
+export function computeWhitelistUpdate(
   channel,
   shouldWhitelist,
   list,

@@ -4,6 +4,9 @@
  * Provides advanced UI interactions for YouTube filtering, 
  * including Dim badges, Hover Pills, and Undo buttons.
  */
+import { setChannelWhitelisted, setChannelBlacklisted, prefs } from '../core/state-manager.js';
+import { clearDimmedElement } from '../filters/engine/filter-core.js';
+import { extractChannelFromContainer } from '../utils/channel-utils.js';
 
 const UNDO_WINDOW_MS = 3000;
 const UNDO_COUNTDOWN_RADIUS = 8;
@@ -103,16 +106,8 @@ class FilterUIManager {
             cancelCountdown = null;
             if (pendingContainer) {
                 delete pendingContainer.dataset.yppPendingAction;
-                const wl = window.YPP.features.ChannelWhitelist;
-                if (wl) {
-                    let current = wl._settings.channelWhitelist || '';
-                    current += '\n' + channelPath;
-                    window.YPP.utils.settings.set('channelWhitelist', current);
-                    if (!wl._settings.channelWhitelistEnabled) {
-                        window.YPP.utils.settings.set('channelWhitelistEnabled', true);
-                    }
-                }
-                window.YPP.features.BaseFilterFeature.clearDimmedElement(pendingContainer);
+                setChannelWhitelisted(channelPath, true);
+                clearDimmedElement(pendingContainer);
                 pendingContainer = null;
             }
           });
@@ -129,15 +124,10 @@ class FilterUIManager {
         btn.addEventListener('click', e => {
           e.preventDefault();
           e.stopPropagation();
-          const bl = window.YPP.features.ChannelBlacklist;
-          if (bl) {
-              let current = bl._settings.channelBlacklist || '';
-              current = current.split('\n').filter(c => c.trim().toLowerCase() !== channelPath).join('\n');
-              window.YPP.utils.settings.set('channelBlacklist', current);
-          }
+          setChannelBlacklisted(channelPath, false);
           const container = btn.closest('[data-ypp-dimmed]');
           if (container) {
-              window.YPP.features.BaseFilterFeature.clearDimmedElement(container);
+              clearDimmedElement(container);
           }
         });
       
@@ -364,15 +354,7 @@ class HoverPillManager {
           cancelCountdown = startUndoCountdown(btn, () => {
             cancelCountdown = null;
             
-            const bl = window.YPP.features.ChannelBlacklist;
-            if (bl) {
-                let current = bl._settings.channelBlacklist || '';
-                current += '\n' + channelPath;
-                window.YPP.utils.settings.set('channelBlacklist', current);
-                if (!bl._settings.channelBlacklistEnabled) {
-                    window.YPP.utils.settings.set('channelBlacklistEnabled', true);
-                }
-            }
+            setChannelBlacklisted(channelPath, true);
             this.pending = false;
             this.clearButton();
           });
@@ -429,9 +411,8 @@ class HoverPillManager {
             }
         }
         
-        const blFeature = window.YPP?.features?.ChannelBlacklist || window.YPP?.featureManager?.getFeature?.('channelBlacklist');
-        if (!blFeature?.isEnabled) return;
-        const hideControls = window.YPP?.featureManager?.getSettings?.()?.hideOnPageControls;
+        if (!prefs.channelBlacklistEnabled) return;
+        const hideControls = prefs.hideInterfaceElements;
         if (hideControls) return;
         if (!e.target || !e.target.closest) return;
     
@@ -441,8 +422,7 @@ class HoverPillManager {
     
         if (this.container === container && this.el) return;
     
-        const parsers = window.YPP.Utils?.youtubeParsers;
-        const channelPathRaw = parsers ? parsers.extractChannelFromContainer(container) : null;
+        const channelPathRaw = extractChannelFromContainer(container);
         if (!channelPathRaw) return;
         
         const channelPath = Array.isArray(channelPathRaw) ? channelPathRaw[0] : channelPathRaw;

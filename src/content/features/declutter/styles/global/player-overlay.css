@@ -1,0 +1,122 @@
+/* ==========================================================================
+   DECLUTTER: Player Overlays, Metrics, and Content Hiding
+   ========================================================================== */
+
+body.ypp-hide-shorts-interaction ytd-reel-player-overlay-renderer #actions.ytd-reel-player-overlay-renderer {
+  display: none !important;
+}
+
+body.ypp-hide-podcasts :is(
+  tp-yt-paper-tab:has([title*="Podcast"], [title*="podcast"]),
+  [data-ypp-is-podcast='true'],
+  ytd-rich-section-renderer:has([href*='podcast']),
+  ytd-shelf-renderer:has([href*='podcast'])
+) {
+  display: none !important;
+}
+
+/* Metrics */
+body.ypp-hide-metrics :is(
+  #metadata-line,
+  ytd-video-meta-block,
+  #info-strings,
+  .ytd-video-meta-block,
+  #count,
+  ytd-video-view-count-renderer,
+  .view-count,
+  #info .style-scope:first-child,
+  #segmented-like-button .yt-spec-button-shape-next__button-text-content,
+  like-button-view-model .yt-spec-button-shape-next__button-text-content,
+  ytd-toggle-button-renderer .ytd-toggle-button-renderer,
+  #owner-sub-count,
+  ytd-channel-name + *,
+  #subscribers,
+  ytd-subscription-notification-toggle-button-renderer-next,
+  ytd-video-owner-renderer #subscriber-count,
+  ytd-channel-tagline-renderer,
+  #channel-header-container #subscribers,
+  ytd-playlist-thumbnail .playlist-items-count,
+  ytd-video-renderer #metadata-line span:first-child,
+  ytd-compact-video-renderer #metadata-line
+) {
+  display: none !important;
+}
+body.ypp-hide-metrics :is(
+  ytd-video-meta-block #metadata-line span,
+  ytd-video-meta-block #metadata-line .ytd-video-meta-block,
+  ytm-badge-and-byline-renderer .ytm-badge-and-byline-separator
+) {
+  display: none !important;
+}
+body.ypp-hide-metrics :is(
+  ytd-video-meta-block #metadata-line span:first-child,
+  ytd-video-meta-block #metadata-line span:nth-child(2)::before
+) {
+  display: inline !important; /* Keep upload date, hide views */
+}
+/* Hide the separator dots natively injected via ::before */
+body.ypp-hide-metrics ytd-video-meta-block #metadata-line span:nth-child(n+3)::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Thumbnails */
+body.ypp-hide-thumbnails :is(
+  ytd-thumbnail,
+  ytd-thumbnail-view-model,
+  .ytThumbnailViewModelSmall,
+  .ytThumbnailViewModelMedium,
+  .ytThumbnailViewModelLarge,
+  ytd-playlist-thumbnail,
+  #thumbnail,
+  ytd-reel-video-renderer,
+  ytd-reel-item-renderer
+) {
+  filter: blur(15px) grayscale(100%) opacity(0.3) !important;
+  transition: filter 0.3s ease, opacity 0.3s ease !important;
+}
+body.ypp-hide-thumbnails :is(
+  ytd-thumbnail:hover,
+  ytd-thumbnail-view-model:hover,
+  .ytThumbnailViewModelSmall:hover,
+  .ytThumbnailViewModelMedium:hover,
+  .ytThumbnailViewModelLarge:hover,
+  ytd-playlist-thumbnail:hover,
+  #thumbnail:hover,
+  ytd-reel-video-renderer:hover,
+  ytd-reel-item-renderer:hover
+) {
+  filter: blur(0px) grayscale(0%) opacity(1) !important;
+}
+
+body.ypp-hide-playlists [data-ypp-is-playlist="true"] {
+  display: none !important;
+}
+
+/* Shorts Hiding */
+body.ypp-hide-shorts :is(
+  ytd-reel-shelf-renderer,
+  ytd-rich-shelf-renderer[is-shorts],
+  ytd-rich-section-renderer[is-shorts],
+  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer, ytd-rich-grid-slim-media, ytd-reel-item-renderer, a[href*="/shorts"], yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"]),
+  ytd-shelf-renderer[is-shorts],
+  [is-shorts],
+  ytm-reel-shelf-renderer
+) {
+  display: none !important;
+}
+
+/* Hide Shorts shelf headers completely when Hide Shorts feature is enabled */
+body.ypp-nuke-shorts :is(
+  yt-collection-shelf-view-model:has(yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"]),
+  ytd-shelf-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+  ytd-reel-shelf-renderer
+) {
+  display: none !important;
+}
+
+/* Hover Overlays on Video Cards (Save to playlist, Watch Later) */
+ytd-thumbnail-overlay-toggle-button-renderer,
+ytd-thumbnail-overlay-button-renderer {
+  display: none !important;
+}

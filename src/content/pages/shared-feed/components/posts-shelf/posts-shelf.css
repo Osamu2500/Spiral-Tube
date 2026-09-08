@@ -2,9 +2,94 @@
  * ==========================================================================
  * COMMUNITY POSTS SHELF COMPONENT
  * ==========================================================================
- * We previously attempted to rebuild this shelf, but YouTube's native 
- * grid/flex layouts for Community Posts are actually superior and more robust.
- * Since we scoped our global CSS grid variables away from shelves,
- * the native YouTube layout works perfectly.
- * We leave this file empty to allow native styling to take over.
+ * Handles the YouTube Community Posts shelf (ytd-post-renderer) that appears
+ * in the home feed from subscribed creators.
+ *
+ * Strategy: The outer grid assigns grid-column: 1/-1 and display: block
+ * to the shelf container (via grid-layout.css). This file rebuilds the
+ * INNER layout as a responsive auto-fill card grid so post cards
+ * render at a readable fixed width and never stretch to full viewport.
+ * ==========================================================================
  */
+
+/* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
+ytd-rich-section-renderer:has(ytd-post-renderer),
+ytd-rich-section-renderer:has(ytd-shared-post-renderer),
+ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 8px 0 16px !important;
+  margin: 8px 0 !important;
+}
+
+/* ── 2. INNER CONTENTS: responsive grid of post cards ───────────────────── */
+ytd-rich-section-renderer:has(ytd-post-renderer) #contents,
+ytd-rich-section-renderer:has(ytd-shared-post-renderer) #contents,
+ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) #contents {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 4px 0 !important;
+}
+
+/* ── 3. EACH POST ITEM WRAPPER ──────────────────────────────────────────── */
+ytd-rich-item-renderer:has(ytd-post-renderer),
+ytd-rich-item-renderer:has(ytd-shared-post-renderer),
+ytd-rich-item-renderer:has(ytd-backstage-post-thread-renderer) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ── 4. POST CARD INNER BODY ────────────────────────────────────────────── */
+ytd-post-renderer,
+ytd-shared-post-renderer,
+ytd-backstage-post-thread-renderer {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+/* ── 5. POST IMAGE: constrained aspect ratio ────────────────────────────── */
+ytd-post-renderer ytd-image,
+ytd-post-renderer img,
+ytd-shared-post-renderer ytd-image,
+ytd-shared-post-renderer img,
+ytd-post-renderer #post-image,
+ytd-shared-post-renderer #post-image {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 360px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  display: block !important;
+}
+
+/* ── 6. POST TEXT: don't overflow ───────────────────────────────────────── */
+ytd-post-renderer #content,
+ytd-shared-post-renderer #content,
+ytd-post-renderer #text,
+ytd-shared-post-renderer #text {
+  width: 100% !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  box-sizing: border-box !important;
+}
+
+/* ── 7. SAFETY: Reset any grid item rules that would break posts ─────────── */
+ytd-rich-section-renderer:has(ytd-post-renderer) #dismissible,
+ytd-rich-section-renderer:has(ytd-shared-post-renderer) #dismissible {
+  display: block !important;
+  height: auto !important;
+}

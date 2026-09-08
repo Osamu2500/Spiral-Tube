@@ -1,19 +1,19 @@
-const DEV_MODE = window.DEV_MODE ?? false;
+import { DEV_MODE, TIMING } from './constants.js';
 
-function debounce(fn, delay) {
+export function debounce(fn, delay) {
   let t;
-  return () => {
+  return (...args) => {
     clearTimeout(t);
-    t = setTimeout(fn, delay);
+    t = setTimeout(() => fn(...args), delay);
   };
 }
 
-function throttle(fn, limit) {
+export function throttle(fn, limit) {
   let inThrottle;
   let lastFn;
   let lastTime;
-  return function() {
-    const context = this, args = arguments;
+  return function(...args) {
+    const context = this;
     if (!inThrottle) {
       fn.apply(context, args);
       lastTime = Date.now();
@@ -30,14 +30,14 @@ function throttle(fn, limit) {
   };
 }
 
-function isYouTube() {
+export function isYouTube() {
   return (
     window.location.hostname === 'www.youtube.com' ||
     window.location.hostname === 'm.youtube.com'
   );
 }
 
-const logger = {
+export const logger = {
   log: (...args) => {
     if (DEV_MODE) console.log(...args);
   },
@@ -52,29 +52,7 @@ const logger = {
   },
 };
 
-function safeStorageSet(area, data) {
-  try {
-    chrome.storage[area].set(data, () => {
-      if (chrome.runtime.lastError) {
-        logger.warn('Storage set failed:', chrome.runtime.lastError.message);
-      }
-    });
-  } catch (e) {
-    logger.warn('Storage unavailable:', e);
-  }
-}
-
-function safeSendMessage(msg) {
-  try {
-    chrome.runtime.sendMessage(msg).catch(err => {
-      logger.warn('sendMessage failed:', err);
-    });
-  } catch (e) {
-    logger.warn('sendMessage unavailable:', e);
-  }
-}
-
-function pollUntil(predicate, { timeout = 3000, interval = TIMING.ELEMENT_POLL_INTERVAL } = {}) {
+export function pollUntil(predicate, { timeout = 3000, interval = TIMING.ELEMENT_POLL_INTERVAL } = {}) {
   let timer = null;
 
   const cancel = () => {
@@ -104,3 +82,20 @@ function pollUntil(predicate, { timeout = 3000, interval = TIMING.ELEMENT_POLL_I
 
   return { promise, cancel };
 }
+
+export function safeStorageSet(area, data) {
+  try {
+    if (window.YPP?.utils?.settings) {
+        Object.entries(data).forEach(([k, v]) => window.YPP.utils.settings.set(k, v));
+        return;
+    }
+    chrome.storage[area].set(data, () => {
+      if (chrome.runtime.lastError) {
+        logger.warn('Storage set failed:', chrome.runtime.lastError.message);
+      }
+    });
+  } catch (e) {
+    logger.warn('Storage unavailable:', e);
+  }
+}
+
