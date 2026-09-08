@@ -114,3 +114,76 @@ ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) ytd-continuati
   grid-column: 1 / -1 !important;
   width: 100% !important;
 }
+
+/* ── 9. MOBILE-LIKE UI FOR POSTS ────────────────────────────────────────── */
+/* Force the internal post layout to be vertical (Text on top, Image below) */
+ytd-post-renderer #body,
+ytd-shared-post-renderer #body,
+ytd-backstage-post-thread-renderer #body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* Ensure text is above the image */
+ytd-post-renderer #post-text,
+ytd-post-renderer #content-text,
+ytd-shared-post-renderer #content-text {
+  order: 1 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Image container below the text, spanning full width */
+ytd-post-renderer #content-attachment,
+ytd-shared-post-renderer #content-attachment {
+  order: 2 !important;
+  margin-top: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Ensure the action bar (likes, comments) stays at the bottom */
+ytd-post-renderer #toolbar,
+ytd-shared-post-renderer #toolbar {
+  order: 3 !important;
+  margin-top: 12px !important;
+}
+
+/* ── 10. IMAGE HOVER POP-UP EFFECT ──────────────────────────────────────── */
+/* Ensure the card doesn't clip the zoomed image */
+ytd-post-renderer,
+ytd-shared-post-renderer,
+ytd-backstage-post-thread-renderer,
+ytd-rich-item-renderer:has(ytd-post-renderer) {
+  overflow: visible !important;
+}
+
+/* The image itself (smooth transition, starting state) */
+ytd-post-renderer #content-attachment ytd-image,
+ytd-post-renderer #content-attachment img,
+ytd-shared-post-renderer #content-attachment ytd-image,
+ytd-shared-post-renderer #content-attachment img {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease !important;
+  transform-origin: center center !important;
+  position: relative !important;
+  z-index: 1 !important;
+  border-radius: 8px !important;
+}
+
+/* Hover state: scale up and add drop shadow to "pop out" */
+ytd-post-renderer #content-attachment:hover ytd-image,
+ytd-post-renderer #content-attachment:hover img,
+ytd-shared-post-renderer #content-attachment:hover ytd-image,
+ytd-shared-post-renderer #content-attachment:hover img {
+  transform: scale(1.65) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important;
+  z-index: 9999 !important;
+  /* Make sure the zoomed image stays above other cards */
+}
+
+/* Ensure the attachment container allows overflowing content during zoom */
+ytd-post-renderer #content-attachment,
+ytd-shared-post-renderer #content-attachment {
+  overflow: visible !important;
+}
+
