@@ -2,107 +2,42 @@
  * ==========================================================================
  * PLAYABLES / GAMES SHELF COMPONENT
  * ==========================================================================
- * Handles the YouTube Playables (mini-games) shelf that uses
- * ytd-horizontal-card-list-renderer or ytd-game-card-renderer.
+ * Root cause of left gap: grid-layout.css sets
+ *   html { --ytd-rich-grid-item-margin: 16px }
+ * YouTube's native shelf CSS applies this as padding-inline/margin on the
+ * shelf container, pushing content away from the left edge.
  *
- * Strategy: The outer grid assigns grid-column: 1/-1 and display: block
- * to the shelf container (via grid-layout.css). This file rebuilds the
- * INNER layout as a contained horizontal flex-scroller so game cards
- * never inherit the outer grid context and never blow up to full-width.
+ * Fix: Zero out that variable specifically for Playables shelf containers
+ * so the shelf content starts flush with the grid edge — matching default
+ * YouTube layout — then let YouTube's native horizontal card list handle
+ * the rest (carousel, sizing, portrait cards).
  * ==========================================================================
  */
 
-/* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
+/* ── 1. ZERO OUT THE GRID MARGIN THAT CREATES THE LEFT GAP ─────────────── */
 ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer),
 ytd-rich-section-renderer:has(ytd-game-card-renderer),
 ytd-rich-shelf-renderer:has(ytd-game-card-renderer) {
+  --ytd-rich-grid-item-margin: 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-  overflow: hidden !important;
-  padding: 8px 0 16px !important;
-  margin: 8px 0 !important;
 }
 
-/* ── 2. HORIZONTAL CARD LIST CONTAINER ──────────────────────────────────── */
+/* ── 2. INNER CARD LIST: full-width, no extra padding ───────────────────── */
 ytd-horizontal-card-list-renderer {
+  --ytd-rich-grid-item-margin: 0px !important;
   width: 100% !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
-}
-
-ytd-horizontal-card-list-renderer #items,
-ytd-rich-section-renderer:has(ytd-game-card-renderer) #contents,
-ytd-rich-shelf-renderer:has(ytd-game-card-renderer) #contents {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 12px !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  padding: 4px 2px 12px 2px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
-}
-
-ytd-horizontal-card-list-renderer #items::-webkit-scrollbar,
-ytd-rich-section-renderer:has(ytd-game-card-renderer) #contents::-webkit-scrollbar {
-  height: 4px !important;
-}
-ytd-horizontal-card-list-renderer #items::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-radius: 4px !important;
-}
-
-/* ── 3. EACH GAME CARD ──────────────────────────────────────────────────── */
-:root {
-  --ypp-game-card-w: 160px;
-}
-
-ytd-horizontal-card-list-renderer ytd-game-card-renderer,
-ytd-horizontal-card-list-renderer yt-lockup-view-model,
-ytd-horizontal-card-list-renderer ytd-rich-item-renderer,
-ytd-rich-section-renderer:has(ytd-game-card-renderer) ytd-game-card-renderer,
-ytd-rich-shelf-renderer:has(ytd-game-card-renderer) ytd-game-card-renderer {
-  flex: 0 0 var(--ypp-game-card-w) !important;
-  width: var(--ypp-game-card-w) !important;
-  min-width: 0 !important;
-  max-width: var(--ypp-game-card-w) !important;
+  max-width: 100% !important;
   margin: 0 !important;
+  padding-inline: 0 !important;
   box-sizing: border-box !important;
 }
 
-/* ── 4. GAME THUMBNAIL: portrait card ───────────────────────────────────── */
-ytd-horizontal-card-list-renderer ytd-thumbnail,
-ytd-horizontal-card-list-renderer img.yt-core-image,
-ytd-game-card-renderer ytd-thumbnail,
-ytd-game-card-renderer img {
-  width: var(--ypp-game-card-w) !important;
-  height: var(--ypp-game-card-w) !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-  display: block !important;
-  overflow: hidden !important;
-}
-
-/* ── 5. GAME CARD METADATA ──────────────────────────────────────────────── */
-ytd-game-card-renderer #title,
-ytd-game-card-renderer .title,
-ytd-game-card-renderer #game-title {
-  font-size: 1.3rem !important;
-  font-weight: 600 !important;
-  margin-top: 6px !important;
-  color: var(--yt-spec-text-primary, #fff) !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-
-ytd-game-card-renderer #metadata,
-ytd-game-card-renderer .metadata-line {
-  font-size: 1.1rem !important;
-  color: var(--yt-spec-text-secondary, rgba(255,255,255,0.6)) !important;
+/* YouTube's native #items already handles the horizontal layout correctly.
+   We only ensure it isn't constrained by our global variable overrides. */
+ytd-horizontal-card-list-renderer #items {
+  box-sizing: border-box !important;
 }
