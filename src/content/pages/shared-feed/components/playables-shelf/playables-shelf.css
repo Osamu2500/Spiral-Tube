@@ -37,7 +37,8 @@ ytd-horizontal-card-list-renderer {
 }
 
 /* ── 3. FLEX LAYOUT TO FILL SCREEN ──────────────────────────────────────── */
-ytd-horizontal-card-list-renderer #items {
+ytd-horizontal-card-list-renderer #items,
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) #contents {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
@@ -49,7 +50,8 @@ ytd-horizontal-card-list-renderer #items {
 ytd-horizontal-card-list-renderer ytd-game-card-renderer,
 ytd-horizontal-card-list-renderer ytd-macro-markers-list-item-renderer,
 ytd-horizontal-card-list-renderer ytd-search-query-renderer,
-ytd-horizontal-card-list-renderer yt-lockup-view-model {
+ytd-horizontal-card-list-renderer yt-lockup-view-model,
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) ytd-rich-item-renderer {
   flex: 1 1 0 !important;
   width: auto !important;
   min-width: 150px !important;

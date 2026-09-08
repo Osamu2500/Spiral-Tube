@@ -374,6 +374,32 @@ body:not(.ypp-channel-page) ytd-reel-shelf-renderer:not(:has(*:not([style*="disp
   display: none !important;
 }
 
+/* ==========================================================================
+   DYNAMIC FLEX LAYOUT FOR SHELVES (Fixes right-side empty gaps)
+   YouTube natively uses a fixed grid for shelves. If a shelf has 3 items
+   on a 5 column display, it leaves a huge gap on the right. 
+   This flex-stretches them evenly end-to-end.
+   ========================================================================== */
+ytd-rich-section-renderer ytd-rich-shelf-renderer:not([is-shorts]) #contents {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
+}
+
+ytd-rich-section-renderer ytd-rich-shelf-renderer:not([is-shorts]) #contents > ytd-rich-item-renderer {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 250px !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
 /* Individual Video Items - Premium Glassmorphic Card.
    NOTE: YouTube's polymer sets an inline 'width' style on this element via JS on scroll.
    We compensate by also declaring width:100% here AND by neutering the --ytd variable above
