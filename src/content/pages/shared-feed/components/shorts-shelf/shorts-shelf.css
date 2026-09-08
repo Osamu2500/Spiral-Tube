@@ -1,181 +1,28 @@
 /* 
  * ==========================================================================
  * SHORTS SHELF COMPONENT
- * Handles the display of the Shorts shelf in the home feed and all pages.
- *
- * Strategy: The outer grid assigns grid-column: 1/-1 (full-row span) and
- * display: block to the shelf container (via grid-layout.css). This file
- * rebuilds the INNER layout as a contained horizontal flex-scroller so
- * individual Short thumbnails never inherit the outer grid context and
- * never blow up to full-width.
+ * ==========================================================================
+ * Reverted to YouTube's native layout so shorts scale to fill the full width
+ * of the screen natively. We only keep the margin reset here to prevent
+ * the global grid-layout.css from pushing the shelf to the right.
  * ==========================================================================
  */
 
-/* ── 1. SHELF CONTAINER ─────────────────────────────────────────────────── */
-ytd-rich-shelf-renderer[is-shorts],
-ytd-reel-shelf-renderer,
 ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
 ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
+  --ytd-rich-grid-item-margin: 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+ytd-rich-shelf-renderer[is-shorts],
+ytd-reel-shelf-renderer {
   --ytd-rich-grid-item-margin: 0px !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-  overflow: hidden !important;
-  padding: 8px 0 16px !important;
-  margin: 8px 0 !important;
-}
-
-/* ── 2. TITLE ROW (shelf header) ────────────────────────────────────────── */
-ytd-rich-shelf-renderer[is-shorts] #title-container,
-ytd-reel-shelf-renderer #title-container {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 0 0 12px 0 !important;
-  width: 100% !important;
-}
-
-/* ── 3. INNER CONTENTS: horizontal scroller row ─────────────────────────── */
-ytd-rich-shelf-renderer[is-shorts] #contents,
-ytd-reel-shelf-renderer #contents,
-ytd-rich-shelf-renderer[is-shorts] ytd-reel-shelf-renderer #contents {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 10px !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  padding: 4px 2px 12px 2px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  /* Thin styled scrollbar */
-  scrollbar-width: thin !important;
-  scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
-}
-
-ytd-rich-shelf-renderer[is-shorts] #contents::-webkit-scrollbar,
-ytd-reel-shelf-renderer #contents::-webkit-scrollbar {
-  height: 4px !important;
-}
-ytd-rich-shelf-renderer[is-shorts] #contents::-webkit-scrollbar-track,
-ytd-reel-shelf-renderer #contents::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-ytd-rich-shelf-renderer[is-shorts] #contents::-webkit-scrollbar-thumb,
-ytd-reel-shelf-renderer #contents::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-radius: 4px !important;
-}
-
-/* ── 4. EACH SHORT ITEM: fixed-width portrait card ──────────────────────── */
-/*
- * Responsive widths via CSS custom property --ypp-short-item-w.
- * Defaults to 170px; shrinks at narrower viewports.
- */
-:root {
-  --ypp-short-item-w: 170px;
-}
-@media (max-width: 1300px) { :root { --ypp-short-item-w: 155px; } }
-@media (max-width: 1000px) { :root { --ypp-short-item-w: 140px; } }
-@media (max-width:  700px) { :root { --ypp-short-item-w: 120px; } }
-
-ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer,
-ytd-reel-shelf-renderer ytd-rich-item-renderer,
-ytd-rich-shelf-renderer[is-shorts] ytd-reel-item-renderer,
-ytd-reel-shelf-renderer ytd-reel-item-renderer,
-ytd-rich-shelf-renderer[is-shorts] yt-lockup-view-model,
-ytd-reel-shelf-renderer yt-lockup-view-model {
-  flex: 0 0 var(--ypp-short-item-w) !important;
-  width: var(--ypp-short-item-w) !important;
-  min-width: 0 !important;
-  max-width: var(--ypp-short-item-w) !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
-  /* Reset any global card transforms that could clash */
-  transform: none !important;
-  position: relative !important;
-}
-
-/* Hover lift (subtle, to avoid layout shift) */
-ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer:hover,
-ytd-reel-shelf-renderer ytd-rich-item-renderer:hover {
-  transform: translateY(-3px) !important;
-  transition: transform 0.25s ease !important;
-}
-
-/* ── 5. THUMBNAIL: 9:16 portrait aspect ratio ───────────────────────────── */
-ytd-rich-shelf-renderer[is-shorts] ytd-thumbnail,
-ytd-reel-shelf-renderer ytd-thumbnail,
-ytd-rich-shelf-renderer[is-shorts] ytd-reel-item-renderer ytd-thumbnail,
-ytd-reel-shelf-renderer ytd-reel-item-renderer ytd-thumbnail {
-  width: 100% !important;
-  aspect-ratio: 9 / 16 !important;
-  height: auto !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
   display: block !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
-  transition: box-shadow 0.25s ease !important;
-}
-
-ytd-rich-shelf-renderer[is-shorts] ytd-thumbnail img,
-ytd-reel-shelf-renderer ytd-thumbnail img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-  display: block !important;
-}
-
-ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer:hover ytd-thumbnail,
-ytd-reel-shelf-renderer ytd-rich-item-renderer:hover ytd-thumbnail {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* ── 6. TITLE / METADATA ────────────────────────────────────────────────── */
-ytd-rich-shelf-renderer[is-shorts] #video-title,
-ytd-reel-shelf-renderer #video-title,
-ytd-rich-shelf-renderer[is-shorts] .yt-lockup-view-model-wiz__title,
-ytd-reel-shelf-renderer .yt-lockup-view-model-wiz__title {
-  font-size: 1.3rem !important;
-  line-height: 1.8rem !important;
-  font-weight: 600 !important;
-  margin-top: 8px !important;
-  color: var(--yt-spec-text-primary, #fff) !important;
-  text-transform: none !important;
-  /* Clamp to 2 lines */
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  max-height: 3.6rem !important;
-}
-
-ytd-rich-shelf-renderer[is-shorts] #metadata-line,
-ytd-reel-shelf-renderer #metadata-line {
-  font-size: 1.1rem !important;
-  color: var(--yt-spec-text-secondary, rgba(255,255,255,0.6)) !important;
-  margin-top: 2px !important;
-}
-
-/* ── 7. HIDE AVATAR (clutter on portrait cards) ─────────────────────────── */
-ytd-rich-shelf-renderer[is-shorts] #avatar-link,
-ytd-reel-shelf-renderer #avatar-link {
-  display: none !important;
-}
-
-/* ── 8. SAFETY: override any global grid-item rules that would break shorts ─ */
-/* (mirrors the Shorts Safety Reset in grid-layout.css but scoped to shelf) */
-ytd-rich-shelf-renderer[is-shorts] #dismissible,
-ytd-reel-shelf-renderer #dismissible {
-  display: block !important;
-  grid-template-columns: none !important;
-  grid-template-rows: none !important;
-  height: auto !important;
-}
-
-ytd-rich-shelf-renderer[is-shorts] #dismissible::before,
-ytd-reel-shelf-renderer #dismissible::before {
-  display: none !important;
-  content: none !important;
 }
