@@ -40,29 +40,56 @@ let loadedMessages = {};
 // MASTER DICTIONARY
 // Every key from the UI Blueprint, translated into all 5 languages.
 // ─────────────────────────────────────────────────────────────────────────────
+// English is kept in the initial module graph so that callers can safely use
+// `t()` before `initI18n()` completes. The remaining dictionaries are loaded
+// only for the selected UI language instead of making every popup parse all
+// 19 translations on startup.
 import en from './en.js';
-import es from './es.js';
-import fr from './fr.js';
-import de from './de.js';
-import ja from './ja.js';
-import it from './it.js';
-import pt from './pt.js';
-import ru from './ru.js';
-import zh from './zh.js';
-import ko from './ko.js';
-import ar from './ar.js';
-import hi from './hi.js';
-import tr from './tr.js';
-import nl from './nl.js';
-import pl from './pl.js';
-import vi from './vi.js';
-import th from './th.js';
-import id from './id.js';
-import sv from './sv.js';
 
-const dictionaries = {
-    en, es, fr, de, ja, it, pt, ru, zh, ko, ar, hi, tr, nl, pl, vi, th, id, sv
+const dictionaryLoaders = {
+    es: () => import('./es.js'),
+    fr: () => import('./fr.js'),
+    de: () => import('./de.js'),
+    ja: () => import('./ja.js'),
+    it: () => import('./it.js'),
+    pt: () => import('./pt.js'),
+    ru: () => import('./ru.js'),
+    zh: () => import('./zh.js'),
+    ko: () => import('./ko.js'),
+    ar: () => import('./ar.js'),
+    hi: () => import('./hi.js'),
+    tr: () => import('./tr.js'),
+    nl: () => import('./nl.js'),
+    pl: () => import('./pl.js'),
+    vi: () => import('./vi.js'),
+    th: () => import('./th.js'),
+    id: () => import('./id.js'),
+    sv: () => import('./sv.js')
 };
+
+let currentDictionary = en;
+
+async function loadSelectedDictionary() {
+    if (currentLang === 'en') {
+        currentDictionary = en;
+        return;
+    }
+
+    const loadDictionary = dictionaryLoaders[currentLang];
+    if (!loadDictionary) {
+        currentLang = 'en';
+        currentDictionary = en;
+        return;
+    }
+
+    try {
+        currentDictionary = (await loadDictionary()).default || en;
+    } catch (_) {
+        // A missing or invalid optional locale must never block the popup.
+        currentLang = 'en';
+        currentDictionary = en;
+    }
+}
 
 export const initI18n = async () => {
     return new Promise(resolve => {
@@ -74,6 +101,8 @@ export const initI18n = async () => {
             if (data?.settings?.extensionLanguage) {
                 currentLang = data.settings.extensionLanguage;
             }
+
+            await loadSelectedDictionary();
 
             // Try to load Chrome's native messages.json for this locale
             try {
@@ -102,11 +131,10 @@ export const t = (key) => {
     if (loadedMessages[key]?.message) return loadedMessages[key].message;
 
     // 2. Full dictionary lookup
-    const dict = dictionaries[currentLang];
-    if (dict?.[key]) return dict[key];
+    if (currentDictionary?.[key]) return currentDictionary[key];
 
     // 3. English fallback
-    if (dictionaries['en'][key]) return dictionaries['en'][key];
+    if (en[key]) return en[key];
 
     // 4. chrome.i18n API fallback
     if (typeof chrome !== 'undefined' && chrome.i18n) {
