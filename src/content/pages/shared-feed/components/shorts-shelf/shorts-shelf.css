@@ -2,12 +2,32 @@
  * ==========================================================================
  * SHORTS SHELF COMPONENT
  * ==========================================================================
- * We rebuild the shorts shelf as a flex container so it doesn't get
- * destroyed by the global grid-layout.css rules.
- * To ensure it fills the screen edge-to-edge (no gap on right), 
- * we use flex: 1 1 0 so all shorts share the row width equally.
+ * Layout: flex row that fills the full screen width.
+ * Declutter: Hides the whole shelf when body has ypp-hide-shorts / ypp-nuke-shorts
+ *            These classes are set by global-layout-manager.js based on user settings.
  * ==========================================================================
  */
+
+/* ── 0. DECLUTTER — Hide when user enables "Hide Shorts" ─────────────────── */
+body.ypp-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+body.ypp-hide-shorts ytd-reel-shelf-renderer,
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+body.ypp-nuke-shorts ytd-rich-shelf-renderer[is-shorts],
+body.ypp-nuke-shorts ytd-reel-shelf-renderer,
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
+  display: none !important;
+}
+
+/* Also hide the orphaned "Show more" button section that YouTube places immediately after the shorts */
+/* Also hide the orphaned "Show more" button section that YouTube places immediately after the shorts */
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
+body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
+body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer) {
+  display: none !important;
+}
 
 /* ── 1. SHELF CONTAINER ─────────────────────────────────────────────────── */
 ytd-rich-shelf-renderer[is-shorts],

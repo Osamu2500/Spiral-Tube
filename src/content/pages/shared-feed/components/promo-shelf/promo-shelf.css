@@ -14,8 +14,19 @@
  * Strategy: Constrain banner height to max 220px, force cover-fit on
  * background images, center content vertically. This prevents them from
  * taking up half the viewport.
+ * 
+ * Declutter: Hides promos when body has ypp-hide-promos (set by global-layout-manager.js)
  * ==========================================================================
  */
+
+/* ── 0. DECLUTTER — Hide when user enables "Hide Promos" ──────────────── */
+body.ypp-hide-promos ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer),
+body.ypp-hide-promos ytd-rich-section-renderer:has(ytd-statement-banner-renderer),
+body.ypp-hide-promos ytd-rich-section-renderer:has(ytd-compact-promoted-video-renderer),
+body.ypp-hide-promos ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer),
+body.ypp-hide-promos ytd-rich-section-renderer:has(.badge-style-type-ad) {
+  display: none !important;
+}
 
 /* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
 ytd-rich-section-renderer:has(ytd-statement-banner-renderer),
@@ -23,6 +34,7 @@ ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer),
 ytd-rich-section-renderer:has(ytd-compact-promoted-video-renderer),
 ytd-rich-section-renderer:has(ytd-background-promo-renderer),
 ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer) {
+  --ytd-rich-grid-item-margin: 0px !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;

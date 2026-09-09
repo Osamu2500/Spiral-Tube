@@ -2,22 +2,35 @@
  * ==========================================================================
  * PLAYABLES / GAMES SHELF COMPONENT
  * ==========================================================================
- * Root cause of left gap: grid-layout.css sets
- *   html { --ytd-rich-grid-item-margin: 16px }
- * YouTube's native shelf CSS applies this as padding-inline/margin on the
- * shelf container, pushing content away from the left edge.
- *
- * Fix: Zero out that variable specifically for Playables shelf containers
- * so the shelf content starts flush with the grid edge — matching default
- * YouTube layout — then let YouTube's native horizontal card list handle
- * the rest (carousel, sizing, portrait cards).
+ * Layout: Flex row that fills screen end-to-end.
+ * Declutter: Hides the shelf when body has ypp-hide-promos (set by global-layout-manager.js)
+ *            since Playables/Games are YouTube promotions.
  * ==========================================================================
  */
 
+/* ── 0. DECLUTTER — Hide when user enables "Hide Promos" ──────────────── */
+body.ypp-hide-promos ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer):not(:has(ytd-rich-shelf-renderer[is-shorts])):not(:has(ytd-reel-shelf-renderer)):not(:has(ytd-post-renderer)),
+body.ypp-hide-promos ytd-rich-section-renderer:has(ytd-game-card-renderer),
+body.ypp-hide-promos ytd-rich-shelf-renderer:has(ytd-game-card-renderer),
+body.ypp-hide-promos ytd-rich-section-renderer:has(a[href*="/playables"]),
+body.ypp-hide-promos ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="playable"]),
+body.ypp-hide-promos ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="game"]) {
+  display: none !important;
+}
+
+/* Also hide the orphaned "Show more" button if Playables is hidden */
+body.ypp-hide-promos ytd-rich-section-renderer:has(a[href*="/playables"]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
+body.ypp-hide-promos ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="playable"]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer) {
+  display: none !important;
+}
+
+
 /* ── 1. ZERO OUT THE GRID MARGIN THAT CREATES THE LEFT GAP ─────────────── */
-ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer),
+ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer):not(:has(ytd-rich-shelf-renderer[is-shorts])):not(:has(ytd-reel-shelf-renderer)):not(:has(ytd-post-renderer)),
 ytd-rich-section-renderer:has(ytd-game-card-renderer),
-ytd-rich-shelf-renderer:has(ytd-game-card-renderer) {
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer),
+ytd-rich-section-renderer:has(a[href*="/playables"]),
+ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="playable"]) {
   --ytd-rich-grid-item-margin: 0px !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -38,7 +51,9 @@ ytd-horizontal-card-list-renderer {
 
 /* ── 3. FLEX LAYOUT TO FILL SCREEN ──────────────────────────────────────── */
 ytd-horizontal-card-list-renderer #items,
-ytd-rich-shelf-renderer:has(ytd-game-card-renderer) #contents {
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) #contents,
+ytd-rich-section-renderer:has(a[href*="/playables"]) #contents,
+ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="playable"]) #contents {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
@@ -47,11 +62,15 @@ ytd-rich-shelf-renderer:has(ytd-game-card-renderer) #contents {
   box-sizing: border-box !important;
 }
 
+ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer):not(:has(ytd-rich-shelf-renderer[is-shorts])):not(:has(ytd-reel-shelf-renderer)):not(:has(ytd-post-renderer)) ytd-rich-item-renderer,
 ytd-horizontal-card-list-renderer ytd-game-card-renderer,
 ytd-horizontal-card-list-renderer ytd-macro-markers-list-item-renderer,
 ytd-horizontal-card-list-renderer ytd-search-query-renderer,
 ytd-horizontal-card-list-renderer yt-lockup-view-model,
-ytd-rich-shelf-renderer:has(ytd-game-card-renderer) ytd-rich-item-renderer {
+ytd-rich-section-renderer:has(ytd-game-card-renderer) ytd-rich-item-renderer,
+ytd-rich-shelf-renderer:has(ytd-game-card-renderer) ytd-rich-item-renderer,
+ytd-rich-section-renderer:has(a[href*="/playables"]) ytd-rich-item-renderer,
+ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="playable"]) ytd-rich-item-renderer {
   flex: 1 1 0 !important;
   width: auto !important;
   min-width: 150px !important;

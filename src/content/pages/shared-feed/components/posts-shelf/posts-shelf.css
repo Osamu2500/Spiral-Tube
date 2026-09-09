@@ -2,23 +2,32 @@
  * ==========================================================================
  * COMMUNITY POSTS SHELF COMPONENT
  * ==========================================================================
- * Target layout: Match YouTube's default "Latest YouTube posts" section
- * (images 4 & 5 of reference screenshots).
- *
- * YouTube default renders posts as a 3-column grid where each card has:
- *   - Header row: avatar + channel name + timestamp
- *   - Text content area
- *   - Optional image (right side or below text)
- *   - Action bar: likes, comments, share
- *
- * Root cause of left gap: --ytd-rich-grid-item-margin is applied globally
- * by grid-layout.css. We zero it out for post shelf containers.
- *
- * Root cause of layout break: display: block on ytd-rich-section-renderer
- * (from grid-layout.css) flattens the shelf — we re-establish the inner
- * 3-column grid here so it matches YouTube's native rendering.
+ * Layout: Matches YouTube's default 3-column post grid.
+ * Declutter: Hides the shelf when body has ypp-hide-posts.
+ *            That class is set by global-layout-manager.js → _updateDynamicToggles()
+ *            based on the "Hide Posts" user setting.
  * ==========================================================================
  */
+
+/* ── 0. DECLUTTER — Hide when user enables "Hide Posts" ───────────────── */
+body.ypp-hide-posts ytd-post-renderer,
+body.ypp-hide-posts ytd-backstage-post-thread-renderer,
+body.ypp-hide-posts ytd-backstage-post-renderer,
+body.ypp-hide-posts ytd-rich-item-renderer:has(ytd-post-renderer),
+body.ypp-hide-posts ytd-rich-item-renderer:has(ytd-backstage-post-thread-renderer),
+body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer),
+body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer),
+body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-renderer) {
+  display: none !important;
+}
+
+/* Also hide the orphaned "Show more" button section that YouTube places immediately after the posts */
+body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
+body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
+body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer) {
+  display: none !important;
+}
+
 
 /* ── 1. ZERO OUT THE GRID MARGIN THAT CREATES THE LEFT GAP ─────────────── */
 ytd-rich-section-renderer:has(ytd-post-renderer),
