@@ -94,9 +94,20 @@ async function _loadGroup(name: string, lazyMap: Record<string, () => Promise<an
     performance.mark(`ypp:load-group-${name}-end`);
     performance.measure(`ypp:load-group-${name}`, `ypp:load-group-${name}-start`, `ypp:load-group-${name}-end`);
 
-    // Re-apply features now that newly registered ones are available
-    if (window.YPP?.featureManager) {
-        window.YPP.featureManager.init(window.YPP.MainApp?.settings || {});
+    // Re-apply features now that newly registered ones are available.
+    // If the manager instance isn't created yet (cold-load race: watch group
+    // finishes before main.ts constructs the manager), wait for the
+    // 'ypp:manager-ready' CustomEvent that main.ts fires after construction.
+    const applyNow = () => {
+        if ((window as any).YPP?.featureManager) {
+            (window as any).YPP.featureManager.init((window as any).YPP.MainApp?.settings || {});
+        }
+    };
+
+    if ((window as any).YPP?.featureManager) {
+        applyNow();
+    } else {
+        window.addEventListener('ypp:manager-ready', applyNow, { once: true });
     }
 }
 

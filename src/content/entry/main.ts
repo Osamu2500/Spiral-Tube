@@ -268,6 +268,10 @@
             this.featureManager = new window.YPP.FeatureManager();
             window.YPP.featureManager = this.featureManager;
 
+            // Signal lazy-loaded module groups that may have registered features
+            // while the manager was still being constructed during cold loads.
+            window.dispatchEvent(new CustomEvent('ypp:manager-ready'));
+
             if (!this.featureManager || typeof this.featureManager.init !== 'function') {
                 throw new Error('FeatureManager initialization failed');
             }

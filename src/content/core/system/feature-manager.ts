@@ -71,10 +71,15 @@ window.YPP.FeatureManager = class FeatureManager {
             this.lastReset = now;
         }
 
+        // Always call instantiateFeatures — it is idempotent: its internal
+        // `if (!this.features[key])` guard means existing features are never
+        // double-instantiated. This is critical for lazy-loaded module groups
+        // (watch/feed/shorts) which register new features AFTER the first init().
+        this.instantiateFeatures();
+
         if (!this.instantiated) {
-            this.instantiateFeatures();
             this.instantiated = true;
-            this.setupLifecycleBindings();
+            this.setupLifecycleBindings(); // Event bindings only need to be wired once
         }
 
         this.applyFeatures();
