@@ -80,6 +80,7 @@
 
             try {
                 const startTime = performance.now();
+                performance.mark('ypp:bootstrap-start');
                 this.Utils?.log('Starting App...', 'MAIN');
 
                 // Wait for core dependencies before proceeding
@@ -121,7 +122,7 @@
                                 this.thumbnailColorManager = new ManagerClass();
                                 this.thumbnailColorManager.updateSettings(this.settings);
                             };
-                            if (window.requestIdleCallback) {
+                            if ('requestIdleCallback' in window) {
                                 requestIdleCallback(initColorManager);
                             } else {
                                 setTimeout(initColorManager, 500);
@@ -145,6 +146,8 @@
                 this.bootstrapLock = false;
 
                 const loadTime = (performance.now() - startTime).toFixed(2);
+                performance.mark('ypp:bootstrap-end');
+                performance.measure('ypp:bootstrap', 'ypp:bootstrap-start', 'ypp:bootstrap-end');
                 console.log('%c[YPP] Spiral Tube Global Initialized!', 'color: #a78bfa; font-weight: bold; font-size: 12px;');
                 this.Utils?.log(`Extension Initialized Successfully in ${loadTime}ms`, 'MAIN');
 
@@ -202,7 +205,6 @@
 
                 let startTime = performance.now();
                 let delay = 16;
-                let timerId = null;
 
                 const check = () => {
                     if (condition()) {
@@ -406,6 +408,7 @@
 
             const handleNavigation = () => {
                 this.Utils?.log('Navigation detected', 'MAIN', 'debug');
+                performance.mark('ypp:route-switch-start');
                 this.updateContext();
 
                 const newPageType = this._getPageType(window.location.pathname);
@@ -438,9 +441,14 @@
                 if (pageTypeChanged && this.featureManager) {
                     try {
                         this.featureManager.init(this.settings);
+                        performance.mark('ypp:route-switch-end');
+                        performance.measure('ypp:route-switch', 'ypp:route-switch-start', 'ypp:route-switch-end');
                     } catch (error: any) {
                         this.Utils?.log(`Error initializing features on navigation: ${error.message}`, 'MAIN', 'error');
                     }
+                } else {
+                    performance.mark('ypp:route-switch-end');
+                    performance.measure('ypp:route-switch', 'ypp:route-switch-start', 'ypp:route-switch-end');
                 }
             };
 
@@ -482,7 +490,7 @@
 
             // Listen for direct messages for instant updates
             if (chrome?.runtime?.onMessage) {
-                const messageHandler = (request: any, sender: any, sendResponse: any) => {
+                const messageHandler = (request: any, _sender: any, sendResponse: any) => {
                     // UPDATE_SETTINGS is now handled exclusively by chrome.storage.onChanged
                     
                     if (request.type === 'YPP_SET_THEME_IMMEDIATE') {
@@ -715,7 +723,7 @@
                             this.Utils?.log(`Error activating GlobalLayoutManager: ${err.message}`, 'MAIN', 'error');
                         }
                     };
-                    if (window.requestIdleCallback) {
+                    if ('requestIdleCallback' in window) {
                         requestIdleCallback(runGlobalLayout);
                     } else {
                         setTimeout(runGlobalLayout, 50);
@@ -809,7 +817,7 @@
          * @param {string} component - Component where error occurred
          * @param {Error} error - The error object
          */
-        handleError(component, error) {
+        handleError(component: string, error: any) {
             this.Utils?.log(`Error in ${component}: ${error.message}`, 'MAIN', 'error');
             console.error(`[YPP:${component}] Error:`, error);
         },

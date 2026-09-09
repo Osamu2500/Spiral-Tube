@@ -10,6 +10,8 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     static featureId = 'globalPlayerBar';
     static executionPhase = 'sequential-ui';
     static priority = 999;
+    static pageScope = 'watch'; // Only active on the /watch page (YouTube)
+                                // External sites use the separate global-bar-external bundle
 
     constructor() {
         super('GlobalPlayerBar');

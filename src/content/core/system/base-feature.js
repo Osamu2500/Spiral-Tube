@@ -15,6 +15,14 @@ window.YPP.features.BaseFeature = class BaseFeature {
     static featureId = null;
     static executionPhase = 'idle'; // 'sequential-ui', 'post-layout', 'idle'
     static priority = 999;
+    /**
+     * Which page type this feature applies to.
+     * 'all'    — run on every YouTube page (default)
+     * 'watch'  — only on /watch
+     * 'feed'   — home, subscriptions, search, channel, playlist
+     * 'shorts' — only on /shorts
+     */
+    static pageScope = 'all';
 
     constructor(name) {
         this.name = name || this.constructor.featureId || this.constructor.name;

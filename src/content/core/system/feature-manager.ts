@@ -9,13 +9,26 @@ window.YPP = window.YPP || {};
  * Handles instantiation, initialization, error tracking, and updates
  */
 window.YPP.FeatureManager = class FeatureManager {
-    static registeredFeatures = [];
+    static registeredFeatures: any[] = [];
 
-    static register(FeatureClass) {
+    static register(FeatureClass: any) {
         if (!this.registeredFeatures.includes(FeatureClass)) {
             this.registeredFeatures.push(FeatureClass);
         }
     }
+
+    // ── Instance property declarations ────────────────────────────────────────
+    features: Record<string, any>;
+    instantiated: boolean;
+    settings: Record<string, any>;
+    errorCounts: Record<string, number>;
+    MAX_ERRORS: number;
+    _currentApplyId: number;
+    _applyQueue: number[];
+    _processingQueue: boolean;
+    _errorLogTimestamps: Record<string, number>;
+    _errorLogRateLimit: number;
+    lastReset: number | undefined;
 
     constructor() {
         /** @type {Object<string, Object>} Feature instances keyed by name */
@@ -23,7 +36,7 @@ window.YPP.FeatureManager = class FeatureManager {
         /** @type {boolean} Whether features have been instantiated */
         this.instantiated = false;
         /** @type {Object|null} Current user settings */
-        this.settings = null;
+        this.settings = {};
         /** @type {Object<string, number>} Error counts per feature */
         this.errorCounts = {};
         /** @type {number} Maximum errors before disabling feature */
@@ -46,9 +59,9 @@ window.YPP.FeatureManager = class FeatureManager {
      * @param {Object} settings - User settings from chrome.storage
      * @returns {void}
      */
-    init(settings) {
+    init(settings: any) {
         // Defensive: Ensure settings exist, fallback to defaults
-        this.settings = { ...this.settings, ...(settings || window.YPP?.CONSTANTS?.DEFAULT_SETTINGS || {}) };
+        this.settings = { ...this.settings, ...(settings || (window as any).YPP?.CONSTANTS?.DEFAULT_SETTINGS || {}) };
 
         // Self-Healing: Reset error counts on re-initialization ONLY if enough time has passed
         // This prevents infinite retry loops if a feature crashes immediately upon load
@@ -71,10 +84,10 @@ window.YPP.FeatureManager = class FeatureManager {
      * Bind to the central EventBus to relay lifecycle events to all features
      */
     setupLifecycleBindings() {
-        if (!window.YPP.events) return;
+        if (!(window as any).YPP.events) return;
 
-        window.YPP.events.on('app:pageChange', (url) => {
-            Object.entries(this.features).forEach(([name, feature]) => {
+        (window as any).YPP.events.on('app:pageChange', (url: string) => {
+            Object.entries(this.features).forEach(([name, feature]: [string, any]) => {
                 if (this.errorCounts[name] >= this.MAX_ERRORS) return;
                 if (feature.isEnabled && typeof feature.onPageChange === 'function') {
                     this.safeRun(name, () => feature.onPageChange(url));
@@ -82,8 +95,8 @@ window.YPP.FeatureManager = class FeatureManager {
             });
         });
 
-        window.YPP.events.on('app:videoChange', (videoId) => {
-            Object.entries(this.features).forEach(([name, feature]) => {
+        (window as any).YPP.events.on('app:videoChange', (videoId: string) => {
+            Object.entries(this.features).forEach(([name, feature]: [string, any]) => {
                 if (this.errorCounts[name] >= this.MAX_ERRORS) return;
                 if (feature.isEnabled && typeof feature.onVideoChange === 'function') {
                     this.safeRun(name, () => feature.onVideoChange(videoId));
@@ -116,28 +129,28 @@ window.YPP.FeatureManager = class FeatureManager {
                     this.errorCounts[key] = 0;
                     successCount++;
                 }
-            } catch (e) {
+            } catch (e: any) {
                 failCount++;
-                window.YPP.Utils.log(`Failed to instantiate feature: ${e?.message || 'Unknown error'}`, 'MANAGER', 'error');
+                (window as any).YPP.Utils.log(`Failed to instantiate feature: ${e?.message || 'Unknown error'}`, 'MANAGER', 'error');
             }
         }
 
         // Clean up stale features that were removed from the registry
-        const currentKeys = new Set(FeatureManager.registeredFeatures.map(f => f.featureId || f.name));
+        const currentKeys = new Set(FeatureManager.registeredFeatures.map((f: any) => f.featureId || f.name));
         for (const key of Object.keys(this.features)) {
             if (!currentKeys.has(key)) {
                 try {
                     if (typeof this.features[key].disable === 'function') {
                         this.features[key].disable();
                     }
-                } catch (e) {
+                } catch (_e) {
                     // Ignore error on cleanup
                 }
                 delete this.features[key];
             }
         }
 
-        window.YPP.Utils.log(
+        (window as any).YPP.Utils.log(
             `Feature instantiation complete: ${successCount}/${totalFeatures} loaded` +
             (failCount > 0 ? `, ${failCount} failed` : ''),
             'MANAGER',
@@ -150,7 +163,7 @@ window.YPP.FeatureManager = class FeatureManager {
      * @param {string} name - Feature key (e.g., 'sidebar', 'theme')
      * @returns {Object|null} Feature instance or null if not found
      */
-    getFeature(name) {
+    getFeature(name: string) {
         return this.features[name] || null;
     }
 
@@ -166,7 +179,7 @@ window.YPP.FeatureManager = class FeatureManager {
         this._processingQueue = true;
         try {
             while (this._applyQueue.length > 0) {
-                const applyId = this._applyQueue.shift();
+                const applyId = this._applyQueue.shift()!;
                 await this._executeApply(applyId);
             }
         } finally {
@@ -179,14 +192,30 @@ window.YPP.FeatureManager = class FeatureManager {
      * @param {number} applyId 
      * @private
      */
-    async _executeApply(applyId) {
+    async _executeApply(applyId: number) {
         if (this._currentApplyId !== applyId) return; // Cancelled by newer run
 
-        const uiFeatures = [];
-        const postLayout = [];
-        const heavyFeatures = [];
+        // ── pageScope filter ─────────────────────────────────────────────────
+        // Derive the current page type from the URL pathname so we can skip
+        // features that only apply to a different page type. Features scoped to
+        // 'all' always run. This check is cheap and avoids loading/running watch-
+        // only features on the home feed and vice-versa.
+        const _currentPageScope = (() => {
+            const p = window.location.pathname;
+            if (p.startsWith('/watch'))   return 'watch';
+            if (p.startsWith('/shorts'))  return 'shorts';
+            return 'feed'; // home, subscriptions, search, channel, playlist, etc.
+        })();
 
-        for (const [name, instance] of Object.entries(this.features)) {
+        const uiFeatures: [string, any][] = [];
+        const postLayout: [string, any][] = [];
+        const heavyFeatures: [string, any][] = [];
+
+        for (const [name, instance] of Object.entries(this.features) as [string, any][]) {
+            // Skip features that don't apply to this page type
+            const scope: string = instance.constructor.pageScope || 'all';
+            if (scope !== 'all' && scope !== _currentPageScope) continue;
+
             const phase = instance.constructor.executionPhase;
             if (phase === 'sequential-ui') {
                 uiFeatures.push([name, instance]);
@@ -197,7 +226,8 @@ window.YPP.FeatureManager = class FeatureManager {
             }
         }
 
-        const sortByPriority = (a, b) => (a[1].constructor.priority || 999) - (b[1].constructor.priority || 999);
+        const sortByPriority = (a: [string, any], b: [string, any]) =>
+            (a[1].constructor.priority || 999) - (b[1].constructor.priority || 999);
         
         uiFeatures.sort(sortByPriority);
         postLayout.sort(sortByPriority);
@@ -212,10 +242,7 @@ window.YPP.FeatureManager = class FeatureManager {
             this._runFeatureUpdate(name, instance, applyId)
         ));
 
-        // 2. Apply the rest of the features in background or later frames
-
-
-
+        // Apply the rest of the features in background or later frames
         if (window.requestIdleCallback) {
             window.requestIdleCallback(() => {
                 if (this._currentApplyId !== applyId) return;
@@ -224,8 +251,8 @@ window.YPP.FeatureManager = class FeatureManager {
                 });
                 
                 // Notify system after heavy features
-                if (window.YPP.events) {
-                    window.YPP.events.emit('features:updated', this.settings);
+                if ((window as any).YPP.events) {
+                    (window as any).YPP.events.emit('features:updated', this.settings);
                 }
             }, { timeout: 300 }); // 300ms: fast enough to not feel delayed, still browser-idle-aware
         } else {
@@ -236,8 +263,8 @@ window.YPP.FeatureManager = class FeatureManager {
                     this._runFeatureUpdate(name, instance, applyId);
                 });
                 
-                if (window.YPP.events) {
-                    window.YPP.events.emit('features:updated', this.settings);
+                if ((window as any).YPP.events) {
+                    (window as any).YPP.events.emit('features:updated', this.settings);
                 }
             }, 0);
         }
@@ -247,7 +274,7 @@ window.YPP.FeatureManager = class FeatureManager {
      * Executes the update logic for a single feature instance
      * @private
      */
-    async _runFeatureUpdate(name, instance, applyId) {
+    async _runFeatureUpdate(name: string, instance: any, applyId: number) {
         if (this._currentApplyId !== applyId) return;
         if (this.errorCounts[name] >= this.MAX_ERRORS) return;
 
@@ -272,21 +299,21 @@ window.YPP.FeatureManager = class FeatureManager {
      * @param {Function} fn - Async or Sync function to execute
      * @returns {Promise<void>}
      */
-    async safeRun(name, fn) {
+    async safeRun(name: string, fn: () => any) {
         if (this.errorCounts[name] >= this.MAX_ERRORS) {
             return; // Abort early if feature is considered permanently broken
         }
         
         try {
             await fn();
-        } catch (e) {
+        } catch (e: any) {
             if (e.message && e.message.includes('Extension context invalidated')) {
                 // Ignore silent context invalidation on extension reload
                 return;
             }
 
             this.errorCounts[name] = (this.errorCounts[name] || 0) + 1;
-            window.YPP.Utils.log(`Error in feature '${name}' (${this.errorCounts[name]}/${this.MAX_ERRORS}): ${e.message}`, 'MANAGER', 'error');
+            (window as any).YPP.Utils.log(`Error in feature '${name}' (${this.errorCounts[name]}/${this.MAX_ERRORS}): ${e.message}`, 'MANAGER', 'error');
             
             const now = Date.now();
             if (now - (this._errorLogTimestamps[name] || 0) > this._errorLogRateLimit) {
@@ -295,7 +322,7 @@ window.YPP.FeatureManager = class FeatureManager {
             }
 
             if (this.errorCounts[name] >= this.MAX_ERRORS) {
-                window.YPP.Utils.log(`Feature '${name}' disabled due to excessive errors. Attempting cleanup...`, 'MANAGER', 'warn');
+                (window as any).YPP.Utils.log(`Feature '${name}' disabled due to excessive errors. Attempting cleanup...`, 'MANAGER', 'warn');
                 
                 // Step 1: Attempt graceful unmount via the feature's own disable()
                 // This gives features a chance to remove their listeners / timers cleanly.
@@ -306,8 +333,8 @@ window.YPP.FeatureManager = class FeatureManager {
                         instance.disable();
                         disableSucceeded = true;
                     }
-                } catch (cleanupError) {
-                    window.YPP.Utils.log(`Failed to cleanly disable broken feature '${name}': ${cleanupError.message}`, 'MANAGER', 'debug');
+                } catch (cleanupError: any) {
+                    (window as any).YPP.Utils.log(`Failed to cleanly disable broken feature '${name}': ${cleanupError.message}`, 'MANAGER', 'debug');
                 }
 
                 // Step 2: DOM sweep fallback — guaranteed cleanup even when disable() throws.
@@ -317,8 +344,8 @@ window.YPP.FeatureManager = class FeatureManager {
                     this._domSweep(name);
                 }
 
-                if (window.YPP.events) {
-                    window.YPP.events.emit('feature:disabled', { name, error: e.message });
+                if ((window as any).YPP.events) {
+                    (window as any).YPP.events.emit('feature:disabled', { name, error: e.message });
                 }
             }
         }
@@ -331,7 +358,7 @@ window.YPP.FeatureManager = class FeatureManager {
      * @param {string} name - Feature key used as the data-ypp-feature value
      * @private
      */
-    _domSweep(name) {
+    _domSweep(name: string) {
         try {
             const safeName = CSS.escape(name);
             const tagged = document.querySelectorAll(`[data-ypp-feature="${safeName}"]`);
@@ -341,13 +368,13 @@ window.YPP.FeatureManager = class FeatureManager {
                 try { el.remove(); } catch (_) { /* ignore individual removal errors */ }
             });
 
-            window.YPP.Utils.log(
+            (window as any).YPP.Utils.log(
                 `DOM sweep removed ${tagged.length} orphaned element(s) for broken feature '${name}'`,
                 'MANAGER', 'warn'
             );
-        } catch (sweepError) {
+        } catch (sweepError: any) {
             // Last-resort: even the sweep failed — nothing more we can do.
-            window.YPP.Utils.log(`DOM sweep failed for '${name}': ${sweepError.message}`, 'MANAGER', 'error');
+            (window as any).YPP.Utils.log(`DOM sweep failed for '${name}': ${sweepError.message}`, 'MANAGER', 'error');
         }
     }
 
@@ -357,12 +384,12 @@ window.YPP.FeatureManager = class FeatureManager {
      */
     disableAll() {
         if (!this.features) return;
-        Object.entries(this.features).forEach(([name, instance]) => {
+        Object.entries(this.features).forEach(([name, instance]: [string, any]) => {
             if (instance && typeof instance.disable === 'function') {
                 try {
                     instance.disable();
-                } catch (e) {
-                    window.YPP.Utils?.log(`Error disabling feature '${name}': ${e.message}`, 'MANAGER', 'error');
+                } catch (e: any) {
+                    (window as any).YPP.Utils?.log(`Error disabling feature '${name}': ${e.message}`, 'MANAGER', 'error');
                 }
             }
         });
@@ -375,7 +402,7 @@ window.YPP.FeatureManager = class FeatureManager {
             'ypp-history-page', 'ypp-subscriptions-page', 'ypp-feed-page',
         ];
 
-        ['body', 'documentElement'].forEach(elName => {
+        (['body', 'documentElement'] as const).forEach(elName => {
             const el = document[elName];
             if (!el) return;
 
@@ -392,7 +419,7 @@ window.YPP.FeatureManager = class FeatureManager {
 
             // Remove data attributes added at runtime (not theme data-attrs)
             const attrs = Array.from(el.attributes);
-            attrs.forEach(attr => {
+            attrs.forEach((attr: Attr) => {
                 if (attr.name.startsWith('data-ypp-page') || attr.name === 'data-ypp-cols') {
                     el.removeAttribute(attr.name);
                 }

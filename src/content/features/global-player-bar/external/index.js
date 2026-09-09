@@ -4,6 +4,29 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
 (async () => {
     if (window.location.hostname.includes('youtube.com')) return;
 
+    // ── Video-detection gate ──────────────────────────────────────────────────
+    // Skip all initialisation cost if there is no video on this page.
+    // We set up a MutationObserver to retry when new nodes appear (handles SPAs
+    // that inject a <video> element after the initial page load).
+    // DomainMemory in read-only mode still needs to run inside iframes even
+    // without a video, so we bypass the gate for frames.
+    const isInsideIframe = window !== window.top;
+    if (!isInsideIframe && !document.querySelector('video')) {
+        await new Promise(resolve => {
+            const observer = new MutationObserver(() => {
+                if (document.querySelector('video')) {
+                    observer.disconnect();
+                    resolve();
+                }
+            });
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+            // Safety timeout: run anyway after 10 s to handle edge-cases
+            setTimeout(() => { observer.disconnect(); resolve(); }, 10000);
+        });
+        // Re-check: if page navigated away or still no video, bail
+        if (!document.querySelector('video')) return;
+    }
+
     setupUtilsMock();
 
     await import('../ui/global-bar-ui.js');
@@ -63,7 +86,7 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
         instances['videoSpeedController'].update(settings);
         if (settings.enableCustomSpeed !== false) instances['videoSpeedController'].enable();
     }
-    const isInsideIframe = window !== window.top;
+    // isInsideIframe is declared at the top of the function (video-detection gate)
 
     if (window.YPP.features.DomainMemory) {
         instances['domainMemory'] = new window.YPP.features.DomainMemory();

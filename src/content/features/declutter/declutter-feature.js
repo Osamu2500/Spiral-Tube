@@ -5,6 +5,7 @@ import { initPrefs } from './core/state-manager.js';
 export class DeclutterFeature extends window.YPP.features.BaseFeature {
   static featureId = 'declutterEngine';
   static executionPhase = 'idle';
+  static pageScope = 'feed'; // Feed cards only exist on home/subscriptions/search/channel pages
 
   constructor(name) {
     super(name || 'Declutter Engine');
