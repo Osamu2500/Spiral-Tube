@@ -13,9 +13,7 @@
     ],
     "host_permissions": [
         "<all_urls>",
-        "*://www.youtube.com/*",
-        "*://returnyoutubedislikeapi.com/*",
-        "*://sponsor.ajay.app/*"
+        "*://www.youtube.com/*"
     ],
     "icons": {
         "16": "src/assets/icons/icon-16.png",
@@ -87,8 +85,7 @@
                 "src/assets/fonts/*",
                 "src/inject/*",
                 "src/popup/*",
-                "dist/*-bundle.css",
-                "src/content/pages/watch/player/enhancements/video-speed-controller/vsc-page-script.js"
+                "dist/*-bundle.css"
             ],
             "matches": [
                 "*://www.youtube.com/*",

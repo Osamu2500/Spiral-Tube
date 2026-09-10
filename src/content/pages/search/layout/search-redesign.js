@@ -31,9 +31,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         FULL_WIDTH:      'ypp-full-width-item',
     };
 
-    /** Layout sizes for grid configuration */
-    static LAYOUT_CLASSES = []; // Deprecated: Now uses data-ypp-search-layout attribute
-
     // =========================================================================
     // INITIALIZATION
     // =========================================================================

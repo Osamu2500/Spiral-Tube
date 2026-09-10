@@ -162,7 +162,6 @@ export class SmartHistory extends window.YPP.features.BaseFeature {
             const time = this.currentVideoData.time;
             if (time > this.settings.minWatchTime && !this.currentVideoData.complete && !this.currentVideoData.doNotResume) {
                 this.videoElement.currentTime = time;
-                console.log(`[SmartHistory] Auto-resumed video to ${time}s`);
             }
         }
         this.initialResumeDone = true;
