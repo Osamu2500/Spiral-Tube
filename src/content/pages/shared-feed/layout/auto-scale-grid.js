@@ -48,7 +48,11 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
         this._resizeListener = this.utils.debounce(this._boundApplyScale, 150);
         this.addListener(window, 'resize', this._resizeListener);
         // Signal layout-manager to re-apply with the new --ypp-dynamic-cols value
-        window.dispatchEvent(new Event('resize'));
+        if (window.requestIdleCallback) {
+            requestIdleCallback(() => window.dispatchEvent(new Event('resize')), { timeout: 300 });
+        } else {
+            setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+        }
     }
 
     async disable() {
@@ -60,7 +64,11 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
         this._resizeListener = null;
         
         // Signal layout-manager to fall back to manual/default columns
-        window.dispatchEvent(new Event('resize'));
+        if (window.requestIdleCallback) {
+            requestIdleCallback(() => window.dispatchEvent(new Event('resize')), { timeout: 300 });
+        } else {
+            setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+        }
     }
 
     async onUpdate() {
@@ -70,7 +78,11 @@ export class AutoScaleGrid extends window.YPP.features.BaseFeature {
                 this.enable();
             } else {
                 this._applyScale();
-                window.dispatchEvent(new Event('resize'));
+                if (window.requestIdleCallback) {
+                    requestIdleCallback(() => window.dispatchEvent(new Event('resize')), { timeout: 300 });
+                } else {
+                    setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+                }
             }
         } else {
             this.disable();

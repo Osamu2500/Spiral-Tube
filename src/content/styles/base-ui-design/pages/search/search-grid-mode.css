@@ -160,7 +160,8 @@ body.ypp-search-grid-mode ytd-vertical-list-renderer #items {
   align-items: start !important;
 }
 
-body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]) {
+body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]),
+body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]) > #contents {
   display: contents !important;
 }
 
@@ -168,50 +169,29 @@ body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]) > #contents {
   display: contents !important;
 }
 
-body.ypp-search-grid-mode
-  ytd-item-section-renderer
-  > #contents
-  > *:not(ytd-video-renderer):not(ytd-compact-video-renderer):not(ytd-playlist-renderer):not(ytd-radio-renderer):not(
-    ytd-channel-renderer
-  ):not(ytd-shelf-renderer):not(ytd-reel-shelf-renderer):not(ytd-horizontal-card-list-renderer):not(
-    ytd-rich-shelf-renderer
-  ):not(ytd-search-sub-menu-renderer):not(ytd-continuation-item-renderer):not(
-    yt-lockup-view-model
-  ):not(ytd-lockup-view-model) {
-  display: none !important;
-}
+/* Let SearchObserver handle hiding unsupported noise elements rather than brittle CSS :not() selectors */
 
-body.ypp-search-grid-mode
-  ytd-item-section-renderer
-  > *:not(#contents):not(ytd-continuation-item-renderer) {
-  display: none !important;
-}
-
+/* Hide empty components to prevent layout gaps */
 body.ypp-search-grid-mode ytd-continuation-item-renderer:empty,
 body.ypp-search-grid-mode ytd-continuation-item-renderer[hidden],
 body.ypp-search-grid-mode ytd-video-renderer:empty,
 body.ypp-search-grid-mode ytd-video-renderer[hidden],
 body.ypp-search-grid-mode ytd-video-renderer:not(:has(ytd-thumbnail)),
-body.ypp-search-grid-mode ytd-video-renderer:has(ytd-ad-slot-renderer),
-body.ypp-search-grid-mode ytd-video-renderer:has(.ytd-ad-slot-renderer),
-body.ypp-search-grid-mode ytd-in-feed-ad-layout-renderer,
-body.ypp-search-grid-mode ytd-ad-slot-renderer,
-body.ypp-search-grid-mode ytd-promoted-sparkles-web-renderer,
-body.ypp-search-grid-mode ytd-search-pyv-renderer,
-body.ypp-search-grid-mode ytd-promoted-video-renderer,
-body.ypp-search-grid-mode
-  ytd-shelf-renderer:not(:has(ytd-video-renderer)):not(:has(ytd-playlist-renderer)):not(
-    :has(ytd-channel-renderer)
-  ):not(:has(ytd-grid-video-renderer)),
-body.ypp-search-grid-mode ytd-reel-shelf-renderer:not(:has(ytd-reel-item-renderer)) {
+body.ypp-search-grid-mode ytd-playlist-renderer:not(:has(ytd-thumbnail)),
+body.ypp-search-grid-mode ytd-radio-renderer:not(:has(ytd-thumbnail)),
+body.ypp-search-grid-mode ytd-channel-renderer:not(:has(#avatar)) {
   display: none !important;
 }
 
+/* Shelves should span the full width to avoid breaking the grid */
 .ypp-search-page.ypp-search-grid-mode ytd-shelf-renderer,
+.ypp-search-page.ypp-search-grid-mode [data-ypp-shelf-type="shelf"],
+.ypp-search-page.ypp-search-grid-mode [data-ypp-shelf-type="shorts"],
 .ypp-search-page.ypp-search-grid-mode ytd-rich-shelf-renderer,
 .ypp-search-page.ypp-search-grid-mode ytd-reel-shelf-renderer,
 .ypp-search-page.ypp-search-grid-mode ytd-horizontal-card-list-renderer,
-.ypp-search-page.ypp-search-grid-mode ytd-background-promo-renderer {
+.ypp-search-page.ypp-search-grid-mode ytd-background-promo-renderer,
+.ypp-search-page.ypp-search-grid-mode yt-collection-shelf-view-model {
   grid-column: 1 / -1 !important;
   width: 100% !important;
   margin: 8px 0;
@@ -226,23 +206,7 @@ body.ypp-search-grid-mode ytd-reel-shelf-renderer:not(:has(ytd-reel-item-rendere
   width: 100% !important;
 }
 
-body.ypp-search-grid-mode ytd-video-renderer,
-body.ypp-search-grid-mode ytd-playlist-renderer,
-body.ypp-search-grid-mode ytd-radio-renderer {
-  
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  flex: none !important;
-  align-self: stretch !important;
-  box-sizing: border-box !important;
-  display: grid !important;
-  grid-template-columns: 1fr 32px !important;
-  grid-template-rows: auto 1fr !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
+/* Removed conflicting `display: grid` rules for video cards, deferring to search-grid-cards.css flex-column layout. */
 
 body.ypp-search-grid-mode ytd-compact-video-renderer,
 body.ypp-search-grid-mode yt-lockup-view-model,
@@ -761,7 +725,7 @@ body.ypp-search-grid-mode ytd-rich-section-renderer {
 }
 
 body.ypp-search-grid-mode ytd-channel-renderer {
-  grid-column: span 2;
+  grid-column: span 1 !important;
   width: 100%;
   max-width: 100%;
   align-self: start !important; 

@@ -53,9 +53,9 @@ export function hideLives() {
 }
 
 export function shouldHideLives(pathname) {
-  return prefs.hideLivesEnabled && isCoreFilterPath(pathname);
+  return prefs.hideLiveStreams && isCoreFilterPath(pathname);
 }
 
 export function shouldHideUpcoming(pathname) {
-  return prefs.hideUpcomingEnabled && isCoreFilterPath(pathname);
+  return prefs.hideUpcoming && isCoreFilterPath(pathname);
 }

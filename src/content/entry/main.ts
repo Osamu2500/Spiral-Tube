@@ -121,7 +121,7 @@
                                 this.thumbnailColorManager = new ManagerClass();
                                 this.thumbnailColorManager.updateSettings(this.settings);
                             };
-                            if (window.requestIdleCallback) {
+                            if (typeof requestIdleCallback === 'function') {
                                 requestIdleCallback(initColorManager);
                             } else {
                                 setTimeout(initColorManager, 500);
@@ -200,9 +200,8 @@
                     return;
                 }
 
-                let startTime = performance.now();
+                const startTime = performance.now();
                 let delay = 16;
-                let timerId = null;
 
                 const check = () => {
                     if (condition()) {
@@ -216,10 +215,10 @@
                     }
 
                     delay = Math.min(delay * 1.5, 500); // Exponential backoff max 500ms
-                    timerId = setTimeout(check, delay);
+                    setTimeout(check, delay);
                 };
 
-                timerId = setTimeout(check, delay);
+                setTimeout(check, delay);
             });
         },
 
@@ -405,43 +404,48 @@
             this._chromeListeners = [];
 
             const handleNavigation = () => {
-                this.Utils?.log('Navigation detected', 'MAIN', 'debug');
-                this.updateContext();
+                // Yield to the browser first so YouTube can paint the new page instantly
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        this.Utils?.log('Navigation detected', 'MAIN', 'debug');
+                        this.updateContext();
 
-                const newPageType = this._getPageType(window.location.pathname);
-                const pageTypeChanged = newPageType !== this._lastPageType;
-                this._lastPageType = newPageType;
+                        const newPageType = this._getPageType(window.location.pathname);
+                        const pageTypeChanged = newPageType !== this._lastPageType;
+                        this._lastPageType = newPageType;
 
-                if (window.YPP.events) {
-                    const url = window.location.href;
-                    window.YPP.events.emit('app:pageChange', url);
+                        if (window.YPP.events) {
+                            const url = window.location.href;
+                            window.YPP.events.emit('app:pageChange', url);
 
-                    if (window.location.pathname.startsWith('/watch')) {
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const videoId = urlParams.get('v');
-                        if (videoId) {
-                            window.YPP.events.emit('app:videoChange', videoId);
-                            if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
-                                window.YPP.Utils.VideoSizeTracker.init();
+                            if (window.location.pathname.startsWith('/watch')) {
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const videoId = urlParams.get('v');
+                                if (videoId) {
+                                    window.YPP.events.emit('app:videoChange', videoId);
+                                    if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
+                                        window.YPP.Utils.VideoSizeTracker.init();
+                                    }
+                                }
+                            } else {
+                                if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
+                                    window.YPP.Utils.VideoSizeTracker.stop();
+                                }
                             }
                         }
-                    } else {
-                        if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
-                            window.YPP.Utils.VideoSizeTracker.stop();
-                        }
-                    }
-                }
 
-                // Only re-run all features when the page TYPE changes (e.g. home → watch).
-                // Same-type navigations (video → video) are already handled by each
-                // feature's onPageChange / onVideoChange subscriptions via the event bus.
-                if (pageTypeChanged && this.featureManager) {
-                    try {
-                        this.featureManager.init(this.settings);
-                    } catch (error: any) {
-                        this.Utils?.log(`Error initializing features on navigation: ${error.message}`, 'MAIN', 'error');
-                    }
-                }
+                        // Only re-run all features when the page TYPE changes (e.g. home → watch).
+                        // Same-type navigations (video → video) are already handled by each
+                        // feature's onPageChange / onVideoChange subscriptions via the event bus.
+                        if (pageTypeChanged && this.featureManager) {
+                            try {
+                                this.featureManager.init(this.settings);
+                            } catch (error: any) {
+                                this.Utils?.log(`Error initializing features on navigation: ${error.message}`, 'MAIN', 'error');
+                            }
+                        }
+                    });
+                });
             };
 
             // Listen for page navigation and track listener
@@ -482,7 +486,7 @@
 
             // Listen for direct messages for instant updates
             if (chrome?.runtime?.onMessage) {
-                const messageHandler = (request: any, sender: any, sendResponse: any) => {
+                const messageHandler = (request: any, _sender: any, sendResponse: any) => {
                     // UPDATE_SETTINGS is now handled exclusively by chrome.storage.onChanged
                     
                     if (request.type === 'YPP_SET_THEME_IMMEDIATE') {
@@ -652,56 +656,46 @@
                 requestAnimationFrame(() => {
                     if (!document.body) return;
                     
-                    const originalClassName = document.body.className;
-                    const classes = new Set(document.body.classList);
+                    const bodyClasses = document.body.classList;
                     
-                    // Only remove old YPP context classes, preserving theme and feature state classes
+                    // Remove old YPP context classes, preserving theme and feature state classes
                     const CONTEXT_CLASSES = [
                         'ypp-watch-page', 'ypp-shorts-page', 'ypp-home-page',
                         'ypp-search-page', 'ypp-channel-page', 'ypp-playlist-page',
                         'ypp-library-page', 'ypp-history-page', 'ypp-subscriptions-page',
                         'ypp-feed-page', 'ypp-feed-playlists-page'
                     ];
+                    bodyClasses.remove(...CONTEXT_CLASSES);
 
-                    for (const cls of classes) {
-                        if (CONTEXT_CLASSES.includes(cls)) {
-                            classes.delete(cls);
-                        }
-                    }
+                    // Add new context classes based on current page
+                    if (this.context.isWatch)         bodyClasses.add('ypp-watch-page');
+                    if (this.context.isShortsPage)    bodyClasses.add('ypp-shorts-page');
+                    if (this.context.isHome)           bodyClasses.add('ypp-home-page');
+                    if (this.context.isSearch)         bodyClasses.add('ypp-search-page');
+                    if (this.context.isChannel)        bodyClasses.add('ypp-channel-page');
+                    if (this.context.isPlaylist)       bodyClasses.add('ypp-playlist-page');
+                    if (this.context.isLibrary)        bodyClasses.add('ypp-library-page');
+                    if (this.context.isHistory)        bodyClasses.add('ypp-history-page');
+                    if (this.context.isSubscriptions)  bodyClasses.add('ypp-subscriptions-page');
+                    if (this.context.isFeedPlaylists)  bodyClasses.add('ypp-feed-playlists-page');
 
-                    if (this.context.isWatch) classes.add('ypp-watch-page');
-                    if (this.context.isShortsPage) classes.add('ypp-shorts-page');
-                    if (this.context.isHome) classes.add('ypp-home-page');
-                    if (this.context.isSearch) classes.add('ypp-search-page');
-                    if (this.context.isChannel) classes.add('ypp-channel-page');
-                    if (this.context.isPlaylist) classes.add('ypp-playlist-page');
-                    if (this.context.isLibrary) classes.add('ypp-library-page');
-                    if (this.context.isHistory) classes.add('ypp-history-page');
-                    if (this.context.isSubscriptions) classes.add('ypp-subscriptions-page');
-                    if (this.context.isFeedPlaylists) classes.add('ypp-feed-playlists-page');
-
-                    classes.add('yt-spiral-tube-theme');
+                    bodyClasses.add('yt-spiral-tube-theme');
                     
-                    // V7 Zero-JS Declutter Architecture Toggles
+                    // V7 Zero-JS Declutter Architecture Toggles — toggle directly on classList
                     const toggleClass = (condition: boolean, className: string) => {
-                        if (condition) classes.add(className);
-                        else classes.delete(className);
+                        if (condition) bodyClasses.add(className);
+                        else bodyClasses.remove(className);
                     };
 
-                    toggleClass(this.settings?.hidePosts, 'ypp-hide-posts');
-                    toggleClass(this.settings?.hidePodcasts, 'ypp-hide-podcasts');
-                    toggleClass(this.settings?.hideChannelCards, 'ypp-hide-channel-cards');
-                    toggleClass(this.settings?.hideSearchMusic, 'ypp-hide-search-music');
-                    toggleClass(this.settings?.hidePromoShelves, 'ypp-hide-promos');
-                    toggleClass(this.settings?.hideExploreTopics, 'ypp-hide-explore-topics');
+                    toggleClass(this.settings?.hidePosts,          'ypp-hide-posts');
+                    toggleClass(this.settings?.hidePodcasts,        'ypp-hide-podcasts');
+                    toggleClass(this.settings?.hideChannelCards,    'ypp-hide-channel-cards');
+                    toggleClass(this.settings?.hideSearchMusic,     'ypp-hide-search-music');
+                    toggleClass(this.settings?.hidePromoShelves,    'ypp-hide-promos');
+                    toggleClass(this.settings?.hideExploreTopics,   'ypp-hide-explore-topics');
                     
                     // TS1 Imported Features
-                    toggleClass(this.settings?.hideMostRelevant, 'ypp-hide-most-relevant');
-                    
-                    const newClassName = Array.from(classes).join(' ');
-                    if (originalClassName !== newClassName) {
-                        document.body.className = newClassName;
-                    }
+                    toggleClass(this.settings?.hideMostRelevant,    'ypp-hide-most-relevant');
                 });
 
                 // Route to appropriate page managers cleanly
@@ -715,7 +709,7 @@
                             this.Utils?.log(`Error activating GlobalLayoutManager: ${err.message}`, 'MAIN', 'error');
                         }
                     };
-                    if (window.requestIdleCallback) {
+                    if (typeof requestIdleCallback === 'function') {
                         requestIdleCallback(runGlobalLayout);
                     } else {
                         setTimeout(runGlobalLayout, 50);
@@ -809,7 +803,7 @@
          * @param {string} component - Component where error occurred
          * @param {Error} error - The error object
          */
-        handleError(component, error) {
+        handleError(component: string, error: any) {
             this.Utils?.log(`Error in ${component}: ${error.message}`, 'MAIN', 'error');
             console.error(`[YPP:${component}] Error:`, error);
         },

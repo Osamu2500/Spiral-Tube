@@ -132,6 +132,9 @@ export class SearchObserver {
                 this._logError('_processSection error', error);
             }
         });
+        
+        // Ensure we auto-fill gaps for newly loaded elements
+        this._autoFillGridGaps();
     }
 
     // -------------------------------------------------------------------------
@@ -147,6 +150,7 @@ export class SearchObserver {
             for (let i = 0; i < itemSections.length; i++) {
                 this._processSection(itemSections[i]);
             }
+            this._autoFillGridGaps();
         } catch (error) {
             this._logError('processAll error', error);
         }
@@ -252,20 +256,23 @@ export class SearchObserver {
                 this._handleNoiseSection(section, stats, children.length);
 
                 if (stats.hasVideos && !isGridContainer) {
-                    contents.classList.add(CLASSES.GRID_CONTAINER);
+                    if (section.tagName !== 'YT-COLLECTION-SHELF-VIEW-MODEL') {
+                        contents.classList.add(CLASSES.GRID_CONTAINER);
+                    }
                 }
 
                 for (let op of operations) {
                     this._processedNodes.add(op.node);
 
                     if (op.isShorts) {
-                        if (this._settings.hideSearchShorts) {
-                            op.node.style.setProperty('display', 'none', 'important');
-                            continue;
-                        }
+                        op.node.dataset.yppShelfType = 'shorts';
                     }
 
                     if (NOISE_TAGS.has(op.tag)) {
+                        if (!op.isShorts) {
+                            op.node.dataset.yppShelfType = 'shelf';
+                        }
+                        
                         if (this._settings.hideSearchShelves) {
                             op.node.style.setProperty('display', 'none', 'important');
                             op.node.classList.add('ypp-hidden-shelf');
@@ -298,6 +305,12 @@ export class SearchObserver {
                             op.tag === 'ytd-lockup-view-model'
                         ) {
                             op.node.classList.add(CLASSES.GRID_ITEM, 'ypp-card-container');
+                            
+                            // Tag specific item types
+                            if (op.tag === 'ytd-radio-renderer') op.node.dataset.yppShelfType = 'mix';
+                            if (op.tag === 'ytd-playlist-renderer') op.node.dataset.yppShelfType = 'playlist';
+                            if (op.tag === 'ytd-channel-renderer') op.node.dataset.yppShelfType = 'channel';
+                            
                             this._cleanInlineStyles(op.node, op.cleanData);
 
                             // Move all badges (4K, Subtitles, etc.) into #channel-info so they flow next to the channel name
@@ -397,6 +410,52 @@ export class SearchObserver {
         }
         
         return true;
+    }
+
+    // -------------------------------------------------------------------------
+    // Grid Gap Auto-Filler
+    // -------------------------------------------------------------------------
+
+    _autoFillGridGaps() {
+        window.YPP.Utils.batch.read(() => {
+            const grids = document.querySelectorAll('.ypp-grid-container, ytd-section-list-renderer > #contents');
+            const writes = [];
+            
+            grids.forEach(grid => {
+                let cardCount = 0;
+                const children = Array.from(grid.children);
+                
+                children.forEach(child => {
+                    const style = window.getComputedStyle(child);
+                    if (style.display === 'none') return;
+                    
+                    if (child.classList.contains('ypp-grid-item')) {
+                        cardCount++;
+                    } else if (child.classList.contains('ypp-full-width-item')) {
+                        // Find empty full-width items that act as invisible grid-breakers
+                        if (child.offsetHeight < 10 && child.textContent.trim().length === 0) {
+                            writes.push(() => {
+                                child.style.setProperty('display', 'none', 'important');
+                            });
+                        }
+                    }
+                });
+                
+                // Store calculated card count and mark repacked
+                writes.push(() => {
+                    grid.dataset.yppCardCount = cardCount;
+                    if (cardCount > 0) {
+                        grid.dataset.yppGridRepacked = 'true';
+                    }
+                });
+            });
+            
+            if (writes.length > 0) {
+                window.YPP.Utils.batch.write(() => {
+                    writes.forEach(fn => fn());
+                });
+            }
+        });
     }
 
     // -------------------------------------------------------------------------

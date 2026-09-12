@@ -51,7 +51,7 @@ export async function handlePatchSettings(payload: any, sendResponse: (response:
     const now = Date.now();
     if (
       !backupData.ypp_backup_time ||
-      now - backupData.ypp_backup_time > BACKUP_INTERVAL_MS
+      now - (backupData.ypp_backup_time as number) > BACKUP_INTERVAL_MS
     ) {
       if (Object.keys(currentSettings).length > 0) {
         await chrome.storage.local.set({

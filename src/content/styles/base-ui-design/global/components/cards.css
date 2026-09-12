@@ -185,14 +185,13 @@ body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-vie
 body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *) [class*="Title"],
 body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #video-title {
   font-size: 1.4rem !important; /* Native Youtube size */
-  line-height: 2rem !important;
+  line-height: 2.2rem !important;
   font-weight: 500 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
-  max-height: 4rem !important;
   color: var(--yt-spec-text-primary, #ffffff) !important;
   letter-spacing: 0 !important;
 }

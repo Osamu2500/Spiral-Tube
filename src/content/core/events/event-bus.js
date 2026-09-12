@@ -12,6 +12,8 @@ window.YPP.core.EventBus = class EventBus {
 
     constructor() {
         this.listeners = {};
+        /** @type {Object<string,number>} Active dispatch depth per event */
+        this._emitDepth = {};
     }
 
     /**
@@ -41,7 +43,9 @@ window.YPP.core.EventBus = class EventBus {
     }
 
     /**
-     * Unsubscribe from an event
+     * Unsubscribe from an event.
+     * If called mid-dispatch, filter() produces a new array so the active
+     * iteration in emit() is unaffected (it holds the old reference).
      * @param {string} event - The event name
      * @param {Function} handler - The callback function
      */
@@ -69,17 +73,31 @@ window.YPP.core.EventBus = class EventBus {
     }
 
     /**
-     * Emit an event to all subscribers
+     * Emit an event to all subscribers.
+     *
+     * Performance: iterates the live array directly instead of copying it.
+     * Safety: off() always produces a new array via filter(), so if a handler
+     * unsubscribes during dispatch the current iteration's reference is untouched.
+     * If a handler adds a NEW listener during dispatch, it gets appended to the
+     * live array and will run in the same emit() call — acceptable and consistent
+     * with standard EventEmitter semantics.
+     *
      * @fires EventBus#event
      * @param {string} event - The event name
      * @param {any} data - Data to pass to handlers
      */
     emit(event, data) {
-        // Shallow copy the array to prevent iteration issues if handlers add/remove listeners during execution
-        const handlers = [...(this.listeners[event] || [])];
-        for (const handler of handlers) {
+        const handlers = this.listeners[event];
+        if (!handlers || handlers.length === 0) return;
+
+        this._emitDepth[event] = (this._emitDepth[event] || 0) + 1;
+
+        // Snapshot length once — new listeners added mid-dispatch won't extend
+        // the loop, keeping behaviour predictable.
+        const len = handlers.length;
+        for (let i = 0; i < len; i++) {
             try {
-                handler(data);
+                handlers[i](data);
             } catch (error) {
                 if (window.YPP?.errorHandler) {
                     window.YPP.errorHandler.handleError(error, `[YPP:EventBus] Error in handler for event '${event}'`);
@@ -88,6 +106,8 @@ window.YPP.core.EventBus = class EventBus {
                 }
             }
         }
+
+        this._emitDepth[event]--;
     }
 
     /**

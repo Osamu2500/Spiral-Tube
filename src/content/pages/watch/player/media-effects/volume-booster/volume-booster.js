@@ -911,8 +911,8 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this.addListener(btn, 'click', (e) => {
             e.stopPropagation();
             if (VolumeBoosterUI) {
-                const activeVideo = this._boundVideo || window.YPP.DOMManager?.getVideo();
-                if (activeVideo && !this._audioConnected) {
+                const activeVideo = initialVideo || this._boundVideo || window.YPP.DOMManager?.getVideo();
+                if (activeVideo && (!this._audioConnected || this._boundVideo !== activeVideo)) {
                     this.initAudioContext(activeVideo);
                 }
                 

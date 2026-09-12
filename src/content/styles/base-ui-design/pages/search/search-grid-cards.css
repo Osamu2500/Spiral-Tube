@@ -28,8 +28,9 @@ body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   display: block !important;
   width: 100% !important;
-  height: 0 !important;
-  padding-bottom: 56.25% !important; /* Bulletproof 16:9 aspect ratio */
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  padding: 0 !important;
   min-width: 0 !important;
   max-width: 100% !important;
   flex-shrink: 0 !important;
@@ -37,10 +38,24 @@ body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail {
   /* Visual styling (border-radius, margin, etc.) is handled by cards.css */
 }
 
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail a,
+body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail yt-image,
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) ytd-thumbnail img,
+body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail a,
+body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail yt-image,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-playlist-thumbnail img,
+body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail a,
+body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail yt-image,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
   display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* ── 3. Meta Text Area (Grid Container) ── */
@@ -114,14 +129,13 @@ body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-rad
 body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) yt-formatted-string#video-title {
   font-family: 'Inter', 'Roboto', sans-serif !important;
   font-size: 1.4rem !important;
-  line-height: 2rem !important;
+  line-height: 2.2rem !important;
   font-weight: 500 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
-  max-height: 4rem !important;
   color: var(--ypp-text-primary, #fff) !important;
   margin: 0 !important;
 }

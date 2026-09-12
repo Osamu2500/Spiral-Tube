@@ -28,6 +28,8 @@ window.YPP.core.DOMObserver = class DOMObserver {
     _rootAttrObserver: MutationObserver | null;
     _videoAttrObserver: MutationObserver | null;
     _observedVideos: WeakSet<Element>;
+    _previewAttrObserver: MutationObserver | null;
+    _observedPreviews: WeakSet<Element>;
 
     constructor() {
         this.registry = new Map();
@@ -107,7 +109,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
             '.ypp-grid-item'
         ].join(', ');
         
-        this.register('_internal_thumbnails', THUMBNAIL_SELECTOR, (nodes) => {
+        this.register('_internal_thumbnails', THUMBNAIL_SELECTOR, (nodes: Element[]) => {
             if (!this.events) return;
             const mappedNodes = nodes.map(el => {
                 let cardType = 'unknown';
@@ -123,18 +125,18 @@ window.YPP.core.DOMObserver = class DOMObserver {
             this.events.emit('dom:thumbnailsAdded', { nodes: mappedNodes });
         }, true, false);
 
-        this.register('_internal_player', 'video', (nodes) => {
+        this.register('_internal_player', 'video', (nodes: Element[]) => {
             if (!this.events) return;
             const mappedNodes = nodes.map(el => ({ el }));
             this.events.emit('dom:playerConstructed', { nodes: mappedNodes });
             nodes.forEach(video => this.observeVideoAttributes(video));
         }, true, false);
 
-        this.register('_internal_video_previews', 'ytd-video-preview', (nodes) => {
+        this.register('_internal_video_previews', 'ytd-video-preview', (nodes: Element[]) => {
             nodes.forEach(preview => this.observeVideoPreviewAttributes(preview));
         }, true, false);
 
-        this.register('_internal_grid', 'ytd-rich-grid-renderer, #contents', (nodes) => {
+        this.register('_internal_grid', 'ytd-rich-grid-renderer, #contents', (nodes: Element[]) => {
             if (!this.events) return;
             const mappedNodes = nodes.map(el => ({ el }));
             this.events.emit('dom:gridMounted', { nodes: mappedNodes });
@@ -210,7 +212,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
             }
             // Avoid duplicate registrations
             const listeners = this._lazyMap.get(el);
-            if (!listeners.some(l => l.id === id)) {
+            if (!listeners.some((l: any) => l.id === id)) {
                 listeners.push({ id, callback });
             }
         }
@@ -294,7 +296,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
                     if (this._pendingNodes.length >= this._maxPendingNodes) {
                         this._flush(); // Force immediate flush if buffer is full
                     }
-                    this._pendingNodes.push(node);
+                    this._pendingNodes.push(node as Element);
                 }
             }
         }
@@ -350,14 +352,14 @@ window.YPP.core.DOMObserver = class DOMObserver {
                 if (!this._selectorIndex.has(selector)) {
                     this._selectorIndex.set(selector, []);
                 }
-                this._selectorIndex.get(selector).push(id);
+                this._selectorIndex.get(selector)!.push(id);
             }
         }
 
         // 2. Extract valid nodes to process.
         // MutationObserver.addedNodes already yields root elements of an inserted subtree,
         // so we don't need expensive manual filtering for descendants.
-        const rootNodes = new Set();
+        const rootNodes = new Set<Element>();
         const IGNORED_TAGS = new Set(['SCRIPT', 'STYLE', 'LINK', 'META', 'NOSCRIPT', 'SVG', 'PATH', 'G', 'DEFS', 'USE', 'BR', 'WBR']);
         
         for (let i = 0; i < nodesToProcess.length; i++) {
@@ -367,22 +369,31 @@ window.YPP.core.DOMObserver = class DOMObserver {
             }
         }
 
-        // 3. Find all matching elements using the batched selector chunks
-        // This runs querySelectorAll exactly ONCE per root node per chunk, avoiding O(N*M) explosion.
-        const allMatches = new Set();
+        // 3. Find all matching elements using the batched selector chunks.
+        // Tracks which chunk(s) each element matched so Step 4 can skip testing
+        // selectors from chunks the element was never part of.
+        // Map<Element, Set<chunkString>> — usually each element maps to 1 chunk.
+        const elementToChunks: Map<Element, Set<string>> = new Map();
         
         for (const node of rootNodes) {
             for (let i = 0; i < selectorChunks.length; i++) {
                 const chunk = selectorChunks[i];
-                if (node.matches && node.matches(chunk)) {
-                    allMatches.add(node);
+                if (node.matches) {
+                    let selfMatch = false;
+                    try { selfMatch = node.matches(chunk); } catch (_) {}
+                    if (selfMatch) {
+                        if (!elementToChunks.has(node)) elementToChunks.set(node, new Set());
+                        elementToChunks.get(node)!.add(chunk);
+                    }
                 }
                 
                 if (node.querySelectorAll) {
                     try {
                         const children = node.querySelectorAll(chunk);
                         for (let c = 0; c < children.length; c++) {
-                            allMatches.add(children[c]);
+                            const child = children[c] as Element;
+                            if (!elementToChunks.has(child)) elementToChunks.set(child, new Set());
+                            elementToChunks.get(child)!.add(chunk);
                         }
                     } catch(e) {
                         // Ignore bad queries silently
@@ -392,16 +403,24 @@ window.YPP.core.DOMObserver = class DOMObserver {
         }
 
         // 4. Distribute unique matched elements to the correct listener buckets.
-        // Use the reverse index (_selectorIndex) so each element is only tested
-        // against the selectors it was matched under — avoids the O(N×M) inner loop
-        // where N = allMatches count and M = registry size.
+        // For each element we only test selectors that belong to chunks the element
+        // actually appeared in — eliminating the O(N×M) .matches() double-loop.
         const matchedBuckets = new Map();
 
-        if (allMatches.size > 0 && this._selectorIndex) {
-            for (const element of allMatches) {
+        if (elementToChunks.size > 0 && this._selectorIndex) {
+            for (const [element, matchedChunkSet] of elementToChunks) {
                 if (!element.matches) continue;
-                // For each known selector, test this element only once.
                 for (const [selector, ids] of this._selectorIndex.entries()) {
+                    // Quick pre-filter: skip if none of the element's matched chunks
+                    // could possibly contain this selector.
+                    // A selector belongs to a chunk if the chunk string contains it
+                    // (chunks are comma-joined selector strings).
+                    let chunkHit = false;
+                    for (const chunk of matchedChunkSet) {
+                        if (chunk.includes(selector)) { chunkHit = true; break; }
+                    }
+                    if (!chunkHit) continue;
+
                     let matched = false;
                     try { matched = element.matches(selector); } catch (_) { continue; }
                     if (!matched) continue;
@@ -518,7 +537,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
         });
     }
 
-    _onPreviewAttributes(mutations: MutationRecord[]) {
+    _onPreviewAttributes(_mutations: MutationRecord[]) {
         if (!this.events) return;
         this.events.emit('dom:heroChanged', {});
     }

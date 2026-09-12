@@ -237,8 +237,12 @@ class WatchPageManager extends window.YPP.BasePageManager {
       body.setAttribute("data-ypp-sidebar-size", "hidden"); // Force hide sidebar in extreme modes
     }
 
-    // Force YouTube player to recalculate layout
-    window.dispatchEvent(new Event('resize'));
+    // Force YouTube player to recalculate layout without blocking the main thread
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => window.dispatchEvent(new Event('resize')), { timeout: 300 });
+    } else {
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    }
 
     // 3. Apply View Mode
     if (this.state.viewMode !== 'default') {
@@ -275,7 +279,11 @@ class WatchPageManager extends window.YPP.BasePageManager {
     ];
     document.body.classList.remove(...classesToRemove);
     document.body.removeAttribute("data-ypp-sidebar-size");
-    window.dispatchEvent(new Event('resize'));
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => window.dispatchEvent(new Event('resize')), { timeout: 300 });
+    } else {
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    }
   }
 
   // ==========================================
@@ -305,8 +313,8 @@ class WatchPageManager extends window.YPP.BasePageManager {
           return null;
         },
         10000,
-        100
-      ); // Reduced from 500ms → 100ms for faster button injection
+        50 // Increased to 50ms to save CPU cycles during the heavy video load phase while still feeling instant
+      );
 
       if (elements) {
         const { video, controls, isShorts } = elements;
@@ -373,15 +381,19 @@ class WatchPageManager extends window.YPP.BasePageManager {
     // Listen for SPA navigation and player state changes.
     // Register only on window (YouTube dispatches these there; document is redundant).
     // Use this.addListener so _cleanupEvents() removes them on deactivate.
+    let debounceTimer;
     const resetProcessed = () => {
-      document.querySelectorAll('[data-ypp-processed="true"]').forEach((el) => {
-        el.removeAttribute('data-ypp-processed');
-      });
-      if (this.playerBarUI) {
-        this.playerBarUI.updateCustomStyles();
-        this.playerBarUI.injectedButtons = false;
-        this.playerBarUI.attemptInjection();
-      }
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        document.querySelectorAll('[data-ypp-processed="true"]').forEach((el) => {
+          el.removeAttribute('data-ypp-processed');
+        });
+        if (this.playerBarUI) {
+          this.playerBarUI.updateCustomStyles();
+          this.playerBarUI.injectedButtons = false;
+          this.playerBarUI.attemptInjection();
+        }
+      }, 200);
     };
     ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change', 'yt-page-type-changed'].forEach(evt => {
       this.addListener(window, evt, resetProcessed);

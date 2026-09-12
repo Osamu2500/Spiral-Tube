@@ -1,0 +1,87 @@
+/*
+ * ==========================================================================
+ * EXPLORE TOPICS / TRENDING SHELF COMPONENT
+ * Handles the "Explore" topic chips and trending/category shelves that
+ * YouTube injects into the home feed.
+ *
+ * These elements use:
+ *   ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer)
+ *   ytd-rich-section-renderer:has(ytd-expandable-tab-renderer)
+ *   ytd-chip-cloud-renderer
+ *   ytd-feed-filter-chip-bar-renderer
+ *
+ * Strategy: Keep chip bars full-width, constrain height, ensure correct
+ * border-radius and spacing to match the Spiral Tube card aesthetic.
+ *
+ * Declutter: Hides explore topics shelf when body has ypp-hide-explore-topics.
+ * ==========================================================================
+ */
+
+/* ── 0. DECLUTTER — Hide when user enables "Hide Explore Topics" ─────────── */
+body.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
+body.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-expandable-tab-renderer),
+body.ypp-hide-explore-topics ytd-chip-cloud-renderer {
+  display: none !important;
+}
+
+/* ── 1. SHELF WRAPPER ────────────────────────────────────────────────────── */
+ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
+ytd-rich-section-renderer:has(ytd-expandable-tab-renderer) {
+  --ytd-rich-grid-item-margin: 0px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 4px 0 8px !important;
+  margin: 2px 0 !important;
+}
+
+/* ── 2. CHIP BAR — the horizontal category chip scroller ────────────────── */
+ytd-feed-filter-chip-bar-renderer {
+  width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+ytd-feed-filter-chip-bar-renderer #chips-wrapper,
+ytd-feed-filter-chip-bar-renderer #container {
+  width: 100% !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important; /* Firefox */
+}
+
+ytd-feed-filter-chip-bar-renderer #chips-wrapper::-webkit-scrollbar,
+ytd-feed-filter-chip-bar-renderer #container::-webkit-scrollbar {
+  display: none !important; /* Chromium */
+}
+
+/* ── 3. CHIP CLOUD ───────────────────────────────────────────────────────── */
+ytd-chip-cloud-renderer {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+ytd-chip-cloud-renderer #chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  padding: 4px 0 !important;
+}
+
+/* ── 4. INDIVIDUAL CHIPS ─────────────────────────────────────────────────── */
+yt-chip-cloud-chip-renderer,
+ytd-chip-cloud-chip-renderer {
+  flex-shrink: 0 !important;
+  border-radius: 20px !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  transition: background 0.15s ease, opacity 0.15s ease !important;
+}
+
+/* ── 5. EXPANDABLE TAB (Trending / Explore sections) ────────────────────── */
+ytd-expandable-tab-renderer {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}

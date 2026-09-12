@@ -1,6 +1,6 @@
 import { forceHide } from '../engine/filter-core.js';
 import { prefs } from '../../core/state-manager.js';
-import { isChannelPagePath } from '../../utils/channel-utils.js';
+import { isFeatureEnabledForPath } from '../../utils/path-utils.js';
 
 export function hideBlacklistedShorts() {
   document
@@ -17,20 +17,5 @@ export function hideBlacklistedShorts() {
 
 export function shouldHideShorts(pathname) {
   if (!prefs.hideShortsEnabled) return false;
-  
-  const {
-    hideShortsHome,
-    hideShortsChannel,
-    hideShortsSearch,
-    hideShortsSubs,
-    hideShortsRelated,
-  } = prefs;
-
-  return (
-    (pathname === '/' && hideShortsHome) ||
-    (isChannelPagePath(pathname) && hideShortsChannel) ||
-    (pathname === '/results' && hideShortsSearch) ||
-    (pathname === '/watch' && hideShortsRelated) ||
-    (pathname === '/feed/subscriptions' && hideShortsSubs)
-  );
+  return isFeatureEnabledForPath('hideShorts', pathname, prefs);
 }

@@ -1,4 +1,5 @@
 import { ICONS, P } from '../../ui/popup-icons.js';
+import { generateAdvancedFilterSlot } from '../../ui/ui-templates.js';
 
 export const getDeclutterTab = (t) => ({
     id: 'declutter',
@@ -393,7 +394,7 @@ export const getDeclutterTab = (t) => ({
             label: 'Hide Playlists',
             desc: 'Remove Playlists from feeds and search results',
             icon: ICONS.playlists,
-            inlineSlot: '<div style="display:flex; align-items:center; width:100%;"><div style="display:inline-flex; background:rgba(0,0,0,0.3); border-radius:10px; padding:3px; border: 1px solid rgba(255,255,255,0.05); margin-right:12px;"><button type="button" class="feature-mode-btn active" data-feature="hidePlaylists" data-mode="dim">Dim</button><button type="button" class="feature-mode-btn" data-feature="hidePlaylists" data-mode="hide">Hide</button></div><input type="hidden" id="hidePlaylistsMode" value="hide" /><div style="display:flex; gap:4px; flex:1;"><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="home" style="flex:1;">Home</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="channel" style="flex:1;">Ch</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="subs" style="flex:1;">Subs</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="search" style="flex:1;">Srch</button><button type="button" class="theme-btn card-style-btn playlists-page-btn active" data-page="related" style="flex:1;">Rel</button></div></div>',
+            inlineSlot: generateAdvancedFilterSlot('hidePlaylists', 'playlists'),
           },
           {
             type: 'toggle',
@@ -402,7 +403,7 @@ export const getDeclutterTab = (t) => ({
             label: 'Hide Mixes',
             desc: 'Remove infinite YouTube Mix playlists everywhere',
             icon: ICONS.mixes,
-            inlineSlot: '<div style="display:flex; align-items:center; width:100%;"><div style="display:inline-flex; background:rgba(0,0,0,0.3); border-radius:10px; padding:3px; border: 1px solid rgba(255,255,255,0.05); margin-right:12px;"><button type="button" class="feature-mode-btn active" data-feature="hideMixes" data-mode="dim">Dim</button><button type="button" class="feature-mode-btn" data-feature="hideMixes" data-mode="hide">Hide</button></div><input type="hidden" id="hideMixesMode" value="hide" /><div style="display:flex; gap:4px; flex:1;"><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="home" style="flex:1;">Home</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="channel" style="flex:1;">Ch</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="subs" style="flex:1;">Subs</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="search" style="flex:1;">Srch</button><button type="button" class="theme-btn card-style-btn mixes-page-btn active" data-page="related" style="flex:1;">Rel</button></div></div>',
+            inlineSlot: generateAdvancedFilterSlot('hideMixes', 'mixes'),
           },
           {
             type: 'toggle',
@@ -411,7 +412,7 @@ export const getDeclutterTab = (t) => ({
             label: t('hide_podcasts'),
             desc: t('remove_podcast_cards'),
             icon: ICONS.podcasts,
-            inlineSlot: '<div style="display:flex; align-items:center; width:100%;"><div style="display:inline-flex; background:rgba(0,0,0,0.3); border-radius:10px; padding:3px; border: 1px solid rgba(255,255,255,0.05); margin-right:12px;"><button type="button" class="feature-mode-btn active" data-feature="hidePodcasts" data-mode="dim">Dim</button><button type="button" class="feature-mode-btn" data-feature="hidePodcasts" data-mode="hide">Hide</button></div><input type="hidden" id="hidePodcastsMode" value="hide" /><div style="display:flex; gap:4px; flex:1;"><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="home" style="flex:1;">Home</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="channel" style="flex:1;">Ch</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="subs" style="flex:1;">Subs</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="search" style="flex:1;">Srch</button><button type="button" class="theme-btn card-style-btn podcasts-page-btn active" data-page="related" style="flex:1;">Rel</button></div></div>',
+            inlineSlot: generateAdvancedFilterSlot('hidePodcasts', 'podcasts'),
           },
           {
             type: 'toggle',
@@ -420,7 +421,7 @@ export const getDeclutterTab = (t) => ({
             label: t('hide_posts'),
             desc: t('remove_community_posts'),
             icon: ICONS.uiComponents,
-            inlineSlot: '<div style="display:flex; align-items:center; width:100%;"><div style="display:inline-flex; background:rgba(0,0,0,0.3); border-radius:10px; padding:3px; border: 1px solid rgba(255,255,255,0.05); margin-right:12px;"><button type="button" class="feature-mode-btn active" data-feature="hidePosts" data-mode="dim">Dim</button><button type="button" class="feature-mode-btn" data-feature="hidePosts" data-mode="hide">Hide</button></div><input type="hidden" id="hidePostsMode" value="hide" /><div style="display:flex; gap:4px; flex:1;"><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="home" style="flex:1;">Home</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="channel" style="flex:1;">Ch</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="subs" style="flex:1;">Subs</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="search" style="flex:1;">Srch</button><button type="button" class="theme-btn card-style-btn posts-page-btn active" data-page="related" style="flex:1;">Rel</button></div></div>',
+            inlineSlot: generateAdvancedFilterSlot('hidePosts', 'posts'),
           },
         ],
       },
@@ -446,9 +447,7 @@ export const getDeclutterTab = (t) => ({
             label: 'Shorts Remover',
             desc: 'Completely nuke all Shorts, reels, and shelves',
             icon: ICONS.promos,
-            inlineSlot:
-              '<div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="opacity:0.6;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:6px;"><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="home">Home</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="channel">Channel</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="subs">Subs</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="search">Search</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="related">Related</button></div></div>',
-
+            inlineSlot: generateAdvancedFilterSlot('aggressiveShortsBlock', 'shorts'),
           },
           {
             type: 'toggle',

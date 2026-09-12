@@ -1,6 +1,6 @@
 import { applyFilter } from '../engine/filter-core.js';
 import { prefs } from '../../core/state-manager.js';
-import { isChannelPagePath } from '../../utils/channel-utils.js';
+import { isFeatureEnabledForPath } from '../../utils/path-utils.js';
 
 export function hideMixes() {
   const mode = prefs.hideMixesMode || 'hide';
@@ -27,22 +27,7 @@ export function hideMixes() {
 
 export function shouldHideMixes(pathname) {
   if (!prefs.hideMixesEnabled) return false;
-  
-  const {
-    hideMixesHome,
-    hideMixesChannel,
-    hideMixesSearch,
-    hideMixesSubs,
-    hideMixesRelated,
-  } = prefs;
-
-  return (
-    (pathname === '/' && hideMixesHome) ||
-    (isChannelPagePath(pathname) && hideMixesChannel) ||
-    (pathname === '/results' && hideMixesSearch) ||
-    (pathname === '/watch' && hideMixesRelated) ||
-    (pathname === '/feed/subscriptions' && hideMixesSubs)
-  );
+  return isFeatureEnabledForPath('hideMixes', pathname, prefs);
 }
 
 export function hidePlaylists() {
@@ -62,20 +47,5 @@ export function hidePlaylists() {
 
 export function shouldHidePlaylists(pathname) {
   if (!prefs.hidePlaylistsEnabled) return false;
-  
-  const {
-    hidePlaylistsHome,
-    hidePlaylistsChannel,
-    hidePlaylistsSearch,
-    hidePlaylistsSubs,
-    hidePlaylistsRelated,
-  } = prefs;
-
-  return (
-    (pathname === '/' && hidePlaylistsHome) ||
-    (isChannelPagePath(pathname) && hidePlaylistsChannel) ||
-    (pathname === '/results' && hidePlaylistsSearch) ||
-    (pathname === '/watch' && hidePlaylistsRelated) ||
-    (pathname === '/feed/subscriptions' && hidePlaylistsSubs)
-  );
+  return isFeatureEnabledForPath('hidePlaylists', pathname, prefs);
 }

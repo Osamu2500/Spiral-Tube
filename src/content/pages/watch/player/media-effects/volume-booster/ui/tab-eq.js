@@ -2,7 +2,7 @@ export class EQTabUI {
     static build(uiState) {
         const { ctx, clearActivePreset, saveSettings, VolumeBoosterUI } = uiState;
         // Determine if global bar based on anchorBtn
-        const isGlobalBar = !!uiState.anchorBtn.closest('.ypp-global-player-bar');
+        const isGlobalBar = !!uiState.anchorBtn?.closest?.('.ypp-global-player-bar');
 
         const wrap = document.createElement('div');
         wrap.id = 'ypp-eq-tab-eq';

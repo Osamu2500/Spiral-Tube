@@ -96,7 +96,11 @@ export class AutoHideTopbar extends window.YPP.features.BaseFeature {
     _triggerResize() {
         clearTimeout(this.resizeDebounce);
         this.resizeDebounce = setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
+            if (window.requestIdleCallback) {
+                requestIdleCallback(() => window.dispatchEvent(new Event('resize')), { timeout: 300 });
+            } else {
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+            }
         }, 100);
     }
 

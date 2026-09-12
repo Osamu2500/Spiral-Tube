@@ -59,6 +59,33 @@ window.YPP.StorageManager = class StorageManager {
     }
 
     static async set(key, value, ttlDays = null) {
+        let payload = { data: value };
+        if (ttlDays) {
+            payload.expiresAt = Date.now() + (ttlDays * 24 * 60 * 60 * 1000);
+        }
+
+        const compressedStr = JSON.stringify(payload, (k, v) => v ?? undefined);
+        // Use string length * 2 as a conservative worst-case byte estimate
+        // (avoids a full TextEncoder scan on every write)
+        const bytes = compressedStr.length * 2;
+
+        // ─── Fast path: small writes bypass the serial queue entirely ───────
+        // Writes below 2 KB (e.g. a single boolean toggle from the popup) cannot
+        // meaningfully race with each other or push storage toward quota. Skipping
+        // the queue promise chain cuts round-trip latency for these tiny updates
+        // roughly in half.
+        if (bytes < 2_000) {
+            try {
+                await chrome.storage.local.set({ [key]: compressedStr });
+                this._cache.set(key, payload);
+                return true;
+            } catch (e) {
+                window.YPP.Utils?.log(`Set error (fast-path): ${e.message}`, StorageManager.CONFIG.LOG_CATEGORY, 'error');
+                throw e;
+            }
+        }
+
+        // ─── Slow path: large writes go through the serial queue ────────────
         const previousQueue = this._writeQueue;
         let resolveQueue;
         this._writeQueue = new Promise(res => { resolveQueue = res; });
@@ -68,20 +95,9 @@ window.YPP.StorageManager = class StorageManager {
         } catch (e) {} // ignore previous errors to not stall queue
 
         try {
-            let payload = { data: value };
-            if (ttlDays) {
-                payload.expiresAt = Date.now() + (ttlDays * 24 * 60 * 60 * 1000);
-            }
-
-            const compressedStr = JSON.stringify(payload, (k, v) => v ?? undefined);
-            // Use string length * 2 as a conservative worst-case byte estimate
-            // (avoids a full TextEncoder scan on every write)
-            const bytes = compressedStr.length * 2;
-
-            // Skip the full getBytesInUse() scan for small payloads (< 10 KB).
+            // Skip the full getBytesInUse() scan for payloads < 10 KB.
             // A 10 KB write cannot meaningfully push storage toward the 10 MB quota,
             // and getBytesInUse() can take 10-50 ms in the service worker.
-            // Only run the full quota check for large payloads that warrant it.
             if (bytes >= 10_000) {
                 const now2 = Date.now();
                 if (now2 - StorageManager._quotaCacheTime > StorageManager._QUOTA_TTL_MS) {

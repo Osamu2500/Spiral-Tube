@@ -3,7 +3,7 @@ import { getVideoContainerSelectors, findOutermostMatch } from '../engine/filter
 import { extractUploadAgeDays, resolveUploadAgeFromSpans } from '../../parsers/date-parser.js';
 import { extractViewCount, resolveViewsFromSpans } from '../../parsers/view-parser.js';
 import { prefs } from '../../core/state-manager.js';
-import { isChannelPagePath } from '../../utils/channel-utils.js';
+import { isFeatureEnabledForPath } from '../../utils/path-utils.js';
 
 const LIVE_INDICATOR_SELECTORS =
   'badge-shape.yt-badge-shape--thumbnail-live, badge-shape.yt-badge-shape--live, ' +
@@ -21,26 +21,8 @@ export function isLiveVideo(element) {
 }
 
 export function shouldHideDateFilter(pathname) {
-  const {
-    dateFilterNewerThreshold,
-    dateFilterOlderThreshold,
-    dateFilterHomeEnabled,
-    dateFilterChannelEnabled,
-    dateFilterSearchEnabled,
-    dateFilterSubsEnabled,
-    dateFilterCorrEnabled,
-  } = prefs;
-
-  if (dateFilterNewerThreshold === 0 && dateFilterOlderThreshold === 0)
-    return false;
-
-  return (
-    (pathname === '/' && dateFilterHomeEnabled) ||
-    (isChannelPagePath(pathname) && dateFilterChannelEnabled) ||
-    (pathname === '/results' && dateFilterSearchEnabled) ||
-    (pathname === '/watch' && dateFilterCorrEnabled) ||
-    (pathname === '/feed/subscriptions' && dateFilterSubsEnabled)
-  );
+  if (prefs.dateFilterNewerThreshold === 0 && prefs.dateFilterOlderThreshold === 0) return false;
+  return isFeatureEnabledForPath('dateFilter', pathname, prefs);
 }
 
 export function getDateFilterReason(ageDays) {
@@ -138,21 +120,7 @@ export function hideDateFilter() {
 }
 
 export function shouldHideViews(pathname) {
-  const {
-    viewsHideHomeEnabled,
-    viewsHideChannelEnabled,
-    viewsHideSearchEnabled,
-    viewsHideSubsEnabled,
-    viewsHideCorrEnabled,
-  } = prefs;
-
-  return (
-    (pathname === '/' && viewsHideHomeEnabled) ||
-    (isChannelPagePath(pathname) && viewsHideChannelEnabled) ||
-    (pathname === '/results' && viewsHideSearchEnabled) ||
-    (pathname === '/watch' && viewsHideCorrEnabled) ||
-    (pathname === '/feed/subscriptions' && viewsHideSubsEnabled)
-  );
+  return isFeatureEnabledForPath('viewsFilter', pathname, prefs);
 }
 
 export function hideUnderVisuals() {

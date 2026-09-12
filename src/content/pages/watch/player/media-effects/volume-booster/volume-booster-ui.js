@@ -105,7 +105,7 @@ export class VolumeBoosterUI {
     panel.id = 'ypp-eq-panel';
 
     // Check if opened from Global Bar
-    const isGlobalBar = !!anchorBtn.closest('.ypp-global-player-bar');
+    const isGlobalBar = !!anchorBtn?.closest?.('.ypp-global-player-bar');
     if (isGlobalBar) {
       // position:fixed is required — the panel is mounted into the popup portal
       // which is a fixed-positioned transparent overlay. Without this the offsets

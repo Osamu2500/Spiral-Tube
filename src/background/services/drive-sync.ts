@@ -7,7 +7,7 @@ async function getAuthToken(interactive = false): Promise<string> {
             if (chrome.runtime.lastError || !token) {
                 return reject(chrome.runtime.lastError);
             }
-            resolve(token);
+            resolve(token as string);
         });
     });
 }

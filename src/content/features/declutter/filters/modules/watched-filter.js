@@ -1,7 +1,7 @@
 import { applyFilter } from '../engine/filter-core.js';
 import { getVideoContainerSelectors, findOutermostMatch } from '../engine/filter-selectors.js';
 import { prefs } from '../../core/state-manager.js';
-import { isChannelPagePath } from '../../utils/channel-utils.js';
+import { isFeatureEnabledForPath } from '../../utils/path-utils.js';
 
 export function hideWatched(pathname) {
   const { hideThreshold, hideWatchedMode } = prefs;
@@ -39,19 +39,5 @@ export function hideWatched(pathname) {
 }
 
 export function shouldHideWatched(pathname) {
-  const {
-    hideHomeEnabled,
-    hideChannelEnabled,
-    hideSearchEnabled,
-    hideSubsEnabled,
-    hideCorrEnabled,
-  } = prefs;
-
-  return (
-    (pathname === '/' && hideHomeEnabled) ||
-    (isChannelPagePath(pathname) && hideChannelEnabled) ||
-    (pathname === '/results' && hideSearchEnabled) ||
-    (pathname === '/watch' && hideCorrEnabled) ||
-    (pathname === '/feed/subscriptions' && hideSubsEnabled)
-  );
+  return isFeatureEnabledForPath('hideWatched', pathname, prefs);
 }
