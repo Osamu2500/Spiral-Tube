@@ -19,6 +19,28 @@ body.ypp-seamless-mode #primary-inner #related {
     padding: 0 !important;
 }
 
+/* Typography for Related Videos */
+body.ypp-seamless-mode #related .ytLockupMetadataViewModelTitle,
+body.ypp-seamless-mode #related #video-title {
+    font-size: 13px !important;
+    line-height: 18px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+body.ypp-seamless-mode #related .ytAttributedStringLink,
+body.ypp-seamless-mode #related ytd-channel-name {
+    font-size: 11px !important;
+    line-height: 14px !important;
+}
+body.ypp-seamless-mode #related .ytContentMetadataViewModelMetadataRow,
+body.ypp-seamless-mode #related .ytContentMetadataViewModelMetadataText,
+body.ypp-seamless-mode #related #metadata-line {
+    font-size: 11px !important;
+    line-height: 13px !important;
+}
+
 /* Custom scrollbar for sidebar comments */
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar {
     width: 6px;

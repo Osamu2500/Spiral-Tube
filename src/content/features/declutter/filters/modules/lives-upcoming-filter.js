@@ -1,3 +1,8 @@
+/**
+ * MODULE: Lives & Upcoming Filter
+ * DESCRIPTION: Hides live streams and upcoming premieres from YouTube feeds.
+ * SCOPE: Applies DOM filters; does not affect core rendering.
+ */
 import { applyFilter } from '../engine/filter-core.js';
 import { prefs } from '../../core/state-manager.js';
 import { isChannelPagePath } from '../../utils/channel-utils.js';

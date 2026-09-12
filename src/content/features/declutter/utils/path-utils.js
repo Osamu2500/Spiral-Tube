@@ -1,3 +1,8 @@
+/**
+ * MODULE: Path Utils
+ * DESCRIPTION: Provides utility functions for route and URL matching.
+ * SCOPE: Shared across content script modules.
+ */
 import { isChannelPagePath } from './channel-utils.js';
 
 /**

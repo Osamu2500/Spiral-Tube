@@ -70,7 +70,9 @@ export class DynamicCSSMatrixEngine {
             
             // Thumbnail overrides
             css += `
-                ytd-watch-flexy ${target} ytd-thumbnail {
+                ytd-watch-flexy ${target} ytd-thumbnail,
+                ytd-watch-flexy ${target} .ytThumbnailViewModelHost,
+                ytd-watch-flexy ${target} .yt-lockup-view-model__image-column {
                     display: block !important;
                     width: 100% !important;
                     min-width: 100% !important;
@@ -83,6 +85,15 @@ export class DynamicCSSMatrixEngine {
                     position: relative !important;
                     flex: none !important;
                     float: none !important;
+                    border-radius: var(--ypp-thumbnail-radius, 12px) !important;
+                    overflow: hidden !important;
+                }
+                ytd-watch-flexy ${target} ytd-thumbnail img,
+                ytd-watch-flexy ${target} img.ytCoreImageHost {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                    border-radius: var(--ypp-thumbnail-radius, 12px) !important;
                 }
             `;
             
@@ -103,6 +114,47 @@ export class DynamicCSSMatrixEngine {
                 ytd-watch-flexy ${target} .details a,
                 ytd-watch-flexy ${target} .details span {
                     white-space: normal !important;
+                }
+                
+                /* Stacked Badges */
+                ytd-watch-flexy ${target} .ytContentMetadataViewModelMetadataRow:has(.ytBadgeViewModelHost) {
+                    position: absolute !important;
+                    bottom: calc(100% + 13px) !important;
+                    left: 5px !important;
+                    z-index: 5 !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    gap: 2px !important;
+                    align-items: flex-start !important;
+                    pointer-events: none !important;
+                    background: transparent !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+                ytd-watch-flexy ${target} .ytBadgeViewModelHost {
+                    position: static !important;
+                    pointer-events: none !important;
+                    background-color: var(--ypp-accent-red, #f00) !important;
+                    padding: 2px 4px !important;
+                    border-radius: var(--ypp-radius-sm, 4px) !important;
+                    display: inline-block !important;
+                    width: auto !important;
+                    max-width: max-content !important;
+                    opacity: 1 !important;
+                    transition: opacity 0.2s ease-in-out !important;
+                    color: #fff !important;
+                    font-size: 11px !important;
+                    line-height: 11px !important;
+                }
+                ytd-watch-flexy ${target} .ytBadgeViewModelHost * {
+                    color: #fff !important;
+                    font-size: 11px !important;
+                    line-height: 11px !important;
+                    font-family: 'Roboto', Arial, sans-serif !important;
+                }
+                ytd-watch-flexy ${target}:hover .ytBadgeViewModelHost {
+                    opacity: 0 !important;
+                    visibility: hidden !important;
                 }
             `;
         });

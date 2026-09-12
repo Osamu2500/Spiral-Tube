@@ -1,3 +1,8 @@
+/**
+ * MODULE: Meta Filters
+ * DESCRIPTION: Handles filtering videos based on upload date and view counts.
+ * SCOPE: Applies DOM filters; does not affect core YouTube rendering.
+ */
 import { applyFilter } from '../engine/filter-core.js';
 import { getVideoContainerSelectors, findOutermostMatch } from '../engine/filter-selectors.js';
 import { extractUploadAgeDays, resolveUploadAgeFromSpans } from '../../parsers/date-parser.js';

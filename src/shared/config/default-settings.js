@@ -139,6 +139,13 @@ export const DEFAULT_SETTINGS = {
   filterMode: 'dim',
   // Per-page toggles for FeedFilter (Advanced Mode)
   // Per-page toggles for MetadataFilters (Advanced Mode)
+  hideChannelBanners: false,
+  filterSearchResults: false,
+  compactHeader: false,
+  fullscreenTheaterMode: false,
+  stretchVideo: false,
+  reorderSidebar: false,
+  hideInterruptions: false,
   viewsFilterHome: true,
   viewsFilterSubs: true,
   viewsFilterSearch: true,

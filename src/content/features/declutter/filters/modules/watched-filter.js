@@ -1,3 +1,8 @@
+/**
+ * MODULE: Watched Filter
+ * DESCRIPTION: Hides or dims already watched videos across YouTube.
+ * SCOPE: Applies DOM filters based on video progress bars.
+ */
 import { applyFilter } from '../engine/filter-core.js';
 import { getVideoContainerSelectors, findOutermostMatch } from '../engine/filter-selectors.js';
 import { prefs } from '../../core/state-manager.js';

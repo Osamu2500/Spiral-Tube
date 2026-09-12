@@ -61,6 +61,15 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             netflixSubtitles:      'ypp-netflix-subtitles',
             saveSupremeUI:         'ypp-save-supreme-ui',
             smallSettingsMenu:     'ypp-small-settings-menu',
+            
+            // New Tweaks
+            hideChannelBanners:    'ypp-hide-channel-banners',
+            filterSearchResults:   'ypp-filter-search-results',
+            compactHeader:         'ypp-compact-header',
+            fullscreenTheaterMode: 'ypp-fullscreen-theater-mode',
+            stretchVideo:          'ypp-stretch-video',
+            reorderSidebar:        'ypp-reorder-sidebar',
+            hideInterruptions:     'ypp-hide-interruptions',
 
         };
     }

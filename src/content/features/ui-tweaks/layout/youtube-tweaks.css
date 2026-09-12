@@ -1,0 +1,73 @@
+/* 
+ * YOUTUBE TWEAKS (Ported from Style 18785)
+ * Contains CSS for minor user-requested layout tweaks
+ */
+
+
+
+/* Hide Channel Banners */
+body.ypp-hide-channel-banners ytd-c4-tabbed-header-renderer #page-header-banner,
+body.ypp-hide-channel-banners .page-header-banner,
+body.ypp-hide-channel-banners yt-page-header-renderer .yt-page-header-renderer-banner {
+    display: none !important;
+}
+
+/* Filter Search Results (Hide exploratory horizontal shelves in search) */
+body.ypp-filter-search-results ytd-search ytd-horizontal-card-list-renderer,
+body.ypp-filter-search-results ytd-search ytd-shelf-renderer {
+    display: none !important;
+}
+
+/* Compact Header */
+body.ypp-compact-header #masthead-container.ytd-app,
+body.ypp-compact-header #masthead.ytd-app,
+body.ypp-compact-header ytd-masthead {
+    height: 36px !important;
+    min-height: 36px !important;
+}
+body.ypp-compact-header #page-manager.ytd-app {
+    margin-top: 36px !important;
+}
+body.ypp-compact-header ytd-masthead #container.ytd-masthead,
+body.ypp-compact-header ytd-masthead #center.ytd-masthead,
+body.ypp-compact-header ytd-masthead #end.ytd-masthead {
+    height: 36px !important;
+    align-items: center !important;
+}
+
+/* Fullscreen Theater Mode */
+body.ypp-fullscreen-theater-mode ytd-watch-flexy[theater] #player-theater-container {
+    height: 100vh !important;
+    max-height: none !important;
+}
+body.ypp-fullscreen-theater-mode ytd-watch-flexy[theater] #player-container-outer {
+    height: 100vh !important;
+    max-height: none !important;
+}
+body.ypp-fullscreen-theater-mode ytd-watch-flexy[theater] #movie_player {
+    height: 100% !important;
+}
+
+/* Stretch Video (object-fit fill) */
+body.ypp-stretch-video ytd-watch-flexy video.html5-main-video {
+    object-fit: fill !important;
+}
+
+/* Reorder Sidebar Navigation */
+body.ypp-reorder-sidebar #sections.ytd-guide-renderer {
+    display: flex !important;
+    flex-direction: column !important;
+}
+/* By default, "Home" is section 1, "You" is section 2. We move section 2 up */
+body.ypp-reorder-sidebar #sections.ytd-guide-renderer > ytd-guide-section-renderer:nth-child(2) {
+    order: -1 !important;
+}
+/* If Subscriptions is in a separate section (often section 3 or inside section 1), flex order might be tricky.
+   Let's ensure the first section (Home, Shorts, Subs) is always top, then "You".
+   Or "You" (2), then "Subscriptions" ? Wait, the requirement was "move You and Subs to the top". */
+
+/* Hide Interruptions */
+body.ypp-hide-interruptions yt-confirm-dialog-renderer:has([aria-label*="interruptions"]),
+body.ypp-hide-interruptions tp-yt-paper-dialog:has(yt-confirm-dialog-renderer [aria-label*="Video paused"]) {
+    display: none !important;
+}
