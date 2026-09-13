@@ -35,39 +35,59 @@ body.ypp-compact-header ytd-masthead #end.ytd-masthead {
     align-items: center !important;
 }
 
-/* Fullscreen Theater Mode */
-body.ypp-fullscreen-theater-mode ytd-watch-flexy[theater] #player-theater-container {
-    height: 100vh !important;
-    max-height: none !important;
-}
-body.ypp-fullscreen-theater-mode ytd-watch-flexy[theater] #player-container-outer {
-    height: 100vh !important;
-    max-height: none !important;
-}
-body.ypp-fullscreen-theater-mode ytd-watch-flexy[theater] #movie_player {
-    height: 100% !important;
-}
 
-/* Stretch Video (object-fit fill) */
-body.ypp-stretch-video ytd-watch-flexy video.html5-main-video {
-    object-fit: fill !important;
-}
-
-/* Reorder Sidebar Navigation */
-body.ypp-reorder-sidebar #sections.ytd-guide-renderer {
-    display: flex !important;
-    flex-direction: column !important;
-}
-/* By default, "Home" is section 1, "You" is section 2. We move section 2 up */
-body.ypp-reorder-sidebar #sections.ytd-guide-renderer > ytd-guide-section-renderer:nth-child(2) {
-    order: -1 !important;
-}
-/* If Subscriptions is in a separate section (often section 3 or inside section 1), flex order might be tricky.
-   Let's ensure the first section (Home, Shorts, Subs) is always top, then "You".
-   Or "You" (2), then "Subscriptions" ? Wait, the requirement was "move You and Subs to the top". */
 
 /* Hide Interruptions */
 body.ypp-hide-interruptions yt-confirm-dialog-renderer:has([aria-label*="interruptions"]),
 body.ypp-hide-interruptions tp-yt-paper-dialog:has(yt-confirm-dialog-renderer [aria-label*="Video paused"]) {
     display: none !important;
+}
+
+/* Full Video Titles */
+body.ypp-full-video-titles #video-title,
+body.ypp-full-video-titles .yt-lockup-metadata-view-model-wiz__title,
+body.ypp-full-video-titles .ytLockupMetadataViewModelTitle,
+body.ypp-full-video-titles .yt-core-attributed-string,
+body.ypp-full-video-titles ytd-rich-grid-media h3,
+body.ypp-full-video-titles yt-formatted-string[line-clamp] {
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    white-space: normal !important;
+}
+
+/* Wide Channel Layout */
+body.ypp-wide-channel-layout ytd-browse[page-subtype="channels"] {
+    --ytd-browse-maximum-width: 100% !important;
+}
+body.ypp-wide-channel-layout ytd-c4-tabbed-header-renderer {
+    max-width: 100% !important;
+}
+
+/* Site Grayscale Mode */
+body.ypp-site-grayscale-mode ytd-app,
+body.ypp-site-grayscale-mode #masthead-container {
+    filter: grayscale(100%) !important;
+}
+
+/* Search Engine Mode (Only on Home Page) */
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) #page-manager {
+    display: none !important;
+}
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) ytd-masthead {
+    position: absolute !important;
+    top: 30vh !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+}
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) #guide, 
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) ytd-mini-guide-renderer,
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) ytd-guide-renderer,
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) #start,
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) #end {
+    display: none !important;
+}
+body.ypp-search-engine-mode:has(ytd-browse[page-subtype="home"]) #center.ytd-masthead {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 800px !important;
 }

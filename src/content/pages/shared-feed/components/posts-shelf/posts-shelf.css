@@ -58,10 +58,11 @@ ytd-rich-section-renderer:has(ytd-shared-post-renderer) ytd-rich-shelf-renderer 
 /* Targets both the direct #contents and the shelf-wrapped #contents */
 ytd-rich-section-renderer:has(ytd-post-renderer) #contents,
 ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) #contents,
-ytd-rich-section-renderer:has(ytd-shared-post-renderer) #contents {
+ytd-rich-section-renderer:has(ytd-shared-post-renderer) #contents,
+ytd-rich-section-renderer:has(yt-post-view-model) #contents {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 4px !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
   width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;

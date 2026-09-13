@@ -66,10 +66,12 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideChannelBanners:    'ypp-hide-channel-banners',
             filterSearchResults:   'ypp-filter-search-results',
             compactHeader:         'ypp-compact-header',
-            fullscreenTheaterMode: 'ypp-fullscreen-theater-mode',
-            stretchVideo:          'ypp-stretch-video',
-            reorderSidebar:        'ypp-reorder-sidebar',
             hideInterruptions:     'ypp-hide-interruptions',
+            
+            fullVideoTitles:       'ypp-full-video-titles',
+            wideChannelLayout:     'ypp-wide-channel-layout',
+            siteGrayscaleMode:     'ypp-site-grayscale-mode',
+            searchEngineMode:      'ypp-search-engine-mode',
 
         };
     }

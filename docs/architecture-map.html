@@ -1,0 +1,74 @@
+<!--
+  docs/architecture-map.html
+  
+  Purpose: A standalone, zero-dependency interactive map to visualize the Spiral Tube extension's 
+  architecture, modules, dependencies, DOM targets, and storage keys.
+  
+  Scope: Acts only as a visualization tool for the `src/content/` files. 
+  Does not affect any unrelated files, extension functionality, or the build process.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spiral Tube — Architecture Map</title>
+<!-- Cytoscape Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+<!-- Native Layout (No external plugins needed) -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <h1><i data-lucide="layout-template"></i> Spiral Tube Architecture</h1>
+  <span id="fileCount"></span>
+  <input type="text" id="search" placeholder="Search modules, dependencies, exports..." autocomplete="off">
+</header>
+
+<main>
+  <div id="sidebar"></div>
+  
+  <div id="graph-container">
+    <div id="loader">
+      <div class="spinner"></div>
+      <div>Simulating Physics Layout...</div>
+    </div>
+    <div id="cy"></div>
+    
+    <div id="legend">
+      <h3>Legend</h3>
+      <div class="legend-row">
+        <div class="legend-shape shape-js"></div> JavaScript Module
+      </div>
+      <div class="legend-row">
+        <div class="legend-shape shape-css"></div> Stylesheet (CSS)
+      </div>
+      <div class="legend-row">
+        <div class="legend-shape shape-html"></div> HTML Template
+      </div>
+      <div class="legend-row legend-edge-row">
+        <div class="legend-edge"></div> Dependency Flow
+      </div>
+    </div>
+  </div>
+
+  <div id="details-panel">
+    <div class="details-header">
+      <i data-lucide="hash"></i>
+      <div class="details-title" id="d-title"></div>
+      <button class="close-btn" aria-label="Close details" title="Close" onclick="DetailsPanel.close()"><i data-lucide="x"></i></button>
+    </div>
+    <div class="details-content" id="d-content"></div>
+  </div>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/bundle.js"></script>
+</body>
+</html>

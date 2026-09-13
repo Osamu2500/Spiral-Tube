@@ -61,6 +61,7 @@ export const getPlayerTab = (t) => ({
             desc: t('pause_when_backgrounded'),
             icon: ICONS.pause,
           },
+
           {
             type: 'select',
             id: 'autoQuality',
@@ -78,22 +79,7 @@ export const getPlayerTab = (t) => ({
           },
           { type: 'custom', id: 'intentionalDelaySlot' },
           { type: 'custom', id: 'autoLikeSlot' },
-          {
-            type: 'toggle',
-            id: 'fullscreenTheaterMode',
-            label: 'Fullscreen Theater Mode',
-            desc: 'Force theater mode to fill the entire viewport height',
-            badge: 'New',
-            icon: ICONS.cinema,
-          },
-          {
-            type: 'toggle',
-            id: 'stretchVideo',
-            label: 'Stretch Video',
-            desc: 'Stretch the video player to remove black bars (object-fit: fill)',
-            badge: 'New',
-            icon: ICONS.autoScale,
-          },
+
         ],
       },
 
@@ -150,14 +136,7 @@ export const getPlayerTab = (t) => ({
             desc: t('scroll_sidebar_independently'),
             icon: ICONS.splitScroll,
           },
-          {
-            type: 'toggle',
-            id: 'reorderSidebar',
-            label: 'Reorder Sidebar Navigation',
-            desc: 'Move "You" and "Subscriptions" sections to the top of the sidebar menu',
-            badge: 'New',
-            icon: ICONS.sidebar,
-          },
+
         ],
       },
 

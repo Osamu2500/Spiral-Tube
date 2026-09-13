@@ -88,6 +88,8 @@ body.ypp-search-grid-mode [data-ypp-shelf-type="shorts"] #items {
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
 }
 
+
+
 /* ── 4. EACH SHORT ITEM: dynamic width to fill screen ───────────────────── */
 body.ypp-search-grid-mode ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer,
 body.ypp-search-grid-mode ytd-reel-shelf-renderer ytd-rich-item-renderer,
@@ -107,6 +109,8 @@ body.ypp-search-grid-mode [data-ypp-shelf-type="shorts"] > #items > * {
   transform: none !important;
   position: relative !important;
 }
+
+
 
 /* Hover lift */
 ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer:hover,
