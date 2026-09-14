@@ -336,17 +336,14 @@ export const getPopup_designTab = (t) => ({
     sections: [
         {
             title: t('accent_color', 'Accent Color'),
-            icon: ICONS.uiComponents,
             items: [{ type: 'custom', id: 'accentColorSlot', style: 'grid-column: 1 / -1; width: 100%;' }]
         },
         {
             title: t('popup_scale', 'Popup UI Scale'),
-            icon: ICONS.autoScale,
             items: [{ type: 'custom', id: 'popupScaleSlot', style: 'grid-column: 1 / -1; width: 100%;' }]
         },
         {
             title: t('popup_ui_design', 'Popup UI Design'),
-            icon: ICONS.designTab,
             items: [{ type: 'custom', id: 'popupUiDesignSlot', style: 'grid-column: 1 / -1; width: 100%;' }]
         }
     ]
