@@ -243,42 +243,7 @@ const THEME_CARDS = [
         desc: 'Frosted blur & depth',
         gradient: 'linear-gradient(135deg,rgba(99,102,241,0.25) 0%,rgba(139,92,246,0.15) 100%)',
         accent: '#6366f1',
-    },
-    {
-        id: 'cyberpunk',
-        label: 'Cyberpunk',
-        desc: 'Neon grid & glow',
-        gradient: 'linear-gradient(135deg,rgba(6,182,212,0.25) 0%,rgba(16,185,129,0.15) 100%)',
-        accent: '#06b6d4',
-    },
-    {
-        id: 'neumorphic',
-        label: 'Neumorphic',
-        desc: 'Soft 3-D depth',
-        gradient: 'linear-gradient(135deg,rgba(107,114,128,0.20) 0%,rgba(55,65,81,0.30) 100%)',
-        accent: '#9ca3af',
-    },
-    {
-        id: 'minimal-flat',
-        label: 'Minimal Flat',
-        desc: 'Clean & distraction-free',
-        gradient: 'linear-gradient(135deg,rgba(241,245,249,0.06) 0%,rgba(148,163,184,0.10) 100%)',
-        accent: '#94a3b8',
-    },
-    {
-        id: 'aurora',
-        label: 'Aurora',
-        desc: 'Northern lights vibes',
-        gradient: 'linear-gradient(135deg,rgba(52,211,153,0.22) 0%,rgba(99,102,241,0.22) 100%)',
-        accent: '#34d399',
-    },
-    {
-        id: 'sunset',
-        label: 'Sunset',
-        desc: 'Warm orange dusk',
-        gradient: 'linear-gradient(135deg,rgba(251,146,60,0.25) 0%,rgba(239,68,68,0.20) 100%)',
-        accent: '#fb923c',
-    },
+    }
 ];
 
 export function renderPopupUiDesignSlot(container, state) {
@@ -330,7 +295,7 @@ export function renderPopupUiDesignSlot(container, state) {
 // ─── Tab Definition ──────────────────────────────────────────────────────────
 export const getPopup_designTab = (t) => ({
     id: 'popup_design',
-    label: 'Popup Design',
+    label: 'Pop up',
     icon: ICONS.uiComponents,
     custom: false,
     sections: [

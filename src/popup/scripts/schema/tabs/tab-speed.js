@@ -24,13 +24,6 @@ export const getSpeedTab = (t) => ({
             desc: t('prevent_players_from_overriding'),
             icon: ICONS.forceSpeed,
           },
-        ],
-      },
-      {
-        title: t('controller_behavior'),
-        icon: ICONS.resume,
-        color: '#10b981',
-        items: [
           {
             type: 'toggle',
             id: 'vscAudioSupport',

@@ -81,7 +81,7 @@ export const THEMES = {
         OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' },
         RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' },
         CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' },
-        HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' },
+        HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts', class: 'ypp-theme-harry-potter' },
         AURORA: { key: 'aurora', label: 'Aurora', class: 'ypp-theme-aurora' },
         AUTUMN: { key: 'autumn', label: 'Autumn', class: 'ypp-theme-autumn' }
     };
@@ -217,7 +217,7 @@ export const CARD_STYLES = [
   },
   {
     id: 'harry-potter',
-    label: 'Hogwarts Magic (Harry Potter) Video'
+    label: 'Hogwarts'
   },
   {
     id: 'hologram',
@@ -512,7 +512,7 @@ export const YOUTUBE_PAGE_THEMES = [
   },
   {
     id: 'harry-potter',
-    label: 'Hogwarts Magic (Harry Potter) Video'
+    label: 'Hogwarts'
   },
   {
     id: 'hologram',
