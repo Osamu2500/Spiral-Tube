@@ -954,7 +954,7 @@ function renderButtonGroup(item, state) {
     return wrap;
 }
 
-const ITEM_RENDERERS = {
+export const ITEM_RENDERERS = {
     toggle: renderToggle,
     inlineToggle: renderInlineToggle,
     range:  renderRange,
@@ -1035,18 +1035,19 @@ function buildSection(section, state) {
     // Header
     const hdr = document.createElement('div');
     hdr.className = 'section-header';
+
     hdr.innerHTML = `
         <div class="section-title-wrap">
-            <span class="drag-handle" title="Drag to reorder">&#8942;&#8942;</span>
+            <span class="drag-handle" title="Drag to reorder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+            </span>
             <div class="section-text-wrap">
-                <div class="section-title">
-                    
-                    ${section.title}
-                </div>
+                <div class="section-title">${section.title}</div>
                 ${section.subtitle ? `<div class="section-subtitle">${section.subtitle}</div>` : ''}
             </div>
         </div>`;
     sec.appendChild(hdr);
+
 
     // Content Wrapper for collapsing
     const content = document.createElement('div');
@@ -1159,7 +1160,7 @@ function _registerInput(input, state) {
 export function renderSchema(doc, state, t) {
     const main = doc.getElementById('tabs-container') || doc.querySelector('main');
     if (!main) {
-        console.warn('[YPP:Renderer] No #tabs-container or <main> found — skipping schema render');
+        // #tabs-container missing — this is a popup shell wiring issue; silently bail.
         return;
     }
 

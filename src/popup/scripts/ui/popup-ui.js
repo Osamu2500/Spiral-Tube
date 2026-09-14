@@ -1,4 +1,5 @@
 const TITLES = {
+    'favorites': 'Favorites',
     'home': 'Home & Feed',
     'shorts': 'Shorts Tools',
     'player': 'Player Features',
@@ -15,12 +16,12 @@ const TITLES = {
     'declutter': 'Declutter Features'
 };
 
-function switchTab(document, tabId) {
-    const navItems = document.querySelectorAll('.nav-item[data-tab]');
-    const tabs = document.querySelectorAll('.tab-content');
-    const pageTitle = document.getElementById('page-title');
+export function switchTab(document, tabId) {
+    const updateDOM = () => {
+        const navItems = document.querySelectorAll('.nav-item[data-tab]');
+        const tabs = document.querySelectorAll('.tab-content');
+        const pageTitle = document.getElementById('page-title');
 
-    requestAnimationFrame(() => {
         navItems.forEach(item => {
             item.classList.toggle('active', item.dataset.tab === tabId);
         });
@@ -35,7 +36,13 @@ function switchTab(document, tabId) {
         }
         
         localStorage.setItem('ypp-last-tab', tabId);
-    });
+    };
+
+    if (document.startViewTransition) {
+        document.startViewTransition(updateDOM);
+    } else {
+        requestAnimationFrame(updateDOM);
+    }
 }
 
 function initTabs(document) {

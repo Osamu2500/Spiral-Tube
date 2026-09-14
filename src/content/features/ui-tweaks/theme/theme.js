@@ -51,6 +51,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         this._Utils = window.YPP.Utils || {};
         this._bgImageManager = new BackgroundImageManager(this._Utils);
         this._accentManager = new AccentColorManager(this._CONSTANTS);
+        this._ambientColorExtractor = new AmbientColorExtractor(this, this._accentManager);
         this._effectsManager = new ThemeEffectsManager();
     }
 
@@ -141,6 +142,12 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             this._cleanupClasses();
             this._cleanupCustomVariables();
 
+            // Disconnect the root attribute observer to prevent memory leaks
+            if (this._rootObserver) {
+                this._rootObserver.disconnect();
+                this._rootObserver = null;
+            }
+
             this._themeObserverAdded = false;
             super.disable();
 
@@ -180,6 +187,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             // Apply global customizations (Typography, density, accent color, etc)
             this._applyCustomizationSettings();
 
+            // Apply custom cursor
+            this._applyCustomCursor();
+
         } catch (error) {
             this._Utils.log?.(`Error running theme: ${error.message}`, 'THEME', 'error');
         }
@@ -197,12 +207,10 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         // Toggle base premium class
         root.classList.toggle(this._CSS_CLASSES.THEME_ENABLED, enable);
         
-        // Always add ypp-theme-effects when premium theme is enabled so the gradient backgrounds always show.
-        root.classList.toggle('ypp-theme-effects', enable);
-        
-        // Use a separate class to disable the animations if the user turns off "Theme Effects"
         const enableEffects = this._settings.enableThemeEffects !== false;
-        root.classList.toggle('ypp-no-theme-animations', !enableEffects && enable);
+        
+        // Add ypp-theme-effects only when Theme Effects are enabled. This controls background gradients/effects.
+        root.classList.toggle('ypp-theme-effects', enable && enableEffects);
         
         if (body) body.classList.toggle(this._CSS_CLASSES.THEME_ENABLED, enable);
 
@@ -222,12 +230,6 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                     };
                     activeThemeKey = themeMap[ytTheme] || ytTheme;
                 }
-            }
-
-            // Legacy support: if trueBlack is on and theme is default, use midnight
-            if (this._settings.trueBlack === true && activeThemeKey === 'default') {
-                this._Utils.log('Legacy True Black enabled -> Forcing Midnight theme', 'THEME');
-                activeThemeKey = 'midnight';
             }
 
             // Handle System Theme
@@ -289,6 +291,41 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             this._systemMediaQuery.removeEventListener('change', this._systemListener);
             this._systemMediaQuery = null;
             this._systemListener = null;
+        }
+    }
+
+    /**
+     * Apply custom cursor images globally
+     * @private
+     */
+    _applyCustomCursor() {
+        const id = 'ypp-custom-cursor-style';
+        let styleEl = document.getElementById(id);
+        
+        const normalBase64 = this._settings.normalCursorBase64;
+        const pointerBase64 = this._settings.pointerCursorBase64;
+        
+        if (!normalBase64 && !pointerBase64) {
+            if (styleEl) styleEl.remove();
+            return;
+        }
+        
+        if (!styleEl) {
+            styleEl = document.createElement('style');
+            styleEl.id = id;
+            document.head.appendChild(styleEl);
+        }
+        
+        let css = '';
+        if (normalBase64) {
+            css += `* { cursor: url('${normalBase64}'), auto !important; }\n`;
+        }
+        if (pointerBase64) {
+            css += `a, button, [role="button"], [role="link"], input[type="submit"], input[type="button"], label, select, .ytp-progress-bar, .ytp-volume-panel, .ytp-scrubber-button, [style*="cursor: pointer"] { cursor: url('${pointerBase64}'), pointer !important; }\n`;
+        }
+        
+        if (styleEl.textContent !== css) {
+            styleEl.textContent = css;
         }
     }
 
@@ -562,6 +599,9 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
         }
 
         this._accentManager.apply(this._settings, root);
+        if (this._ambientColorExtractor) {
+            this._ambientColorExtractor.setEnabled(!!this._settings.enableAmbientAccent);
+        }
 
         
 
@@ -594,6 +634,19 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
             #avatar-link, .ytSpecAvatarShapeHost, .ytLockupMetadataViewModelAvatar {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
+            }
+
+            /* Flowing Gradient */
+            @keyframes ypp-flow {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            body.ypp-flowing-gradient-enabled .ytp-play-progress,
+            body.ypp-flowing-gradient-enabled .ytp-load-progress,
+            body.ypp-flowing-gradient-enabled yt-button-shape button {
+                background-size: 200% 200% !important;
+                animation: ypp-flow 3s ease infinite !important;
             }
         `;
 

@@ -202,8 +202,13 @@ class HoverPillManager {
     }
     
     trackMouse(e) {
-        this.lastMouseX = e.clientX;
-        this.lastMouseY = e.clientY;
+        if (!this._mouseFrame) {
+            this._mouseFrame = requestAnimationFrame(() => {
+                this._mouseFrame = null;
+                this.lastMouseX = e.clientX;
+                this.lastMouseY = e.clientY;
+            });
+        }
     }
     
     getViewportTop() {
@@ -256,15 +261,21 @@ class HoverPillManager {
     }
     
     onScroll() {
-        this.scrolling = true;
-        if (this.scrollIdleTimer) clearTimeout(this.scrollIdleTimer);
-        this.scrollIdleTimer = setTimeout(() => this.onScrollIdle(), this.SCROLL_IDLE_MS);
-        if (!this.el) return;
-        if (this.pending) {
-            this.setHidden(true);
-            return;
+        if (!this._scrollFrame) {
+            this._scrollFrame = requestAnimationFrame(() => {
+                this._scrollFrame = null;
+                this.scrolling = true;
+                if (this.scrollIdleTimer) clearTimeout(this.scrollIdleTimer);
+                this.scrollIdleTimer = setTimeout(() => this.onScrollIdle(), this.SCROLL_IDLE_MS);
+                
+                if (!this.el) return;
+                if (this.pending) {
+                    this.setHidden(true);
+                    return;
+                }
+                this.clearButton();
+            });
         }
-        this.clearButton();
     }
     
     onScrollIdle() {
@@ -286,15 +297,29 @@ class HoverPillManager {
     startWatchdog() {
         if (this.watchdog) return;
         this.watchdog = setInterval(() => {
-            this.position();
-            if (!this.container || this.pending) return;
+            if (document.hidden) return;
+            if (!this.container) {
+                this.stopWatchdog();
+                return;
+            }
+            if (this.pending) {
+                this.position();
+                return;
+            }
+            
+            // Read first to avoid layout thrashing
             const rect = this.container.getBoundingClientRect();
             const stillInside =
                 this.lastMouseX >= rect.left &&
                 this.lastMouseX <= rect.right &&
                 this.lastMouseY >= rect.top &&
                 this.lastMouseY <= rect.bottom;
-            if (!stillInside) this.clearButton();
+                
+            if (!stillInside) {
+                this.clearButton();
+            } else {
+                this.position();
+            }
         }, 400);
     }
     

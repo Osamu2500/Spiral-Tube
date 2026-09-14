@@ -90,9 +90,19 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
             this._scrollDebounceTimer = null;
         }
         
+        if (this._scrollFrame) {
+            cancelAnimationFrame(this._scrollFrame);
+            this._scrollFrame = null;
+        }
+        
         if (this._sidebarObserver) {
             this._sidebarObserver.disconnect();
             this._sidebarObserver = null;
+        }
+        
+        if (this._setupTimeout) {
+            clearTimeout(this._setupTimeout);
+            this._setupTimeout = null;
         }
         
         this._scrollBound = false;
@@ -133,9 +143,10 @@ _initScrollObserver() {
     // We can't rely just on onPageChange because the sidebar might be rebuilt
     // So we use a MutationObserver or just set up the event when the element exists
     const setup = () => {
+        if (!this.isEnabled) return; // Guard against executing if disabled while waiting
         const secondary = document.getElementById('secondary');
         if (!secondary) {
-            setTimeout(setup, 1000);
+            this._setupTimeout = setTimeout(setup, 1000);
             return;
         }
 
@@ -198,21 +209,27 @@ _initScrollObserver() {
  */
 _onScroll(e) {
     if (!this.isEnabled) return;
-    const secondary = e.target;
-    if (!secondary) return;
     
-    const scrollPos = secondary.scrollTop;
-    const isScrolled = scrollPos > 50;
-    secondary.classList.toggle('ypp-is-scrolling', isScrolled);
-    
-    const topBtn = document.getElementById('ypp-scroll-top-btn');
-    if (topBtn) {
-        if (scrollPos > 2000) {
-            topBtn.classList.add('pulse-anim');
-        } else {
-            topBtn.classList.remove('pulse-anim');
+    if (this._scrollFrame) return;
+    this._scrollFrame = requestAnimationFrame(() => {
+        this._scrollFrame = null;
+        
+        const secondary = e.target;
+        if (!secondary) return;
+        
+        const scrollPos = secondary.scrollTop;
+        const isScrolled = scrollPos > 50;
+        secondary.classList.toggle('ypp-is-scrolling', isScrolled);
+        
+        const topBtn = document.getElementById('ypp-scroll-top-btn');
+        if (topBtn) {
+            if (scrollPos > 2000) {
+                topBtn.classList.add('pulse-anim');
+            } else {
+                topBtn.classList.remove('pulse-anim');
+            }
         }
-    }
+    });
     
     // V3: Debounce sessionStorage for high performance
     if (this._scrollDebounceTimer) {

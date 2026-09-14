@@ -52,6 +52,11 @@ html:is([data-ypp-ui-design], [data-ypp-card-style]) body.ypp-hide-scrollbar *::
 body.ypp-hide-sidebar #content {
   margin-left: 0 !important;
 }
+body.ypp-hide-sidebar ytd-mini-guide-renderer,
+body.ypp-hide-sidebar app-drawer#guide,
+body.ypp-hide-sidebar #guide-button {
+  display: none !important;
+}
 body:not(.cinematic-home).ypp-hide-sidebar:not(.ypp-channel-page) ytd-rich-grid-renderer {
   width: 100% !important;
   padding-left: 12px !important;

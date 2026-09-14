@@ -5,22 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spiral Tube</title>
     <link rel="stylesheet" href="styles/core/fonts.css" />
-    <link rel="stylesheet" href="styles/core/popup.css?v=3" />
+    <link rel="stylesheet" href="styles/core/popup.css?v=6" />
     <link rel="stylesheet" href="styles/components/popup-themes.css" />
     <link rel="stylesheet" href="styles/components/history.css" />
     <link rel="stylesheet" href="styles/components/bookmarks.css" />
     <link rel="stylesheet" href="styles/core/theme-vars.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/core/variables.css" />
     <link rel="stylesheet" href="styles/core/popup-extracted.css" />
     <link rel="stylesheet" href="styles/components/popup-chips.css" />
     <link rel="stylesheet" href="styles/components/declutter.css" />
+    <link rel="stylesheet" href="styles/components/command-palette.css" />
+    <link rel="stylesheet" href="styles/components/ambient-background.css" />
   </head>
 
   <body class="ypp-theme-liquid-glass">
+    <!-- Ambient Background Elements -->
+    <div class="ambient-background">
+      <div class="ambient-orb orb-1"></div>
+      <div class="ambient-orb orb-2"></div>
+      <div class="ambient-orb orb-3"></div>
+    </div>
     <div class="app-container">
       <!-- Sidebar Navigation -->
       <nav class="sidebar">
 
         <div class="nav-items">
+          <button class="nav-item" data-tab="favorites" title="Favorites">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <span class="nav-label" data-i18n="nav_favorites">Favorites</span>
+          </button>
           <button class="nav-item active" data-tab="home" title="Home Feed">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             <span class="nav-label" data-i18n="nav_home">Home</span>
@@ -109,6 +125,14 @@
         </header>
 
 
+
+        <!-- FAVORITES -->
+        <section id="tab-favorites" class="tab-content">
+           <div id="favorites-container" class="card-group"></div>
+           <div id="favorites-empty-state" style="text-align: center; opacity: 0.5; font-size: 12px; padding: 30px 10px;">
+               No favorites pinned.<br><br>Right-click any setting to pin it here.
+           </div>
+        </section>
 
         <!-- HOME — rendered by popup-renderer.js from popup-schema.js -->
         <section id="tab-home" class="tab-content active">
@@ -200,6 +224,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -221,6 +246,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L22 12l-10 10L2 12 12 2z"></path></svg>
@@ -246,13 +272,6 @@
                     <button id="saveCustomThemeBtn" class="icon-btn" title="Save Theme">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
                     </button>
-                    <button id="exportCustomThemeBtn" class="icon-btn" title="Export Theme">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    </button>
-                    <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                    </button>
-                    <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" class="hidden-file-input">
                   </div>
                 </div>
                 
@@ -288,7 +307,6 @@
                   </div>
                 </div>
                 
-              <div class="setting-item" title="Force completely black backgrounds"><div class="info"><span class="name">True Black</span></div><label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label></div>
             </div>
             </div>
           </div>
@@ -297,6 +315,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -387,6 +406,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
@@ -457,6 +477,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
@@ -549,6 +570,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -587,6 +609,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title" data-i18n="ui_enhancements">UI Enhancements</div>
                      <div class="section-subtitle" data-i18n="toggle_specific_feature_layouts">Toggle specific feature layouts</div>
@@ -637,6 +660,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg>
@@ -648,48 +672,25 @@
             </div>
             <div class="ypp-inline-177 card-group">
               <input type="hidden" id="customCursor" value="default" aria-label="Custom Cursor" title="Custom Cursor">
-              <div class="ypp-inline-178 cursor-masonry-grid" id="cursorMasonryGrid">
-                <button type="button" class="ypp-inline-179 cursor-style-btn active" >
-                  <div class="ypp-inline-180 cursor-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg>
-                  </div>
-                  <span class="ypp-inline-181">Default</span>
-                </button>
-                <button type="button" class="ypp-inline-182 cursor-style-btn" >
-                  <div class="ypp-inline-183">
-                    <img src="../assets/cursors/among-us/cursor.png" alt="Cursor" class="ypp-inline-184">
-                    <img src="../assets/cursors/among-us/pointer.png" alt="Pointer" class="ypp-inline-185">
-                  </div>
-                  <span class="ypp-inline-186">Among Us</span>
-                </button>
-                <button type="button" class="ypp-inline-207 cursor-style-btn" >
-                  <div class="ypp-inline-208">
-                    <img src="../assets/cursors/fifa-2026/cursor.png" alt="Cursor" class="ypp-inline-209">
-                    <img src="../assets/cursors/fifa-2026/pointer.png" alt="Pointer" class="ypp-inline-210">
-                  </div>
-                  <span class="ypp-inline-211">FIFA 26</span>
-                </button>
-                <button type="button" class="ypp-inline-282 cursor-style-btn" >
-                  <div class="ypp-inline-283">
-                    <img src="../assets/cursors/mickey-mouse/cursor.png" alt="Cursor" class="ypp-inline-284">
-                    <img src="../assets/cursors/mickey-mouse/pointer.png" alt="Pointer" class="ypp-inline-285">
-                  </div>
-                  <span class="ypp-inline-286">Mickey</span>
-                </button>
-                <button type="button" class="ypp-inline-287 cursor-style-btn" >
-                  <div class="ypp-inline-288">
-                    <img src="../assets/cursors/minecraft-sword/cursor.png" alt="Cursor" class="ypp-inline-289">
-                    <img src="../assets/cursors/minecraft-sword/pointer.png" alt="Pointer" class="ypp-inline-290">
-                  </div>
-                  <span class="ypp-inline-291">Minecraft</span>
-                </button>
-                <button type="button" class="ypp-inline-302 cursor-style-btn" >
-                  <div class="ypp-inline-303">
-                    <img src="../assets/cursors/pinky-pixel/cursor.png" alt="Cursor" class="ypp-inline-304">
-                    <img src="../assets/cursors/pinky-pixel/pointer.png" alt="Pointer" class="ypp-inline-305">
-                  </div>
-                  <span class="ypp-inline-306">Pixel</span>
-                </button>
+              <div class="custom-cursor-uploader">
+                <div class="cursor-upload-box" id="uploadNormalCursor">
+                  <div class="cursor-upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg></div>
+                  <div class="cursor-upload-text">Normal Cursor</div>
+                  <img id="previewNormalCursor" src="" class="cursor-preview hidden" alt="Normal">
+                  <input type="file" id="fileNormalCursor" accept="image/png, image/jpeg, image/gif" class="hidden-file-input" title="Upload Normal Cursor">
+                  <button type="button" class="icon-btn clear-cursor-btn hidden" id="clearNormalCursor" title="Clear Normal Cursor">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </button>
+                </div>
+                <div class="cursor-upload-box" id="uploadPointerCursor">
+                  <div class="cursor-upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 13v-9a2 2 0 1 1 4 0v4.22a2 2 0 0 1 .59-1.42l1.83-1.83a2 2 0 0 1 2.83 0l.59.59a2 2 0 0 1 .59 1.41v1.41a2 2 0 0 1 .59-1.42l1.83-1.83a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1 .59 1.42v5.66a9 9 0 0 1-9 9h-3.41a9 9 0 0 1-6.36-2.64l-4.24-4.24a2 2 0 0 1 0-2.83l1.41-1.41a2 2 0 0 1 2.83 0z"></path></svg></div>
+                  <div class="cursor-upload-text">Pointer Cursor</div>
+                  <img id="previewPointerCursor" src="" class="cursor-preview hidden" alt="Pointer">
+                  <input type="file" id="filePointerCursor" accept="image/png, image/jpeg, image/gif" class="hidden-file-input" title="Upload Pointer Cursor">
+                  <button type="button" class="icon-btn clear-cursor-btn hidden" id="clearPointerCursor" title="Clear Pointer Cursor">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -698,6 +699,7 @@
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title" data-i18n="animations_screen_filters">Animations & Screen Filters</div>
                   </div>
@@ -706,19 +708,14 @@
             <div class="card-group">
               <div class="feature-grid">
                 <div class="toggle-card">
-                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-                  <div class="info"><span class="name" data-i18n="enable_animations">Enable Animations</span></div>
-                  <label class="toggle"><input type="checkbox" id="enableAnimations" checked aria-label="Enable Animations" title="Enable Animations"><span class="slider"></span></label>
+                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></div>
+                  <div class="info"><span class="name" data-i18n="reduce_animations">Reduce Animations</span><span class="desc" data-i18n="reduce_animations_desc">Disables UI transitions and layout shifts</span></div>
+                  <label class="toggle"><input type="checkbox" id="reduceAnimations" aria-label="Reduce Animations" title="Reduce Animations"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
                   <div class="info"><span class="name" data-i18n="theme_effects">Theme Effects</span><span class="desc" data-i18n="background_fx">Background fx</span></div>
                   <label class="toggle"><input type="checkbox" id="enableThemeEffects" checked aria-label="Enable Theme Effects" title="Enable Theme Effects"><span class="slider"></span></label>
-                </div>
-                <div class="toggle-card">
-                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></div>
-                  <div class="info"><span class="name" data-i18n="reduced_motion">Reduced Motion</span></div>
-                  <label class="toggle"><input type="checkbox" id="reducedMotion" aria-label="Reduced Motion" title="Reduced Motion"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 3v18"></path><path d="M7 3v18"></path><path d="M3 12h18"></path></svg></div>
@@ -783,6 +780,7 @@
           <div class="ypp-inline-372 settings-section" data-preserve="true">
             <div class="section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title" data-i18n="data_management">Data Management</div>
                      <div class="section-subtitle" data-i18n="backup_restore_and_reset_your_extension_data">Backup, restore, and reset your extension data</div>
@@ -823,6 +821,7 @@
           <div class="ypp-inline-382 settings-section">
             <div class="ypp-inline-383 section-header">
                <div class="section-title-wrap">
+                  <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
                      <div class="section-title" data-i18n="your_bookmarks">Your Bookmarks</div>
                      <div class="section-subtitle" data-i18n="captured_highlights_across_all_videos">Captured highlights across all videos</div>
@@ -846,6 +845,23 @@
           </div>
         </section>
       </main>
+    </div>
+    <!-- Command Palette Overlay -->
+    <div id="command-palette-overlay" class="command-palette-overlay hidden">
+      <div class="command-palette-modal">
+        <div class="command-palette-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="command-palette-input" placeholder="Search settings, actions, or tabs... (Cmd/Ctrl + K)" autocomplete="off">
+          <div class="command-palette-hint">esc</div>
+        </div>
+        <div class="command-palette-results" id="command-palette-results">
+          <!-- Results populated dynamically -->
+        </div>
+        <div class="command-palette-footer">
+          <span class="cmd-key">↑↓</span> to navigate 
+          <span class="cmd-key">↵</span> to select
+        </div>
+      </div>
     </div>
 
     <script src="lib/anime.min.js"></script>

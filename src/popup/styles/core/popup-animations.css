@@ -156,7 +156,7 @@
   border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   color: #fff;
   min-width: 180px;
   max-width: 280px;
@@ -263,16 +263,8 @@ input[type="number"]:focus {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   7. GLASS CARD SHINE ON HOVER
+   7. GLASS CARD SHINE ON HOVER — subtle single-layer sheen
 ═══════════════════════════════════════════════════════════ */
-.toggle-card,
-.mode-card,
-.settings-section,
-.preset-card,
-.stat-card {
-  --shine-offset: -100%;
-}
-
 .toggle-card::before,
 .mode-card::before,
 .preset-card::before {
@@ -281,23 +273,14 @@ input[type="number"]:focus {
   inset: 0;
   border-radius: inherit;
   background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.07) 50%,
+    135deg,
+    rgba(255,255,255,0.06) 0%,
     transparent 60%
   );
-  background-size: 200% 100%;
-  background-position: var(--shine-offset, -100%) 0;
   pointer-events: none;
-  transition: background-position 0.6s ease;
   z-index: 0;
 }
 
-.toggle-card:hover::before,
-.mode-card:hover::before,
-.preset-card:hover::before {
-  background-position: 200% 0;
-}
 
 /* ═══════════════════════════════════════════════════════════
    8. ANIMATED OVERLAY (Recap & Resume)

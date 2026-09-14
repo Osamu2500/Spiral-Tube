@@ -59,12 +59,13 @@
         cacheMap.set(key, value);
     }
 
-    let flushScheduled = false;
+    let flushTimer = null;
     function flushCacheToDOM() {
-        if (flushScheduled || (!channelIdCacheDirty && !videoCacheDirty)) return;
-        flushScheduled = true;
-        Promise.resolve().then(() => {
-            flushScheduled = false;
+        if (!channelIdCacheDirty && !videoCacheDirty) return;
+        if (flushTimer) return;
+        
+        flushTimer = setTimeout(() => {
+            flushTimer = null;
             try {
                 const root = document.documentElement;
                 if (!root) return;
@@ -77,7 +78,7 @@
                     root.setAttribute('data-ypp-video-cache', JSON.stringify(Object.fromEntries(cache)));
                 }
             } catch (_) {}
-        });
+        }, 250);
     }
 
     /**
@@ -101,7 +102,7 @@
                 }
 
                 const [obj, depth] = stack.pop();
-                if (!obj || typeof obj !== 'object' || visited.has(obj) || depth > 30) continue;
+                if (!obj || typeof obj !== 'object' || visited.has(obj) || depth > 15) continue;
                 visited.add(obj);
 
                 if (Array.isArray(obj)) {

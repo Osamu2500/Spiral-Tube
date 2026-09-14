@@ -112,17 +112,16 @@ export const waitForElement = (selector, timeout = CONSTANTS.TIMINGS?.ELEMENT_WA
             let timeoutId = null;
             const startUrl = location.href; // Capture URL for early abort
             
-            // Generate unique ID for the shared observer registry
             const observerId = 'wait-' + Math.random().toString(36).substr(2, 9);
-            let fallbackObserver = null;
+            let fallbackInterval = null;
 
             const cleanup = () => {
                 if (window.YPP?.sharedObserver) {
                     window.YPP.sharedObserver.unregister(observerId);
                 }
-                if (fallbackObserver) {
-                    fallbackObserver.disconnect();
-                    fallbackObserver = null;
+                if (fallbackInterval) {
+                    clearInterval(fallbackInterval);
+                    fallbackInterval = null;
                 }
                 if (timeoutId) {
                     clearTimeout(timeoutId);
@@ -180,16 +179,8 @@ export const waitForElement = (selector, timeout = CONSTANTS.TIMINGS?.ELEMENT_WA
                 window.YPP.sharedObserver.register(observerId, selector, checkMatches, true);
             } else {
                 // Fallback for very early initialization before sharedObserver is ready
-                let rafId = null;
-                const scheduleCheck = () => {
-                    if (rafId) return;
-                    rafId = requestAnimationFrame(() => {
-                        rafId = null;
-                        checkMatches();
-                    });
-                };
-                fallbackObserver = new MutationObserver(scheduleCheck);
-                fallbackObserver.observe(document.documentElement, { childList: true, subtree: true });
+                // Use polling to avoid catastrophic subtree:true layout thrashing
+                fallbackInterval = setInterval(checkMatches, 250);
                 checkMatches();
             }
 
@@ -216,16 +207,16 @@ export const waitForElements = (selectors, timeout = 10000) => {
         return new Promise((resolve) => {
             const startUrl = location.href;
             const observerId = 'waits-' + Math.random().toString(36).substr(2, 9);
-            let fallbackObserver = null;
+            let fallbackInterval = null;
             let rafId = null;
 
             const cleanup = () => {
                 if (window.YPP?.sharedObserver) {
                     window.YPP.sharedObserver.unregister(observerId);
                 }
-                if (fallbackObserver) {
-                    fallbackObserver.disconnect();
-                    fallbackObserver = null;
+                if (fallbackInterval) {
+                    clearInterval(fallbackInterval);
+                    fallbackInterval = null;
                 }
                 if (rafId) {
                     cancelAnimationFrame(rafId);
@@ -263,17 +254,7 @@ export const waitForElements = (selectors, timeout = 10000) => {
                 // Register for any of the selectors. The DOMObserver will batch evaluate.
                 window.YPP.sharedObserver.register(observerId, selectors.join(','), checkElements, true);
             } else {
-                // Coalesce rapid mutations into one check per animation frame
-                const scheduleCheck = () => {
-                    if (rafId) return;
-                    rafId = requestAnimationFrame(() => {
-                        rafId = null;
-                        checkElements();
-                    });
-                };
-
-                fallbackObserver = new MutationObserver(scheduleCheck);
-                fallbackObserver.observe(document.documentElement, { childList: true, subtree: true });
+                fallbackInterval = setInterval(checkElements, 250);
                 checkElements();
             }
 
@@ -364,7 +345,7 @@ export const pollFor = (conditionFn, timeout = 10000, intervalMs = 250, signal =
 
 export const createElement = (tag, attrs = {}, children = []) => {
         if (!tag || typeof tag !== 'string') {
-            console.error('[YPP:Utils] createElement: invalid tag name');
+            (window.YPP?.Utils?.log ?? ((m) => console.error(m)))('[YPP:Utils] createElement: invalid tag name', 'DOM', 'error');
             return null;
         }
 
@@ -403,7 +384,7 @@ export const createElement = (tag, attrs = {}, children = []) => {
 
             return el;
         } catch (error) {
-            console.error('[YPP:Utils] createElement error:', error);
+            (window.YPP?.Utils?.log ?? ((m) => console.error(m)))(`[YPP:Utils] createElement error: ${error?.message}`, 'DOM', 'error');
             return null;
         }
     };

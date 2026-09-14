@@ -9,6 +9,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: 'Global UI Cleanups',
         icon: ICONS.filter,
+        color: '#ef4444',
         items: [
           {
             type: 'toggle',
@@ -58,6 +59,13 @@ export const getDeclutterTab = (t) => ({
             label: t('hide_members_only'),
             desc: t('hide_members_only_desc'),
             icon: ICONS.memberships,
+          },
+          {
+            type: 'toggle',
+            id: 'hideSidebar',
+            label: 'Hide Left Sidebar',
+            desc: 'Hide the navigation guide on the left side',
+            icon: ICONS.sidebar,
           },
           {
             type: 'toggle',
@@ -148,6 +156,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: 'Global Content Filters',
         icon: ICONS.playlists,
+        color: '#f97316',
         items: [
           {
             type: 'toggle',
@@ -220,6 +229,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: 'Advanced Smart Filters',
         icon: ICONS.search,
+        color: '#f59e0b',
         items: [
           {
             type: 'toggle',
@@ -269,6 +279,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: t('home_page'),
         icon: ICONS.secFiltersHome,
+        color: '#10b981',
         items: [
           {
             type: 'toggle',
@@ -302,6 +313,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: t('advanced_filters'),
         icon: ICONS.pinVideo,
+        color: '#64748b',
         items: [
           {
             type: 'select',
@@ -363,6 +375,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: t('player_page'),
         icon: ICONS.secFiltersPlayer,
+        color: '#3b82f6',
         items: [
           {
             type: 'toggle',
@@ -497,6 +510,7 @@ export const getDeclutterTab = (t) => ({
       {
         title: t('search_page'),
         icon: P('M11 11a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.35-4.35'),
+        color: '#06b6d4',
         items: [
           {
             type: 'toggle',

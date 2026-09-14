@@ -8,6 +8,7 @@ export const getSpeedTab = (t) => ({
       {
         title: t('speed_controls'),
         icon: ICONS.speed,
+        color: '#f59e0b',
         items: [
           {
             type: 'toggle',
@@ -28,6 +29,7 @@ export const getSpeedTab = (t) => ({
       {
         title: t('controller_behavior'),
         icon: ICONS.resume,
+        color: '#10b981',
         items: [
           {
             type: 'toggle',
@@ -55,6 +57,7 @@ export const getSpeedTab = (t) => ({
       {
         title: t('shortcuts'),
         icon: ICONS.keyboard,
+        color: '#64748b',
         items: [{ type: 'custom', id: 'vsc_shortcuts_manager', class: 'span-4' }],
       },
     ],

@@ -8,6 +8,7 @@ export const getSearchTab = (t) => ({
       {
         title: t('layout_filters'),
         icon: P('M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12z'),
+        color: '#06b6d4',
         items: [
 
           {

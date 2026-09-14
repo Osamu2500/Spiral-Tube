@@ -9,6 +9,7 @@ export const getModesTab = (t) => ({
         title: t('home_page'),
         subtitle: 'Immersive experiences for the home feed',
         icon: ICONS.secModesHome,
+        color: '#f97316',
         items: [
           {
             type: 'toggle',
@@ -30,6 +31,7 @@ export const getModesTab = (t) => ({
         title: t('player_page'),
         subtitle: 'Immersive experiences for the video player',
         icon: ICONS.secModesPlayer,
+        color: '#a855f7',
         items: [
           {
             type: 'toggle',

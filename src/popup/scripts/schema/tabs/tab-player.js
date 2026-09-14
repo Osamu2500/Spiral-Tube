@@ -17,6 +17,7 @@ export const getPlayerTab = (t) => ({
       {
         title: t('playback_automation'),
         icon: ICONS.magicWand,
+        color: '#8b5cf6',
         items: [
           {
             type: 'toggle',
@@ -87,22 +88,22 @@ export const getPlayerTab = (t) => ({
       {
         title: t('player_ui_components'),
         icon: ICONS.uiComponents,
+        color: '#3b82f6',
         items: [
-
+          {
+            type: 'toggle',
+            id: 'floatingPlayer',
+            label: 'Floating Player',
+            desc: 'Enable the floating player (PiP overlay)',
+            icon: ICONS.player,
+          },
           {
             type: 'toggle',
             id: 'saveSupremeUI',
             label: 'Save Supreme UI',
             desc: 'Better styling for save buttons',
             icon: ICONS.saveSupreme,
-          },
-          {
-            type: 'toggle',
-            id: 'reduceAnimations',
-            label: t('reduce_animations'),
-            desc: t('reduce_animations_desc'),
-            icon: ICONS.reduceAnimations,
-          },
+          }
 
 
 
@@ -113,6 +114,7 @@ export const getPlayerTab = (t) => ({
       {
         title: t('sidebar_features'),
         icon: ICONS.sidebar,
+        color: '#06b6d4',
         items: [
           {
             type: 'toggle',
@@ -144,6 +146,7 @@ export const getPlayerTab = (t) => ({
       {
         title: 'Player Bar Tools',
         icon: ICONS.secPlayerTools,
+        color: '#ec4899',
         items: [
           {
             type: 'toggle',
@@ -201,6 +204,7 @@ export const getPlayerTab = (t) => ({
       {
         title: t('custom_player_bar_placements'),
         icon: ICONS.placement,
+        color: '#f59e0b',
         items: [
           {
             type: 'button-group',

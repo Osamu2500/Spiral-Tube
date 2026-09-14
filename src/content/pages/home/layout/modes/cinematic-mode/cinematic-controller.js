@@ -490,7 +490,7 @@ export class CinematicController {
         items = items.filter(item => {
             const isHidden = item.closest('[hidden]') ||
                              item.style.display === 'none' ||
-                             window.getComputedStyle(item).display === 'none' ||
+                             (!item.offsetParent && item.tagName !== 'BODY') || // Fast visibility check
                              item.hasAttribute('data-ypp-mix') ||
                              item.closest('[data-ypp-mix="true"]') != null ||
                              item.classList.contains('ypp-is-mix') ||
@@ -663,14 +663,19 @@ export class CinematicController {
                 return;
             }
 
-            const observer = new MutationObserver(() => {
+            // Fallback to polling instead of a costly subtree MutationObserver
+            let intervalId = setInterval(() => {
                 const found = document.querySelector(selector);
                 if (found) {
-                    observer.disconnect();
+                    clearInterval(intervalId);
                     resolve(found);
                 }
-            });
-            observer.observe(document.documentElement, { childList: true, subtree: true });
+            }, 200);
+            
+            // Clean up the interval if the controller is destroyed
+            if (this.observerManager) {
+                this.observerManager.addInterval(intervalId);
+            }
         });
     }
 }

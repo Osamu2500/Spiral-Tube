@@ -160,25 +160,28 @@ export function updateUIState(ctx) {
     let isFs = !!document.fullscreenElement;
     
     if (!isFs) {
-        for (const v of ctx.trackedVideos) {
-            if (v.isConnected) {
-                if (v.getBoundingClientRect) {
-                    const rect = v.getBoundingClientRect();
-                    // Fake fullscreen detection: video takes up >98% of the viewport
-                    if (rect.width >= window.innerWidth * 0.98 && rect.height >= window.innerHeight * 0.98) {
-                        isFs = true;
-                        break;
-                    }
-                } else if (v._proxy && v._capabilities) {
-                    // If it's a proxy, we rely on document.fullscreenElement (checked above)
-                    // Or if the iframe passes a specific fullscreen flag in the future
-                    if (v._capabilities.isFullscreen) {
-                        isFs = true;
-                        break;
+        if (!ctx._lastFsCheck || Date.now() - ctx._lastFsCheck > 1000) {
+            ctx._lastFsCheck = Date.now();
+            ctx._cachedFsState = false;
+            for (const v of ctx.trackedVideos) {
+                if (v.isConnected) {
+                    if (v.getBoundingClientRect) {
+                        const rect = v.getBoundingClientRect();
+                        // Fake fullscreen detection: video takes up >98% of the viewport
+                        if (rect.width >= window.innerWidth * 0.98 && rect.height >= window.innerHeight * 0.98) {
+                            ctx._cachedFsState = true;
+                            break;
+                        }
+                    } else if (v._proxy && v._capabilities) {
+                        if (v._capabilities.isFullscreen) {
+                            ctx._cachedFsState = true;
+                            break;
+                        }
                     }
                 }
             }
         }
+        isFs = ctx._cachedFsState;
     }
     
     if (ctx._uiStateCache.fullscreen !== isFs) {

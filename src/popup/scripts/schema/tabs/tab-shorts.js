@@ -8,6 +8,7 @@ export const getShortsTab = (t) => ({
       {
         title: t('visibility_routing'),
         icon: ICONS.eyeSlash,
+        color: '#ef4444',
         items: [
           {
             type: 'toggle',
@@ -21,6 +22,7 @@ export const getShortsTab = (t) => ({
       {
         title: t('global_filters_shorts'),
         icon: P('M22 3L2 22 M22 22L2 3'),
+        color: '#f59e0b',
         items: [
           {
             type: 'toggle',

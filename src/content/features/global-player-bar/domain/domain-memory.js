@@ -214,13 +214,33 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         } catch (_) {}
     }
 
+    async _getAllProfiles() {
+        if (!this._cachedProfiles) {
+            const data = await chrome.storage.local.get('ypp_domain_profiles');
+            this._cachedProfiles = data.ypp_domain_profiles || {};
+            if (!this._storageListenerAdded) {
+                this._storageListenerAdded = true;
+                chrome.storage.onChanged.addListener((changes, areaName) => {
+                    if (areaName === 'local' && changes.ypp_domain_profiles) {
+                        this._cachedProfiles = changes.ypp_domain_profiles.newValue || {};
+                    }
+                });
+            }
+        }
+        return this._cachedProfiles;
+    }
+
+    async _saveAllProfiles(profiles) {
+        this._cachedProfiles = profiles;
+        await chrome.storage.local.set({ ypp_domain_profiles: profiles });
+    }
+
     /**
      * Loads the stored profile for the current scope from chrome.storage.local
      */
     async loadDomainProfile() {
         try {
-            const data = await chrome.storage.local.get('ypp_domain_profiles');
-            let allProfiles = data.ypp_domain_profiles || {};
+            let allProfiles = await this._getAllProfiles();
 
             // Pruning logic: remove abandoned profiles untouched for > 6 months (180 days)
             const SIX_MONTHS_MS = 180 * 24 * 60 * 60 * 1000;
@@ -236,7 +256,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             }
             
             if (needsPrune) {
-                chrome.storage.local.set({ ypp_domain_profiles: allProfiles }).catch(() => {});
+                this._saveAllProfiles(allProfiles).catch(() => {});
             }
 
             const resolution = this.resolveProfile(allProfiles);
@@ -581,10 +601,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         this._domainProfile = p;
 
         try {
-            const data = await chrome.storage.local.get('ypp_domain_profiles');
-            const allProfiles = data.ypp_domain_profiles || {};
+            const allProfiles = await this._getAllProfiles();
             allProfiles[activeKey] = p;
-            await chrome.storage.local.set({ ypp_domain_profiles: allProfiles });
+            await this._saveAllProfiles(allProfiles);
             this._updateButtonStatus();
             window.YPP?.Utils?.log?.(`Saved profile for scope ${activeKey}`, 'DomainMemory', 'info');
         } catch (e) {
@@ -615,10 +634,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             await this._executeSaveProfile();
         } else {
             try {
-                const data = await chrome.storage.local.get('ypp_domain_profiles');
-                const allProfiles = data.ypp_domain_profiles || {};
+                const allProfiles = await this._getAllProfiles();
                 allProfiles[activeKey] = { enabled: false, lastUpdated: Date.now() };
-                await chrome.storage.local.set({ ypp_domain_profiles: allProfiles });
+                await this._saveAllProfiles(allProfiles);
                 this._domainProfile = null;
             } catch (_) {}
         }
@@ -628,10 +646,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     async resetDomainProfile() {
         try {
             const activeKey = this.getScopeKey();
-            const data = await chrome.storage.local.get('ypp_domain_profiles');
-            const allProfiles = data.ypp_domain_profiles || {};
+            const allProfiles = await this._getAllProfiles();
             delete allProfiles[activeKey];
-            await chrome.storage.local.set({ ypp_domain_profiles: allProfiles });
+            await this._saveAllProfiles(allProfiles);
             
             this._domainProfile = null;
             

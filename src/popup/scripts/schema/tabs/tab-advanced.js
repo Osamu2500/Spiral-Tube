@@ -8,6 +8,7 @@ export const getAdvancedTab = (t) => ({
       {
         title: t('global_player_bar'),
         icon: ICONS.globalBar,
+        color: '#ec4899',
         items: [
           {
             type: 'toggle',
@@ -88,6 +89,7 @@ export const getAdvancedTab = (t) => ({
       {
         title: 'Video Management',
         icon: ICONS.player,
+        color: '#8b5cf6',
         items: [
           {
             type: 'toggle',
@@ -112,6 +114,7 @@ export const getAdvancedTab = (t) => ({
       {
         title: 'Remembered Streaming Sites (Domain Memory)',
         icon: ICONS.secDomainMemory,
+        color: '#10b981',
         items: [
           {
             type: 'custom',

@@ -8,6 +8,7 @@ export const getHistoryTab = (t) => ({
       {
         title: t('watch_time'),
         icon: ICONS.clock,
+        color: '#10b981',
         items: [
           { type: 'custom', id: 'historyWidget', slot: 'history-widget' },
           {
@@ -49,6 +50,7 @@ export const getHistoryTab = (t) => ({
       {
         title: t('tracking_resume'),
         icon: ICONS.secHistoryTracking,
+        color: '#8b5cf6',
         items: [
           {
             type: 'toggle',
@@ -77,6 +79,7 @@ export const getHistoryTab = (t) => ({
       {
         title: t('history_interface'),
         icon: ICONS.smartHistory,
+        color: '#3b82f6',
         items: [
           {
             type: 'toggle',

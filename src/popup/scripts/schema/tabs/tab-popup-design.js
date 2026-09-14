@@ -21,9 +21,8 @@ export function renderAccentColorSlot(container, state) {
         <div class="pd-color-block">
           <div class="pd-color-header">
             <span class="pd-color-label">Primary Color</span>
-            <span class="pd-color-preview-chip" id="accentChipPreview"></span>
           </div>
-          <div class="pd-swatches" id="accentSwatches" role="group" aria-label="Accent Color">
+          <div class="pd-swatches" id="accentSwatches" role="group" aria-label="Accent Color" style="padding-left: 12px;">
             ${ACCENT_COLORS.map(c => `
               <button type="button" class="pd-swatch" data-color="${c.color}" style="--swatch-color:${c.color}" title="${c.label}" aria-label="${c.label}"></button>
             `).join('')}
@@ -43,7 +42,7 @@ export function renderAccentColorSlot(container, state) {
               <span class="slider"></span>
             </label>
           </div>
-          <div class="pd-swatches pd-swatches-secondary pd-gradient-disabled" id="secondaryAccentSwatches" role="group" aria-label="Secondary Accent Color">
+          <div class="pd-swatches pd-swatches-secondary pd-gradient-disabled" id="secondaryAccentSwatches" role="group" aria-label="Secondary Accent Color" style="padding-left: 12px;">
             ${ACCENT_COLORS.map(c => `
               <button type="button" class="pd-swatch secondary-color-swatch" data-sec-color="${c.color}" style="--swatch-color:${c.color}" title="${c.label}" aria-label="${c.label}"></button>
             `).join('')}
@@ -65,7 +64,6 @@ export function renderAccentColorSlot(container, state) {
         if (state.settings.accentColor) {
             accentInput.value = state.settings.accentColor;
             _markSwatchActive(container.querySelector('#accentSwatches'), state.settings.accentColor);
-            _updateChip(container.querySelector('#accentChipPreview'), state.settings.accentColor);
         }
         if (state.settings.enableDualAccent) {
             dualToggle.checked = true;
@@ -89,12 +87,6 @@ function _markSwatchActive(group, color, secColor) {
         const attr = secColor !== undefined ? 'data-sec-color' : 'data-color';
         s.classList.toggle('pd-swatch-active', s.dataset[attr === 'data-color' ? 'color' : 'secColor'] === (color ?? secColor));
     });
-}
-
-function _updateChip(chip, color) {
-    if (!chip) return;
-    chip.style.background = color;
-    chip.style.boxShadow = `0 0 8px ${color}88`;
 }
 
 // ─── Popup Scale Slot ────────────────────────────────────────────────────────

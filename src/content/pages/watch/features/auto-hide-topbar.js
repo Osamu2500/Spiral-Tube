@@ -45,6 +45,8 @@ export class AutoHideTopbar extends window.YPP.features.BaseFeature {
     }
 
     _activate() {
+        if (this._isActivated) return; // Guard: prevent duplicate listener on SPA re-nav
+        this._isActivated = true;
         if (!document.body.classList.contains('ypp-hide-top-bar')) {
             document.body.classList.add('ypp-hide-top-bar');
             this._triggerResize();
@@ -53,12 +55,17 @@ export class AutoHideTopbar extends window.YPP.features.BaseFeature {
     }
 
     _deactivate() {
+        this._isActivated = false;
+        this._lastEvent = null;
+        this._rafScheduled = false;
+        this.isHoveringTop = false;
+        clearTimeout(this.resizeDebounce);
         if (document.body.classList.contains('ypp-hide-top-bar')) {
             document.body.classList.remove('ypp-hide-top-bar');
             document.body.classList.remove('ypp-show-top-bar');
             this._triggerResize();
         }
-        document.removeEventListener('mousemove', this._boundMouseMove, { passive: true });
+        document.removeEventListener('mousemove', this._boundMouseMove);
     }
 
     _handleMouseMove(e) {

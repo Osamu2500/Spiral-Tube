@@ -3,7 +3,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
     constructor(utils, settings) {
         super(utils, settings);
         this.matchPatterns = [/.*/]; // Matches everywhere
-        this._boundNavHandler = () => this._updateDynamicToggles();
+        this._onNavFinish = () => this._updateDynamicToggles();
         
         // Map settings keys to body CSS classes
         this.TOGGLE_MAP = {
@@ -19,6 +19,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideChannelCards:      'ypp-hide-channel-cards',
             hideCards:             'ypp-hide-video-cards', // Split: player cards only
             hideMerch:             'ypp-hide-merch',
+            hideSidebar:           'ypp-hide-sidebar',
             hideFundraiser:        'ypp-hide-fundraiser',
             hideSearchShelves:     'ypp-hide-search-shelves',
             hideSearchPodcasts:    'ypp-hide-search-podcasts',
@@ -78,26 +79,19 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
 
     onActivate() {
         this.utils.log('Global Layout Active', 'GLOBAL_MANAGER', 'info');
-        this._startMonitoring();
-        document.addEventListener('yt-navigate-finish', this._boundNavHandler);
+        document.addEventListener('yt-navigate-finish', this._onNavFinish);
     }
 
 
 
     onDeactivate() {
-        if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.unregister('global_mixes');
-            window.YPP.sharedObserver.unregister('global_shorts');
-            window.YPP.sharedObserver.unregister('global_playlists');
-        }
-        
         // Remove all dynamically added body classes from TOGGLE_MAP
         const classesToRemove = Object.values(this.TOGGLE_MAP);
         document.body.classList.remove(...classesToRemove, 'ypp-nuke-shorts');
         document.documentElement.classList.remove('ypp-hide-scrollbar');
 
         // Remove event listeners
-        document.removeEventListener('yt-navigate-finish', this._boundNavHandler);
+        document.removeEventListener('yt-navigate-finish', this._onNavFinish);
     }
 
     applySettings(settings) {
@@ -200,14 +194,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         }
     }
 
-    _startMonitoring() {
-        if (!window.YPP?.sharedObserver) return;
-        
-        // Observers for Mixes, Shorts, and Playlists were removed because they were setting 
-        // useless data attributes that were never used by CSS or JS. 
-        // HideShorts and HideMixes have their own dedicated JS files now, and HidePlaylists 
-        // uses safe CSS rules.
-    }
+
 }
 
 window.YPP = window.YPP || {};

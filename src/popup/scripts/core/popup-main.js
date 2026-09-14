@@ -11,7 +11,10 @@ import * as UI from '../ui/popup-ui.js';
 import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
 import { initPopupDesignScale } from './popup-design-handler.js';
 import { renderAccentColorSlot, renderPopupScaleSlot, renderPopupUiDesignSlot } from '../schema/tabs/tab-popup-design.js';
-
+import { initCommandPalette } from '../ui/command-palette.js';
+import { initAmbientBackground } from '../ui/popup-ambient.js';
+import { initFavorites } from '../ui/popup-favorites.js';
+import { initSidebarDragAndDrop } from '../ui/popup-dragdrop.js';
 // Detect if we are running outside a native popup (e.g. Edge extension options modal, full tab)
 // A native Chrome popup never exceeds 800x600 and is never an iframe.
 if (window.innerWidth > 800 || window.innerHeight > 600 || window !== window.top || window.location.search.includes('full')) {
@@ -335,7 +338,6 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         enableCustomSpeed: 'Toggle Custom Speed',
 
         // --- UI / Theme ---
-        trueBlack: 'Toggle True Black Dark Mode',
         hideScrollbar: 'Toggle Scrollbar',
         grayscaleThumbnails: 'Toggle Grayscale Thumbs',
         grid4x4: 'Toggle 4x4 Grid Layout',
@@ -1088,7 +1090,7 @@ const initApp = async () => {
         safeInit(components.initCardStyleGrid);
         safeInit(components.initYoutubeStyleGrid);
         safeInit(components.initPopupStyleGrid);
-        safeInit(components.initCursorStyleGrid);
+        safeInit(components.initCustomCursorUploader);
         safeInit(components.initAccentColorSwatches);
         safeInit(components.initCustomThemeBuilder);
         safeInit(components.initImageBackgroundTheme);
@@ -1109,6 +1111,10 @@ const initApp = async () => {
         initPopupScaleEnhancements(document, saveSettings);
 
         // 6. Remaining Sub-systems
+        initSidebarDragAndDrop(document);
+        initFavorites(document, state, t);
+        initCommandPalette(document);
+        initAmbientBackground(document);
         initHistoryWidget();
         initBackupTools();
         initBookmarksManager();
@@ -1138,25 +1144,7 @@ const initApp = async () => {
             });
             
             // Spring stagger intro animations
-            if (window.anime) {
-                window.anime({
-                    targets: '.nav-item',
-                    translateX: [-20, 0],
-                    opacity: [0, 1],
-                    delay: window.anime.stagger(40),
-                    duration: 800,
-                    easing: 'easeOutElastic(1, .6)'
-                });
-                
-                window.anime({
-                    targets: '.tab-content.active .card-group, .tab-content.active .feature-grid > div',
-                    translateY: [20, 0],
-                    opacity: [0, 1],
-                    delay: window.anime.stagger(60, {start: 100}),
-                    duration: 800,
-                    easing: 'easeOutElastic(1, .7)'
-                });
-            }
+            // Animations removed as per user request for a snappier experience
         };
         loadSettings([_removeSkeleton]);
 

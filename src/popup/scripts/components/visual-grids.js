@@ -135,45 +135,77 @@ export function initvisualgrids(document, state, ui, updateSetting, notifyThemeC
       });
     }
 
-  function initCursorStyleGrid() {
-      const btns = document.querySelectorAll('.cursor-style-btn');
-      const hiddenInput = document.getElementById('customCursor');
-      if (!btns.length || !hiddenInput) return;
-  
-      const applyStyle = (styleVal) => {
-        hiddenInput.value = styleVal;
-        btns.forEach((b) => {
-          const isActive = b.dataset.style === styleVal;
-          b.classList.toggle('active', isActive);
-          if (isActive) {
-            b.style.background = 'rgba(255,255,255,0.15)';
-            b.style.border = '1px solid rgba(255,255,255,0.3)';
-          } else {
-            b.style.background = 'rgba(255,255,255,0.03)';
-            b.style.border = '1px solid rgba(255,255,255,0.05)';
-          }
-        });
+  function initCustomCursorUploader() {
+      const normalInput = document.getElementById('fileNormalCursor');
+      const pointerInput = document.getElementById('filePointerCursor');
+      const normalBox = document.getElementById('uploadNormalCursor');
+      const pointerBox = document.getElementById('uploadPointerCursor');
+      const previewNormal = document.getElementById('previewNormalCursor');
+      const previewPointer = document.getElementById('previewPointerCursor');
+      const clearNormal = document.getElementById('clearNormalCursor');
+      const clearPointer = document.getElementById('clearPointerCursor');
+
+      if (!normalInput || !pointerInput) return;
+
+      const handleUpload = (input, box, preview, settingKey) => {
+          input.addEventListener('change', (e) => {
+              const file = e.target.files[0];
+              if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (ev) => {
+                      const base64 = ev.target.result;
+                      preview.src = base64;
+                      box.classList.add('has-image');
+                      saveSettings({ [settingKey]: base64 });
+                  };
+                  reader.readAsDataURL(file);
+              }
+          });
       };
-  
+
+      const handleClear = (btn, box, preview, settingKey, input) => {
+          btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              preview.src = '';
+              box.classList.remove('has-image');
+              input.value = '';
+              saveSettings({ [settingKey]: null });
+          });
+      };
+
+      const setupBoxClick = (box, input) => {
+          box.addEventListener('click', (e) => {
+              if (e.target.closest('.clear-cursor-btn')) return;
+              input.click();
+          });
+      };
+
+      handleUpload(normalInput, normalBox, previewNormal, 'normalCursorBase64');
+      handleUpload(pointerInput, pointerBox, previewPointer, 'pointerCursorBase64');
+      handleClear(clearNormal, normalBox, previewNormal, 'normalCursorBase64', normalInput);
+      handleClear(clearPointer, pointerBox, previewPointer, 'pointerCursorBase64', pointerInput);
+      setupBoxClick(normalBox, normalInput);
+      setupBoxClick(pointerBox, pointerInput);
+
+      // Load initial state
       chrome.storage.local.get('settings', (data) => {
-        const savedCursor = data.settings?.customCursor || 'default';
-        applyStyle(savedCursor);
+          const settings = data.settings || {};
+          if (settings.normalCursorBase64) {
+              previewNormal.src = settings.normalCursorBase64;
+              normalBox.classList.add('has-image');
+          }
+          if (settings.pointerCursorBase64) {
+              previewPointer.src = settings.pointerCursorBase64;
+              pointerBox.classList.add('has-image');
+          }
       });
-  
-      btns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          applyStyle(btn.dataset.style);
-          const event = new Event('change', { bubbles: true });
-          hiddenInput.dispatchEvent(event);
-        });
-      });
-    }
+  }
 
   return {
     initGlobalPlayerBarGrid,
     initCardStyleGrid,
     initYoutubeStyleGrid,
     initPopupStyleGrid,
-    initCursorStyleGrid
+    initCustomCursorUploader
   };
 }

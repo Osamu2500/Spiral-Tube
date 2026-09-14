@@ -398,6 +398,13 @@ body ytd-menu-navigation-item-renderer:hover {
 /* Fix dropdown z-indexes to ensure they stay above custom UI */
 ytd-popup-container {
   z-index: 2147483647 !important;
+  /* CRITICAL: Prevent the container itself from painting as a visible strip.
+     YouTube's native CSS gives it a background-color that shows as a thin
+     bar at top:0/left:0. We must override it to transparent. */
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Fix scrolling on some native popups */

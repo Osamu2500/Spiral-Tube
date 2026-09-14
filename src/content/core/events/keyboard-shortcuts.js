@@ -57,7 +57,6 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             enableCustomSpeed: 'Custom Speed',
             autoCinema: 'Auto Cinema',
 
-            trueBlack: 'True Black Dark Mode',
             hideScrollbar: 'Scrollbar',
             grayscaleThumbnails: 'Grayscale Thumbs',
             grid4x4: '4x4 Grid Layout',

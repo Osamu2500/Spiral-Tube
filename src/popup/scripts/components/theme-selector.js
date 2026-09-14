@@ -229,23 +229,11 @@ export function initthemeselector(document, state, ui, updateSetting, notifyThem
   
             if (theme.isCustom) {
               const delBtn = document.createElement('button');
-              delBtn.innerHTML = '✕';
-              delBtn.style.position = 'absolute';
-              delBtn.style.top = '4px';
-              delBtn.style.right = '4px';
-              delBtn.style.background = 'rgba(0,0,0,0.5)';
-              delBtn.style.border = 'none';
-              delBtn.style.color = '#fff';
-              delBtn.style.borderRadius = '50%';
-              delBtn.style.width = '16px';
-              delBtn.style.height = '16px';
-              delBtn.style.fontSize = '10px';
-              delBtn.style.cursor = 'pointer';
-              delBtn.style.display = 'none';
-  
+              delBtn.className = 'theme-del-btn';
+              delBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+              delBtn.title = t('delete_this_custom_theme');
+              
               btn.style.position = 'relative';
-              btn.addEventListener('mouseenter', () => (delBtn.style.display = 'block'));
-              btn.addEventListener('mouseleave', () => (delBtn.style.display = 'none'));
   
               delBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -356,9 +344,7 @@ export function initthemeselector(document, state, ui, updateSetting, notifyThem
 
   function initCustomThemeBuilder() {
       const saveBtn = document.getElementById('saveCustomThemeBtn');
-      const exportBtn = document.getElementById('exportCustomThemeBtn');
-      const importBtn = document.getElementById('importCustomThemeBtn');
-      const importFile = document.getElementById('importCustomThemeFile');
+      // export/import variables removed
       const resetBtn = document.getElementById('resetCustomThemeBtn');
   
       if (!saveBtn) return;
@@ -495,62 +481,6 @@ export function initthemeselector(document, state, ui, updateSetting, notifyThem
           });
         });
       });
-  
-      if (exportBtn) {
-        exportBtn.addEventListener('click', () => {
-          chrome.storage.local.get('settings', (data) => {
-            const customThemes = data.settings?.customThemes || {};
-            if (Object.keys(customThemes).length === 0) {
-              alert(t('no_custom_themes_to_export'));
-              return;
-            }
-            const blob = new Blob([JSON.stringify(customThemes, null, 2)], {
-              type: 'application/json',
-            });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'ypp-custom-themes.json';
-            a.click();
-            URL.revokeObjectURL(url);
-          });
-        });
-      }
-  
-      if (importBtn && importFile) {
-        importBtn.addEventListener('click', () => importFile.click());
-        importFile.addEventListener('change', (e) => {
-          const file = e.target.files[0];
-          if (!file) return;
-          const reader = new FileReader();
-          reader.onload = (ev) => {
-            try {
-              const imported = JSON.parse(ev.target.result);
-              chrome.storage.local.get('settings', (data) => {
-                const settings = data.settings || {};
-                if (!settings.customThemes) settings.customThemes = {};
-  
-                // Merge
-                for (const [key, theme] of Object.entries(imported)) {
-                  if (key.startsWith('custom_') && theme.variables) {
-                    settings.customThemes[key] = theme;
-                  }
-                }
-  
-                chrome.storage.local.set({ settings }, () => {
-                  initThemeSelector(settings.activeTheme || 'default');
-                  alert(t('themes_imported_successfully'));
-                  if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
-                });
-              });
-            } catch (err) {
-              alert(t('invalid_theme_file'));
-            }
-          };
-          reader.readAsText(file);
-          importFile.value = ''; // Reset
-        });
-      }
     }
 
   function initPremiumAccentDropdown() {

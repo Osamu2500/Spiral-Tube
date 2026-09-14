@@ -122,12 +122,24 @@ export function setupUtilsMock() {
             this.settings  = {};
             this.utils     = window.YPP.Utils;
             this.eventListeners = [];
+            this.intervalIds    = [];
+            this.timeoutIds     = [];
+            this.injectedElements = [];
             this.abortController = new AbortController();
         }
         async enable()  {}
         async disable() {
+            this.cleanupEvents();
+        }
+        cleanupEvents() {
+            this.intervalIds.forEach(id => clearInterval(id));
+            this.intervalIds = [];
+            this.timeoutIds.forEach(id => clearTimeout(id));
+            this.timeoutIds = [];
+            this.injectedElements.forEach(el => { try { el?.parentNode?.removeChild(el); } catch(e) {} });
+            this.injectedElements = [];
             this.eventListeners.forEach(({target, type, listener, options}) => {
-                target.removeEventListener(type, listener, options);
+                try { target.removeEventListener(type, listener, options); } catch(e) {}
             });
             this.eventListeners = [];
         }
@@ -140,14 +152,47 @@ export function setupUtilsMock() {
             return this.name.charAt(0).toLowerCase() + this.name.slice(1);
         }
         addListener(target, type, listener, options) {
+            if (!target || !target.addEventListener) return;
             target.addEventListener(type, listener, options);
             this.eventListeners.push({ target, type, listener, options });
         }
         removeListener(target, type, listener, options) {
+            if (!target || !target.removeEventListener) return;
             target.removeEventListener(type, listener, options);
-            this.eventListeners = this.eventListeners.filter(e => 
+            this.eventListeners = this.eventListeners.filter(e =>
                 e.target !== target || e.type !== type || e.listener !== listener
             );
+        }
+        setInterval(handler, timeout) {
+            const id = setInterval(handler, timeout);
+            this.intervalIds.push(id);
+            return id;
+        }
+        clearInterval(id) {
+            clearInterval(id);
+            this.intervalIds = this.intervalIds.filter(i => i !== id);
+        }
+        setTimeout(handler, timeout) {
+            const id = setTimeout(handler, timeout);
+            this.timeoutIds.push(id);
+            return id;
+        }
+        clearTimeout(id) {
+            clearTimeout(id);
+            this.timeoutIds = this.timeoutIds.filter(i => i !== id);
+        }
+        injectElement(element, parent = document.body) {
+            if (!element || !parent) return;
+            parent.appendChild(element);
+            this.injectedElements.push(element);
+            return element;
+        }
+        injectStyle(cssString) {
+            const style = document.createElement('style');
+            style.textContent = cssString;
+            document.head.appendChild(style);
+            this.injectedElements.push(style);
+            return style;
         }
         pollFor(conditionFn, timeout = 10000, intervalMs = 250) {
             return new Promise((resolve, reject) => {

@@ -74,6 +74,8 @@ export class VolumeBoosterUI {
     if (ctx._volumePopup) {
       if (document.body.contains(ctx._volumePopup)) ctx._volumePopup.remove();
       if (ctx._volumePopup.parentNode) ctx._volumePopup.parentNode.removeChild(ctx._volumePopup);
+      // Clean up any in-progress drag listeners
+      if (typeof ctx._volumePopup._dragCleanup === 'function') ctx._volumePopup._dragCleanup();
       ctx._volumePopup = null;
 
       // Force clean up any orphaned elements
@@ -200,6 +202,16 @@ export class VolumeBoosterUI {
         document.removeEventListener('mouseup', onDragEnd);
       }
     };
+
+    // Ensure drag listeners are always cleaned up when the panel is removed
+    const dragCleanup = () => {
+      isDragging = false;
+      document.removeEventListener('mousemove', onDragMove);
+      document.removeEventListener('mouseup', onDragEnd);
+    };
+    panel.addEventListener('remove', dragCleanup, { once: true });
+    // Also hook into the MutationObserver-free path: store cleanup on the panel
+    panel._dragCleanup = dragCleanup;
 
     header.onmousedown = (e) => {
       if (e.target.closest('button')) return;

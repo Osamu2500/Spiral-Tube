@@ -101,7 +101,6 @@ export const DEFAULT_SETTINGS = {
   enableAccountMenu: true,
   activeTheme: 'default',
   cardStyle: 'glass',
-  trueBlack: false,
 
   // Image Background Theme
   customBackgroundImage: null,
@@ -397,6 +396,23 @@ export const DEFAULT_SETTINGS = {
 
   saveSupremeUI: true,
 
+  // --- Missing Global Layout Toggles ---
+  floatingPlayer: false,
+  hideSearchPodcasts: false,
+  hideSearchMusic: false,
+  hideShortsInteraction: false,
+  hideScrollbar: false,
+  grayscaleThumbnails: false,
+  retroLogo: false,
+  smallSettingsMenu: false,
+  hideChannelBanners: false,
+  filterSearchResults: false,
+  compactHeader: false,
+  hideInterruptions: false,
+  fullVideoTitles: false,
+  wideChannelLayout: false,
+  siteGrayscaleMode: false,
+  searchEngineMode: false,
 
   // enableTabviewSidebar removed; merged into seamlessMode
 };

@@ -65,9 +65,12 @@ export class HoverSimulator {
                         'mousemove'
                     ];
 
+                    const targetRects = new Map();
+                    targets.forEach(target => targetRects.set(target, target.getBoundingClientRect()));
+
                     eventTypes.forEach(eventType => {
                         targets.forEach(target => {
-                            const rect = target.getBoundingClientRect();
+                            const rect = targetRects.get(target);
                             const clientX = rect.width > 0 ? rect.left + rect.width / 2 : 200;
                             const clientY = rect.height > 0 ? rect.top + rect.height / 2 : 450;
                             try {
@@ -144,13 +147,16 @@ export class HoverSimulator {
                 element.querySelector('yt-image')
             ].filter(Boolean);
 
+            const targetRects = new Map();
+            targets.forEach(target => targetRects.set(target, target.getBoundingClientRect()));
+
             const events = hasPreview
                 ? ['pointermove', 'mousemove']
                 : ['pointerover', 'pointerenter', 'pointermove', 'mouseover', 'mouseenter', 'mousemove'];
 
             events.forEach(eventType => {
                 targets.forEach(target => {
-                    const rect = target.getBoundingClientRect();
+                    const rect = targetRects.get(target);
                     const clientX = rect.width > 0 ? rect.left + rect.width / 2 : 200;
                     const clientY = rect.height > 0 ? rect.top + rect.height / 2 : 450;
                     try {

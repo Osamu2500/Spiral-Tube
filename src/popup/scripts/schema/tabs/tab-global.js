@@ -11,6 +11,7 @@ export const getGlobalTab = (t) => ({
       {
         title: t('lang_support_title'),
         icon: ICONS.secGlobalLang,
+        color: '#06b6d4',
         items: [
           {
             type: 'select',

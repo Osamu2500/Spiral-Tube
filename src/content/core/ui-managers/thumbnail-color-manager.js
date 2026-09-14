@@ -70,6 +70,8 @@ export class ThumbnailColorManager {
         // YouTube can inject cards at any time. This is the ultimate safety net.
         let rescanCount = 0;
         this._rescanInterval = window.setInterval(() => {
+            if (document.hidden) return;
+            
             if (!this.enabled || rescanCount >= 15) {
                 window.clearInterval(this._rescanInterval);
                 this._rescanInterval = null;
@@ -307,6 +309,8 @@ export class ThumbnailColorManager {
     startPolling() {
         if (this._pollingInterval) return;
         this._pollingInterval = window.setInterval(() => {
+            if (document.hidden) return;
+            
             if (this.waitingElements.size === 0) {
                 window.clearInterval(this._pollingInterval);
                 this._pollingInterval = null;

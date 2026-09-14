@@ -9,6 +9,7 @@ export const getSubscriptionsTab = (t) => ({
       {
         title: t('filter_bar_layout'),
         icon: ICONS.filterMode,
+        color: '#ef4444',
         items: [
           {
             type: 'toggle',
@@ -36,6 +37,7 @@ export const getSubscriptionsTab = (t) => ({
       {
         title: t('filter_chips_content'),
         icon: ICONS.secSubsChipsContent,
+        color: '#06b6d4',
         items: [
           { type: 'toggle', id: 'feedFilter_video_visible', label: t('video') },
           { type: 'toggle', id: 'feedFilter_shorts_visible', label: t('shorts') },
@@ -50,6 +52,7 @@ export const getSubscriptionsTab = (t) => ({
       {
         title: t('layout_tools'),
         icon: ICONS.secSubsLayout,
+        color: '#3b82f6',
         items: [
           {
             type: 'toggle',

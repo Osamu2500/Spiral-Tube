@@ -44,6 +44,10 @@ ytd-voice-search-dialog-renderer {
 }
 ytd-popup-container {
   z-index: var(--ypp-z-popup);
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 /* [Unused Filter Drawer Styles Removed] */
 /* Ad Hiding & Grid Protection */

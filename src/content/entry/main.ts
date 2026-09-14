@@ -327,7 +327,6 @@
             const ALWAYS_ON = {
                 premiumTheme:             true,
                 enableThemeEffects:       true,
-                enableAnimations:         true,
                 enableCustomizeYouTubeUI: true,
                 layout:                   true,
                 headerNavEnabled:         true,
@@ -680,6 +679,15 @@
                     if (this.context.isFeedPlaylists)  bodyClasses.add('ypp-feed-playlists-page');
 
                     bodyClasses.add('yt-spiral-tube-theme');
+                    
+                    // Wire up Reduce Animations to HTML element
+                    const rootClasses = document.documentElement.classList;
+                    const reduceAnims = !!this.settings?.reduceAnimations;
+                    if (reduceAnims) {
+                        rootClasses.add('ypp-reduced-motion', 'ypp-no-animations');
+                    } else {
+                        rootClasses.remove('ypp-reduced-motion', 'ypp-no-animations');
+                    }
                     
                     // V7 Zero-JS Declutter Architecture Toggles — toggle directly on classList
                     const toggleClass = (condition: boolean, className: string) => {

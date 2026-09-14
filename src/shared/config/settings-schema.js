@@ -25,7 +25,6 @@ window.YPP.SettingsSchema = {
         // activeTheme controls the background color theme — loaded from dist/themes/
         // Keys not found in dist/themes/ fall back to dist/ui-styles/ (see theme.js _getThemeUrl)
         activeTheme:         { type: 'string',  default: 'default', values: ['abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'coffee', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'default', 'discord', 'dracula', 'ember', 'fluent', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'hacker', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'midnight', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'nord', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'sakura', 'steampunk', 'sunset', 'system', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'woodblock', 'y2k'] },
-        trueBlack:           { type: 'boolean', default: false },
         customCursor:        { type: 'string',  default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel'] },
 
         // --- Layout ---
@@ -59,6 +58,7 @@ window.YPP.SettingsSchema = {
         hideLiveChat:        { type: 'boolean', default: false },
         hideFundraiser:      { type: 'boolean', default: false },
         hideEndScreens:      { type: 'boolean', default: false },
+        hideSidebar:         { type: 'boolean', default: false },
         // Search visibility
         hideSearchShelves:   { type: 'boolean', default: true },
         hideChannelCards:    { type: 'boolean', default: false },
@@ -425,6 +425,25 @@ window.YPP.SettingsSchema = {
         hideChannelBar:               { type: 'boolean', default: false },
         hideVideoDescription:         { type: 'boolean', default: false },
         hideActionButtons:            { type: 'boolean', default: false },
+
+        // --- Missing Global Layout Toggles ---
+        floatingPlayer:               { type: 'boolean', default: false },
+        hideSearchPodcasts:           { type: 'boolean', default: false },
+        hideSearchMusic:              { type: 'boolean', default: false },
+        hideShortsInteraction:        { type: 'boolean', default: false },
+        hideScrollbar:                { type: 'boolean', default: false },
+        customScrollbar:              { type: 'boolean', default: false },
+        grayscaleThumbnails:          { type: 'boolean', default: false },
+        retroLogo:                    { type: 'boolean', default: false },
+        smallSettingsMenu:            { type: 'boolean', default: false },
+        hideChannelBanners:           { type: 'boolean', default: false },
+        filterSearchResults:          { type: 'boolean', default: false },
+        compactHeader:                { type: 'boolean', default: false },
+        hideInterruptions:            { type: 'boolean', default: false },
+        fullVideoTitles:              { type: 'boolean', default: false },
+        wideChannelLayout:            { type: 'boolean', default: false },
+        siteGrayscaleMode:            { type: 'boolean', default: false },
+        searchEngineMode:             { type: 'boolean', default: false },
     }),
 
     // =========================================================================
@@ -536,12 +555,6 @@ window.YPP.SettingsSchema = {
         
         // Example: If migrating from version 0 to 1
         if (currentVersion < 1) {
-            // Note: v0 had no schemaVersion. 
-            // If trueBlack was set, we migrate it to activeTheme = 'midnight'
-            if (raw.trueBlack === true && raw.activeTheme === 'default') {
-                raw.activeTheme = 'midnight';
-                window.YPP.Utils?.log('Migrated trueBlack -> activeTheme = midnight', 'SCHEMA', 'info');
-            }
             raw.schemaVersion = 1;
         }
 

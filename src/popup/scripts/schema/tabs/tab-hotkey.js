@@ -10,6 +10,7 @@ export const getHotkeyTab = (t) => ({
       {
         title: t('watch_page_hotkeys'),
         icon: ICONS.secHotkeysWatch,
+        color: '#64748b',
         items: [
           {
             type: 'toggle',
