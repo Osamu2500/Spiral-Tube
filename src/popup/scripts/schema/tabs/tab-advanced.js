@@ -18,58 +18,58 @@ export const getAdvancedTab = (t) => ({
             icon: ICONS.globalBar,
             style: 'grid-column: 1 / -1;',
             bottomSlot: `
-              <div id="globalPlayerBarOptions" style="display:none; padding-top: 12px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
-                <div class="setting-item" style="padding: 0; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+              <div id="globalPlayerBarOptions" style="display:none; padding-top: 16px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
+                <div class="setting-item" style="padding: 12px 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; backdrop-filter: blur(10px);">
                   <div class="info" style="display: flex; flex-direction: column; flex: 1; margin-right: 10px; min-width: 0;">
-                    <span class="name" data-i18n="player_bar_position" style="font-size: calc(11px * var(--ui-font-scale, 1)); font-weight: 600; color: #ffffff;">Player Bar Position</span>
-                    <span class="desc" data-i18n="where_should_it_appear_on_external_sites" style="font-size: calc(10px * var(--ui-font-scale, 1)); color: rgba(255,255,255,0.6); margin-top: 2px;">Where should it appear on external sites?</span>
+                    <span class="name" data-i18n="player_bar_position" style="font-size: calc(12px * var(--ui-font-scale, 1)); font-weight: 700; color: #ffffff;">Player Bar Position</span>
+                    <span class="desc" data-i18n="where_should_it_appear_on_external_sites" style="font-size: calc(11px * var(--ui-font-scale, 1)); font-weight: 500; color: rgba(255,255,255,0.6); margin-top: 4px;">Where should it appear on external sites?</span>
                   </div>
-                  <select id="globalPlayerBarPosition" class="theme-select" aria-label="Global Player Bar Position" title="Global Player Bar Position" style="width: 110px; padding: 4px 8px; flex-shrink: 0;">
+                  <select id="globalPlayerBarPosition" class="theme-select" aria-label="Global Player Bar Position" title="Global Player Bar Position" style="width: 110px; padding: 6px 10px; font-weight: 600; flex-shrink: 0; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; cursor: pointer;">
                     <option value="right">Right</option>
                     <option value="left">Left</option>
                     <option value="top">Top</option>
                   </select>
                 </div>
                 
-                <div style="font-size: 11px; font-weight: 600; color: #ffffff; margin-bottom: 8px;">Visible Buttons</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                  <label class="gpb-btn-pill" title="Domain">
+                <div style="font-size: 13px; font-weight: 700; color: #ffffff; margin-bottom: 12px; padding-left: 4px;">Visible Buttons</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                  <label class="gpb-btn-pill" title="Domain" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showDomain" aria-label="Gpb show Domain">
                     <span class="gpb-dot"></span><span>Domain</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Play / Pause">
+                  <label class="gpb-btn-pill" title="Play / Pause" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showPlay" aria-label="Gpb show Play">
                     <span class="gpb-dot"></span><span>Play / Pause</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Time Display">
+                  <label class="gpb-btn-pill" title="Time Display" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showTime" aria-label="Gpb show Time">
                     <span class="gpb-dot"></span><span>Time Display</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Volume">
+                  <label class="gpb-btn-pill" title="Volume" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showVolume" aria-label="Gpb show Volume">
                     <span class="gpb-dot"></span><span>Volume</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Vol Booster">
+                  <label class="gpb-btn-pill" title="Vol Booster" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showVolumeBoost" aria-label="Gpb show Volume Boost">
                     <span class="gpb-dot"></span><span>Vol Booster</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Filters">
+                  <label class="gpb-btn-pill" title="Filters" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showFilters" aria-label="Gpb show Filters">
                     <span class="gpb-dot"></span><span>Filters</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Loop">
+                  <label class="gpb-btn-pill" title="Loop" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showLoop" aria-label="Gpb show Loop">
                     <span class="gpb-dot"></span><span>Loop</span>
                   </label>
-                  <label class="gpb-btn-pill" title="PiP Mode">
+                  <label class="gpb-btn-pill" title="PiP Mode" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showPip" aria-label="Gpb show Pip">
                     <span class="gpb-dot"></span><span>PiP Mode</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Speed">
+                  <label class="gpb-btn-pill" title="Speed" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showSpeed" aria-label="Gpb show Speed">
                     <span class="gpb-dot"></span><span>Speed</span>
                   </label>
-                  <label class="gpb-btn-pill" title="Fullscreen">
+                  <label class="gpb-btn-pill" title="Fullscreen" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
                     <input type="checkbox" id="gpb_showFullscreen" aria-label="Gpb show Fullscreen">
                     <span class="gpb-dot"></span><span>Fullscreen</span>
                   </label>
@@ -107,7 +107,7 @@ export const getAdvancedTab = (t) => ({
             desc: t('copy_link_button_desc'),
             icon: ICONS.promos,
             inlineSlot:
-              '<div style="display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div>',
+              '<div style="display:flex; align-items:center; gap:8px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;"><span style="font-size:12px; color:rgba(255,255,255,0.6); margin-right:4px; font-weight:600;">Pages:</span><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="home" style="font-size:11px; padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.2s; font-weight:600; border: 1px solid rgba(255,255,255,0.1);">Home</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="channel" style="font-size:11px; padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.2s; font-weight:600; border: 1px solid rgba(255,255,255,0.1);">Channel</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="subs" style="font-size:11px; padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.2s; font-weight:600; border: 1px solid rgba(255,255,255,0.1);">Subs</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="search" style="font-size:11px; padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.2s; font-weight:600; border: 1px solid rgba(255,255,255,0.1);">Search</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="related" style="font-size:11px; padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.2s; font-weight:600; border: 1px solid rgba(255,255,255,0.1);">Related</button></div>',
           },
         ],
       },

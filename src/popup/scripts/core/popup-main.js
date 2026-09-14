@@ -116,14 +116,14 @@ registerSlot('autoLikeSlot', (container, state) => {
 });
 registerSlot('vsc_shortcuts_manager', (container, state) => {
     container.innerHTML = `
-        <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:bold; font-size:12px; opacity:0.7;">
+        <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:12px; font-weight:700; font-size:13px; opacity:0.8; padding: 0 4px;">
             <span style="flex:2">Action</span>
             <span style="flex:1">Key</span>
             <span style="flex:1">Value</span>
-            <span style="width:24px"></span>
+            <span style="width:28px"></span>
         </div>
-        <div id="vsc-shortcuts-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;"></div>
-        <button id="vsc-add-shortcut" class="action-btn" style="width:100%;">+ Add Shortcut</button>
+        <div id="vsc-shortcuts-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;"></div>
+        <button id="vsc-add-shortcut" class="action-btn theme-btn" style="width:100%; font-weight: 700; padding: 10px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;">+ Add Shortcut</button>
     `;
 
     const listContainer = container.querySelector('#vsc-shortcuts-list');
@@ -150,6 +150,9 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
         shortcuts.forEach((sc, index) => {
             const row = document.createElement('div');
             row.className = 'vsc-shortcut-row';
+            row.style.cssText = 'display:flex; align-items:center; gap:8px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 8px; border-radius: 10px; backdrop-filter: blur(10px); transition: all 0.2s;';
+            row.onmouseover = () => { row.style.background = 'rgba(255,255,255,0.06)'; row.style.borderColor = 'rgba(255,255,255,0.1)'; };
+            row.onmouseout = () => { row.style.background = 'rgba(255,255,255,0.03)'; row.style.borderColor = 'rgba(255,255,255,0.06)'; };
 
             const select = document.createElement('select');
             select.className = 'vsc-select';
@@ -168,6 +171,9 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
             keyInput.value = sc.key || '';
             keyInput.placeholder = 'None';
             keyInput.className = 'vsc-key-input';
+            keyInput.style.cssText = 'flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 6px; font-weight: 600; text-align: center; transition: all 0.2s; outline: none;';
+            keyInput.onfocus = () => { keyInput.style.borderColor = 'var(--ypp-accent-primary, #6366f1)'; keyInput.style.background = 'rgba(255,255,255,0.08)'; };
+            keyInput.onblur = () => { keyInput.style.borderColor = 'rgba(255,255,255,0.1)'; keyInput.style.background = 'rgba(255,255,255,0.04)'; };
             
             keyInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Tab') return;
@@ -233,6 +239,9 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
             valInput.value = sc.value === null ? '' : sc.value;
             valInput.placeholder = 'N/A';
             valInput.className = 'vsc-val-input';
+            valInput.style.cssText = 'flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 6px; font-weight: 600; text-align: center; transition: all 0.2s; outline: none;';
+            valInput.onfocus = () => { valInput.style.borderColor = 'var(--ypp-accent-primary, #6366f1)'; valInput.style.background = 'rgba(255,255,255,0.08)'; };
+            valInput.onblur = () => { valInput.style.borderColor = 'rgba(255,255,255,0.1)'; valInput.style.background = 'rgba(255,255,255,0.04)'; };
             
             const updateValDisabled = () => {
                 const needsValue = ['decrease', 'increase', 'rewind', 'advance', 'reset', 'preferred'].includes(sc.action);
@@ -254,8 +263,11 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
             });
 
             const rmBtn = document.createElement('button');
-            rmBtn.innerHTML = '✕';
+            rmBtn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>';
             rmBtn.className = 'vsc-rm-btn';
+            rmBtn.style.cssText = 'width: 28px; height: 28px; border-radius: 6px; background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.2); color: #ff4e45; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;';
+            rmBtn.onmouseover = () => { rmBtn.style.background = 'rgba(255,0,0,0.2)'; };
+            rmBtn.onmouseout = () => { rmBtn.style.background = 'rgba(255,0,0,0.1)'; };
             rmBtn.addEventListener('click', () => {
                 shortcuts.splice(index, 1);
                 save();
@@ -296,15 +308,15 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
 
 registerSlot('advanced_shortcuts_manager', (container, state) => {
     container.innerHTML = `
-        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
-            <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:4px; font-weight:bold; font-size:12px; opacity:0.7;">
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+            <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700; font-size:13px; opacity:0.8; padding: 0 4px;">
                 <span style="flex:2">Action</span>
                 <span style="flex:1; text-align:center;">Key</span>
-                <span style="width:24px"></span>
+                <span style="width:28px"></span>
             </div>
-            <div id="adv-shortcuts-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;"></div>
-            <button id="adv-add-shortcut" class="action-btn" style="width:100%;">+ Add Shortcut</button>
-            <div id="adv-error-msg" style="color:#ff4e45; font-size:11px; text-align:center; height:14px;"></div>
+            <div id="adv-shortcuts-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;"></div>
+            <button id="adv-add-shortcut" class="action-btn theme-btn" style="width:100%; font-weight: 700; padding: 10px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;">+ Add Shortcut</button>
+            <div id="adv-error-msg" style="color:#ff4e45; font-size:12px; font-weight: 600; text-align:center; height:16px; margin-top: 4px;"></div>
         </div>
     `;
 
@@ -376,6 +388,9 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         shortcuts.forEach((sc, index) => {
             const row = document.createElement('div');
             row.className = 'vsc-shortcut-row';
+            row.style.cssText = 'display:flex; align-items:center; gap:8px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 8px; border-radius: 10px; backdrop-filter: blur(10px); transition: all 0.2s;';
+            row.onmouseover = () => { row.style.background = 'rgba(255,255,255,0.06)'; row.style.borderColor = 'rgba(255,255,255,0.1)'; };
+            row.onmouseout = () => { row.style.background = 'rgba(255,255,255,0.03)'; row.style.borderColor = 'rgba(255,255,255,0.06)'; };
 
             // Custom Masonry Select
             const selectContainer = document.createElement('div');
@@ -477,8 +492,9 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             keyInput.value = sc.key || '';
             keyInput.placeholder = 'None';
             keyInput.className = 'vsc-key-input';
-            keyInput.style.flex = '1';
-            keyInput.style.textAlign = 'center';
+            keyInput.style.cssText = 'flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 6px; font-weight: 600; text-align: center; transition: all 0.2s; outline: none;';
+            keyInput.onfocus = () => { keyInput.style.borderColor = 'var(--ypp-accent-primary, #6366f1)'; keyInput.style.background = 'rgba(255,255,255,0.08)'; };
+            keyInput.onblur = () => { keyInput.style.borderColor = 'rgba(255,255,255,0.1)'; keyInput.style.background = 'rgba(255,255,255,0.04)'; };
             
             keyInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Tab') return;
@@ -543,8 +559,11 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             });
 
             const rmBtn = document.createElement('button');
-            rmBtn.innerHTML = '✕';
+            rmBtn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>';
             rmBtn.className = 'vsc-rm-btn';
+            rmBtn.style.cssText = 'width: 28px; height: 28px; border-radius: 6px; background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.2); color: #ff4e45; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;';
+            rmBtn.onmouseover = () => { rmBtn.style.background = 'rgba(255,0,0,0.2)'; };
+            rmBtn.onmouseout = () => { rmBtn.style.background = 'rgba(255,0,0,0.1)'; };
             rmBtn.addEventListener('click', () => {
                 shortcuts.splice(index, 1);
                 errorMsg.textContent = '';
