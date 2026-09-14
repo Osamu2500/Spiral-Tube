@@ -566,20 +566,9 @@ html.full-page body {
 /* ─── Tab content ─── */
 .tab-content {
   display: none; 
-  opacity: 0;
-  transform: translateY(12px);
-  transition: display var(--med) allow-discrete, opacity var(--med) var(--ease-smooth), transform var(--med) var(--ease-spring);
 }
 .tab-content.active { 
   display: block; 
-  opacity: 1; 
-  transform: translateY(0); 
-}
-@starting-style {
-  .tab-content.active {
-    opacity: 0;
-    transform: translateY(12px);
-  }
 }
 
 /* Modern Scrollbars */
