@@ -21,6 +21,7 @@ export class AutoLike extends window.YPP.features.BaseFeature {
     static featureId     = 'autoLike';
     static executionPhase = 'idle';
     static priority      = 999;
+    static targetPages   = ['watch', 'shorts'];
 
     constructor() {
         super('AutoLike');

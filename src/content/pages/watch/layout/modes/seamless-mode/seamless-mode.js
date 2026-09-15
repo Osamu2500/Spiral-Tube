@@ -103,10 +103,18 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
 
     onPageChange() {
         this.logger.measure('PageChangeProcessing', () => {
+            const wasOnWatchPage = this.isWatchPage;
             this._checkPageContext();
-            
+
             if (this.isEnabled && this.isWatchPage) {
-                setTimeout(() => this._activateEngines(), 150);
+                if (wasOnWatchPage) {
+                    // watch→watch: engines already running, just re-trigger the layout swap
+                    if (this._macroSwapTimer) clearTimeout(this._macroSwapTimer);
+                    this._macroSwapTimer = setTimeout(() => this._executeMacroLayoutSwap(), 200);
+                } else {
+                    // other→watch: full engine activation
+                    setTimeout(() => this._activateEngines(), 150);
+                }
             } else {
                 this._deactivateEngines();
             }

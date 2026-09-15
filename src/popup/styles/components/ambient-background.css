@@ -22,7 +22,7 @@
 
 .ambient-orb {
     position: absolute;
-    border-radius: 50%;
+    border-radius: var(--r-lg, 16px);
     filter: blur(80px);
     will-change: transform;
     transition: transform 0.1s linear;

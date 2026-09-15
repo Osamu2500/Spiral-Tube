@@ -245,7 +245,8 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
     // --- V2 Features ---
     
     _initAmbilight() {
-        if (this.settings?.ambilight === false) return; // Opt-out
+        // Only run Ambilight if the user explicitly enabled it
+        if (!this.settings?.ambilight) return;
         
         this._stopAmbilight();
         const player = document.getElementById('ytd-player');
@@ -274,7 +275,7 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
     }
     
     _drawAmbilight(video) {
-        if (!this._ambilightCanvas || !this._ambilightCtx) return;
+        if (!this._ambilightCanvas || !this._ambilightCtx || !this.isEnabled) return;
         
         if (document.hidden) {
             // Suspend loop completely while hidden

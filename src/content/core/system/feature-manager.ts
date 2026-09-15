@@ -98,9 +98,16 @@ window.YPP.FeatureManager = class FeatureManager {
         (window.YPP as any).events.on('app:pageChange', (url: string) => {
             Object.entries(this.features).forEach(([name, feature]) => {
                 if (this.errorCounts[name] >= this.MAX_ERRORS) return;
-                if (feature.isEnabled && typeof feature.onPageChange === 'function') {
-                    this.safeRun(name, () => feature.onPageChange(url));
-                }
+                
+                // Re-evaluate page scope
+                this.safeRun(name, () => {
+                    if (typeof feature.update === 'function') {
+                        feature.update(this.settings);
+                    }
+                    if (feature.isEnabled && typeof feature.onPageChange === 'function') {
+                        feature.onPageChange(url);
+                    }
+                });
             });
         });
 

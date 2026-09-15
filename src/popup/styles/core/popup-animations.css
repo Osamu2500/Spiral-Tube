@@ -227,7 +227,7 @@
 
 .ypp-ripple {
   position: absolute;
-  border-radius: 50%;
+  border-radius: var(--r-lg, 16px);
   background: rgba(255, 255, 255, 0.25);
   transform: scale(0);
   animation: ypp-ripple-expand 0.55s ease-out forwards;
@@ -361,7 +361,7 @@ input[type="number"]:focus {
   position: absolute;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  border-radius: var(--r-lg, 16px);
   background: var(--accent-primary, #6366f1);
   pointer-events: none;
   top: 50%; left: 50%;

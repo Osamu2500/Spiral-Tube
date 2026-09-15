@@ -17,7 +17,7 @@
 }
 #tab-declutter::-webkit-scrollbar-thumb {
   background: rgba(99,102,241,0.3);
-  border-radius: 99px;
+  border-radius: var(--r-lg, 16px);
 }
 #tab-declutter::-webkit-scrollbar-thumb:hover {
   background: rgba(99,102,241,0.55);
@@ -300,7 +300,7 @@
   height: 3px;
   accent-color: var(--accent-primary, #6366f1);
   cursor: pointer;
-  border-radius: 99px;
+  border-radius: var(--r-lg, 16px);
   flex: 1;
   min-width: 0;
 }

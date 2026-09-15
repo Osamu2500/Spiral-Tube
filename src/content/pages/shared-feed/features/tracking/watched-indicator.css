@@ -11,7 +11,7 @@
     width: 24px;
     height: 24px;
     background: var(--ypp-success-color, rgba(16, 185, 129, 0.9));
-    border-radius: 50%;
+    border-radius: var(--r-lg, 16px);
     display: flex;
     align-items: center;
     justify-content: center;

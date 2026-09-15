@@ -38,11 +38,52 @@ class WatchPageManager extends window.YPP.BasePageManager {
     this.playerBarUI = new window.YPP.features.PlayerBarUI(this);
   }
 
+  /**
+   * Override activate() to distinguish between a full page entry (e.g. home→watch)
+   * and a same-type SPA navigation (e.g. watch→watch / video switch).
+   * 
+   * On video switch: skip the heavy re-initialization (pollFor, _initPlayer, etc.)
+   * and only do a lightweight player bar check + settings re-apply.
+   */
+  activate(url) {
+    const isAlreadyOnWatch = this.isActive && window.location.pathname.startsWith('/watch');
+    if (isAlreadyOnWatch) {
+      // Lightweight video-switch path — update URL reference and re-apply settings only
+      this.currentUrl = url;
+      this._onVideoSwitch();
+      return;
+    }
+    // Full activation path — delegate to base class which calls onActivate() + applySettings()
+    super.activate(url);
+  }
+
+  /**
+   * Lightweight handler for watch→watch SPA navigation (video switch).
+   * Only re-checks player bar injection without re-running heavy setup.
+   */
+  _onVideoSwitch() {
+    this.utils.log('Watch Page: Video switch detected', 'WATCH_MANAGER', 'debug');
+    // Only reset player-specific processed stamps, not ALL ypp-processed elements
+    document.querySelectorAll(
+      '.ytp-chrome-bottom[data-ypp-processed], .ytp-right-controls[data-ypp-processed], ytd-reel-video-renderer[data-ypp-processed]'
+    ).forEach(el => el.removeAttribute('data-ypp-processed'));
+
+    if (this.playerBarUI) {
+      this.playerBarUI.injectedButtons = false;
+      this.playerBarUI.attemptInjection();
+    }
+    // Re-apply DOM state (e.g. sidebar size, view mode) in case YouTube wiped body classes
+    if (this._domApplied) {
+      this._applyDOM();
+    }
+  }
+
   async onActivate() {
-    this.utils.log('Watch Page Active', 'WATCH_MANAGER', 'info');
-    // Clear any stale data-ypp-processed stamps from a previous session/navigation
-    // so the shared observer and injection retry loops can re-fire cleanly.
-    document.querySelectorAll('[data-ypp-processed="true"]').forEach(el => el.removeAttribute('data-ypp-processed'));
+    this.utils.log('Watch Page Active (full init)', 'WATCH_MANAGER', 'info');
+    // Clear player-specific processed stamps only — not ALL ypp-processed elements
+    document.querySelectorAll(
+      '.ytp-chrome-bottom[data-ypp-processed], .ytp-right-controls[data-ypp-processed], ytd-reel-video-renderer[data-ypp-processed]'
+    ).forEach(el => el.removeAttribute('data-ypp-processed'));
     // Wait until featureManager has finished instantiating features so that
     // feature instances (VolumeBooster, VideoFilters, BookmarksManager etc.)
     // exist when injectControls() tries to build buttons for the player bar.
@@ -108,10 +149,6 @@ class WatchPageManager extends window.YPP.BasePageManager {
   updateSettings(newSettings) {
     super.updateSettings(newSettings);
     if (this.isActive && this.playerBarUI) {
-      // Clear processed stamps so the DOM observer can re-fire if YouTube re-renders the player bar
-      document
-        .querySelectorAll('[data-ypp-processed="true"]')
-        .forEach((el) => el.removeAttribute('data-ypp-processed'));
       this.playerBarUI.updateCustomStyles();
       this.playerBarUI.injectedButtons = false;
       // forceRebuild=true: settings changed, so always rebuild the button container
@@ -379,13 +416,16 @@ class WatchPageManager extends window.YPP.BasePageManager {
     );
 
     // Listen for SPA navigation and player state changes.
-    // Register only on window (YouTube dispatches these there; document is redundant).
-    // Use this.addListener so _cleanupEvents() removes them on deactivate.
+    // Only reset player-specific processed stamps on yt-page-type-changed.
+    // Scoping to player elements prevents the global DOM sweep that caused the 10-15s freeze.
     let debounceTimer;
     const resetProcessed = () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        document.querySelectorAll('[data-ypp-processed="true"]').forEach((el) => {
+        // Only clear player bar stamps — not ALL ypp-processed elements site-wide
+        document.querySelectorAll(
+          '.ytp-chrome-bottom[data-ypp-processed], .ytp-right-controls[data-ypp-processed], ytd-reel-video-renderer[data-ypp-processed]'
+        ).forEach((el) => {
           el.removeAttribute('data-ypp-processed');
         });
         if (this.playerBarUI) {
@@ -395,7 +435,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
         }
       }, 200);
     };
-    ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change', 'yt-page-type-changed'].forEach(evt => {
+    ['yt-page-type-changed'].forEach(evt => {
       this.addListener(window, evt, resetProcessed);
     });
   }

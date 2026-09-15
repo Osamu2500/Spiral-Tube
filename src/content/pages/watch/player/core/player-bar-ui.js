@@ -43,8 +43,8 @@ export class PlayerBarUI {
         
         if (!this._navigateListener) {
             this._navigateListener = () => {
-                this.injectedButtons = false;
-                this._scheduleRetry();
+                if (this._attemptTimer) clearTimeout(this._attemptTimer);
+                this._attemptTimer = setTimeout(() => this.attemptInjection(), 300);
             };
             
             this._dataUpdatedListener = () => {

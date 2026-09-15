@@ -4,14 +4,28 @@
    Scope: Does not affect outside scope.
    ========================================================================== */
 
+/* Premium Entrance Animation */
+@keyframes ypp-dialog-pop {
+  0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 :is(
   tp-yt-paper-dialog,
-  yt-error-screen,
-  ytd-popup-container,
-  .ytd-popup-container
+  yt-error-screen
 ) {
   background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-base-background))) !important;
-  border-radius: var(--ypp-dialog-radius, var(--ypp-squircle-radius-lg, 12px)) !important;
-  border: var(--ypp-dialog-border, var(--ypp-surface-border, 1px solid transparent)) !important;
-  box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover, none)) !important;
+  border-radius: var(--ypp-dialog-radius, var(--ypp-shape-xl, 24px)) !important;
+  border: var(--ypp-dialog-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
+  box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-float)) !important;
+  backdrop-filter: var(--ypp-glass-blur, blur(16px)) saturate(150%) !important;
+  -webkit-backdrop-filter: var(--ypp-glass-blur, blur(16px)) saturate(150%) !important;
+  animation: ypp-dialog-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* Modal Overlay Backdrop */
+tp-yt-iron-overlay-backdrop.opened {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
 }

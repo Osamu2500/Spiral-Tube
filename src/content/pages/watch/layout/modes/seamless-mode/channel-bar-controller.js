@@ -21,11 +21,12 @@ export class ChannelBarController {
                 ytd-watch-metadata #owner {
                     display: flex !important;
                     flex-direction: row !important;
-                    flex-wrap: wrap !important;
+                    flex-wrap: nowrap !important;
                     align-items: center !important;
-                    justify-content: space-between !important;
-                    gap: 4px !important;
-                    width: 100% !important;
+                    justify-content: flex-start !important;
+                    gap: 8px !important;
+                    min-width: 0 !important;
+                    flex: 1 1 auto !important;
                 }
                 ytd-watch-metadata ytd-video-owner-renderer {
                     flex: 1 1 auto !important;

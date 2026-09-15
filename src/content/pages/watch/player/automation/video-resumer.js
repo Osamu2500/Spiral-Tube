@@ -11,6 +11,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
     static featureId = 'videoResumer';
     static executionPhase = 'idle';
     static priority = 999;
+    static targetPages = ['watch', 'home'];
 
     static CONFIG = {
         POLL_TIMEOUT: 10000,

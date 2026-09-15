@@ -16,10 +16,21 @@
 .html5-video-player .ytp-scrubber-button {
   background: #ff0000 !important;
   background-color: #ff0000 !important;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .html5-video-player .ytp-scrubber-button {
-  border-radius: 4px !important;
+  border-radius: 6px !important; /* Proper squircle handle */
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.25), 0 2px 8px rgba(0,0,0,0.5) !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin-top: -5px !important;
+  transition: box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.html5-video-player:hover .ytp-scrubber-button {
+  box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.35), 0 4px 12px rgba(0,0,0,0.6) !important;
+  transform: scale(1.15) !important;
 }
 
 /* Force YouTube Native Variables to Red for the player (kills ambient mode dynamic colors) */

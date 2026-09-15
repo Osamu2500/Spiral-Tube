@@ -302,7 +302,7 @@ body.ypp-theme-maximalism .app-container {
 body.ypp-theme-maximalism .toggle-card {
   background: #ff00ff;
   border: 4px dotted #00ffff;
-  border-radius: 50%;
+  border-radius: var(--r-lg, 16px);
   transform: rotate(-3deg);
   transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }

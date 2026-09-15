@@ -1,0 +1,160 @@
+/* ==========================================================================
+   RESPONSIVE ZOOM & LAYOUT SCALING
+   Ensures the entire UI gracefully adapts at any page zoom level (100%–300%)
+   and any viewport width without elements overlapping, squishing, or overflowing.
+   
+   Strategy:
+   - Use clamp() for font sizes and spacing so they scale naturally with zoom.
+   - Use min() / max() to set fluid ceilings / floors on fixed elements.
+   - Use @media (max-width) breakpoints to handle layout reflow.
+   - Do NOT override user column preferences — only prevent layout breakage.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. NAVBAR / MASTHEAD — Fluid collapsing
+   ========================================================================== */
+
+/* Search bar: shrinks gracefully when navbar is narrow */
+ytd-searchbox, yt-searchbox {
+  min-width: 0 !important;
+  flex: 1 1 200px !important; /* can shrink to 200px before hiding */
+}
+
+ytd-searchbox #search-form,
+yt-searchbox .ytSearchboxComponentSearchForm {
+  max-width: min(800px, 100%) !important;
+}
+
+/* Buttons area: never wraps — uses flex-shrink 0 so items compress inward */
+ytd-masthead #buttons {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex-wrap: nowrap !important;
+}
+
+/* At narrow widths (high zoom or small window), hide the logo wordmark, keep icon */
+@media (max-width: 860px) {
+  #logo-icon-container { display: flex !important; }
+  #yt-masthead-logo-expanded { display: none !important; }
+}
+
+/* Collapse voice search button at extreme zoom */
+@media (max-width: 640px) {
+  body #voice-search-button {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  ytd-searchbox #search-form,
+  yt-searchbox .ytSearchboxComponentSearchForm {
+    min-width: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   2. LEFT SIDEBAR — Fluid width collapse
+   ========================================================================== */
+
+/* Prevent sidebar from forcing horizontal overflow at high zoom */
+html #guide-inner-content,
+html ytd-guide-renderer,
+html ytd-mini-guide-renderer {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* ==========================================================================
+   3. WATCH PAGE — Two-column layout reflow
+   ========================================================================== */
+
+/* The primary (video) + secondary (sidebar) columns must wrap vertically at high zoom */
+ytd-watch-flexy[flexy] #columns {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 24px !important;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+/* Primary column: take all available space, min viable is 320px */
+ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+  flex: 1 1 320px !important;
+  min-width: 320px !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Secondary sidebar: cap at 400px and allow full-width stacking below that */
+ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+  flex: 0 1 402px !important;
+  min-width: 280px !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* When zoom is extreme and secondary wraps to its own row */
+@media (max-width: 960px) {
+  ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   4. SHORTS PAGE — Fluid player sizing
+   ========================================================================== */
+
+/* Prevent the shorts player from bleeding off-screen */
+ytd-reel-video-renderer,
+ytd-shorts,
+#shorts-container {
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* ==========================================================================
+   5. GLOBAL TEXT & SPACING — clamp for zoom resilience
+   ========================================================================== */
+
+/* Titles: scale between 1.2rem and 1.8rem based on available width */
+ytd-video-renderer #video-title,
+ytd-rich-item-renderer #video-title,
+yt-lockup-view-model .yt-lockup-view-model-wiz__title {
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem) !important;
+  line-height: 1.4 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Metadata / secondary text: scales between 1.1rem and 1.4rem */
+ytd-video-meta-block,
+ytd-rich-item-renderer #metadata-line,
+yt-lockup-view-model .yt-lockup-view-model-wiz__metadata {
+  font-size: clamp(1.1rem, 1.2vw, 1.4rem) !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* ==========================================================================
+   6. GENERAL OVERFLOW GUARD
+   ========================================================================== */
+
+/* Prevent any page-level horizontal overflow from breaking layout */
+ytd-page-manager,
+ytd-browse,
+ytd-search {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure all content boxes respect their parent boundaries */
+ytd-rich-grid-renderer,
+ytd-section-list-renderer,
+ytd-item-section-renderer {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}

@@ -159,10 +159,24 @@ export function loadSettings(updateUICallbacks) {
 
 export function gatherSettings() {
     const s = {};
+    const defaultSettings = (window.YPP && window.YPP.CONSTANTS) 
+        ? window.YPP.CONSTANTS.DEFAULT_SETTINGS 
+        : {};
+
     state.settingKeys.forEach(key => {
         const el = state.elements[key];
         if (el) {
-            /** @type {Record<string, any>} */(s)[key] = el.type === 'checkbox' ? el.checked : (el.type === 'range' ? Number(el.value) : el.value);
+            let val = el.type === 'checkbox' ? el.checked : (el.type === 'range' ? Number(el.value) : el.value);
+            
+            // Coerce string values (e.g. from hidden inputs) to proper types based on schema/defaults
+            const defaultType = typeof defaultSettings[key];
+            if (defaultType === 'number' && typeof val !== 'number') {
+                val = Number(val);
+            } else if (defaultType === 'boolean' && typeof val !== 'boolean') {
+                val = (val === 'true');
+            }
+            
+            /** @type {Record<string, any>} */(s)[key] = val;
         }
     });
     return s;

@@ -15,6 +15,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
     static featureId = null;
     static executionPhase = 'idle'; // 'sequential-ui', 'post-layout', 'idle'
     static priority = 999;
+    static targetPages = ['all']; // Allowed pages: 'all', 'watch', 'home', 'search', 'channel', 'playlist'
 
     constructor(name) {
         this.name = name || this.constructor.featureId || this.constructor.name;
@@ -48,6 +49,25 @@ window.YPP.features.BaseFeature = class BaseFeature {
     }
 
     /**
+     * Checks if the feature is allowed to run on the current page route.
+     * @returns {boolean}
+     */
+    isPageAllowed() {
+        const pages = this.constructor.targetPages;
+        if (!pages || pages.includes('all')) return true;
+        
+        const currentPath = window.location.pathname;
+        if (pages.includes('watch') && currentPath === '/watch') return true;
+        if (pages.includes('home') && (currentPath === '/' || currentPath === '/index')) return true;
+        if (pages.includes('search') && currentPath === '/results') return true;
+        if (pages.includes('channel') && (currentPath.startsWith('/@') || currentPath.startsWith('/channel/') || currentPath.startsWith('/c/'))) return true;
+        if (pages.includes('playlist') && currentPath === '/playlist') return true;
+        if (pages.includes('shorts') && currentPath.startsWith('/shorts/')) return true;
+        
+        return false;
+    }
+
+    /**
      * Called by FeatureManager with new settings
      * @param {Object} settings Current extension settings
      */
@@ -72,19 +92,32 @@ window.YPP.features.BaseFeature = class BaseFeature {
             shouldBeEnabled = !!this.settings[configKey];
         }
 
+        // Check page scoping boundaries
+        if (shouldBeEnabled && !this.isPageAllowed()) {
+            shouldBeEnabled = false;
+        }
+
         if (shouldBeEnabled && !this.isEnabled) {
             this.utils?.log(`Enabling feature: ${this.name}`, BaseFeature.CONFIG.LOG_CATEGORY, BaseFeature.CONFIG.LOG_LEVEL);
             this._abortController = new AbortController();
-            await this.enable();
-            this.isEnabled = true;
+            try {
+                await this.enable();
+                this.isEnabled = true;
+            } catch (e) {
+                this.utils?.log(`Error enabling feature ${this.name}: ${e.message}`, BaseFeature.CONFIG.LOG_CATEGORY, 'error');
+            }
         } else if (!shouldBeEnabled && this.isEnabled) {
             this.utils?.log(`Disabling feature: ${this.name}`, BaseFeature.CONFIG.LOG_CATEGORY, BaseFeature.CONFIG.LOG_LEVEL);
             if (this._abortController) {
                 this._abortController.abort();
                 this._abortController = null;
             }
-            await this.disable();
-            this.isEnabled = false;
+            try {
+                await this.disable();
+                this.isEnabled = false;
+            } catch (e) {
+                this.utils?.log(`Error disabling feature ${this.name}: ${e.message}`, BaseFeature.CONFIG.LOG_CATEGORY, 'error');
+            }
         } else if (this.isEnabled && settingsChanged) {
             this._triggerSettingWatchers(this.settings, oldSettings);
             if (typeof this.onUpdate === 'function') {
@@ -226,6 +259,11 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Register a DOM Observer safely bound to this feature's lifecycle
+     * @param {string} id - Unique observer identifier
+     * @param {string} selector - CSS selector to observe
+     * @param {Function} callback - Callback function with matching nodes
+     * @param {boolean} [immediate=true] - Trigger callback immediately if matching nodes exist
+     * @param {boolean} [lazy=false] - Use lazy observation
      */
     registerObserver(id, selector, callback, immediate = true, lazy = false) {
         if (!this.observer) return;
@@ -248,6 +286,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Manually unregister a DOM Observer
+     * @param {string} id - Unique observer identifier
      */
     unregisterObserver(id) {
         if (!this.observer) return;
@@ -258,6 +297,9 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Safely start an interval bound to this feature's lifecycle
+     * @param {Function} handler - Interval callback
+     * @param {number} timeout - Interval delay in ms
+     * @returns {number} Interval ID
      */
     setInterval(handler, timeout) {
         const id = setInterval(handler, timeout);
@@ -267,6 +309,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Clear a safely started interval
+     * @param {number} id - Interval ID
      */
     clearInterval(id) {
         clearInterval(id);
@@ -275,6 +318,9 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Safely start a timeout bound to this feature's lifecycle
+     * @param {Function} handler - Timeout callback
+     * @param {number} timeout - Timeout delay in ms
+     * @returns {number} Timeout ID
      */
     setTimeout(handler, timeout) {
         const id = setTimeout(handler, timeout);
@@ -284,6 +330,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Clear a safely started timeout
+     * @param {number} id - Timeout ID
      */
     clearTimeout(id) {
         clearTimeout(id);
@@ -292,6 +339,9 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Safely append an element to the DOM, bound to feature's lifecycle
+     * @param {Element} element - Element to inject
+     * @param {Element} [parent=document.body] - Parent container
+     * @returns {Element} The injected element
      */
     injectElement(element, parent = document.body) {
         if (!element || !parent) return;
@@ -302,6 +352,8 @@ window.YPP.features.BaseFeature = class BaseFeature {
 
     /**
      * Safely inject a stylesheet, bound to feature's lifecycle
+     * @param {string} cssString - CSS content to inject
+     * @returns {HTMLStyleElement} The injected style element
      */
     injectStyle(cssString) {
         const style = document.createElement('style');

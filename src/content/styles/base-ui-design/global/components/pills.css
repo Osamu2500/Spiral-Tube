@@ -72,21 +72,26 @@ ytd-hashtag a:hover {
   transform: translateY(-1px) !important;
 }
 
-/* ── 4. Active / Selected State Overrides ───────────────────────────────── */
+/* ── 4. Active / Selected State Overrides ───────────────────────────────────────────── */
 
 yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"],
 yt-chip-cloud-chip-renderer[aria-selected="true"] {
   background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;
   color: var(--ypp-chip-active-color, #fff) !important;
   border: var(--ypp-chip-active-border, 1px solid transparent) !important;
-  box-shadow: var(--ypp-chip-active-shadow, var(--ypp-shadow-base, none)) !important;
+  box-shadow:
+    var(--ypp-chip-active-shadow, var(--ypp-shadow-base, none)),
+    0 0 12px color-mix(in srgb, var(--ypp-primary-accent, #6366f1) 40%, transparent) !important;
   transform: none !important;
+  font-weight: 600 !important;
 }
 
 yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"]:hover,
 yt-chip-cloud-chip-renderer[aria-selected="true"]:hover {
   background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;
-  filter: brightness(1.1) !important;
+  filter: brightness(1.12) !important;
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--ypp-primary-accent, #6366f1) 55%, transparent) !important;
 }
 
 /* ── 5. Custom Extension Chips (Whitelist/Blacklist UI) ─────────────────── */

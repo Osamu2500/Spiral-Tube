@@ -58,6 +58,13 @@ window.YPP.StorageManager = class StorageManager {
         });
     }
 
+    /**
+     * Set a value in storage with optional TTL.
+     * @param {string} key - Storage key
+     * @param {any} value - Value to store
+     * @param {number|null} [ttlDays=null] - Optional time-to-live in days
+     * @returns {Promise<boolean>} True if successful, false if quota exceeded
+     */
     static async set(key, value, ttlDays = null) {
         let payload = { data: value };
         if (ttlDays) {
@@ -123,6 +130,11 @@ window.YPP.StorageManager = class StorageManager {
         }
     }
 
+    /**
+     * Get a value from storage, handling caching and TTL expiration.
+     * @param {string} key - Storage key
+     * @returns {Promise<any|null>} The stored value, or null if missing/expired
+     */
     static async get(key) {
         this._initCacheListener();
 
@@ -174,6 +186,10 @@ window.YPP.StorageManager = class StorageManager {
         }
     }
 
+    /**
+     * Purge all expired keys from storage.
+     * @returns {Promise<void>}
+     */
     static async purgeExpired() {
         let allData;
         try {
@@ -208,6 +224,10 @@ window.YPP.StorageManager = class StorageManager {
         }
     }
 
+    /**
+     * Get the total bytes currently used by the extension in local storage.
+     * @returns {Promise<number>} Bytes in use
+     */
     static async getBytesUsed() {
         try {
             return await chrome.storage.local.getBytesInUse(null);

@@ -47,9 +47,13 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
     async onPageChange(url) {
         if (!this.isEnabled) return;
         if (this.utils.isWatchPage()) {
-            await this.disable();
-            this.isEnabled = true;
-            await this.enable();
+            // watch→watch: onVideoChange() already updates the ambient styles.
+            // Only run a full re-init if we were coming from a non-watch page.
+            if (!document.body.classList.contains('ypp-ambient-mode-active')) {
+                await this.disable();
+                this.isEnabled = true;
+                await this.enable();
+            }
         } else {
             await this.disable();
             this.isEnabled = true;

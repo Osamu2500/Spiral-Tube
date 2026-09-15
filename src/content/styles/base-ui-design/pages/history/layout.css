@@ -55,7 +55,16 @@ ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #secon
 /* 3. Grid Layout Properties */
 ytd-browse[page-subtype="history"] ytd-item-section-renderer #contents {
     display: grid !important;
-    grid-template-columns: repeat(var(--ypp-history-columns, 4), minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        max(
+          var(--ypp-grid-column-min, 240px),
+          calc((100% - ((var(--ypp-history-columns, 4) - 1) * 16px)) / var(--ypp-history-columns, 4))
+        ),
+        1fr
+      )
+    ) !important;
     gap: 24px 16px !important;
     padding-top: 8px !important;
     grid-auto-flow: dense !important;
@@ -64,7 +73,7 @@ ytd-browse[page-subtype="history"] ytd-item-section-renderer #contents {
 
 @media (max-width: 1600px) {
     ytd-browse[page-subtype="history"] ytd-item-section-renderer #contents {
-        grid-template-columns: repeat(var(--ypp-history-columns, 4), minmax(0, 1fr)) !important;
+        /* fluid auto-fit already handles this — no override needed */
     }
 }
 

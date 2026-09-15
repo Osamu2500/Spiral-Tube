@@ -16,7 +16,7 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  border-radius: 50% !important;
+  border-radius: var(--r-lg, 16px) !important;
 }
 /* Profile Icon Squircle */
 #avatar-btn,
@@ -79,14 +79,19 @@ body #container.ytd-searchbox[has-focus] {
 }
 /* 2. Slide-out Hover Animation for Related Videos */
 /* 3. Pro Max Rounding for Core Elements */
-#container.ytd-searchbox {
-  border-radius: var(--ypp-radius-md) 0 0 var(--ypp-radius-md) !important;
+#container.ytd-searchbox,
+.ytSearchboxComponentInputBox {
+  border-radius: var(--ypp-shape-lg, 16px) 0 0 var(--ypp-shape-lg, 16px) !important;
 }
-#search-icon-legacy.ytd-searchbox {
-  border-radius: 0 var(--ypp-radius-md) var(--ypp-radius-md) 0 !important;
+#search-icon-legacy.ytd-searchbox,
+.ytSearchboxComponentSearchButton {
+  border-radius: 0 var(--ypp-shape-lg, 16px) var(--ypp-shape-lg, 16px) 0 !important;
+}
+yt-searchbox .ytSearchboxComponentSearchForm {
+  border-radius: var(--ypp-shape-lg, 16px) !important;
 }
 /* 4. Segmented Comments Cards */
-/* 5. Live Badge Red Voids */
+/* 5. Live Badge Red Voids & Avatar Rings */
 body
   .badge-style-type-live-now.ytd-badge-supported-renderer,
 body
@@ -94,9 +99,16 @@ body
   padding: 4px 6px !important;
   background-color: #cc0000 !important;
   color: white !important;
-  border-radius: var(--ypp-radius-sm) !important;
+  border-radius: var(--ypp-shape-sm, 8px) !important;
   font-weight: bold !important;
 }
+/* Live circular ring on channel avatar squircle */
+body yt-img-shadow.ytd-channel-avatar-editor,
+body .yt-spec-avatar-shape--live-ring .yt-spec-avatar-shape__image,
+body .yt-spec-avatar-shape--live-ring {
+  border-radius: var(--ypp-shape-md, 12px) !important;
+}
+
 /* --- 16. REDESIGNED UI ELEMENTS (PREMIUM GLASSMORPHIC AESTHETIC) --- */
 /* ── 1. Detached Glass Control Bar (ytp-chrome-bottom) [DISABLED DUE TO RENDERING BUG] ── */
 /* ── Glowing Progress Bar [DISABLED DUE TO RENDERING BUG] ── */
@@ -124,6 +136,20 @@ html ytd-watch-metadata #owner {
   padding: 8px 16px;
   box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.2));
   margin-right: 12px;
+  flex: 1 1 auto;
+  min-width: 250px; /* Don't squish too small */
+}
+
+/* Ensure the top row can wrap if there isn't enough space */
+html ytd-watch-metadata #top-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+
+html ytd-watch-metadata #actions {
+  flex: 1 1 auto;
+  min-width: 250px;
 }
 
 /* ────────────────────────────────────────────────────────────────── */
@@ -153,19 +179,7 @@ html yt-live-chat-renderer {
     border-radius: var(--ypp-radius-lg) !important;
     overflow: hidden !important;
 }
-/* Playlist Panels */
-html ytd-playlist-panel-renderer {
-    background-color: var(--ypp-bg-surface) !important;
-    border-radius: var(--ypp-radius-lg) !important;
-}
-/* Community Posts */
-html ytd-backstage-post-thread-renderer,
-html ytd-backstage-post-renderer {
-    background-color: var(--ypp-bg-surface) !important;
-    border-radius: var(--ypp-radius-lg) !important;
-    padding: 16px !important;
-    box-shadow: var(--ypp-shadow-base) !important;
-}
-
+/* Playlist Panels (Moved to pages/watch/playlist-panel.css) */
+/* Community Posts (Moved to global/components/posts.css) */
 /* Hide AI Logo/Altered Content Badges */
 /* Catch-all for AI/Altered content badges on Player Page and elsewhere */

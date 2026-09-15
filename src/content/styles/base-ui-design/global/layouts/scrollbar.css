@@ -1,0 +1,75 @@
+/* ==========================================================================
+   GLOBAL PREMIUM SCROLLBAR SYSTEM
+   Applies a thin, frosted-glass scrollbar across all YouTube scrollable areas.
+   Uses ::-webkit-scrollbar for Chrome/Chromium (all extensions use this engine).
+   ========================================================================== */
+
+/* ── 1. Global Base ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ── 2. Sidebar — hidden until hover ────────────────────────────────────── */
+#guide-inner-content::-webkit-scrollbar-thumb,
+#secondary-inner::-webkit-scrollbar-thumb,
+.ytd-mini-guide-renderer::-webkit-scrollbar-thumb {
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+#guide-inner-content:hover::-webkit-scrollbar-thumb,
+#secondary-inner:hover::-webkit-scrollbar-thumb,
+.ytd-mini-guide-renderer:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── 3. Chat / Popups — slightly more visible ───────────────────────────── */
+ytd-menu-popup-renderer::-webkit-scrollbar-thumb,
+ytd-multi-page-menu-renderer::-webkit-scrollbar-thumb,
+yt-live-chat-item-list-renderer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+ytd-menu-popup-renderer:hover::-webkit-scrollbar-thumb,
+ytd-multi-page-menu-renderer:hover::-webkit-scrollbar-thumb,
+yt-live-chat-item-list-renderer:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+/* ── 4. Comments Section ────────────────────────────────────────────────── */
+ytd-comments::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+ytd-comments:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── 5. Accent Scrollbar for active inputs / search ─────────────────────── */
+input::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--ypp-accent, #3ea6ff) 50%, transparent);
+}

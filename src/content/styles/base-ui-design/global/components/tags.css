@@ -31,6 +31,10 @@ ytd-thumbnail .ypp-tag-btn {
   background: var(--ypp-accent);
   color: var(--ypp-text-primary, #fff);
   box-shadow: var(--ypp-shadow-hover);
+  transform: translateY(-4px) scale(1.05) translateZ(0);
+}
+.ypp-tag-btn:active {
+  transform: translateY(-2px) scale(0.95) translateZ(0);
 }
 
 .ypp-tag-btn.tagged {
@@ -78,4 +82,8 @@ ytd-thumbnail:hover .ypp-tag-btn {
 .ypp-tag-option:hover {
   background: var(--ypp-surface-bg-hover);
   color: var(--ypp-text-primary);
+  transform: scale(1.02);
+}
+.ypp-tag-option:active {
+  transform: scale(0.98);
 }

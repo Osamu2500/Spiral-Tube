@@ -9,26 +9,25 @@ import '../../core/system/base-feature.js';
  * Safety: Confined to home path checks.
  */
 export class RedirectHomeFeature extends window.YPP.features.BaseFeature {
-    constructor(utils, settings) {
-        super(utils, settings);
+    constructor() {
+        super('bypassHomepage');
         this.featureKey = 'bypassHomepage';
-        this.bypassTarget = settings.bypassHomepage;
+        this.bypassTarget = 'off';
     }
 
-    onActivate() {
+    getConfigKey() { return null; } // Custom handling via bypassTarget
+
+    enable() {
         this.utils.log('Redirect Home Active', 'NAVIGATION', 'info');
         this.boundCheck = () => this.checkRedirect();
         this.checkRedirect();
         // Hook into SPA navigation start to intercept before render
-        document.addEventListener('yt-navigate-start', this.boundCheck);
+        this.addListener(document, 'yt-navigate-start', this.boundCheck);
     }
 
-    onDeactivate() {
-        document.removeEventListener('yt-navigate-start', this.boundCheck);
-    }
-
-    onSettingsUpdated(newSettings) {
-        this.bypassTarget = newSettings.bypassHomepage;
+    onUpdate(newSettings) {
+        if (!newSettings) return;
+        this.bypassTarget = newSettings.bypassHomepage || 'off';
         this.checkRedirect();
     }
 

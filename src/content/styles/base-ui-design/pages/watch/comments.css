@@ -10,7 +10,7 @@
    1. CONTAINERS & PANELS (Large Squircles)
    -------------------------------------------------------------------------- */
 ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-xl, 24px) !important;
   margin: 10px !important;
   border: var(--ypp-surface-border) !important;
   box-shadow: var(--ypp-shadow-base) !important;
@@ -18,17 +18,36 @@ ytd-comments-header-renderer[engagement-panel] {
 
 ytd-commentbox,
 ytd-comment-simplebox-renderer {
-  background-color: var(--ypp-bg-surface, transparent) !important;
-  border-radius: 24px !important;
+  background: var(--ypp-surface-bg-hover, rgba(30, 30, 30, 0.4)) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  border-radius: var(--ypp-shape-xl, 24px) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
   padding: 16px 20px !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+ytd-commentbox:focus-within,
+ytd-comment-simplebox-renderer:focus-within {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
 }
 
 ytd-comment-thread-renderer,
 ytd-comment-view-model {
   /* Inherits card styles globally, overridden here for comments spacing */
   padding: 15px !important;
-  margin-bottom: 15px !important;
-  border-radius: 24px !important;
+  margin-bottom: 8px !important;
+  border-radius: var(--ypp-shape-xl, 24px) !important;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+ytd-comment-thread-renderer:hover,
+ytd-comment-view-model:hover {
+  background: rgba(255, 255, 255, 0.025) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -38,7 +57,7 @@ ytd-comment-view-model #author-thumbnail yt-img-shadow,
 ytd-comment-view-model #author-thumbnail img,
 ytd-comment-renderer #author-thumbnail yt-img-shadow,
 ytd-comment-renderer #author-thumbnail img {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -47,7 +66,7 @@ ytd-comment-renderer #author-thumbnail img {
 ytd-comment-view-model button,
 ytd-comment-renderer button,
 ytd-comment-action-buttons-renderer button {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease !important;
   will-change: transform;
 }
@@ -70,8 +89,9 @@ ytd-comment-action-buttons-renderer button:active {
    4. MISC UI TWEAKS & OVERRIDES
    -------------------------------------------------------------------------- */
 #placeholder-area.ytd-comment-simplebox-renderer {
-  border: var(--ypp-surface-border) !important;
-  border-radius: 16px !important; /* Inner area also squircle */
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important; /* Inner area also squircle */
+  background: rgba(0, 0, 0, 0.2) !important;
 }
 
 ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
@@ -113,7 +133,7 @@ ytd-comments-header-renderer #count {
 
 ytd-comments-header-renderer #sort-menu yt-sort-filter-sub-menu-renderer {
   background: rgba(255, 255, 255, 0.08) !important;
-  border-radius: 16px !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
   padding: 6px 14px !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   transition: background 0.2s ease, transform 0.2s ease !important;
@@ -127,4 +147,62 @@ ytd-comments-header-renderer #sort-menu yt-sort-filter-sub-menu-renderer:hover {
 
 ytd-comments-header-renderer #sort-menu yt-icon {
   margin-right: 6px !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. CREATOR COMMENT HIGHLIGHT
+   -------------------------------------------------------------------------- */
+/* Pinned comment — subtle amber glow border */
+ytd-comment-thread-renderer[pinned] {
+  border-left: 3px solid rgba(255, 200, 50, 0.6) !important;
+  background: rgba(255, 200, 50, 0.04) !important;
+  padding-left: 14px !important;
+}
+
+/* Creator (OP) reply — blue accent border */
+ytd-comment-view-model[is-owner],
+ytd-comment-renderer[author-is-posting-creator] {
+  border-left: 3px solid var(--ypp-accent, #3ea6ff) !important;
+  background: rgba(62, 166, 255, 0.04) !important;
+  padding-left: 14px !important;
+  border-radius: var(--ypp-shape-xl, 24px) !important;
+}
+
+/* Liked-by-creator heart button — pulse glow when active */
+#creator-heart-button[liked="true"] yt-icon,
+.ytCommentEngagementPanelViewModelCreatorHeart yt-icon {
+  color: #ff4444 !important;
+  filter: drop-shadow(0 0 6px rgba(255, 68, 68, 0.7)) !important;
+  animation: ypp-heart-pulse 1.8s ease-in-out infinite !important;
+}
+
+@keyframes ypp-heart-pulse {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 68, 68, 0.6)); }
+  50%       { filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.9)); }
+}
+
+/* --------------------------------------------------------------------------
+   8. REPLY BUTTON IMPROVEMENT
+   -------------------------------------------------------------------------- */
+ytd-comment-view-model #reply-button-container,
+ytd-comment-renderer #reply-button-container {
+  margin-top: 4px !important;
+}
+
+ytd-comment-view-model #reply-button-container button,
+ytd-comment-renderer #reply-button-container button {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  padding: 6px 12px !important;
+  border-radius: 10px !important;
+  color: var(--ypp-accent, #3ea6ff) !important;
+  background: transparent !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+
+ytd-comment-view-model #reply-button-container button:hover,
+ytd-comment-renderer #reply-button-container button:hover {
+  background: rgba(62, 166, 255, 0.1) !important;
+  transform: translateX(2px) !important;
 }

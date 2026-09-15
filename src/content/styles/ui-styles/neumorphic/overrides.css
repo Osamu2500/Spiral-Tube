@@ -734,7 +734,7 @@ html[data-ypp-ui-design="neumorphic"] .ytp-button:hover {
 
 html[data-ypp-ui-design="neumorphic"] .ytp-button[aria-pressed="true"]::after {
   transform: translateX(-50%);
-  border-radius: 50%;
+  border-radius: var(--r-lg, 16px);
   box-shadow: 0 0 4px var(--neu-accent);
 }
 

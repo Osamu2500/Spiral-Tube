@@ -87,7 +87,7 @@
   background: transparent;
   cursor: pointer;
   opacity: 0.85;
-  border-radius: 12px;
+  border-radius: var(--ypp-border-radius-base, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +103,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: var(--ypp-border-radius-base, 16px);
   background: var(--ypp-surface-bg-hover);
   opacity: 0;
   transition: opacity 0.18s ease;
@@ -148,7 +148,7 @@
   gap: 2px;
   background: transparent !important;
   padding: 4px;
-  border-radius: 20px;
+  border-radius: var(--ypp-shape-xl, 24px);
   border: none !important;
   box-shadow: none !important;
   margin-left: 4px;
@@ -168,7 +168,7 @@
   font-family: "Inter", "Roboto", sans-serif;
   cursor: pointer;
   padding: 3px 7px;
-  border-radius: 6px;
+  border-radius: var(--ypp-shape-sm, 6px);
   transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   letter-spacing: 0.2px;
 }

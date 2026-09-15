@@ -161,6 +161,15 @@ body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playl
   margin-right: 12px !important;
   flex-shrink: 0 !important;
   display: block !important;
+  position: relative !important;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
+  transition: transform 0.25s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow 0.25s ease !important;
+}
+
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *)) #avatar-link:hover,
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *)) #channel-thumbnail:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 0 2px var(--ypp-accent, rgba(255, 255, 255, 0.3)) !important;
 }
 
 body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #avatar,
@@ -173,8 +182,15 @@ body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playl
 body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer) #channel-info a yt-avatar-shape {
   width: 100% !important;
   height: 100% !important;
-  border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
+  border-radius: var(--ypp-shape-lg, 16px) !important;
   overflow: hidden !important;
+}
+
+/* Make live ring squircle */
+.yt-spec-avatar-shape__live-badge,
+.badge-shape-wiz--thumbnail-live,
+.yt-spec-avatar-shape--live-badge {
+  border-radius: var(--ypp-shape-md, 12px) !important;
 }
 
 /* Video Title Typography & Clamping */
@@ -226,24 +242,54 @@ body:not(.ypp-watch-page) ytd-rich-item-renderer:hover,
 body:not(.ypp-watch-page) ytd-video-renderer:hover,
 body:not(.ypp-watch-page) ytd-compact-video-renderer:hover {
   transform: translateY(-4px) scale(1.015) !important;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) !important;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.5)) !important;
   will-change: transform;
-  z-index: 10;
+  z-index: var(--ypp-z-elevated);
 }
+
+/* Thumbnail box-shadow elevation + image scale on hover */
 body:not(.ypp-watch-page) ytd-thumbnail {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.4s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
+  overflow: hidden !important;
+}
+body:not(.ypp-watch-page) ytd-thumbnail img {
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+body:not(.ypp-watch-page) ytd-rich-item-renderer:hover ytd-thumbnail img,
+body:not(.ypp-watch-page) ytd-compact-video-renderer:hover ytd-thumbnail img {
+  transform: scale(1.04) !important;
 }
 body:not(.ypp-watch-page) ytd-rich-item-renderer:hover ytd-thumbnail,
 body:not(.ypp-watch-page) ytd-compact-video-renderer:hover ytd-thumbnail {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+/* Accent glow line at the top of thumbnail on hover (subtle brand moment) */
+body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover ytd-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--ypp-accent-primary, #6366f1) 30%,
+    var(--ypp-accent, #3ea6ff) 70%,
+    transparent 100%
+  );
+  opacity: 0.9;
+  z-index: 10;
+  border-radius: var(--ypp-squircle-radius-lg, 12px) var(--ypp-squircle-radius-lg, 12px) 0 0;
+  pointer-events: none;
 }
 
 /* ── 5. Action Menus (3-dots) ───────────────────────────────────────────── */
 
 /* Fix 3-dots menu clickability during video previews */
 body:not(.ypp-watch-page) :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu {
-  z-index: 99 !important;
+  z-index: var(--ypp-z-dropdown)!important;
   position: relative !important;
   pointer-events: auto !important;
 }

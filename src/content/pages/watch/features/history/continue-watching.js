@@ -10,6 +10,7 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
     static featureId = 'continueWatching';
     static executionPhase = 'idle';
     static priority = 999;
+    static targetPages = ['home'];
 
     constructor() {
         super('ContinueWatching');
@@ -28,8 +29,9 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
                 this.notifiedVideos.clear();
                 
                 // TEARDOWN: remove processed stamps so recycled DOM elements are re-evaluated
-                document.querySelectorAll('ytd-rich-item-renderer[data-ypp-processed], ytd-compact-video-renderer[data-ypp-processed]').forEach(el => {
-                    el.removeAttribute('data-ypp-processed');
+                // Use a feature-specific attribute to avoid triggering ALL other features on navigation
+                document.querySelectorAll('ytd-rich-item-renderer[data-ypp-continue-processed], ytd-compact-video-renderer[data-ypp-continue-processed]').forEach(el => {
+                    el.removeAttribute('data-ypp-continue-processed');
                     el.classList.remove('previously-watched-video');
                 });
 
@@ -53,8 +55,8 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
         }
         
         // TEARDOWN: remove processed stamps
-        document.querySelectorAll('ytd-rich-item-renderer[data-ypp-processed], ytd-compact-video-renderer[data-ypp-processed]').forEach(el => {
-            el.removeAttribute('data-ypp-processed');
+        document.querySelectorAll('ytd-rich-item-renderer[data-ypp-continue-processed], ytd-compact-video-renderer[data-ypp-continue-processed]').forEach(el => {
+            el.removeAttribute('data-ypp-continue-processed');
             el.classList.remove('previously-watched-video');
         });
     }
@@ -83,8 +85,8 @@ export class ContinueWatching extends window.YPP.features.BaseFeature {
         
         for (const video of videoArray) {
             // Check if we've already processed this video DOM element
-            if (video.hasAttribute('data-ypp-processed')) continue;
-            video.setAttribute('data-ypp-processed', 'true');
+            if (video.hasAttribute('data-ypp-continue-processed')) continue;
+            video.setAttribute('data-ypp-continue-processed', 'true');
 
             // Check if it has the red resume playback bar and it is partially filled
             const resumeBar = video.querySelector("ytd-thumbnail-overlay-resume-playback-renderer #progress, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, yt-progress-bar-view-model .yt-progress-bar-view-model-progress, [class*='progress-bar-view-model-progress']");

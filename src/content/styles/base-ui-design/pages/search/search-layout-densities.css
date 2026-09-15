@@ -35,8 +35,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="dense"] ytd-radio-renderer ytd
 body.ypp-search-list-mode[data-ypp-search-layout="dense"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="dense"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="dense"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 240px !important;
-  min-width: 240px !important;
+  max-width: min(240px, 40%) !important;
+  min-width: min(240px, 35%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="dense"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="dense"] ytd-playlist-renderer,
@@ -75,8 +75,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="compact"] ytd-radio-renderer y
 body.ypp-search-list-mode[data-ypp-search-layout="compact"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="compact"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="compact"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 320px !important;
-  min-width: 320px !important;
+  max-width: min(320px, 40%) !important;
+  min-width: min(320px, 35%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="compact"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="compact"] ytd-playlist-renderer,
@@ -115,8 +115,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="regular"] ytd-radio-renderer y
 body.ypp-search-list-mode[data-ypp-search-layout="regular"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="regular"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="regular"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 360px !important;
-  min-width: 360px !important;
+  max-width: min(360px, 40%) !important;
+  min-width: min(360px, 35%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="regular"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="regular"] ytd-playlist-renderer,
@@ -155,8 +155,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="spacious"] ytd-radio-renderer 
 body.ypp-search-list-mode[data-ypp-search-layout="spacious"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="spacious"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="spacious"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 480px !important;
-  min-width: 480px !important;
+  max-width: min(480px, 42%) !important;
+  min-width: min(480px, 37%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="spacious"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="spacious"] ytd-playlist-renderer,
@@ -195,8 +195,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="expanded"] ytd-radio-renderer 
 body.ypp-search-list-mode[data-ypp-search-layout="expanded"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="expanded"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="expanded"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 640px !important;
-  min-width: 640px !important;
+  max-width: min(640px, 45%) !important;
+  min-width: min(640px, 40%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="expanded"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="expanded"] ytd-playlist-renderer,
@@ -237,8 +237,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="macro"] ytd-radio-renderer ytd
 body.ypp-search-list-mode[data-ypp-search-layout="macro"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="macro"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="macro"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 160px !important;
-  min-width: 160px !important;
+  max-width: min(160px, 35%) !important;
+  min-width: min(160px, 25%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="macro"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="macro"] ytd-playlist-renderer,
@@ -279,8 +279,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="mini"] ytd-radio-renderer ytd-
 body.ypp-search-list-mode[data-ypp-search-layout="mini"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="mini"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="mini"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 200px !important;
-  min-width: 200px !important;
+  max-width: min(200px, 35%) !important;
+  min-width: min(200px, 28%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="mini"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="mini"] ytd-playlist-renderer,
@@ -321,8 +321,8 @@ body.ypp-search-list-mode[data-ypp-search-layout="huge"] ytd-radio-renderer ytd-
 body.ypp-search-list-mode[data-ypp-search-layout="huge"] ytd-channel-renderer #avatar-section,
 body.ypp-search-list-mode[data-ypp-search-layout="huge"] yt-lockup-view-model .ytLockupViewModelContentImage,
 body.ypp-search-list-mode[data-ypp-search-layout="huge"] ytd-lockup-view-model .ytLockupViewModelContentImage {
-  max-width: 460px !important;
-  min-width: 460px !important;
+  max-width: min(460px, 42%) !important;
+  min-width: min(460px, 37%) !important;
 }
 body.ypp-search-list-mode[data-ypp-search-layout="huge"] ytd-video-renderer,
 body.ypp-search-list-mode[data-ypp-search-layout="huge"] ytd-playlist-renderer,

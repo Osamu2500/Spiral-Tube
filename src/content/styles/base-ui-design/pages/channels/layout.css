@@ -7,13 +7,15 @@
  */
 
 #wrapper.ytd-channel-avatar-editor {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-shape-xl, 24px) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
 }
 
 ytd-c4-tabbed-header-renderer {
   background: var(--ypp-surface-bg) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  border-radius: var(--ypp-shape-xl, 24px) !important;
   box-shadow: var(--ypp-shadow-base) !important;
   margin-bottom: 20px !important;
   border: var(--ypp-surface-border) !important;

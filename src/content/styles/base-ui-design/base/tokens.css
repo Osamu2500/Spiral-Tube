@@ -51,10 +51,22 @@
   /* --- Transitions --- */
   --ypp-transition-bounce: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   --ypp-transition-fast:   0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ypp-transition-smooth: 0.22s cubic-bezier(0.4, 0, 0.2, 1); /* Standard ease — used for bg/color changes */
+  --ypp-transition-spring: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy spring — for scale/translate */
   
   /* --- Easing Physics --- */
   --ypp-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ypp-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Z-Index Map --- */
+  --ypp-z-base: 1;
+  --ypp-z-elevated: 10;
+  --ypp-z-header: 50;
+  --ypp-z-dropdown: 100;
+  --ypp-z-overlay: 200;
+  --ypp-z-modal: 500;
+  --ypp-z-tooltip: 1000;
+  --ypp-z-max: 2147483647;
 
   /* --- Typography --- */
   --ypp-font-primary: "Roboto", "Arial", sans-serif;

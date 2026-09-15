@@ -10,9 +10,10 @@
 /* --- 1. Layout Fixes --- */
 /* Push actions menu container to the right without breaking the DOM */
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions.ytd-watch-metadata {
-    flex-grow: 1 !important; 
-    width: 100% !important; 
+    flex: 1 1 auto !important;
+    width: auto !important; 
     justify-content: flex-end !important; 
+    min-width: 0 !important;
 }
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner {
   display: flex !important;
@@ -22,12 +23,20 @@ html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner {
   justify-content: flex-end !important;
   width: 100% !important;
   flex-wrap: nowrap !important;
+  overflow: visible !important;
 }
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner > * {
   flex-shrink: 0 !important;
 }
 html.yt-spiral-tube-theme body ytd-watch-metadata div:has(> #subscribe-button) ~ div {
   margin-left: auto !important;
+}
+
+/* Remove native margin from top-level buttons to align vertically */
+html.yt-spiral-tube-theme body ytd-watch-metadata #top-level-buttons-computed,
+html.yt-spiral-tube-theme body ytd-watch-metadata #top-level-buttons {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* --- 2. Base Squircle Shape (12px) --- */
@@ -48,7 +57,7 @@ html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation,
 html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation > .ytSmartImationsContent,
 html.yt-spiral-tube-theme body ytd-watch-metadata yt-download-button-view-model button,
 html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
   border: none !important; 
   /* Strip native background from wrappers just in case */
   background: transparent !important;
@@ -96,7 +105,7 @@ html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-segmented-like-dislike
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   background: rgba(255, 255, 255, 0.08) !important;
   overflow: hidden !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-border-radius-base, 16px) !important;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease !important;
 }
 
@@ -129,6 +138,7 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
   background: rgba(255, 255, 255, 0.15) !important;
   color: var(--ypp-primary-accent, #3ea6ff) !important;
   transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* Remove transform for segmented inner buttons so the wrapper doesn't clip them weirdly */
@@ -151,6 +161,33 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
   transform: scale(0.95) !important;
 }
 
+/* --- 5. Liked / Disliked Glow States --- */
+/* Like button active (liked) — blue glow */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart[aria-pressed="true"] {
+  color: var(--ypp-accent, #3ea6ff) !important;
+  text-shadow: 0 0 8px rgba(62, 166, 255, 0.6) !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart[aria-pressed="true"] * {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:has(button.ytSpecButtonShapeNextSegmentedStart[aria-pressed="true"]) {
+  box-shadow: 0 0 0 1px rgba(62, 166, 255, 0.3), 0 4px 16px rgba(62, 166, 255, 0.12) !important;
+}
+
+/* Dislike button active (disliked) — warm red */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd[aria-pressed="true"] {
+  color: rgba(255, 100, 100, 0.9) !important;
+  text-shadow: 0 0 8px rgba(255, 80, 80, 0.5) !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd[aria-pressed="true"] * {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:has(button.ytSpecButtonShapeNextSegmentedEnd[aria-pressed="true"]) {
+  box-shadow: 0 0 0 1px rgba(255, 80, 80, 0.3), 0 4px 16px rgba(255, 80, 80, 0.1) !important;
+}
+
 /* ==========================================================================
    NUCLEAR OVERRIDE FOR YOUTUBE'S NEW BUTTON SHAPES 
    Bypasses internal CSS variables, clip-paths, and size-specific rules
@@ -162,10 +199,20 @@ html.yt-spiral-tube-theme body ytd-watch-metadata button.ytSpecButtonShapeNextHo
 html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, ytd-menu-renderer) button,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
 html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation {
-    border-radius: 12px !important;
-    --yt-button-shape-next-border-radius: 12px !important;
-    --yt-spec-button-shape-next-border-radius: 12px !important;
+    border-radius: var(--ypp-border-radius-base, 16px) !important;
+    --yt-button-shape-next-border-radius: var(--ypp-border-radius-base, 16px) !important;
+    --yt-spec-button-shape-next-border-radius: var(--ypp-border-radius-base, 16px) !important;
     clip-path: none !important;
+}
+
+/* Ensure intermediate wrappers don't clip the squircle or shadows */
+html.yt-spiral-tube-theme body ytd-watch-metadata #top-level-buttons-computed,
+html.yt-spiral-tube-theme body ytd-watch-metadata ytd-menu-renderer,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-button-shape,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-button-view-model,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation,
+html.yt-spiral-tube-theme body ytd-watch-metadata .yt-spec-button-shape-next {
+    overflow: visible !important;
 }
 
 /* Correct inner edges for segmented buttons */

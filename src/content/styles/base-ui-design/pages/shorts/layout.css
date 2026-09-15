@@ -13,33 +13,50 @@ body.ypp-shorts-page #shorts-container {
 }
 body.ypp-shorts-page ytd-reel-video-renderer,
 body.ypp-shorts-page .reel-video-in-sequence-thumbnail {
-    border-radius: 20px !important;
+    border-radius: var(--ypp-shape-xl, 24px) !important;
     overflow: hidden !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    transition: box-shadow 0.4s ease !important;
+}
+
+/* Active Shorts video — pulsing glow ring */
+body.ypp-shorts-page ytd-reel-video-renderer[is-active] {
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.12),
+        0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    animation: ypp-shorts-glow-ring 3s ease-in-out infinite !important;
+}
+
+@keyframes ypp-shorts-glow-ring {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.10), 0 10px 40px rgba(0,0,0,0.6); }
+    50%       { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22), 0 14px 48px rgba(0,0,0,0.7); }
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer {
-    background: var(--ypp-surface-bg) !important;
-    border-radius: var(--ypp-border-radius-base, 20px) !important;
-    padding: 12px 8px !important;
+    background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.65)) !important;
+    backdrop-filter: blur(16px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+    border-radius: var(--ypp-shape-xl, 24px) !important;
+    padding: 16px 12px !important;
     margin-right: 16px !important;
-    border: var(--ypp-surface-border) !important;
+    border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+    box-shadow: var(--ypp-shadow-float, 0 12px 32px rgba(0, 0, 0, 0.5)) !important;
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-toggle-button-renderer,
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
     margin-bottom: 12px !important;
-    transition: transform 0.2s ease !important;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-toggle-button-renderer:hover,
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
-    transform: scale(1.1) !important;
+    transform: translateY(-3px) scale(1.06) !important;
 }
 body.ypp-shorts-page .overlay.ytd-reel-video-renderer {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%) !important;
-    padding: 24px !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 30%, transparent 100%) !important;
+    padding: 32px 24px 24px 24px !important;
 }
 body.ypp-shorts-page #avatar yt-img-shadow {
     border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 50% !important;
+    border-radius: var(--r-lg, 16px) !important;
     transition: border-color 0.3s ease !important;
 }
 body.ypp-shorts-page #avatar:hover yt-img-shadow {
@@ -57,24 +74,26 @@ body.ypp-shorts-page ytd-reel-player-header-renderer #subscribe-button yt-button
 }
 body.ypp-shorts-page #progress-bar {
     height: 4px !important;
-    border-radius: 2px !important;
+    border-radius: var(--ypp-shape-sm, 6px) !important;
     background: rgba(255, 255, 255, 0.2) !important;
 }
 body.ypp-shorts-page .ypp-shorts-controls {
     position: absolute;
-    bottom: 80px; /* Above the title/channel overlay */
+    bottom: 90px; /* Above the title/channel overlay */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    background: var(--ypp-surface-bg-hover) !important;
-    border-radius: var(--ypp-border-radius-base, 20px) !important;
-    padding: 8px 16px !important;
-    border: var(--ypp-surface-border) !important;
+    background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.65)) !important;
+    backdrop-filter: blur(16px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+    border-radius: var(--ypp-shape-xl, 24px) !important;
+    padding: 10px 16px !important;
+    border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
     z-index: var(--ypp-z-card-hover);
-    box-shadow: var(--ypp-shadow-card) !important;
+    box-shadow: var(--ypp-shadow-float, 0 12px 32px rgba(0, 0, 0, 0.5)) !important;
     opacity: 0.2;
     transition: opacity 0.3s ease;
 }
@@ -90,7 +109,7 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-action-btn {
     align-items: center;
     justify-content: center;
     padding: 4px !important;
-    border-radius: 50%;
+    border-radius: var(--r-lg, 16px);
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
 }
@@ -114,7 +133,7 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn {
     background: transparent;
     color: #ccc;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--ypp-border-radius-base, 16px);
     padding: 4px 8px;
     font-size: 12px;
     font-weight: 600;
@@ -128,6 +147,22 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn:hover {
 body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn.active {
     background: var(--ypp-surface-bg-active);
     color: var(--ypp-text-primary, #fff);
+}
+
+/* ── Expanded Description / Show More Box ── */
+body.ypp-shorts-page ytd-reel-player-overlay-renderer[is-expanded] #overlay {
+    background: var(--ypp-surface-bg-hover, rgba(30, 30, 30, 0.85)) !important;
+    backdrop-filter: blur(16px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+    border-radius: var(--ypp-shape-xl, 24px) !important;
+    padding: 24px !important;
+    border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
+    box-shadow: var(--ypp-shadow-float, 0 12px 32px rgba(0, 0, 0, 0.5)) !important;
+    margin: 16px !important;
+}
+
+body.ypp-shorts-page ytd-reel-player-overlay-renderer[is-expanded] #metadata.ytd-reel-player-overlay-renderer {
+    background: transparent !important;
 }
 
 

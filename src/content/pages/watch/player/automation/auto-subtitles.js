@@ -103,19 +103,27 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         }
     }
 
-    // FIX-1: SPA navigation handler — teardown old state and re-init
+    // FIX-1: SPA navigation handler — reuse DOM state instead of full teardown
     _handleNavigation() {
         if (!this.isEnabled) return;
-        this._teardown();
+        
+        // Don't fully teardown, just clear state to avoid DOM thrashing
+        if (this._renderLoopId) {
+            cancelAnimationFrame(this._renderLoopId);
+            this._renderLoopId = null;
+        }
         this._lastCaptionText = null;
         
         // V3: Clear tracks on video change
         this._timedTextTrack = null;
         this._timedTextTranslation = null;
-        if (this._renderLoopId) {
-            cancelAnimationFrame(this._renderLoopId);
-            this._renderLoopId = null;
+        
+        // Clear visually
+        if (this._customContainer) {
+            this._customContainer.innerHTML = '';
+            this._customContainer.classList.remove('active');
         }
+
         // SUB-BUG-3: Increment version so any in-flight poll callbacks are discarded
         this._navVersion++;
         this._startPolling();
@@ -162,18 +170,29 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         if (!this._abortController || this._abortController.signal.aborted) return;
         this._nativeContainer = native;
 
-        // Create our custom Netflix-style container
-        if (!this._customContainer) {
+        // Reuse our custom Netflix-style container instead of creating a new one on every video change
+        if (!this._customContainer || !document.contains(this._customContainer)) {
+            if (this._customContainer) this._customContainer.remove();
+            
             this._customContainer = document.createElement('div');
             this._currentStyle = this.settings?.subtitleStyle || 'netflix';
             this._customContainer.className = `ypp-custom-subtitles style-${this._currentStyle}`;
             player.appendChild(this._customContainer);
+            
+            // Setup Draggable only when creating
+            this._setupDraggable(this._customContainer);    
         }
 
-        // V3: Start renderer loop (will stay idle until _timedTextTrack populates)
+        // V3: Start renderer loop
         this._startV3Renderer();
 
-        // FIX-4: Smart Obstruction Avoidance via MutationObserver (opacity-aware, not resize-based)
+        // FIX-4: Smart Obstruction Avoidance via MutationObserver
+        // Always disconnect the old observer in case YouTube replaced the internal player chrome
+        if (this._chromeObserver) {
+            this._chromeObserver.disconnect();
+            this._chromeObserver = null;
+        }
+
         const chromeBottom = player.querySelector('.ytp-chrome-bottom');
         if (chromeBottom) {
             this._chromeObserver = new MutationObserver(() => {
@@ -192,9 +211,6 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 attributeFilter: ['style', 'class']
             });
         }
-
-        // Setup Draggable
-        this._setupDraggable(this._customContainer);    
     }
 
     _handleTimedText(e) {

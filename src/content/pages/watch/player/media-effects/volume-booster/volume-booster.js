@@ -23,6 +23,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     static featureId = 'volumeBoost';
     static executionPhase = 'sequential-ui';
     static priority = 7;
+    static targetPages = ['watch']; // Only run on player page
 
     constructor() {
         super('VolumeBooster');
