@@ -221,44 +221,46 @@ export function runIframeLogic(instances) {
             relay('fullscreenchange');
         }, { passive: true });
 
-        // Use IntersectionObserver to track visibility without layout thrashing
-        let isVisible = false;
-        const visibilityObserver = new IntersectionObserver((entries) => {
-            isVisible = entries[0].isIntersecting;
-            if (!isVisible) relay('video-hidden');
-        }, { threshold: 0 });
-        visibilityObserver.observe(video);
-
         heartbeatInterval = setInterval(() => {
+            if (video.isConnected && video.offsetWidth > 0 && video.offsetHeight > 0) {
+                relay('heartbeat');
+            } else if (video.isConnected) {
+                relay('video-hidden');
+            }
+        }, 1000);
+
+        removalObserver = new MutationObserver(() => {
             if (!document.contains(video)) {
-                // Handle removal
+                removalObserver.disconnect();
+                removalObserver = null;
                 clearInterval(heartbeatInterval);
-                visibilityObserver.disconnect();
                 relay('video-hidden'); 
                 video._yppBridged = false; 
                 activeVideo = null;
-                return;
+                startMainObserver();
             }
-            
-            // Only send heartbeat if document is active and video is visible
-            if (!document.hidden && isVisible) {
-                relay('heartbeat');
-            }
-        }, 1000);
+        });
+        removalObserver.observe(document.documentElement, { childList: true, subtree: true });
 
         relay('video-detected');
     };
 
-    if (window.YPP?.events) {
-        window.YPP.events.on('dom:playerConstructed', (e) => {
-            if (e && e.nodes) {
-                e.nodes.forEach(n => relayVideoEvents(n.el));
+    const startMainObserver = () => {
+        if (mainObserver) return;
+        mainObserver = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+                for (const node of m.addedNodes) {
+                    if (!node || node.nodeType !== 1) continue;
+                    if (node.tagName === 'VIDEO') relayVideoEvents(node);
+                    else node.querySelectorAll?.('video').forEach(relayVideoEvents);
+                }
             }
         });
-    }
+        mainObserver.observe(document.documentElement, { childList: true, subtree: true });
+        document.querySelectorAll('video').forEach(relayVideoEvents);
+    };
 
-    // Also pick up any existing videos
-    document.querySelectorAll('video').forEach(relayVideoEvents);
+    startMainObserver();
 
     window.addEventListener('message', (e) => {
         if (!e.data?.ypp || e.data.type !== 'iframe-video-command') return;

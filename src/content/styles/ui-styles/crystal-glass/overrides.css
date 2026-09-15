@@ -398,8 +398,8 @@ html[data-ypp-ui-design="crystal-glass"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="crystal-glass"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="crystal-glass"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }

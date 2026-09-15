@@ -211,8 +211,8 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog yt-button-renderer
 }
 
 /* Tooltips */
-html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip #tooltip {
   text-transform: uppercase !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 4px 4px 0 rgba(0, 255, 65, 0.3) !important;
@@ -323,8 +323,8 @@ html[data-ypp-ui-design="retrowave-green"] ytd-unified-share-panel-renderer {
   animation: retroGridEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: retroGridEntrance 0.3s ease forwards !important;
 }
@@ -447,8 +447,8 @@ html[data-ypp-ui-design="retrowave-green"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
@@ -529,8 +529,8 @@ html[data-ypp-ui-design="retrowave-green"] ytd-popup-container {
 /* =========================================
    2. TOOLTIPS & TOASTS
 ========================================= */
-html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 4px) !important;
 }
 

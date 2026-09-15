@@ -1,0 +1,43 @@
+/* ==========================================================================
+   POPUPS & MODALS
+   ========================================================================== 
+   Scope: Styles for main dialog popups (Share, Save to playlist, etc.)
+*/
+
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-paper-dialog,
+html.yt-spiral-tube-theme ytd-popup-container ytd-add-to-playlist-renderer,
+html.yt-spiral-tube-theme ytd-popup-container ytd-single-option-survey-renderer {
+    border-radius: 16px !important;
+    background: rgba(25, 25, 25, 0.75) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4) !important;
+    color: var(--ypp-text-primary, #fff) !important;
+}
+
+/* Ensure the header and inner containers don't have opaque backgrounds */
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-paper-dialog #header,
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-paper-dialog #contents,
+html.yt-spiral-tube-theme ytd-popup-container ytd-add-to-playlist-renderer #header,
+html.yt-spiral-tube-theme ytd-popup-container ytd-add-to-playlist-renderer #playlists {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Scrollbars inside popups */
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-paper-dialog::-webkit-scrollbar,
+html.yt-spiral-tube-theme ytd-popup-container ytd-add-to-playlist-renderer #playlists::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-paper-dialog::-webkit-scrollbar-thumb,
+html.yt-spiral-tube-theme ytd-popup-container ytd-add-to-playlist-renderer #playlists::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+}
+
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-paper-dialog::-webkit-scrollbar-track,
+html.yt-spiral-tube-theme ytd-popup-container ytd-add-to-playlist-renderer #playlists::-webkit-scrollbar-track {
+    background: transparent !important;
+}

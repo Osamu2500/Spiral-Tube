@@ -51,7 +51,6 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         this._Utils = window.YPP.Utils || {};
         this._bgImageManager = new BackgroundImageManager(this._Utils);
         this._accentManager = new AccentColorManager(this._CONSTANTS);
-        this._ambientColorExtractor = new AmbientColorExtractor(this, this._accentManager);
         this._effectsManager = new ThemeEffectsManager();
     }
 
@@ -599,9 +598,6 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
         }
 
         this._accentManager.apply(this._settings, root);
-        if (this._ambientColorExtractor) {
-            this._ambientColorExtractor.setEnabled(!!this._settings.enableAmbientAccent);
-        }
 
         
 

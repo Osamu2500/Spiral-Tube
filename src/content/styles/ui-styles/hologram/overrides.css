@@ -2036,8 +2036,8 @@ html[data-ypp-ui-design="hologram"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="hologram"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="hologram"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="hologram"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="hologram"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(255, 0, 255, 0.2) !important;
 }

@@ -26,9 +26,9 @@
   margin-right: 4px;
   gap: 8px;
   padding: 4px 6px;
-  background: rgba(0, 0, 0, 0.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-radius: 20px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
   box-shadow: none !important;
   animation: ypp-bar-pop-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   will-change: transform, opacity;
@@ -42,11 +42,11 @@
     position: absolute;
     bottom: 54px; /* Above the progress bar */
     right: 12px;
-    background: rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0;
     padding: 6px 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: none !important;
     margin-right: 0;
   }
 }
@@ -73,8 +73,8 @@
 }
 
 .ypp-player-controls:hover {
-  background: rgba(0, 0, 0, 0.3) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: transparent !important;
+  border-color: transparent !important;
   box-shadow: none !important;
 }
 
@@ -184,4 +184,15 @@
   font-weight: 800;
   box-shadow: none;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Time Remaining Display ── */
+.ypp-time-remaining {
+  display: inline-block !important;
+  margin-left: 5px !important;
+  font-weight: 500 !important;
+  opacity: 0.9 !important;
+  white-space: nowrap !important;
+  color: inherit !important;
+  vertical-align: baseline !important;
 }

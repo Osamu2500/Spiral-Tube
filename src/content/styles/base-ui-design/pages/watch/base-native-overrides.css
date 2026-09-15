@@ -1,15 +1,16 @@
 /* ==========================================================================
    BASE NATIVE OVERRIDES (PLAYER)
-   Scope: Fixes and overrides for the native YouTube HTML5 player controls
+   ========================================================================== 
+   Scope: Fixes and overrides for the native YouTube HTML5 player controls.
+   This file ensures that native YouTube elements (panels, time, popups)
+   conform to the extension's design tokens and layout rules. It does not 
+   contain styles for custom injected buttons (see custom-bar-ui.css).
    ========================================================================== */
 
-/* Player Controls Containers */
+/* --- 1. Player Controls Containers --- */
 .ytp-chrome-bottom {
-    -webkit-backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: none !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: none !important;
 }
 
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
@@ -22,7 +23,7 @@
 
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   background: rgba(20, 20, 20, 0.8) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
   transform: scale(1.02);
 }
 
@@ -31,7 +32,7 @@
   box-shadow: none !important;
 }
 
-/* Volume Slider Area */
+/* --- 2. Volume & Chapter Controls --- */
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   background: none !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
@@ -39,7 +40,7 @@
 
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   background: rgba(20, 20, 20, 0.8) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
   transform: scale(1.1);
 }
 
@@ -48,7 +49,7 @@
   padding-left: 10px;
 }
 
-/* Buttons inside Player */
+/* --- 3. Buttons inside Player --- */
 .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
@@ -61,8 +62,8 @@
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:hover {
   transform: scale(1.1) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-  background: rgba(20, 20, 20, 0.8) !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active,
@@ -80,17 +81,17 @@
 
 .ytp-fullscreen-grid-expand-button:hover {
   background: rgba(20, 20, 20, 0.8) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Settings Menu / Panels inside Player */
+/* --- 4. Settings Menu / Panels inside Player --- */
 .ytp-panel,
 .ytp-popup.ytp-settings-menu {
   background: var(--ypp-menu-bg, rgba(20, 20, 20, 0.8)) !important;
 }
 
 .ytp-menuitem:not([aria-disabled=true]) {
-  margin-left: 100px !important;
+  /* BUG FIX: Removed 'margin-left: 100px !important;' which broke menu text positioning */
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
 }
@@ -122,14 +123,13 @@
   padding: 0 5px !important;
 }
 
+/* --- 5. Main Video Frame --- */
 video.video-stream.html5-main-video,
 .html5-video-player {
   border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
 
-/* ==========================================================================
-   YouTube: Better timeline and text visibility (UserStyle #4708)
-   ========================================================================== */
+/* --- 6. Better Timeline and Text Visibility (UserStyle #4708) --- */
 .ytp-time-current,
 .ytp-time-separator,
 .ytp-time-duration,
@@ -140,17 +140,4 @@ video.video-stream.html5-main-video,
 
 .ytp-chapter-hover-container {
   background: var(--ypp-player-gradient, linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent)) !important;
-}
-
-/* ===================================================================================
-   TIME REMAINING DISPLAY (Speed-aware remaining time beside duration)
-   =================================================================================== */
-.ypp-time-remaining {
-  display: inline-block !important;
-  margin-left: 5px !important;
-  font-weight: 500 !important;
-  opacity: 0.9 !important;
-  white-space: nowrap !important;
-  color: inherit !important;
-  vertical-align: baseline !important;
 }

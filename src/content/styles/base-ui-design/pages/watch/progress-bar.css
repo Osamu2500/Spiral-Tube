@@ -18,6 +18,10 @@
   background-color: #ff0000 !important;
 }
 
+.html5-video-player .ytp-scrubber-button {
+  border-radius: 4px !important;
+}
+
 /* Force YouTube Native Variables to Red for the player (kills ambient mode dynamic colors) */
 * {
   --yt-spec-static-brand-red: #ff0000 !important;

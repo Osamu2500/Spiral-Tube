@@ -32,15 +32,20 @@ html.yt-spiral-tube-theme body ytd-watch-metadata div:has(> #subscribe-button) ~
 
 /* --- 2. Base Squircle Shape (12px) --- */
 /* Target standalone buttons, wrappers, and native elements to enforce 12px radius */
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner ytd-button-renderer,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner ytd-segmented-like-dislike-button-renderer,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-segmented-like-dislike-button-view-model,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-shape,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-view-model,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-shape button,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-button-view-model button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) ytd-button-renderer,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) ytd-segmented-like-dislike-button-renderer,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) yt-segmented-like-dislike-button-view-model,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) segmented-like-dislike-button-view-model,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) yt-button-shape,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) yt-button-view-model,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) yt-button-shape button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) yt-button-view-model button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextHost,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
 html.yt-spiral-tube-theme body ytd-watch-metadata yt-download-button-view-model,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation > .ytSmartImationsContent,
 html.yt-spiral-tube-theme body ytd-watch-metadata yt-download-button-view-model button,
 html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button {
   border-radius: 12px !important;
@@ -51,11 +56,13 @@ html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-download-button-render
 }
 
 /* Neutralize native backgrounds, pseudo-elements, and touch ripples */
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next::before,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next::after,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-touch-feedback-shape__fill,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .yt-touch-feedback-shape__stroke,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner yt-touch-feedback-shape {
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next::before,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextHost::before,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next::after,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextHost::after,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-touch-feedback-shape__fill,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-touch-feedback-shape__stroke,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) yt-touch-feedback-shape {
     display: none !important;
 }
 
@@ -72,9 +79,13 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
 
 /* --- 3. Translucent Blur Backgrounds --- */
 /* Standalone action buttons */
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button,
-html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model) button {
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) :is(ytd-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next--tonal,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next--filled,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextTonal,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextFilled,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, segmented-like-dislike-button-view-model) button {
   background: rgba(255, 255, 255, 0.08) !important;
   color: var(--ypp-text-primary, #fff) !important;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease !important;
@@ -85,6 +96,7 @@ html.yt-spiral-tube-theme body ytd-watch-metadata :is(ytd-segmented-like-dislike
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   background: rgba(255, 255, 255, 0.08) !important;
   overflow: hidden !important;
+  border-radius: 12px !important;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease !important;
 }
 
@@ -95,17 +107,23 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
 }
 
 /* Clear native backgrounds on inner segmented buttons to prevent visual glitches */
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next__icon,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next {
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed) .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next__icon,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed) .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .ytSpecButtonShapeNextIcon,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed) .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed) .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed) .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .ytSpecButtonShapeNextHost {
     background: transparent !important;
     background-color: transparent !important;
 }
 
 /* --- 4. Hover & Active States --- */
 /* Standalone buttons & Segmented Inner buttons hover */
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button:hover,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) :is(ytd-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next--tonal:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next--filled:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextTonal:hover,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextFilled:hover,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
   background: rgba(255, 255, 255, 0.15) !important;
@@ -125,9 +143,38 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
 }
 
 /* Active State */
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-button-renderer, yt-button-view-model) button:active,
-html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:active,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) :is(ytd-button-renderer, yt-button-view-model) button:active,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) :is(ytd-download-button-renderer, yt-button-view-model, yt-download-button-view-model) button:active,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .yt-spec-button-shape-next:active,
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, #top-level-buttons-computed, ytd-menu-renderer) .ytSpecButtonShapeNextHost:active,
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:active {
   transform: scale(0.95) !important;
 }
 
+/* ==========================================================================
+   NUCLEAR OVERRIDE FOR YOUTUBE'S NEW BUTTON SHAPES 
+   Bypasses internal CSS variables, clip-paths, and size-specific rules
+   ========================================================================== */
+html.yt-spiral-tube-theme body ytd-watch-metadata button.ytSpecButtonShapeNextHost,
+html.yt-spiral-tube-theme body ytd-watch-metadata button.ytSpecButtonShapeNextHost[size="M"],
+html.yt-spiral-tube-theme body ytd-watch-metadata button.ytSpecButtonShapeNextHost[size="L"],
+html.yt-spiral-tube-theme body ytd-watch-metadata button.ytSpecButtonShapeNextHost:is(.ytSpecButtonShapeNextTonal, .ytSpecButtonShapeNextFilled, .ytSpecButtonShapeNextOutline),
+html.yt-spiral-tube-theme body ytd-watch-metadata :is(#actions-inner, #actions, ytd-menu-renderer) button,
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html.yt-spiral-tube-theme body ytd-watch-metadata yt-smartimation {
+    border-radius: 12px !important;
+    --yt-button-shape-next-border-radius: 12px !important;
+    --yt-spec-button-shape-next-border-radius: 12px !important;
+    clip-path: none !important;
+}
+
+/* Correct inner edges for segmented buttons */
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextHost {
+    border-radius: 0 !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
+    border-radius: 12px 0 0 12px !important;
+}
+html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+    border-radius: 0 12px 12px 0 !important;
+}

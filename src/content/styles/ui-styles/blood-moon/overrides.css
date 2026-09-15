@@ -109,8 +109,8 @@ html[data-ypp-ui-design="blood-moon"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="blood-moon"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="blood-moon"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="blood-moon"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="blood-moon"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }

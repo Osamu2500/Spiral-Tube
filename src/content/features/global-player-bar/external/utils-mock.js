@@ -125,6 +125,9 @@ export function setupUtilsMock() {
             this.intervalIds    = [];
             this.timeoutIds     = [];
             this.injectedElements = [];
+            this.busListeners = [];
+            this.observerIds = [];
+            this.settingWatchers = new Map();
             this.abortController = new AbortController();
         }
         async enable()  {}
@@ -142,10 +145,46 @@ export function setupUtilsMock() {
                 try { target.removeEventListener(type, listener, options); } catch(e) {}
             });
             this.eventListeners = [];
+            this.busListeners.forEach(unsub => { try { unsub(); } catch(e) {} });
+            this.busListeners = [];
         }
         update(settings) {
+            const oldSettings = { ...this.settings };
             this.settings = { ...this.settings, ...settings };
-            if (this.onUpdate) this.onUpdate();
+            
+            this._triggerSettingWatchers(this.settings, oldSettings);
+            if (this.onUpdate) this.onUpdate(this.settings, oldSettings);
+        }
+        watchSetting(key, callback) {
+            if (!this.settingWatchers.has(key)) {
+                this.settingWatchers.set(key, []);
+            }
+            this.settingWatchers.get(key).push(callback);
+        }
+        _triggerSettingWatchers(newSettings, oldSettings) {
+            for (const [key, callbacks] of this.settingWatchers.entries()) {
+                const newVal = newSettings[key];
+                const oldVal = oldSettings[key];
+                if (newVal !== oldVal) {
+                    callbacks.forEach(cb => {
+                        try { cb.call(this, newVal, oldVal); } catch(e) {}
+                    });
+                }
+            }
+        }
+        onBusEvent(event, handler) {
+            // Mock: no-op for external sites without an EventBus, but saves the signature
+            this.busListeners.push(() => {});
+        }
+        registerObserver(id, selector, callback, immediate = true, lazy = false) {}
+        unregisterObserver(id) {}
+        isProcessed(element, uniqueId, onRecycled) {
+            if (!element || !uniqueId) return false;
+            const currentId = element.getAttribute(`data-ypp-processed-${this.name}`);
+            if (currentId === uniqueId) return true;
+            if (currentId && typeof onRecycled === 'function') onRecycled(element, currentId);
+            element.setAttribute(`data-ypp-processed-${this.name}`, uniqueId);
+            return false;
         }
         getConfigKey() {
             if (!this.name) return null;

@@ -1,0 +1,94 @@
+/* ==========================================================================
+   MENUS, DROPDOWNS & TOOLTIPS
+   ========================================================================== 
+   Scope: Profile menu, 3-dot menus, player settings menu, and tooltips.
+*/
+
+/* 1. General Menus (Profile, 3-dots) */
+html.yt-spiral-tube-theme ytd-popup-container tp-yt-iron-dropdown,
+html.yt-spiral-tube-theme ytd-popup-container ytd-menu-popup-renderer,
+html.yt-spiral-tube-theme ytd-popup-container ytd-multi-page-menu-renderer {
+    border-radius: 12px !important;
+    background: rgba(30, 30, 30, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden !important;
+}
+
+/* Remove internal container backgrounds */
+html.yt-spiral-tube-theme ytd-popup-container ytd-menu-popup-renderer tp-yt-paper-listbox,
+html.yt-spiral-tube-theme ytd-popup-container ytd-multi-page-menu-renderer #container {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Hover effect on menu items */
+html.yt-spiral-tube-theme ytd-popup-container ytd-menu-service-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-popup-container ytd-menu-navigation-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-popup-container ytd-compact-link-renderer:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transition: background 0.2s ease !important;
+}
+
+/* 2. Player Settings Menu (.ytp-popup) */
+html.yt-spiral-tube-theme body .ytp-popup {
+    border-radius: 12px !important;
+    background: rgba(20, 20, 20, 0.8) !important;
+    backdrop-filter: blur(16px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.yt-spiral-tube-theme body .ytp-panel-menu {
+    background: transparent !important;
+}
+
+html.yt-spiral-tube-theme body .ytp-menuitem:hover,
+html.yt-spiral-tube-theme body .ytp-menuitem[aria-haspopup="true"]:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 3. Tooltips */
+html.yt-spiral-tube-theme tp-yt-paper-tooltip {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+html.yt-spiral-tube-theme tp-yt-paper-tooltip #tooltip,
+html.yt-spiral-tube-theme .ytp-tooltip {
+    border-radius: 8px !important;
+    background: rgba(15, 15, 15, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    padding: 6px 10px !important; /* Give inner padding for modern feel */
+}
+
+/* 4. Search Box Suggestions */
+html.yt-spiral-tube-theme .sbdd_b {
+    border-radius: 0 0 16px 16px !important;
+    background: rgba(25, 25, 25, 0.85) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-top: none !important;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.yt-spiral-tube-theme .sbsb_a {
+    background: transparent !important;
+}
+
+html.yt-spiral-tube-theme .sbsb_c:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}

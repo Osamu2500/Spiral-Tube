@@ -182,7 +182,7 @@ html[data-ypp-card-style="brutalism"] .ytp-scrubber-button, html[data-ypp-ui-des
 }
 
 /* Warning Tape Badges */
-html[data-ypp-card-style="brutalism"] tp-yt-paper-tooltip, html[data-ypp-ui-design="brutalism"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="brutalism"] tp-yt-paper-tooltip #tooltip, html[data-ypp-ui-design="brutalism"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 0) !important;
   text-transform: uppercase !important;
   box-shadow: 6px 6px 0 var(--brut-secondary) !important;
@@ -3046,8 +3046,8 @@ html[data-ypp-ui-design="brutalism"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="brutalism"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="brutalism"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="brutalism"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="brutalism"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 8px 8px 0 #000 !important;
 }

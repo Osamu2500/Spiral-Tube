@@ -642,8 +642,8 @@ html[data-ypp-ui-design="liquid-glass"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="liquid-glass"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="liquid-glass"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
@@ -1015,7 +1015,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-toast {
 }
 
 /* Generic Tooltips */
-html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip .tooltip {
+html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip #tooltip .tooltip {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;

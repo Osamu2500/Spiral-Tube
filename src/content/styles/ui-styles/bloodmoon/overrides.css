@@ -310,8 +310,8 @@ html[data-ypp-ui-design="bloodmoon"] ytd-unified-share-panel-renderer {
   animation: bloodDripEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-html[data-ypp-card-style="bloodmoon"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="bloodmoon"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: bloodDripEntrance 0.3s ease forwards !important;
 }
@@ -453,8 +453,8 @@ html[data-ypp-ui-design="bloodmoon"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="bloodmoon"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="bloodmoon"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
@@ -536,8 +536,8 @@ html[data-ypp-ui-design="bloodmoon"] ytd-popup-container {
 /* =========================================
    2. TOOLTIPS & TOASTS
 ========================================= */
-html[data-ypp-card-style="bloodmoon"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="bloodmoon"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 4px) !important;
 }
 

@@ -274,8 +274,8 @@ html[data-ypp-ui-design="colorize"] ytd-unified-share-panel-renderer {
   animation: rainbowSpinEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip #tooltip {
   background: linear-gradient(to bottom, red, yellow, green, blue) !important;
   border-radius: var(--ypp-shape-primary, 10px) !important;
   animation: rainbowSpinEntrance 0.3s ease forwards !important;
@@ -402,8 +402,8 @@ html[data-ypp-ui-design="colorize"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
@@ -485,8 +485,8 @@ html[data-ypp-ui-design="colorize"] ytd-popup-container {
 /* =========================================
    2. TOOLTIPS & TOASTS
 ========================================= */
-html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip #tooltip {
   -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;

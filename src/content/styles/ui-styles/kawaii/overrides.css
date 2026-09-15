@@ -501,8 +501,8 @@ html[data-ypp-ui-design="kawaii"] ytd-unified-share-panel-renderer {
   animation: kawaiiStarEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 28px) !important;
   animation: kawaiiStarEntrance 0.3s ease forwards !important;
 }
@@ -724,7 +724,7 @@ html[data-ypp-card-style="kawaii"] .ytp-scrubber-button, html[data-ypp-ui-design
 }
 
 /* Soft Tooltips */
-html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip, html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip #tooltip, html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 5px 15px rgba(255,105,180,0.4) !important;
 }
@@ -3587,8 +3587,8 @@ html[data-ypp-ui-design="kawaii"] yt-live-chat-renderer {
 }
 
 /* 17. Notifications & Tooltips */
-html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip #tooltip {
   border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
@@ -3674,8 +3674,8 @@ html[data-ypp-ui-design="kawaii"] ytd-popup-container {
 /* =========================================
    2. TOOLTIPS & TOASTS
 ========================================= */
-html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
+html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip #tooltip {
   -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
@@ -3938,8 +3938,8 @@ html[data-ypp-ui-design="kawaii"] .badge-style-type-live-now-alternate {
 
 
 /* Kawaii Tooltips */
-html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
-html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip,
+html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip #tooltip,
+html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip #tooltip,
 html[data-ypp-card-style="kawaii"] .ytp-tooltip,
 html[data-ypp-ui-design="kawaii"] .ytp-tooltip {
   border-radius: var(--ypp-shape-primary, 12px) !important;
