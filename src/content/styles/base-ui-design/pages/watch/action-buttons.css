@@ -162,30 +162,22 @@ html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonV
 }
 
 /* --- 5. Liked / Disliked Glow States --- */
-/* Like button active (liked) — blue glow */
+/* Like button active (liked) */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart[aria-pressed="true"] {
   color: var(--ypp-accent, #3ea6ff) !important;
-  text-shadow: 0 0 8px rgba(62, 166, 255, 0.6) !important;
 }
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart[aria-pressed="true"] * {
   color: inherit !important;
   fill: currentColor !important;
 }
-html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:has(button.ytSpecButtonShapeNextSegmentedStart[aria-pressed="true"]) {
-  box-shadow: 0 0 0 1px rgba(62, 166, 255, 0.3), 0 4px 16px rgba(62, 166, 255, 0.12) !important;
-}
 
-/* Dislike button active (disliked) — warm red */
+/* Dislike button active (disliked) */
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd[aria-pressed="true"] {
   color: rgba(255, 100, 100, 0.9) !important;
-  text-shadow: 0 0 8px rgba(255, 80, 80, 0.5) !important;
 }
 html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd[aria-pressed="true"] * {
   color: inherit !important;
   fill: currentColor !important;
-}
-html.yt-spiral-tube-theme body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper:has(button.ytSpecButtonShapeNextSegmentedEnd[aria-pressed="true"]) {
-  box-shadow: 0 0 0 1px rgba(255, 80, 80, 0.3), 0 4px 16px rgba(255, 80, 80, 0.1) !important;
 }
 
 /* ==========================================================================

@@ -20,21 +20,53 @@
   transform: translateZ(0);
 }
 
-.html5-video-player .ytp-scrubber-button {
-  border-radius: 6px !important; /* Proper squircle handle */
-  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.25), 0 2px 8px rgba(0,0,0,0.5) !important;
-  width: 14px !important;
-  height: 14px !important;
-  margin-top: -5px !important;
-  transition: box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+/* ── Premium Progress Bar Track & Fill ── */
+/* ── Smooth Progress Bar Transitions ── */
+.html5-video-player .ytp-progress-list,
+.html5-video-player .ytp-play-progress,
+.html5-video-player .ytp-load-progress {
+  border-radius: 4px !important; /* Rounded progress bars */
+  /* Add smooth transition for when the bar thickness changes on hover */
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              height 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
-.html5-video-player:hover .ytp-scrubber-button {
-  box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.35), 0 4px 12px rgba(0,0,0,0.6) !important;
-  transform: scale(1.15) !important;
+
+/* Smooth out the overall container height transition */
+.html5-video-player .ytp-progress-bar-container {
+  transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ── Scrubber Button (Dot) ── */
+@keyframes subtleGlowPulse {
+  0%   { box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.5); }
+  50%  { box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.3), 0 6px 14px rgba(0, 0, 0, 0.6); }
+  100% { box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.5); }
+}
+
+.html5-video-player .ytp-scrubber-button {
+  border-radius: 5px !important; /* Squircle / Rounded Square shape */
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.4) !important; /* Subtle red glow */
+  width: 16px !important;
+  height: 16px !important;
+  margin-top: -3px !important; /* perfectly center on the track */
+  transform: scale(1) !important; /* Normal resting state */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.3s ease !important;
+}
+
+/* When hovering over the progress bar area */
+.html5-video-player .ytp-progress-bar:hover .ytp-scrubber-button,
+.html5-video-player .ytp-progress-bar-container:hover .ytp-scrubber-button {
+  transform: scale(1.25) !important; /* Pop out smoothly on interaction */
+  animation: subtleGlowPulse 2.5s infinite ease-in-out !important; /* Minor breathing animation */
+  /* The base hover shadow is handled by the animation, but we set a fallback */
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Force YouTube Native Variables to Red for the player (kills ambient mode dynamic colors) */
-* {
+.html5-video-player, ytd-watch-flexy {
   --yt-spec-static-brand-red: #ff0000 !important;
   --yt-spec-call-to-action: #ff0000 !important;
   --ytp-swatch-background-color: #ff0000 !important;
