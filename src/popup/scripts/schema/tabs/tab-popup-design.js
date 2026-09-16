@@ -293,7 +293,7 @@ export function renderPopupUiDesignSlot(container, state) {
 }
 
 // ─── Tab Definition ──────────────────────────────────────────────────────────
-export const getPopup_designTab = (t) => ({
+export const getPopupDesignTab = (t) => ({
     id: 'popup_design',
     label: 'Pop up',
     icon: ICONS.uiComponents,

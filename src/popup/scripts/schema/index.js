@@ -9,7 +9,7 @@ import { getSubscriptionsTab } from './tabs/tab-subscriptions.js';
 import { getHistoryTab } from './tabs/tab-history.js';
 import { getBookmarksTab } from './tabs/tab-bookmarks.js';
 import { getAppearanceTab } from './tabs/tab-appearance.js';
-import { getPopup_designTab } from './tabs/tab-popup-design.js';
+import { getPopupDesignTab } from './tabs/tab-popup-design.js';
 import { getAdvancedTab } from './tabs/tab-advanced.js';
 import { getHotkeyTab } from './tabs/tab-hotkey.js';
 import { getGlobalTab } from './tabs/tab-global.js';
@@ -23,15 +23,15 @@ export function getPopupSchema(t) {
         getHomeTab(t),
         getShortsTab(t),
         getPlayerTab(t),
-        getSpeedTab(t),
         getModesTab(t),
+        getSpeedTab(t),
         getSearchTab(t),
         getDeclutterTab(t),
         getSubscriptionsTab(t),
         getHistoryTab(t),
         getBookmarksTab(t),
         getAppearanceTab(t),
-        getPopup_designTab(t),
+        getPopupDesignTab(t),
         getAdvancedTab(t),
         getHotkeyTab(t),
         getGlobalTab(t)

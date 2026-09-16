@@ -294,7 +294,10 @@ function _initWhatsNew(doc) {
         };
         toast.querySelector('.update-toast-close').addEventListener('click', dismiss);
         setTimeout(dismiss, 5000);
-    });
+        });
+    } catch (e) {
+        console.error('[YPP:UI] Error in _initWhatsNew:', e.message);
+    }
 }
 
 export function showSaveIndicator(document) {
@@ -425,7 +428,7 @@ export function initDualAccentToggle(document) {
             }
         });
     } catch (e) {
-        console.error('[YPP:UI] Exception in initDualAccentToggle:', (e as Error).message);
+        console.error('[YPP:UI] Exception in initDualAccentToggle:', (e).message);
     }
 
     const reapply = () => {
@@ -451,7 +454,7 @@ export function initDualAccentToggle(document) {
                 chrome.storage.local.set({ [CONFIG.STORAGE_KEYS.SETTINGS]: settings });
             });
         } catch (e) {
-            console.error('[YPP:UI] Exception saving dual accent settings:', (e as Error).message);
+            console.error('[YPP:UI] Exception saving dual accent settings:', (e).message);
         }
     };
 
@@ -516,7 +519,7 @@ export function initDragAndDrop(doc) {
             });
         });
     } catch (e) {
-        console.error('[YPP:UI] Exception in initDragAndDrop loading:', (e as Error).message);
+        console.error('[YPP:UI] Exception in initDragAndDrop loading:', (e).message);
     }
 
     const sections = doc.querySelectorAll('.settings-section');
@@ -575,7 +578,7 @@ export function initDragAndDrop(doc) {
                     }
                 });
             } catch (e) {
-                console.error('[YPP:UI] Exception saving section order:', (e as Error).message);
+                console.error('[YPP:UI] Exception saving section order:', (e).message);
             }
         });
 

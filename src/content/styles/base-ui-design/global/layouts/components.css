@@ -141,10 +141,15 @@ html ytd-watch-metadata #owner {
 }
 
 /* Ensure the top row can wrap if there isn't enough space */
+html ytd-watch-metadata {
+  margin-top: 10px !important;
+}
+
 html ytd-watch-metadata #top-row {
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 12px !important;
+  margin-top: 10px !important;
 }
 
 html ytd-watch-metadata #actions {

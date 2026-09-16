@@ -47,10 +47,6 @@ export function initBookmarksManager() {
             actionBarEl.innerHTML = `
                 <span class="bulk-action-text">0 selected</span>
                 <div class="bulk-action-buttons">
-                    <button class="bulk-action-export">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        Export
-                    </button>
                     <button class="bulk-action-delete">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
                         Delete
@@ -65,33 +61,7 @@ export function initBookmarksManager() {
                 renderBookmarks(searchInput ? searchInput.value.toLowerCase().trim() : '');
             });
             
-            actionBarEl.querySelector('.bulk-action-export').addEventListener('click', () => {
-                const exportBookmarks = allBookmarks.filter(b => selectedBookmarkIds.has(b.id));
-                if (exportBookmarks.length === 0) return;
-                
-                let markdown = '# YouTube Highlights Export\n\n';
-                exportBookmarks.forEach(bm => {
-                    const url = `https://www.youtube.com/watch?v=${bm.videoId}&t=${Math.floor(bm.timestamp)}s`;
-                    markdown += `## ${bm.videoTitle || 'Unknown Video'}\n`;
-                    markdown += `- **Time:** [${formatTime(bm.timestamp)}](${url})\n`;
-                    markdown += `- **Highlight:** ${bm.text}\n\n`;
-                });
-                
-                const blob = new Blob([markdown], { type: 'text/markdown' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `youtube-highlights-${new Date().toISOString().slice(0,10)}.md`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                selectedBookmarkIds.clear();
-                updateActionBar();
-                renderBookmarks(searchInput ? searchInput.value.toLowerCase().trim() : '');
-            });
-            
+
             actionBarEl.querySelector('.bulk-action-delete').addEventListener('click', () => {
                 if (confirm(`Delete ${selectedBookmarkIds.size} highlights?`)) {
                     const idsToDelete = Array.from(selectedBookmarkIds);
@@ -295,9 +265,6 @@ export function initBookmarksManager() {
                         <button class="bookmark-sub-action-btn bookmark-sub-edit" title="Edit Title">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
                         </button>
-                        <button class="bookmark-sub-action-btn bookmark-sub-copy" title="Copy Link to Timestamp">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                        </button>
                         <button class="bookmark-sub-action-btn bookmark-sub-delete" data-id="${escapeHTML(bm.id)}" title="Delete Bookmark">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
                         </button>
@@ -327,16 +294,6 @@ export function initBookmarksManager() {
                     chrome.tabs.create({ url });
                 });
                 
-                const copyBtn = subCard.querySelector('.bookmark-sub-copy');
-                copyBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const url = `https://www.youtube.com/watch?v=${bm.videoId}&t=${Math.floor(bm.timestamp)}s`;
-                    navigator.clipboard.writeText(url).then(() => {
-                        const originalSvg = copyBtn.innerHTML;
-                        copyBtn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-                        setTimeout(() => copyBtn.innerHTML = originalSvg, 1500);
-                    });
-                });
 
                 const editBtn = subCard.querySelector('.bookmark-sub-edit');
                 const textEl = subCard.querySelector('.bookmark-sub-text');
