@@ -51,31 +51,6 @@ html[data-ypp-theme="autumn"] :is(
 /* Hover */
 
 /* Harvest accent shimmer line on hover */
-html[data-ypp-theme="autumn"] :is(
-  ytd-rich-item-renderer,
-  ytd-video-renderer,
-  ytd-playlist-renderer,
-  ytd-radio-renderer,
-  ytd-channel-renderer,
-  ytd-compact-video-renderer,
-  ytd-grid-video-renderer,
-  .ypp-grid-item,
-  yt-lockup-view-model:not(
-    :is(
-      ytd-rich-item-renderer,
-      ytd-video-renderer,
-      ytd-playlist-renderer,
-      ytd-radio-renderer,
-      ytd-channel-renderer,
-      ytd-compact-video-renderer,
-      ytd-grid-video-renderer,
-      .ypp-grid-item
-    ) *
-  )
-):hover::after {
-  background: linear-gradient(90deg, var(--au-amber), var(--au-crimson), var(--au-gold));
-  animation: au-leaf-drift 3s ease infinite;
-}
 
 /* Thumbnails */
 

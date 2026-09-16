@@ -243,12 +243,3 @@ body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-rad
   border-radius: 12px !important;
   background: transparent !important;
 }
-
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover {
-  transform: translateY(-4px) !important;
-  z-index: 2 !important;
-}
-
-body.ypp-search-grid-mode :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover ytd-thumbnail {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.1) !important;
-}

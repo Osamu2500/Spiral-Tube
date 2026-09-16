@@ -66,70 +66,10 @@ export function initBackupTools() {
         });
     }
 
-    // --- Cloud backup (Google Drive) ---
-    const btnBackupUp = document.getElementById('btnBackupUp');
-    const btnBackupDown = document.getElementById('btnBackupDown');
-    const lastSyncTimeLabel = document.getElementById('lastSyncTimeLabel');
-
-    const updateLastSyncLabel = (timeStr) => {
-        if (!lastSyncTimeLabel) return;
-        if (!timeStr) {
-            lastSyncTimeLabel.textContent = 'Last sync: Never';
-            return;
-        }
-        const date = new Date(timeStr);
-        const formatted = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        lastSyncTimeLabel.textContent = `Last sync: ${formatted}`;
-    };
-
-    chrome.storage.local.get('ypp_last_sync_time', (data) => {
-        updateLastSyncLabel(data.ypp_last_sync_time || null);
-    });
-
-    if (btnBackupUp) {
-        btnBackupUp.addEventListener('click', () => {
-            const originalHTML = btnBackupUp.innerHTML;
-            btnBackupUp.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-6.219-8.56"></path></svg> Backing up...';
-            btnBackupUp.style.pointerEvents = 'none';
-
-            chrome.runtime.sendMessage({ action: 'SYNC_BACKUP_UP' }, (response) => {
-                btnBackupUp.style.pointerEvents = 'auto';
-                if (response && response.success) {
-                    btnBackupUp.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Success!';
-                    updateLastSyncLabel(response.timestamp);
-                    setTimeout(() => { btnBackupUp.innerHTML = originalHTML; }, 2000);
-                } else {
-                    btnBackupUp.innerHTML = 'Error!';
-                    setTimeout(() => { btnBackupUp.innerHTML = originalHTML; }, 2000);
-                    alert('Backup failed. Please ensure you are signed into Chrome.');
-                }
-            });
-        });
-    }
-
-    if (btnBackupDown) {
-        btnBackupDown.addEventListener('click', () => {
-            if (!confirm('This will OVERWRITE your current local data with the Google Drive backup. Proceed?')) return;
-
-            const originalHTML = btnBackupDown.innerHTML;
-            btnBackupDown.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-6.219-8.56"></path></svg> Restoring...';
-            btnBackupDown.style.pointerEvents = 'none';
-
-            chrome.runtime.sendMessage({ action: 'SYNC_BACKUP_DOWN' }, (response) => {
-                btnBackupDown.style.pointerEvents = 'auto';
-                if (response && response.success) {
-                    btnBackupDown.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Restored!';
-                    if (response.timestamp) updateLastSyncLabel(response.timestamp);
-                    setTimeout(() => { btnBackupDown.innerHTML = originalHTML; }, 2000);
-                } else {
-                    btnBackupDown.innerHTML = 'Error!';
-                    setTimeout(() => { btnBackupDown.innerHTML = originalHTML; }, 2000);
-                    alert('Restore failed. No backup found or authentication error.');
-                }
-            });
-        });
-    }
+    // NOTE: Cloud backup/restore/reset buttons (btnBackupDown, resetBtn, btn-sync-now)
+    // are now fully managed by account-menu.js. Do not add listeners here.
 }
+
 
 // =========================================================================
 // BOOKMARKS MANAGER

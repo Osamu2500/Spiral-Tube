@@ -16,6 +16,64 @@ const TITLES = {
     'declutter': 'Declutter Features'
 };
 
+// ── Fuzzy Search Helpers ──────────────────────────────────────────────────────
+
+/**
+ * Simple fuzzy match: returns a score (higher = better match).
+ * 0 = no match, >0 = match.
+ */
+function fuzzyScore(text, query) {
+    if (!query) return 0;
+    const t = text.toLowerCase();
+    const q = query.toLowerCase();
+    if (t.startsWith(q)) return 3;      // strongest: starts with query
+    if (t.includes(q)) return 2;        // strong: contains query
+    // Fuzzy: all chars in query appear in order in text
+    let ti = 0, qi = 0;
+    while (ti < t.length && qi < q.length) {
+        if (t[ti] === q[qi]) qi++;
+        ti++;
+    }
+    return qi === q.length ? 1 : 0;     // weak: fuzzy match
+}
+
+/**
+ * Wrap the first occurrence of `query` inside `el`'s text nodes with <mark>.
+ */
+function highlightText(el, query) {
+    if (!query) return;
+    // Walk text nodes inside the name span only
+    const nameEl = el.querySelector('.name, .feature-name, .section-title');
+    if (!nameEl) return;
+    const original = nameEl.textContent || '';
+    const idx = original.toLowerCase().indexOf(query.toLowerCase());
+    if (idx === -1) return;
+    nameEl.innerHTML =
+        escapeHtml(original.slice(0, idx)) +
+        `<mark class="search-highlight">${escapeHtml(original.slice(idx, idx + query.length))}</mark>` +
+        escapeHtml(original.slice(idx + query.length));
+}
+
+function clearHighlights(el) {
+    el.querySelectorAll('mark.search-highlight').forEach(mark => {
+        const parent = mark.parentNode;
+        parent.replaceChild(document.createTextNode(mark.textContent), mark);
+        parent.normalize();
+    });
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function debounce(fn, ms) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), ms);
+    };
+}
+
 export function switchTab(document, tabId) {
     const updateDOM = () => {
         const navItems = document.querySelectorAll('.nav-item[data-tab]');
@@ -86,32 +144,29 @@ function initSearch(document) {
     const featureSearchInput = document.getElementById('featureSearch');
     if (!featureSearchInput) return;
 
-    featureSearchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+    const doSearch = (query) => {
         const allCards = document.querySelectorAll('.toggle-card, .setting-item, .mode-card');
         const allSections = document.querySelectorAll('.settings-section');
         const allTabs = document.querySelectorAll('.tab-content');
-        
+
         document.body.classList.toggle('global-search-active', !!query);
 
         if (!query) {
-            allCards.forEach(card => card.style.display = '');
+            allCards.forEach(card => {
+                card.style.display = '';
+                clearHighlights(card);
+            });
             allSections.forEach(sec => sec.style.display = '');
             allTabs.forEach(tab => tab.style.display = '');
-            
-            // Restore collapsed state based on localStorage
+
+            // Restore collapsed state from localStorage
             allSections.forEach(section => {
                 const header = section.querySelector('.section-header');
                 if (header) {
                     const titleEl = header.querySelector('.section-title');
                     const title = titleEl ? titleEl.textContent : 'section';
                     const isCollapsed = localStorage.getItem('ypp_collapse_' + title) === 'true';
-                    
-                    if (isCollapsed) {
-                        section.classList.add('collapsed');
-                    } else {
-                        section.classList.remove('collapsed');
-                    }
+                    section.classList.toggle('collapsed', isCollapsed);
                 }
             });
             return;
@@ -122,9 +177,12 @@ function initSearch(document) {
             let tabHasMatches = false;
 
             cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(query)) {
+                clearHighlights(card);
+                const text = card.textContent || '';
+                const score = fuzzyScore(text, query);
+                if (score > 0) {
                     card.style.display = '';
+                    highlightText(card, query);
                     tabHasMatches = true;
                 } else {
                     card.style.display = 'none';
@@ -133,25 +191,31 @@ function initSearch(document) {
 
             const sections = tab.querySelectorAll('.settings-section');
             sections.forEach(sec => {
-                const visibleCards = Array.from(sec.querySelectorAll('.toggle-card, .setting-item, .mode-card')).filter(c => c.style.display !== 'none');
+                const visibleCards = Array.from(
+                    sec.querySelectorAll('.toggle-card, .setting-item, .mode-card')
+                ).filter(c => c.style.display !== 'none');
                 if (visibleCards.length === 0) {
                     sec.style.display = 'none';
                 } else {
                     sec.style.display = '';
-                    // Force expand the section if there are matches
                     sec.classList.remove('collapsed');
                 }
             });
 
             tab.style.display = tabHasMatches ? 'block' : 'none';
         });
-    });
+    };
+
+    featureSearchInput.addEventListener('input', debounce((e) => {
+        doSearch(e.target.value.trim());
+    }, 100));
 }
 
 export function initUI(document) {
     initTabs(document);
     initCollapsibleSections(document);
     initSearch(document);
+    initWhatsNew(document);
 
     // Global event delegation for all toggle cards (schema-generated & hardcoded)
     document.addEventListener('click', (e) => {
@@ -166,6 +230,51 @@ export function initUI(document) {
 
         input.checked = !input.checked;
         input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+}
+
+/**
+ * Check if the extension just updated and show a "What's New" toast banner.
+ * Clears the badge and flag after displaying.
+ */
+function initWhatsNew(doc) {
+    chrome.storage.local.get('ypp_has_update', (data) => {
+        if (!data.ypp_has_update) return;
+        const version = data.ypp_has_update;
+
+        // Clear the flag and badge
+        chrome.storage.local.remove('ypp_has_update');
+        chrome.action.setBadgeText({ text: '' });
+
+        // Create toast
+        const toast = doc.createElement('div');
+        toast.className = 'ypp-update-toast';
+        toast.innerHTML = `
+            <div class="update-toast-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+            </div>
+            <div class="update-toast-text">
+                <strong>Spiral Tube v${version}</strong>
+                <span>New features &amp; improvements are ready!</span>
+            </div>
+            <button class="update-toast-close" title="Dismiss">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>`;
+
+        doc.body.appendChild(toast);
+
+        // Animate in
+        requestAnimationFrame(() => toast.classList.add('visible'));
+
+        // Auto-dismiss after 5s
+        const dismiss = () => {
+            toast.classList.remove('visible');
+            setTimeout(() => toast.remove(), 400);
+        };
+        toast.querySelector('.update-toast-close').addEventListener('click', dismiss);
+        setTimeout(dismiss, 5000);
     });
 }
 

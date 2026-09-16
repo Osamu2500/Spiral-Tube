@@ -501,6 +501,26 @@
                         }
                         sendResponse({ success: true });
                     }
+
+                    // IDB backup/restore bridge — called from background drive-sync
+                    if (request.action === 'IDB_EXPORT_ALL') {
+                        if (window.YPP?.IDB) {
+                            window.YPP.IDB.exportAll().then(sendResponse).catch(() => sendResponse({}));
+                        } else {
+                            sendResponse({});
+                        }
+                        return true; // keep channel open for async response
+                    }
+                    if (request.action === 'IDB_IMPORT_ALL') {
+                        if (window.YPP?.IDB && request.data) {
+                            window.YPP.IDB.importAll(request.data)
+                                .then(() => sendResponse({ success: true }))
+                                .catch(() => sendResponse({ success: false }));
+                        } else {
+                            sendResponse({ success: false });
+                        }
+                        return true;
+                    }
                 };
                 chrome.runtime.onMessage.addListener(messageHandler);
                 this._chromeListeners.push({ api: chrome.runtime.onMessage, handler: messageHandler });

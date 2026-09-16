@@ -54,14 +54,6 @@ html[data-ypp-ui-design="retro"] ytd-subscribe-button-renderer button.ytSpecButt
   animation: youtubeRedPulse 5s ease-in-out infinite !important;
 }
 
-html[data-ypp-ui-design="retro"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="retro"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="retro"] ytd-video-renderer:hover {
-  box-shadow: var(--win95-raise), 0 0 0 1px #000080 !important;
-  transform: none !important;
-  animation: none !important;
-}
-
 html[data-ypp-ui-design="retro"] html,
 html[data-ypp-ui-design="retro"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
@@ -509,10 +501,6 @@ html[data-ypp-ui-design="retro"] ytd-playlist-video-renderer:not(.dragging) {
   border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
-html[data-ypp-ui-design="retro"] ytd-playlist-video-renderer:not(.dragging):hover {
-  box-shadow: none !important;
-}
-
 html[data-ypp-ui-design="retro"] ytd-macro-markers-list-item-renderer {
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -603,16 +591,8 @@ html[data-ypp-ui-design="retro"] #ypp-pl-root .ypp-pl-card {
     background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="retro"] #ypp-pl-root .ypp-pl-card:hover {
-  box-shadow: none !important;
-}
-
 html[data-ypp-ui-design="retro"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
   box-shadow: none !important;
-}
-
-html[data-ypp-ui-design="retro"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
-  transform: none !important;
 }
 
 html[data-ypp-ui-design="retro"] #ypp-pl-root .ypp-pl-duration-card {

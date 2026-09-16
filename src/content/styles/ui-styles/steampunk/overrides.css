@@ -41,15 +41,6 @@ to {
 
 
 /* Card hover */
-html[data-ypp-ui-design="steampunk"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="steampunk"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="steampunk"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="steampunk"] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-design="steampunk"] ytd-grid-video-renderer:hover {
-  transform:translateY(-3px) scale(1.01) !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
-  animation: sepia-bloom 0.3s forwards !important;
-}
 
 /* Sidebar guide */
 

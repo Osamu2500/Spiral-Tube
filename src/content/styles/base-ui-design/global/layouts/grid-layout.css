@@ -24,14 +24,6 @@ html[style*='--ypp-dynamic-cols']:not(.cinematic-home) yt-rich-grid-view-model {
 :root[style*='--ypp-history-columns']:not(.cinematic-home) yt-rich-grid-renderer {
   --ytd-rich-grid-items-per-row: var(--ypp-history-columns) !important;
 }
-
-body:not(.cinematic-home) ytd-playlist-renderer:hover ytd-thumbnail-overlay-side-panel-renderer {
-  background: var(--ypp-accent-glow, rgba(99, 102, 241, 0.75)) !important;
-  box-shadow: -8px 0 24px var(--ypp-accent-glow, rgba(99, 102, 241, 0.5)) !important;
-}
-body:not(.cinematic-home) ytd-radio-renderer:hover ytd-thumbnail-overlay-bottom-panel-renderer {
-  background: linear-gradient(to top, var(--ypp-accent-glow, rgba(168, 85, 247, 0.9)), transparent) !important;
-}
 body:not(.cinematic-home) .ypp-grid-container {
   display: grid !important;
   /* Fallback chain: manual columns → auto-scale columns → default 4 */
@@ -143,10 +135,6 @@ html[data-ypp-card-style]:not(.cinematic-home):not([data-ypp-card-style="default
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease !important;
-}
-
-html[data-ypp-card-style]:not(.cinematic-home):not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-item-renderer:hover {
-  transform: translateY(-8px) scale(1.02) !important;
 }
 
 /* Proportional Grid on #dismissible */

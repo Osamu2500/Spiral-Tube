@@ -232,11 +232,23 @@
             }
             // V3 Netflix Subtitles Interception
             if (url.includes('/api/timedtext')) {
-                response.clone().json().then(data => {
-                    window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
-                        detail: { url, data }
-                    }));
-                }).catch(() => {});
+                if (url.includes('fmt=json3')) {
+                    response.clone().json().then(data => {
+                        window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
+                            detail: { url, data }
+                        }));
+                    }).catch(() => {});
+                } else {
+                    try {
+                        const jsonUrl = new URL(url.startsWith('http') ? url : window.location.origin + url);
+                        jsonUrl.searchParams.set('fmt', 'json3');
+                        fetch(jsonUrl.toString()).then(res => res.json()).then(data => {
+                            window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
+                                detail: { url: jsonUrl.toString(), data }
+                            }));
+                        }).catch(() => {});
+                    } catch (e) {}
+                }
             }
             return response;
         });
@@ -252,10 +264,20 @@
         this.addEventListener('load', function() {
             if (this._url && this._url.includes('/api/timedtext')) {
                 try {
-                    const data = JSON.parse(this.responseText);
-                    window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
-                        detail: { url: this._url, data }
-                    }));
+                    if (this._url.includes('fmt=json3')) {
+                        const data = JSON.parse(this.responseText);
+                        window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
+                            detail: { url: this._url, data }
+                        }));
+                    } else {
+                        const jsonUrl = new URL(this._url.startsWith('http') ? this._url : window.location.origin + this._url);
+                        jsonUrl.searchParams.set('fmt', 'json3');
+                        fetch(jsonUrl.toString()).then(res => res.json()).then(data => {
+                            window.dispatchEvent(new CustomEvent('ypp-timedtext-intercepted', {
+                                detail: { url: jsonUrl.toString(), data }
+                            }));
+                        }).catch(() => {});
+                    }
                 } catch(e) {
                     console.warn('[YPP] Failed to parse timedtext response', e);
                 }

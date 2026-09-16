@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/components/declutter.css" />
     <link rel="stylesheet" href="styles/components/command-palette.css" />
     <link rel="stylesheet" href="styles/components/ambient-background.css" />
+    <link rel="stylesheet" href="styles/components/drive-sync.css" />
   </head>
 
   <body class="ypp-theme-liquid-glass">
@@ -770,44 +771,159 @@
         <!-- GLOBAL CONFIG — schema sections rendered by popup-renderer.js, backup/reset HTML preserved -->
         <section id="tab-global" class="tab-content">
 
-          <div class="ypp-inline-372 settings-section" data-preserve="true">
+          <!-- ══ Data & Cloud Sync ══ -->
+          <div class="settings-section gdrive-section" data-preserve="true">
             <div class="section-header">
                <div class="section-title-wrap">
                   <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
-                     <div class="section-title" data-i18n="data_management">Data Management</div>
-                     <div class="section-subtitle" data-i18n="backup_restore_and_reset_your_extension_data">Backup, restore, and reset your extension data</div>
+                    <div class="section-title">
+                      Google Account Sync
+                    </div>
                   </div>
                </div>
             </div>
-            <div class="ypp-inline-373 card-group">
-              <div class="ypp-inline-374">
-                <div>
-                  <div class="ypp-inline-375">Cloud Backup</div>
-                  <div id="lastSyncTimeLabel" class="ypp-inline-376">Last sync: Never</div>
+            <div class="card-group" style="padding: 0 14px 14px; gap: 12px; display: flex; flex-direction: column;">
+
+              <!-- Signed-OUT state -->
+              <div id="sync-signed-out-card" class="gdrive-signin-card premium-signin-card">
+                <div class="premium-signin-bg"></div>
+                <div class="gdrive-icon-glow-wrap">
+                  <div class="gdrive-icon-glow"></div>
+                  <div class="gdrive-icon-inner">
+                    <svg width="34" height="34" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8H0c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="M43.65 25 29.9 1.2C28.55 2 27.4 3.1 26.6 4.5L1.2 47.5C.4 48.9 0 50.45 0 52h27.5z" fill="#00ac47"/><path d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5H60l5.85 11.5z" fill="#ea4335"/><path d="M43.65 25 57.4 1.2C56.05.4 54.5 0 52.9 0H34.4c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="M60 52H27.5L13.75 75.8c1.35.8 2.9 1.2 4.5 1.2H69c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="M73.4 26.5c-.8-1.4-1.95-2.5-3.3-3.3L56.35 1.2C55 .4 53.45 0 51.85 0h-.1L43.65 25 60 52h27.5c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+                  </div>
+                </div>
+                <div class="gdrive-signin-text">
+                  <div class="gdrive-signin-title">Secure Cloud Backup</div>
+                  <div class="gdrive-signin-desc">Safely save and store your settings, subscriptions, and watched history in your personal Google Drive.</div>
+                </div>
+                <button id="btn-sync-signin" class="google-signin-btn">
+                  <div class="google-btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></svg>
+                  </div>
+                  <span class="google-btn-text">Sign in with Google</span>
+                </button>
+              </div>
+
+              <!-- Signed-IN state -->
+              <div id="sync-signed-in-card" class="gdrive-account-card" style="display:none;">
+                <div class="gdrive-account-row">
+                  <div class="gdrive-avatar-wrap">
+                    <img id="sync-user-avatar" src="" alt="Avatar" class="gdrive-avatar">
+                    <div class="gdrive-status-dot" title="Connected"></div>
+                  </div>
+                  <div class="gdrive-account-info">
+                    <div id="sync-user-name" class="gdrive-account-name">Loading…</div>
+                    <div id="sync-user-email" class="gdrive-account-email"></div>
+                    <div id="gdrive-sync-status" class="gdrive-sync-status-text" style="margin-top: 6px;">
+                      <div class="gdrive-status-pulse"></div>
+                      <span id="lastSyncTimeLabel">Last sync: Never</span>
+                    </div>
+                  </div>
+                  <button id="btn-sync-signout" class="gdrive-signout-btn" title="Sign Out">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  </button>
+                </div>
+
+                <div class="gdrive-sync-footer" style="justify-content: space-between;">
+                  <!-- Settings toggle on the left -->
+                  <div style="position: relative;">
+                    <button id="btnSyncSettingsToggle" class="gdrive-small-btn icon-only" title="Sync Preferences">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                    <!-- Settings Modal -->
+                    <div id="sync-settings-popover" class="sync-settings-popover" style="display: none;">
+                      <div class="sync-settings-header">
+                        <span>Sync Preferences</span>
+                        <button id="btnSyncSettingsClose" class="sync-settings-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+                      </div>
+                      
+                      <div class="sync-opt-item">
+                        <div class="sync-opt-info">
+                          <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span>General Settings</span>
+                          <span class="sync-opt-desc">Core extension behavior & configs</span>
+                        </div>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptSettings" checked><span class="sync-slider"></span></label>
+                      </div>
+                      
+                      <div class="sync-opt-item">
+                        <div class="sync-opt-info">
+                          <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></span>Subscriptions</span>
+                          <span class="sync-opt-desc">Custom channel folders & feeds</span>
+                        </div>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptSubs" checked><span class="sync-slider"></span></label>
+                      </div>
+
+                      <div class="sync-opt-item">
+                        <div class="sync-opt-info">
+                          <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F472B6" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.66 0 3-1.34 3-3 0-.74-.29-1.42-.76-1.92a2.44 2.44 0 0 1-.36-1.08c0-1.1.9-2 2-2h1.12c2.76 0 5-2.24 5-5 0-4.42-4.48-8-10-8zm-4.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path></svg></span>Popup Design</span>
+                          <span class="sync-opt-desc">Theme, scale, and colors</span>
+                        </div>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptDesign" checked><span class="sync-slider"></span></label>
+                      </div>
+
+                      <div class="sync-opt-item">
+                        <div class="sync-opt-info">
+                          <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>Bookmarks</span>
+                          <span class="sync-opt-desc">Saved YouTube videos</span>
+                        </div>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptBookmarks" checked><span class="sync-slider"></span></label>
+                      </div>
+
+                      <div class="sync-opt-item">
+                        <div class="sync-opt-info">
+                          <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>Watched History</span>
+                          <span class="sync-opt-desc">Local watched videos database</span>
+                        </div>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptHistory" checked><span class="sync-slider"></span></label>
+                      </div>
+
+                      <div class="sync-opt-item">
+                        <div class="sync-opt-info">
+                          <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M21.5 2v6h-6M2.13 15.57a9 9 0 1 0 3.09-10.2M21.5 8l-6-6"></path></svg></span>Auto Backup</span>
+                          <span class="sync-opt-desc">Automatically sync in background</span>
+                        </div>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptAuto"><span class="sync-slider"></span></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Cloud backup metadata info row -->
+                  <div id="drive-backup-info" class="drive-backup-info-row">
+                    Cloud backup: —
+                  </div>
+
+                  <!-- Actions on the right -->
+                  <div class="gdrive-sync-actions">
+                    <button id="btnBackupDown" class="gdrive-small-btn" title="Restore from Cloud">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      Restore
+                    </button>
+                    <button id="resetBtn" class="gdrive-small-btn danger" title="Factory Reset">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                      Reset
+                    </button>
+                    <button id="btn-sync-now" class="gdrive-sync-now-btn">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                      Backup & Sync
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div class="ypp-inline-377">
-                <button id="btnBackupUp" class="ypp-inline-378">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                  Backup
-                </button>
-                <button id="btnBackupDown" class="ypp-inline-379">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  Restore
-                </button>
-                 <button id="resetBtn" class="ypp-inline-380">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
-                  Reset to Defaults
-                </button>
+              
+              <!-- Version footer -->
+              <div class="data-mgmt-footer" style="margin-top: 8px;">
+                <div class="version-pill">v2.3.0</div>
+                <span class="version-edition">Community Edition</span>
               </div>
-              <div class="ypp-inline-381 version-info">v2.3.0 • Community Edition</div>
+
             </div>
           </div>
 
 
-
         </section>
+
 
         <!-- BOOKMARKS -->
         <section id="tab-bookmarks" class="tab-content">
@@ -816,15 +932,15 @@
                <div class="section-title-wrap">
                   <span class="drag-handle" title="Drag to reorder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>
                   <div class="section-text-wrap">
-                     <div class="section-title" data-i18n="your_bookmarks">Your Bookmarks</div>
-                     <div class="section-subtitle" data-i18n="captured_highlights_across_all_videos">Captured highlights across all videos</div>
+                     <div class="section-title" data-i18n="your_bookmarks">Saved Highlights</div>
+                     <div class="section-subtitle" data-i18n="captured_highlights_across_all_videos">Your curated collection of memorable video moments</div>
                   </div>
                </div>
             </div>
             
             <div class="ypp-inline-384 search-container">
               <svg class="ypp-inline-385 search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" id="bookmarkSearchInput" placeholder="Search highlights or videos..." class="ypp-inline-386 feature-search-input" aria-label="Bookmark Search Input" title="Bookmark Search Input">
+              <input type="text" id="bookmarkSearchInput" placeholder="Search your saved moments..." class="ypp-inline-386 feature-search-input" aria-label="Bookmark Search Input" title="Bookmark Search Input">
             </div>
 
             <div id="bookmarksList" class="ypp-inline-387 bookmarks-list">

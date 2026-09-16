@@ -33,15 +33,6 @@ html[data-ypp-card-style="polaroid"] :is(
 
 /* ── 2. ALTERNATING TILTS ─────────────────────────────────────────────────── */
 
-html[data-ypp-card-style="polaroid"] :is(
-    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
-    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
-    yt-lockup-view-model:not(ytd-watch-metadata *)
-):hover {
-  transform: scale(1.03) rotate(0deg) translateZ(0) !important;
-  z-index: 10 !important;
-}
-
 /* ── 3. SHARPIE TEXT (STRICTLY SCOPED TO CARDS ONLY) ──────────────────────── */
 html[data-ypp-card-style="polaroid"] :is(
   ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,

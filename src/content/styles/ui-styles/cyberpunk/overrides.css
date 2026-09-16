@@ -425,7 +425,7 @@ html[data-ypp-card-style="cyberpunk"] *, html[data-ypp-ui-design="cyberpunk"] * 
 
 /* Specific Styling for ytd-video-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-video-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-video-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;
@@ -434,7 +434,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-video-renderer, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-rich-item-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-rich-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-rich-item-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-rich-item-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;
@@ -443,7 +443,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-rich-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-playlist-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-playlist-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-playlist-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-playlist-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;
@@ -452,7 +452,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-playlist-renderer, html[data-ypp-ui-de
 
 /* Specific Styling for ytd-grid-video-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-grid-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-grid-video-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-grid-video-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;
@@ -461,7 +461,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-grid-video-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-compact-video-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-compact-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-compact-video-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-compact-video-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;
@@ -470,7 +470,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-compact-video-renderer, html[data-ypp-
 
 /* Specific Styling for ytd-reel-item-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-reel-item-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;
@@ -483,7 +483,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-channel-renderer */
 
-html[data-ypp-card-style="cyberpunk"] ytd-channel-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-channel-renderer:hover {
+html[data-ypp-card-style="cyberpunk"] ytd-channel-renderer {
   -webkit-clip-path: var(--cyber-clip-hover) !important;
   clip-path: var(--cyber-clip-hover) !important;
   box-shadow: var(--cyber-shadow-hover) !important;

@@ -35,16 +35,6 @@ body.ypp-search-list-mode ytd-video-renderer:nth-child(n+6) { animation-delay: 2
 body.ypp-search-list-mode ytd-video-renderer:last-child {
   border-bottom: none !important;
 }
-body.ypp-search-list-mode ytd-video-renderer:hover {
-  transform: none !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25) !important;
-  border-radius: 12px !important;
-  border-left: 2px solid rgba(62, 166, 255, 0.3) !important;
-}
-body.ypp-search-list-mode ytd-video-renderer:hover ytd-thumbnail {
-  transform: scale(1.02) !important;
-}
 body.ypp-search-list-mode ytd-video-renderer #dismissible {
   flex-direction: row !important;
 }
@@ -76,9 +66,6 @@ body.ypp-search-list-mode ytd-video-renderer > #dismissible {
   flex-direction: row !important;
   flex-wrap: wrap !important; /* stack thumbnail + text vertically at extreme zoom */
   gap: 0 !important;
-}
-body.ypp-search-list-mode ytd-video-renderer:hover > #dismissible {
-  flex-direction: row !important;
 }
 body.ypp-search-list-mode ytd-video-renderer #channel-info {
   margin-bottom: 8px !important;

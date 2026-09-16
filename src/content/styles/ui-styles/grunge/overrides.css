@@ -30,15 +30,6 @@
 
 
 /* Card hover */
-html[data-ypp-ui-design="grunge"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="grunge"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="grunge"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="grunge"] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-design="grunge"] ytd-grid-video-renderer:hover {
-  transform:translateY(-3px) scale(1.01) !important;
-  box-shadow: 3px 3px 0 #111 !important;
-  animation: sepia-bloom 0.3s forwards !important;
-}
 
 /* Sidebar guide */
 

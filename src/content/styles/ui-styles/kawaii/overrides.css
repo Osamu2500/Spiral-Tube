@@ -4094,12 +4094,6 @@ html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-rende
   box-shadow: 0 4px 10px rgba(196,245,214,0.6) !important;
 }
 
-html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer:hover {
-  box-shadow: 0 8px 20px rgba(255, 158, 187, 0.15) !important;
-  transform: translateX(4px) !important;
-  animation: none !important;
-}
-
 html[data-ypp-ui-design="kawaii"] #secondary-inner.ytd-watch-flexy {
   -webkit--webkit-backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;

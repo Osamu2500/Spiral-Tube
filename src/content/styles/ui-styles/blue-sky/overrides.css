@@ -75,20 +75,6 @@ html[data-ypp-theme="blue-sky"] :is(ytd-rich-item-renderer):nth-child(n+5) {
   animation-delay: 0.25s;
 }
 
-html[data-ypp-theme="blue-sky"] :is(
-  ytd-rich-item-renderer,
-  ytd-compact-video-renderer,
-  ytd-video-renderer
-):hover::after {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    transparent 100%
-  ) !important;
-  animation: sky-shimmer 0.7s var(--sky-ease) forwards !important;
-}
-
 /* Subscribe button pulse animation */
 html[data-ypp-theme="blue-sky"] #subscribe-button button,
 html[data-ypp-theme="blue-sky"] #subscribe-button [class*="ytSpecButtonShapeNext"] {

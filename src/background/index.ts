@@ -7,8 +7,17 @@ import { handleAlarm } from './handlers/timer-handler.js';
 // Setup message routing for all background tasks
 setupMessageRouter();
 
-// Timer Alarm Listener
-chrome.alarms.onAlarm.addListener(handleAlarm);
+import { syncUp } from './services/drive-sync.js';
+import './services/idb-service.js';
+
+// Timer & Auto-Sync Alarm Listener
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'ypp-auto-sync') {
+    syncUp().catch(e => console.error('[YPP] Auto-sync failed:', e));
+  } else {
+    handleAlarm(alarm);
+  }
+});
 
 // Update Available
 chrome.runtime.onUpdateAvailable.addListener(() => {
@@ -18,6 +27,15 @@ chrome.runtime.onUpdateAvailable.addListener(() => {
 // Initialization
 chrome.runtime.onInstalled.addListener(async (details) => {
   console.log('[YPP] Service Worker Installed:', details.reason);
+
+  // Show "What's New" badge when the extension auto-updates
+  if (details.reason === 'update') {
+    const manifest = chrome.runtime.getManifest();
+    await chrome.storage.local.set({ ypp_has_update: manifest.version });
+    chrome.action.setBadgeText({ text: 'NEW' });
+    chrome.action.setBadgeBackgroundColor({ color: '#ff4e45' });
+  }
+
   try {
     const localData = await chrome.storage.local.get('settings');
     const syncData = await chrome.storage.sync.get('settings');

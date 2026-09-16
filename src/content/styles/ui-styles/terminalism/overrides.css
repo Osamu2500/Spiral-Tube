@@ -113,14 +113,6 @@ html[data-ypp-ui-design="terminalism"] .ypp-pill-toggle:hover {
 /* Card Hover State */
 
 /* Inject terminal prompt into title on hover */
-html[data-ypp-card-style="terminalism"] :is(
-  ytd-rich-item-renderer,
-  ytd-video-renderer,
-  ytd-compact-video-renderer,
-  ytd-grid-video-renderer
-):hover #video-title::before {
-  animation: termBlink 1s step-end infinite;
-}
 
 /* Thumbnails */
 

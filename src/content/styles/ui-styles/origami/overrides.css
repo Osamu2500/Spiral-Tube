@@ -29,15 +29,6 @@
 
 
 /* Card hover */
-html[data-ypp-ui-design="origami"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="origami"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="origami"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="origami"] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-design="origami"] ytd-grid-video-renderer:hover {
-  transform:translateY(-3px) scale(1.01) !important;
-  box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
-  animation: sepia-bloom 0.3s forwards !important;
-}
 
 /* Sidebar guide */
 

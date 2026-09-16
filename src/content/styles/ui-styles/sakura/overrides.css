@@ -74,18 +74,6 @@ html[data-ypp-ui-design="sakura"] ytd-subscribe-button-renderer button.ytSpecBut
   animation: youtubeRedPulse 5s ease-in-out infinite !important;
 }
 
-
-
-html[data-ypp-ui-design="sakura"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="sakura"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="sakura"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-design="sakura"] ytd-grid-video-renderer:hover {
-  transform: scale(1.02) !important;
-  box-shadow: var(--shadow-hover) !important;
-  animation: sepia-bloom 0.3s forwards !important;
-}
-
 html[data-ypp-ui-design="sakura"] html,
 html[data-ypp-ui-design="sakura"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
@@ -562,10 +550,6 @@ html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:not(.dragging) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:not(.dragging):hover {
-  box-shadow: var(--shadow-hover) !important;
-}
-
 html[data-ypp-ui-design="sakura"] ytd-macro-markers-list-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -611,15 +595,6 @@ html[data-ypp-ui-design="sakura"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="sakura"] ytd-add-to-playlist-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
-}
-
-html[data-ypp-ui-design="sakura"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="sakura"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="sakura"] ytd-video-renderer:hover {
-  box-shadow: var(--shadow-hover) !important;
-  border-radius: var(--ypp-shape-primary, 44% 56% 38% 62% / 50% 50% 50% 50%) !important;
-  transform: translateY(-3px) scale(1.015) !important;
-  animation: sakura-glow-pulse 2s ease-in-out infinite !important;
 }
 
 html[data-ypp-ui-design="sakura"] ytd-reel-video-renderer {
@@ -1130,11 +1105,6 @@ html[data-ypp-ui-design="sakura"] yt-page-header-renderer {
 /* Playlist Video Items in the grid */
 html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
-}
-
-html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:hover {
-  transform: translate(-2px,-2px) !important;
-  box-shadow: 4px 4px rgba(0,0,0,0.2) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════

@@ -35,14 +35,6 @@ ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg path 
 }
 
 /* Hover glow effect for the verified badge */
-ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
-ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
-ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist,
-ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist {
-  box-shadow: 0 0 16px var(--ypp-accent, #3ea6ff) !important;
-  transform: scale(1.2) rotate(-5deg);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
 
 /* ── 2. Mark as Watched (Manual) & Resume Badges ────────────────────────── */
 

@@ -1,7 +1,7 @@
 import { handleGetSettings, handlePatchSettings, handleRestoreBackup } from '../handlers/settings-handler.js';
 import { handleGetTimer, startTimer, stopTimer } from '../handlers/timer-handler.js';
 import { handleExtractColor } from '../handlers/color-handler.js';
-import { syncUp, syncDown } from '../services/drive-sync.js';
+import { syncUp, syncDown, syncReset, getBackupInfo } from '../services/drive-sync.js';
 
 export function setupMessageRouter() {
   chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
@@ -52,6 +52,23 @@ export function setupMessageRouter() {
 
       case 'SYNC_BACKUP_DOWN':
         syncDown().then(sendResponse);
+        return true;
+
+      case 'SYNC_RESET':
+        syncReset().then(sendResponse);
+        return true;
+
+      case 'UPDATE_AUTO_SYNC':
+        if (request.enabled) {
+          chrome.alarms.create('ypp-auto-sync', { periodInMinutes: 24 * 60 });
+        } else {
+          chrome.alarms.clear('ypp-auto-sync');
+        }
+        sendResponse({ success: true });
+        return true;
+
+      case 'GET_BACKUP_INFO':
+        getBackupInfo().then(sendResponse);
         return true;
 
       case 'EXTRACT_COLOR':

@@ -74,14 +74,6 @@ html[data-ypp-ui-design="ocean"] ytd-subscribe-button-renderer button.ytSpecButt
 }
 
 
-html[data-ypp-ui-design="ocean"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="ocean"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="ocean"] ytd-video-renderer:hover {
-  animation: buoyBob 3s ease-in-out infinite !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-
-
 html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="ocean"] .yt-chip-shape:hover,
 html[data-ypp-ui-design="ocean"] .ytp-play-button:hover,
@@ -509,10 +501,6 @@ html[data-ypp-ui-design="ocean"] ytd-playlist-video-renderer:not(.dragging) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-html[data-ypp-ui-design="ocean"] ytd-playlist-video-renderer:not(.dragging):hover {
-  box-shadow: var(--shadow-hover) !important;
-}
-
 html[data-ypp-ui-design="ocean"] ytd-macro-markers-list-item-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -608,16 +596,8 @@ html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-card {
     background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-card:hover {
-  box-shadow: var(--shadow-hover) !important;
-}
-
 html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
   box-shadow: none !important;
-}
-
-html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
-  transform: none !important;
 }
 
 html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-duration-card {

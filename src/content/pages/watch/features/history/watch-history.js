@@ -197,36 +197,59 @@ export class WatchHistoryTracker extends window.YPP.features.BaseFeature {
         this.sessionSeconds -= secToSave;
 
         const dateKey = new Date().toISOString().split('T')[0];
-        const storageKey = `${this.STORAGE_PREFIX}${dateKey}`;
+        const idb = window.YPP?.IDB;
 
         try {
-            const resultData = await window.YPP.StorageManager.get(storageKey);
-            let dayRecord = resultData || { videos: {}, totalSeconds: 0 };
+            // Prefer IndexedDB for large unbounded analytics data
+            if (idb) {
+                let dayRecord = await idb.get(idb.STORES.WATCH_HISTORY, dateKey) 
+                    || { videos: {}, totalSeconds: 0 };
 
-            if (!dayRecord.videos) dayRecord.videos = {};
-            if (!dayRecord.totalSeconds) dayRecord.totalSeconds = 0;
+                if (!dayRecord.videos) dayRecord.videos = {};
+                if (!dayRecord.totalSeconds) dayRecord.totalSeconds = 0;
 
-            dayRecord.totalSeconds += secToSave;
+                dayRecord.totalSeconds += secToSave;
 
-            if (!dayRecord.videos[videoId]) {
-                dayRecord.videos[videoId] = {
-                    title: info.title,
-                    channel: info.channel,
-                    seconds: 0,
-                    lastWatched: info.lastWatched
-                };
+                if (!dayRecord.videos[videoId]) {
+                    dayRecord.videos[videoId] = {
+                        title: info.title,
+                        channel: info.channel,
+                        seconds: 0,
+                        lastWatched: info.lastWatched
+                    };
+                }
+                
+                const vRec = dayRecord.videos[videoId];
+                vRec.seconds += secToSave;
+                vRec.lastWatched = info.lastWatched;
+                
+                if (vRec.title === 'Unknown Video' && info.title !== 'Unknown Video') vRec.title = info.title;
+                if (vRec.channel === 'Unknown Channel' && info.channel !== 'Unknown Channel') vRec.channel = info.channel;
+
+                await idb.set(idb.STORES.WATCH_HISTORY, dateKey, dayRecord);
+                this._checkWatchTimeAlert(dayRecord.totalSeconds);
+
+            } else {
+                // Fallback to StorageManager if IDB is unavailable
+                const storageKey = `${this.STORAGE_PREFIX}${dateKey}`;
+                const resultData = await window.YPP.StorageManager.get(storageKey);
+                let dayRecord = resultData || { videos: {}, totalSeconds: 0 };
+
+                if (!dayRecord.videos) dayRecord.videos = {};
+                dayRecord.totalSeconds += secToSave;
+
+                if (!dayRecord.videos[videoId]) {
+                    dayRecord.videos[videoId] = { title: info.title, channel: info.channel, seconds: 0, lastWatched: info.lastWatched };
+                }
+                const vRec = dayRecord.videos[videoId];
+                vRec.seconds += secToSave;
+                vRec.lastWatched = info.lastWatched;
+                if (vRec.title === 'Unknown Video' && info.title !== 'Unknown Video') vRec.title = info.title;
+                if (vRec.channel === 'Unknown Channel' && info.channel !== 'Unknown Channel') vRec.channel = info.channel;
+
+                await window.YPP.StorageManager.set(storageKey, dayRecord);
+                this._checkWatchTimeAlert(dayRecord.totalSeconds);
             }
-            
-            const vRec = dayRecord.videos[videoId];
-            vRec.seconds += secToSave;
-            vRec.lastWatched = info.lastWatched;
-            
-            if (vRec.title === 'Unknown Video' && info.title !== 'Unknown Video') vRec.title = info.title;
-            if (vRec.channel === 'Unknown Channel' && info.channel !== 'Unknown Channel') vRec.channel = info.channel;
-
-            await window.YPP.StorageManager.set(storageKey, dayRecord);
-            
-            this._checkWatchTimeAlert(dayRecord.totalSeconds);
 
         } catch (e) {
             if (e.message && e.message.includes('Extension context invalidated')) return;

@@ -10,7 +10,7 @@
   scrollbar-color: rgba(99,102,241,0.35) transparent;
   scroll-behavior: smooth;
 }
-#tab-declutter::-webkit-scrollbar { width: 4px; }
+#tab-declutter::-webkit-scrollbar { display: none; width: 0; }
 #tab-declutter::-webkit-scrollbar-track {
   background: transparent;
   margin: 8px 0;

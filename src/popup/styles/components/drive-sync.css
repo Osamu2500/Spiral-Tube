@@ -1,0 +1,541 @@
+/* =========================================================================
+   Google Drive Sync + Data Management — Premium UI Components
+   ========================================================================= */
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Google Drive sign-in card (logged-out state) ── */
+.premium-signin-card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 24px;
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.premium-signin-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% -20%, rgba(38, 132, 252, 0.15), transparent 70%);
+  pointer-events: none;
+}
+.gdrive-icon-glow-wrap {
+  position: relative;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gdrive-icon-glow {
+  position: absolute;
+  width: 60px; height: 60px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  filter: blur(25px);
+  opacity: 0.35;
+  animation: pulse-glow 3s infinite alternate;
+}
+@keyframes pulse-glow {
+  0% { transform: scale(0.9); opacity: 0.3; }
+  100% { transform: scale(1.1); opacity: 0.5; }
+}
+.gdrive-icon-inner {
+  position: relative;
+  z-index: 1;
+  background: rgba(25, 25, 25, 0.8);
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gdrive-signin-text {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+.gdrive-signin-title {
+  font-size: 15px; font-weight: 700; color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.gdrive-signin-desc {
+  font-size: 11.5px; color: var(--text-muted); line-height: 1.5;
+  max-width: 280px;
+}
+/* Authentic Google Sign-in Button */
+.google-signin-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex; align-items: center;
+  background: #4285F4;
+  color: #ffffff;
+  border: none; border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  transition: background-color 0.2s, box-shadow 0.2s;
+  padding: 1px;
+  overflow: hidden;
+  height: 40px;
+}
+.google-signin-btn:hover {
+  background: #3367D6;
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+.google-signin-btn:active {
+  background: #3367D6;
+}
+.google-btn-icon {
+  background: #ffffff;
+  width: 38px;
+  height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 3px;
+}
+.google-btn-text {
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+.gdrive-signin-btn:active { transform: translateY(0) scale(0.98); }
+
+/* ── Google Drive account card (logged-in state) ── */
+.gdrive-account-card {
+  background: linear-gradient(145deg,
+    rgba(255,255,255,0.08) 0%,
+    rgba(255,255,255,0.03) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-top-color: rgba(255,255,255,0.25);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  position: relative;
+}
+.gdrive-account-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 10% 0%,
+    color-mix(in srgb, var(--accent-primary) 12%, transparent) 0%,
+    transparent 70%);
+  pointer-events: none;
+}
+
+.gdrive-account-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px;
+  position: relative;
+}
+
+.gdrive-avatar-wrap {
+  position: relative; flex-shrink: 0;
+}
+.gdrive-avatar {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-primary) 80%, white), var(--accent-secondary));
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-primary) 25%, rgba(0,0,0,0.5));
+  object-fit: cover;
+}
+.gdrive-status-dot {
+  position: absolute;
+  bottom: 6px; right: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid rgba(5,5,5,0.9);
+  box-shadow: 0 0 8px rgba(34,197,94,0.6);
+  animation: pulse-green 2.5s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 6px rgba(34,197,94,0.5); }
+  50%       { box-shadow: 0 0 12px rgba(34,197,94,0.9); }
+}
+
+.gdrive-account-info { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.gdrive-account-name {
+  font-size: 18px; font-weight: 700; color: #fff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+.gdrive-account-email {
+  font-size: 14px; color: var(--text-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.gdrive-signout-btn {
+  width: 32px; height: 32px;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  transition: all 0.2s var(--ease-spring);
+}
+.gdrive-signout-btn:hover {
+  background: rgba(239,68,68,0.15);
+  border-color: rgba(239,68,68,0.3);
+  color: #f87171;
+  transform: scale(1.08);
+}
+
+.gdrive-sync-footer {
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 10px 16px 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+
+/* ── Sync Settings Modal ── */
+.sync-settings-popover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  background: rgba(18, 18, 18, 0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 16px 20px;
+  /* Massive box shadow acts as a dark backdrop */
+  box-shadow: 0 24px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05), 0 0 0 100vmax rgba(0,0,0,0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  z-index: 999999;
+  transform-origin: center;
+  animation: modal-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+.sync-settings-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sync-settings-close {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.sync-settings-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+.sync-opt-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px;
+  margin: 2px -4px;
+  border-radius: var(--r-md);
+  transition: background 0.2s ease;
+}
+.sync-opt-item:hover {
+  background: rgba(255,255,255,0.04);
+}
+.sync-opt-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sync-opt-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+.opt-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+.sync-opt-desc {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  padding-left: 22px;
+}
+/* Custom Toggle Switch */
+.sync-toggle {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.sync-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.sync-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255,255,255,0.15);
+  transition: .3s;
+  border-radius: 20px;
+}
+.sync-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.sync-toggle input:checked + .sync-slider {
+  background-color: var(--accent-primary);
+}
+.sync-toggle input:checked + .sync-slider:before {
+  transform: translateX(14px);
+}
+.gdrive-sync-status-text {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 11px; color: var(--text-dim);
+}
+.gdrive-status-pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 6px var(--accent-primary);
+  animation: pulse-accent 3s ease-in-out infinite;
+}
+@keyframes pulse-accent {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+.gdrive-sync-now-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent-primary) 85%, white),
+    color-mix(in srgb, var(--accent-secondary, var(--accent-primary)) 80%, #6366f1));
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 60%, rgba(255,255,255,0.3));
+  color: #fff; font-size: 11.5px; font-weight: 700;
+  border-radius: var(--r-pill);
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-primary) 35%, transparent),
+              inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: all 0.22s var(--ease-spring);
+  position: relative; overflow: hidden;
+  letter-spacing: 0.01em;
+}
+.gdrive-sync-now-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.18), transparent 60%);
+  pointer-events: none;
+}
+.gdrive-sync-now-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-primary) 50%, transparent),
+              inset 0 1px 0 rgba(255,255,255,0.3);
+}
+.gdrive-sync-now-btn:active { transform: scale(0.97); }
+.gdrive-sync-now-btn svg { flex-shrink: 0; transition: transform 0.5s ease; }
+.gdrive-sync-now-btn.syncing svg {
+  animation: spin 0.8s linear infinite;
+}
+.gdrive-sync-now-btn.syncing {
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* ── Data Management small action buttons ── */
+.gdrive-sync-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.gdrive-small-btn {
+  height: 28px;
+  padding: 0 10px;
+  gap: 5px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-spring);
+}
+.gdrive-small-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.gdrive-small-btn.danger:hover {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+  border-color: rgba(239,68,68,0.3);
+  box-shadow: 0 4px 12px rgba(239,68,68,0.2);
+}
+.gdrive-small-btn:active {
+  transform: scale(0.92);
+}
+
+/* ── Version footer ── */
+.data-mgmt-footer {
+  display: flex; align-items: center; gap: 8px;
+  justify-content: center;
+  padding: 6px 0 2px;
+}
+.version-pill {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--accent-primary) 15%, rgba(255,255,255,0.05));
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 25%, rgba(255,255,255,0.08));
+  color: color-mix(in srgb, var(--accent-primary) 90%, white);
+}
+.version-edition {
+  font-size: 10.5px; color: var(--text-dim); font-weight: 500;
+}
+
+/* ── Spinner animation for active sync buttons ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.gdrive-sync-now-btn.syncing svg,
+.data-mgmt-btn.loading .data-mgmt-btn-icon svg {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Backup Info Row ── */
+.drive-backup-info-row {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-align: right;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.bkp-time { color: var(--text-secondary); font-weight: 500; }
+.bkp-ver { background: rgba(255,255,255,0.06); padding: 1px 4px; border-radius: 4px; color: var(--text-muted); }
+.bkp-size { color: var(--text-dim); }
+.bkp-dot { color: rgba(255,255,255,0.1); }
+
+/* ── Custom Glassmorphic Modal ── */
+.ypp-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ypp-modal-overlay.visible {
+  opacity: 1; pointer-events: auto;
+}
+.ypp-modal {
+  background: rgba(20, 20, 22, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  width: 280px;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ypp-modal-overlay.visible .ypp-modal {
+  transform: translateY(0) scale(1);
+}
+.ypp-modal-title {
+  margin: 0 0 12px; font-size: 16px; font-weight: 600; color: #fff;
+}
+.ypp-modal-body {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;
+}
+.ypp-modal-body strong { color: #fff; }
+.ypp-modal-footer {
+  display: flex; gap: 8px; justify-content: flex-end;
+}
+.ypp-modal-btn {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; border-radius: var(--r-md); padding: 8px 16px;
+  font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.ypp-modal-btn:hover { background: rgba(255,255,255,0.12); }
+.ypp-modal-btn.danger { background: rgba(239, 68, 68, 0.1); color: #f87171; border-color: rgba(239, 68, 68, 0.2); }
+.ypp-modal-btn.danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+/* ── Search Highlights ── */
+mark.search-highlight {
+  background: color-mix(in srgb, var(--accent-primary) 30%, transparent);
+  color: #fff;
+  border-radius: 2px;
+  padding: 0 2px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-primary) 50%, transparent);
+}
+
+/* ── "What's New" Toast ── */
+.ypp-update-toast {
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%) translateY(-20px);
+  background: rgba(20, 20, 22, 0.95); border: 1px solid var(--accent-primary);
+  border-radius: var(--r-pill); padding: 8px 12px 8px 16px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 20px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  z-index: 9999; opacity: 0; pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.ypp-update-toast.visible {
+  opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0);
+}
+.update-toast-icon { color: var(--accent-primary); display: flex; align-items: center; }
+.update-toast-text { display: flex; flex-direction: column; gap: 2px; }
+.update-toast-text strong { font-size: 11px; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
+.update-toast-text span { font-size: 10px; color: var(--text-secondary); }
+.update-toast-close {
+  background: none; border: none; color: var(--text-muted); padding: 4px;
+  cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.update-toast-close:hover { background: rgba(255,255,255,0.1); color: #fff; }

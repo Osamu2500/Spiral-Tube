@@ -166,12 +166,6 @@ body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playl
   transition: transform 0.25s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow 0.25s ease !important;
 }
 
-body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *)) #avatar-link:hover,
-body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) :is(ytd-rich-item-renderer, yt-lockup-view-model:not(#related *, #secondary *, ytd-watch-next-secondary-results-renderer *)) #channel-thumbnail:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 0 2px var(--ypp-accent, rgba(255, 255, 255, 0.3)) !important;
-}
-
 body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer #avatar,
 body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-img-shadow#avatar,
 body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer yt-avatar-shape,
@@ -223,13 +217,6 @@ body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playl
   transition: color 0.2s ease !important;
 }
 
-body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #metadata-line,
-body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover #channel-name,
-body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover #metadata-line,
-body.ypp-search-grid-mode:not(.ypp-watch-page) :is(ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer):hover ytd-channel-name {
-  color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.8)) !important;
-}
-
 /* ── 4. Premium Hover Physics ───────────────────────────────────────────── */
 
 body:not(.ypp-watch-page) ytd-rich-item-renderer,
@@ -237,14 +224,6 @@ body:not(.ypp-watch-page) ytd-video-renderer,
 body:not(.ypp-watch-page) ytd-compact-video-renderer {
   transition: transform 0.4s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), filter 0.3s ease !important;
   border-radius: var(--ypp-squircle-radius-lg, 12px) !important;
-}
-body:not(.ypp-watch-page) ytd-rich-item-renderer:hover,
-body:not(.ypp-watch-page) ytd-video-renderer:hover,
-body:not(.ypp-watch-page) ytd-compact-video-renderer:hover {
-  transform: translateY(-4px) scale(1.015) !important;
-  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.5)) !important;
-  will-change: transform;
-  z-index: var(--ypp-z-elevated);
 }
 
 /* Thumbnail box-shadow elevation + image scale on hover */
@@ -256,34 +235,8 @@ body:not(.ypp-watch-page) ytd-thumbnail {
 body:not(.ypp-watch-page) ytd-thumbnail img {
   transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
-body:not(.ypp-watch-page) ytd-rich-item-renderer:hover ytd-thumbnail img,
-body:not(.ypp-watch-page) ytd-compact-video-renderer:hover ytd-thumbnail img {
-  transform: scale(1.04) !important;
-}
-body:not(.ypp-watch-page) ytd-rich-item-renderer:hover ytd-thumbnail,
-body:not(.ypp-watch-page) ytd-compact-video-renderer:hover ytd-thumbnail {
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
-}
 
 /* Accent glow line at the top of thumbnail on hover (subtle brand moment) */
-body:not(:is(.ypp-channel-page, .cinematic-home, .ypp-watch-page)) ytd-rich-item-renderer:hover ytd-thumbnail::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--ypp-accent-primary, #6366f1) 30%,
-    var(--ypp-accent, #3ea6ff) 70%,
-    transparent 100%
-  );
-  opacity: 0.9;
-  z-index: 10;
-  border-radius: var(--ypp-squircle-radius-lg, 12px) var(--ypp-squircle-radius-lg, 12px) 0 0;
-  pointer-events: none;
-}
 
 /* ── 5. Action Menus (3-dots) ───────────────────────────────────────────── */
 
@@ -306,13 +259,6 @@ body:not(.ypp-watch-page) :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-co
   align-items: center !important;
   justify-content: center !important;
   opacity: 0;
-}
-body:not(.ypp-watch-page) :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer):hover #menu yt-icon-button {
-  opacity: 1;
-}
-body:not(.ypp-watch-page) :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button:hover {
-  background: rgba(0, 0, 0, 0.8) !important;
-  transform: scale(1.1) !important;
 }
 body:not(.ypp-watch-page) :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon {
   color: var(--ypp-text-primary, #fff) !important;
@@ -339,16 +285,6 @@ body:not(.ypp-watch-page) :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-co
   visibility: hidden !important;
   pointer-events: none !important;
   transform: scale(0.8) !important;
-}
-body:not(.ypp-watch-page) ytd-rich-item-renderer:hover .ypp-watched-icon-permanent,
-body:not(.ypp-watch-page) ytd-video-renderer:hover .ypp-watched-icon-permanent,
-body:not(.ypp-watch-page) ytd-compact-video-renderer:hover .ypp-watched-icon-permanent,
-body:not(.ypp-watch-page) ytd-grid-video-renderer:hover .ypp-watched-icon-permanent,
-body:not(.ypp-watch-page) ytd-playlist-video-renderer:hover .ypp-watched-icon-permanent {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: scale(1) !important;
 }
 .ypp-watched-icon-permanent:hover {
   background: var(--ypp-accent, #3ea6ff) !important;

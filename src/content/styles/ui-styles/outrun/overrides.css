@@ -244,11 +244,6 @@ html[data-ypp-ui-design="outrun"] .ytp-volume-slider-handle {
 
 /* Recommended video cards in the sidebar */
 
-html[data-ypp-ui-design="outrun"] ytd-compact-video-renderer:hover {
-  box-shadow: none !important;
-  animation: none !important;
-}
-
 html[data-ypp-ui-design="outrun"] #secondary-inner.ytd-watch-flexy {
   box-shadow: var(--outrun-glow-cyan) !important;
 }

@@ -31,15 +31,6 @@ html[data-ypp-ui-design="galaxy"] #subscribe-button yt-button-shape button[title
 }
 
 /* Card hover */
-html[data-ypp-ui-design="galaxy"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="galaxy"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="galaxy"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="galaxy"] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-design="galaxy"] ytd-grid-video-renderer:hover {
-  transform:translateY(-3px) scale(1.01) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  animation: sepia-bloom 0.3s forwards !important;
-}
 
 /* Sidebar guide */
 

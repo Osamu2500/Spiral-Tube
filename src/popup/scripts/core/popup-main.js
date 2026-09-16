@@ -15,6 +15,7 @@ import { initCommandPalette } from '../ui/command-palette.js';
 import { initAmbientBackground } from '../ui/popup-ambient.js';
 import { initFavorites } from '../ui/popup-favorites.js';
 import { initSidebarDragAndDrop } from '../ui/popup-dragdrop.js';
+import '../ui/account-menu.js';
 // Detect if we are running outside a native popup (e.g. Edge extension options modal, full tab)
 // A native Chrome popup never exceeds 800x600 and is never an iframe.
 if (window.innerWidth > 800 || window.innerHeight > 600 || window !== window.top || window.location.search.includes('full')) {

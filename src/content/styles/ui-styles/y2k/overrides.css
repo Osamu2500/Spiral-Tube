@@ -46,15 +46,6 @@
 
 
 /* Card hover */
-html[data-ypp-ui-design="y2k"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-design="y2k"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-design="y2k"] ytd-video-renderer:hover,
-html[data-ypp-ui-design="y2k"] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-design="y2k"] ytd-grid-video-renderer:hover {
-  transform:scale(1.05) rotate(1deg) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
-  animation: sepia-bloom 0.3s forwards !important;
-}
 
 /* Sidebar guide */
 

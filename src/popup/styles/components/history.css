@@ -214,7 +214,8 @@
 }
 /* Scrollbar */
 .video-log-list::-webkit-scrollbar {
-    width: 4px;
+    display: none;
+    width: 0;
 }
 .video-log-list::-webkit-scrollbar-track {
     background: rgba(255,255,255,0.02);

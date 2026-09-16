@@ -40,6 +40,11 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._timedTextTranslation = null;
         this._renderLoopId = null;
 
+        // V6 Performance State
+        this._currentTrackIndex = -1;
+        this._wordSpansCache = null;
+        this._lastEventRef = null;
+
         this._handleTimedText = this._handleTimedText.bind(this);
         this._handleNavigation = this._handleNavigation.bind(this);
     }
@@ -113,6 +118,9 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             this._renderLoopId = null;
         }
         this._lastCaptionText = null;
+        this._lastEventRef = null;
+        this._wordSpansCache = null;
+        this._currentTrackIndex = -1;
         
         // V3: Clear tracks on video change
         this._timedTextTrack = null;
@@ -263,6 +271,25 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         return track;
     }
 
+    _findSubtitleIndexAtTime(timeMs) {
+        if (!this._timedTextTrack || this._timedTextTrack.length === 0) return -1;
+        let left = 0;
+        let right = this._timedTextTrack.length - 1;
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            const event = this._timedTextTrack[mid];
+            if (timeMs >= event.start && timeMs <= event.end) {
+                return mid;
+            }
+            if (timeMs < event.start) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+
     _startV3Renderer() {
         if (this._renderLoopId) cancelAnimationFrame(this._renderLoopId);
         
@@ -285,13 +312,38 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 return;
             }
             
-            const timeMs = video.currentTime * 1000;
-            // Find active primary event
-            const currentEvent = this._timedTextTrack.find(e => timeMs >= e.start && timeMs <= e.end);
+            // Advance event time by 150ms so sentences appear exactly as words are spoken
+            const eventTimeMs = (video.currentTime * 1000) + 150;
+            // Advance karaoke highlight by 50ms to keep it tightly in sync
+            const karaokeTimeMs = (video.currentTime * 1000) + 50;
+            
+            let currentEvent = null;
+            let transEvent = null;
+            
+            // V6 Performance: Use cursor and binary search
+            if (this._currentTrackIndex >= 0 && this._currentTrackIndex < this._timedTextTrack.length) {
+                const ev = this._timedTextTrack[this._currentTrackIndex];
+                if (eventTimeMs >= ev.start && eventTimeMs <= ev.end) {
+                    currentEvent = ev;
+                } else if (eventTimeMs > ev.end && this._currentTrackIndex + 1 < this._timedTextTrack.length && eventTimeMs >= this._timedTextTrack[this._currentTrackIndex + 1].start && eventTimeMs <= this._timedTextTrack[this._currentTrackIndex + 1].end) {
+                    // Check immediately next event
+                    this._currentTrackIndex++;
+                    currentEvent = this._timedTextTrack[this._currentTrackIndex];
+                }
+            }
+            
+            if (!currentEvent) {
+                // If it jumped or not initialized, fallback to binary search
+                this._currentTrackIndex = this._findSubtitleIndexAtTime(eventTimeMs);
+                if (this._currentTrackIndex !== -1) {
+                    currentEvent = this._timedTextTrack[this._currentTrackIndex];
+                }
+            }
             
             if (currentEvent) {
-                const transEvent = this._timedTextTranslation?.find(e => timeMs >= e.start && timeMs <= e.end);
-                this._renderV3Event(currentEvent, transEvent, timeMs);
+                // We don't binary search translations strictly for now, just find matching the same time window.
+                transEvent = this._timedTextTranslation?.find(e => eventTimeMs >= e.start && eventTimeMs <= e.end);
+                this._renderV3Event(currentEvent, transEvent, karaokeTimeMs);
             } else {
                 this._clearV3Event();
             }
@@ -306,10 +358,35 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             this._customContainer.classList.remove('active');
             this._customContainer.innerHTML = '';
             this._lastCaptionText = '';
+            this._lastEventRef = null;
+            this._wordSpansCache = null;
         }
     }
 
     _renderV3Event(event, transEvent, timeMs) {
+        const isKaraoke = this.settings?.karaokeMode;
+        
+        // V6 Performance: Skip full re-render if it's the exact same event object.
+        if (this._lastEventRef === event) {
+            if (isKaraoke && this._wordSpansCache) {
+                // Only update the active word classes directly in DOM
+                for (let i = 0; i < event.words.length; i++) {
+                    const wordStart = event.start + event.words[i].offset;
+                    const isActive = timeMs >= wordStart;
+                    const span = this._wordSpansCache[i];
+                    if (span) {
+                        if (isActive && !span.classList.contains('active-word')) {
+                            span.classList.add('active-word');
+                        } else if (!isActive && span.classList.contains('active-word')) {
+                            span.classList.remove('active-word');
+                        }
+                    }
+                }
+            }
+            return; // We only needed to update the karaoke state!
+        }
+        
+        this._lastEventRef = event;
         let captions = event.text;
 
         // HTML Safety for text-manipulation modes
@@ -319,10 +396,6 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             captions = temp.textContent;
         }
 
-        // V3 Fix: Skip re-render if exactly the same event and NOT in karaoke mode (which needs continuous updates)
-        const isKaraoke = this.settings?.karaokeMode;
-        if (!isKaraoke && captions === this._lastCaptionText) return;
-        
         this._lastCaptionText = captions;
 
         let processedCaptions = captions;
@@ -350,6 +423,13 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         // Render instantly
         if (this._customContainer.innerHTML !== html) {
             this._customContainer.innerHTML = html;
+        }
+        
+        // V6 Performance: Cache the spans if Karaoke is enabled
+        if (isKaraoke) {
+            this._wordSpansCache = Array.from(this._customContainer.querySelectorAll('.ypp-word'));
+        } else {
+            this._wordSpansCache = null;
         }
         
         if (!this._customContainer.classList.contains('active')) {
