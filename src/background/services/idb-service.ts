@@ -1,7 +1,9 @@
 import { storage } from '../../shared/utils/modules/chrome-storage.js';
 
-const DB_NAME = 'spiral-tube-db';
-const DB_VERSION = 1;
+const CONFIG = {
+    DB_NAME: 'spiral-tube-db',
+    DB_VERSION: 1
+};
 
 export const STORES = {
     WATCH_HISTORY: 'watch_history',
@@ -17,7 +19,7 @@ function _open(): Promise<IDBDatabase> {
     if (_db) return Promise.resolve(_db);
 
     return new Promise((resolve, reject) => {
-        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        const req = indexedDB.open(CONFIG.DB_NAME, CONFIG.DB_VERSION);
 
         req.onupgradeneeded = (e: IDBVersionChangeEvent) => {
             const db = (e.target as IDBOpenDBRequest).result;
@@ -55,19 +57,41 @@ async function _tx(storeName: string, mode: IDBTransactionMode, fn: (store: IDBO
 export const idbApi = {
     STORES,
 
-    set(storeName: string, key: string, value: any) {
+    /**
+     * Set a value in the specified store by key.
+     * @param {string} storeName
+     * @param {string} key
+     * @param {any} value
+     * @returns {Promise<any>}
+     */
+    set(storeName: string, key: string, value: any): Promise<any> {
         return _tx(storeName, 'readwrite', store => store.put(value, key));
     },
 
-    get(storeName: string, key: string) {
+    /**
+     * Get a value from the specified store by key.
+     * @param {string} storeName
+     * @param {string} key
+     * @returns {Promise<any>}
+     */
+    get(storeName: string, key: string): Promise<any> {
         return _tx(storeName, 'readonly', store => store.get(key));
     },
 
-    getAll(storeName: string) {
+    /**
+     * Get all key-value pairs from the specified store.
+     * @param {string} storeName
+     * @returns {Promise<Array<{key: string, value: any}>>}
+     */
+    getAll(storeName: string): Promise<Array<{key: string, value: any}>> {
         return new Promise(async (resolve, reject) => {
             try {
                 const db = await _open();
                 const tx = db.transaction(storeName, 'readonly');
+                
+                // Add error handler on transaction itself to catch premature aborts/failures
+                tx.onerror = () => reject(tx.error);
+
                 const store = tx.objectStore(storeName);
                 const results: any[] = [];
 
@@ -81,38 +105,67 @@ export const idbApi = {
                         });
                         resolve(results);
                     };
+                    valsReq.onerror = () => reject(valsReq.error);
                 };
                 keysReq.onerror = () => reject(keysReq.error);
-            } catch (e) { reject(e); }
+            } catch (e) {
+                console.error(`[YPP:IDB] Failed to getAll for ${storeName}:`, (e as Error).message);
+                reject(e);
+            }
         });
     },
 
-    delete(storeName: string, key: string) {
+    /**
+     * Delete a value from the specified store by key.
+     * @param {string} storeName
+     * @param {string} key
+     * @returns {Promise<any>}
+     */
+    delete(storeName: string, key: string): Promise<any> {
         return _tx(storeName, 'readwrite', store => store.delete(key));
     },
 
-    clear(storeName: string) {
+    /**
+     * Clear all data from the specified store.
+     * @param {string} storeName
+     * @returns {Promise<any>}
+     */
+    clear(storeName: string): Promise<any> {
         return _tx(storeName, 'readwrite', store => store.clear());
     },
 
-    async exportAll() {
+    /**
+     * Export all data from all stores.
+     * @returns {Promise<Record<string, any>>}
+     */
+    async exportAll(): Promise<Record<string, any>> {
         const result: Record<string, any> = {};
         for (const storeName of Object.values(STORES)) {
             try {
                 result[storeName] = await idbApi.getAll(storeName);
-            } catch (_) {
+            } catch (e) {
+                console.warn(`[YPP:IDB] Failed to export store ${storeName}:`, (e as Error).message);
                 result[storeName] = [];
             }
         }
         return result;
     },
 
-    async importAll(data: Record<string, any>) {
+    /**
+     * Import data into stores. Merges with existing data.
+     * @param {Record<string, any>} data
+     * @returns {Promise<void>}
+     */
+    async importAll(data: Record<string, any>): Promise<void> {
         for (const [storeName, records] of Object.entries(data)) {
             if (!Object.values(STORES).includes(storeName)) continue;
             // Removed idbApi.clear(storeName) so that syncDown merges items instead of wiping local items.
             for (const { key, value } of (records || [])) {
-                await idbApi.set(storeName, key, value);
+                try {
+                    await idbApi.set(storeName, key, value);
+                } catch (e) {
+                    console.warn(`[YPP:IDB] Failed to import key ${key} into ${storeName}:`, (e as Error).message);
+                }
             }
         }
     },
@@ -140,7 +193,11 @@ async function migrateBookmarks() {
         if (data.ypp_bookmarks && Array.isArray(data.ypp_bookmarks)) {
             for (const bm of data.ypp_bookmarks) {
                 if (bm && bm.id) {
-                    await idbApi.set(STORES.BOOKMARKS, bm.id, bm);
+                    try {
+                        await idbApi.set(STORES.BOOKMARKS, bm.id, bm);
+                    } catch (e) {
+                        console.warn(`[YPP:IDB] Migration failed for bookmark ${bm.id}:`, (e as Error).message);
+                    }
                 }
             }
             await chrome.storage.local.remove('ypp_bookmarks');
@@ -149,17 +206,21 @@ async function migrateBookmarks() {
 
         if (data.ypp_video_bookmarks && typeof data.ypp_video_bookmarks === 'object') {
             for (const [key, bm] of Object.entries(data.ypp_video_bookmarks)) {
-                await idbApi.set(STORES.BOOKMARKS, key, bm);
+                try {
+                    await idbApi.set(STORES.BOOKMARKS, key, bm);
+                } catch (e) {
+                    console.warn(`[YPP:IDB] Migration failed for video bookmark ${key}:`, (e as Error).message);
+                }
             }
             await chrome.storage.local.remove('ypp_video_bookmarks');
             migrated = true;
         }
         
         if (migrated) {
-            console.log('[YPP] Migrated bookmarks to IndexedDB');
+            console.info('[YPP:IDB] Migrated bookmarks to IndexedDB');
         }
     } catch (e) {
-        console.error('[YPP] Failed to migrate bookmarks to IndexedDB', e);
+        console.error('[YPP:IDB] Failed to migrate bookmarks to IndexedDB:', (e as Error).message);
     }
 }
 

@@ -1,8 +1,17 @@
 import { storage } from '../../shared/utils/modules/chrome-storage.js';
 import { idbApi } from './idb-service.js';
 
-const FILE_NAME = 'ypp_full_backup.json';
-const LEGACY_FILE_NAME = 'ypp_subscription_folders_backup.json';
+const CONFIG = {
+    FILE_NAME: 'ypp_full_backup.json',
+    LEGACY_FILE_NAME: 'ypp_subscription_folders_backup.json',
+    AUTH_TOKEN_KEY: 'google_auth_token',
+    AUTH_EXPIRES_KEY: 'google_auth_expires',
+    SYNC_PREFS_KEY: 'ypp_sync_prefs',
+    SYNC_TIME_KEY: 'ypp_last_sync_time',
+    API_BASE: 'https://www.googleapis.com/drive/v3/files',
+    UPLOAD_BASE: 'https://www.googleapis.com/upload/drive/v3/files'
+};
+
 
 export interface SyncPreferences {
     settings: boolean;
@@ -31,7 +40,7 @@ export interface BackupInfo {
  * Validates that a downloaded backup payload is structurally sound.
  * Returns an error message string if invalid, or null if valid.
  */
-function validateBackup(payload: any): string | null {
+function _validateBackup(payload: any): string | null {
     if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
         return 'Backup file is corrupt or empty.';
     }
@@ -52,55 +61,71 @@ function validateBackup(payload: any): string | null {
 }
 
 // Use our token cache that works across Chrome and Edge
-async function getAuthToken(interactive = false): Promise<string> {
-    // First try our custom cache (works in Edge via launchWebAuthFlow)
-    const token = await storage.get<string>('google_auth_token');
-    const expires = await storage.get<number>('google_auth_expires');
-    if (token && expires && expires > Date.now()) {
-        return token;
-    }
-    // Fallback to Chrome's built-in (works in Chrome)
-    return new Promise((resolve, reject) => {
-        chrome.identity.getAuthToken({ interactive }, (t) => {
-            if (chrome.runtime.lastError || !t) {
-                return reject(new Error(chrome.runtime.lastError?.message || 'Not signed in'));
-            }
-            resolve(t as string);
-        });
-    });
-}
-
-async function deleteBackupFile(token: string, fileName: string): Promise<void> {
-    const file = await findBackupFile(token, fileName);
-    if (!file) return;
-    await fetch(`https://www.googleapis.com/drive/v3/files/${file.id}`, {
-        method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` }
-    });
-}
-
-
-async function findBackupFile(token: string, fileName = FILE_NAME): Promise<any> {
-    const query = encodeURIComponent(`name='${fileName}'`);
-    const url = `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=${query}&fields=files(id,modifiedTime)`;
-    
-    const response = await fetch(url, {
-        headers: {
-            'Authorization': `Bearer ${token}`
+async function _getAuthToken(interactive = false): Promise<string> {
+    try {
+        // First try our custom cache (works in Edge via launchWebAuthFlow)
+        const token = await storage.get<string>(CONFIG.AUTH_TOKEN_KEY);
+        const expires = await storage.get<number>(CONFIG.AUTH_EXPIRES_KEY);
+        if (token && expires && expires > Date.now()) {
+            return token;
         }
-    });
-
-    if (!response.ok) {
-        chrome.identity.removeCachedAuthToken({ token }, () => {});
-        throw new Error('Failed to search Drive files.');
+        // Fallback to Chrome's built-in (works in Chrome)
+        return new Promise((resolve, reject) => {
+            chrome.identity.getAuthToken({ interactive }, (t) => {
+                if (chrome.runtime.lastError || !t) {
+                    return reject(new Error(chrome.runtime.lastError?.message || 'Not signed in'));
+                }
+                resolve(t as string);
+            });
+        });
+    } catch (e) {
+        console.warn(`[YPP:Sync] Error getting auth token: ${(e as Error).message}`);
+        throw e;
     }
-    
-    const data = await response.json();
-    return data.files && data.files.length > 0 ? data.files[0] : null;
 }
 
-async function filterSyncData(storageData: any): Promise<{ filteredData: Record<string, any>; prefs: SyncPreferences }> {
-    const local = await chrome.storage.local.get('ypp_sync_prefs');
+async function _deleteBackupFile(token: string, fileName: string): Promise<void> {
+    try {
+        const file = await _findBackupFile(token, fileName);
+        if (!file) return;
+        const response = await fetch(`${CONFIG.API_BASE}/${file.id}`, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!response.ok) {
+            console.warn(`[YPP:Sync] Failed to delete backup file: ${response.statusText}`);
+        }
+    } catch (e) {
+        console.error(`[YPP:Sync] Exception in _deleteBackupFile: ${(e as Error).message}`);
+    }
+}
+
+async function _findBackupFile(token: string, fileName = CONFIG.FILE_NAME): Promise<any> {
+    try {
+        const query = encodeURIComponent(`name='${fileName}'`);
+        const url = `${CONFIG.API_BASE}?spaces=appDataFolder&q=${query}&fields=files(id,modifiedTime)`;
+        
+        const response = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            chrome.identity.removeCachedAuthToken({ token }, () => {});
+            throw new Error(`Failed to search Drive files: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        return data.files && data.files.length > 0 ? data.files[0] : null;
+    } catch (e) {
+        console.error(`[YPP:Sync] Exception in _findBackupFile: ${(e as Error).message}`);
+        throw e;
+    }
+}
+
+async function _filterSyncData(storageData: any): Promise<{ filteredData: Record<string, any>; prefs: SyncPreferences }> {
+    const local = await chrome.storage.local.get(CONFIG.SYNC_PREFS_KEY);
     const prefs: SyncPreferences = local.ypp_sync_prefs || { settings: true, subs: true, design: true, bookmarks: true, history: true, autoSync: false };
     
     // Deep clone to avoid mutating in-memory state
@@ -150,19 +175,23 @@ async function filterSyncData(storageData: any): Promise<{ filteredData: Record<
     return { filteredData, prefs };
 }
 
+/**
+ * Backs up relevant local storage and IndexedDB data to Google Drive.
+ * @returns {Promise<{success: boolean, timestamp?: string, error?: string}>}
+ */
 export async function syncUp() {
     try {
-        const token = await getAuthToken(true);
+        const token = await _getAuthToken(true);
         const storage = await chrome.storage.local.get(null);
         
-        const { filteredData, prefs } = await filterSyncData(storage);
+        const { filteredData, prefs } = await _filterSyncData(storage);
 
         let idbData = null;
         if (prefs.history !== false) {
             try {
                 idbData = await idbApi.exportAll();
             } catch (e) {
-                console.warn('[YPP] Failed to export IDB for sync:', e);
+                console.warn('[YPP:Sync] Failed to export IDB for sync:', (e as Error).message);
             }
         }
         
@@ -175,10 +204,10 @@ export async function syncUp() {
         if (idbData) payload.idb = idbData;
         
         const fileContent = JSON.stringify(payload);
-        const existingFile = await findBackupFile(token, FILE_NAME);
+        const existingFile = await _findBackupFile(token, CONFIG.FILE_NAME);
         
         const metadata = {
-            name: FILE_NAME,
+            name: CONFIG.FILE_NAME,
             parents: ['appDataFolder']
         };
 
@@ -186,11 +215,11 @@ export async function syncUp() {
         form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
         form.append('file', new Blob([fileContent], { type: 'application/json' }));
 
-        let fetchUrl = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+        let fetchUrl = `${CONFIG.UPLOAD_BASE}?uploadType=multipart`;
         let method = 'POST';
 
         if (existingFile) {
-            fetchUrl = `https://www.googleapis.com/upload/drive/v3/files/${existingFile.id}?uploadType=multipart`;
+            fetchUrl = `${CONFIG.UPLOAD_BASE}/${existingFile.id}?uploadType=multipart`;
             method = 'PATCH';
         }
 
@@ -204,28 +233,33 @@ export async function syncUp() {
 
         if (!response.ok) {
             chrome.identity.removeCachedAuthToken({ token }, () => {});
-            throw new Error('Failed to upload sync data to Drive');
+            throw new Error(`Failed to upload sync data to Drive: ${response.statusText}`);
         }
         
         const syncTime = new Date().toISOString();
-        await chrome.storage.local.set({ ypp_last_sync_time: syncTime });
+        await chrome.storage.local.set({ [CONFIG.SYNC_TIME_KEY]: syncTime });
         
+        console.info(`[YPP:Sync] Successfully synced up data at ${syncTime}`);
         return { success: true, timestamp: syncTime };
     } catch (error) {
-        console.error('[YPP] Sync Up Error:', error);
+        console.error('[YPP:Sync] Sync Up Error:', (error as Error).message);
         return { success: false, error: (error as Error).message };
     }
 }
 
+/**
+ * Downloads backup from Google Drive and restores it to local storage and IDB.
+ * @returns {Promise<{success: boolean, data?: BackupPayload, timestamp?: string, message?: string, error?: string}>}
+ */
 export async function syncDown() {
     try {
-        const token = await getAuthToken(true);
+        const token = await _getAuthToken(true);
         
-        let existingFile = await findBackupFile(token, FILE_NAME);
+        let existingFile = await _findBackupFile(token, CONFIG.FILE_NAME);
         let isLegacy = false;
         
         if (!existingFile) {
-            existingFile = await findBackupFile(token, LEGACY_FILE_NAME);
+            existingFile = await _findBackupFile(token, CONFIG.LEGACY_FILE_NAME);
             isLegacy = true;
         }
         
@@ -233,7 +267,7 @@ export async function syncDown() {
             return { success: true, message: 'No backup found' };
         }
 
-        const response = await fetch(`https://www.googleapis.com/drive/v3/files/${existingFile.id}?alt=media`, {
+        const response = await fetch(`${CONFIG.API_BASE}/${existingFile.id}?alt=media`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -241,13 +275,13 @@ export async function syncDown() {
 
         if (!response.ok) {
             chrome.identity.removeCachedAuthToken({ token }, () => {});
-            throw new Error('Failed to download sync data from Drive');
+            throw new Error(`Failed to download sync data from Drive: ${response.statusText}`);
         }
         
         const downloadedData = await response.json() as BackupPayload;
 
         // Validate backup integrity before doing anything
-        const validationError = validateBackup(downloadedData);
+        const validationError = _validateBackup(downloadedData);
         if (validationError) {
             throw new Error(validationError);
         }
@@ -256,7 +290,7 @@ export async function syncDown() {
             await chrome.storage.local.set({ ypp_subscription_folders: downloadedData });
         } else {
             const rawStorageData = downloadedData.storage || downloadedData; // support old format
-            const { filteredData: storageData, prefs } = await filterSyncData(rawStorageData);
+            const { filteredData: storageData, prefs } = await _filterSyncData(rawStorageData);
             await chrome.storage.local.set(storageData);
 
             // Also push the settings object into chrome.storage.sync so both areas stay consistent.
@@ -265,7 +299,7 @@ export async function syncDown() {
                 try {
                     await chrome.storage.sync.set({ settings: { ...storageData.settings, lastUpdated: Date.now() } });
                 } catch (e) {
-                    console.warn('[YPP] Could not push restored settings to sync storage:', e);
+                    console.warn('[YPP:Sync] Could not push restored settings to sync storage:', (e as Error).message);
                 }
             }
 
@@ -274,41 +308,48 @@ export async function syncDown() {
                 try {
                     await idbApi.importAll(downloadedData.idb);
                 } catch (e) {
-                    console.warn('[YPP] Failed to import IDB from sync:', e);
+                    console.warn('[YPP:Sync] Failed to import IDB from sync:', (e as Error).message);
                 }
             }
         }
         
         const syncTime = new Date().toISOString();
-        await chrome.storage.local.set({ ypp_last_sync_time: syncTime });
+        await chrome.storage.local.set({ [CONFIG.SYNC_TIME_KEY]: syncTime });
         
+        console.info(`[YPP:Sync] Successfully synced down data at ${syncTime}`);
         return { success: true, data: downloadedData, timestamp: syncTime };
     } catch (error) {
-        console.error('[YPP] Sync Down Error:', error);
+        console.error('[YPP:Sync] Sync Down Error:', (error as Error).message);
         return { success: false, error: (error as Error).message };
     }
 }
 
+/**
+ * Resets local data and deletes remote backup files.
+ * @returns {Promise<{success: boolean, error?: string}>}
+ */
 export async function syncReset() {
     try {
         // Clear all local storage (keep internal auth tokens)
-        const keysToKeep = ['google_auth_token', 'google_auth_expires'];
+        const keysToKeep = [CONFIG.AUTH_TOKEN_KEY, CONFIG.AUTH_EXPIRES_KEY];
         const allData = await storage.getAll();
         const toRemove = Object.keys(allData).filter(k => !keysToKeep.includes(k));
         await storage.remove(toRemove);
 
         // Also delete the Drive backup file if signed in
         try {
-            const token = await getAuthToken(false);
-            await deleteBackupFile(token, FILE_NAME);
-            await deleteBackupFile(token, LEGACY_FILE_NAME);
+            const token = await _getAuthToken(false);
+            await _deleteBackupFile(token, CONFIG.FILE_NAME);
+            await _deleteBackupFile(token, CONFIG.LEGACY_FILE_NAME);
         } catch (_) {
             // Not signed in — that's fine, local reset still succeeded
+            console.debug('[YPP:Sync] Skip remote reset as not signed in.');
         }
 
+        console.info('[YPP:Sync] Local reset completed successfully.');
         return { success: true };
     } catch (error) {
-        console.error('[YPP] Reset Error:', error);
+        console.error('[YPP:Sync] Reset Error:', (error as Error).message);
         return { success: false, error: (error as Error).message };
     }
 }
@@ -320,9 +361,9 @@ export async function syncReset() {
  */
 export async function getBackupInfo(): Promise<BackupInfo | null> {
     try {
-        const token = await getAuthToken(false);
-        const query = encodeURIComponent(`name='${FILE_NAME}'`);
-        const url = `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=${query}&fields=files(id,modifiedTime,size)&pageSize=1`;
+        const token = await _getAuthToken(false);
+        const query = encodeURIComponent(`name='${CONFIG.FILE_NAME}'`);
+        const url = `${CONFIG.API_BASE}?spaces=appDataFolder&q=${query}&fields=files(id,modifiedTime,size)&pageSize=1`;
         const resp = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
         if (!resp.ok) return null;
         const data = await resp.json();
@@ -332,7 +373,7 @@ export async function getBackupInfo(): Promise<BackupInfo | null> {
         // Fetch just the version from the payload (first ~100 bytes is enough)
         // We use a Range header to avoid downloading the whole file
         const dlResp = await fetch(
-            `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media`,
+            `${CONFIG.API_BASE}/${file.id}?alt=media`,
             { headers: { Authorization: `Bearer ${token}`, Range: 'bytes=0-512' } }
         );
         let version = 'unknown';

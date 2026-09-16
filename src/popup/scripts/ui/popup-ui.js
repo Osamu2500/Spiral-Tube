@@ -16,13 +16,27 @@ const TITLES = {
     'declutter': 'Declutter Features'
 };
 
+const CONFIG = {
+    SEARCH_DEBOUNCE_MS: 100,
+    TOAST_TIMEOUT_MS: 5000,
+    SAVE_INDICATOR_MS: 1200,
+    CARD_SELECTORS: '.toggle-card, .setting-item, .mode-card',
+    STORAGE_KEYS: {
+        LAST_TAB: 'ypp-last-tab',
+        COLLAPSE_PREFIX: 'ypp_collapse_',
+        UPDATE_FLAG: 'ypp_has_update',
+        SETTINGS: 'settings',
+        SECTION_ORDER: 'sectionOrder'
+    }
+};
+
 // ── Fuzzy Search Helpers ──────────────────────────────────────────────────────
 
 /**
  * Simple fuzzy match: returns a score (higher = better match).
  * 0 = no match, >0 = match.
  */
-function fuzzyScore(text, query) {
+function _fuzzyScore(text, query) {
     if (!query) return 0;
     const t = text.toLowerCase();
     const q = query.toLowerCase();
@@ -40,7 +54,7 @@ function fuzzyScore(text, query) {
 /**
  * Wrap the first occurrence of `query` inside `el`'s text nodes with <mark>.
  */
-function highlightText(el, query) {
+function _highlightText(el, query) {
     if (!query) return;
     // Walk text nodes inside the name span only
     const nameEl = el.querySelector('.name, .feature-name, .section-title');
@@ -49,12 +63,12 @@ function highlightText(el, query) {
     const idx = original.toLowerCase().indexOf(query.toLowerCase());
     if (idx === -1) return;
     nameEl.innerHTML =
-        escapeHtml(original.slice(0, idx)) +
-        `<mark class="search-highlight">${escapeHtml(original.slice(idx, idx + query.length))}</mark>` +
-        escapeHtml(original.slice(idx + query.length));
+        _escapeHtml(original.slice(0, idx)) +
+        `<mark class="search-highlight">${_escapeHtml(original.slice(idx, idx + query.length))}</mark>` +
+        _escapeHtml(original.slice(idx + query.length));
 }
 
-function clearHighlights(el) {
+function _clearHighlights(el) {
     el.querySelectorAll('mark.search-highlight').forEach(mark => {
         const parent = mark.parentNode;
         parent.replaceChild(document.createTextNode(mark.textContent), mark);
@@ -62,11 +76,11 @@ function clearHighlights(el) {
     });
 }
 
-function escapeHtml(str) {
+function _escapeHtml(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function debounce(fn, ms) {
+function _debounce(fn, ms) {
     let timer;
     return (...args) => {
         clearTimeout(timer);
@@ -93,7 +107,7 @@ export function switchTab(document, tabId) {
             pageTitle.textContent = TITLES[tabId] || 'Settings';
         }
         
-        localStorage.setItem('ypp-last-tab', tabId);
+        localStorage.setItem(CONFIG.STORAGE_KEYS.LAST_TAB, tabId);
     };
 
     if (document.startViewTransition) {
@@ -103,7 +117,7 @@ export function switchTab(document, tabId) {
     }
 }
 
-function initTabs(document) {
+function _initTabs(document) {
     const navItems = document.querySelectorAll('.nav-item[data-tab]');
     navItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -112,13 +126,13 @@ function initTabs(document) {
         });
     });
 
-    const lastTab = localStorage.getItem('ypp-last-tab');
+    const lastTab = localStorage.getItem(CONFIG.STORAGE_KEYS.LAST_TAB);
     if (lastTab && document.getElementById(`tab-${lastTab}`)) {
         switchTab(document, lastTab);
     }
 }
 
-function initCollapsibleSections(document) {
+function _initCollapsibleSections(document) {
     const sections = document.querySelectorAll('.settings-section');
     sections.forEach(section => {
         const header = section.querySelector('.section-header');
@@ -127,25 +141,25 @@ function initCollapsibleSections(document) {
             const titleEl = header.querySelector('.section-title');
             const title = titleEl ? titleEl.textContent : 'section';
             
-            const isCollapsed = localStorage.getItem('ypp_collapse_' + title) === 'true';
+            const isCollapsed = localStorage.getItem(CONFIG.STORAGE_KEYS.COLLAPSE_PREFIX + title) === 'true';
             if (isCollapsed) {
                 section.classList.add('collapsed');
             }
 
             header.addEventListener('click', () => {
                 section.classList.toggle('collapsed');
-                localStorage.setItem('ypp_collapse_' + title, section.classList.contains('collapsed'));
+                localStorage.setItem(CONFIG.STORAGE_KEYS.COLLAPSE_PREFIX + title, section.classList.contains('collapsed'));
             });
         }
     });
 }
 
-function initSearch(document) {
+function _initSearch(document) {
     const featureSearchInput = document.getElementById('featureSearch');
     if (!featureSearchInput) return;
 
     const doSearch = (query) => {
-        const allCards = document.querySelectorAll('.toggle-card, .setting-item, .mode-card');
+        const allCards = document.querySelectorAll(CONFIG.CARD_SELECTORS);
         const allSections = document.querySelectorAll('.settings-section');
         const allTabs = document.querySelectorAll('.tab-content');
 
@@ -154,7 +168,7 @@ function initSearch(document) {
         if (!query) {
             allCards.forEach(card => {
                 card.style.display = '';
-                clearHighlights(card);
+                _clearHighlights(card);
             });
             allSections.forEach(sec => sec.style.display = '');
             allTabs.forEach(tab => tab.style.display = '');
@@ -165,7 +179,7 @@ function initSearch(document) {
                 if (header) {
                     const titleEl = header.querySelector('.section-title');
                     const title = titleEl ? titleEl.textContent : 'section';
-                    const isCollapsed = localStorage.getItem('ypp_collapse_' + title) === 'true';
+                    const isCollapsed = localStorage.getItem(CONFIG.STORAGE_KEYS.COLLAPSE_PREFIX + title) === 'true';
                     section.classList.toggle('collapsed', isCollapsed);
                 }
             });
@@ -173,16 +187,16 @@ function initSearch(document) {
         }
 
         allTabs.forEach(tab => {
-            const cards = tab.querySelectorAll('.toggle-card, .setting-item, .mode-card');
+            const cards = tab.querySelectorAll(CONFIG.CARD_SELECTORS);
             let tabHasMatches = false;
 
             cards.forEach(card => {
-                clearHighlights(card);
+                _clearHighlights(card);
                 const text = card.textContent || '';
-                const score = fuzzyScore(text, query);
+                const score = _fuzzyScore(text, query);
                 if (score > 0) {
                     card.style.display = '';
-                    highlightText(card, query);
+                    _highlightText(card, query);
                     tabHasMatches = true;
                 } else {
                     card.style.display = 'none';
@@ -192,7 +206,7 @@ function initSearch(document) {
             const sections = tab.querySelectorAll('.settings-section');
             sections.forEach(sec => {
                 const visibleCards = Array.from(
-                    sec.querySelectorAll('.toggle-card, .setting-item, .mode-card')
+                    sec.querySelectorAll(CONFIG.CARD_SELECTORS)
                 ).filter(c => c.style.display !== 'none');
                 if (visibleCards.length === 0) {
                     sec.style.display = 'none';
@@ -206,16 +220,16 @@ function initSearch(document) {
         });
     };
 
-    featureSearchInput.addEventListener('input', debounce((e) => {
+    featureSearchInput.addEventListener('input', _debounce((e) => {
         doSearch(e.target.value.trim());
-    }, 100));
+    }, CONFIG.SEARCH_DEBOUNCE_MS));
 }
 
 export function initUI(document) {
-    initTabs(document);
-    initCollapsibleSections(document);
-    initSearch(document);
-    initWhatsNew(document);
+    _initTabs(document);
+    _initCollapsibleSections(document);
+    _initSearch(document);
+    _initWhatsNew(document);
 
     // Global event delegation for all toggle cards (schema-generated & hardcoded)
     document.addEventListener('click', (e) => {
@@ -237,14 +251,19 @@ export function initUI(document) {
  * Check if the extension just updated and show a "What's New" toast banner.
  * Clears the badge and flag after displaying.
  */
-function initWhatsNew(doc) {
-    chrome.storage.local.get('ypp_has_update', (data) => {
-        if (!data.ypp_has_update) return;
-        const version = data.ypp_has_update;
+function _initWhatsNew(doc) {
+    try {
+        chrome.storage.local.get(CONFIG.STORAGE_KEYS.UPDATE_FLAG, (data) => {
+            if (chrome.runtime.lastError) {
+                console.error('[YPP:UI] Storage get error in _initWhatsNew:', chrome.runtime.lastError.message);
+                return;
+            }
+            if (!data[CONFIG.STORAGE_KEYS.UPDATE_FLAG]) return;
+            const version = data[CONFIG.STORAGE_KEYS.UPDATE_FLAG];
 
-        // Clear the flag and badge
-        chrome.storage.local.remove('ypp_has_update');
-        chrome.action.setBadgeText({ text: '' });
+            // Clear the flag and badge
+            chrome.storage.local.remove(CONFIG.STORAGE_KEYS.UPDATE_FLAG);
+            chrome.action.setBadgeText({ text: '' });
 
         // Create toast
         const toast = doc.createElement('div');
@@ -288,7 +307,7 @@ export function showSaveIndicator(document) {
         setTimeout(() => {
             badge.textContent = originalText;
             badge.style.background = '';
-        }, 1200);
+        }, CONFIG.SAVE_INDICATOR_MS);
     }
 }
 
@@ -386,20 +405,28 @@ export function initDualAccentToggle(document) {
     };
 
     // Load saved state
-    chrome.storage.local.get('settings', (data) => {
-        const isDual = data.settings?.enableDualAccent || false;
-        const secColor = data.settings?.secondaryAccentColor || '#b62bcf';
-        dualToggle.checked = isDual;
-        if (secInput) secInput.value = secColor;
-        applySecSwatchActive(secColor);
-        if (secSwatchesContainer) {
-            secSwatchesContainer.style.opacity = isDual ? '1' : '0.4';
-            secSwatchesContainer.style.pointerEvents = isDual ? 'auto' : 'none';
-        }
-        if (isDual && primaryInput) {
-            applyAccentColor(document, primaryInput.value, secColor);
-        }
-    });
+    try {
+        chrome.storage.local.get(CONFIG.STORAGE_KEYS.SETTINGS, (data) => {
+            if (chrome.runtime.lastError) {
+                console.error('[YPP:UI] Error loading dual accent settings:', chrome.runtime.lastError.message);
+                return;
+            }
+            const isDual = data.settings?.enableDualAccent || false;
+            const secColor = data.settings?.secondaryAccentColor || '#b62bcf';
+            dualToggle.checked = isDual;
+            if (secInput) secInput.value = secColor;
+            applySecSwatchActive(secColor);
+            if (secSwatchesContainer) {
+                secSwatchesContainer.style.opacity = isDual ? '1' : '0.4';
+                secSwatchesContainer.style.pointerEvents = isDual ? 'auto' : 'none';
+            }
+            if (isDual && primaryInput) {
+                applyAccentColor(document, primaryInput.value, secColor);
+            }
+        });
+    } catch (e) {
+        console.error('[YPP:UI] Exception in initDualAccentToggle:', (e as Error).message);
+    }
 
     const reapply = () => {
         const isDual = dualToggle.checked;
@@ -412,12 +439,20 @@ export function initDualAccentToggle(document) {
         if (sec) applySecSwatchActive(sec);
         
         // Persist
-        chrome.storage.local.get('settings', (data) => {
-            const settings = data.settings || {};
-            settings.enableDualAccent = isDual;
-            if (sec) settings.secondaryAccentColor = sec;
-            chrome.storage.local.set({ settings });
-        });
+        try {
+            chrome.storage.local.get(CONFIG.STORAGE_KEYS.SETTINGS, (data) => {
+                if (chrome.runtime.lastError) {
+                    console.error('[YPP:UI] Error persisting dual accent settings:', chrome.runtime.lastError.message);
+                    return;
+                }
+                const settings = data.settings || {};
+                settings.enableDualAccent = isDual;
+                if (sec) settings.secondaryAccentColor = sec;
+                chrome.storage.local.set({ [CONFIG.STORAGE_KEYS.SETTINGS]: settings });
+            });
+        } catch (e) {
+            console.error('[YPP:UI] Exception saving dual accent settings:', (e as Error).message);
+        }
     };
 
     dualToggle.addEventListener('change', reapply);
@@ -455,26 +490,34 @@ export function initDragAndDrop(doc) {
     let draggedSection = null;
 
     // Load saved order
-    chrome.storage.local.get(['sectionOrder'], (data) => {
-        const orderMap = data.sectionOrder || {};
-        const tabs = doc.querySelectorAll('.tab-content');
-        tabs.forEach(tab => {
-            if (orderMap[tab.id]) {
-                const savedOrder = orderMap[tab.id];
-                const sections = Array.from(tab.querySelectorAll('.settings-section'));
-                sections.sort((a, b) => {
-                    const titleA = a.querySelector('.section-title')?.textContent.trim() || '';
-                    const titleB = b.querySelector('.section-title')?.textContent.trim() || '';
-                    let idxA = savedOrder.indexOf(titleA);
-                    let idxB = savedOrder.indexOf(titleB);
-                    if (idxA === -1) idxA = 999;
-                    if (idxB === -1) idxB = 999;
-                    return idxA - idxB;
-                });
-                sections.forEach(sec => tab.appendChild(sec));
+    try {
+        chrome.storage.local.get([CONFIG.STORAGE_KEYS.SECTION_ORDER], (data) => {
+            if (chrome.runtime.lastError) {
+                console.error('[YPP:UI] Error loading section order:', chrome.runtime.lastError.message);
+                return;
             }
+            const orderMap = data[CONFIG.STORAGE_KEYS.SECTION_ORDER] || {};
+            const tabs = doc.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                if (orderMap[tab.id]) {
+                    const savedOrder = orderMap[tab.id];
+                    const sections = Array.from(tab.querySelectorAll('.settings-section'));
+                    sections.sort((a, b) => {
+                        const titleA = a.querySelector('.section-title')?.textContent.trim() || '';
+                        const titleB = b.querySelector('.section-title')?.textContent.trim() || '';
+                        let idxA = savedOrder.indexOf(titleA);
+                        let idxB = savedOrder.indexOf(titleB);
+                        if (idxA === -1) idxA = 999;
+                        if (idxB === -1) idxB = 999;
+                        return idxA - idxB;
+                    });
+                    sections.forEach(sec => tab.appendChild(sec));
+                }
+            });
         });
-    });
+    } catch (e) {
+        console.error('[YPP:UI] Exception in initDragAndDrop loading:', (e as Error).message);
+    }
 
     const sections = doc.querySelectorAll('.settings-section');
     sections.forEach(section => {
@@ -519,13 +562,21 @@ export function initDragAndDrop(doc) {
             if (handle) handle.style.cursor = 'grab';
             
             // Save order
-            const orderMap = {};
-            doc.querySelectorAll('.tab-content').forEach(tab => {
-                const secs = Array.from(tab.querySelectorAll('.settings-section'));
-                const order = secs.map(s => s.querySelector('.section-title')?.textContent.trim() || '').filter(Boolean);
-                if (order.length) orderMap[tab.id] = order;
-            });
-            chrome.storage.local.set({ sectionOrder: orderMap });
+            try {
+                const orderMap = {};
+                doc.querySelectorAll('.tab-content').forEach(tab => {
+                    const secs = Array.from(tab.querySelectorAll('.settings-section'));
+                    const order = secs.map(s => s.querySelector('.section-title')?.textContent.trim() || '').filter(Boolean);
+                    if (order.length) orderMap[tab.id] = order;
+                });
+                chrome.storage.local.set({ [CONFIG.STORAGE_KEYS.SECTION_ORDER]: orderMap }, () => {
+                    if (chrome.runtime.lastError) {
+                        console.error('[YPP:UI] Error saving section order:', chrome.runtime.lastError.message);
+                    }
+                });
+            } catch (e) {
+                console.error('[YPP:UI] Exception saving section order:', (e as Error).message);
+            }
         });
 
         section.addEventListener('dragover', (e) => {

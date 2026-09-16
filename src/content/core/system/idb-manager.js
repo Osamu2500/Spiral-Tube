@@ -14,7 +14,23 @@ window.YPP.IDB = (() => {
         SUB_GROUPS:    'subscription_groups',
     };
 
-    /** Helper to send message to background script */
+    const ACTIONS = {
+        SET: 'IDB_SET',
+        GET: 'IDB_GET',
+        GET_ALL: 'IDB_GET_ALL',
+        DELETE: 'IDB_DELETE',
+        CLEAR: 'IDB_CLEAR',
+        EXPORT_ALL: 'IDB_EXPORT_ALL',
+        IMPORT_ALL: 'IDB_IMPORT_ALL',
+        PRUNE: 'IDB_PRUNE'
+    };
+
+    /**
+     * Helper to send message to background script and map response/error appropriately.
+     * @param {string} action The IDB action constant to dispatch.
+     * @param {Object} [payload={}] The payload needed for the action.
+     * @returns {Promise<any>} Solves with the IDB result or rejects with an Error.
+     */
     function _send(action, payload = {}) {
         return new Promise((resolve, reject) => {
             chrome.runtime.sendMessage({ action, ...payload }, (response) => {
@@ -33,35 +49,35 @@ window.YPP.IDB = (() => {
         STORES,
 
         set(storeName, key, value) {
-            return _send('IDB_SET', { storeName, key, value });
+            return _send(ACTIONS.SET, { storeName, key, value });
         },
 
         get(storeName, key) {
-            return _send('IDB_GET', { storeName, key });
+            return _send(ACTIONS.GET, { storeName, key });
         },
 
         getAll(storeName) {
-            return _send('IDB_GET_ALL', { storeName });
+            return _send(ACTIONS.GET_ALL, { storeName });
         },
 
         delete(storeName, key) {
-            return _send('IDB_DELETE', { storeName, key });
+            return _send(ACTIONS.DELETE, { storeName, key });
         },
 
         clear(storeName) {
-            return _send('IDB_CLEAR', { storeName });
+            return _send(ACTIONS.CLEAR, { storeName });
         },
 
         exportAll() {
-            return _send('IDB_EXPORT_ALL');
+            return _send(ACTIONS.EXPORT_ALL);
         },
 
         importAll(data) {
-            return _send('IDB_IMPORT_ALL', { data });
+            return _send(ACTIONS.IMPORT_ALL, { data });
         },
 
         pruneOlderThan(storeName, days) {
-            return _send('IDB_PRUNE', { storeName, days });
+            return _send(ACTIONS.PRUNE, { storeName, days });
         }
     };
 
