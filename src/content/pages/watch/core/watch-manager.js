@@ -85,7 +85,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
       '.ytp-chrome-bottom[data-ypp-processed], .ytp-right-controls[data-ypp-processed], ytd-reel-video-renderer[data-ypp-processed]'
     ).forEach(el => el.removeAttribute('data-ypp-processed'));
     // Wait until featureManager has finished instantiating features so that
-    // feature instances (VolumeBooster, VideoFilters, BookmarksManager etc.)
+    // feature instances (Equaliser, VideoFilters, BookmarksManager etc.)
     // exist when injectControls() tries to build buttons for the player bar.
     // Without this, getFeature() returns null and buttons are silently skipped.
     try {

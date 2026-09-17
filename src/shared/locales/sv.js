@@ -50,7 +50,7 @@ export default {
     "watch_time": "Titta tid",
     "tracking_resume": "Spårning och återuppta",
     "history_interface": "Historiegränssnitt",
-    "global_player_bar": "Global Player Bar",
+    "global_player_bar": "Global Bar",
     "custom_css_userstyles": "Anpassad CSS (användarstilar)",
     "stats_overlays": "Statistik och överlägg",
     "api_integrations": "API-integrationer",

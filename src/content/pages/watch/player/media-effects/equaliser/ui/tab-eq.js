@@ -1,8 +1,8 @@
 export class EQTabUI {
     static build(uiState) {
-        const { ctx, clearActivePreset, saveSettings, VolumeBoosterUI } = uiState;
+        const { ctx, clearActivePreset, saveSettings, EqualiserUI } = uiState;
         // Determine if global bar based on anchorBtn
-        const isGlobalBar = !!uiState.anchorBtn?.closest?.('.ypp-global-player-bar');
+        const isGlobalBar = !!uiState.anchorBtn?.closest?.('.ypp-global-bar');
 
         const wrap = document.createElement('div');
         wrap.id = 'ypp-eq-tab-eq';
@@ -10,14 +10,14 @@ export class EQTabUI {
         // ── Canvas Curve
         const canvasEl = document.createElement('canvas');
         canvasEl.width  = isGlobalBar ? 268 : 308;
-        canvasEl.height = isGlobalBar ? 52  : 50;
+        canvasEl.height = isGlobalBar ? 92  : 90;
         canvasEl.className = 'ypp-eq-canvas';
         canvasEl.style.cursor = 'pointer';
         canvasEl.title = 'Click to cycle visualizer modes (Both, Curve, Bars, Waveform, Off)';
         canvasEl.onclick = () => {
             ctx._visualizerMode = ((ctx._visualizerMode || 0) + 1) % 5;
             saveSettings(ctx);
-            if (!ctx.analyserNode) VolumeBoosterUI.drawCurve(ctx, canvasEl);
+            if (!ctx.analyserNode) EqualiserUI.drawCurve(ctx, canvasEl);
         };
         wrap.appendChild(canvasEl);
 
@@ -55,7 +55,7 @@ export class EQTabUI {
                 const db = parseFloat(e.target.value);
                 ctx._setEQBand(i, db);
                 dbLabel.textContent = (db >= 0 ? '+' : '') + db;
-                VolumeBoosterUI.drawCurve(ctx, canvasEl);
+                EqualiserUI.drawCurve(ctx, canvasEl);
                 clearActivePreset();
                 saveSettings(ctx);
             };
@@ -64,7 +64,7 @@ export class EQTabUI {
                 ctx._setEQBand(i, 0);
                 slider.value = 0;
                 dbLabel.textContent = '0';
-                VolumeBoosterUI.drawCurve(ctx, canvasEl);
+                EqualiserUI.drawCurve(ctx, canvasEl);
                 clearActivePreset();
                 saveSettings(ctx);
             };
@@ -81,7 +81,7 @@ export class EQTabUI {
         
         wrap.appendChild(bandsSection);
         
-        // Pass canvasEl to VolumeBoosterUI so it can draw animations there
+        // Pass canvasEl to EqualiserUI so it can draw animations there
         uiState.canvasEl = canvasEl;
 
         return wrap;

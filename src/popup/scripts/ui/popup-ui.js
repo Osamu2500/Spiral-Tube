@@ -336,8 +336,8 @@ export function updateDependencyUI(document) {
         cssOptions.style.display = cssToggle.checked ? 'block' : 'none';
     }
 
-    const gpbToggle = document.getElementById('enableGlobalPlayerBar');
-    const gpbOptions = document.getElementById('globalPlayerBarOptions');
+    const gpbToggle = document.getElementById('enableGlobalBar');
+    const gpbOptions = document.getElementById('globalBarOptions');
     if (gpbToggle && gpbOptions) {
         gpbOptions.style.display = gpbToggle.checked ? 'block' : 'none';
     }

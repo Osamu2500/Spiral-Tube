@@ -12,7 +12,11 @@ export const AudioEQMixin = {
             if (video) this.initAudioContext(video);
         }
         if (this._eqNodes[index] && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
+            if (this.ctx.state === 'suspended') {
+                this.ctx.resume().catch((e) => {
+                    this.utils?.log?.('[YPP:Equaliser] _setEQBand resume failed: ' + e.message, 'Equaliser', 'info');
+                });
+            }
             this._eqNodes[index].gain.setTargetAtTime(db, this.ctx.currentTime, 0.05);
         }
     },

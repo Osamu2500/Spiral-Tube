@@ -1122,7 +1122,7 @@ html[data-ypp-ui-design="retro"] .ypp-vcp-compare-toggle:hover {
   transform: scale(1.05) !important;
 }
 
-html[data-ypp-ui-design="retro"] #ypp-global-player-bar,
+html[data-ypp-ui-design="retro"] #ypp-global-bar,
 html[data-ypp-ui-design="retro"] .ypp-global-bar {
   box-shadow: var(--shadow-base) !important;
 }
@@ -1133,8 +1133,8 @@ html[data-ypp-ui-design="retro"] #ypp-cinema-panel {
   border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
-html[data-ypp-ui-design="retro"] .ypp-global-player-bar,
-html[data-ypp-ui-design="retro"] #ypp-global-player-bar {
+html[data-ypp-ui-design="retro"] .ypp-global-bar,
+html[data-ypp-ui-design="retro"] #ypp-global-bar {
   box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
 

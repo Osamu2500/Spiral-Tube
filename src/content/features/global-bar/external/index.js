@@ -7,11 +7,11 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
     setupUtilsMock();
 
     await import('../ui/global-bar-ui.js');
-    await import('../core/global-player-bar.js');
+    await import('../core/global-bar.js');
     
     try {
-        await import('../../../pages/watch/player/media-effects/volume-booster/volume-booster.js');
-        await import('../../../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js');
+        await import('../../../pages/watch/player/media-effects/equaliser/equaliser.js');
+        await import('../../../pages/watch/player/media-effects/equaliser/equaliser-ui.js');
         await import('../../../pages/watch/player/media-effects/video-filters/video-filters-presets.js');
         await import('../../../pages/watch/player/media-effects/video-filters/video-filters-overlay.js');
         await import('../../../pages/watch/player/media-effects/video-filters/video-filters-ui.js');
@@ -21,11 +21,11 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
         await import('../domain/domain-memory.js');
         await import('../domain/domain-memory-ui.js');
         
-        const volCss = (await import('../../../pages/watch/player/media-effects/volume-booster/volume-booster.css?inline')).default;
+        const volCss = (await import('../../../pages/watch/player/media-effects/equaliser/equaliser.css?inline')).default;
         const filterCss = (await import('../../../pages/watch/player/media-effects/video-filters/video-filters.css?inline')).default;
         const vscCss = (await import('../../../pages/watch/player/enhancements/video-speed-controller/video-speed-controller.css?inline')).default;
         if (window.YPP.Utils.addStyle) {
-            window.YPP.Utils.addStyle(volCss, 'ypp-volume-booster-css');
+            window.YPP.Utils.addStyle(volCss, 'ypp-equaliser-css');
             window.YPP.Utils.addStyle(filterCss, 'ypp-video-filters-css');
             window.YPP.Utils.addStyle(vscCss, 'ypp-video-speed-controller-css');
         }
@@ -38,9 +38,9 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
     try {
         const { DEFAULT_SETTINGS } = await import('../../../../shared/config/default-settings.js');
         settings = { ...DEFAULT_SETTINGS };
-        const data = await chrome.storage.local.get(['settings', 'globalPlayerBarBlocklist']);
+        const data = await chrome.storage.local.get(['settings', 'globalBarBlocklist']);
         Object.assign(settings, data.settings || {});
-        blocklist = data.globalPlayerBarBlocklist || [];
+        blocklist = data.globalBarBlocklist || [];
     } catch (_) {}
 
     const instances = {};
@@ -48,8 +48,8 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
         getFeature: (name) => instances[name]
     };
 
-    if (window.YPP.features.VolumeBooster) {
-        instances['volumeBoost'] = new window.YPP.features.VolumeBooster();
+    if (window.YPP.features.Equaliser) {
+        instances['volumeBoost'] = new window.YPP.features.Equaliser();
         instances['volumeBoost'].update(settings);
         if (settings.enableVolumeBoost) instances['volumeBoost'].enable();
     }
@@ -77,16 +77,16 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
         return; 
     }
 
-    if (settings.enableGlobalPlayerBar === false) return;
+    if (settings.enableGlobalBar === false) return;
 
     const hostname = window.location.hostname.replace(/^www\./, '');
     if (blocklist.includes(hostname)) return;
 
-    const bar = new window.YPP.features.GlobalPlayerBar();
+    const bar = new window.YPP.features.GlobalBar();
     if (bar.update) bar.update(settings);
     bar.isEnabled = false;
     
-    if (settings.enableGlobalPlayerBar !== false) {
+    if (settings.enableGlobalBar !== false) {
         await bar.enable();
         bar.isEnabled = true;
     }
@@ -100,13 +100,13 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
 
     try {
         chrome.storage.onChanged.addListener(async (changes) => {
-            let shouldBeEnabled = settings.enableGlobalPlayerBar !== false;
+            let shouldBeEnabled = settings.enableGlobalBar !== false;
             let needsUpdate = false;
 
             if (changes.settings) {
                 const newSettings = changes.settings.newValue || {};
                 settings = { ...settings, ...newSettings };
-                shouldBeEnabled = settings.enableGlobalPlayerBar !== false;
+                shouldBeEnabled = settings.enableGlobalBar !== false;
                 needsUpdate = true;
 
                 if (bar.update) bar.update(newSettings);
@@ -116,8 +116,8 @@ import { setupIframeBridge, runIframeLogic } from './iframe-bridge.js';
                 if (instances['videoSpeedController']) instances['videoSpeedController'].update(newSettings);
             }
 
-            if (changes.globalPlayerBarBlocklist) {
-                blocklist = changes.globalPlayerBarBlocklist.newValue || [];
+            if (changes.globalBarBlocklist) {
+                blocklist = changes.globalBarBlocklist.newValue || [];
                 needsUpdate = true;
             }
 

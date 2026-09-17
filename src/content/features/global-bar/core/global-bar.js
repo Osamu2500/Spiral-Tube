@@ -1,18 +1,18 @@
 import '../../../core/system/base-feature.js';
 /**
- * Global Player Bar — Orchestrator
+ * Global Bar — Orchestrator
  * Detects external <video> tags (non-YouTube) and injects a custom floating
  * player bar for speed/filters/PiP. Relies on GlobalBarUI and FilterPresets.
  */
 import css from '../styles/global-bar.css?inline';
 
-export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
-    static featureId = 'globalPlayerBar';
+export class GlobalBar extends window.YPP.features.BaseFeature {
+    static featureId = 'globalBar';
     static executionPhase = 'sequential-ui';
     static priority = 999;
 
     constructor() {
-        super('GlobalPlayerBar');
+        super('GlobalBar');
         
         this.isYouTube = window.location.hostname.includes('youtube.com');
         this.isDismissed = false;
@@ -36,7 +36,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     }
 
     getConfigKey() {
-        return 'enableGlobalPlayerBar';
+        return 'enableGlobalBar';
     }
 
     // =========================================================================
@@ -55,7 +55,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
         if (this.isYouTube) return; // Skip YouTube (handled by native integration)
 
         try {
-            this.utils?.log('Enabling Global Player Bar', 'GlobalPlayerBar');
+            this.utils?.log('Enabling Global Bar', 'GlobalBar');
             if (this.ui) this.ui.updateSettings(this.settings || {});
             this._injectCSS();
             this.scanForVideos();
@@ -77,7 +77,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
                 }
             }, 1000);
         } catch (e) {
-            this.utils?.log('Error enabling GlobalPlayerBar', 'GLOBAL', 'error', e);
+            this.utils?.log('Error enabling GlobalBar', 'GLOBAL', 'error', e);
         }
     }
 
@@ -158,4 +158,4 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     }
 };
 
-window.YPP.features.GlobalPlayerBar = GlobalPlayerBar;
+window.YPP.features.GlobalBar = GlobalBar;

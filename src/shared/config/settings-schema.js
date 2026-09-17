@@ -122,7 +122,7 @@ window.YPP.SettingsSchema = {
         // --- Player Tools ---
         enableCustomSpeed:       { type: 'boolean', default: true },
         enableCinemaFilters:     { type: 'boolean', default: true },
-        enableGlobalPlayerBar:   { type: 'boolean', default: true },
+        enableGlobalBar:   { type: 'boolean', default: true },
         // Video Speed Controller (Advanced)
         vscSpeedStep:            { type: 'number',  default: 0.25, min: 0.05, max: 1.0 },
         vscRememberSpeed:        { type: 'boolean', default: true },
@@ -318,7 +318,7 @@ window.YPP.SettingsSchema = {
         historyRedesign:     { type: 'boolean', default: true  },
 
         // --- Global Player Bar ---
-        globalPlayerBarPosition: { type: 'string', default: 'right', values: ['right', 'left', 'top'] },
+        globalBarPosition: { type: 'string', default: 'right', values: ['right', 'left', 'top'] },
         gpb_showPlay:          { type: 'boolean', default: true },
         gpb_showTime:          { type: 'boolean', default: true },
         gpb_showVolume:        { type: 'boolean', default: true },

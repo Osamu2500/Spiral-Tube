@@ -1,10 +1,10 @@
 # Issue: YouTube HTML5 Player API Desyncs
 
 ## Overview
-When extension features interact with the video player (e.g., Volume Booster, Auto-Pause, Video Speed Controller, Auto-Quality), their internal states sometimes fall out of sync with YouTube's actual playback state.
+When extension features interact with the video player (e.g., Equaliser, Auto-Pause, Video Speed Controller, Auto-Quality), their internal states sometimes fall out of sync with YouTube's actual playback state.
 
 **Symptoms:**
-- The Volume Booster UI says it's at 200%, but the audio is normal.
+- The Equaliser UI says it's at 200%, but the audio is normal.
 - Auto-Pause pauses the video, but YouTube instantly resumes it.
 - Video speed changes randomly when clicking a new video.
 
@@ -13,7 +13,7 @@ When extension features interact with the video player (e.g., Volume Booster, Au
 1. **YouTube's Internal State Engine:**
    YouTube manages playback via a deeply nested Javascript API (`document.getElementById('movie_player')`), not just the standard `<video>` tag properties. If the extension forcibly changes `video.volume = 0.5`, YouTube's internal engine might overwrite it a millisecond later with its own cached volume state.
 
-2. **Web Audio API Contexts (Volume Booster):**
+2. **Web Audio API Contexts (Equaliser):**
    When utilizing `AudioContext` and `createMediaElementSource` to boost volume, the browser strictly enforces that an `AudioContext` can only be created *once* per `<video>` element, and only after a user gesture. Attempting to recreate the Audio Graph on SPA navigations will throw a `MediaElementAudioSourceNode` creation error, silencing the video entirely.
 
 3. **Event Propagation Wars:**

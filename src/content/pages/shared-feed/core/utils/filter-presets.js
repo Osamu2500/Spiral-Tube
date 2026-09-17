@@ -1,6 +1,6 @@
 /**
  * Shared Filter Presets
- * Readonly constants used by both VideoFilters (YouTube player) and GlobalPlayerBar (external video tags).
+ * Readonly constants used by both VideoFilters (YouTube player) and GlobalBar (external video tags).
  */
 
 

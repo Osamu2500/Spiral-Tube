@@ -11,7 +11,7 @@ export class VideoFiltersUI {
     /**
      * Debounce-saves all video filter state to Chrome storage so settings
      * survive SPA navigation (switching episodes).
-     * Mirrors VolumeBoosterUI.saveVolumeSettings for the same pattern.
+     * Mirrors EqualiserUI.saveVolumeSettings for the same pattern.
      * @param {VideoFilters} ctx - The VideoFilters feature instance
      */
     static saveFilterSettings(ctx) {
@@ -46,11 +46,13 @@ export class VideoFiltersUI {
                 if (window.YPP?.MainApp?.saveSettings) {
                     window.YPP.MainApp.saveSettings(newSettings);
                 } else if (chrome?.storage?.local) {
-                    // Fallback for external sites without MainApp
-                    chrome.storage.local.get('settings').then(data => {
-                        const updated = { ...(data.settings || {}), ...newSettings };
-                        chrome.storage.local.set({ settings: updated });
-                    }).catch(() => {});
+                    const isYouTube = window.location.hostname.includes('youtube.com');
+                    if (isYouTube) {
+                        chrome.storage.local.get('settings').then(data => {
+                            const updated = { ...(data.settings || {}), ...newSettings };
+                            chrome.storage.local.set({ settings: updated });
+                        }).catch(() => {});
+                    }
                 }
                 if (window.YPP?.featureManager?.getFeature('domainMemory')?.recordChange) {
                     window.YPP.featureManager.getFeature('domainMemory').recordChange('videoFilters');
@@ -246,10 +248,10 @@ export class VideoFiltersUI {
     }
 
     static _mountPanel(panel, btn) {
-        if (btn?.closest?.('.ypp-global-player-bar')) {
+        if (btn?.closest?.('.ypp-global-bar')) {
             const dlg = window.YPP.Utils.getPopupPortal();
             panel.style.pointerEvents = 'auto';
-            const bar = btn.closest('.ypp-global-player-bar');
+            const bar = btn.closest('.ypp-global-bar');
             panel.style.bottom = 'auto';
             const panelHeight = Math.min(620, window.innerHeight - 200);
             const topPx = Math.max(76, Math.floor((window.innerHeight - panelHeight) / 2));

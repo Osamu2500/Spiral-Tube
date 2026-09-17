@@ -81,7 +81,7 @@ class DOMManagerClass {
     }
 
     /**
-     * Returns the current channel metadata link element (used in volume booster, etc).
+     * Returns the current channel metadata link element (used in equaliser, etc).
      * @param {boolean} force 
      * @returns {Element|null}
      */

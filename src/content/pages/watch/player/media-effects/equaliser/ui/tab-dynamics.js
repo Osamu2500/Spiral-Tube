@@ -1,6 +1,6 @@
 export class DynamicsTabUI {
     static build(uiState) {
-        const { ctx, panel, mkDynRow, clearActivePreset, saveSettings, VolumeBoosterUI } = uiState;
+        const { ctx, panel, mkDynRow, clearActivePreset, saveSettings, EqualiserUI } = uiState;
         const dynPanel = document.createElement('div');
         dynPanel.id = 'ypp-eq-tab-dyn';
         dynPanel.style.display = 'none';
@@ -11,6 +11,7 @@ export class DynamicsTabUI {
             return fallback;
         };
 
+        dynPanel.appendChild(mkDynRow('Warmth', 0, 100, 1, Math.round((ctx._warmthAmount || 0)), '%', v => { if (ctx.setWarmth) ctx.setWarmth(v); }));
         dynPanel.appendChild(mkDynRow('Threshold', -60, 0, 1, getCompVal('threshold', ctx._compThreshold ?? -24), 'dB', v => { if (ctx.setCompressorThreshold) ctx.setCompressorThreshold(v); }));
         dynPanel.appendChild(mkDynRow('Ratio', 1, 20, 0.5, getCompVal('ratio', ctx._compRatio ?? 12), ':1', v => { if (ctx.setCompressorRatio) ctx.setCompressorRatio(v); }));
         dynPanel.appendChild(mkDynRow('Attack', 0, 1, 0.01, getCompVal('attack', ctx._compAttack ?? 0.003), 's', v => { if (ctx.setCompressorAttack) ctx.setCompressorAttack(v); }));
@@ -38,15 +39,16 @@ export class DynamicsTabUI {
         panel.addEventListener('ypp-eq-update', () => {
             const inputs = dynPanel.querySelectorAll('input[type="range"]');
             const spans = dynPanel.querySelectorAll('div > span:last-child');
-            if (inputs.length >= 5) {
+            if (inputs.length >= 6) {
                 const values = [
+                    Math.round(ctx._warmthAmount || 0),
                     getCompVal('threshold', ctx._compThreshold ?? -24),
                     getCompVal('ratio', ctx._compRatio ?? 12),
                     getCompVal('attack', ctx._compAttack ?? 0.003),
                     getCompVal('release', ctx._compRelease ?? 0.25),
                     getCompVal('knee', ctx._compKnee ?? 30)
                 ];
-                const units = ['dB', ':1', 's', 's', 'dB'];
+                const units = ['%', 'dB', ':1', 's', 's', 'dB'];
                 inputs.forEach((input, i) => {
                     input.value = values[i];
                     spans[i].textContent = values[i] + units[i];

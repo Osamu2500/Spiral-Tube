@@ -181,10 +181,10 @@ export class GlobalBarUI {
     createBar() {
         if (this.barElement) return;
 
-        window.YPP.Utils?.log('Creating singular global player bar', 'GlobalBarUI', 'debug');
+        window.YPP.Utils?.log('Creating singular global bar', 'GlobalBarUI', 'debug');
 
         const bar = document.createElement('div');
-        bar.className = 'ypp-global-player-bar ypp-glass-panel';
+        bar.className = 'ypp-global-bar ypp-glass-panel';
         bar.innerHTML = BAR_HTML;
 
         const t = this.settings;
@@ -312,7 +312,7 @@ export class GlobalBarUI {
     updatePosition() {
         if (!this.barElement) return;
 
-        const pos = this.settings.globalPlayerBarPosition || 'right';
+        const pos = this.settings.globalBarPosition || 'right';
         const bar = this.barElement;
         
         bar.classList.remove('ypp-bar-pos-right', 'ypp-bar-pos-left', 'ypp-bar-pos-top');

@@ -1216,7 +1216,7 @@ html[data-ypp-ui-design="sakura"] .ypp-vcp-compare-toggle:hover {
   transform: scale(1.05) !important;
 }
 
-html[data-ypp-ui-design="sakura"] #ypp-global-player-bar,
+html[data-ypp-ui-design="sakura"] #ypp-global-bar,
 html[data-ypp-ui-design="sakura"] .ypp-global-bar {
   box-shadow: var(--shadow-base) !important;
 }
@@ -1227,8 +1227,8 @@ html[data-ypp-ui-design="sakura"] #ypp-cinema-panel {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-ui-design="sakura"] .ypp-global-player-bar,
-html[data-ypp-ui-design="sakura"] #ypp-global-player-bar {
+html[data-ypp-ui-design="sakura"] .ypp-global-bar,
+html[data-ypp-ui-design="sakura"] #ypp-global-bar {
   box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
 

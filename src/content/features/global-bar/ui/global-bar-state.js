@@ -41,7 +41,7 @@ export function updateUIState(ctx) {
 
     // 1. SPA Survival: If the website replaced the body, our bar is orphaned. Re-inject it.
     if (!ctx.barElement.isConnected) {
-        window.YPP.Utils?.log('Global Player Bar was orphaned by SPA. Re-injecting.', 'GlobalBarUI', 'warn');
+        window.YPP.Utils?.log('Global Bar was orphaned by SPA. Re-injecting.', 'GlobalBarUI', 'warn');
         document.body.appendChild(ctx.barElement);
         if ('popover' in ctx.barElement && !ctx.barElement.matches(':popover-open')) {
             try { ctx.barElement.showPopover(); } catch(e){}

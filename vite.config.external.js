@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 /**
- * Separate build config for the Global Player Bar external bundle.
+ * Separate build config for the Global Bar external bundle.
  * This IIFE is injected into non-YouTube sites via the second
  * content_scripts entry in manifest.json.
  *
@@ -16,7 +16,7 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        'global-bar-external': resolve(__dirname, 'src/content/features/global-player-bar/external/index.js')
+        'global-bar-external': resolve(__dirname, 'src/content/features/global-bar/external/index.js')
       },
       output: {
         entryFileNames: '[name].js',

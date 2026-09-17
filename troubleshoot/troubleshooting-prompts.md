@@ -20,9 +20,9 @@ This document contains detailed architectural notes and pre-written prompts for 
 ---
 
 ## 2. UI Layout Thrashing & Misaligned Elements
-**Symptom:** Injected buttons (like the Global Player Bar buttons) appear misaligned, lower than they should be, or the UI aggressively jumps around when a page loads.
+**Symptom:** Injected buttons (like the Global Bar buttons) appear misaligned, lower than they should be, or the UI aggressively jumps around when a page loads.
 **Root Cause:** The extension is either fighting YouTube's native flexbox/grid CSS, or injecting elements before YouTube has finished rendering its own DOM, resulting in incorrect CSS calculation. Also, missing or overwritten `data-ypp-processed` tags can cause buttons to inject multiple times.
-**Key Areas to Check:** `PlayerBarUI.injectControls()`, `GlobalPlayerBar`, flexbox alignment in `channel-bar.css`, and DOM observer latency.
+**Key Areas to Check:** `PlayerBarUI.injectControls()`, `GlobalBar`, flexbox alignment in `channel-bar.css`, and DOM observer latency.
 
 > **Prompt to AI:**
 > "Injected UI elements (like the custom buttons in the player bar or owner container) are misaligned, jumping around, or injecting multiple times. 
@@ -61,3 +61,33 @@ This document contains detailed architectural notes and pre-written prompts for 
 > 1. Check `main.ts`. Ensure `FeatureManager.init()` is called and awaited *before* the `PageManagers` (like `WatchPageManager.activate`) attempt to render UI that depends on those features.
 > 2. Look at how UI injectors retrieve features (e.g., `window.YPP.featureManager.getFeature()`). If it returns null, ensure there is a fallback or a `pollFor` mechanism that waits for the feature manager to finish instantiating.
 > 3. Verify that `DOMContentReady` dependencies are strictly enforced before triggering DOM manipulation."
+
+---
+
+## 5. Web Audio API & Global Compressor Ducking (Volume Drops)
+**Symptom:** When a heavy Voice FX (like a distortion, robotic, or demonic voice) is applied, the video volume suddenly drops to a whisper, and the audio sounds heavily compressed or pumped.
+**Root Cause:** The audio node (e.g., WaveShaper) is boosting the signal gain above 0 dBFS. When this hot signal hits the global DynamicsCompressorNode (or YouTube's internal limiters), the compressor aggressively ducks the volume to prevent clipping.
+**Key Areas to Check:** `audio-fx.js`, `audio-dynamics.js`, and anywhere a `WaveShaperNode` or resonant `BiquadFilterNode` is used.
+
+> **Prompt to AI:**
+> "I am experiencing severe volume drops or heavy compression 'pumping' when I enable certain heavy Voice FX or EQ filters.
+> 
+> Please audit the audio routing for the following issues:
+> 1. Check the Voice FX chain in 'audio-fx.js'. Are any effects (like Demonic, Alien, or Sulfux) using WaveShapers or high-gain filters without a dedicated output attenuation gain node?
+> 2. Ensure that immediately after a high-gain node, there is a local 'GainNode' initialized to a value like 0.3 to manually pull the signal back down to standard line level before it hits the master compressor.
+> 3. Verify that the global DynamicsCompressorNode has a reasonable threshold and ratio, and isn't being slammed by an untamed wet signal."
+
+---
+
+## 6. UI Container Stretching & Missing Scrollbars
+**Symptom:** A popup menu or settings container looks fine on a small tab, but when switching to a tab with lots of buttons (e.g., Voice FX grid), the container stretches vertically off the screen and refuses to show a scrollbar.
+**Root Cause:** The container lacks a strict physical height constraint, allowing the inner flex/grid children to force the parent to grow infinitely.
+**Key Areas to Check:** `equaliser.css`, `equaliser-ui.js`, and inline styles for `.ypp-eq-panel` or `.ypp-eq-popup`.
+
+> **Prompt to AI:**
+> "The popup container is stretching vertically and breaking the layout when I open tabs with lots of content, and the scrollbar isn't appearing.
+> 
+> Please audit the CSS for the following issues:
+> 1. Check the main container class (e.g., '.ypp-eq-popup'). Ensure it has a strict 'height' (e.g., '380px') and 'max-height' defined, rather than just 'height: auto' or 'height: 100%'.
+> 2. Ensure 'box-sizing: border-box' is applied so padding doesn't cause a layout blowout.
+> 3. Verify that 'overflow-y: auto' is applied to the strictly-height-constrained parent, and that the inner content (like a grid of buttons) is allowed to overflow naturally."

@@ -13,7 +13,7 @@ const escapeHTML = (str) => {
 
 
 export function initvisualgrids(document, state, ui, updateSetting, notifyThemeChange, saveSettings) {
-  function initGlobalPlayerBarGrid() {
+  function initGlobalBarGrid() {
       const btns = document.querySelectorAll('.gpb-btn');
       if (!btns.length) return;
   
@@ -202,7 +202,7 @@ export function initvisualgrids(document, state, ui, updateSetting, notifyThemeC
   }
 
   return {
-    initGlobalPlayerBarGrid,
+    initGlobalBarGrid,
     initCardStyleGrid,
     initYoutubeStyleGrid,
     initPopupStyleGrid,

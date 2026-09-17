@@ -734,11 +734,11 @@ export class DomainMemoryUI {
     }
 
     static _mountPanel(panel, btn) {
-        if (btn?.closest?.('.ypp-global-player-bar')) {
+        if (btn?.closest?.('.ypp-global-bar')) {
             // Use the popup portal to escape host-site overflow/stacking contexts,
             // matching the same pattern used by VideoFiltersUI._mountPanel.
             const portal = window.YPP?.Utils?.getPopupPortal?.();
-            const bar = btn.closest('.ypp-global-player-bar');
+            const bar = btn.closest('.ypp-global-bar');
             panel.style.position = 'fixed';
             panel.style.zIndex = '2147483647';
             panel.style.pointerEvents = 'auto';

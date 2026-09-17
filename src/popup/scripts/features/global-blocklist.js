@@ -20,7 +20,7 @@ let currentCalDate = new Date();
 let selectedCalDateString = null;
 
 
-export function renderGlobalPlayerBarBlocklist(container, state) {
+export function renderGlobalBarBlocklist(container, state) {
     if (!document.getElementById('ypp-blocklist-styles')) {
         const style = document.createElement('style');
         style.id = 'ypp-blocklist-styles';
@@ -70,7 +70,7 @@ export function renderGlobalPlayerBarBlocklist(container, state) {
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
                 Blocked Domains (No Global Bar)
             </div>
-            <div style="font-size: 11px; color: var(--text-dim); margin-bottom: 4px;">Enter a domain (e.g. netflix.com) to block the global player bar on that site.</div>
+            <div style="font-size: 11px; color: var(--text-dim); margin-bottom: 4px;">Enter a domain (e.g. netflix.com) to block the global bar on that site.</div>
             <div class="blocklist-search-wrap">
                 <input type="text" id="bl-input" class="blocklist-input" placeholder="example.com" />
                 <button type="button" id="bl-add" class="blocklist-btn">Add Block</button>
@@ -86,7 +86,7 @@ export function renderGlobalPlayerBarBlocklist(container, state) {
     let blocklist = [];
 
     const saveAndRender = () => {
-        chrome.storage.local.set({ globalPlayerBarBlocklist: blocklist }, renderList);
+        chrome.storage.local.set({ globalBarBlocklist: blocklist }, renderList);
     };
 
     const renderList = () => {
@@ -141,8 +141,8 @@ export function renderGlobalPlayerBarBlocklist(container, state) {
         if (e.key === 'Enter') addDomain();
     });
 
-    chrome.storage.local.get('globalPlayerBarBlocklist', (data) => {
-        blocklist = data.globalPlayerBarBlocklist || [];
+    chrome.storage.local.get('globalBarBlocklist', (data) => {
+        blocklist = data.globalBarBlocklist || [];
         renderList();
     });
 }

@@ -72,7 +72,7 @@ export const DEFAULT_SETTINGS = {
   blockedChannels: '',
   blockedKeywords: '',
   playlistDuration: true,
-  globalPlayerBarPosition: 'right',
+  globalBarPosition: 'right',
   gpb_showFullscreen: true,
   splitScrolling: false,
   enableFilterBar: false,
@@ -266,7 +266,7 @@ export const DEFAULT_SETTINGS = {
   // Player Tools
   enableCustomSpeed: true,
   enableCinemaFilters: true,
-  enableGlobalPlayerBar: true,
+  enableGlobalBar: true,
   cinemaFilterIndex: 0,
   cinemaFilterBrightness: 100,
   cinemaFilterContrast: 100,

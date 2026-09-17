@@ -4,8 +4,8 @@ import { DynamicsTabUI } from './ui/tab-dynamics.js';
 import { EQTabUI } from './ui/tab-eq.js';
 import { FXTabUI } from './ui/tab-fx.js';
 import { SpatialTabUI } from './ui/tab-spatial.js';
-export class VolumeBoosterUI {
-  static featureId = 'volumeBoosterUI';
+export class EqualiserUI {
+  static featureId = 'equaliserUI';
   static executionPhase = 'idle';
   static priority = 999;
 
@@ -44,17 +44,22 @@ export class VolumeBoosterUI {
           volumeCompAttack: ctxArg.compressorNode ? ctxArg.compressorNode.attack.value : 0.003,
           volumeCompRelease: ctxArg.compressorNode ? ctxArg.compressorNode.release.value : 0.25,
           volumeCompKnee: ctxArg.compressorNode ? ctxArg.compressorNode.knee.value : 30,
+          volumeWarmth: ctxArg._warmthAmount || 0,
+          volumeCrossfeed: ctxArg._crossfeedEnabled || false,
         };
         if (window.YPP?.MainApp?.saveSettings) {
           window.YPP.MainApp.saveSettings(newSettings);
         } else if (chrome?.storage?.local) {
-          chrome.storage.local
-            .get('settings')
-            .then((data) => {
-              const updated = { ...(data.settings || {}), ...newSettings };
-              chrome.storage.local.set({ settings: updated });
-            })
-            .catch(() => {});
+          const isYouTube = window.location.hostname.includes('youtube.com');
+          if (isYouTube) {
+            chrome.storage.local
+              .get('settings')
+              .then((data) => {
+                const updated = { ...(data.settings || {}), ...newSettings };
+                chrome.storage.local.set({ settings: updated });
+              })
+              .catch(() => {});
+          }
         }
         if (window.YPP?.featureManager?.getFeature('domainMemory')?.recordChange) {
           window.YPP.featureManager.getFeature('domainMemory').recordChange('volumeBoost');
@@ -107,7 +112,7 @@ export class VolumeBoosterUI {
     panel.id = 'ypp-eq-panel';
 
     // Check if opened from Global Bar
-    const isGlobalBar = !!anchorBtn?.closest?.('.ypp-global-player-bar');
+    const isGlobalBar = !!anchorBtn?.closest?.('.ypp-global-bar');
     if (isGlobalBar) {
       // position:fixed is required — the panel is mounted into the popup portal
       // which is a fixed-positioned transparent overlay. Without this the offsets
@@ -117,10 +122,10 @@ export class VolumeBoosterUI {
       panel.style.boxShadow = '0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)';
 
       // Position it next to the global bar
-      const bar = anchorBtn.closest('.ypp-global-player-bar');
+      const bar = anchorBtn.closest('.ypp-global-bar');
       panel.style.bottom = 'auto';
       const panelHeight = 400; // approx height
-      const topPx = Math.max(16, (window.innerHeight - panelHeight) / 2);
+      const topPx = 24; // Force it near the topbar
 
       if (bar.classList.contains('ypp-bar-pos-right')) {
         panel.style.right = '76px';
@@ -143,11 +148,11 @@ export class VolumeBoosterUI {
     } else {
       Object.assign(panel.style, {
         position: 'fixed',
-        top: '110px',
+        top: '8px',
         right: '24px',
         left: 'auto',
         bottom: 'auto',
-        maxHeight: 'calc(100vh - 134px)',
+        maxHeight: 'calc(100vh - 20px)',
         zIndex: '2147483646',
       });
     }
@@ -168,7 +173,7 @@ export class VolumeBoosterUI {
                 </div>
             </div>
             <div style="display:flex; align-items:center;">
-                <button class="ypp-eq-link-btn" title="Auto-apply preset to this Channel">🔗</button>
+
                 <button class="ypp-eq-ab-btn${ctx._bypassed ? ' active' : ''}" title="Bypass All Effects">A/B</button>
                 <button class="ypp-eq-close-btn" id="ypp-eq-close">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -240,52 +245,9 @@ export class VolumeBoosterUI {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
       ctx.setBypass(!ctx._bypassed);
       abBtn.classList.toggle('active', ctx._bypassed);
-      VolumeBoosterUI.saveVolumeSettings(ctx);
+      EqualiserUI.saveVolumeSettings(ctx);
     };
 
-    const linkBtn = header.querySelector('.ypp-eq-link-btn');
-    linkBtn.onclick = () => {
-      const el =
-        window.YPP.DOMManager?.getChannelLink();
-      const channel = el ? el.textContent.trim() : null;
-      if (!channel) return alert('Could not detect channel name. Make sure a video is playing.');
-
-      if (!activePresetBtn) {
-        alert('Please select or save a Preset first to link it to this channel.');
-        return;
-      }
-      const presetName = activePresetBtn.textContent;
-
-      let profiles = {};
-      if (ctx._channelProfiles) profiles = { ...ctx._channelProfiles };
-
-      if (profiles[channel] === presetName) {
-        if (confirm(`Unlink preset "${presetName}" from channel "${channel}"?`)) {
-          delete profiles[channel];
-          linkBtn.classList.remove('active');
-        } else return;
-      } else {
-        profiles[channel] = presetName;
-        linkBtn.classList.add('active');
-        alert(
-          `Successfully linked preset "${presetName}" to channel "${channel}"!\n\nThis preset will now auto-apply whenever you watch their videos.`
-        );
-      }
-
-      ctx._channelProfiles = profiles;
-      if (chrome?.storage?.local) {
-        chrome.storage.local
-          .get('settings')
-          .then((data) => {
-            const updated = {
-              ...(data.settings || {}),
-              volumeChannelProfiles: JSON.stringify(profiles),
-            };
-            chrome.storage.local.set({ settings: updated });
-          })
-          .catch(() => {});
-      }
-    };
 
     header.querySelector('#ypp-eq-close').onclick = () => this.toggleEQPanel(ctx, video, anchorBtn);
 
@@ -321,10 +283,10 @@ export class VolumeBoosterUI {
         v > 1.01 || ctx._eqGains.some((g) => g !== 0) || ctx._balance !== 0
       );
       clearActivePreset();
-      VolumeBoosterUI.saveVolumeSettings(ctx);
+      EqualiserUI.saveVolumeSettings(ctx);
       this.updateGainTrack(gainSlider);
     };
-    gainRow.innerHTML = `<span class="ypp-eq-row-label">Volume Boost</span>`;
+    gainRow.innerHTML = `<span class="ypp-eq-row-label">Equaliser</span>`;
     gainRow.appendChild(gainSlider);
     gainRow.appendChild(gainValue);
     panel.appendChild(gainRow);
@@ -360,7 +322,7 @@ export class VolumeBoosterUI {
       );
       clearActivePreset();
       this.updateBalanceTrack(balanceSlider);
-      VolumeBoosterUI.saveVolumeSettings(ctx);
+      EqualiserUI.saveVolumeSettings(ctx);
     };
     balanceSlider.ondblclick = () => {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
@@ -368,7 +330,7 @@ export class VolumeBoosterUI {
       balanceSlider.value = 0;
       balanceValue.textContent = 'C';
       this.updateBalanceTrack(balanceSlider);
-      VolumeBoosterUI.saveVolumeSettings(ctx);
+      EqualiserUI.saveVolumeSettings(ctx);
     };
     balanceRow.innerHTML = `<span class="ypp-eq-row-label">Balance</span>`;
     balanceRow.appendChild(balanceSlider);
@@ -418,7 +380,7 @@ export class VolumeBoosterUI {
         if (activePresetBtn) activePresetBtn.classList.remove('active');
         btn.classList.add('active');
         activePresetBtn = btn;
-        VolumeBoosterUI.saveVolumeSettings(ctx);
+        EqualiserUI.saveVolumeSettings(ctx);
       };
       const defaults = ['Flat', 'Bass Boost', 'Vocal Enhancer', 'Night Mode', 'Electronic'];
       if (!defaults.includes(name)) {
@@ -530,13 +492,13 @@ export class VolumeBoosterUI {
         valEl.textContent = e.target.value + unit;
         onChange(parseFloat(e.target.value));
         clearActivePreset();
-        VolumeBoosterUI.saveVolumeSettings(ctx);
+        EqualiserUI.saveVolumeSettings(ctx);
       };
       row.append(lbl, sl, valEl);
       return row;
     };
 
-    const saveSettings = VolumeBoosterUI.saveVolumeSettings.bind(VolumeBoosterUI);
+    const saveSettings = EqualiserUI.saveVolumeSettings.bind(EqualiserUI);
 
     const uiState = {
       ctx,
@@ -549,7 +511,7 @@ export class VolumeBoosterUI {
       DynamicsTabUI,
       SpatialTabUI,
       FXTabUI,
-      VolumeBoosterUI,
+      EqualiserUI,
     };
 
     const eqContentWrap = EQTabUI.build(uiState);
@@ -568,6 +530,13 @@ export class VolumeBoosterUI {
     panel.appendChild(fxPanel);
 
     const tabPanels = [eqContentWrap, dynPanel, spaPanel, fxPanel];
+    tabPanels.forEach(p => {
+      p.classList.add('ypp-eq-tab-content');
+      p.style.height = '236px';
+      p.style.overflowY = 'auto';
+      p.style.overflowX = 'hidden';
+      p.style.boxSizing = 'border-box';
+    });
     const tabs = [tabEQ, tabDyn, tabSpa, tabFX];
     tabs.forEach((tab, i) => {
       tab.onclick = () => {
@@ -629,6 +598,7 @@ export class VolumeBoosterUI {
       ctx.setPhaseInvert('L', false);
       ctx.setPhaseInvert('R', false);
       ctx.setAutoGain(false);
+      ctx.setWarmth(0);
       ctx._eqGains.fill(0);
       this.syncBandUI(ctx, panel, uiState.canvasEl);
 
@@ -692,7 +662,7 @@ export class VolumeBoosterUI {
         if (flatPreset) flatPreset.classList.add('active');
         if (typeof activePresetBtn !== 'undefined') activePresetBtn = flatPreset;
       }
-      VolumeBoosterUI.saveVolumeSettings(ctx);
+      EqualiserUI.saveVolumeSettings(ctx);
     };
 
     footer.appendChild(resetBtn);
@@ -743,7 +713,7 @@ export class VolumeBoosterUI {
         if (activePresetBtn) activePresetBtn.classList.remove('active');
         btn.classList.add('active');
         activePresetBtn = btn;
-        VolumeBoosterUI.saveVolumeSettings(ctx);
+        EqualiserUI.saveVolumeSettings(ctx);
       };
     });
 
@@ -772,25 +742,44 @@ export class VolumeBoosterUI {
     // Initial curve draw (if no analyser yet)
     if (!ctx.analyserNode) this.drawCurve(ctx, uiState.canvasEl);
 
-    // Click-outside to close
-    const outside = (e) => {
-      if (
-        ctx._volumePopup &&
-        !ctx._volumePopup.contains(e.target) &&
-        !anchorBtn.contains(e.target)
-      ) {
-        if (animFrameId) cancelAnimationFrame(animFrameId);
-        this.toggleEQPanel(ctx, video, anchorBtn);
+    // Click-outside to close was disabled per user request to prevent accidental closing.
+
+    // Prevent scrolling over the popup from scrolling the page
+    const handleScroll = (e) => {
+      const scrollable = e.target.closest('.ypp-eq-fx-grid, .ypp-eq-presets-row, .ypp-eq-presets-list, .ypp-eq-scrollable');
+      
+      // Stop event from reaching YouTube's document-level scroll handlers
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      if (!scrollable) {
+          e.preventDefault();
+      } else {
+          // If we reached the end of the scroll container, prevent default to stop page scroll
+          if (e.type === 'wheel') {
+              const isVertical = scrollable.scrollHeight > scrollable.clientHeight;
+              const isHorizontal = scrollable.scrollWidth > scrollable.clientWidth;
+              
+              if (isVertical) {
+                  const isAtTop = scrollable.scrollTop === 0;
+                  const isAtBottom = Math.ceil(scrollable.scrollTop + scrollable.clientHeight) >= scrollable.scrollHeight;
+                  if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
+                      e.preventDefault();
+                  }
+              }
+              if (isHorizontal) {
+                  const isAtLeft = scrollable.scrollLeft === 0;
+                  const isAtRight = Math.ceil(scrollable.scrollLeft + scrollable.clientWidth) >= scrollable.scrollWidth;
+                  if ((e.deltaX < 0 && isAtLeft) || (e.deltaX > 0 && isAtRight)) {
+                      e.preventDefault();
+                  }
+              }
+          }
       }
     };
-    ctx._volumePopupOutsideHandler = outside;
-    setTimeout(
-      () =>
-        ctx.addListener
-          ? ctx.addListener(document, 'pointerdown', outside)
-          : document.addEventListener('pointerdown', outside),
-      0
-    );
+
+    panel.addEventListener('wheel', handleScroll, { passive: false });
+    panel.addEventListener('touchmove', handleScroll, { passive: false });
 
     // Escape key closes the EQ panel
     const onKeyDown = (e) => {
@@ -962,10 +951,10 @@ export class VolumeBoosterUI {
 /* ── EQ Panel ── */
 #ypp-eq-panel {
     position: fixed;
-    bottom: 72px;
+    top: 24px;
     right: 24px;
-    width: 440px;
-    background-color: rgba(18, 18, 20, 0.45);
+    width: 300px;
+    background-color: rgba(18, 18, 20, 0.65);
     background-image: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(62, 166, 255, 0.15) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(255, 65, 108, 0.1) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 65, 108, 0.05) 0%, transparent 100%);
     border: 1px solid rgba(255,255,255,0.1);
     border-top: 1px solid rgba(255,255,255,0.25);
@@ -974,8 +963,8 @@ export class VolumeBoosterUI {
     color: #fff;
     font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
-    backdrop-filter: blur(48px) saturate(200%);
-    -webkit-backdrop-filter: blur(48px) saturate(200%);
+    backdrop-filter: blur(64px) saturate(200%);
+    -webkit-backdrop-filter: blur(64px) saturate(200%);
     user-select: none;
     overflow: hidden;
     animation: ypp-eq-in 0.28s cubic-bezier(0.2, 0, 0, 1) forwards;
@@ -1088,7 +1077,7 @@ export class VolumeBoosterUI {
     font-size: 8px; font-weight: 800; min-height: 10px; line-height: 1;
 }
 .ypp-eq-band-track {
-    position: relative; height: 46px; width: 100%;
+    position: relative; height: 90px; width: 100%;
     display: flex; align-items: center; justify-content: center;
 }
 .ypp-eq-band-center {
@@ -1103,7 +1092,7 @@ export class VolumeBoosterUI {
 /* Vertical slider (rotated horizontal) */
 .ypp-eq-vslider {
     -webkit-appearance: none; appearance: none;
-    width: 42px;
+    width: 88px;
     height: 2px; border-radius: 2px; outline: none; cursor: pointer;
     background: rgba(255,255,255,0.1); border: none;
     transform: rotate(-90deg);
@@ -1154,4 +1143,4 @@ export class VolumeBoosterUI {
   }
 }
 
-window.YPP.features.VolumeBoosterUI = VolumeBoosterUI;
+window.YPP.features.EqualiserUI = EqualiserUI;

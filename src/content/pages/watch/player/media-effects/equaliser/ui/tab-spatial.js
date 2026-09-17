@@ -13,6 +13,24 @@ export class SpatialTabUI {
         });
         spaPanel.appendChild(stereoRow);
         
+        const crossfeedRow = document.createElement('div');
+        crossfeedRow.style.cssText = 'display:flex; gap:8px; margin: 12px 0 16px; align-items:center;';
+        
+        const crossfeedBtn = document.createElement('button');
+        crossfeedBtn.className = 'ypp-eq-comp-btn' + (ctx._crossfeedEnabled ? ' active' : '');
+        crossfeedBtn.innerHTML = 'Binaural Crossfeed';
+        crossfeedBtn.title = 'Reduces headphone fatigue by blending left and right channels naturally';
+        crossfeedBtn.style.flex = '1';
+        crossfeedBtn.onclick = () => {
+            if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
+            const enable = !ctx._crossfeedEnabled;
+            if (ctx.setCrossfeed) ctx.setCrossfeed(enable);
+            crossfeedBtn.classList.toggle('active', enable);
+            saveSettings(ctx);
+        };
+        crossfeedRow.appendChild(crossfeedBtn);
+        spaPanel.appendChild(crossfeedRow);
+        
         const monoRow2 = mkDynRow('Mono Mix', 0, 100, 1, 0, '%', v => {
             if (ctx.setMono) {
                 ctx.setMono(v > 50);
@@ -100,6 +118,7 @@ export class SpatialTabUI {
         panel.addEventListener('ypp-eq-update', () => {
             stereoRow.querySelector('input').value = Math.round(ctx._stereoWidth * 100);
             stereoRow.querySelector('span:last-child').textContent = Math.round(ctx._stereoWidth * 100) + '%';
+            crossfeedBtn.classList.toggle('active', !!ctx._crossfeedEnabled);
             monoRow2.querySelector('input').value = ctx._monoEnabled ? 100 : 0;
             monoRow2.querySelector('span:last-child').textContent = ctx._monoEnabled ? '100%' : '0%';
             speedRow.querySelector('input').value = ctx._playbackRate || 1.0;

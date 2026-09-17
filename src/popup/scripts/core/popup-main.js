@@ -5,7 +5,7 @@ import '../../../shared/utils/index.js';
 
 import { initI18n, t } from '../../../shared/locales/i18n.js';
 import { initComponents } from '../components/index.js';
-import { initBackupTools, initBookmarksManager, initHistoryWidget, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist, renderPlayerBarOrganizer } from '../features/index.js';
+import { initBackupTools, initBookmarksManager, initHistoryWidget, renderDomainMemoryManager, renderGlobalBarBlocklist, renderPlayerBarOrganizer } from '../features/index.js';
 import { convertStaticDescriptionsToHelpButtons, registerSlot, renderSchema } from '../ui/popup-renderer.js';
 import * as UI from '../ui/popup-ui.js';
 import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
@@ -25,7 +25,7 @@ if (window.innerWidth > 800 || window.innerHeight > 600 || window !== window.top
 // --- Register Custom Slots ---
 registerSlot('player_bar_organizer', renderPlayerBarOrganizer);
 registerSlot('domain_memory_manager', renderDomainMemoryManager);
-registerSlot('global_player_bar_blocklist', renderGlobalPlayerBarBlocklist);
+registerSlot('global_player_bar_blocklist', renderGlobalBarBlocklist);
 registerSlot('accentColorSlot', renderAccentColorSlot);
 registerSlot('popupScaleSlot', renderPopupScaleSlot);
 registerSlot('popupUiDesignSlot', renderPopupUiDesignSlot);
@@ -345,8 +345,8 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         seamlessMode: 'Toggle Seamless Mode',
         snapshot: 'Take Video Snapshot',
         loop: 'Toggle Loop',
-        enableGlobalPlayerBar: 'Toggle Player Bar',
-        enableVolumeBoost: 'Toggle Volume Booster',
+        enableGlobalBar: 'Toggle Player Bar',
+        enableVolumeBoost: 'Toggle Equaliser',
         enableCinemaFilters: 'Toggle Video Filters',
         enableCustomSpeed: 'Toggle Custom Speed',
 
@@ -1106,7 +1106,7 @@ const initApp = async () => {
         safeInit(components.initMixesPageButtons);
         safeInit(components.initPodcastsPageButtons);
         safeInit(components.initPostsPageButtons);
-        safeInit(components.initGlobalPlayerBarGrid);
+        safeInit(components.initGlobalBarGrid);
         safeInit(components.initCardStyleGrid);
         safeInit(components.initYoutubeStyleGrid);
         safeInit(components.initPopupStyleGrid);

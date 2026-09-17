@@ -354,7 +354,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     }
 
     /**
-     * Restores saved settings (Volume Booster, Cinema Filters, Speed) and re-binds Web Audio / Filters
+     * Restores saved settings (Equaliser, Cinema Filters, Speed) and re-binds Web Audio / Filters
      */
     restoreProfile(videoElement, showToast = false) {
         const video = videoElement || this._getVideo();
@@ -369,7 +369,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         let appliedAny = false;
         const p = this._domainProfile;
 
-        // 1. Restore Volume Booster & Verify Web Audio Connection
+        // 1. Restore Equaliser & Verify Web Audio Connection
         if (p.volumeBoost && this._instances['volumeBoost']) {
             const vb = this._instances['volumeBoost'];
             const vbCfg = p.volumeBoost;
@@ -570,7 +570,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         p.scopeMode = this._scopeMode;
         p.domain = this._domain;
 
-        // Snapshot Volume Booster
+        // Snapshot Equaliser
         const vb = this._instances['volumeBoost'];
         if (vb) {
             p.volumeBoost = {

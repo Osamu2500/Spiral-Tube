@@ -259,7 +259,7 @@ export class PlayerBarUI {
                 if (this.settings[config.override] === false) return null;
                 let feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
                 if (!feature && config.key === 'volumeBoost') {
-                    feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('VolumeBooster');
+                    feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('Equaliser');
                 }
                 if (!feature && config.key === 'snapshotButton') {
                     feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('SnapshotButton');

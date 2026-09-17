@@ -44,7 +44,7 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         
         // Human-readable labels for toast notifications for all generic settings
         this.genericLabels = {
-            enableGlobalPlayerBar: 'Player Bar',
+            enableGlobalBar: 'Player Bar',
             intentionalDelay: 'Intentional Delay',
             watchTimeAlert: 'Watch Time Alert',
             hideComments: 'Comments Visibility',
@@ -52,7 +52,7 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             hideLiveChat: 'Live Chat Visibility',
             aggressiveShortsBlock: 'Shorts Remover',
             hideEndScreens: 'End Screens Visibility',
-            enableVolumeBoost: 'Volume Booster',
+            enableVolumeBoost: 'Equaliser',
             enableCinemaFilters: 'Video Filters',
             enableCustomSpeed: 'Custom Speed',
             autoCinema: 'Auto Cinema',

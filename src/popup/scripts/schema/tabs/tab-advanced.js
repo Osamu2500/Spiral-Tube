@@ -12,19 +12,19 @@ export const getAdvancedTab = (t) => ({
         items: [
           {
             type: 'toggle',
-            id: 'enableGlobalPlayerBar',
+            id: 'enableGlobalBar',
             label: t('global_player_bar'),
             desc: t('enable_on_external_sites'),
             icon: ICONS.globalBar,
             style: 'grid-column: 1 / -1;',
             bottomSlot: `
-              <div id="globalPlayerBarOptions" style="display:none; padding-top: 16px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
+              <div id="globalBarOptions" style="display:none; padding-top: 16px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
                 <div class="setting-item" style="padding: 12px 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; backdrop-filter: blur(10px);">
                   <div class="info" style="display: flex; flex-direction: column; flex: 1; margin-right: 10px; min-width: 0;">
                     <span class="name" data-i18n="player_bar_position" style="font-size: calc(12px * var(--ui-font-scale, 1)); font-weight: 700; color: #ffffff;">Player Bar Position</span>
                     <span class="desc" data-i18n="where_should_it_appear_on_external_sites" style="font-size: calc(11px * var(--ui-font-scale, 1)); font-weight: 500; color: rgba(255,255,255,0.6); margin-top: 4px;">Where should it appear on external sites?</span>
                   </div>
-                  <select id="globalPlayerBarPosition" class="theme-select" aria-label="Global Player Bar Position" title="Global Player Bar Position" style="width: 110px; padding: 6px 10px; font-weight: 600; flex-shrink: 0; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; cursor: pointer;">
+                  <select id="globalBarPosition" class="theme-select" aria-label="Global Bar Position" title="Global Bar Position" style="width: 110px; padding: 6px 10px; font-weight: 600; flex-shrink: 0; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; cursor: pointer;">
                     <option value="right">Right</option>
                     <option value="left">Left</option>
                     <option value="top">Top</option>

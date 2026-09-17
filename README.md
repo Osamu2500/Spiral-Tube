@@ -1,6 +1,6 @@
 # Spiral Tube 🎬 (formerly YouTube Premium Plus)
 
-> Transform YouTube with 50+ features: glassmorphism themes, 600% volume booster with custom EQ, cinema filters, SponsorBlock integration, focus & zen modes, custom speed controller, ambient mode, screenshot tool, subscription groups, watch history analytics, and a redesigned glassmorphic popup UI.
+> Transform YouTube with 50+ features: glassmorphism themes, 600% equaliser with custom EQ, cinema filters, SponsorBlock integration, focus & zen modes, custom speed controller, ambient mode, screenshot tool, subscription groups, watch history analytics, and a redesigned glassmorphic popup UI.
 
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://github.com/Osamu2500/youtube-premium-extension)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success)]()
@@ -118,9 +118,9 @@ stateDiagram-v2
 ### ▶️ Player Overhaul
 | Component | Description | Performance Cost | Highlight Feature |
 |:---|:---|:---:|:---|
-| **Pro Audio DSP** | Bypasses default limits with full EQ, compressor, balance. | `Medium` | *600% Volume Booster* |
+| **Pro Audio DSP** | Bypasses default limits with full EQ, compressor, balance. | `Medium` | *600% equaliser* |
 | **Cinematic Visuals** | Hardware-accelerated CSS filters applied to video. | `High` | *Brightness/Contrast sliders* |
-| **Global Player Bar** | Decoupled UI bar injected everywhere for immediate control. | `Low` | *Snapshot & Looping Tools* |
+| **Global Bar** | Decoupled UI bar injected everywhere for immediate control. | `Low` | *Snapshot & Looping Tools* |
 
 ### ⚡ Automation & Analytics
 | Component | Description | Performance Cost | Highlight Feature |

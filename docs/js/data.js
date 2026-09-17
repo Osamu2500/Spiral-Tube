@@ -1013,23 +1013,23 @@ window.ARCHITECTURE_DATA = [
     "exports": "channelListIncludes, pluralizeChannelWord, computeWhitelistUpdate"
   },
   {
-    "path": "features/global-player-bar/core/global-player-bar.js",
-    "category": "features/global-player-bar/core",
+    "path": "features/global-bar/core/global-bar.js",
+    "category": "features/global-bar/core",
     "purpose": "Global Player Bar — Orchestrator Detects external <video> tags (non-YouTube) and injects a custom floating player bar for speed/filters/PiP. Relies on GlobalBarUI and FilterPresets.",
     "targets": "ypp-global-bar-css",
     "depends": [
-      "features/global-player-bar/styles/global-bar.css?inline"
+      "features/global-bar/styles/global-bar.css?inline"
     ],
     "dependedBy": [],
     "storage": "YPP.settings",
     "observers": "none",
     "size": "5.7 KB",
     "loc": 162,
-    "exports": "GlobalPlayerBar"
+    "exports": "GlobalBar"
   },
   {
-    "path": "features/global-player-bar/domain/domain-memory-ui.js",
-    "category": "features/global-player-bar/domain",
+    "path": "features/global-bar/domain/domain-memory-ui.js",
+    "category": "features/global-bar/domain",
     "purpose": "domain-memory-ui.js ─────────────────── Glass 2.0 UI for the Domain Memory panel on external streaming sites. Improvements in this version: - Bug 1 fix: Event listeners are cleaned up via ctx._removePanel (no more leaks) - Bug 4 fix: Stats rows show filter name + intensity + EQ status - UI 1: SVG sc",
     "targets": "ypp-domain-memory-styles, #ypp-dm-edit-name, #ypp-dm-title, input[type=\"checkbox\"], #ypp-dm-slider-bg, #ypp-dm-slider-thumb, #ypp-dm-stats",
     "depends": [],
@@ -1041,8 +1041,8 @@ window.ARCHITECTURE_DATA = [
     "exports": "DomainMemoryUI"
   },
   {
-    "path": "features/global-player-bar/domain/domain-memory.js",
-    "category": "features/global-player-bar/domain",
+    "path": "features/global-bar/domain/domain-memory.js",
+    "category": "features/global-bar/domain",
     "purpose": "Domain Memory Engine Target: /watch route (or global player context). Purpose: Analyzes domain/series scope and remembers custom playback settings per domain. Features: - Cross-Origin Iframe Attribution - Multi-Scope Support (Domain vs Series) - Player Lifecycle Re-Binding - JSON Import/Export",
     "targets": "ypp-domain-toast, .ypp-domain-badge-indicator, .ypp-domain-scope-label",
     "depends": [],
@@ -1054,13 +1054,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "DomainMemory"
   },
   {
-    "path": "features/global-player-bar/external/iframe-bridge.js",
-    "category": "features/global-player-bar/external",
+    "path": "features/global-bar/external/iframe-bridge.js",
+    "category": "features/global-bar/external",
     "purpose": "Utility/Function module",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "features/global-player-bar/external/index.js"
+      "features/global-bar/external/index.js"
     ],
     "storage": "chrome.storage",
     "observers": "MutationObserver",
@@ -1069,13 +1069,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "setupIframeBridge, runIframeLogic"
   },
   {
-    "path": "features/global-player-bar/external/index.js",
-    "category": "features/global-player-bar/external",
+    "path": "features/global-bar/external/index.js",
+    "category": "features/global-bar/external",
     "purpose": "No description available.",
     "targets": "video",
     "depends": [
-      "features/global-player-bar/external/utils-mock.js",
-      "features/global-player-bar/external/iframe-bridge.js"
+      "features/global-bar/external/utils-mock.js",
+      "features/global-bar/external/iframe-bridge.js"
     ],
     "dependedBy": [],
     "storage": "chrome.storage",
@@ -1085,13 +1085,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "none"
   },
   {
-    "path": "features/global-player-bar/external/utils-mock.js",
-    "category": "features/global-player-bar/external",
+    "path": "features/global-bar/external/utils-mock.js",
+    "category": "features/global-bar/external",
     "purpose": "Implements BaseFeature",
     "targets": "link#${id}, ypp-popup-portal",
     "depends": [],
     "dependedBy": [
-      "features/global-player-bar/external/index.js"
+      "features/global-bar/external/index.js"
     ],
     "storage": "YPP.settings",
     "observers": "none",
@@ -1100,8 +1100,8 @@ window.ARCHITECTURE_DATA = [
     "exports": "setupUtilsMock"
   },
   {
-    "path": "features/global-player-bar/styles/global-bar.css",
-    "category": "features/global-player-bar/styles",
+    "path": "features/global-bar/styles/global-bar.css",
+    "category": "features/global-bar/styles",
     "purpose": "Styles for global-bar",
     "targets": "none",
     "depends": [],
@@ -1113,13 +1113,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "none"
   },
   {
-    "path": "features/global-player-bar/ui/global-bar-draggable.js",
-    "category": "features/global-player-bar/ui",
+    "path": "features/global-bar/ui/global-bar-draggable.js",
+    "category": "features/global-bar/ui",
     "purpose": "Utility/Function module",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "features/global-player-bar/ui/global-bar-ui.js"
+      "features/global-bar/ui/global-bar-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -1128,13 +1128,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "makeDraggable"
   },
   {
-    "path": "features/global-player-bar/ui/global-bar-events.js",
-    "category": "features/global-player-bar/ui",
+    "path": "features/global-bar/ui/global-bar-events.js",
+    "category": "features/global-bar/ui",
     "purpose": "Utility/Function module",
     "targets": "#ypp-gpb-play, #ypp-gpb-loop, #ypp-gpb-mute, #ypp-gpb-vol, #ypp-gpb-speed, #ypp-gpb-pip, #ypp-gpb-fullscreen, #ypp-gpb-close",
     "depends": [],
     "dependedBy": [
-      "features/global-player-bar/ui/global-bar-ui.js"
+      "features/global-bar/ui/global-bar-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -1143,13 +1143,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "bindEvents, wakeUpBar"
   },
   {
-    "path": "features/global-player-bar/ui/global-bar-icons.js",
-    "category": "features/global-player-bar/ui",
+    "path": "features/global-bar/ui/global-bar-icons.js",
+    "category": "features/global-bar/ui",
     "purpose": "No description available.",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "features/global-player-bar/ui/global-bar-ui.js"
+      "features/global-bar/ui/global-bar-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -1158,13 +1158,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "ICONS, BAR_HTML"
   },
   {
-    "path": "features/global-player-bar/ui/global-bar-state.js",
-    "category": "features/global-player-bar/ui",
+    "path": "features/global-bar/ui/global-bar-state.js",
+    "category": "features/global-bar/ui",
     "purpose": "Utility/Function module",
     "targets": "#ypp-gpb-features-container, #ypp-gpb-play, #ypp-gpb-mute, #ypp-gpb-vol, #ypp-gpb-time, .ypp-gpb-time-cur, .ypp-gpb-time-tot, #ypp-gpb-speed, #ypp-gpb-speed-text, #ypp-gpb-loop, #ypp-gpb-fullscreen, source",
     "depends": [],
     "dependedBy": [
-      "features/global-player-bar/ui/global-bar-ui.js"
+      "features/global-bar/ui/global-bar-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -1173,16 +1173,16 @@ window.ARCHITECTURE_DATA = [
     "exports": "syncSubFeatureButtons, updateUIState"
   },
   {
-    "path": "features/global-player-bar/ui/global-bar-ui.js",
-    "category": "features/global-player-bar/ui",
+    "path": "features/global-bar/ui/global-bar-ui.js",
+    "category": "features/global-bar/ui",
     "purpose": "Implements GlobalBarUI",
     "targets": "#ypp-gpb-features-container, #ypp-gpb-play, #ypp-gpb-time, #ypp-gpb-mute, #ypp-gpb-vol-wrap, #ypp-gpb-loop, #ypp-gpb-pip, #ypp-gpb-fullscreen, #ypp-gpb-speed, meta[name=\"theme-color\"]",
     "depends": [
       "animejs/lib/anime.es.js",
-      "features/global-player-bar/ui/global-bar-icons.js",
-      "features/global-player-bar/ui/global-bar-draggable.js",
-      "features/global-player-bar/ui/global-bar-events.js",
-      "features/global-player-bar/ui/global-bar-state.js"
+      "features/global-bar/ui/global-bar-icons.js",
+      "features/global-bar/ui/global-bar-draggable.js",
+      "features/global-bar/ui/global-bar-events.js",
+      "features/global-bar/ui/global-bar-state.js"
     ],
     "dependedBy": [],
     "storage": "YPP.settings",
@@ -1995,7 +1995,7 @@ window.ARCHITECTURE_DATA = [
   {
     "path": "pages/shared-feed/core/utils/filter-presets.js",
     "category": "pages/shared-feed/core/utils",
-    "purpose": "Shared Filter Presets Readonly constants used by both VideoFilters (YouTube player) and GlobalPlayerBar (external video tags).",
+    "purpose": "Shared Filter Presets Readonly constants used by both VideoFilters (YouTube player) and GlobalBar (external video tags).",
     "targets": "none",
     "depends": [],
     "dependedBy": [],
@@ -3480,7 +3480,7 @@ window.ARCHITECTURE_DATA = [
   {
     "path": "pages/watch/player/media-effects/video-filters/video-filters-ui.js",
     "category": "pages/watch/player/media-effects/video-filters",
-    "purpose": "Debounce-saves all video filter state to Chrome storage so settings survive SPA navigation (switching episodes). Mirrors VolumeBoosterUI.saveVolumeSettings for the same pattern.",
+    "purpose": "Debounce-saves all video filter state to Chrome storage so settings survive SPA navigation (switching episodes). Mirrors EqualiserUI.saveVolumeSettings for the same pattern.",
     "targets": ".ypp-adj-cp-compare-btn, #ypp-header-actions",
     "depends": [
       "pages/watch/player/media-effects/video-filters/ui/tab-presets.js",
@@ -3528,13 +3528,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "VideoFilters"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/constants/eq-presets.js",
-    "category": "pages/watch/player/media-effects/volume-booster/constants",
+    "path": "pages/watch/player/media-effects/equaliser/constants/eq-presets.js",
+    "category": "pages/watch/player/media-effects/equaliser/constants",
     "purpose": "Graphic EQ Bands & Presets Contains configuration for the 10-band equalizer and default preset values.",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster.js"
+      "pages/watch/player/media-effects/equaliser/equaliser.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3543,13 +3543,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "EQ_BANDS, EQ_PRESETS"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/modules/audio-dynamics.js",
-    "category": "pages/watch/player/media-effects/volume-booster/modules",
+    "path": "pages/watch/player/media-effects/equaliser/modules/audio-dynamics.js",
+    "category": "pages/watch/player/media-effects/equaliser/modules",
     "purpose": "Audio Dynamics Module (Mixin) Handles Compressor, Limiter, and Auto-Gain Normalizer logic.",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster.js"
+      "pages/watch/player/media-effects/equaliser/equaliser.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3558,13 +3558,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "AudioDynamicsMixin"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/modules/audio-eq.js",
-    "category": "pages/watch/player/media-effects/volume-booster/modules",
+    "path": "pages/watch/player/media-effects/equaliser/modules/audio-eq.js",
+    "category": "pages/watch/player/media-effects/equaliser/modules",
     "purpose": "Audio EQ Module (Mixin) Handles 10-Band EQ and Preset application.",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster.js"
+      "pages/watch/player/media-effects/equaliser/equaliser.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3573,13 +3573,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "AudioEQMixin"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/modules/audio-fx.js",
-    "category": "pages/watch/player/media-effects/volume-booster/modules",
+    "path": "pages/watch/player/media-effects/equaliser/modules/audio-fx.js",
+    "category": "pages/watch/player/media-effects/equaliser/modules",
     "purpose": "Audio FX Module (Mixin) Handles Voice FX — leveled up with Convolution Reverbs, 8D Spatial Audio, and True Pitch Shifting.",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster.js"
+      "pages/watch/player/media-effects/equaliser/equaliser.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3588,13 +3588,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "AudioFXMixin"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/modules/audio-spatial.js",
-    "category": "pages/watch/player/media-effects/volume-booster/modules",
+    "path": "pages/watch/player/media-effects/equaliser/modules/audio-spatial.js",
+    "category": "pages/watch/player/media-effects/equaliser/modules",
     "purpose": "Audio Spatial Module (Mixin) Handles Stereo Width Matrix, Mono Mix, Phase Inversion, Reverb, and Playback Speed.",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster.js"
+      "pages/watch/player/media-effects/equaliser/equaliser.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3603,13 +3603,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "AudioSpatialMixin"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/ui/tab-dynamics.js",
-    "category": "pages/watch/player/media-effects/volume-booster/ui",
+    "path": "pages/watch/player/media-effects/equaliser/ui/tab-dynamics.js",
+    "category": "pages/watch/player/media-effects/equaliser/ui",
     "purpose": "Implements DynamicsTabUI",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster-ui.js"
+      "pages/watch/player/media-effects/equaliser/equaliser-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3618,13 +3618,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "DynamicsTabUI"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/ui/tab-eq.js",
-    "category": "pages/watch/player/media-effects/volume-booster/ui",
+    "path": "pages/watch/player/media-effects/equaliser/ui/tab-eq.js",
+    "category": "pages/watch/player/media-effects/equaliser/ui",
     "purpose": "Implements EQTabUI",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster-ui.js"
+      "pages/watch/player/media-effects/equaliser/equaliser-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3633,13 +3633,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "EQTabUI"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/ui/tab-fx.js",
-    "category": "pages/watch/player/media-effects/volume-booster/ui",
+    "path": "pages/watch/player/media-effects/equaliser/ui/tab-fx.js",
+    "category": "pages/watch/player/media-effects/equaliser/ui",
     "purpose": "Implements FXTabUI",
     "targets": "none",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster-ui.js"
+      "pages/watch/player/media-effects/equaliser/equaliser-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3648,13 +3648,13 @@ window.ARCHITECTURE_DATA = [
     "exports": "FXTabUI"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/ui/tab-spatial.js",
-    "category": "pages/watch/player/media-effects/volume-booster/ui",
+    "path": "pages/watch/player/media-effects/equaliser/ui/tab-spatial.js",
+    "category": "pages/watch/player/media-effects/equaliser/ui",
     "purpose": "Implements SpatialTabUI",
     "targets": "input, span:last-child",
     "depends": [],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster-ui.js"
+      "pages/watch/player/media-effects/equaliser/equaliser-ui.js"
     ],
     "storage": "none",
     "observers": "none",
@@ -3663,30 +3663,30 @@ window.ARCHITECTURE_DATA = [
     "exports": "SpatialTabUI"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/volume-booster-ui.js",
-    "category": "pages/watch/player/media-effects/volume-booster",
-    "purpose": "Implements VolumeBoosterUI",
+    "path": "pages/watch/player/media-effects/equaliser/equaliser-ui.js",
+    "category": "pages/watch/player/media-effects/equaliser",
+    "purpose": "Implements EqualiserUI",
     "targets": ".ypp-eq-ab-btn, .ypp-eq-link-btn, #ypp-eq-close, #ypp-eq-tab-spa, #ypp-eq-tab-dyn, .ypp-eq-comp-btn, .ypp-eq-preset-btn, ypp-eq-styles",
     "depends": [
       "animejs/lib/anime.es.js",
-      "pages/watch/player/media-effects/volume-booster/ui/tab-dynamics.js",
-      "pages/watch/player/media-effects/volume-booster/ui/tab-eq.js",
-      "pages/watch/player/media-effects/volume-booster/ui/tab-fx.js",
-      "pages/watch/player/media-effects/volume-booster/ui/tab-spatial.js"
+      "pages/watch/player/media-effects/equaliser/ui/tab-dynamics.js",
+      "pages/watch/player/media-effects/equaliser/ui/tab-eq.js",
+      "pages/watch/player/media-effects/equaliser/ui/tab-fx.js",
+      "pages/watch/player/media-effects/equaliser/ui/tab-spatial.js"
     ],
     "dependedBy": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster.js"
+      "pages/watch/player/media-effects/equaliser/equaliser.js"
     ],
     "storage": "chrome.storage",
     "observers": "none",
     "size": "42.2 KB",
     "loc": 1146,
-    "exports": "VolumeBoosterUI"
+    "exports": "EqualiserUI"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/volume-booster.css",
-    "category": "pages/watch/player/media-effects/volume-booster",
-    "purpose": "Styles for volume-booster",
+    "path": "pages/watch/player/media-effects/equaliser/equaliser.css",
+    "category": "pages/watch/player/media-effects/equaliser",
+    "purpose": "Styles for equaliser",
     "targets": "none",
     "depends": [],
     "dependedBy": [],
@@ -3697,24 +3697,24 @@ window.ARCHITECTURE_DATA = [
     "exports": "none"
   },
   {
-    "path": "pages/watch/player/media-effects/volume-booster/volume-booster.js",
-    "category": "pages/watch/player/media-effects/volume-booster",
+    "path": "pages/watch/player/media-effects/equaliser/equaliser.js",
+    "category": "pages/watch/player/media-effects/equaliser",
     "purpose": "Handles the lifecycle of the AudioContext, connects media nodes to the graph, and delegates processing to modular mixins (EQ, Dynamics, Spatial, FX). **Production Code Audit**: - Memory leak prevention: Uses WeakRefs/WeakMaps for DOM caching. - Performance: Graph updates are batched where possible.",
     "targets": "#ypp-volume-boost-btn[data-vb-id=\"${this._id}\"]",
     "depends": [
-      "pages/watch/player/media-effects/volume-booster/volume-booster-ui.js",
-      "pages/watch/player/media-effects/volume-booster/constants/eq-presets.js",
-      "pages/watch/player/media-effects/volume-booster/modules/audio-eq.js",
-      "pages/watch/player/media-effects/volume-booster/modules/audio-dynamics.js",
-      "pages/watch/player/media-effects/volume-booster/modules/audio-spatial.js",
-      "pages/watch/player/media-effects/volume-booster/modules/audio-fx.js"
+      "pages/watch/player/media-effects/equaliser/equaliser-ui.js",
+      "pages/watch/player/media-effects/equaliser/constants/eq-presets.js",
+      "pages/watch/player/media-effects/equaliser/modules/audio-eq.js",
+      "pages/watch/player/media-effects/equaliser/modules/audio-dynamics.js",
+      "pages/watch/player/media-effects/equaliser/modules/audio-spatial.js",
+      "pages/watch/player/media-effects/equaliser/modules/audio-fx.js"
     ],
     "dependedBy": [],
     "storage": "YPP.settings",
     "observers": "none",
     "size": "41.3 KB",
     "loc": 944,
-    "exports": "VolumeBooster"
+    "exports": "Equaliser"
   },
   {
     "path": "styles/base-ui-design/base/animations.css",

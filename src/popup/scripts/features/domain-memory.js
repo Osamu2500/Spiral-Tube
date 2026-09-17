@@ -461,7 +461,7 @@ export function renderDomainMemoryManager(container, state) {
                 <div class="dmm-empty-state">
                     ${dmmSVG('header', 36)}
                     <div style="font-weight:600; font-size:13px; color:#fff;">${query ? 'No matching sites' : 'No remembered websites yet'}</div>
-                    <div style="font-size:11px;">Adjust volume booster, speed, or filters on any streaming site to save its profile automatically!</div>
+                    <div style="font-size:11px;">Adjust equaliser, speed, or filters on any streaming site to save its profile automatically!</div>
                 </div>
             `;
             return;
@@ -665,5 +665,5 @@ export function renderDomainMemoryManager(container, state) {
 }
 
 // =========================================================================
-// GLOBAL PLAYER BAR BLOCKLIST MANAGER
+// GLOBAL BAR BLOCKLIST MANAGER
 // =========================================================================

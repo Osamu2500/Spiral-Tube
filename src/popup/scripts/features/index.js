@@ -5,7 +5,7 @@ import { initBackupTools } from '../features/backup-tools.js';
 import { initBookmarksManager } from '../features/bookmarks-manager.js';
 import { renderPlayerBarOrganizer } from '../features/player-bar-organizer.js';
 import { renderDomainMemoryManager } from '../features/domain-memory.js';
-import { renderGlobalPlayerBarBlocklist } from '../features/global-blocklist.js';
+import { renderGlobalBarBlocklist } from '../features/global-blocklist.js';
 
 export {
     initHistoryWidget,
@@ -13,5 +13,5 @@ export {
     initBookmarksManager,
     renderPlayerBarOrganizer,
     renderDomainMemoryManager,
-    renderGlobalPlayerBarBlocklist
+    renderGlobalBarBlocklist
 };

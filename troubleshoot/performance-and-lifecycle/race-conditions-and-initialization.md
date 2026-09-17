@@ -15,7 +15,7 @@ A "Race Condition" occurs when the extension relies on YouTube's DOM elements ex
    On an SPA navigation (clicking a video from the homepage), YouTube's DOM is already fully constructed, so `querySelector` succeeds instantly.
 
 2. **Manager vs Feature Instantiation Sync:**
-   The extension has a central `FeatureManager` that spins up feature classes (like `VolumeBooster`, `SeamlessMode`). If a specific page UI (like `PlayerBarUI`) attempts to call `featureManager.getFeature('VolumeBooster')` before `FeatureManager` has finished loading everything, it receives `null` and skips injecting the button.
+   The extension has a central `FeatureManager` that spins up feature classes (like `Equaliser`, `SeamlessMode`). If a specific page UI (like `PlayerBarUI`) attempts to call `featureManager.getFeature('Equaliser')` before `FeatureManager` has finished loading everything, it receives `null` and skips injecting the button.
 
 ## Process / Solution
 
