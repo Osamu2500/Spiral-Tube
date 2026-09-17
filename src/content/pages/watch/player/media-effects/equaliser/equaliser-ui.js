@@ -963,8 +963,8 @@ export class EqualiserUI {
     color: #fff;
     font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
-    backdrop-filter: blur(64px) saturate(200%);
     -webkit-backdrop-filter: blur(64px) saturate(200%);
+    backdrop-filter: blur(64px) saturate(200%);
     user-select: none;
     overflow: hidden;
     animation: ypp-eq-in 0.28s cubic-bezier(0.2, 0, 0, 1) forwards;
@@ -1058,7 +1058,7 @@ export class EqualiserUI {
 
 /* Canvas */
 .ypp-eq-canvas {
-    display: block; width: calc(100% - 32px); height: 40px;
+    display: block; width: calc(100% - 32px); height: 90px;
     margin: 0 16px 2px; border-radius: 8px;
     background: rgba(255,255,255,0.025);
     border: 1px solid rgba(255,255,255,0.06);
