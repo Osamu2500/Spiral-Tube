@@ -1,3 +1,5 @@
+import { ResumeDataManager } from '../../../content/features/resume/resume-data.js';
+
 const STORAGE_PREFIX = 'ypp_resume_';
 
 export async function initResumeDashboard() {
@@ -21,48 +23,8 @@ export async function initResumeDashboard() {
     };
 
     async function loadData() {
-        return new Promise((resolve) => {
-            // We use sync storage
-            if (chrome && chrome.storage && chrome.storage.sync) {
-                chrome.storage.sync.get(null, (data) => {
-                    parseData(data);
-                    resolve();
-                });
-            } else {
-                parseData(window.localStorage);
-                resolve();
-            }
-        });
-    }
-
-    function parseData(data) {
-        state.videos = [];
-        state.categories = [];
-
-        for (const key of Object.keys(data)) {
-            if (key === 'ypp_resume_categories') {
-                try {
-                    state.categories = typeof data[key] === 'string' ? JSON.parse(data[key]) : data[key];
-                } catch(e) {}
-            } else if (key.startsWith(STORAGE_PREFIX)) {
-                try {
-                    const val = typeof data[key] === 'string' ? JSON.parse(data[key]) : data[key];
-                    if (val && val.time) {
-                        state.videos.push({
-                            id: key.replace(STORAGE_PREFIX, ''),
-                            key: key,
-                            time: val.time,
-                            duration: val.duration || 0,
-                            savedAt: val.savedAt || 0,
-                            title: val.title || 'YouTube Video',
-                            channel: val.channel || '',
-                            thumbnail: val.thumbnail || `https://i.ytimg.com/vi/${key.replace(STORAGE_PREFIX, '')}/mqdefault.jpg`,
-                            categoryId: val.categoryId || null
-                        });
-                    }
-                } catch(e) {}
-            }
-        }
+        state.videos = await ResumeDataManager.getAllVideos();
+        state.categories = await ResumeDataManager.getCategories();
         
         // Update badge
         if (badge) {
@@ -76,7 +38,6 @@ export async function initResumeDashboard() {
         
         // System folders
         folderListEl.appendChild(createFolderBtn('all', 'All videos', state.videos.length, !state.activeCategory || state.activeCategory === 'all'));
-        folderListEl.appendChild(createFolderBtn('inbox', 'Inbox', state.videos.filter(v => !v.categoryId).length, state.activeCategory === 'inbox'));
 
         // Custom folders
         for (const cat of state.categories) {
@@ -101,7 +62,7 @@ export async function initResumeDashboard() {
         label.style.flex = '1';
         
         const countEl = document.createElement('span');
-        countEl.className = 'resume-folder-count';
+        countEl.className = 'resume-folder-count' + (isCustom ? ' has-actions' : '');
         countEl.textContent = count;
         
         btn.appendChild(dot);
@@ -115,9 +76,36 @@ export async function initResumeDashboard() {
         };
 
         if (isCustom) {
-            // Right click to delete
-            btn.oncontextmenu = async (e) => {
-                e.preventDefault();
+            // Actions container
+            const actions = document.createElement('div');
+            actions.className = 'resume-folder-actions';
+            
+            // Edit button
+            const editBtn = document.createElement('button');
+            editBtn.className = 'resume-folder-action-btn edit';
+            editBtn.title = "Rename folder";
+            editBtn.innerHTML = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>`;
+            editBtn.onclick = async (e) => {
+                e.stopPropagation();
+                const newName = prompt("Rename folder:", name);
+                if (newName && newName.trim() && newName.trim() !== name) {
+                    const cat = state.categories.find(c => c.id === id);
+                    if (cat) {
+                        cat.name = newName.trim();
+                        await saveCategories();
+                        renderFolders();
+                        renderVideos(); // re-render to update dropdowns in video items
+                    }
+                }
+            };
+            
+            // Delete button
+            const delBtn = document.createElement('button');
+            delBtn.className = 'resume-folder-action-btn delete';
+            delBtn.title = "Delete folder";
+            delBtn.innerHTML = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`;
+            delBtn.onclick = async (e) => {
+                e.stopPropagation();
                 if (confirm(`Delete folder "${name}"? Videos will be moved to Inbox.`)) {
                     state.categories = state.categories.filter(c => c.id !== id);
                     await saveCategories();
@@ -133,7 +121,70 @@ export async function initResumeDashboard() {
                     renderVideos();
                 }
             };
-            btn.title = "Right click to delete folder";
+
+            actions.appendChild(editBtn);
+            actions.appendChild(delBtn);
+            btn.appendChild(actions);
+
+            // Drag and Drop
+            btn.draggable = true;
+            btn.dataset.catId = id;
+            
+            btn.addEventListener('dragstart', (e) => {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', id);
+                btn.classList.add('dragging');
+            });
+            
+            btn.addEventListener('dragend', () => {
+                btn.classList.remove('dragging');
+                document.querySelectorAll('.resume-folder-btn').forEach(b => {
+                    b.classList.remove('drag-over-top', 'drag-over-bottom');
+                });
+            });
+            
+            btn.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const draggingItem = document.querySelector('.resume-folder-btn.dragging');
+                if (!draggingItem || draggingItem === btn) return;
+                
+                const bounding = btn.getBoundingClientRect();
+                const offset = bounding.y + (bounding.height / 2);
+                if (e.clientY - offset > 0) {
+                    btn.classList.add('drag-over-bottom');
+                    btn.classList.remove('drag-over-top');
+                } else {
+                    btn.classList.add('drag-over-top');
+                    btn.classList.remove('drag-over-bottom');
+                }
+            });
+            
+            btn.addEventListener('dragleave', () => {
+                btn.classList.remove('drag-over-top', 'drag-over-bottom');
+            });
+            
+            btn.addEventListener('drop', async (e) => {
+                e.preventDefault();
+                btn.classList.remove('drag-over-top', 'drag-over-bottom');
+                const draggedId = e.dataTransfer.getData('text/plain');
+                if (!draggedId || draggedId === id) return;
+                
+                const draggedIdx = state.categories.findIndex(c => c.id === draggedId);
+                const targetIdx = state.categories.findIndex(c => c.id === id);
+                if (draggedIdx === -1 || targetIdx === -1) return;
+                
+                const bounding = btn.getBoundingClientRect();
+                const offset = bounding.y + (bounding.height / 2);
+                const insertAfter = (e.clientY - offset > 0);
+                
+                // Reorder array
+                const [movedItem] = state.categories.splice(draggedIdx, 1);
+                const newTargetIdx = state.categories.findIndex(c => c.id === id); // recalculate after splice
+                state.categories.splice(insertAfter ? newTargetIdx + 1 : newTargetIdx, 0, movedItem);
+                
+                await saveCategories();
+                renderFolders();
+            });
         }
         
         return btn;
@@ -302,38 +353,11 @@ export async function initResumeDashboard() {
     }
 
     async function saveCategories() {
-        const payload = JSON.stringify(state.categories);
-        if (chrome && chrome.storage && chrome.storage.sync) {
-            return new Promise(r => chrome.storage.sync.set({ 'ypp_resume_categories': payload }, r));
-        } else {
-            window.localStorage.setItem('ypp_resume_categories', payload);
-        }
+        await ResumeDataManager.saveCategories(state.categories);
     }
 
     async function updateVideoCategory(key, categoryId) {
-        return new Promise(resolve => {
-            if (chrome && chrome.storage && chrome.storage.sync) {
-                chrome.storage.sync.get([key], (data) => {
-                    if (data[key]) {
-                        try {
-                            const val = typeof data[key] === 'string' ? JSON.parse(data[key]) : data[key];
-                            val.categoryId = categoryId;
-                            chrome.storage.sync.set({ [key]: JSON.stringify(val) }, resolve);
-                        } catch(e) { resolve(); }
-                    } else resolve();
-                });
-            } else {
-                try {
-                    const raw = window.localStorage.getItem(key);
-                    if (raw) {
-                        const val = JSON.parse(raw);
-                        val.categoryId = categoryId;
-                        window.localStorage.setItem(key, JSON.stringify(val));
-                    }
-                } catch(e) {}
-                resolve();
-            }
-        });
+        await ResumeDataManager.updateVideoCategory(key, categoryId);
     }
 
     // Event Listeners

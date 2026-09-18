@@ -8,7 +8,7 @@
 }
 
 #resume-sidebar {
-    width: 150px;
+    width: 220px;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     padding: 12px;
     display: flex;
@@ -51,6 +51,8 @@
     text-align: left;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     width: 100%;
+    position: relative;
+    user-select: none;
 }
 
 .resume-folder-btn:hover {
@@ -58,6 +60,64 @@
     color: #fff;
     transform: translateX(2px);
 }
+
+.resume-folder-btn.dragging {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0.98);
+}
+
+.resume-folder-btn.drag-over-top {
+    box-shadow: 0 -2px 0 0 var(--accent-primary, #ff4e45);
+}
+
+.resume-folder-btn.drag-over-bottom {
+    box-shadow: 0 2px 0 0 var(--accent-primary, #ff4e45);
+}
+
+/* Folder Actions container */
+.resume-folder-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    margin-left: auto;
+}
+
+.resume-folder-btn:hover .resume-folder-actions,
+.resume-folder-actions:hover {
+    opacity: 1;
+}
+
+.resume-folder-action-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.resume-folder-action-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.resume-folder-action-btn.delete:hover {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff4e45;
+}
+
+/* Hide count when hovering if actions are present */
+.resume-folder-btn:hover .resume-folder-count.has-actions {
+    display: none;
+}
+
 
 .resume-folder-btn.active {
     background: rgba(255, 255, 255, 0.1);

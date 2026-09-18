@@ -252,6 +252,8 @@ export function initUI(document) {
  * Clears the badge and flag after displaying.
  */
 function _initWhatsNew(doc) {
+    // Disabled to prevent the annoying "New features" popup.
+    /*
     try {
         chrome.storage.local.get(CONFIG.STORAGE_KEYS.UPDATE_FLAG, (data) => {
             if (chrome.runtime.lastError) {
@@ -298,6 +300,7 @@ function _initWhatsNew(doc) {
     } catch (e) {
         console.error('[YPP:UI] Error in _initWhatsNew:', e.message);
     }
+    */
 }
 
 export function showSaveIndicator(document) {
