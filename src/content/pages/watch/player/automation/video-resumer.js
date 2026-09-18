@@ -11,7 +11,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
     static featureId = 'videoResumer';
     static executionPhase = 'idle';
     static priority = 999;
-    static targetPages = ['watch', 'home'];
+    static targetPages = ['watch'];
 
     static CONFIG = {
         POLL_TIMEOUT: 10000,
@@ -38,6 +38,8 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         this.handleHotkey = this.handleHotkey.bind(this);
         this.STORAGE_KEY_PREFIX = 'ypp_resume_';
         this.BOOKMARK_KEY_PREFIX = 'ypp_bookmark_';
+        this.currentCategoryId = null;
+        this.cachedMetadata = null;
     }
 
     getConfigKey() {
@@ -51,8 +53,6 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         this.addListener(window, 'yt-navigate-finish', this.handleNavigation);
         if (this.utils.isWatchPage()) {
             this.init();
-        } else if (window.location.pathname === '/') {
-            this._injectContinueWatchingRow();
         }
     }
 
@@ -68,13 +68,22 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
     }
 
     handleNavigation() {
+        // As per user request: Discard the previous video's progress when navigating via sidebar.
+        // We only want to save the video progress if the user actually closes the page or tab.
+        if (this.videoElement && this.videoId) {
+            const key = this.STORAGE_KEY_PREFIX + this.videoId;
+            if (chrome && chrome.storage && chrome.storage.sync) {
+                chrome.storage.sync.remove(key);
+            } else {
+                window.YPP.StorageManager.remove(key);
+            }
+        }
+        
         this.cleanup();
         if (!this.isEnabled) return;
         
         if (this.utils.isWatchPage()) {
             this.init();
-        } else if (window.location.pathname === '/') {
-            this._injectContinueWatchingRow(); // V3 Fix: Polling inside method
         }
     }
 
@@ -95,8 +104,6 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         document.querySelectorAll('.ypp-bookmark-marker').forEach(el => el.remove());
         const syncPanel = document.getElementById('ypp-sync-panel');
         if (syncPanel) syncPanel.remove();
-        const continueRow = document.getElementById('ypp-continue-watching-row');
-        if (continueRow) continueRow.remove();
     }
 
     getVideoId() {
@@ -128,8 +135,11 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                     if (document.hidden) this.forceSave();
                 });
                 
-                // Hotkey for Bookmarking
                 this.addListener(document, 'keydown', this.handleHotkey);
+                
+                // Eagerly fetch metadata
+                this.cachedMetadata = null;
+                this._updateMetadataCache();
                 
                 // V2: Progress Bar Markers
                 setTimeout(() => this._renderBookmarkMarkers(), VideoResumer.CONFIG.MARKER_DELAY_MS);
@@ -163,6 +173,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                 if (typeof parsed === 'object' && parsed !== null) {
                     savedTime = parseFloat(parsed.time);
                     duration = parseFloat(parsed.duration) || null;
+                    this.currentCategoryId = parsed.categoryId || null;
                 } else {
                     savedTime = parseFloat(savedTimeStr);
                     duration = null;
@@ -244,8 +255,35 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                     window.YPP.StorageManager.remove(key);
                 }
             } else if (currentTime > VideoResumer.CONFIG.MIN_RESUME_SECONDS) {
-                // RESUMER-BUG-4 & RESUMER-UP-4: Store time, duration, and timestamp
-                const saveData = JSON.stringify({ time: currentTime, duration: duration || 0, savedAt: Date.now() });
+                const meta = this.cachedMetadata || {};
+                
+                let title = meta.title;
+                if (!title) {
+                    const titleMeta = document.querySelector('meta[property="og:title"]');
+                    const titleHeading = document.querySelector('h1.ytd-watch-metadata yt-formatted-string, h1 yt-formatted-string');
+                    title = titleMeta?.content?.replace(/ - YouTube$/, '') || titleHeading?.textContent?.trim() || document.title.replace(/ - YouTube$/, '');
+                }
+                
+                let channel = meta.channel;
+                if (channel === undefined) {
+                    const channelEl = document.querySelector('#channel-name a, ytd-channel-name a, .ytd-channel-name a, .yt-formatted-string.ytd-channel-name');
+                    channel = channelEl?.textContent?.trim() || '';
+                }
+                
+                const thumbnail = meta.thumbnail || `https://i.ytimg.com/vi/${this.videoId}/mqdefault.jpg`;
+                if (title === 'YouTube') title = 'YouTube Video';
+
+                // RESUMER-BUG-4 & RESUMER-UP-4: Store time, duration, timestamp and metadata
+                const saveData = JSON.stringify({ 
+                    time: currentTime, 
+                    duration: duration || 0, 
+                    savedAt: Date.now(),
+                    title,
+                    channel,
+                    thumbnail,
+                    categoryId: this.currentCategoryId || null
+                });
+                
                 if (chrome && chrome.storage && chrome.storage.sync) {
                     chrome.storage.sync.set({ [key]: saveData }, () => this._pruneOldResumes());
                 } else {
@@ -255,6 +293,27 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             }
         } catch (e) {
             // Ignore quota errors during unload
+        }
+    }
+
+    _updateMetadataCache() {
+        if (!this.videoId || !this.videoElement) return;
+        const titleMeta = document.querySelector('meta[property="og:title"]');
+        const titleHeading = document.querySelector('h1.ytd-watch-metadata yt-formatted-string, h1 yt-formatted-string');
+        const title = titleMeta?.content?.replace(/ - YouTube$/, '') || titleHeading?.textContent?.trim() || document.title.replace(/ - YouTube$/, '');
+        
+        const channelEl = document.querySelector('#channel-name a, ytd-channel-name a, .ytd-channel-name a, .yt-formatted-string.ytd-channel-name');
+        const channel = channelEl?.textContent?.trim() || '';
+        
+        const thumbnail = `https://i.ytimg.com/vi/${this.videoId}/mqdefault.jpg`;
+        
+        if (title && title !== 'YouTube' && channel) {
+            this.cachedMetadata = { title, channel, thumbnail };
+        } else {
+            // retry until available
+            setTimeout(() => {
+                if (this.videoElement) this._updateMetadataCache();
+            }, 1500);
         }
     }
 
@@ -386,94 +445,6 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             };
             progressList.appendChild(marker);
         });
-    }
-    
-    async _injectContinueWatchingRow() {
-        if (document.getElementById('ypp-continue-watching-row')) return;
-        
-        let allKeys = [];
-        let data = {};
-        if (chrome && chrome.storage && chrome.storage.sync) {
-            data = await chrome.storage.sync.get(null);
-            allKeys = Object.keys(data);
-        } else {
-            data = window.localStorage;
-            allKeys = Object.keys(data);
-        }
-        
-        const resumeItems = allKeys.filter(k => k.startsWith(this.STORAGE_KEY_PREFIX));
-        if (resumeItems.length === 0) return;
-        
-        // V3 Fix: Use pollFor to reliably wait for the grid to render
-        try {
-            const contents = await this.utils.pollFor(() => {
-                const el = document.querySelector('ytd-rich-grid-renderer #contents');
-                return el && el.children.length > 0 ? el : null;
-            }, VideoResumer.CONFIG.POLL_TIMEOUT, VideoResumer.CONFIG.POLL_INTERVAL);
-            
-            if (document.getElementById('ypp-continue-watching-row')) return; // double check after polling
-            
-            const row = document.createElement('div');
-            row.id = 'ypp-continue-watching-row';
-            row.style.cssText = `
-                margin: 24px 0;
-                padding: 16px;
-                background: var(--yt-spec-10-percent-layer);
-                border-radius: 12px;
-            `;
-            
-            let html = `<h2 style="color:var(--yt-spec-text-primary); margin-top:0; font-size:20px; margin-bottom:16px;">▶ Continue Watching</h2><div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px;">`;
-            
-            // RESUMER-UP-1: Sort by most recent and fetch titles
-            const sortedItems = resumeItems.map(key => {
-                let ts = 0, p = null;
-                try {
-                    p = typeof data[key] === 'string' ? JSON.parse(data[key]) : null;
-                    ts = p?.savedAt || 0;
-                } catch {}
-                return { key, ts, p };
-            }).sort((a, b) => b.ts - a.ts).slice(0, 5);
-
-            for (const item of sortedItems) {
-                const vidId = item.key.replace(this.STORAGE_KEY_PREFIX, '');
-                const url = `https://www.youtube.com/watch?v=${vidId}`;
-                const imgUrl = `https://i.ytimg.com/vi/${vidId}/mqdefault.jpg`;
-                
-                let progressWidth = 50;
-                const parsed = item.p;
-                if (parsed && parsed.time && parsed.duration && parsed.duration > 0) {
-                    progressWidth = Math.min(100, Math.round((parsed.time / parsed.duration) * 100));
-                }
-
-                // RESUMER-UP-1: Fetch title via oEmbed
-                let title = 'YouTube Video';
-                try {
-                    const oembedRes = await fetch(`https://www.youtube.com/oembed?url=${url}&format=json`);
-                    if (oembedRes.ok) {
-                        const oembedData = await oembedRes.json();
-                        title = oembedData.title || title;
-                    }
-                } catch (e) {}
-                
-                html += `
-                    <a href="${url}" style="text-decoration:none; flex-shrink:0; width:210px; display:flex; flex-direction:column; gap:8px;">
-                        <div style="position:relative; width:100%; border-radius:8px; overflow:hidden; aspect-ratio:16/9; background:#000;">
-                            <img src="${imgUrl}" style="width:100%; height:100%; object-fit:cover;" />
-                            <div style="position:absolute; bottom:0; left:0; height:4px; background:red; width:${progressWidth}%;"></div>
-                        </div>
-                        <div style="color:var(--yt-spec-text-primary); font-size:14px; font-weight:500; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${title}</div>
-                    </a>
-                `;
-            }
-            
-            html += `</div>`;
-            row.innerHTML = html;
-            
-            contents.insertBefore(row, contents.firstChild);
-            this.utils.log?.('Injected Continue Watching row', 'RESUMER', 'info');
-        } catch (e) {
-            this.utils.log?.('Failed to find home page grid for Continue Watching', 'RESUMER', 'warn');
-        }
     }
     
     _showSyncPanel(savedTime, smartTime) {

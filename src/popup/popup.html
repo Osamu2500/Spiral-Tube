@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="styles/components/command-palette.css" />
     <link rel="stylesheet" href="styles/components/ambient-background.css" />
     <link rel="stylesheet" href="styles/components/drive-sync.css" />
+    <link rel="stylesheet" href="styles/components/resume-dashboard.css" />
   </head>
 
   <body class="ypp-theme-liquid-glass">
@@ -49,6 +50,11 @@
           <button class="nav-item" data-tab="player" title="Player Tools">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             <span class="nav-label" data-i18n="nav_player">Player</span>
+          </button>
+          <button class="nav-item" data-tab="resume" title="Resume Videos" style="position:relative;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+            <span class="nav-label">Resume</span>
+            <span id="navResumeBadge" class="nav-badge" style="display:none; background:#ff4e45; color:#fff; border-radius:10px; padding:2px 5px; font-size:9px; font-weight:800; position:absolute; top:4px; right:4px;">0</span>
           </button>
           <button class="nav-item" data-tab="speed" title="Video Speed Controller">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6v12l8.5-6L4 6zm9 0v12l8.5-6L13 6z"></path></svg>
@@ -214,6 +220,41 @@
               <div id="video-log-list" class="video-log-list">
                 <div class="ypp-inline-16">Select a date to view history</div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESUME DASHBOARD -->
+        <section id="tab-resume" class="tab-content">
+          <div id="resume-dashboard-container" style="display:flex; height:100%; width:100%;">
+            <!-- Left Sidebar for Folders -->
+            <div id="resume-sidebar">
+               <div class="resume-sidebar-title">Folders</div>
+               <div id="resume-folder-list"></div>
+               <button id="resume-new-folder-btn">+ New Folder</button>
+            </div>
+            
+            <!-- Right Main Area for Videos -->
+            <div id="resume-main">
+               <div class="resume-toolbar">
+                  <div style="position:relative; flex:1; max-width:200px;">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute; left:8px; top:50%; transform:translateY(-50%); opacity:0.5;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="resume-search" placeholder="Search videos...">
+                  </div>
+                  <select id="resume-sort">
+                      <option value="recent">Recently Watched</option>
+                      <option value="added">Date Added</option>
+                      <option value="title">Title</option>
+                  </select>
+               </div>
+               
+               <div id="resume-video-list"></div>
+               
+               <div id="resume-empty-state">
+                  <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                  <div>No unfinished videos here</div>
+                  <div style="font-size:11px; margin-top:4px;">Start watching a video and it will appear here.</div>
+               </div>
             </div>
           </div>
         </section>

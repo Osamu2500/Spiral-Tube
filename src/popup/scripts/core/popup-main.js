@@ -11,6 +11,7 @@ import * as UI from '../ui/popup-ui.js';
 import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
 import { initPopupDesignScale } from './popup-design-handler.js';
 import { renderAccentColorSlot, renderPopupScaleSlot, renderPopupUiDesignSlot } from '../schema/tabs/tab-popup-design.js';
+import { initResumeDashboard } from '../components/resume-dashboard.js';
 import { initCommandPalette } from '../ui/command-palette.js';
 import { initAmbientBackground } from '../ui/popup-ambient.js';
 import { initFavorites } from '../ui/popup-favorites.js';
@@ -1138,6 +1139,7 @@ const initApp = async () => {
         initHistoryWidget();
         initBackupTools();
         initBookmarksManager();
+        initResumeDashboard();
         // 6.5 Apply popup theme (based on saved state)
         if (localStorage.getItem('ypp-popup-dark') === 'true' || localStorage.getItem('ypp-popup-dark') === null) {
             document.body.classList.add('ypp-theme-dark');
