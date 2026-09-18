@@ -152,39 +152,23 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
         this._startPolling(menu);
     }
 
-    /**
-     * Find the account menu element. We look for the multi-page menu that
-     * contains the active account header, which is the most reliable signal.
-     * We intentionally do NOT require ytd-account-item-renderer here because
-     * single-account users don't have those.
-     *
-     * @returns {Element|null}
-     */
     _findMenu() {
         // Strategy 1: slot="menu" inside a visible iron-dropdown
-        const dropdowns = document.querySelectorAll('tp-yt-iron-dropdown');
+        const dropdowns = document.querySelectorAll('tp-yt-iron-dropdown[aria-hidden="false"]');
         for (const dd of dropdowns) {
-            if (dd.hasAttribute('aria-hidden') && dd.getAttribute('aria-hidden') === 'true') continue;
             const menu = dd.querySelector('ytd-multi-page-menu-renderer');
             if (menu && this._isAccountMenu(menu)) return menu;
         }
 
-        // Strategy 2: slot attribute on the renderer
-        const slotted = document.querySelector('ytd-multi-page-menu-renderer[slot="menu"]');
-        if (slotted && this._isAccountMenu(slotted)) return slotted;
-
-        // Strategy 3: any visible multi-page-menu with account header
-        const allMenus = document.querySelectorAll('ytd-multi-page-menu-renderer');
-        for (const m of allMenus) {
-            if (this._isAccountMenu(m)) return m;
-        }
-
-        // Strategy 4: check any active dropdown inside ytd-popup-container
+        // Strategy 2: check any active dropdown inside ytd-popup-container
         const popupContainer = document.querySelector('ytd-popup-container');
         if (popupContainer) {
-            const menus = popupContainer.querySelectorAll('ytd-multi-page-menu-renderer, [role="menu"]');
-            for (const m of menus) {
-                if (this._isAccountMenu(m)) return m;
+            const activeDropdowns = popupContainer.querySelectorAll('tp-yt-iron-dropdown[aria-hidden="false"]');
+            for (const dd of activeDropdowns) {
+                const menus = dd.querySelectorAll('ytd-multi-page-menu-renderer, [role="menu"]');
+                for (const m of menus) {
+                    if (this._isAccountMenu(m)) return m;
+                }
             }
         }
 
@@ -212,10 +196,7 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
             menu.querySelector('ytd-account-item-renderer') ||
             menu.querySelector('ytd-account-item') ||
             menu.querySelector('ytd-account-section-list-renderer') ||
-            menu.querySelector('ytd-account-item-section-renderer') ||
-            menu.querySelector('a[href*="studio.youtube.com"]') ||
-            menu.querySelector('a[href*="logout"]') ||
-            menu.querySelector('a[href*="myaccount.google.com"]')
+            menu.querySelector('ytd-account-item-section-renderer')
         );
         if (isMatch) {
             window.YPP.lastMenuClick = null;
@@ -395,13 +376,13 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
                 if (acc.isActive) {
                     const orbitalWrap = panel.querySelector('.ypp-orbital-wrap');
                     if (orbitalWrap) {
-                        const centerDiv = orbitalWrap.querySelector('div:not(.ypp-satellite)');
-                        if (centerDiv) upgradeDisk(centerDiv, acc, 68, true);
+                        const centerDiv = orbitalWrap.querySelector('.ypp-center-avatar-container');
+                        if (centerDiv) upgradeDisk(centerDiv, acc, 84, true);
                     }
                 } else {
                     const satTitle = acc.name;
                     const sat = panel.querySelector(`.ypp-satellite[title="${CSS.escape(satTitle)}"]`);
-                    if (sat) upgradeDisk(sat, acc, 40, false);
+                    if (sat) upgradeDisk(sat, acc, 48, false);
                 }
             });
 

@@ -96,8 +96,8 @@ export class AccountMenuUI {
         const otherAccounts  = accounts.filter(a => !a.isActive);
 
         // ── Orbital geometry ─────────────────────────────────────────────────
-        const R             = 88;           // px from center to satellite midpoint
-        const SAT_SIZE      = 40;           // satellite disk diameter
+        const R             = 115;          // px from center to satellite midpoint
+        const SAT_SIZE      = 48;           // satellite disk diameter
         const containerSize = R * 2 + SAT_SIZE + 28; // extra 20px for labels
 
         // ── If there are secondary accounts, display them as satellites.
@@ -182,19 +182,19 @@ export class AccountMenuUI {
         }
 
         const centerHTML = `
-            <div style="position:absolute;top:50%;left:50%;
+            <div class="ypp-center-avatar-container" style="position:absolute;top:50%;left:50%;
                         transform:translate(-50%,-50%);z-index:2;pointer-events:none;">
                 <div class="ypp-center-blacklight" style="
                     position:absolute;top:50%;left:50%;
                     transform:translate(-50%,-50%);
-                    width:110px;height:110px;
+                    width:140px;height:140px;
                     border-radius:50%;
                     background: radial-gradient(circle, rgba(255,78,69,0.35) 0%, rgba(255,120,60,0.18) 35%, transparent 70%);
-                    filter: blur(8px);
+                    filter: blur(10px);
                     z-index:-1;
                     animation: ypp-blacklight-pulse 3s ease-in-out infinite;
                 "></div>
-                ${this.diskHTML(activeAccount, 68, true)}
+                ${this.diskHTML(activeAccount, 84, true)}
             </div>`;
 
         const orbitalSection = `
@@ -286,76 +286,25 @@ export class AccountMenuUI {
                     <a class="ypp-channel-link"
                        href="${safeChannelHref}"
                        id="ypp-view-channel"
-                       style="display:inline-block; padding:6px 16px; background:rgba(255,255,255,0.1); border-radius:20px; text-decoration:none; color:#fff; font-size:13px; font-weight:500; transition:background 0.2s;">View channel</a>
+                       style="display:inline-block; padding:8px 16px; background:rgba(255,255,255,0.1); border-radius:12px; text-decoration:none; color:#fff; font-size:13px; font-weight:500; transition:background 0.2s;">View channel</a>
                     <button id="ypp-switch-account-btn"
-                       style="display:inline-flex; align-items:center; gap:4px; padding:6px 12px; background:rgba(62,166,255,0.15); border:1px solid rgba(62,166,255,0.3); border-radius:20px; color:#3ea6ff; font-size:12px; font-weight:500; cursor:pointer;">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M19 12H9M8 7l-5 5 5 5M5 12h10"/></svg>
+                       style="display:inline-flex; align-items:center; gap:4px; padding:8px 14px; background:rgba(62,166,255,0.15); border:1px solid rgba(62,166,255,0.3); border-radius:12px; color:#3ea6ff; font-size:13px; font-weight:500; cursor:pointer;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M19 12H9M8 7l-5 5 5 5M5 12h10"/></svg>
                         Switch
                     </button>
+                    <a href="/logout"
+                       id="ypp-signout-btn"
+                       style="display:inline-flex; align-items:center; gap:4px; padding:8px 14px; background:rgba(255,78,69,0.15); border:1px solid rgba(255,78,69,0.3); border-radius:12px; color:#ff4e45; font-size:13px; font-weight:500; cursor:pointer; text-decoration:none;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                           <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                           <polyline points="16 17 21 12 16 7"/>
+                           <line x1="21" y1="12" x2="9" y2="12"/>
+                        </svg>
+                        Log out
+                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="ypp-menu-scrollable" style="max-height: 400px; overflow-y: auto; padding: 12px 8px;">
-            <button class="ypp-menu-item ypp-more-toggle" id="ypp-more-toggle"
-                    aria-expanded="false" aria-controls="ypp-more-items"
-                    style="padding: 10px 14px; border-radius: 10px; color: rgba(255,255,255,0.7);">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="margin-right: 4px;">
-                    <circle cx="12" cy="5"  r="1" fill="currentColor"/>
-                    <circle cx="12" cy="12" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="19" r="1" fill="currentColor"/>
-                </svg>
-                Settings & More Options
-                <svg class="ypp-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <polyline points="6 9 12 15 18 9"/>
-                </svg>
-            </button>
-
-            <div class="ypp-more-items open" id="ypp-more-items" role="group" style="margin-left: 8px; border-left: 2px solid rgba(255,255,255,0.05); padding-left: 4px; margin-top: 4px;">
-                ${createBtn('ypp-appearance', icons.appearance, 'Appearance', false, '', currentTheme, true)}
-                ${appearanceDrawer}
-
-                ${createBtn('ypp-settings', icons.settings, 'Settings')}
-
-                ${createBtn('ypp-language', icons.language, 'Language', false, '', currentLanguage, true)}
-                ${languageDrawer}
-
-                ${createBtn('ypp-location', icons.location, 'Location', false, '', currentLocation, true)}
-                ${locationDrawer}
-
-                ${createBtn('ypp-keyboard', icons.keyboard, 'Keyboard shortcuts')}
-
-                ${createBtn('ypp-restricted', icons.restricted, 'Restricted Mode', false, '', isRestricted ? 'On' : 'Off', true)}
-                ${restrictedToggle}
-
-                <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 8px 12px;"></div>
-                ${createBtn('', icons.studio, 'YouTube Studio', true, 'https://studio.youtube.com')}
-                ${createBtn('', icons.purchases, 'Purchases & memberships', true, '/paid_memberships')}
-                ${createBtn('', icons.data, 'Your data in YouTube', true, '/account')}
-                ${createBtn('', icons.google, 'Google Account', true, 'https://myaccount.google.com')}
-                ${createBtn('ypp-help', icons.help, 'Help')}
-                ${createBtn('ypp-feedback', icons.feedback, 'Send feedback')}
-                <div style="height: 1px; background: rgba(255,78,69,0.2); margin: 8px 12px;"></div>
-                <button class="ypp-menu-item ypp-signout" id="ypp-signout" style="padding: 10px 14px; border-radius: 10px; color: #ff4e45; font-weight: 500;">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="margin-right: 4px;">
-                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
-                        <polyline points="16 17 21 12 16 7"/>
-                        <line x1="21" y1="12" x2="9" y2="12"/>
-                    </svg>
-                    Sign out
-                </button>
-            </div>
-        </div>
-
-        <div class="ypp-signout-confirm" id="ypp-signout-confirm" role="dialog"
-             aria-modal="true" aria-labelledby="ypp-confirm-title">
-            <div class="ypp-confirm-box">
-                <p id="ypp-confirm-title">Sign out of YouTube?</p>
-                <div class="ypp-confirm-actions">
-                    <button id="ypp-confirm-cancel">Cancel</button>
-                    <button id="ypp-confirm-ok" class="danger">Sign out</button>
-                </div>
-            </div>
         </div>`;
     }
 };
