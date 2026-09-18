@@ -1,56 +1,428 @@
-/* Popup Player — Glassmorphism & Spiral Tube Theme Overrides
- * Targets the popup-player-* class namespace injected by popup-player-bundle.js.
- * Scoped exclusively to the popup player feature. */
+/* ============================================================
+   Popup Player — Spiral Tube UI Redesign
+   Target: popup-player-* class namespace from popup-player-bundle.js
+   Scope: Overlay player UI only. No other extension features touched.
+   ============================================================ */
 
+/* ── Hide legacy PopupX elements ─────────────────────────── */
+.popup-player-grab-image-btn,
+.popup-player-screenshot-button,
+.popup-player-screenshot-item,
+.popup-player-screenshot-styles,
+.popup-player-info-trial-btn,
+.popup-player-settings-btn,
+.popup-player-pro-modal,
+.popup-player-confirm-trial,
+.popup-player-promo-toast {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* ── CSS variable overrides (Spiral Tube theme) ──────────── */
 .popup-player-overlay {
-  background: var(--ypp-glass-bg, rgba(20, 20, 25, 0.75)) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  --pp-accent:        #ff4444;
+  --pp-accent-glow:   rgba(255, 68, 68, 0.25);
+  --pp-surface:       rgba(14, 14, 18, 0.92);
+  --pp-surface-2:     rgba(25, 25, 32, 0.90);
+  --pp-surface-3:     rgba(35, 35, 46, 0.95);
+  --pp-border:        rgba(255, 255, 255, 0.08);
+  --pp-border-hover:  rgba(255, 255, 255, 0.18);
+  --pp-text:          rgba(255, 255, 255, 0.92);
+  --pp-text-muted:    rgba(255, 255, 255, 0.45);
+  --pp-radius:        14px;
+  --pp-radius-sm:     8px;
+  --pp-radius-pill:   100px;
+  --pp-blur:          blur(20px) saturate(180%);
+  --pp-shadow:        0 24px 64px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.35);
+  --pp-transition:    150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Main overlay shell ──────────────────────────────────── */
+.popup-player-overlay {
+  background: var(--pp-surface) !important;
+  backdrop-filter: var(--pp-blur) !important;
+  -webkit-backdrop-filter: var(--pp-blur) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius) !important;
+  box-shadow: var(--pp-shadow) !important;
 }
 
 .popup-player-container {
-  border-radius: 16px !important;
+  border-radius: var(--pp-radius) !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+/* ── Top toolbar bar ─────────────────────────────────────── */
+.popup-player-top-bar {
+  background: linear-gradient(180deg, rgba(14, 14, 18, 0.98) 0%, rgba(14, 14, 18, 0.82) 100%) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--pp-border) !important;
+  padding: 6px 8px !important;
+  gap: 3px !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  height: auto !important;
+  min-height: 38px !important;
+}
+
+/* ── Toolbar control buttons (Watch page, Miniplayer, etc.) ─ */
+.popup-player-ctrl-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--pp-radius-sm) !important;
+  color: var(--pp-text-muted) !important;
+  padding: 4px 8px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer !important;
+  transition: background var(--pp-transition), color var(--pp-transition), border-color var(--pp-transition) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  height: 26px !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+.popup-player-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border-color: var(--pp-border-hover) !important;
+  color: var(--pp-text) !important;
+}
+
+.popup-player-ctrl-btn svg {
+  opacity: 0.7 !important;
+  flex-shrink: 0 !important;
+  width: 13px !important;
+  height: 13px !important;
+}
+
+.popup-player-ctrl-btn:hover svg {
+  opacity: 1 !important;
+}
+
+/* ── Close button ────────────────────────────────────────── */
+.popup-player-close-btn,
+button[aria-label="Close"].popup-player-ctrl-btn {
+  background: rgba(255, 68, 68, 0.08) !important;
+  border-color: rgba(255, 68, 68, 0.15) !important;
+  color: rgba(255, 100, 100, 0.8) !important;
+  border-radius: var(--pp-radius-sm) !important;
+  width: 26px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  justify-content: center !important;
+}
+
+.popup-player-close-btn:hover,
+button[aria-label="Close"].popup-player-ctrl-btn:hover {
+  background: rgba(255, 68, 68, 0.85) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+/* ── Maximize / resize / ratio buttons ──────────────────── */
+.popup-player-max-btn,
+.popup-player-size-btn,
+.popup-player-ratio-btn,
+.popup-player-window-btn,
+.popup-player-pip-btn,
+.popup-player-mini-btn {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--pp-text-muted) !important;
+}
+
+/* ── Separator between control groups ───────────────────── */
+.popup-player-top-bar > span[class=""],
+.popup-player-top-bar > .popup-player-dim {
+  width: 1px !important;
+  height: 16px !important;
+  background: var(--pp-border) !important;
+  margin: 0 2px !important;
+  flex-shrink: 0 !important;
+}
+
+/* ── Info panel at the bottom ───────────────────────────── */
+.popup-player-info-panel {
+  background: linear-gradient(0deg, rgba(14, 14, 18, 0.98) 0%, rgba(14, 14, 18, 0.80) 100%) !important;
+  border-top: 1px solid var(--pp-border) !important;
+  padding: 10px 14px !important;
+}
+
+/* ── Info header (title + channel) ──────────────────────── */
+.popup-player-info-header {
+  margin-bottom: 8px !important;
+}
+
+.popup-player-info-title {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--pp-text) !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.3 !important;
+}
+
+.popup-player-info-channel {
+  font-size: 11px !important;
+  color: var(--pp-text-muted) !important;
+  margin-top: 2px !important;
+}
+
+.popup-player-info-date,
+.popup-player-info-views,
+.popup-player-info-dot {
+  font-size: 11px !important;
+  color: var(--pp-text-muted) !important;
+}
+
+/* ── Info stats row (like/dislike/views) ─────────────────── */
+.popup-player-info-stats {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex-wrap: wrap !important;
+}
+
+.popup-player-info-stat {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius-pill) !important;
+  padding: 3px 9px !important;
+  font-size: 11px !important;
+  color: var(--pp-text-muted) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: background var(--pp-transition), color var(--pp-transition) !important;
+}
+
+/* ── Like / dislike icon buttons ─────────────────────────── */
+.popup-player-info-like-btn,
+.popup-player-info-dislike-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius-pill) !important;
+  padding: 3px 10px !important;
+  color: var(--pp-text-muted) !important;
+  font-size: 11px !important;
+  gap: 4px !important;
+  cursor: pointer !important;
+  transition: all var(--pp-transition) !important;
+}
+
+.popup-player-info-like-btn:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  color: var(--pp-text) !important;
+  border-color: var(--pp-border-hover) !important;
+}
+
+.popup-player-info-dislike-btn:hover {
+  background: rgba(255, 100, 100, 0.10) !important;
+  color: rgba(255, 130, 130, 1) !important;
+  border-color: rgba(255, 100, 100, 0.3) !important;
+}
+
+/* ── Description / Comments / Copy URL buttons ───────────── */
+.popup-player-info-icon-btn,
+.popup-player-info-comments-btn,
+.popup-player-info-description-btn,
+.popup-player-copy-btn,
+.popup-player-openthis-btn,
+.popup-player-open-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius-pill) !important;
+  color: var(--pp-text-muted) !important;
+  font-size: 11px !important;
+  padding: 3px 10px !important;
+  cursor: pointer !important;
+  transition: all var(--pp-transition) !important;
+}
+
+.popup-player-info-icon-btn:hover,
+.popup-player-info-comments-btn:hover,
+.popup-player-info-description-btn:hover,
+.popup-player-copy-btn:hover,
+.popup-player-openthis-btn:hover,
+.popup-player-open-btn:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  color: var(--pp-text) !important;
+  border-color: var(--pp-border-hover) !important;
+}
+
+/* ── Context menu ────────────────────────────────────────── */
+.popup-player-ctx-menu {
+  background: rgba(20, 20, 26, 0.97) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  padding: 5px !important;
   overflow: hidden !important;
 }
 
-.popup-player-header {
-  background: transparent !important;
-  border-bottom: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
-}
-
-.popup-player-search-bar {
-  background: var(--ypp-glass-bg, rgba(20, 20, 25, 0.5)) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
-  border-radius: 12px !important;
-  color: white !important;
-}
-
-/* Music mode */
-.popup-player-overlay--music {
-  background: var(--ypp-glass-bg, rgba(15, 15, 20, 0.85)) !important;
-  backdrop-filter: blur(24px) saturate(200%) !important;
-}
-
-/* Context Menu */
-.popup-player-ctx-menu {
-  background: var(--ypp-glass-bg, rgba(25, 25, 30, 0.85)) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
-  color: #fff !important;
-}
-
 .popup-player-ctx-item {
-  color: #fff !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  border-radius: 8px !important;
+  padding: 7px 10px !important;
+  transition: background var(--pp-transition), color var(--pp-transition) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
 
 .popup-player-ctx-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
   border-radius: 8px !important;
+}
+
+/* ── Dropdown menus ──────────────────────────────────────── */
+.popup-player-dropdown-menu {
+  background: rgba(20, 20, 26, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  padding: 4px !important;
+}
+
+.popup-player-dropdown-item {
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  border-radius: 7px !important;
+  padding: 6px 10px !important;
+  cursor: pointer !important;
+  transition: background var(--pp-transition) !important;
+}
+
+.popup-player-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
+
+/* ── Mini player (corner) ────────────────────────────────── */
+.popup-player-overlay--miniplayer .popup-player-container {
+  border: 1px solid var(--pp-border) !important;
+  border-radius: 12px !important;
+  background: rgba(14, 14, 18, 0.96) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.popup-player-overlay--miniplayer .popup-player-ctrl-btn {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: var(--pp-border) !important;
+  color: var(--pp-text) !important;
+}
+
+.popup-player-overlay--miniplayer .popup-player-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ── Music mode dock ─────────────────────────────────────── */
+.popup-player-music-dock-puck {
+  background: var(--pp-accent) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 16px var(--pp-accent-glow), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ── Spinner / loader ────────────────────────────────────── */
+.popup-player-spin::before {
+  border-top-color: var(--pp-accent) !important;
+}
+
+/* ── Toast notifications ─────────────────────────────────── */
+.popup-player-toast {
+  background: rgba(25, 25, 32, 0.96) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  color: var(--pp-text) !important;
+  font-size: 12px !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ── Search overlay ──────────────────────────────────────── */
+.popup-player-search-overlay {
+  background: rgba(14, 14, 18, 0.97) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.popup-player-search-input,
+.popup-player-search-query,
+.popup-player-minimal-header-input {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-radius-sm) !important;
+  color: var(--pp-text) !important;
+  font-size: 13px !important;
+}
+
+.popup-player-search-input:focus,
+.popup-player-search-query:focus {
+  border-color: var(--pp-accent) !important;
+  box-shadow: 0 0 0 3px var(--pp-accent-glow) !important;
+  outline: none !important;
+}
+
+/* ── Native panel (Comments/Description slide-in) ────────── */
+.popup-player-native-panel-sheet {
+  background: rgba(18, 18, 24, 0.98) !important;
+  border-left: 1px solid var(--pp-border) !important;
+}
+
+.popup-player-native-panel-header {
+  border-bottom: 1px solid var(--pp-border) !important;
+  background: rgba(20, 20, 28, 0.98) !important;
+}
+
+.popup-player-native-panel-heading {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--pp-text) !important;
+}
+
+/* ── Music mode maximized panel ──────────────────────────── */
+.popup-player-music-max-bg {
+  background: linear-gradient(135deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 14, 1) 100%) !important;
+}
+
+/* ── Mini tabs (multi-tab player) ────────────────────────── */
+.popup-player-mini-tabs-item {
+  font-size: 11px !important;
+  color: var(--pp-text-muted) !important;
+  border-radius: 6px !important;
+  transition: all var(--pp-transition) !important;
+}
+
+.popup-player-mini-tabs-item--active {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--pp-text) !important;
+}
+
+/* ── Progress / time indicators ──────────────────────────── */
+.popup-player-progress-elapsed {
+  color: var(--pp-accent) !important;
+}
+
+.popup-player-progress-remaining {
+  color: var(--pp-text-muted) !important;
+}
+
+/* ── Music mode — override ───────────────────────────────── */
+.popup-player-overlay--music {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
