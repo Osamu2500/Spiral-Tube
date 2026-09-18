@@ -11,7 +11,8 @@
         "alarms",
         "contextMenus",
         "notifications",
-        "identity"
+        "identity",
+        "declarativeNetRequest"
     ],
     "host_permissions": [
         "<all_urls>",
@@ -40,9 +41,46 @@
             "128": "src/assets/icons/icon-128.png"
         }
     },
+    "commands": {
+        "popup-focused": {
+            "suggested_key": {
+                "default": "Alt+Shift+P"
+            },
+            "description": "Popup the focused or hovered video"
+        },
+        "toggle-mini": {
+            "suggested_key": {
+                "default": "Alt+Shift+M",
+                "mac": "Alt+Shift+M"
+            },
+            "description": "Toggle miniplayer for the current popup"
+        },
+        "close-popup": {
+            "suggested_key": {
+                "default": "Alt+Shift+X",
+                "mac": "Alt+Shift+X"
+            },
+            "description": "Close the current popup"
+        },
+        "open-search": {
+            "suggested_key": {
+                "default": "Alt+S"
+            },
+            "description": "Open floating YouTube search"
+        }
+    },
     "background": {
         "service_worker": "dist/service-worker.js",
         "type": "module"
+    },
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "ruleset_1",
+                "enabled": true,
+                "path": "src/declarative_net_request/ruleset_1.json"
+            }
+        ]
     },
     "content_security_policy": {
         "extension_pages": "script-src 'self'; object-src 'self';"
@@ -57,7 +95,7 @@
                 "dist/style.css"
             ],
             "run_at": "document_end",
-            "all_frames": false,
+            "all_frames": true,
             "js": [
                 "dist/content.js"
             ]
@@ -85,6 +123,28 @@
             ],
             "run_at": "document_start",
             "world": "MAIN"
+        },
+        {
+            "matches": [
+                "*://*.youtube.com/*",
+                "*://youtube.com/*",
+                "*://youtu.be/*"
+            ],
+            "js": [
+                "src/content/features/floating-player/floating-player-bundle.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://*.youtube.com/*",
+                "*://youtube.com/*",
+                "*://*.youtube-nocookie.com/*"
+            ],
+            "all_frames": true,
+            "run_at": "document_start",
+            "js": [
+                "src/content/features/floating-player/floating-player-loader.js"
+            ]
         }
     ],
     "web_accessible_resources": [

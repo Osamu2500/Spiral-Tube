@@ -1,0 +1,17 @@
+/* 
+ * ==========================================================================
+ * PLAYLISTS DECLUTTER
+ * Hides user-created playlists and playlist shelves when the user 
+ * enables "Hide Playlists".
+ * ==========================================================================
+ */
+
+body.ypp-hide-playlists ytd-playlist-renderer,
+body.ypp-hide-playlists ytd-compact-playlist-renderer,
+body.ypp-hide-playlists ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media a[href*="list=PL"]),
+body.ypp-hide-playlists ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media a[href*="list=WL"]),
+body.ypp-hide-playlists ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media a[href*="list=LL"]),
+body.ypp-hide-playlists ytd-rich-section-renderer:has(ytd-playlist-renderer),
+body.ypp-hide-playlists ytd-rich-shelf-renderer:has(ytd-playlist-renderer) {
+  display: none !important;
+}

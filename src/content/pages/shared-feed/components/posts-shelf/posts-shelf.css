@@ -22,11 +22,7 @@ body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-renderer) {
 }
 
 /* Also hide the orphaned "Show more" button section that YouTube places immediately after the posts */
-body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
-body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
-body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-backstage-post-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer) {
-  display: none !important;
-}
+/* Sibling :has() rule removed for performance */
 
 
 /* ── 1. ZERO OUT THE GRID MARGIN THAT CREATES THE LEFT GAP ─────────────── */

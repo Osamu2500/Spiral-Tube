@@ -16,6 +16,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
     static executionPhase = 'idle'; // 'sequential-ui', 'post-layout', 'idle'
     static priority = 999;
     static targetPages = ['all']; // Allowed pages: 'all', 'watch', 'home', 'search', 'channel', 'playlist'
+    static allowInIframe = false; // Whether this feature is allowed to run inside the Floating Player
 
     constructor(name) {
         this.name = name || this.constructor.featureId || this.constructor.name;
@@ -53,6 +54,11 @@ window.YPP.features.BaseFeature = class BaseFeature {
      * @returns {boolean}
      */
     isPageAllowed() {
+        // Prevent heavy features from running inside the Floating Player iframe
+        if (window !== window.top && !this.constructor.allowInIframe) {
+            return false;
+        }
+
         const pages = this.constructor.targetPages;
         if (!pages || pages.includes('all')) return true;
         

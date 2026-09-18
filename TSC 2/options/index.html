@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>PopupX settings</title>
+  
+<link rel="stylesheet" href="/options/index.css"></head>
+
+<body>
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="PopupX settings navigation">
+      <div class="sidebar-logo">
+        <div>
+          <div class="sidebar-logo-text">PopupX</div>
+          <div class="sidebar-version" id="sidebar-version"></div>
+        </div>
+      </div>
+
+      <div class="search-wrap">
+        <input type="search" class="search-input" id="search-input" placeholder="Search settings…" aria-label="Search settings" autocomplete="off" spellcheck="false">
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Settings sections">
+        <!-- Built by options.js -->
+      </nav>
+
+      <!-- Presets, import / export at bottom of sidebar -->
+      <div class="sidebar-footer">
+        <div class="preset-bar" id="preset-bar"></div>
+        <div class="btn-row">
+          <button class="btn" type="button" id="export-btn" aria-label="Export settings">Export</button>
+          <button class="btn" type="button" id="import-btn" aria-label="Import settings">Import</button>
+          <input type="file" id="import-file" accept=".json" aria-label="Choose a settings file to import" hidden="">
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main" id="main" aria-label="Settings">
+      <!-- Panels built by options.js -->
+      <div class="search-empty" id="search-empty" role="status">No settings match your search.</div>
+    </main>
+
+  </div>
+
+  
+
+
+<script src="/options/index.js" type="module"></script></body></html>

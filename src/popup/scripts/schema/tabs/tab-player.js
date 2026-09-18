@@ -98,15 +98,39 @@ export const getPlayerTab = (t) => ({
             icon: ICONS.player,
           },
           {
+            type: 'select',
+            id: 'popupOpenTrigger',
+            class: 'span-2',
+            label: 'Floating Player Trigger',
+            desc: 'How should videos open in the Floating Player?',
+            icon: ICONS.player,
+            options: [
+              { value: 'both', label: 'Double-click & Context Menu' },
+              { value: 'double-click', label: 'Double-click only' },
+              { value: 'context', label: 'Context Menu only' }
+            ]
+          },
+          {
+            type: 'toggle',
+            id: 'showCustomContextMenu',
+            label: 'Show Custom Context Menu',
+            desc: 'Show the custom right-click menu on video thumbnails.',
+            icon: ICONS.uiComponents,
+          },
+          {
+            type: 'toggle',
+            id: 'volumeBoostEnabled',
+            label: 'Floating Player Volume Boost',
+            desc: 'Enable extreme volume boosting for the floating player.',
+            icon: ICONS.volumeUp,
+          },
+          {
             type: 'toggle',
             id: 'saveSupremeUI',
             label: 'Save Supreme UI',
             desc: 'Better styling for save buttons',
             icon: ICONS.saveSupreme,
           }
-
-
-
         ],
       },
 

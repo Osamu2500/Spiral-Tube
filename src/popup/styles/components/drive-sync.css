@@ -539,3 +539,69 @@ mark.search-highlight {
   cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center;
 }
 .update-toast-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+/* ── Utility Classes for Popup ── */
+.gdrive-card-group {
+  padding: 0 14px 14px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.hidden {
+  display: none !important;
+}
+.mt-6px {
+  margin-top: 6px;
+}
+.mt-8px {
+  margin-top: 8px;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.relative {
+  position: relative;
+}
+.favorites-empty-state {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 12px;
+  padding: 30px 10px;
+}
+.resume-dashboard-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.resume-search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 200px;
+}
+.resume-search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+.resume-empty-subtitle {
+  font-size: 11px;
+  margin-top: 4px;
+}
+.nav-item-resume {
+  position: relative;
+}
+.nav-badge-resume {
+  display: none;
+  background: #ff4e45;
+  color: #fff;
+  border-radius: 10px;
+  padding: 2px 5px;
+  font-size: 9px;
+  font-weight: 800;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+

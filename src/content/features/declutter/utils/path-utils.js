@@ -15,11 +15,16 @@ import { isChannelPagePath } from './channel-utils.js';
  * @returns {boolean} True if the feature is enabled for this path
  */
 export function isFeatureEnabledForPath(featurePrefix, pathname, prefs) {
+  // Map internal prefixes to settings schema prefixes
+  let schemaPrefix = featurePrefix;
+  if (featurePrefix === 'hideShorts') schemaPrefix = 'shortsFilter';
+  if (featurePrefix === 'hideViews') schemaPrefix = 'viewsFilter';
+  
   return (
-    (pathname === '/' && prefs[`${featurePrefix}Home`]) ||
-    (isChannelPagePath(pathname) && prefs[`${featurePrefix}Channel`]) ||
-    (pathname === '/results' && prefs[`${featurePrefix}Search`]) ||
-    (pathname === '/watch' && prefs[`${featurePrefix}Related`]) ||
-    (pathname === '/feed/subscriptions' && prefs[`${featurePrefix}Subs`])
+    (pathname === '/' && prefs[`${schemaPrefix}Home`]) ||
+    (isChannelPagePath(pathname) && prefs[`${schemaPrefix}Channel`]) ||
+    (pathname === '/results' && prefs[`${schemaPrefix}Search`]) ||
+    (pathname === '/watch' && prefs[`${schemaPrefix}Related`]) ||
+    (pathname === '/feed/subscriptions' && prefs[`${schemaPrefix}Subs`])
   );
 }

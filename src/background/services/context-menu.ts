@@ -1,4 +1,5 @@
 const CONTEXT_MENU_ID = 'ypp-add-to-group';
+const CONTEXT_MENU_POPUP_ID = 'ypp-preview-popup';
 
 export function initContextMenu() {
     if (!chrome.contextMenus) return;
@@ -8,6 +9,13 @@ export function initContextMenu() {
             title: "Add Channel to YPP Group",
             contexts: ["page", "link", "video"],
             documentUrlPatterns: ["*://www.youtube.com/*"]
+        });
+        
+        chrome.contextMenus.create({
+            id: CONTEXT_MENU_POPUP_ID,
+            title: "Preview in Floating Player (Spiral Tube)",
+            contexts: ["page", "link", "video", "selection", "image"],
+            documentUrlPatterns: ["*://*.youtube.com/*", "*://youtube.com/*", "*://youtu.be/*"]
         });
     });
 }
@@ -38,6 +46,17 @@ if (chrome.contextMenus) {
                     url: url
                 }).catch(e => {
                     console.error('[YPP] Failed to send context menu message:', e);
+                });
+            }
+        } else if (info.menuItemId === CONTEXT_MENU_POPUP_ID) {
+            const url = info.linkUrl || info.srcUrl || info.selectionText || info.pageUrl || "";
+            if (tab && tab.id && url) {
+                // Determine video ID if possible, then send message to content script
+                chrome.tabs.sendMessage(tab.id, {
+                    action: 'openPopup',
+                    sourceUrl: url
+                }).catch(e => {
+                    console.error('[YPP] Failed to send popup preview message:', e);
                 });
             }
         }

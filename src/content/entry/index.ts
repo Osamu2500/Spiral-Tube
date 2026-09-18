@@ -1,13 +1,13 @@
 // 1. Core Framework Imports
 import './core-init.ts';
 
-// 2. Dynamic Auto-Registration using Vite's glob import
-const modules = import.meta.glob([
-    '../pages/**/*.js',
+// 2. Eagerly load global features (layouts, components, global features, pages)
+const globalModules = import.meta.glob([
     '../features/**/*.js',
     '!../features/*/external/**/*.js',
     '../layouts/**/*.js',
-    '../components/**/*.js'
+    '../components/**/*.js',
+    '../pages/**/*.js'
 ], { eager: true });
 
 // 3. Register explicit core feature(s)
@@ -16,25 +16,34 @@ if (window.YPP?.FeatureManager) {
     window.YPP.FeatureManager.register(KeyboardShortcuts);
 }
 
-// 4. Auto-Register everything else
-Object.values(modules).forEach((module: any) => {
+// 4. Auto-Register all modules
+function registerModule(module: any) {
     Object.values(module).forEach((exportedItem: any) => {
-        // A feature must be a function/class.
-        // We explicitly exclude BaseFeature if it somehow gets exported.
-        // We also check if it's actually a subclass of BaseFeature or explicitly a valid feature.
         if (typeof exportedItem === 'function' && exportedItem.name !== 'BaseFeature') {
             if (window.YPP?.FeatureManager) {
-                // To prevent registering simple helper functions that were exported, 
-                // we can rely on FeatureManager's own safeRun, but checking for a class prototype helps.
                 if (exportedItem.prototype && (exportedItem.prototype.run || exportedItem.prototype.update || exportedItem.prototype.enable)) {
                     window.YPP.FeatureManager.register(exportedItem);
                 } else if (exportedItem.featureId) {
-                    // Fallback for static config-based features if any
                     window.YPP.FeatureManager.register(exportedItem);
                 }
             }
         }
     });
+}
+Object.values(globalModules).forEach(registerModule);
+
+// Hook into initial load and SPA navigations to ensure features are applied
+document.addEventListener('yt-navigate-start', (e: any) => {
+    if (e?.detail?.url) {
+        try {
+            // Re-apply features on navigation if needed
+            if (window.YPP?.featureManager?.instantiated) {
+                // The page managers will handle the specifics, we just need to ensure
+                // the feature manager runs an apply cycle.
+                window.YPP.featureManager.applyFeatures();
+            }
+        } catch (e) {}
+    }
 });
 
 // 5. Main App Bootstrapper

@@ -51,10 +51,10 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             <span class="nav-label" data-i18n="nav_player">Player</span>
           </button>
-          <button class="nav-item" data-tab="resume" title="Resume Videos" style="position:relative;">
+          <button class="nav-item nav-item-resume" data-tab="resume" title="Resume Videos">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
             <span class="nav-label">Resume</span>
-            <span id="navResumeBadge" class="nav-badge" style="display:none; background:#ff4e45; color:#fff; border-radius:10px; padding:2px 5px; font-size:9px; font-weight:800; position:absolute; top:4px; right:4px;">0</span>
+            <span id="navResumeBadge" class="nav-badge nav-badge-resume">0</span>
           </button>
           <button class="nav-item" data-tab="speed" title="Video Speed Controller">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6v12l8.5-6L4 6zm9 0v12l8.5-6L13 6z"></path></svg>
@@ -136,7 +136,7 @@
         <!-- FAVORITES -->
         <section id="tab-favorites" class="tab-content">
            <div id="favorites-container" class="card-group"></div>
-           <div id="favorites-empty-state" style="text-align: center; opacity: 0.5; font-size: 12px; padding: 30px 10px;">
+           <div id="favorites-empty-state" class="favorites-empty-state">
                No favorites pinned.<br><br>Right-click any setting to pin it here.
            </div>
         </section>
@@ -226,7 +226,7 @@
 
         <!-- RESUME DASHBOARD -->
         <section id="tab-resume" class="tab-content">
-          <div id="resume-dashboard-container" style="display:flex; height:100%; width:100%;">
+          <div id="resume-dashboard-container" class="resume-dashboard-wrapper">
             <!-- Left Sidebar for Folders -->
             <div id="resume-sidebar">
                <div class="resume-sidebar-title">Folders</div>
@@ -237,11 +237,11 @@
             <!-- Right Main Area for Videos -->
             <div id="resume-main">
                <div class="resume-toolbar">
-                  <div style="position:relative; flex:1; max-width:200px;">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute; left:8px; top:50%; transform:translateY(-50%); opacity:0.5;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <div class="resume-search-wrapper">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" class="resume-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     <input type="text" id="resume-search" placeholder="Search videos...">
                   </div>
-                  <select id="resume-sort">
+                  <select id="resume-sort" title="Sort videos" aria-label="Sort videos">
                       <option value="recent">Recently Watched</option>
                       <option value="added">Date Added</option>
                       <option value="title">Title</option>
@@ -253,7 +253,7 @@
                <div id="resume-empty-state">
                   <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
                   <div>No unfinished videos here</div>
-                  <div style="font-size:11px; margin-top:4px;">Start watching a video and it will appear here.</div>
+                  <div class="resume-empty-subtitle">Start watching a video and it will appear here.</div>
                </div>
             </div>
           </div>
@@ -824,7 +824,7 @@
                   </div>
                </div>
             </div>
-            <div class="card-group" style="padding: 0 14px 14px; gap: 12px; display: flex; flex-direction: column;">
+            <div class="card-group gdrive-card-group">
 
               <!-- Signed-OUT state -->
               <div id="sync-signed-out-card" class="gdrive-signin-card premium-signin-card">
@@ -848,7 +848,7 @@
               </div>
 
               <!-- Signed-IN state -->
-              <div id="sync-signed-in-card" class="gdrive-account-card" style="display:none;">
+              <div id="sync-signed-in-card" class="gdrive-account-card hidden">
                 <div class="gdrive-account-row">
                   <div class="gdrive-avatar-wrap">
                     <img id="sync-user-avatar" src="" alt="Avatar" class="gdrive-avatar">
@@ -857,7 +857,7 @@
                   <div class="gdrive-account-info">
                     <div id="sync-user-name" class="gdrive-account-name">Loading…</div>
                     <div id="sync-user-email" class="gdrive-account-email"></div>
-                    <div id="gdrive-sync-status" class="gdrive-sync-status-text" style="margin-top: 6px;">
+                    <div id="gdrive-sync-status" class="gdrive-sync-status-text mt-6px">
                       <div class="gdrive-status-pulse"></div>
                       <span id="lastSyncTimeLabel">Last sync: Never</span>
                     </div>
@@ -867,14 +867,14 @@
                   </button>
                 </div>
 
-                <div class="gdrive-sync-footer" style="justify-content: space-between;">
+                <div class="gdrive-sync-footer justify-between">
                   <!-- Settings toggle on the left -->
-                  <div style="position: relative;">
+                  <div class="relative">
                     <button id="btnSyncSettingsToggle" class="gdrive-small-btn icon-only" title="Sync Preferences">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                     </button>
                     <!-- Settings Modal -->
-                    <div id="sync-settings-popover" class="sync-settings-popover" style="display: none;">
+                    <div id="sync-settings-popover" class="sync-settings-popover hidden">
                       <div class="sync-settings-header">
                         <span>Sync Preferences</span>
                         <button id="btnSyncSettingsClose" class="sync-settings-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
@@ -954,7 +954,7 @@
               </div>
               
               <!-- Version footer -->
-              <div class="data-mgmt-footer" style="margin-top: 8px;">
+              <div class="data-mgmt-footer mt-8px">
                 <div class="version-pill">v2.3.0</div>
                 <span class="version-edition">Community Edition</span>
               </div>

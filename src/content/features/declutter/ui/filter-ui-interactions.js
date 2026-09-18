@@ -5,7 +5,7 @@
  * including Dim badges, Hover Pills, and Undo buttons.
  */
 import { setChannelWhitelisted, setChannelBlacklisted, prefs } from '../core/state-manager.js';
-import { clearDimmedElement } from '../filters/engine/filter-core.js';
+import { clearDimmedElement, isChannelListed } from '../filters/engine/filter-core.js';
 import { extractChannelFromContainer } from '../utils/channel-utils.js';
 
 const UNDO_WINDOW_MS = 3000;
@@ -69,9 +69,15 @@ class FilterUIManager {
         let cancelCountdown = null;
         let pendingContainer = null;
       
+        const isPaused = isChannelListed(channelPath) && !prefs.channelWhitelistEnabled;
+
         const renderIdle = () => {
           btn.classList.remove('ypp-whitelist-btn-pending');
-          btn.innerHTML = `<span class="ypp-whitelist-label">Whitelist</span>`;
+          if (isPaused) {
+              btn.innerHTML = `<span class="ypp-whitelist-label" title="This whitelist entry exists, but Channel Whitelist is currently turned off.">Paused Whitelist</span>`;
+          } else {
+              btn.innerHTML = `<span class="ypp-whitelist-label">Whitelist</span>`;
+          }
         };
         renderIdle();
       
@@ -96,6 +102,15 @@ class FilterUIManager {
             return;
           }
           
+          if (isPaused) {
+              // Instead of adding it, just turn the feature back on and save
+              prefs.channelWhitelistEnabled = true;
+              setChannelWhitelisted(channelPath, true); // this will trigger a save
+              pendingContainer = btn.closest('[data-ypp-dimmed]');
+              if (pendingContainer) clearDimmedElement(pendingContainer);
+              return;
+          }
+
           pendingContainer = btn.closest('[data-ypp-dimmed]');
           if (pendingContainer) pendingContainer.dataset.yppPendingAction = '1';
       

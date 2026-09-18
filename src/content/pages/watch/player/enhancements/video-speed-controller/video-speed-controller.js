@@ -8,6 +8,7 @@ import { VscShortcuts } from './vsc-shortcuts.js';
 
 export class VideoSpeedController extends window.YPP.features.BaseFeature {
     static featureId = 'videoSpeedController';
+    static allowInIframe = true;
     static executionPhase = 'idle';
     static priority = 6;
 

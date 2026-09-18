@@ -167,7 +167,10 @@ function renderToggle(item, state) {
 
     if (item.inlineSlot) {
         const slotWrap = document.createElement('div');
-        const isWideSlot = item.class && (item.class.includes('span-4') || item.class.includes('span-3') || item.class.includes('span-2'));
+        let isWideSlot = item.class && (item.class.includes('span-4') || item.class.includes('span-3') || item.class.includes('span-2'));
+        if (item.class && item.class.includes('force-inline-slot')) {
+            isWideSlot = false;
+        }
         if (isWideSlot) {
             // Wide/Medium cards: slot goes OUTSIDE .info so it wraps to its own full-width row
             slotWrap.className = 'inline-slot-row';

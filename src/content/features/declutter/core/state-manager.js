@@ -10,6 +10,7 @@ export const prefs = {
   hideSubsEnabled: true,
   hideCorrEnabled: true,
   viewsHideThreshold: 1000,
+  viewsHideMaxThreshold: 0,
   viewsHideHomeEnabled: true,
   viewsHideChannelEnabled: true,
   viewsHideSearchEnabled: true,
@@ -64,6 +65,8 @@ export const prefs = {
   channelBlacklist: [],
   channelBlacklistEnabled: true,
   hideInterfaceElements: false,
+  hideMembershipsEnabled: false,
+  hideMembersOnlyEnabled: false,
   
   // Modes
   hideWatchedMode: 'dim',
@@ -77,7 +80,9 @@ export const prefs = {
   hidePodcastsMode: 'hide',
   hidePostsMode: 'hide',
   hidePromosMode: 'hide',
-  hideTrendingMode: 'hide'
+  hideTrendingMode: 'hide',
+  hideMembershipsMode: 'hide',
+  hideMembersOnlyMode: 'hide'
 };
 
 export function updatePrefsFromYPP(s) {
@@ -96,6 +101,7 @@ export function updatePrefsFromYPP(s) {
   prefs.hideCorrEnabled = s.hideWatchedRelated ?? true;
 
   prefs.viewsHideThreshold = s.viewsFilterThreshold ?? 1000;
+  prefs.viewsHideMaxThreshold = s.viewsFilterMaxThreshold ?? 0;
   prefs.viewsHideHomeEnabled = s.viewsFilterHome ?? true;
   prefs.viewsHideChannelEnabled = s.viewsFilterChannel ?? true;
   prefs.viewsHideSearchEnabled = s.viewsFilterSearch ?? true;
@@ -103,6 +109,11 @@ export function updatePrefsFromYPP(s) {
   prefs.viewsHideCorrEnabled = s.viewsFilterRelated ?? true;
   if (!s.viewsFilterEnabled) {
     prefs.viewsHideThreshold = 0;
+    prefs.viewsHideMaxThreshold = 0;
+  }
+  // Crossover guard: if min >= max and max is set, both are nonsensical — disable max only
+  if (prefs.viewsHideMaxThreshold > 0 && prefs.viewsHideThreshold >= prefs.viewsHideMaxThreshold) {
+    prefs.viewsHideMaxThreshold = 0;
   }
 
   prefs.hideShortsEnabled = s.aggressiveShortsBlock ?? false;
@@ -132,6 +143,16 @@ export function updatePrefsFromYPP(s) {
   prefs.dateFilterNewerThreshold = s.uploadDateNewer ?? 0;
   prefs.dateFilterOlderThreshold = s.dateFilterOlderThreshold ?? 0;
   if (!s.dateFilterEnabled) {
+    prefs.dateFilterNewerThreshold = 0;
+    prefs.dateFilterOlderThreshold = 0;
+  }
+  // Crossover guard: "newer than 6 months" AND "older than 1 month" is impossible
+  // newerThreshold = min age in days, olderThreshold = max age in days
+  if (
+    prefs.dateFilterNewerThreshold > 0 &&
+    prefs.dateFilterOlderThreshold > 0 &&
+    prefs.dateFilterNewerThreshold >= prefs.dateFilterOlderThreshold
+  ) {
     prefs.dateFilterNewerThreshold = 0;
     prefs.dateFilterOlderThreshold = 0;
   }
@@ -179,6 +200,11 @@ export function updatePrefsFromYPP(s) {
   prefs.channelWhitelistEnabled = s.channelWhitelistEnabled ?? true;
   prefs.channelBlacklistEnabled = s.channelBlacklistEnabled ?? true;
   prefs.hideInterfaceElements = s.hideOnPageControls ?? false;
+
+  prefs.hideMembershipsEnabled = s.hideMemberships ?? false;
+  prefs.hideMembershipsMode = s.hideMembershipsMode || 'hide';
+  prefs.hideMembersOnlyEnabled = s.hideMembersOnly ?? false;
+  prefs.hideMembersOnlyMode = s.hideMembersOnlyMode || 'hide';
 }
 
 export function initPrefs() {

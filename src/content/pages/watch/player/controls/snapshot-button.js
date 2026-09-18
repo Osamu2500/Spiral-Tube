@@ -3,6 +3,7 @@ import '../../../../core/system/base-feature.js';
 
 export class SnapshotButton extends window.YPP.features.BaseFeature {
     static featureId = 'snapshotButton';
+    static allowInIframe = true;
     static executionPhase = 'idle';
     static priority = 999;
     static playerBarConfig = { pbKey: 'pb_snapshot', overrideKey: 'enableSnapshot', order: 10 };

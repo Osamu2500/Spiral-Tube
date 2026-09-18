@@ -1117,6 +1117,7 @@ const initApp = async () => {
         safeInit(components.initImageBackgroundTheme);
         safeInit(components.initAutoLikeInlineControls);
         safeInit(components.initViewsFilterInlineSlider);
+        safeInit(components.initViewsMaxFilterInlineSlider);
         safeInit(components.initDateFilterInlineSliders);
         safeInit(components.initBasicInlineSlider, 'searchColumns', 4);
         safeInit(components.initBasicInlineSlider, 'seamlessModeGridCols', 4);

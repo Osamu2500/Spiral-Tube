@@ -164,6 +164,57 @@ export function initinlinesliders(document, state, ui, updateSetting, notifyThem
       });
     }
 
+  function initViewsMaxFilterInlineSlider() {
+      const sliderUI = document.getElementById('viewsHideMaxThresholdUI');
+      const sliderVal = document.getElementById('viewsHideMaxThresholdValue');
+      const hiddenInput = document.getElementById('viewsHideMaxThreshold');
+      if (!sliderUI || !hiddenInput) return;
+
+      const discreteOptions = [
+        { value: 0, label: t('off') },
+        { value: 100, label: t('100') },
+        { value: 500, label: t('500') },
+        { value: 1000, label: t('1_000') },
+        { value: 5000, label: t('5_000') },
+        { value: 10000, label: t('10k') },
+        { value: 50000, label: t('50k') },
+        { value: 100000, label: t('100k') },
+        { value: 500000, label: t('500k') },
+        { value: 1000000, label: t('1m') },
+        { value: 5000000, label: t('5m') },
+        { value: 10000000, label: t('10m') },
+      ];
+
+      const updateUI = (val) => {
+        let index = discreteOptions.findIndex((o) => o.value == val);
+        if (index === -1) index = 0;
+        sliderUI.value = index;
+        if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
+      };
+
+      chrome.storage.local.get('settings', (data) => {
+        const val = data.settings?.viewsFilterMaxThreshold || 0;
+        updateUI(val);
+      });
+
+      sliderUI.addEventListener('input', () => {
+        const opt = discreteOptions[sliderUI.value];
+        // Crossover guard: max must be > min or off
+        const minInput = document.getElementById('viewsHideThreshold');
+        const minVal = minInput ? parseInt(minInput.value, 10) || 0 : 0;
+        if (opt.value > 0 && opt.value <= minVal) {
+          // Snap back to off and warn
+          sliderUI.value = 0;
+          if (sliderVal) sliderVal.textContent = 'Needs > Min';
+          hiddenInput.value = 0;
+        } else {
+          if (sliderVal) sliderVal.textContent = opt.label;
+          hiddenInput.value = opt.value;
+        }
+        hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
+
   function initBasicInlineSlider(baseId, defaultValue) {
       const sliderUI = document.getElementById(baseId + 'UI');
       const sliderVal = document.getElementById(baseId + 'Value');
@@ -238,6 +289,7 @@ export function initinlinesliders(document, state, ui, updateSetting, notifyThem
     initSearchViewMode,
     initAutoLikeInlineControls,
     initViewsFilterInlineSlider,
+    initViewsMaxFilterInlineSlider,
     initBasicInlineSlider,
     initDateFilterInlineSliders
   };

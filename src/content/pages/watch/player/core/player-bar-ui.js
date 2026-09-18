@@ -20,6 +20,14 @@ export class PlayerBarUI {
         this.overflowManager = null;
         this._unsubPlayerConstructed = null;
         this._unsubVideoSrc = null;
+        
+        // Caches for constructed DOM nodes to avoid rebuilding (Template cloning is unsafe due to closures)
+        this._cachedWatchContainer = null;
+        this._cachedWatchOverflow = null;
+        this._cachedShortsContainer = null;
+        this._cachedShortsOverflow = null;
+        this._cachedVideoRef = null;
+
         this.setupInjectionObserver();
     }
 
@@ -108,11 +116,16 @@ export class PlayerBarUI {
         }
         this.updateCustomStyles();
         this.injectedButtons = false;
-        this.attemptInjection();
+        this.attemptInjection(true); // force rebuild on settings update
     }
 
     attemptInjection(forceRebuild = false) {
         if (!this.isActive) return;
+        
+        if (forceRebuild) {
+            this._clearCaches();
+        }
+        
         this.updateCustomStyles();
         
         const isShorts = window.location.pathname.startsWith('/shorts');
@@ -130,6 +143,8 @@ export class PlayerBarUI {
                 this.injectedButtons = false;
                 return;
             }
+            
+            // Clean up duplicate controls if multiple were injected by accident
             const existingAll = controls.querySelectorAll('.ypp-player-controls');
             if (existingAll.length > 1) {
                 for (let i = 1; i < existingAll.length; i++) {
@@ -175,9 +190,25 @@ export class PlayerBarUI {
             });
 
             this._unsubVideoSrc = window.YPP.events.on('attr:videoSrcChanged', () => {
+                this._clearCaches(); // Video source changed, rebuild to ensure event closures bind to new video
                 this.attemptInjection();
             });
         }
+    }
+
+    _clearCaches() {
+        if (this._cachedWatchOverflow) {
+            this._cachedWatchOverflow.destroy();
+            this._cachedWatchOverflow = null;
+        }
+        if (this._cachedShortsOverflow) {
+            this._cachedShortsOverflow.destroy();
+            this._cachedShortsOverflow = null;
+        }
+        this._cachedWatchContainer = null;
+        this._cachedShortsContainer = null;
+        this._cachedVideoRef = null;
+        this.overflowManager = null;
     }
 
     injectControls(video, controls, isShorts) {
@@ -192,115 +223,145 @@ export class PlayerBarUI {
             document.querySelectorAll('.ypp-player-controls').forEach(e => e.remove());
         }
         
-        if (this.overflowManager) {
-            this.overflowManager.destroy();
-            this.overflowManager = null;
-        }
-
         this.updateCustomStyles();
-
-        const container = document.createElement('div');
-        container.className = 'ypp-player-controls' + (isShorts ? ' ypp-shorts-controls' : '');
-
-        const isBack = (val) => val === 'back';
-
-        if (!this.manager.controlsHelper && window.YPP?.features?.PlayerControls) {
-            this.manager.controlsHelper = new window.YPP.features.PlayerControls(this.manager);
+        
+        // ── CACHE CHECK ────────────────────────────────────────────────────────
+        // Check if video element changed. If so, bust the cache because closures
+        // inside the buttons might be bound to the old video element.
+        if (this._cachedVideoRef !== video) {
+            this._clearCaches();
+            this._cachedVideoRef = video;
         }
 
-        this.overflowManager = new PlayerBarOverflow(this.manager.controlsHelper);
+        let container;
+        let isCached = false;
 
-        const nativeFeatures = [
-            { id: 'pb_native_play', selector: '.ytp-play-button', label: 'Play/Pause', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>' },
-            { id: 'pb_native_next', selector: '.ytp-next-button', label: 'Next Video', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M5 4l10 8-10 8V4zM15 4h4v16h-4z"/></svg>' },
-            { id: 'pb_native_mute', selector: '.ytp-mute-button', label: 'Mute/Unmute', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07"/></svg>' },
-            { id: 'pb_native_cast', selector: '.ytp-remote-button', label: 'Cast to TV', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z M1 18v3h3c0-1.66-1.34-3-3-3zM1 14v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/></svg>' },
-            { id: 'pb_native_autoplay', selector: '.ytp-autonav-button, .ytp-autonav-toggle-button', label: 'Autoplay', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>' },
-            { id: 'pb_native_cc', selector: '.ytp-subtitles-button', label: 'Subtitles', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>' },
-            { id: 'pb_native_miniplayer', selector: '.ytp-miniplayer-button', label: 'Miniplayer', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z"/></svg>' },
-            { id: 'pb_native_theater', selector: '.ytp-size-button', label: 'Theater Mode', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>' },
-            { id: 'pb_native_fullscreen', selector: '.ytp-fullscreen-button', label: 'Fullscreen', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>' }
-        ];
+        if (isShorts && this._cachedShortsContainer) {
+            container = this._cachedShortsContainer;
+            this.overflowManager = this._cachedShortsOverflow;
+            isCached = true;
+        } else if (!isShorts && this._cachedWatchContainer) {
+            container = this._cachedWatchContainer;
+            this.overflowManager = this._cachedWatchOverflow;
+            isCached = true;
+        }
 
-        nativeFeatures.forEach(item => {
-            if (isBack(this.settings[item.id])) {
-                this.overflowManager.appendToOverflow(item.label, item.icon, () => {
-                    const targetBtn = document.querySelector(item.selector);
-                    if (targetBtn) targetBtn.click();
-                });
+        // ── BUILD CONTAINER ────────────────────────────────────────────────────
+        if (!isCached) {
+            container = document.createElement('div');
+            container.className = 'ypp-player-controls' + (isShorts ? ' ypp-shorts-controls' : '');
+
+            const isBack = (val) => val === 'back';
+
+            if (!this.manager.controlsHelper && window.YPP?.features?.PlayerControls) {
+                this.manager.controlsHelper = new window.YPP.features.PlayerControls(this.manager);
             }
-        });
 
-        const featureBuilders = {
-            'pb_speed': () => {
-                if (this.manager.controlsHelper && this.settings.enableCustomSpeed !== false) {
-                    return this.manager.controlsHelper.createSpeedControls(video);
-                }
-                return null;
-            },
-            'pb_pip': () => {
-                if (this.manager.controlsHelper && document.pictureInPictureEnabled) {
-                    return this.manager.controlsHelper.createPiPButton(video);
-                }
-                return null;
-            }
-        };
+            const overflow = new PlayerBarOverflow(this.manager.controlsHelper);
 
-        const dynamicFeatures = [
-            { id: 'pb_snapshot', key: 'snapshotButton', override: 'enableSnapshot' },
-            { id: 'pb_loop', key: 'loopButton', override: 'enableLoop' },
-            { id: 'pb_bookmark', key: 'bookmarksManager', override: 'enableBookmarks' },
-            { id: 'pb_volume', key: 'volumeBoost', override: 'enableVolumeBoost' },
-            { id: 'pb_cinema', key: 'videoFilters', override: 'enableCinemaFilters' }
-        ];
+            const nativeFeatures = [
+                { id: 'pb_native_play', selector: '.ytp-play-button', label: 'Play/Pause', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>' },
+                { id: 'pb_native_next', selector: '.ytp-next-button', label: 'Next Video', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M5 4l10 8-10 8V4zM15 4h4v16h-4z"/></svg>' },
+                { id: 'pb_native_mute', selector: '.ytp-mute-button', label: 'Mute/Unmute', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07"/></svg>' },
+                { id: 'pb_native_cast', selector: '.ytp-remote-button', label: 'Cast to TV', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z M1 18v3h3c0-1.66-1.34-3-3-3zM1 14v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/></svg>' },
+                { id: 'pb_native_autoplay', selector: '.ytp-autonav-button, .ytp-autonav-toggle-button', label: 'Autoplay', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>' },
+                { id: 'pb_native_cc', selector: '.ytp-subtitles-button', label: 'Subtitles', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>' },
+                { id: 'pb_native_miniplayer', selector: '.ytp-miniplayer-button', label: 'Miniplayer', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z"/></svg>' },
+                { id: 'pb_native_theater', selector: '.ytp-size-button', label: 'Theater Mode', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>' },
+                { id: 'pb_native_fullscreen', selector: '.ytp-fullscreen-button', label: 'Fullscreen', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>' }
+            ];
 
-        dynamicFeatures.forEach(config => {
-            featureBuilders[config.id] = () => {
-                if (this.settings[config.override] === false) return null;
-                let feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
-                if (!feature && config.key === 'volumeBoost') {
-                    feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('Equaliser');
+            nativeFeatures.forEach(item => {
+                if (isBack(this.settings[item.id])) {
+                    overflow.appendToOverflow(item.label, item.icon, () => {
+                        const targetBtn = document.querySelector(item.selector);
+                        if (targetBtn) targetBtn.click();
+                    });
                 }
-                if (!feature && config.key === 'snapshotButton') {
-                    feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('SnapshotButton');
+            });
+
+            const featureBuilders = {
+                'pb_speed': () => {
+                    if (this.manager.controlsHelper && this.settings.enableCustomSpeed !== false) {
+                        return this.manager.controlsHelper.createSpeedControls(video);
+                    }
+                    return null;
+                },
+                'pb_pip': () => {
+                    if (this.manager.controlsHelper && document.pictureInPictureEnabled) {
+                        return this.manager.controlsHelper.createPiPButton(video);
+                    }
+                    return null;
                 }
-                if (feature && feature.createButton) {
-                    return feature.createButton(video);
-                }
-                return null;
             };
-        });
 
-        const defaultSeq = ['pb_speed', 'pb_pip', 'pb_snapshot', 'pb_loop', 'pb_bookmark', 'pb_volume', 'pb_cinema'];
-        let sequence = this.settings.playerBarSequence;
-        if (!sequence || !Array.isArray(sequence) || sequence.length === 0) {
-            sequence = defaultSeq;
+            const dynamicFeatures = [
+                { id: 'pb_snapshot', key: 'snapshotButton', override: 'enableSnapshot' },
+                { id: 'pb_loop', key: 'loopButton', override: 'enableLoop' },
+                { id: 'pb_bookmark', key: 'bookmarksManager', override: 'enableBookmarks' },
+                { id: 'pb_volume', key: 'volumeBoost', override: 'enableVolumeBoost' },
+                { id: 'pb_cinema', key: 'videoFilters', override: 'enableCinemaFilters' }
+            ];
+
+            dynamicFeatures.forEach(config => {
+                featureBuilders[config.id] = () => {
+                    if (this.settings[config.override] === false) return null;
+                    let feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
+                    if (!feature && config.key === 'volumeBoost') {
+                        feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('Equaliser');
+                    }
+                    if (!feature && config.key === 'snapshotButton') {
+                        feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('SnapshotButton');
+                    }
+                    if (feature && feature.createButton) {
+                        return feature.createButton(video);
+                    }
+                    return null;
+                };
+            });
+
+            const defaultSeq = ['pb_speed', 'pb_pip', 'pb_snapshot', 'pb_loop', 'pb_bookmark', 'pb_volume', 'pb_cinema'];
+            let sequence = this.settings.playerBarSequence;
+            if (!sequence || !Array.isArray(sequence) || sequence.length === 0) {
+                sequence = defaultSeq;
+            }
+
+            const missing = defaultSeq.filter(x => !sequence.includes(x));
+            const fullSequence = [...sequence, ...missing];
+
+            fullSequence.forEach(id => {
+                const settingValue = this.settings[id];
+                if (settingValue === 'hidden' || settingValue === false) return;
+
+                const builder = featureBuilders[id];
+                if (!builder) return;
+
+                const btn = builder();
+                if (!btn) return;
+
+                if (isBack(settingValue)) {
+                    const svgHtml = btn.innerHTML;
+                    const label = btn.getAttribute('aria-label') || btn.title || 'Tool';
+                    overflow.appendToOverflow(label, svgHtml, () => btn.click());
+                } else {
+                    container.appendChild(btn);
+                }
+            });
+
+            overflow.createToggleButton(container);
+            
+            // Save to cache
+            if (isShorts) {
+                this._cachedShortsContainer = container;
+                this._cachedShortsOverflow = overflow;
+            } else {
+                this._cachedWatchContainer = container;
+                this._cachedWatchOverflow = overflow;
+            }
+            this.overflowManager = overflow;
         }
 
-        const missing = defaultSeq.filter(x => !sequence.includes(x));
-        const fullSequence = [...sequence, ...missing];
-
-        fullSequence.forEach(id => {
-            const settingValue = this.settings[id];
-            if (settingValue === 'hidden' || settingValue === false) return;
-
-            const builder = featureBuilders[id];
-            if (!builder) return;
-
-            const btn = builder();
-            if (!btn) return;
-
-            if (isBack(settingValue)) {
-                const svgHtml = btn.innerHTML;
-                const label = btn.getAttribute('aria-label') || btn.title || 'Tool';
-                this.overflowManager.appendToOverflow(label, svgHtml, () => btn.click());
-            } else {
-                container.appendChild(btn);
-            }
-        });
-
-        this.overflowManager.createToggleButton(container);
-
+        // ── ATTACH CONTAINER ───────────────────────────────────────────────────
         if (isShorts) {
             controls.appendChild(container);
         } else {
@@ -344,6 +405,7 @@ export class PlayerBarUI {
             }
         }
         
+        // ── OBSERVE FOR REMOVAL ────────────────────────────────────────────────
         if (this._localObserver) {
             this._localObserver.disconnect();
         }
@@ -354,7 +416,7 @@ export class PlayerBarUI {
                 if (!document.contains(container) || container.children.length === 0) {
                     this._localObserver.disconnect();
                     this.injectedButtons = false;
-                    this.attemptInjection();
+                    this.attemptInjection(); // Will hit cache next time!
                 }
             });
             this._localObserver.observe(targetContainer, { childList: true });
@@ -372,10 +434,7 @@ export class PlayerBarUI {
         if (this._retryTimer) { clearTimeout(this._retryTimer); this._retryTimer = null; }
         this._stylesHash = null;
         
-        if (this.overflowManager) {
-            this.overflowManager.destroy();
-            this.overflowManager = null;
-        }
+        this._clearCaches();
         
         if (this._unsubPlayerConstructed) {
             this._unsubPlayerConstructed();
@@ -402,3 +461,4 @@ export class PlayerBarUI {
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 window.YPP.features.PlayerBarUI = PlayerBarUI;
+

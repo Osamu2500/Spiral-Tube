@@ -3,6 +3,7 @@ import '../../../../core/system/base-feature.js';
 
 export class LoopButton extends window.YPP.features.BaseFeature {
     static featureId = 'loopButton';
+    static allowInIframe = true;
     static executionPhase = 'idle';
     static priority = 999;
     static playerBarConfig = { pbKey: 'pb_loop', overrideKey: 'enableLoop', order: 9 };

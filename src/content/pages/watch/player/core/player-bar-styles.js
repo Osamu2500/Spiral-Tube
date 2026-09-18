@@ -20,6 +20,16 @@ export class PlayerBarStyles {
                 pointer-events: auto !important;
                 transition: opacity 0.2s ease !important;
             }
+            
+            /* Responsive UI for Floating Player / Small Windows */
+            @media (max-width: 600px) {
+                .ypp-player-controls .ypp-btn-text {
+                    display: none !important;
+                }
+                .ypp-player-controls .ypp-ctrl-btn {
+                    padding: 0 4px !important;
+                }
+            }
         `;
         document.head.appendChild(style);
     }

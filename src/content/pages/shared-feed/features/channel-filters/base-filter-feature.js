@@ -39,22 +39,6 @@ export class BaseFilterFeature extends window.YPP.features.BaseFeature {
         const parsers = window.YPP.Utils?.youtubeParsers;
         const channelPath = parsers ? parsers.extractChannelFromContainer(el) : null;
         
-        let useDimMode = this._settings?.filterMode === 'dim';
-        if (this.constructor.name === 'HideWatched' && this._settings?.hideWatchedMode) {
-            useDimMode = this._settings.hideWatchedMode === 'dim';
-        }
-        
-        if (useDimMode) {
-            if (window.YPP.utils?.filterPrimitives) {
-                window.YPP.utils.filterPrimitives.applyFilter(el, 'dim', reason, channelPath);
-            }
-            this._hiddenElements.add(el);
-            this._emitHiddenEvent(el, reason);
-            // Report to FilterWarning system
-            try { window.YPP.events?.emit('filter:warning:record', { hidden: 1, total: this._lastTotalCount || 1 }); } catch (_) {}
-            return;
-        }
-
         if (window.YPP.utils?.filterPrimitives) {
             window.YPP.utils.filterPrimitives.applyFilter(el, 'hide', reason, channelPath);
         } else {

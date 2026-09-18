@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PopupX Onboarding</title>
+  
+<link rel="stylesheet" href="/pages/onboarding.css"></head>
+<body>
+  <div class="app-layout">
+    <header class="sys-header">
+      <div class="sys-title">
+        <span class="sys-indicator"></span>
+        <span>PopupX setup guide</span>
+      </div>
+      <div class="sys-status">Learn core controls in a safe demo</div>
+    </header>
+
+    <div class="main-workspace">
+      <aside class="sidebar-steps" aria-label="Onboarding steps">
+        <div class="sidebar-section-title">Setup steps</div>
+        <nav class="step-list">
+          <button class="step-item active" data-step="1"><span class="step-num">01</span><span class="step-label">Welcome</span></button>
+          <button class="step-item" data-step="2"><span class="step-num">02</span><span class="step-label">Player modes</span></button>
+          <button class="step-item" data-step="3"><span class="step-num">03</span><span class="step-label">Link preview</span></button>
+          <button class="step-item" data-step="4"><span class="step-num">04</span><span class="step-label">Floating search</span></button>
+          <button class="step-item" data-step="5"><span class="step-num">05</span><span class="step-label">Features</span></button>
+          <button class="step-item" data-step="6"><span class="step-num">06</span><span class="step-label">Frame limits</span></button>
+          <button class="step-item" data-step="7"><span class="step-num">07</span><span class="step-label">Core settings</span></button>
+        </nav>
+      </aside>
+
+      <main class="step-workspace">
+        <div class="steps-container">
+          <section class="step-panel active" id="step-1">
+            <div class="step-header">
+              <span class="step-tag">Quick start</span>
+              <h2>Watch without losing your place.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">PopupX opens videos and links in a clean overlay, sidebar, window, or miniplayer. This guide lets you try the controls before using them on YouTube.</p>
+              <div class="welcome-visual">
+                <div class="mock-browser">
+                  <div class="browser-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-tab">YouTube with PopupX</span></div>
+                  <div class="browser-body">
+                    <div class="mock-grid">
+                      <div class="mock-card"></div><div class="mock-card"></div><div class="mock-card active-popup"></div><div class="mock-card"></div>
+                      <div class="mock-card"></div><div class="mock-card"></div><div class="mock-card"></div><div class="mock-card"></div>
+                      <div class="mock-popup-overlay"><div class="mock-play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" id="btn-get-started">Start setup <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+            </div>
+          </section>
+
+          <section class="step-panel" id="step-2">
+            <div class="step-header">
+              <span class="step-tag">YouTube preview</span>
+              <h2>Choose how videos open.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">Hold <kbd>Alt</kbd> and click, or double-click, either card to preview the two player sources. Pick the one you want PopupX to use by default.</p>
+              <div class="modes-try-grid">
+                <div class="mode-selection-box" id="box-mode-watch">
+                  <div class="mode-selection-header"><span class="mode-status-indicator active" id="ind-mode-watch"></span> Watch page mode</div>
+                  <a href="https://www.youtube.com/watch?v=bdEkR2F80_A" class="preview-target-card" id="yt-test-watch-link" data-mode="watch">
+                    <div class="card-thumbnail-wrap"><img src="https://img.youtube.com/vi/bdEkR2F80_A/hqdefault.jpg" alt="Test video" class="card-thumbnail"><div class="play-button-overlay"><span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span></div><div class="duration-badge">Demo</div></div>
+                    <div class="card-info"><h3>Watch page</h3><p class="card-meta">Full YouTube page inside PopupX</p><p class="mode-detail-desc">Best compatibility. Keeps normal YouTube controls inside the popup.</p></div>
+                  </a>
+                  <button class="btn btn-mode-select active" id="btn-mode-watch" data-mode="watch">Use watch page</button>
+                </div>
+                <div class="mode-selection-box" id="box-mode-embed">
+                  <div class="mode-selection-header"><span class="mode-status-indicator" id="ind-mode-embed"></span> Embed worker mode</div>
+                  <a href="https://www.youtube.com/watch?v=bdEkR2F80_A" class="preview-target-card" id="yt-test-embed-link" data-mode="embed">
+                    <div class="card-thumbnail-wrap"><img src="https://img.youtube.com/vi/bdEkR2F80_A/hqdefault.jpg" alt="Test video" class="card-thumbnail"><div class="play-button-overlay"><span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span></div><div class="duration-badge">Demo</div></div>
+                    <div class="card-info"><h3>Embed worker</h3><p class="card-meta">Cleaner player-only view</p><p class="mode-detail-desc">Lighter and focused, but some creators block embedded playback. Use watch page if a video refuses to load.</p></div>
+                  </a>
+                  <button class="btn btn-mode-select" id="btn-mode-embed" data-mode="embed">Use embed worker</button>
+                </div>
+              </div>
+              <div class="disclaimer-box"><span class="disclaimer-text"><strong>Tip:</strong> Watch page mode is safest. Embed mode is cleaner when YouTube allows it.</span></div>
+              <div class="click-tip" id="yt-click-tip"><span class="tip-icon">Alt / 2x</span><span class="tip-text">Hold <strong>Alt</strong> and click, or double-click a thumbnail, to open the demo popup.</span></div>
+            </div>
+          </section>
+
+          <section class="step-panel" id="step-3">
+            <div class="step-header">
+              <span class="step-tag">Any page</span>
+              <h2>Preview links without leaving the tab.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">PopupX can preview normal links too. Use <kbd>Alt</kbd> + click on supported pages to open a sandboxed overlay.</p>
+              <div class="try-area">
+                <a href="https://en.wikipedia.org/wiki/Special:Random" class="preview-target-card link-card" id="wiki-link">
+                  <div class="link-card-icon">W</div>
+                  <div class="card-info"><h3>Random Wikipedia article</h3><p class="card-meta">Alt+Click to preview a knowledge article in the demo overlay.</p></div>
+                </a>
+              </div>
+              <div class="click-tip" id="wiki-click-tip"><span class="tip-icon">Alt</span><span class="tip-text">Hold <strong>Alt</strong> and click the card.</span></div>
+            </div>
+          </section>
+
+          <section class="step-panel" id="step-4">
+            <div class="step-header">
+              <span class="step-tag">Keyboard shortcut</span>
+              <h2>Open floating search with Alt+S.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">On YouTube, press <kbd>Alt</kbd> + <kbd>S</kbd> to open a Spotlight-style search prompt. Try the local demo here, then press Enter to show results.</p>
+              <div class="search-demo-card">
+                <div><h3>Try floating search</h3><p>Press <kbd>Alt</kbd> + <kbd>S</kbd> now.</p></div>
+                <button class="btn btn-primary" id="btn-try-search">Try demo</button>
+              </div>
+              <div class="click-tip"><span class="tip-icon">Demo</span><span class="tip-text">This page simulates the UI. Real floating search activates on youtube.com.</span></div>
+            </div>
+          </section>
+
+          <section class="step-panel" id="step-5">
+            <div class="step-header">
+              <span class="step-tag">Controls</span>
+              <h2>Tools for focused watching.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">PopupX combines overlay playback, miniplayer controls, keyboard shortcuts, and distraction filters for YouTube-heavy workflows.</p>
+              <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon-wrapper f-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="15" y1="4" x2="15" y2="20"></line></svg></div><h3>Overlay &amp; sidebar</h3><p class="sys-desc">Open videos centered on the page or dock them to a side panel.</p></div>
+                <div class="feature-card"><div class="feature-icon-wrapper f-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="7.5" y1="9" x2="16.5" y2="9"></line><line x1="7.5" y1="13" x2="16.5" y2="13"></line><line x1="7.5" y1="17" x2="12" y2="17"></line></svg></div><h3>Context menu</h3><p class="sys-desc">Right-click links, images, pages, or videos to preview them in PopupX.</p></div>
+                <div class="feature-card"><div class="feature-icon-wrapper f-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"></path></svg></div><h3>Distraction filters</h3><p class="sys-desc">Hide feeds, comments, shorts, sidebars, and other YouTube clutter.</p></div>
+                <div class="feature-card"><div class="feature-icon-wrapper f-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="15" rx="2"></rect><rect x="12" y="11" width="8" height="6" rx="1"></rect></svg></div><h3>Picture-in-Picture</h3><p class="sys-desc">Move playback into a floating browser PiP window when supported.</p></div>
+                <div class="feature-card span-two-cols"><div class="feature-icon-wrapper f-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></div><h3>More controls</h3><p class="sys-desc">Cycle aspect ratios, sizes, labels, copy URLs, and open pages in tabs or windows.</p></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="step-panel" id="step-6">
+            <div class="step-header">
+              <span class="step-tag">Compatibility</span>
+              <h2>Focused on YouTube previews.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">PopupX only opens YouTube videos in the overlay. Links from other websites are ignored so the extension stays focused and avoids broad site access.</p>
+              <div class="limitation-visual-wrap"><img src="/assets/refused-to-connect.png" alt="Refused to connect preview" class="limitation-image"></div>
+              <p class="sys-paragraph"><strong>Good to know:</strong> YouTube watch pages, thumbnails, Shorts, search results, and supported YouTube embeds remain the intended preview targets.</p>
+            </div>
+          </section>
+
+          <section class="step-panel" id="step-7">
+            <div class="step-header">
+              <span class="step-tag">Defaults</span>
+              <h2>Set your starting preferences.</h2>
+            </div>
+            <div class="step-content">
+              <p class="sys-paragraph">These settings save immediately and apply to active pages. You can tune every option later from the full Options page.</p>
+              <div class="settings-grid">
+                <div class="settings-group">
+                  <div class="settings-group-header">Player behavior</div>
+                  <div class="setting-item"><div class="setting-info"><label for="set-showContextMenu">Show context menu</label><span class="setting-desc">Add “Preview in PopupX” to right-click menus.</span></div><label class="switch-toggle"><input type="checkbox" id="set-showContextMenu"><span class="switch-slider"></span></label></div>
+                  <div class="setting-item"><div class="setting-info"><label for="set-blurBackdrop">Blur backdrop</label><span class="setting-desc">Soften the page behind the popup.</span></div><label class="switch-toggle"><input type="checkbox" id="set-blurBackdrop"><span class="switch-slider"></span></label></div>
+                  <div class="setting-item"><div class="setting-info"><label for="set-dimOpacity">Background dim</label><span class="setting-desc">Control overlay backdrop darkness.</span></div><div class="slider-container"><input type="range" id="set-dimOpacity" min="0" max="90" step="10"><span class="slider-value" id="val-dimOpacity">80%</span></div></div>
+                </div>
+                <div class="settings-group">
+                  <div class="settings-group-header">YouTube focus</div>
+                  <div class="setting-item"><div class="setting-info"><label for="set-hide_feed">Hide home feed</label><span class="setting-desc">Remove the homepage video feed.</span></div><label class="switch-toggle"><input type="checkbox" id="set-hide_feed"><span class="switch-slider"></span></label></div>
+                  <div class="setting-item"><div class="setting-info"><label for="set-hide_comments">Hide comments</label><span class="setting-desc">Remove comment sections.</span></div><label class="switch-toggle"><input type="checkbox" id="set-hide_comments"><span class="switch-slider"></span></label></div>
+                  <div class="setting-item"><div class="setting-info"><label for="set-hide_shorts">Hide Shorts</label><span class="setting-desc">Block Shorts recommendations.</span></div><label class="switch-toggle"><input type="checkbox" id="set-hide_shorts"><span class="switch-slider"></span></label></div>
+                </div>
+              </div>
+              <div class="more-options-notice"><span class="notice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Hotkeys, sizes, ratios, diagnostics, import/export, and advanced controls live in Options.</span></div>
+              <div class="finish-ctas"><button class="btn btn-outline" id="btn-go-options">Go to Options</button><button class="btn btn-primary" id="btn-go-youtube">Start on YouTube <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></button></div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <footer class="workspace-footer" id="nav-footer">
+      <button class="btn btn-outline hidden" id="btn-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary" id="btn-next">Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+    </footer>
+  </div>
+
+  <div class="ytpop-overlay" id="simulated-overlay">
+    <div class="ytpop-container" id="simulated-container">
+      <div class="ytpop-top-bar">
+        <span class="sim-notice-text">Demo preview with limited features</span>
+        <button class="ytpop-ctrl-btn" id="sim-mini-btn" aria-label="Miniplayer" data-tooltip="Miniplayer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg><span class="ytpop-btn-text">Miniplayer</span></button>
+        <button class="ytpop-ctrl-btn" id="sim-max-btn" aria-label="Maximize" data-tooltip="Maximize" style="display: none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg><span class="ytpop-btn-text">Maximize</span></button>
+        <button class="ytpop-ctrl-btn" id="sim-ratio-btn" aria-label="Cycle Ratio" data-tooltip="Cycle Ratio"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="4" x2="12" y2="20"></line></svg><span class="ytpop-btn-text" id="sim-ratio-text">RATIO 16:9</span></button>
+        <button class="ytpop-ctrl-btn" id="sim-size-btn" aria-label="Cycle Size" data-tooltip="Cycle Size"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg><span class="ytpop-btn-text" id="sim-size-text">SIZE 1x</span></button>
+        <button class="ytpop-close-btn" id="sim-close-btn" aria-label="Close popup">×</button>
+      </div>
+      <div class="ytpop-iframe-wrap"><iframe id="simulated-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"></iframe></div>
+    </div>
+  </div>
+
+  <div class="sim-search-overlay" id="sim-search-overlay" aria-hidden="true">
+    <div class="sim-search-panel" role="dialog" aria-label="Floating search demo">
+      <form class="sim-search-header" id="sim-search-form">
+        <input id="sim-search-input" class="sim-search-input" type="search" autocomplete="off" placeholder="Search YouTube..." value="lofi coding playlist">
+        <button class="sim-search-close" type="button" id="sim-search-close" aria-label="Close search">×</button>
+      </form>
+      <div class="sim-search-results" id="sim-search-results">
+        <article class="sim-search-demo-note"><div><h3>Demo results only</h3><p>This is demo result with fake data. You can try the real one on YouTube website by pressing <kbd>Alt</kbd> + <kbd>S</kbd>.</p></div><button class="btn btn-primary" id="sim-search-youtube" type="button">Open YouTube</button></article>
+        <article class="sim-result"><div class="sim-thumb"></div><div><h3>Lofi beats for deep work</h3><p>PopupX demo • 1 hour mix</p></div><button class="btn btn-outline" id="sim-search-watch" type="button">Watch now</button></article>
+        <article class="sim-result"><div class="sim-thumb alt"></div><div><h3>Ambient coding focus</h3><p>Demo result • Opens in PopupX</p></div><button class="btn btn-outline" type="button">Preview</button></article>
+      </div>
+    </div>
+  </div>
+
+  <div class="ytpop-toast" id="simulated-toast">Saved</div>
+  
+
+
+<script src="/pages/onboarding.js" type="module"></script></body></html>

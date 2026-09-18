@@ -13,7 +13,7 @@ function channelListIncludes(channelPath, listStr) {
   return list.includes(channelPath);
 }
 
-function isChannelListed(channel) {
+export function isChannelListed(channel) {
   return channelListIncludes(channel, prefs.channelWhitelist);
 }
 
@@ -40,7 +40,7 @@ export function channelIsPresent(ch) {
   return Array.isArray(ch) ? ch.length > 0 : !!ch;
 }
 
-export function applyFilter(element, reason, filterMode = 'hide') {
+export function applyFilter(element, reason) {
   if (!element) return;
   const ch = resolveChannelForElement(element);
   if (isChannelExempt(ch)) {
@@ -53,40 +53,9 @@ export function applyFilter(element, reason, filterMode = 'hide') {
     }
     return;
   }
-  if (filterMode === 'dim') {
-    const badgeTarget = () =>
-      element.querySelector('ytd-thumbnail') ||
-      element.querySelector('yt-thumbnail-view-model') ||
-      element.querySelector('ytm-thumbnail-cover-view-model') ||
-      element;
-
-    if (element.dataset.ytHiderDimmed) {
-      const existingBadge = element.querySelector('.ypp-dim-badge, .yt-hider-badge');
-      if (!existingBadge) {
-        const target = badgeTarget();
-        target.dataset.ytHiderBadgeTarget = '1';
-        target.appendChild(createDimBadge(reason, ch));
-        return;
-      }
-      if (existingBadge.dataset.ytHiderBadgeKind === 'blacklist') return;
-      if (
-        channelIsPresent(ch) &&
-        !prefs.hideInterfaceElements &&
-        !existingBadge.querySelector('.ypp-whitelist-btn, .yt-hider-whitelist-btn')
-      ) {
-        renderButtons(existingBadge, reason, ch);
-      }
-      return;
-    }
-    element.dataset.ytHiderDimmed = '1';
-    const target = badgeTarget();
-    target.dataset.ytHiderBadgeTarget = '1';
-    target.appendChild(createDimBadge(reason, ch));
-  } else {
-    if (element.dataset.ytHiderHidden || element.dataset.ytHiderDimmed) return;
-    element.dataset.ytHiderHidden = '1';
-    element.style.display = 'none';
-  }
+  if (element.dataset.ytHiderHidden) return;
+  element.dataset.ytHiderHidden = '1';
+  element.style.display = 'none';
 }
 
 export function createDimBadge(reason, channel) {

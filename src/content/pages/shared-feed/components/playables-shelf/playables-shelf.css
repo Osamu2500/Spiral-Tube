@@ -19,10 +19,7 @@ body.ypp-hide-promos ytd-rich-section-renderer:has(yt-lockup-view-model[content-
 }
 
 /* Also hide the orphaned "Show more" button if Playables is hidden */
-body.ypp-hide-promos ytd-rich-section-renderer:has(a[href*="/playables"]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
-body.ypp-hide-promos ytd-rich-section-renderer:has(yt-lockup-view-model[content-type*="playable"]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer) {
-  display: none !important;
-}
+/* Sibling :has() rule removed for performance */
 
 
 /* ── 1. ZERO OUT THE GRID MARGIN THAT CREATES THE LEFT GAP ─────────────── */

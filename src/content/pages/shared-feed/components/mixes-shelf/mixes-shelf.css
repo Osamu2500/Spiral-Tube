@@ -11,6 +11,18 @@
  * ==========================================================================
  */
 
+/* ── 0. DECLUTTER — Hide when user enables "Hide Mixes" ───────────────────── */
+body.ypp-hide-mixes ytd-compact-radio-renderer,
+body.ypp-hide-mixes ytd-radio-renderer,
+body.ypp-hide-mixes ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media a[href*="start_radio=1"]),
+body.ypp-hide-mixes ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media a[href*="list=RD"]),
+body.ypp-hide-mixes ytd-rich-section-renderer:has(ytd-compact-radio-renderer),
+body.ypp-hide-mixes ytd-rich-section-renderer:has(ytd-radio-renderer),
+body.ypp-hide-mixes ytd-rich-shelf-renderer:has(ytd-compact-radio-renderer),
+body.ypp-hide-mixes ytd-rich-shelf-renderer:has(ytd-radio-renderer) {
+  display: none !important;
+}
+
 /* ── 1. SHELF WRAPPER ───────────────────────────────────────────────────── */
 ytd-rich-section-renderer:has(ytd-compact-radio-renderer),
 ytd-rich-section-renderer:has(ytd-radio-renderer),

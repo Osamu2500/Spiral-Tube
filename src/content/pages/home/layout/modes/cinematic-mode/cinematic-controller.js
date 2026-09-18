@@ -128,19 +128,25 @@ export class CinematicController {
     }
 
     setupIdleDetection() {
+        let isResetting = false;
         const resetIdle = () => {
-            if (this.state.isIdle) {
-                this.state.isIdle = false;
-                if (!this.state.isUserHovering) {
-                    this.playNextVideo();
+            if (isResetting) return;
+            isResetting = true;
+            requestAnimationFrame(() => {
+                isResetting = false;
+                if (this.state.isIdle) {
+                    this.state.isIdle = false;
+                    if (!this.state.isUserHovering) {
+                        this.playNextVideo();
+                    }
                 }
-            }
-            this.observerManager.clearTimeout(this.state.idleTimer);
-            this.state.idleTimer = this.observerManager.addTimeout(setTimeout(() => {
-                this.state.isIdle = true;
-                this.observerManager.clearTimeout(this.state.videoTimer);
-                this.releaseHeroVideo();
-            }, 300000));
+                this.observerManager.clearTimeout(this.state.idleTimer);
+                this.state.idleTimer = this.observerManager.addTimeout(setTimeout(() => {
+                    this.state.isIdle = true;
+                    this.observerManager.clearTimeout(this.state.videoTimer);
+                    this.releaseHeroVideo();
+                }, 300000));
+            });
         };
 
         window.addEventListener('mousemove', resetIdle, { passive: true });

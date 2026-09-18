@@ -22,15 +22,13 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideSidebar:           'ypp-hide-sidebar',
             hideFundraiser:        'ypp-hide-fundraiser',
             hideSearchShelves:     'ypp-hide-search-shelves',
-            hideSearchPodcasts:    'ypp-hide-search-podcasts',
+
             hideSearchMusic:       'ypp-hide-search-music',
             hideSearchTopics:      'ypp-hide-search-topics',
             // Previously unhandled — now wired up:
             hideRelated:           'ypp-hide-related',
             hideVoiceSearch:       'ypp-hide-voice-search',
             hideShortsInteraction: 'ypp-hide-shorts-interaction',
-            hideTrending:          'ypp-hide-trending',          // Moved from HomePageManager
-            hideExploreTopics:     'ypp-hide-explore-topics',    // Moved from HomePageManager
             hidePlayerTopics:      'ypp-hide-player-topics',
             hideVideoTitle:        'ypp-hide-video-title',
             hideChannelBar:        'ypp-hide-channel-bar',
@@ -168,9 +166,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         }
 
         const isFeatureActive = (baseKey) => {
-            if (!this.settings[baseKey]) return false;
-            if (pageType && this.settings[`${baseKey}${pageType}`] === false) return false;
-            return true;
+            return !!this.settings[baseKey];
         };
 
         const toggleClass = (active, className) => {
@@ -180,12 +176,15 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
 
         toggleClass(isFeatureActive('hidePodcasts'), 'ypp-hide-podcasts');
         toggleClass(isFeatureActive('hidePosts'), 'ypp-hide-posts');
+        toggleClass(isFeatureActive('hideMixes'), 'ypp-hide-mixes');
+        toggleClass(isFeatureActive('hidePlaylists'), 'ypp-hide-playlists');
+
+        // Combine Promos
+        const hidePromos = isFeatureActive('hidePromoShelves');
+        toggleClass(hidePromos, 'ypp-hide-promos');
+        toggleClass(hidePromos, 'ypp-hide-explore-topics');
 
         let nukeShortsActive = this.settings.aggressiveShortsBlock;
-        if (nukeShortsActive) {
-            if (pageType) nukeShortsActive = this.settings[`shortsFilter${pageType}`] !== false;
-            else nukeShortsActive = false;
-        }
         
         if (nukeShortsActive) {
             document.body.classList.add('ypp-nuke-shorts', 'ypp-hide-shorts');

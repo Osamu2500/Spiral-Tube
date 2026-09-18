@@ -1,11 +1,134 @@
 import { ICONS, P } from '../../ui/popup-icons.js';
-import { generateAdvancedFilterSlot } from '../../ui/ui-templates.js';
+
 
 export const getDeclutterTab = (t) => ({
     id: 'declutter',
     label: t('tab_filters'),
     icon: ICONS.filter,
     sections: [
+      {
+        title: t('home_page'),
+        icon: ICONS.secFiltersHome,
+        color: '#10b981',
+        items: [
+          {
+            type: 'toggle',
+            id: 'hideFeed',
+            label: t('hide_homepage_feed'),
+            desc: t('blank_homepage'),
+            icon: ICONS.home,
+          },
+          {
+            type: 'toggle',
+            id: 'hidePromoShelves',
+            label: t('hide_promos_explore'),
+            desc: t('remove_shelves_games_explore'),
+            icon: ICONS.promos,
+          },
+          {
+            type: 'toggle',
+            id: 'hidePosts',
+            label: t('hide_posts'),
+            desc: t('remove_community_posts'),
+            icon: ICONS.uiComponents,
+          },
+        ],
+      },
+      {
+        title: 'Global Content Filters',
+        icon: ICONS.playlists,
+        color: '#f97316',
+        items: [
+          {
+            type: 'toggle',
+            id: 'hideLiveStreams',
+            label: 'Hide Live Streams',
+            desc: 'Remove live-streaming videos from all feeds',
+            icon: P(
+              'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'
+            ),
+          },
+          {
+            type: 'toggle',
+            id: 'hideUpcoming',
+            label: 'Hide Upcoming & Premieres',
+            desc: 'Remove scheduled and premiere videos from feeds',
+            icon: P(
+              'M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z'
+            ),
+          },
+          {
+            type: 'toggle',
+            id: 'hidePlaylists',
+            label: 'Hide Playlists',
+            desc: 'Remove Playlists from feeds and search results',
+            icon: ICONS.playlists,
+          },
+          {
+            type: 'toggle',
+            id: 'hideMixes',
+            label: 'Hide Mixes',
+            desc: 'Remove infinite YouTube Mix playlists everywhere',
+            icon: ICONS.mixes,
+          },
+          {
+            type: 'toggle',
+            id: 'hidePodcasts',
+            label: t('hide_podcasts'),
+            desc: t('remove_podcast_cards'),
+            icon: ICONS.podcasts,
+          },
+
+          {
+            type: 'toggle',
+            id: 'aggressiveShortsBlock',
+            label: 'Hide Shorts',
+            desc: 'Completely nuke all Shorts, reels, and shelves',
+            icon: ICONS.promos,
+          },
+        ],
+      },
+      {
+        title: 'Smart Filters',
+        icon: ICONS.search,
+        color: '#f59e0b',
+        items: [
+          {
+            type: 'toggle',
+            id: 'hideWatched',
+            class: 'span-4 force-inline-slot',
+            label: t('hide_watched'),
+            desc: t('auto_hide_watched_videos'),
+            icon: ICONS.watched,
+            inlineSlot:
+              '<div style="display:flex; align-items:center; justify-content:flex-end; width:100%;"><div class="inline-slider-wrapper"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5"><span id="hideWatchedThresholdValue">80%</span></div></div>',
+            slot: '',
+          },
+
+          {
+            type: 'toggle',
+            id: 'viewsFilterEnabled',
+            class: 'span-4 force-inline-slot',
+            label: t('hide_low_view_videos'),
+            desc: t('filter_out_unpopular_content'),
+            icon: P(
+              'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'
+            ),
+            inlineSlot:
+              '<div style="display:flex; align-items:center; justify-content:flex-end; width:100%; gap:10px;"><div class="inline-slider-wrapper" style="max-width:160px;"><span style="opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1"><span id="viewsHideThresholdValue">Off</span></div><div class="inline-slider-wrapper" style="max-width:160px;"><span style="opacity:0.5;">Max:</span><input type="range" id="viewsHideMaxThresholdUI" min="0" max="11" step="1"><span id="viewsHideMaxThresholdValue">Off</span></div></div>',
+          },
+          {
+            type: 'toggle',
+            id: 'dateFilterEnabled',
+            class: 'span-4 force-inline-slot',
+            label: t('filter_by_upload_date'),
+            desc: t('hide_videos_older_newer_than_n_days'),
+            icon: ICONS.calendar,
+            inlineSlot:
+              '<div style="display:flex; align-items:center; justify-content:flex-end; width:100%; gap:10px;"><div class="inline-slider-wrapper"><span style="opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1"><span id="dateFilterOlderThresholdValue">Off</span></div><div class="inline-slider-wrapper"><span style="opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1"><span id="dateFilterNewerThresholdValue">Off</span></div></div>',
+          },
+        ],
+      },
       {
         title: 'Global UI Cleanups',
         icon: ICONS.filter,
@@ -105,273 +228,10 @@ export const getDeclutterTab = (t) => ({
             badge: 'New',
             icon: ICONS.hide,
           },
-          {
-            type: 'toggle',
-            id: 'fullVideoTitles',
-            label: 'Full Video Titles',
-            desc: 'Prevent video titles from being truncated with ...',
-            badge: 'New',
-            icon: ICONS.text,
-          },
-          {
-            type: 'toggle',
-            id: 'wideChannelLayout',
-            label: 'Wide Channel Layout',
-            desc: 'Expand channel pages to use full width on large monitors',
-            badge: 'New',
-            icon: ICONS.grid,
-          },
-          {
-            type: 'toggle',
-            id: 'siteGrayscaleMode',
-            label: 'Grayscale Mode',
-            desc: 'Turn the entire YouTube site black and white',
-            badge: 'New',
-            icon: ICONS.theme,
-          },
-          {
-            type: 'toggle',
-            id: 'searchEngineMode',
-            label: 'Search Engine Mode',
-            desc: 'Hide everything except the search bar to avoid distractions',
-            badge: 'New',
-            icon: ICONS.search,
-          },
-          {
-            type: 'select',
-            id: 'bypassHomepage',
-            class: 'span-2',
-            label: 'Bypass Homepage',
-            desc: 'Automatically redirect away from the homepage',
-            icon: ICONS.home,
-            options: [
-              { value: 'off', label: 'Off' },
-              { value: 'subscriptions', label: 'Subscriptions' },
-              { value: 'watch_later', label: 'Watch Later' },
-              { value: 'library', label: 'Library' },
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Global Content Filters',
-        icon: ICONS.playlists,
-        color: '#f97316',
-        items: [
-          {
-            type: 'toggle',
-            id: 'hideLiveStreams',
-            class: 'span-2',
-            label: 'Hide Live Streams',
-            desc: 'Remove live-streaming videos from all feeds',
-            icon: P(
-              'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'
-            ),
-          },
-          {
-            type: 'toggle',
-            id: 'hideUpcoming',
-            class: 'span-2',
-            label: 'Hide Upcoming & Premieres',
-            desc: 'Remove scheduled and premiere videos from feeds',
-            icon: P(
-              'M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z'
-            ),
-          },
-          {
-            type: 'toggle',
-            id: 'feedFilter',
-            class: 'span-4',
-            label: 'Filter by Keywords',
-            desc: 'Hide videos containing specific words (comma separated)',
-            icon: ICONS.search,
-            inlineSlot:
-              '<div style="display:flex; width:100%; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><input type="text" id="feedFilterKeywords" placeholder="e.g. spoiler, review, unboxing" style="flex:1; padding:8px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:12px; outline:none;" /></div>',
-          },
-          {
-            type: 'toggle',
-            id: 'hidePlaylists',
-            class: 'span-2',
-            label: 'Hide Playlists',
-            desc: 'Remove Playlists from feeds and search results',
-            icon: ICONS.playlists,
-            inlineSlot: generateAdvancedFilterSlot('hidePlaylists', 'playlists'),
-          },
-          {
-            type: 'toggle',
-            id: 'hideMixes',
-            class: 'span-2',
-            label: 'Hide Mixes',
-            desc: 'Remove infinite YouTube Mix playlists everywhere',
-            icon: ICONS.mixes,
-            inlineSlot: generateAdvancedFilterSlot('hideMixes', 'mixes'),
-          },
-          {
-            type: 'toggle',
-            id: 'hidePodcasts',
-            class: 'span-2',
-            label: t('hide_podcasts'),
-            desc: t('remove_podcast_cards'),
-            icon: ICONS.podcasts,
-            inlineSlot: generateAdvancedFilterSlot('hidePodcasts', 'podcasts'),
-          },
-          {
-            type: 'toggle',
-            id: 'hidePosts',
-            class: 'span-2',
-            label: t('hide_posts'),
-            desc: t('remove_community_posts'),
-            icon: ICONS.uiComponents,
-            inlineSlot: generateAdvancedFilterSlot('hidePosts', 'posts'),
-          },
-        ],
-      },
-      {
-        title: 'Advanced Smart Filters',
-        icon: ICONS.search,
-        color: '#f59e0b',
-        items: [
-          {
-            type: 'toggle',
-            id: 'hideWatched',
-            class: 'span-4',
-            label: t('hide_watched'),
-            desc: t('auto_hide_watched_videos'),
-            icon: ICONS.watched,
-            inlineSlot:
-              '<div style="display:flex; align-items:center; gap:12px; width:45%; max-width:250px;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide">Hide</button></div><div class="inline-slider-wrapper"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5"><span id="hideWatchedThresholdValue">80%</span></div></div><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="opacity:0.6;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:6px;"><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related">Related</button></div></div><input type="hidden" id="hideWatchedMode" value="dim" />',
-            slot: '',
-          },
-          {
-            type: 'toggle',
-            id: 'aggressiveShortsBlock',
-            class: 'span-4',
-            label: 'Shorts Remover',
-            desc: 'Completely nuke all Shorts, reels, and shelves',
-            icon: ICONS.promos,
-            inlineSlot: generateAdvancedFilterSlot('aggressiveShortsBlock', 'shorts'),
-          },
-          {
-            type: 'toggle',
-            id: 'viewsFilterEnabled',
-            class: 'span-4',
-            label: t('hide_low_view_videos'),
-            desc: t('filter_out_unpopular_content'),
-            icon: P(
-              'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'
-            ),
-            inlineSlot:
-              '<div class="inline-slider-wrapper" style="width:30%; max-width:180px;"><span style="opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1"><span id="viewsHideThresholdValue">Off</span></div><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="opacity:0.6;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:6px;"><button type="button" class="theme-btn card-style-btn views-page-btn active" data-page="home">Home</button><button type="button" class="theme-btn card-style-btn views-page-btn active" data-page="channel">Channel</button><button type="button" class="theme-btn card-style-btn views-page-btn active" data-page="subs">Subs</button><button type="button" class="theme-btn card-style-btn views-page-btn active" data-page="search">Search</button><button type="button" class="theme-btn card-style-btn views-page-btn active" data-page="related">Related</button></div></div><input type="hidden" id="viewsHideThreshold" value="0" />',
 
-          },
-          {
-            type: 'toggle',
-            id: 'dateFilterEnabled',
-            class: 'span-4',
-            label: t('filter_by_upload_date'),
-            desc: t('hide_videos_older_newer_than_n_days'),
-            icon: ICONS.calendar,
-            inlineSlot:
-              '<div style="display:flex; align-items:center; gap:10px; width:40%; max-width:280px;"><div class="inline-slider-wrapper"><span style="opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1"><span id="dateFilterOlderThresholdValue">Off</span></div><div class="inline-slider-wrapper"><span style="opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1"><span id="dateFilterNewerThresholdValue">Off</span></div></div><div style="display:flex; align-items:center; flex:1; gap:8px;"><span style="opacity:0.6;">Pages:</span><div style="display:flex; align-items:center; flex:1; gap:6px;"><button type="button" class="theme-btn card-style-btn date-page-btn active" data-page="home">Home</button><button type="button" class="theme-btn card-style-btn date-page-btn active" data-page="channel">Channel</button><button type="button" class="theme-btn card-style-btn date-page-btn active" data-page="subs">Subs</button><button type="button" class="theme-btn card-style-btn date-page-btn active" data-page="search">Search</button><button type="button" class="theme-btn card-style-btn date-page-btn active" data-page="related">Related</button></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />',
-          },
         ],
       },
-      {
-        title: t('home_page'),
-        icon: ICONS.secFiltersHome,
-        color: '#10b981',
-        items: [
-          {
-            type: 'toggle',
-            id: 'hideFeed',
-            label: t('hide_homepage_feed'),
-            desc: t('blank_homepage'),
-            icon: ICONS.home,
-          },
-          {
-            type: 'toggle',
-            id: 'hideExploreTopics',
-            label: t('hide_topics_bar'),
-            desc: t('remove_category_chips'),
-            icon: ICONS.cinematic,
-          },
-          {
-            type: 'toggle',
-            id: 'hideTrending',
-            label: t('hide_trending_explore'),
-            icon: ICONS.explore,
-          },
-          {
-            type: 'toggle',
-            id: 'hidePromoShelves',
-            label: t('hide_promos'),
-            desc: t('remove_shelves_games'),
-            icon: ICONS.promos,
-          },
-        ],
-      },
-      {
-        title: t('advanced_filters'),
-        icon: ICONS.pinVideo,
-        color: '#64748b',
-        items: [
-          {
-            type: 'select',
-            id: 'filterMode',
-            class: 'span-2',
-            label: t('filter_mode'),
-            desc: t('how_to_treat_filtered_content_globally'),
-            icon: ICONS.filterMode,
-            options: [
-              { value: 'hide', label: t('hide_completely') },
-              { value: 'dim', label: t('dim_hover_to_reveal') },
-            ],
-          },
-          {
-            type: 'toggle',
-            id: 'hideClickbaitEnabled',
-            label: 'Hide Clickbait',
-            desc: 'Hide overly sensational titles/thumbnails',
-            icon: ICONS.hide,
-          },
-          {
-            type: 'toggle',
-            id: 'hideClickbaitEmojis',
-            label: 'Block Excessive Emojis',
-            desc: 'Hide videos with 4+ emojis in the title',
-            icon: ICONS.hide,
-          },
-          {
-            type: 'toggle',
-            id: 'hideClickbaitPunctuation',
-            label: 'Block Excessive Punctuation',
-            desc: 'Hide videos with 3+ ! or ? in the title',
-            icon: ICONS.hide,
-          },
-          {
-            type: 'toggle',
-            id: 'channelWhitelistEnabled',
-            label: t('enable_channel_whitelist'),
-            desc: t('exempt_channels_from_being_hidden'),
-            icon: ICONS.whitelist,
-          },
-          {
-            type: 'toggle',
-            id: 'channelBlacklistEnabled',
-            label: t('enable_channel_blacklist'),
-            desc: t('always_hide_specific_channels'),
-            icon: ICONS.blacklist,
-          },
-          {
-            type: 'toggle',
-            id: 'pauseChannelTrailers',
-            label: 'Pause Channel Trailers',
-            desc: 'Prevent auto-playing videos when visiting a creator\'s channel page',
-            badge: 'New',
-            icon: ICONS.pause,
-          },
-        ],
-      },
+
       {
         title: t('player_page'),
         icon: ICONS.secFiltersPlayer,
@@ -435,7 +295,7 @@ export const getDeclutterTab = (t) => ({
           {
             type: 'toggle',
             id: 'hideRelated',
-            label: t('hide_related_feed'),
+            label: 'Hide Related & Cards',
             desc: t('hide_sidebar_videos'),
             icon: P('M3 3h18v18H3zM14 8h6M14 12h6M14 16h6'),
           },
@@ -451,7 +311,7 @@ export const getDeclutterTab = (t) => ({
             label: t('hide_end_screens'),
             icon: P('M3 3h18v18H3zM3 9h18M9 21V9'),
           },
-          { type: 'toggle', id: 'hideCards', label: t('hide_video_cards'), icon: ICONS.cards },
+
           {
             type: 'toggle',
             id: 'hideAnnotations',
@@ -465,25 +325,7 @@ export const getDeclutterTab = (t) => ({
             label: t('hide_donations'),
             icon: ICONS.fundraiser,
           },
-          {
-            type: 'toggle',
-            id: 'commentFilter',
-            label: t('comment_spam_filter'),
-            desc: t('hide_suspected_bots'),
-            icon: P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z'),
-          },
-          {
-            type: 'select',
-            id: 'commentFilterAction',
-            class: 'span-2',
-            label: t('spam_action'),
-            desc: t('what_to_do_with_spam'),
-            icon: ICONS.filterMode,
-            options: [
-              { value: 'dim', label: t('dim_hover_to_reveal') },
-              { value: 'hide', label: t('hide_completely') },
-            ],
-          },
+
           {
             type: 'toggle',
             id: 'hideThanksDonate',
@@ -533,27 +375,7 @@ export const getDeclutterTab = (t) => ({
             desc: t('show_videos_only'),
             icon: ICONS.channelBar,
           },
-          {
-            type: 'toggle',
-            id: 'hideSearchMixes',
-            label: t('hide_mixes'),
-            desc: t('remove_infinite_mixes'),
-            icon: ICONS.mixes,
-          },
-          {
-            type: 'toggle',
-            id: 'hideSearchPlaylists',
-            label: t('hide_playlists'),
-            desc: t('remove_playlist_cards'),
-            icon: ICONS.playlists,
-          },
-          {
-            type: 'toggle',
-            id: 'hideSearchPodcasts',
-            label: t('hide_podcasts'),
-            desc: t('remove_podcast_cards'),
-            icon: ICONS.podcasts,
-          },
+
           {
             type: 'toggle',
             id: 'hideSearchMusic',

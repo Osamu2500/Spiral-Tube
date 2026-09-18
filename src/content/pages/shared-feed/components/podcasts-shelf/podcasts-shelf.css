@@ -1,0 +1,13 @@
+/* 
+ * ==========================================================================
+ * PODCASTS DECLUTTER
+ * Hides Podcasts when the user enables "Hide Podcasts".
+ * Podcasts on YouTube often use a badge or specific text.
+ * ==========================================================================
+ */
+
+body.ypp-hide-podcasts ytd-rich-item-renderer:has(.badge-style-type-podcast),
+body.ypp-hide-podcasts ytd-rich-section-renderer:has(.badge-style-type-podcast),
+body.ypp-hide-podcasts ytd-rich-shelf-renderer:has(.badge-style-type-podcast) {
+  display: none !important;
+}

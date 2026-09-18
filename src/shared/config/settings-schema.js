@@ -428,7 +428,7 @@ window.YPP.SettingsSchema = {
 
         // --- Missing Global Layout Toggles ---
         floatingPlayer:               { type: 'boolean', default: false },
-        hideSearchPodcasts:           { type: 'boolean', default: false },
+
         hideSearchMusic:              { type: 'boolean', default: false },
         hideShortsInteraction:        { type: 'boolean', default: false },
         hideScrollbar:                { type: 'boolean', default: false },

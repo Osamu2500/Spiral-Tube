@@ -24,6 +24,23 @@ chrome.runtime.onUpdateAvailable.addListener(() => {
   chrome.runtime.reload();
 });
 
+// Commands
+if (chrome.commands) {
+  chrome.commands.onCommand.addListener(async (command) => {
+    try {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (tab && tab.id) {
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'command',
+          name: command
+        }).catch(() => {});
+      }
+    } catch (e) {
+      console.error('[YPP] Failed to execute command', e);
+    }
+  });
+}
+
 // Initialization
 chrome.runtime.onInstalled.addListener(async (details) => {
   console.log('[YPP] Service Worker Installed:', details.reason);

@@ -43,9 +43,15 @@ export function getDateFilterReason(ageDays) {
 
 export function getMetadataSpansFromContainer(metadataContainer) {
   const rowSelectors =
-    '.yt-content-metadata-view-model-wiz__metadata-row, .yt-content-metadata-view-model__metadata-row, .ytContentMetadataViewModelMetadataRow';
+    '.yt-content-metadata-view-model-wiz__metadata-row, ' +
+    '.yt-content-metadata-view-model__metadata-row, ' +
+    '.ytContentMetadataViewModelMetadataRow, ' +
+    // Additional YT A/B variants
+    '[class*="metadataRow"], [class*="MetadataRow"]';
   const textSelectors =
-    'span.yt-core-attributed-string, span.ytContentMetadataViewModelMetadataText';
+    'span.yt-core-attributed-string, ' +
+    'span.ytContentMetadataViewModelMetadataText, ' +
+    'span[class*="metadataText"], span[class*="MetadataText"]';
 
   const metadataRows = metadataContainer.querySelectorAll(rowSelectors);
   if (metadataRows.length) {
@@ -53,16 +59,34 @@ export function getMetadataSpansFromContainer(metadataContainer) {
     metadataRows.forEach(row => {
       row.querySelectorAll(textSelectors).forEach(span => {
         spans.push(span);
+        // Also push a synthetic span-like object with aria-label text
+        // when the visible text is abbreviated (e.g. "1.2M" vs aria-label "1,234,567 views")
+        const ariaLabel = span.getAttribute('aria-label');
+        if (ariaLabel && ariaLabel !== span.textContent.trim()) {
+          const synthetic = { textContent: ariaLabel, getAttribute: () => null, closest: span.closest.bind(span) };
+          spans.push(synthetic);
+        }
       });
     });
     return spans;
   }
 
-  return Array.from(
-    metadataContainer.querySelectorAll(
-      'span.ytContentMetadataViewModelMetadataText',
-    ),
+  // Fallback: grab any metadata text spans in the container
+  const fallbackSpans = Array.from(
+    metadataContainer.querySelectorAll(textSelectors),
   );
+
+  // Also include aria-label fallbacks
+  const result = [];
+  fallbackSpans.forEach(span => {
+    result.push(span);
+    const ariaLabel = span.getAttribute('aria-label');
+    if (ariaLabel && ariaLabel !== span.textContent.trim()) {
+      const synthetic = { textContent: ariaLabel, getAttribute: () => null, closest: span.closest.bind(span) };
+      result.push(synthetic);
+    }
+  });
+  return result;
 }
 
 export function hideDateFilter() {
@@ -128,8 +152,14 @@ export function shouldHideViews(pathname) {
   return isFeatureEnabledForPath('viewsFilter', pathname, prefs);
 }
 
+function getViewsReason(views) {
+  const { viewsHideThreshold, viewsHideMaxThreshold } = prefs;
+  if (viewsHideThreshold > 0 && views < viewsHideThreshold) return 'Views too low';
+  if (viewsHideMaxThreshold > 0 && views > viewsHideMaxThreshold) return 'Views too high';
+  return null;
+}
+
 export function hideUnderVisuals() {
-  const { viewsHideThreshold } = prefs;
   const selectors = getVideoContainerSelectors();
 
   document.querySelectorAll('#metadata-line').forEach(metaLine => {
@@ -140,11 +170,13 @@ export function hideUnderVisuals() {
     if (!spans.length) return;
 
     const result = resolveViewsFromSpans(spans);
-    if (!result || result.views >= viewsHideThreshold) return;
+    if (!result) return;
+    const reason = getViewsReason(result.views);
+    if (!reason) return;
     if (isLiveVideo(result.span)) return;
 
     const item = findOutermostMatch(result.span, selectors);
-    if (item) applyFilter(item, 'Views too low', prefs.viewsFilterEnabledMode);
+    if (item) applyFilter(item, reason, prefs.viewsFilterEnabledMode);
   });
 
   document
@@ -153,7 +185,8 @@ export function hideUnderVisuals() {
       const text = (span.textContent || '').trim();
       const result = extractViewCount(text);
       if (!result || typeof result !== 'object') return;
-      if (result.views >= viewsHideThreshold) return;
+      const reason = getViewsReason(result.views);
+      if (!reason) return;
       if (isLiveVideo(span)) return;
 
       const container = span.closest(
@@ -161,9 +194,9 @@ export function hideUnderVisuals() {
       );
 
       if (container) {
-        applyFilter(container, 'Views too low', prefs.viewsFilterEnabledMode);
+        applyFilter(container, reason, prefs.viewsFilterEnabledMode);
         const wrapper = container.closest('ytm-rich-item-renderer');
-        if (wrapper) applyFilter(wrapper, 'Views too low', prefs.viewsFilterEnabledMode);
+        if (wrapper) applyFilter(wrapper, reason, prefs.viewsFilterEnabledMode);
       }
     });
 
@@ -171,7 +204,6 @@ export function hideUnderVisuals() {
 }
 
 export function hideNewFormatVideos() {
-  const { viewsHideThreshold } = prefs;
   const selectors = getVideoContainerSelectors();
 
   document
@@ -181,11 +213,12 @@ export function hideNewFormatVideos() {
       if (!allSpans.length) return;
 
       const result = resolveViewsFromSpans(allSpans);
-
-      if (!result || result.views >= viewsHideThreshold) return;
+      if (!result) return;
+      const reason = getViewsReason(result.views);
+      if (!reason) return;
       if (isLiveVideo(result.span)) return;
 
       const item = findOutermostMatch(result.span, selectors);
-      if (item) applyFilter(item, 'Views too low', prefs.viewsFilterEnabledMode);
+      if (item) applyFilter(item, reason, prefs.viewsFilterEnabledMode);
     });
 }

@@ -398,7 +398,7 @@ export const DEFAULT_SETTINGS = {
 
   // --- Missing Global Layout Toggles ---
   floatingPlayer: false,
-  hideSearchPodcasts: false,
+
   hideSearchMusic: false,
   hideShortsInteraction: false,
   hideScrollbar: false,

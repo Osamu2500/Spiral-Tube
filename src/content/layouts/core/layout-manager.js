@@ -325,16 +325,9 @@ export class GridLayoutManager extends window.YPP.features.BaseFeature {
             // Check if item is inside a shelf
             const shelf = item.closest('ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-reel-shelf-renderer');
             if (shelf) {
-                // Apply grid item class to Shorts and Posts so they inherit our flexbox/grid resets
-                const isShorts = shelf.hasAttribute('is-shorts') || shelf.tagName === 'YTD-REEL-SHELF-RENDERER' || item.querySelector('ytd-reel-item-renderer') !== null;
-                const isPost = shelf.hasAttribute('is-post') || item.querySelector('ytd-post-renderer, ytd-shared-post-renderer, yt-post-view-model') !== null;
-                if (isShorts || isPost) {
-                    if (!item.classList.contains('ypp-grid-item')) {
-                        item.classList.add('ypp-grid-item');
-                    }
-                } else {
-                    item.classList.remove('ypp-grid-item');
-                }
+                // Do not apply ypp-grid-item to items inside shelves (e.g. Shorts, Posts).
+                // They should rely on YouTube's native flexbox or grid to size correctly.
+                item.classList.remove('ypp-grid-item');
                 return;
             }
 

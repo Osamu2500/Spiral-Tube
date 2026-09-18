@@ -22,12 +22,7 @@ body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) {
 
 /* Also hide the orphaned "Show more" button section that YouTube places immediately after the shorts */
 /* Also hide the orphaned "Show more" button section that YouTube places immediately after the shorts */
-body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
-body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
-body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer),
-body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer) + ytd-rich-section-renderer:has(ytd-continuation-item-renderer) {
-  display: none !important;
-}
+/* Sibling :has() rule removed for performance */
 
 /* ── 1. SHELF CONTAINER ─────────────────────────────────────────────────── */
 body.ypp-search-grid-mode ytd-rich-shelf-renderer[is-shorts],

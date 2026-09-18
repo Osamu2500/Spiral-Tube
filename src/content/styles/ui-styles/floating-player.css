@@ -1,0 +1,54 @@
+/* Floating Player Glassmorphism Overrides */
+
+.ytpop-overlay {
+  background: var(--ypp-glass-bg, rgba(20, 20, 25, 0.75)) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+.ytpop-container {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.ytpop-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
+}
+
+.ytpop-search-bar {
+  background: var(--ypp-glass-bg, rgba(20, 20, 25, 0.5)) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
+  border-radius: 12px !important;
+  color: white !important;
+}
+
+/* Music Mode specific overrides */
+.ytpop-overlay--music {
+  background: var(--ypp-glass-bg, rgba(15, 15, 20, 0.85)) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+}
+
+/* Context Menu Overrides */
+.ytpop-ctx-menu {
+  background: var(--ypp-glass-bg, rgba(25, 25, 30, 0.85)) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+  color: #fff !important;
+}
+
+.ytpop-ctx-item {
+  color: #fff !important;
+}
+
+.ytpop-ctx-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
