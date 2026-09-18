@@ -13,7 +13,6 @@ import { getPopupDesignTab } from './tabs/tab-popup-design.js';
 import { getAdvancedTab } from './tabs/tab-advanced.js';
 import { getHotkeyTab } from './tabs/tab-hotkey.js';
 import { getGlobalTab } from './tabs/tab-global.js';
-import { getFloatingPlayerTab } from './tabs/tab-floating-player.js';
 
 import { ICONS } from '../ui/popup-icons.js';
 
@@ -35,7 +34,6 @@ export function getPopupSchema(t) {
         getPopupDesignTab(t),
         getAdvancedTab(t),
         getHotkeyTab(t),
-        getGlobalTab(t),
-        getFloatingPlayerTab(t)
+        getGlobalTab(t)
     ];
 }

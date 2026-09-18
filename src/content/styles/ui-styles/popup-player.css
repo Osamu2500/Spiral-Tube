@@ -1,6 +1,8 @@
-/* Floating Player Glassmorphism Overrides */
+/* Popup Player — Glassmorphism & Spiral Tube Theme Overrides
+ * Targets the popup-player-* class namespace injected by popup-player-bundle.js.
+ * Scoped exclusively to the popup player feature. */
 
-.ytpop-overlay {
+.popup-player-overlay {
   background: var(--ypp-glass-bg, rgba(20, 20, 25, 0.75)) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
@@ -9,17 +11,17 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
-.ytpop-container {
+.popup-player-container {
   border-radius: 16px !important;
   overflow: hidden !important;
 }
 
-.ytpop-header {
+.popup-player-header {
   background: transparent !important;
   border-bottom: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.1)) !important;
 }
 
-.ytpop-search-bar {
+.popup-player-search-bar {
   background: var(--ypp-glass-bg, rgba(20, 20, 25, 0.5)) !important;
   backdrop-filter: blur(12px) !important;
   border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
@@ -27,14 +29,14 @@
   color: white !important;
 }
 
-/* Music Mode specific overrides */
-.ytpop-overlay--music {
+/* Music mode */
+.popup-player-overlay--music {
   background: var(--ypp-glass-bg, rgba(15, 15, 20, 0.85)) !important;
   backdrop-filter: blur(24px) saturate(200%) !important;
 }
 
-/* Context Menu Overrides */
-.ytpop-ctx-menu {
+/* Context Menu */
+.popup-player-ctx-menu {
   background: var(--ypp-glass-bg, rgba(25, 25, 30, 0.85)) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
@@ -44,11 +46,11 @@
   color: #fff !important;
 }
 
-.ytpop-ctx-item {
+.popup-player-ctx-item {
   color: #fff !important;
 }
 
-.ytpop-ctx-item:hover {
+.popup-player-ctx-item:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
 }

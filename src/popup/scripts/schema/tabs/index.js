@@ -13,4 +13,3 @@ export { getSearchTab } from './tab-search.js';
 export { getShortsTab } from './tab-shorts.js';
 export { getSpeedTab } from './tab-speed.js';
 export { getSubscriptionsTab } from './tab-subscriptions.js';
-export { getFloatingPlayerTab } from './tab-floating-player.js';

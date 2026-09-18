@@ -84,53 +84,81 @@ export const getPlayerTab = (t) => ({
         ],
       },
 
-      // Section 3: Player UI Components
+      // Section 3: Popup Player
       {
-        title: t('player_ui_components'),
-        icon: ICONS.uiComponents,
+        title: 'Popup Player',
+        icon: ICONS.player,
         color: '#3b82f6',
         items: [
           {
             type: 'toggle',
             id: 'floatingPlayer',
-            label: 'Floating Player',
-            desc: 'Enable the floating player (PiP overlay)',
+            label: 'Enable Popup Player',
+            desc: 'Open YouTube videos in a floating popup overlay.',
             icon: ICONS.player,
+            style: 'grid-column: 1 / -1;',
           },
           {
             type: 'select',
             id: 'popupOpenTrigger',
             class: 'span-2',
-            label: 'Floating Player Trigger',
-            desc: 'How should videos open in the Floating Player?',
+            label: 'Open Trigger',
+            desc: 'How to open a video in the popup player.',
             icon: ICONS.player,
             options: [
               { value: 'both', label: 'Double-click & Context Menu' },
               { value: 'double-click', label: 'Double-click only' },
-              { value: 'context', label: 'Context Menu only' }
-            ]
+              { value: 'context', label: 'Context Menu only' },
+            ],
           },
           {
-            type: 'toggle',
-            id: 'showCustomContextMenu',
-            label: 'Show Custom Context Menu',
-            desc: 'Show the custom right-click menu on video thumbnails.',
-            icon: ICONS.uiComponents,
+            type: 'select',
+            id: 'closeOnBackdropClick',
+            class: 'span-2',
+            label: 'Close on Backdrop Click',
+            desc: 'Close the popup when clicking outside it.',
+            icon: ICONS.minimize,
+            options: [
+              { value: 'none', label: 'Never' },
+              { value: 'miniplayer', label: 'In Miniplayer only' },
+              { value: 'always', label: 'Always' },
+            ],
           },
           {
             type: 'toggle',
             id: 'volumeBoostEnabled',
-            label: 'Floating Player Volume Boost',
-            desc: 'Enable extreme volume boosting for the floating player.',
+            label: 'Volume Boost',
+            desc: 'Boost volume beyond 100% in the popup player.',
             icon: ICONS.volumeUp,
+          },
+          {
+            type: 'toggle',
+            id: 'autoMiniOnScroll',
+            label: 'Auto-Miniplayer on Scroll',
+            desc: 'Shrink to miniplayer when you scroll away.',
+            icon: ICONS.minimize,
+          },
+          {
+            type: 'toggle',
+            id: 'autoRedirectShortsToWatch',
+            label: 'Open Shorts in Popup',
+            desc: 'Redirect YouTube Shorts to the popup player.',
+            icon: ICONS.shorts,
+          },
+          {
+            type: 'toggle',
+            id: 'showCustomContextMenu',
+            label: 'Custom Context Menu',
+            desc: 'Show right-click options on YouTube thumbnails.',
+            icon: ICONS.uiComponents,
           },
           {
             type: 'toggle',
             id: 'saveSupremeUI',
             label: 'Save Supreme UI',
-            desc: 'Better styling for save buttons',
+            desc: 'Better styling for save buttons.',
             icon: ICONS.saveSupreme,
-          }
+          },
         ],
       },
 

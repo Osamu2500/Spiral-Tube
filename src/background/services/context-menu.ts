@@ -1,4 +1,4 @@
-const CONTEXT_MENU_ID = 'ypp-add-to-group';
+﻿const CONTEXT_MENU_ID = 'ypp-add-to-group';
 const CONTEXT_MENU_POPUP_ID = 'ypp-preview-popup';
 
 export function initContextMenu() {
@@ -13,7 +13,7 @@ export function initContextMenu() {
         
         chrome.contextMenus.create({
             id: CONTEXT_MENU_POPUP_ID,
-            title: "Preview in Floating Player (Spiral Tube)",
+            title: "Open in Popup Player",
             contexts: ["page", "link", "video", "selection", "image"],
             documentUrlPatterns: ["*://*.youtube.com/*", "*://youtube.com/*", "*://youtu.be/*"]
         });
@@ -62,3 +62,4 @@ if (chrome.contextMenus) {
         }
     });
 }
+
