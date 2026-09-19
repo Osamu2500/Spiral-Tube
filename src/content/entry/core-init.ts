@@ -21,7 +21,7 @@ import '../core/system/base-feature.js';
 // The CSS is injected natively via MV3 content_scripts in manifest.json.
 // However, Vite requires it to be imported here to build the CSS bundle.
 import '../styles/base-ui-design/index.css';
-import '../styles/ui-styles/popup-player.css';
+import '../features/popup-player/popup-player.css';
 // Managers & Data
 import '../core/system/base-page-manager.js';
 import '../core/ui-managers/thumbnail-color-manager.js';

@@ -131,7 +131,7 @@
                 "*://youtu.be/*"
             ],
             "js": [
-                "src/content/features/popup-player/popup-player-bundle.js"
+                "src/content/features/popup-player/vendor/popup-player-bundle.js"
             ]
         },
         {
@@ -143,7 +143,7 @@
             "all_frames": true,
             "run_at": "document_start",
             "js": [
-                "src/content/features/popup-player/popup-player-loader.js"
+                "src/content/features/popup-player/vendor/popup-player-loader.js"
             ]
         }
     ],
