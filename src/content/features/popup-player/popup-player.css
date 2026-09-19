@@ -1,25 +1,25 @@
-/* ============================================================
+﻿/* ============================================================
    Popup Player — Spiral Tube UI Redesign
    Target: popup-player-* class namespace from popup-player-bundle.js
    Scope: Overlay player UI only. No other extension features touched.
    ============================================================ */
 
 /* ── Hide legacy PopupX elements ─────────────────────────── */
-.popup-player-grab-image-btn,
-.popup-player-screenshot-button,
-.popup-player-screenshot-item,
-.popup-player-screenshot-styles,
-.popup-player-info-trial-btn,
-.popup-player-settings-btn,
-.popup-player-pro-modal,
-.popup-player-confirm-trial,
-.popup-player-promo-toast {
+.ytpop-grab-image-btn,
+.ytpop-screenshot-button,
+.ytpop-screenshot-item,
+.ytpop-screenshot-styles,
+.ytpop-info-trial-btn,
+.ytpop-settings-btn,
+.ytpop-pro-modal,
+.ytpop-confirm-trial,
+.ytpop-promo-toast {
   display: none !important;
   pointer-events: none !important;
 }
 
 /* ── CSS variable overrides (Spiral Tube theme) ──────────── */
-.popup-player-overlay {
+.ytpop-overlay {
   --pp-accent:        #ff4444;
   --pp-accent-glow:   rgba(255, 68, 68, 0.25);
   --pp-surface:       rgba(14, 14, 18, 0.92);
@@ -38,7 +38,7 @@
 }
 
 /* ── Main overlay shell ──────────────────────────────────── */
-.popup-player-overlay {
+.ytpop-overlay {
   background: var(--pp-surface) !important;
   backdrop-filter: var(--pp-blur) !important;
   -webkit-backdrop-filter: var(--pp-blur) !important;
@@ -47,14 +47,14 @@
   box-shadow: var(--pp-shadow) !important;
 }
 
-.popup-player-container {
+.ytpop-container {
   border-radius: var(--pp-radius) !important;
   overflow: hidden !important;
   background: transparent !important;
 }
 
 /* ── Top toolbar bar ─────────────────────────────────────── */
-.popup-player-top-bar {
+.ytpop-top-bar {
   background: linear-gradient(180deg, rgba(14, 14, 18, 0.98) 0%, rgba(14, 14, 18, 0.82) 100%) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -69,7 +69,7 @@
 }
 
 /* ── Toolbar control buttons (Watch page, Miniplayer, etc.) ─ */
-.popup-player-ctrl-btn {
+.ytpop-ctrl-btn {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid transparent !important;
   border-radius: var(--pp-radius-sm) !important;
@@ -89,26 +89,26 @@
   line-height: 1 !important;
 }
 
-.popup-player-ctrl-btn:hover {
+.ytpop-ctrl-btn:hover {
   background: rgba(255, 255, 255, 0.10) !important;
   border-color: var(--pp-border-hover) !important;
   color: var(--pp-text) !important;
 }
 
-.popup-player-ctrl-btn svg {
+.ytpop-ctrl-btn svg {
   opacity: 0.7 !important;
   flex-shrink: 0 !important;
   width: 13px !important;
   height: 13px !important;
 }
 
-.popup-player-ctrl-btn:hover svg {
+.ytpop-ctrl-btn:hover svg {
   opacity: 1 !important;
 }
 
 /* ── Close button ────────────────────────────────────────── */
-.popup-player-close-btn,
-button[aria-label="Close"].popup-player-ctrl-btn {
+.ytpop-close-btn,
+button[aria-label="Close"].ytpop-ctrl-btn {
   background: rgba(255, 68, 68, 0.08) !important;
   border-color: rgba(255, 68, 68, 0.15) !important;
   color: rgba(255, 100, 100, 0.8) !important;
@@ -119,27 +119,27 @@ button[aria-label="Close"].popup-player-ctrl-btn {
   justify-content: center !important;
 }
 
-.popup-player-close-btn:hover,
-button[aria-label="Close"].popup-player-ctrl-btn:hover {
+.ytpop-close-btn:hover,
+button[aria-label="Close"].ytpop-ctrl-btn:hover {
   background: rgba(255, 68, 68, 0.85) !important;
   border-color: transparent !important;
   color: #fff !important;
 }
 
 /* ── Maximize / resize / ratio buttons ──────────────────── */
-.popup-player-max-btn,
-.popup-player-size-btn,
-.popup-player-ratio-btn,
-.popup-player-window-btn,
-.popup-player-pip-btn,
-.popup-player-mini-btn {
+.ytpop-max-btn,
+.ytpop-size-btn,
+.ytpop-ratio-btn,
+.ytpop-window-btn,
+.ytpop-pip-btn,
+.ytpop-mini-btn {
   background: rgba(255, 255, 255, 0.04) !important;
   color: var(--pp-text-muted) !important;
 }
 
 /* ── Separator between control groups ───────────────────── */
-.popup-player-top-bar > span[class=""],
-.popup-player-top-bar > .popup-player-dim {
+.ytpop-top-bar > span[class=""],
+.ytpop-top-bar > .ytpop-dim {
   width: 1px !important;
   height: 16px !important;
   background: var(--pp-border) !important;
@@ -148,18 +148,18 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
 }
 
 /* ── Info panel at the bottom ───────────────────────────── */
-.popup-player-info-panel {
+.ytpop-info-panel {
   background: linear-gradient(0deg, rgba(14, 14, 18, 0.98) 0%, rgba(14, 14, 18, 0.80) 100%) !important;
   border-top: 1px solid var(--pp-border) !important;
   padding: 10px 14px !important;
 }
 
 /* ── Info header (title + channel) ──────────────────────── */
-.popup-player-info-header {
+.ytpop-info-header {
   margin-bottom: 8px !important;
 }
 
-.popup-player-info-title {
+.ytpop-info-title {
   font-size: 13px !important;
   font-weight: 600 !important;
   color: var(--pp-text) !important;
@@ -167,28 +167,28 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   line-height: 1.3 !important;
 }
 
-.popup-player-info-channel {
+.ytpop-info-channel {
   font-size: 11px !important;
   color: var(--pp-text-muted) !important;
   margin-top: 2px !important;
 }
 
-.popup-player-info-date,
-.popup-player-info-views,
-.popup-player-info-dot {
+.ytpop-info-date,
+.ytpop-info-views,
+.ytpop-info-dot {
   font-size: 11px !important;
   color: var(--pp-text-muted) !important;
 }
 
 /* ── Info stats row (like/dislike/views) ─────────────────── */
-.popup-player-info-stats {
+.ytpop-info-stats {
   display: flex !important;
   align-items: center !important;
   gap: 4px !important;
   flex-wrap: wrap !important;
 }
 
-.popup-player-info-stat {
+.ytpop-info-stat {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-radius-pill) !important;
@@ -202,8 +202,8 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
 }
 
 /* ── Like / dislike icon buttons ─────────────────────────── */
-.popup-player-info-like-btn,
-.popup-player-info-dislike-btn {
+.ytpop-info-like-btn,
+.ytpop-info-dislike-btn {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-radius-pill) !important;
@@ -215,25 +215,25 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   transition: all var(--pp-transition) !important;
 }
 
-.popup-player-info-like-btn:hover {
+.ytpop-info-like-btn:hover {
   background: rgba(255, 255, 255, 0.10) !important;
   color: var(--pp-text) !important;
   border-color: var(--pp-border-hover) !important;
 }
 
-.popup-player-info-dislike-btn:hover {
+.ytpop-info-dislike-btn:hover {
   background: rgba(255, 100, 100, 0.10) !important;
   color: rgba(255, 130, 130, 1) !important;
   border-color: rgba(255, 100, 100, 0.3) !important;
 }
 
 /* ── Description / Comments / Copy URL buttons ───────────── */
-.popup-player-info-icon-btn,
-.popup-player-info-comments-btn,
-.popup-player-info-description-btn,
-.popup-player-copy-btn,
-.popup-player-openthis-btn,
-.popup-player-open-btn {
+.ytpop-info-icon-btn,
+.ytpop-info-comments-btn,
+.ytpop-info-description-btn,
+.ytpop-copy-btn,
+.ytpop-openthis-btn,
+.ytpop-open-btn {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-radius-pill) !important;
@@ -244,19 +244,19 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   transition: all var(--pp-transition) !important;
 }
 
-.popup-player-info-icon-btn:hover,
-.popup-player-info-comments-btn:hover,
-.popup-player-info-description-btn:hover,
-.popup-player-copy-btn:hover,
-.popup-player-openthis-btn:hover,
-.popup-player-open-btn:hover {
+.ytpop-info-icon-btn:hover,
+.ytpop-info-comments-btn:hover,
+.ytpop-info-description-btn:hover,
+.ytpop-copy-btn:hover,
+.ytpop-openthis-btn:hover,
+.ytpop-open-btn:hover {
   background: rgba(255, 255, 255, 0.10) !important;
   color: var(--pp-text) !important;
   border-color: var(--pp-border-hover) !important;
 }
 
 /* ── Context menu ────────────────────────────────────────── */
-.popup-player-ctx-menu {
+.ytpop-ctx-menu {
   background: rgba(20, 20, 26, 0.97) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
@@ -267,7 +267,7 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   overflow: hidden !important;
 }
 
-.popup-player-ctx-item {
+.ytpop-ctx-item {
   color: rgba(255, 255, 255, 0.8) !important;
   font-size: 12px !important;
   font-weight: 400 !important;
@@ -280,14 +280,14 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   gap: 8px !important;
 }
 
-.popup-player-ctx-item:hover {
+.ytpop-ctx-item:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   color: #fff !important;
   border-radius: 8px !important;
 }
 
 /* ── Dropdown menus ──────────────────────────────────────── */
-.popup-player-dropdown-menu {
+.ytpop-dropdown-menu {
   background: rgba(20, 20, 26, 0.97) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
@@ -297,7 +297,7 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   padding: 4px !important;
 }
 
-.popup-player-dropdown-item {
+.ytpop-dropdown-item {
   font-size: 12px !important;
   color: rgba(255, 255, 255, 0.75) !important;
   border-radius: 7px !important;
@@ -306,43 +306,43 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   transition: background var(--pp-transition) !important;
 }
 
-.popup-player-dropdown-item:hover {
+.ytpop-dropdown-item:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   color: #fff !important;
 }
 
 /* ── Mini player (corner) ────────────────────────────────── */
-.popup-player-overlay--miniplayer .popup-player-container {
+.ytpop-overlay--miniplayer .ytpop-container {
   border: 1px solid var(--pp-border) !important;
   border-radius: 12px !important;
   background: rgba(14, 14, 18, 0.96) !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
 }
 
-.popup-player-overlay--miniplayer .popup-player-ctrl-btn {
+.ytpop-overlay--miniplayer .ytpop-ctrl-btn {
   background: rgba(255, 255, 255, 0.07) !important;
   border-color: var(--pp-border) !important;
   color: var(--pp-text) !important;
 }
 
-.popup-player-overlay--miniplayer .popup-player-ctrl-btn:hover {
+.ytpop-overlay--miniplayer .ytpop-ctrl-btn:hover {
   background: rgba(255, 255, 255, 0.12) !important;
 }
 
 /* ── Music mode dock ─────────────────────────────────────── */
-.popup-player-music-dock-puck {
+.ytpop-music-dock-puck {
   background: var(--pp-accent) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 16px var(--pp-accent-glow), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* ── Spinner / loader ────────────────────────────────────── */
-.popup-player-spin::before {
+.ytpop-spin::before {
   border-top-color: var(--pp-accent) !important;
 }
 
 /* ── Toast notifications ─────────────────────────────────── */
-.popup-player-toast {
+.ytpop-toast {
   background: rgba(25, 25, 32, 0.96) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: 10px !important;
@@ -353,15 +353,15 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
 }
 
 /* ── Search overlay ──────────────────────────────────────── */
-.popup-player-search-overlay {
+.ytpop-search-overlay {
   background: rgba(14, 14, 18, 0.97) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
 }
 
-.popup-player-search-input,
-.popup-player-search-query,
-.popup-player-minimal-header-input {
+.ytpop-search-input,
+.ytpop-search-query,
+.ytpop-minimal-header-input {
   background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-radius-sm) !important;
@@ -369,59 +369,59 @@ button[aria-label="Close"].popup-player-ctrl-btn:hover {
   font-size: 13px !important;
 }
 
-.popup-player-search-input:focus,
-.popup-player-search-query:focus {
+.ytpop-search-input:focus,
+.ytpop-search-query:focus {
   border-color: var(--pp-accent) !important;
   box-shadow: 0 0 0 3px var(--pp-accent-glow) !important;
   outline: none !important;
 }
 
 /* ── Native panel (Comments/Description slide-in) ────────── */
-.popup-player-native-panel-sheet {
+.ytpop-native-panel-sheet {
   background: rgba(18, 18, 24, 0.98) !important;
   border-left: 1px solid var(--pp-border) !important;
 }
 
-.popup-player-native-panel-header {
+.ytpop-native-panel-header {
   border-bottom: 1px solid var(--pp-border) !important;
   background: rgba(20, 20, 28, 0.98) !important;
 }
 
-.popup-player-native-panel-heading {
+.ytpop-native-panel-heading {
   font-size: 13px !important;
   font-weight: 600 !important;
   color: var(--pp-text) !important;
 }
 
 /* ── Music mode maximized panel ──────────────────────────── */
-.popup-player-music-max-bg {
+.ytpop-music-max-bg {
   background: linear-gradient(135deg, rgba(20, 20, 28, 0.98) 0%, rgba(10, 10, 14, 1) 100%) !important;
 }
 
 /* ── Mini tabs (multi-tab player) ────────────────────────── */
-.popup-player-mini-tabs-item {
+.ytpop-mini-tabs-item {
   font-size: 11px !important;
   color: var(--pp-text-muted) !important;
   border-radius: 6px !important;
   transition: all var(--pp-transition) !important;
 }
 
-.popup-player-mini-tabs-item--active {
+.ytpop-mini-tabs-item--active {
   background: rgba(255, 255, 255, 0.08) !important;
   color: var(--pp-text) !important;
 }
 
 /* ── Progress / time indicators ──────────────────────────── */
-.popup-player-progress-elapsed {
+.ytpop-progress-elapsed {
   color: var(--pp-accent) !important;
 }
 
-.popup-player-progress-remaining {
+.ytpop-progress-remaining {
   color: var(--pp-text-muted) !important;
 }
 
 /* ── Music mode — override ───────────────────────────────── */
-.popup-player-overlay--music {
+.ytpop-overlay--music {
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;

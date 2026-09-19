@@ -1,0 +1,1 @@
+const fs = require('fs'); const bundle = fs.readFileSync('src/content/features/popup-player/vendor/popup-player-bundle.js', 'utf8'); console.log((bundle.match(/"[^"]*(?:ytpop|zypho|Floating Player|PopupX)[^"]*"/ig) || []).slice(0, 20));
