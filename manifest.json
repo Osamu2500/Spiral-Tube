@@ -1,4 +1,4 @@
-﻿{
+{
     "manifest_version": 3,
     "name": "Spiral Tube",
     "version": "2.3.0",
@@ -129,6 +129,9 @@
                 "*://*.youtube.com/*",
                 "*://youtube.com/*",
                 "*://youtu.be/*"
+            ],
+            "css": [
+                "src/content/features/popup-player/popup-player.css"
             ],
             "js": [
                 "src/content/features/popup-player/vendor/popup-player-bundle.js"
