@@ -77,19 +77,22 @@
 /* ── 3. OVERLAY SHELL ───────────────────────────────────────────────────── */
 
 .ytpop-overlay {
+  /* Leave background/blur to the original JS which toggles it */
+}
+
+.ytpop-container {
   background: var(--pp-surface) !important;
   backdrop-filter: var(--pp-blur-bg) !important;
   -webkit-backdrop-filter: var(--pp-blur-bg) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-r-xl) !important;
   box-shadow: var(--pp-shadow-overlay) !important;
-  overflow: hidden !important;
+  /* NO overflow: hidden here! It clips the toolbar which is top: -38px */
 }
 
-.ytpop-container {
+/* Add rounded corners to the iframe itself since we removed overflow: hidden from container */
+.ytpop-container iframe {
   border-radius: var(--pp-r-xl) !important;
-  overflow: hidden !important;
-  background: transparent !important;
 }
 
 /* ── 4. TOOLBAR ─────────────────────────────────────────────────────────── */
@@ -102,7 +105,8 @@
   ) !important;
   backdrop-filter: var(--pp-blur-bar) !important;
   -webkit-backdrop-filter: var(--pp-blur-bar) !important;
-  border-bottom: 1px solid var(--pp-border) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-r-md) !important;
   padding: 5px 8px !important;
   gap: 3px !important;
   display: flex !important;
@@ -230,8 +234,11 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
     rgba(12, 12, 18, 0.99) 0%,
     rgba(14, 14, 20, 0.86) 100%
   ) !important;
-  border-top: 1px solid var(--pp-border) !important;
+  border: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-r-lg) !important;
   padding: 10px 14px 12px !important;
+  backdrop-filter: var(--pp-blur-bar) !important;
+  -webkit-backdrop-filter: var(--pp-blur-bar) !important;
 }
 
 .ytpop-info-header {
