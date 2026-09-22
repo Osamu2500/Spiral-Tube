@@ -228,7 +228,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
   }
 
   _applyDOM() {
-    if (window !== window.top) return; // Do not apply heavy layout classes in iframes (e.g. Floating Player)
+    if (window !== window.top) return; // Do not apply heavy layout classes in iframes (e.g. Popup Player)
     const body = document.body;
 
     // 1. Reset all managed classes & Inline Styles

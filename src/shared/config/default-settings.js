@@ -1,6 +1,6 @@
 export const DEFAULT_SETTINGS = {
 
-  // --- Floating Player Settings ---
+  // --- Popup Player Settings ---
   contextMenuVisibilityEditor: true,
   contextMenuMiniplayer: true,
   contextMenuPictureInPicture: true,
@@ -28,12 +28,12 @@ export const DEFAULT_SETTINGS = {
   toolbarMiniplayer: true,
   toolbarMusicMode: true,
   toolbarPictureInPicture: true,
-  toolbarWindowMode: true,
-  toolbarGrabImage: true,
-  toolbarCopyUrl: true,
+  toolbarWindowMode: false,    // Removed from UI
+  toolbarGrabImage: false,     // Removed from UI
+  toolbarCopyUrl: false,       // Removed from UI
   toolbarCycleRatio: true,
   toolbarCycleSize: true,
-  toolbarSettings: true,
+  toolbarSettings: false,      // Removed from UI
   autoMiniOnScroll: false,
   miniAllowParallelPopup: false,
   miniPauseForParallelPopup: false,

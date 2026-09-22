@@ -21,7 +21,7 @@ export class PlayerBarStyles {
                 transition: opacity 0.2s ease !important;
             }
             
-            /* Responsive UI for Floating Player / Small Windows */
+            /* Responsive UI for Popup Player / Small Windows */
             @media (max-width: 600px) {
                 .ypp-player-controls .ypp-btn-text {
                     display: none !important;
