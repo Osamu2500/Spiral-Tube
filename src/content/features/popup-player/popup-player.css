@@ -80,8 +80,8 @@
 
 .ytpop-container {
   background: var(--pp-surface) !important;
-  backdrop-filter: var(--pp-blur-bg) !important;
   -webkit-backdrop-filter: var(--pp-blur-bg) !important;
+  backdrop-filter: var(--pp-blur-bg) !important;
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-r-xl) !important;
   box-shadow: var(--pp-shadow-overlay) !important;
@@ -100,8 +100,8 @@
     rgba(12, 12, 18, 0.99) 0%,
     rgba(14, 14, 20, 0.92) 100%
   ) !important;
-  backdrop-filter: var(--pp-blur-bar) !important;
   -webkit-backdrop-filter: var(--pp-blur-bar) !important;
+  backdrop-filter: var(--pp-blur-bar) !important;
   border-bottom: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-r-xl) var(--pp-r-xl) 0 0 !important;
   padding: 5px 8px !important;
@@ -229,6 +229,7 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   font-size: 13px !important;
   font-weight: 500 !important;
   cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   transition: all 0.2s ease !important;
 }
@@ -243,6 +244,7 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   top: calc(100% + 8px);
   right: 0;
   background: rgba(20, 20, 20, 0.85);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -297,8 +299,8 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
 
 .ytpop-overlay--music {
   background: transparent !important;
-  backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 .ytpop-music-dock-puck {
@@ -327,8 +329,8 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   width: 100%;
   height: 100%;
   background: rgba(20, 20, 30, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   border-radius: var(--pp-r-xl);
   z-index: 1000 !important;
   overflow: hidden;
@@ -383,8 +385,8 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   width: 100%;
   height: 100%;
   background: rgba(15, 15, 20, 0.6);
-  backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
+  backdrop-filter: blur(30px) saturate(200%);
   border-radius: var(--pp-r-xl);
   display: none; /* hidden by default */
   flex-direction: column;

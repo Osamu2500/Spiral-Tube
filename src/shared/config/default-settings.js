@@ -253,6 +253,7 @@ export const DEFAULT_SETTINGS = {
   hideFundraiser: false,
   headerNavEnabled: true,
   hideEndScreens: false,
+  hideHomeTopics: false,   // Home Topics Filter Chip Bar
   hideSearchTopics: false, // Search Topics Filter Chip Bar
   hideSearchShelves: true, // Auto-removes those terrible "For You" shelves inside Search
   hideChannelCards: false, // E.g. Top result is sometimes a channel card

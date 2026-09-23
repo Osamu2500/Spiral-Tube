@@ -9,3 +9,8 @@
 body.ypp-home-page.ypp-hide-explore-topics ytd-page-manager {
     margin-top: var(--ytd-masthead-height, 56px) !important;
 }
+
+/* Home Topics / Pills */
+body.ypp-home-page.ypp-hide-home-topics ytd-feed-filter-chip-bar-renderer {
+    display: none !important;
+}

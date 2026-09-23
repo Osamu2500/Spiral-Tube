@@ -230,6 +230,7 @@ window.YPP.SettingsSchema = {
         feedFilterKeywords:  { type: 'string', default: '' },
         hideThumbnails:      { type: 'boolean', default: false },
         hideCards:           { type: 'boolean', default: false },
+        hideHomeTopics:      { type: 'boolean', default: false },
         hideSearchTopics:    { type: 'boolean', default: false },
         hideMetrics:         { type: 'boolean', default: false },
         multiSelect:         { type: 'boolean', default: true  },

@@ -27,6 +27,13 @@ export const getDeclutterTab = (t) => ({
           },
           {
             type: 'toggle',
+            id: 'hideHomeTopics',
+            label: t('hide_topics_bar'),
+            desc: t('remove_category_chips'),
+            icon: ICONS.cinematic,
+          },
+          {
+            type: 'toggle',
             id: 'hidePosts',
             label: t('hide_posts'),
             desc: t('remove_community_posts'),

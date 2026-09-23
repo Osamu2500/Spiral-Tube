@@ -25,6 +25,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
 
             hideSearchMusic:       'ypp-hide-search-music',
             hideSearchTopics:      'ypp-hide-search-topics',
+            hideHomeTopics:        'ypp-hide-home-topics',
             // Previously unhandled — now wired up:
             hideRelated:           'ypp-hide-related',
             hideVoiceSearch:       'ypp-hide-voice-search',
