@@ -1,7 +1,30 @@
 export const PopupEvents = {
+    _isEnabled: false,
+    _openTrigger: 'both',
+
+    _initSettingsListener() {
+        chrome.storage.local.get({ floatingPlayer: false, popupOpenTrigger: 'both' }, (data) => {
+            this._isEnabled = data.floatingPlayer;
+            this._openTrigger = data.popupOpenTrigger;
+        });
+
+        chrome.storage.onChanged.addListener((changes, namespace) => {
+            if (namespace === 'local') {
+                if (changes.floatingPlayer !== undefined) {
+                    this._isEnabled = changes.floatingPlayer.newValue;
+                }
+                if (changes.popupOpenTrigger !== undefined) {
+                    this._openTrigger = changes.popupOpenTrigger.newValue;
+                }
+            }
+        });
+    },
+
     _initMessageListener() {
+        this._initSettingsListener();
         chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             if (request.action === 'openPopup' && request.sourceUrl) {
+                if (!this._isEnabled) return;
                 this.spawn(request.sourceUrl);
                 sendResponse({ success: true });
             }
@@ -15,6 +38,8 @@ export const PopupEvents = {
 
         // We must intercept clicks in the capture phase to beat YouTube's SPA router
         document.addEventListener('click', (e) => {
+            if (!this._isEnabled || this._openTrigger === 'hover') return;
+            
             // Let simulated single-clicks pass through to YouTube
             if (isSimulated || !e.isTrusted) {
                 isSimulated = false;
@@ -125,113 +150,80 @@ export const PopupEvents = {
         tryObserve();
     },
 
-    _initContextMenuListener() {
-        document.addEventListener('contextmenu', (e) => {
-            // Are we right-clicking a video player? (let YouTube handle it)
-            const onPlayer = e.target.closest('.html5-video-player') || e.target.closest('video');
-            if (onPlayer) return;
-
-            // Ignore right-clicks on buttons or channel links
-            if (e.target.closest('button, yt-icon-button, tp-yt-paper-icon-button, .ytd-channel-name, a[href*="/channel/"], a[href*="/@"]')) {
-                return;
-            }
-
-            // Are we right-clicking a video card?
-            let thumb = e.target.closest('ytd-thumbnail a#thumbnail, a.ytd-thumbnail, yt-lockup-view-model a[href], ytm-shorts-lockup-view-model a[href]');
-            if (!thumb) {
-                const cardContainer = e.target.closest('ytd-thumbnail, yt-lockup-view-model, ytm-shorts-lockup-view-model, ytd-rich-item-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer');
-                if (cardContainer) {
-                    thumb = e.target.closest('a[href]') || cardContainer.querySelector('a[href*="/watch?v="], a[href*="/shorts/"]');
+    _initHoverButtonListener() {
+        document.addEventListener('mouseover', (e) => {
+            if (!this._isEnabled || this._openTrigger === 'double-click') return;
+            
+            const card = e.target.closest('ytd-thumbnail, yt-lockup-view-model, ytm-shorts-lockup-view-model');
+            if (!card) return;
+            
+            // Check if we already injected the button
+            if (card.querySelector('.ytpop-hover-btn')) return;
+            
+            const thumbLink = card.querySelector('a#thumbnail, a.ytd-thumbnail, a[href*="/watch?v="], a[href*="/shorts/"]');
+            if (!thumbLink || !thumbLink.href) return;
+            
+            // Inject the button
+            const btn = document.createElement('button');
+            btn.className = 'ytpop-hover-btn';
+            btn.title = 'Open in Popup Player';
+            // Upward pointing triangle
+            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,7 21,17 3,17"></polygon></svg>`; 
+            
+            btn.style.cssText = `
+                position: absolute;
+                top: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 44px;
+                height: 28px;
+                background: rgba(0, 0, 0, 0.75);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+                z-index: 99;
+                pointer-events: auto;
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            `;
+            
+            btn.onclick = (evt) => {
+                evt.preventDefault();
+                evt.stopPropagation();
+                this.spawn(thumbLink.href);
+            };
+            
+            // Append to card. We need a relative container.
+            const overlays = card.querySelector('#overlays') || card;
+            overlays.appendChild(btn);
+        });
+        
+        // Inject global CSS for hover behavior
+        if (!document.getElementById('ytpop-hover-style')) {
+            const style = document.createElement('style');
+            style.id = 'ytpop-hover-style';
+            style.textContent = `
+                ytd-thumbnail:hover .ytpop-hover-btn,
+                yt-lockup-view-model:hover .ytpop-hover-btn,
+                ytm-shorts-lockup-view-model:hover .ytpop-hover-btn {
+                    opacity: 1 !important;
                 }
-            }
-            if (thumb && (!thumb.href || (!thumb.href.includes('/watch?v=') && !thumb.href.includes('/shorts/')))) {
-                thumb = null;
-            }
-
-            if (thumb) {
-                // We found a video card, intercept right-click
-                e.preventDefault();
-                e.stopPropagation();
-
-                // Remove existing menu if any
-                const existing = document.querySelector('.ytpop-ctx-menu');
-                if (existing) existing.remove();
-
-                // Create custom context menu
-                const menu = document.createElement('div');
-                menu.className = 'ytpop-ctx-menu';
-                menu.style.position = 'fixed';
-                
-                // Ensure menu stays within viewport
-                let left = e.clientX;
-                let top = e.clientY;
-                menu.style.left = left + 'px';
-                menu.style.top = top + 'px';
-                menu.style.zIndex = '999999';
-
-                const item = document.createElement('div');
-                item.className = 'ytpop-ctx-item';
-                item.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg> Open in Popup Player';
-                item.addEventListener('click', () => {
-                    menu.remove();
-                    this.spawn(thumb.href);
-                });
-                
-                const miniItem = document.createElement('div');
-                miniItem.className = 'ytpop-ctx-item';
-                miniItem.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><rect x="14" y="11" width="5" height="3" rx="1"></rect></svg> Open as Miniplayer';
-                miniItem.addEventListener('click', async () => {
-                    menu.remove();
-                    await this.spawn(thumb.href);
-                    this._enterMiniplayer();
-                });
-
-                const pipItem = document.createElement('div');
-                pipItem.className = 'ytpop-ctx-item';
-                pipItem.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><rect x="12" y="11" width="8" height="4" rx="1"></rect></svg> Open in Picture-in-Picture';
-                pipItem.addEventListener('click', async () => {
-                    menu.remove();
-                    await this.spawn(thumb.href);
-                    setTimeout(() => this._enterPiP(), 2000);
-                });
-
-                const tabItem = document.createElement('div');
-                tabItem.className = 'ytpop-ctx-item';
-                tabItem.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Open in New Tab';
-                tabItem.addEventListener('click', () => {
-                    menu.remove();
-                    window.open(thumb.href, '_blank');
-                });
-                
-                menu.appendChild(item);
-                menu.appendChild(miniItem);
-                menu.appendChild(pipItem);
-                menu.appendChild(tabItem);
-                document.body.appendChild(menu);
-
-                // Adjust position if it flows off screen
-                requestAnimationFrame(() => {
-                    const rect = menu.getBoundingClientRect();
-                    if (rect.right > window.innerWidth) menu.style.left = (window.innerWidth - rect.width - 10) + 'px';
-                    if (rect.bottom > window.innerHeight) menu.style.top = (window.innerHeight - rect.height - 10) + 'px';
-                });
-
-                // Close on outside click or scroll
-                const closeMenu = (evt) => {
-                    if (!menu.contains(evt.target)) {
-                        menu.remove();
-                        document.removeEventListener('click', closeMenu);
-                        document.removeEventListener('contextmenu', closeMenu);
-                        document.removeEventListener('scroll', closeMenu, true);
-                    }
-                };
-                
-                setTimeout(() => {
-                    document.addEventListener('click', closeMenu);
-                    document.addEventListener('contextmenu', closeMenu);
-                    document.addEventListener('scroll', closeMenu, true);
-                }, 0);
-            }
-        }, true);
+                .ytpop-hover-btn:hover {
+                    background: rgba(0, 0, 0, 0.9) !important;
+                    transform: translateX(-50%) scale(1.1) !important;
+                }
+                .ytpop-hover-btn svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
 };

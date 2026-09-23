@@ -17,6 +17,7 @@ import { PopupEvents } from './PopupEvents.js';
 import { PopupMetadata } from './PopupMetadata.js';
 import { PopupState } from './PopupState.js';
 import { PopupBottomBar } from './PopupBottomBar.js';
+import { PopupMusicMode } from './PopupMusicMode.js';
 
 window.PopupBottomBar = PopupBottomBar;
 
@@ -26,6 +27,7 @@ class SpiralPopupEngine {
         this.container  = null;
         this.iframe     = null;
         this.topBar     = null;
+        this.musicModeUI = null;
         this.scrapeInterval = null;
         this.scrollObserver = null;
         this.physicsController = null;
@@ -37,6 +39,8 @@ class SpiralPopupEngine {
             isDragging: false,
             isResizing: false,
             isMaximized: false,
+            isMusicMode: false,
+            isMusicMaximized: false,
             resizeDir: null,
             hasBeenMoved: false   // track if user has ever moved it
         };
@@ -51,7 +55,7 @@ class SpiralPopupEngine {
         this._initMessageListener();
         this._initScrollObserver();
         this._initDoubleClickListener();
-        this._initContextMenuListener();
+        this._initHoverButtonListener();
     }
 
     // ── Public API ────────────────────────────────────────────────────────────
@@ -80,6 +84,10 @@ class SpiralPopupEngine {
     async spawn(url) {
         if (this.isSpawning) return;
         this.isSpawning = true;
+
+        if (window.YPP && window.YPP.events) {
+            window.YPP.events.emit('app:forceSaveResume');
+        }
         
         try {
             const videoId = this._extractVideoId(url);
@@ -99,26 +107,47 @@ class SpiralPopupEngine {
             const baseWidth = 400;
             const sizeMultiplier = data.popupSize ? parseFloat(data.popupSize) : 1.5;
             const ratio = this._parseRatio(data.popupRatio || '16:9');
-            this.state.width  = baseWidth * sizeMultiplier;
-            this.state.height = (this.state.width / ratio) + 95; // 40px top bar + 55px bottom bar
-
-            if (saved && saved.hasBeenMoved) {
-                // User has manually positioned it before — restore that position
-                this.state.x = Math.max(0, Math.min(saved.x, window.innerWidth  - this.state.width));
-                this.state.y = Math.max(0, Math.min(saved.y, window.innerHeight - this.state.height));
+            
+            if (saved && saved.hasBeenMoved && saved.width && saved.height && saved.x !== undefined) {
+                this.state.width = saved.width;
+                this.state.height = saved.height;
+                this.state.x = saved.x;
+                this.state.y = saved.y;
                 this.state.hasBeenMoved = true;
+                
+                // Safety check: ensure it's not completely off-screen
+                const maxX = window.innerWidth - 50;
+                const maxY = window.innerHeight - 50;
+                if (this.state.x > maxX) this.state.x = Math.max(0, window.innerWidth - this.state.width);
+                if (this.state.y > maxY) this.state.y = Math.max(0, window.innerHeight - this.state.height);
+                if (this.state.x < 0) this.state.x = 0;
+                if (this.state.y < 0) this.state.y = 0;
             } else {
-                // Default: center on screen
+                this.state.width  = baseWidth * sizeMultiplier;
+                this.state.height = (this.state.width / ratio) + 95; // 40px top bar + 55px bottom bar
                 this.state.x = Math.round((window.innerWidth  - this.state.width)  / 2);
                 this.state.y = Math.round((window.innerHeight - this.state.height) / 2);
                 this.state.hasBeenMoved = false;
             }
 
             this.state.isMaximized = false;
+            this.state.isMusicMode = false;
+            this.state.isMusicMaximized = false;
 
             this._buildDOM(videoId);
             this._attachPhysics();
             this._startMetadataScraper();
+            
+            if (!this.state.hasBeenMoved) {
+                // Recalculate true height based on rendered DOM
+                this._recalculateHeight();
+                
+                // Re-center perfectly using actual final height
+                this.state.x = Math.round((window.innerWidth  - this.state.width)  / 2);
+                this.state.y = Math.round((window.innerHeight - this.state.height) / 2);
+            }
+            this._applyTransform();
+            this._saveState();
         } finally {
             this.isSpawning = false;
         }
@@ -142,6 +171,7 @@ class SpiralPopupEngine {
         this.container = null;
         this.iframe    = null;
         this.topBar    = null;
+        this.musicModeUI = null;
     }
 
     _sendToIframe(msg) {

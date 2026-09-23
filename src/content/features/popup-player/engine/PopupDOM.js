@@ -1,3 +1,5 @@
+import { PopupMusicMode } from './PopupMusicMode.js';
+
 export const PopupDOM = {
     _buildDOM(videoId) {
         // ── Overlay (full-screen transparent sheet, glassmorphism) ──
@@ -19,8 +21,8 @@ export const PopupDOM = {
         // Close on background click — respect user setting
         this.overlay.addEventListener('click', async (e) => {
             if (e.target === this.overlay) {
-                const data = await chrome.storage.local.get({ closeOnBackdropClick: 'popup' });
-                if (data.closeOnBackdropClick === 'popup' || data.closeOnBackdropClick === 'all') {
+                const data = await chrome.storage.local.get({ closeOnBackdropClick: 'none' });
+                if (data.closeOnBackdropClick === 'always' || (data.closeOnBackdropClick === 'miniplayer' && this.state.width === 320)) {
                     this.destroy();
                 }
             }
@@ -244,6 +246,9 @@ export const PopupDOM = {
         // ── Bottom Metadata Bar ──
         this.bottomBar = window.PopupBottomBar.create(this, videoId);
 
+        // ── Music Mode UI ──
+        this.musicModeUI = new PopupMusicMode(this);
+
         // Fetch metadata async
         this._fetchMetadata(videoId);
 
@@ -251,6 +256,8 @@ export const PopupDOM = {
         this.container.appendChild(this.topBar);
         this.container.appendChild(this.iframe);
         this.container.appendChild(this.bottomBar);
+        this.container.appendChild(this.musicModeUI.dockRoot);
+        this.container.appendChild(this.musicModeUI.maxPanelRoot);
         this._buildResizeHandles();
         this.overlay.appendChild(this.container);
         document.body.appendChild(this.overlay);

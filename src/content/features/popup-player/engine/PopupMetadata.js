@@ -62,6 +62,18 @@ export const PopupMetadata = {
                         descPill.style.display = 'none';
                     }
                 }
+                
+                // Update Music Mode UI
+                if (this.musicModeUI) {
+                    this.musicModeUI.updateMetadata({
+                        title: title,
+                        channelName: secondaryInfo?.owner?.videoOwnerRenderer?.title?.runs?.[0]?.text || 'Unknown Artist',
+                        videoId: videoId
+                    });
+                }
+
+                // Metadata DOM has updated, recalculate height in case of text wrapping
+                if (this._recalculateHeight) this._recalculateHeight();
             }
         } catch (err) {
             console.error('Spiral Popup: Failed to fetch metadata', err);
@@ -79,6 +91,8 @@ export const PopupMetadata = {
                 const titleEl = this.topBar.querySelector('.ytpop-title');
                 if (titleEl && titleEl.textContent !== node.textContent) {
                     titleEl.textContent = node.textContent;
+                    // Recalculate height in case the title wrapped
+                    if (this._recalculateHeight) this._recalculateHeight();
                 }
             }
         }, 1500);

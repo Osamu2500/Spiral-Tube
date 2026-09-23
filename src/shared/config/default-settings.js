@@ -19,6 +19,7 @@ export const DEFAULT_SETTINGS = {
   quickAccessRedirectShorts: false,
   quickAccessScreenshotButton: false,
   quickAccessVolumeBoost: false,
+  popupOpenTrigger: 'both',
   closeOnBackdropClick: "none",
   floatingSearchResultMode: "floating",
   floatingSearchStudioResultTarget: "current-tab",

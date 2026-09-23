@@ -77,6 +77,7 @@ export const PopupBottomBar = {
             _descExpanded = !_descExpanded;
             descBox.style.display = _descExpanded ? 'block' : 'none';
             descPill.style.background = _descExpanded ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)';
+            if (engine._recalculateHeight) engine._recalculateHeight();
         });
 
         makeClickable(commentsPill, () => {

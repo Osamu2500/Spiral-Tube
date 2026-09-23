@@ -16,6 +16,7 @@ export class ResumeTracker extends window.YPP.features.BaseFeature {
     static executionPhase = 'idle';
     static priority = 999;
     static targetPages = ['watch'];
+    static allowInIframe = true;
 
     static CONFIG = {
         POLL_TIMEOUT: 10000,
@@ -127,6 +128,10 @@ export class ResumeTracker extends window.YPP.features.BaseFeature {
                 this.addListener(document, 'visibilitychange', () => {
                     if (document.hidden) this.forceSave();
                 });
+                
+                if (window.YPP && window.YPP.events) {
+                    this.addListener(window.YPP.events, 'app:forceSaveResume', () => this.forceSave());
+                }
                 
                 this.addListener(document, 'keydown', this.handleHotkey);
                 

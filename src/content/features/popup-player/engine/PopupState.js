@@ -81,19 +81,90 @@ export const PopupState = {
 
     _enterMusicMode() {
         if (!this.container) return;
-        // Collapse to a thin audio bar (560 x 72)
-        const W = 560, H = 72;
+        this.state.isMusicMode = true;
+        this.state.isMusicMaximized = false;
+        
+        // Collapse to a thin audio bar (dock)
+        const W = 360, H = 80;
         this.state.width  = W;
         this.state.height = H;
-        this.state.x = Math.round((window.innerWidth  - W) / 2);
+        
+        // Hide standard UI
+        if (this.iframe) this.iframe.style.display = 'none';
+        if (this.topBar) this.topBar.style.display = 'none';
+        if (this.bottomBar) this.bottomBar.style.display = 'none';
+        
+        // Show Music Dock
+        if (this.musicModeUI) {
+            this.musicModeUI.dockRoot.style.display = 'flex';
+            this.musicModeUI.maxPanelRoot.classList.remove('active');
+        }
+        
+        // Position at bottom left
+        this.state.x = 24;
         this.state.y = window.innerHeight - H - 24;
+        
         this.container.style.width  = `${W}px`;
         this.container.style.height = `${H}px`;
-        // Hide iframe, show only topbar
-        if (this.iframe) this.iframe.style.display = 'none';
-        if (this.bottomBar) this.bottomBar.style.display = 'none';
         this._applyTransform();
         this._saveState();
+    },
+
+    _maximizeMusicMode() {
+        if (!this.container) return;
+        this.state.isMusicMaximized = true;
+        
+        // Show max panel, hide dock
+        if (this.musicModeUI) {
+            this.musicModeUI.dockRoot.style.display = 'none';
+            this.musicModeUI.maxPanelRoot.classList.add('active');
+        }
+        
+        // Make container full screen or large centered box
+        const W = Math.min(800, window.innerWidth - 48);
+        const H = Math.min(600, window.innerHeight - 48);
+        this.state.width = W;
+        this.state.height = H;
+        this.state.x = Math.round((window.innerWidth - W) / 2);
+        this.state.y = Math.round((window.innerHeight - H) / 2);
+        
+        this.container.style.width  = `${W}px`;
+        this.container.style.height = `${H}px`;
+        this._applyTransform();
+    },
+
+    _minimizeMusicMode() {
+        if (!this.container) return;
+        this._enterMusicMode();
+    },
+
+    _exitMusicMode() {
+        if (!this.container) return;
+        this.state.isMusicMode = false;
+        this.state.isMusicMaximized = false;
+        
+        // Hide Music UI
+        if (this.musicModeUI) {
+            this.musicModeUI.dockRoot.style.display = 'none';
+            this.musicModeUI.maxPanelRoot.classList.remove('active');
+            
+            // Ensure iframe is back in container before bottom bar
+            if (this.iframe && this.iframe.parentNode !== this.container) {
+                this.container.insertBefore(this.iframe, this.bottomBar);
+            }
+        }
+        
+        // Show standard UI
+        if (this.iframe) {
+            this.iframe.style.display = 'block';
+            this.iframe.style.width = '100%';
+            this.iframe.style.height = ''; // Let CSS flex handle height
+        }
+        if (this.topBar) this.topBar.style.display = 'flex';
+        if (this.bottomBar) this.bottomBar.style.display = 'flex';
+        
+        // Restore standard dimensions
+        this._applyCustomResize();
     },
 
     _enterPiP() {
@@ -113,11 +184,27 @@ export const PopupState = {
         
         const BASE_WIDTH = 400;
         const width = BASE_WIDTH * this.state.size;
-        const ratioVal = this._parseRatio(this.state.ratio);
-        const chromeHeight = (this.topBar ? this.topBar.offsetHeight : 40) + (this.bottomBar ? this.bottomBar.offsetHeight : 55);
-        const height = (width / ratioVal) + chromeHeight;
+        
+        // Let recalculateHeight handle setting the correct height
+        this.state.width = width;
+        this._recalculateHeight();
+    },
 
-        this.setSize(width, height);
+    _recalculateHeight() {
+        if (this.state.isMaximized || this.state.isMusicMode || this.state.width === 320) return; // 320 is miniplayer width
+        
+        const ratioVal = this.state.ratio ? this._parseRatio(this.state.ratio) : (16/9);
+        const chromeHeight = (this.topBar ? this.topBar.offsetHeight : 40) + (this.bottomBar ? this.bottomBar.offsetHeight : 120);
+        const height = (this.state.width / ratioVal) + chromeHeight;
+        
+        this.setSize(this.state.width, height);
+
+        // Always perfectly center it when its size changes, acting more like a modal
+        this.state.x = Math.round((window.innerWidth  - this.state.width)  / 2);
+        this.state.y = Math.round((window.innerHeight - height) / 2);
+        this.state.hasBeenMoved = false;
+        this._applyTransform();
+        this._saveState();
     },
 
     _extractVideoId(urlStr) {
