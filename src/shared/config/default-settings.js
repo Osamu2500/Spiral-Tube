@@ -132,7 +132,6 @@ export const DEFAULT_SETTINGS = {
   splitScrolling: false,
   enableFilterBar: false,
   enableChannelHealth: false,
-  popupUiTheme: 'liquid-glass',
   youtubePageTheme: 'default',
   hideAiLogo: false,
 

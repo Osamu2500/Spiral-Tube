@@ -344,6 +344,15 @@ export function updateDependencyUI(document) {
     if (gpbToggle && gpbOptions) {
         gpbOptions.style.display = gpbToggle.checked ? 'block' : 'none';
     }
+
+    const showNavFavToggle = document.getElementById('showNavFavorites');
+    const navFavBtn = document.querySelector('.nav-item[data-tab="favorites"]');
+    if (showNavFavToggle && navFavBtn) {
+        navFavBtn.style.display = showNavFavToggle.checked ? '' : 'none';
+        if (!showNavFavToggle.checked && navFavBtn.classList.contains('active')) {
+            switchTab(document, 'home');
+        }
+    }
 }
 
 export function applyAccentColor(document, hex, secondaryHex = null) {

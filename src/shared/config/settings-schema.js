@@ -247,7 +247,8 @@ window.YPP.SettingsSchema = {
         autoLikeDelaySeconds:   { type: 'number',  default: 1, min: 0, max: 300 },
         autoLikeDelayPercent:   { type: 'number',  default: 50, min: 0, max: 100 },
         autoLikeHumanize:       { type: 'boolean', default: false },
-        autoQuality:         { type: 'string',  default: 'highres', values: ['auto', 'highres', 'hd2160', 'hd1440', 'hd1080', 'hd720', 'large', 'medium', 'small', 'tiny'] },
+        enableAutoQuality:   { type: 'boolean', default: true },
+        autoQuality:         { type: 'string',  default: 'highres', values: ['auto', 'highres', 'hd2160', 'hd1440', 'hd1080', 'hd720', 'large', 'medium', 'small', 'tiny', 'off'] },
         intentionalDelay:    { type: 'boolean', default: false },
         hideVoiceSearch:     { type: 'boolean', default: false },
         cleanMixUrls:        { type: 'boolean', default: false },
@@ -355,6 +356,7 @@ window.YPP.SettingsSchema = {
         searchLayout:        { type: 'string',  default: 'regular', values: ['macro', 'mini', 'compact', 'regular', 'spacious', 'huge', 'expanded'] },
 
         // --- Navigation ---
+        showNavFavorites:    { type: 'boolean', default: true },
         navTrending:         { type: 'boolean', default: true },
         navShorts:           { type: 'boolean', default: true },
         navSubscriptions:    { type: 'boolean', default: true },
@@ -367,7 +369,6 @@ window.YPP.SettingsSchema = {
 
 
         // --- UI Redesigns (popup Customization tab) ---
-        popupUiTheme:        { type: 'string', default: 'liquid-glass', values: ['liquid-glass'] },
         youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'abyss', 'aurora', 'autumn', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'fluent', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'steampunk', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'sakura', 'woodblock', 'y2k'] },
         cardStyle:           { type: 'string',  default: 'glass', values: ['default','abyss','aurora','autumn','bloodmoon','blue-sky','brutalism','cairo-red','cherry','christmas','claymorphism','coffee','colorize','compact','crystal-glass','cyberpunk','deepspace','discord','dracula','elevated','ember','flat','fluent','folder','frosted','frutiger-aero','galaxy','glass','glassmorphism','gothic','grunge','hacker','harry-potter','hologram','holographic','ice-blue','immersive-glass','kawaii','liquid-glass','material','matrix','maximalism','midnight','minimalism','minimalist','nature','nebula','neo-brutalism','neon','neumorphic','nord','ocean','origami','outrun','pink','polaroid','retro-wave','retro','retrowave-green','sakura','skeuomorphic','spring','steampunk','summer','sunset','technozen','terminalism','vaporwave','vintage','winter','woodblock','y2k'] },
 

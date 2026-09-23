@@ -236,61 +236,6 @@ export function renderPopupScaleSlot(container, state) {
 }
 
 // ─── Popup UI Design / Theme Cards Slot ─────────────────────────────────────
-const THEME_CARDS = [
-    {
-        id: 'liquid-glass',
-        label: 'Liquid Glass',
-        desc: 'Frosted blur & depth',
-        gradient: 'linear-gradient(135deg,rgba(99,102,241,0.25) 0%,rgba(139,92,246,0.15) 100%)',
-        accent: '#6366f1',
-    }
-];
-
-export function renderPopupUiDesignSlot(container, state) {
-    container.className = 'pd-section-body';
-    const current = state?.settings?.popupUiTheme ?? 'liquid-glass';
-
-    container.innerHTML = `
-      <input type="hidden" id="popupUiTheme" value="${current}" aria-label="Popup UI Theme">
-      <div class="pd-theme-grid">
-        ${THEME_CARDS.map(t => `
-          <button type="button"
-            class="pd-theme-card ${current === t.id ? 'pd-theme-active' : ''}"
-            data-style="${t.id}"
-            style="--theme-grad:${t.gradient};--theme-accent:${t.accent}"
-            title="${t.label}"
-          >
-            <div class="pd-theme-preview">
-              <div class="pd-theme-preview-bar"></div>
-              <div class="pd-theme-preview-dots">
-                <span></span><span></span><span></span>
-              </div>
-            </div>
-            <div class="pd-theme-info">
-              <span class="pd-theme-name">${t.label}</span>
-              <span class="pd-theme-desc">${t.desc}</span>
-            </div>
-            <div class="pd-theme-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="10" height="10"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-          </button>
-        `).join('')}
-      </div>
-    `;
-
-    // Wire up selection
-    container.querySelectorAll('.pd-theme-card').forEach(card => {
-        card.addEventListener('click', () => {
-            container.querySelectorAll('.pd-theme-card').forEach(c => c.classList.remove('pd-theme-active'));
-            card.classList.add('pd-theme-active');
-            const hidden = container.querySelector('#popupUiTheme');
-            if (hidden) {
-                hidden.value = card.dataset.style;
-                hidden.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-        });
-    });
-}
 
 // ─── Tab Definition ──────────────────────────────────────────────────────────
 export const getPopupDesignTab = (t) => ({
@@ -300,6 +245,19 @@ export const getPopupDesignTab = (t) => ({
     custom: false,
     sections: [
         {
+            title: t('navigation', 'Navigation'),
+            icon: ICONS.uiComponents,
+            items: [
+                {
+                    type: 'toggle',
+                    id: 'showNavFavorites',
+                    label: t('show_nav_favorites', 'Show Favorites Tab'),
+                    desc: t('show_nav_favorites_desc', 'Show the Favorites tab in the sidebar'),
+                    icon: ICONS.title,
+                }
+            ]
+        },
+        {
             title: t('accent_color', 'Accent Color'),
             items: [{ type: 'custom', id: 'accentColorSlot', style: 'grid-column: 1 / -1; width: 100%;' }]
         },
@@ -307,9 +265,5 @@ export const getPopupDesignTab = (t) => ({
             title: t('popup_scale', 'Popup UI Scale'),
             items: [{ type: 'custom', id: 'popupScaleSlot', style: 'grid-column: 1 / -1; width: 100%;' }]
         },
-        {
-            title: t('popup_ui_design', 'Popup UI Design'),
-            items: [{ type: 'custom', id: 'popupUiDesignSlot', style: 'grid-column: 1 / -1; width: 100%;' }]
-        }
     ]
 });

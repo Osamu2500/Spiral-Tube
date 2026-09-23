@@ -10,7 +10,7 @@ import { convertStaticDescriptionsToHelpButtons, registerSlot, renderSchema } fr
 import * as UI from '../ui/popup-ui.js';
 import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
 import { initPopupDesignScale } from './popup-design-handler.js';
-import { renderAccentColorSlot, renderPopupScaleSlot, renderPopupUiDesignSlot } from '../schema/tabs/tab-popup-design.js';
+import { renderAccentColorSlot, renderPopupScaleSlot } from '../schema/tabs/tab-popup-design.js';
 import { initResumeDashboard } from '../components/resume-dashboard.js';
 import { initCommandPalette } from '../ui/command-palette.js';
 import { initAmbientBackground } from '../ui/popup-ambient.js';
@@ -29,14 +29,108 @@ registerSlot('domain_memory_manager', renderDomainMemoryManager);
 registerSlot('global_player_bar_blocklist', renderGlobalBarBlocklist);
 registerSlot('accentColorSlot', renderAccentColorSlot);
 registerSlot('popupScaleSlot', renderPopupScaleSlot);
-registerSlot('popupUiDesignSlot', renderPopupUiDesignSlot);
+
+registerSlot('autoQualitySlot', (container, state) => {
+    container.className = 'setting-item toggle-card';
+    container.style.cssText = 'grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding: 10px 14px;';
+        <style>
+            .auto-quality-dropdown { position: relative; width: 100%; }
+            .aq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 8px; font-size: 12px; outline: none; cursor: pointer; transition: all 0.2s; }
+            .aq-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.2); }
+            .aq-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; z-index: 100; max-height: 200px; overflow-y: auto; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(0,0,0,0.5); padding: 4px; }
+            .aq-menu.open { display: block; animation: aq-fade-in 0.15s ease; }
+            .aq-item { padding: 8px 12px; font-size: 12px; cursor: pointer; transition: all 0.2s; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; color: #aaa; }
+            .aq-item:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+            .aq-item.active { background: rgba(99, 102, 241, 0.2); color: #fff; }
+            @keyframes aq-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+        </style>
+        <div style="display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0;">
+            <div class="feature-icon" style="cursor: pointer; flex-shrink: 0;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10 8l6 4-6 4V8z"/></svg>
+            </div>
+            <div class="info" style="cursor: pointer; flex: 1; min-width: 0;">
+                <span class="name" style="font-size: 13px; font-weight: 500; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Auto Quality</span>
+                <span class="desc" style="font-size: 11px; opacity: 0.6; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Force specific resolution</span>
+            </div>
+            <label class="toggle" style="margin-left: auto; flex-shrink: 0;">
+                <input type="checkbox" id="enableAutoQuality">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: flex-end; width: 100%; padding-left: 12px; border-left: 1px solid rgba(255, 255, 255, 0.08);">
+            <div class="auto-quality-dropdown">
+                <input type="hidden" id="autoQuality" value="${state?.settings?.autoQuality || 'highres'}">
+                <button class="aq-btn">
+                    <span class="aq-text">Max / 4K</span>
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6;"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="aq-menu">
+                    <div class="aq-item" data-value="highres">Max / 4K</div>
+                    <div class="aq-item" data-value="hd1440">1440p</div>
+                    <div class="aq-item" data-value="hd1080">1080p</div>
+                    <div class="aq-item" data-value="hd720">720p</div>
+                    <div class="aq-item" data-value="large">480p</div>
+                    <div class="aq-item" data-value="medium">360p</div>
+                    <div class="aq-item" data-value="small">240p</div>
+                    <div class="aq-item" data-value="tiny">144p</div>
+                    <div class="aq-item" data-value="auto">Auto</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    const btn = container.querySelector('.aq-btn');
+    const menu = container.querySelector('.aq-menu');
+    const text = container.querySelector('.aq-text');
+    const hidden = container.querySelector('#autoQuality');
+    const items = container.querySelectorAll('.aq-item');
+
+    // Initialize UI from current state
+    const currentVal = hidden.value;
+    items.forEach(i => {
+        if (i.dataset.value === currentVal) {
+            text.textContent = i.textContent;
+            i.classList.add('active');
+        }
+    });
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('open');
+        document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+        if (!isOpen) menu.classList.add('open');
+    });
+
+    items.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            items.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            text.textContent = item.textContent;
+            hidden.value = item.dataset.value;
+            menu.classList.remove('open');
+            hidden.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    });
+
+    // We can't attach an unmanaged global listener to document directly without risking memory leaks
+    // if the popup re-renders, but popups are short-lived. We'll attach it safely.
+    if (!window._aqListenerAdded) {
+        window._aqListenerAdded = true;
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.auto-quality-dropdown')) {
+                document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+            }
+        });
+    }
+});
 registerSlot('intentionalDelaySlot', (container, state) => {
     container.className = 'setting-item toggle-card';
     container.style.cssText = 'grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding: 10px 14px;';
     container.innerHTML = `
         <div style="display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0;">
             <div class="feature-icon" style="cursor: pointer; flex-shrink: 0;">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div class="info" style="cursor: pointer; flex: 1; min-width: 0;">
                 <span class="name" style="font-size: 13px; font-weight: 500; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Intentional Delay</span>
@@ -838,10 +932,6 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                 UI.updateCustomizationPreview(document, state);
                 UI.syncModeCards(document);
                 
-                if (key === 'popupUiTheme' && el.value) {
-                    document.body.className = `ypp-theme-${el.value}`;
-                }
-
                 if (key === 'extensionLanguage' && el.value) {
                     // Wait 500ms to allow saveSettings() queue to flush before reloading
                     setTimeout(() => window.location.reload(), 500);
@@ -1060,11 +1150,7 @@ const initApp = async () => {
             (settings) => UI.updateCustomizationPreview(document, state),
             (settings) => UI.syncModeCards(document),
             (settings) => {
-                const popupTheme = settings.popupUiTheme || 'liquid-glass';
-                document.body.className = `ypp-theme-${popupTheme}`;
-                const themeSelect = document.getElementById('popupUiTheme');
-                if (themeSelect) themeSelect.value = popupTheme;
-                
+                document.body.className = 'ypp-theme-liquid-glass';
                 if (settings.fontScale) {
                     document.documentElement.style.setProperty('--ui-font-scale', (settings.fontScale / 100).toFixed(2));
                 }

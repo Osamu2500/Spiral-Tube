@@ -63,21 +63,7 @@ export const getPlayerTab = (t) => ({
             icon: ICONS.pause,
           },
 
-          {
-            type: 'select',
-            id: 'autoQuality',
-            class: 'span-1',
-            label: t('auto_quality'),
-            desc: t('force_specific_resolution'),
-            icon: ICONS.settingsSync,
-            options: [
-              { value: 'highres', label: t('max_4k') },
-              { value: 'hd1440', label: t('1440p') },
-              { value: 'hd1080', label: t('1080p') },
-              { value: 'hd720', label: t('720p') },
-              { value: 'off', label: t('off') },
-            ],
-          },
+          { type: 'custom', id: 'autoQualitySlot' },
           { type: 'custom', id: 'intentionalDelaySlot' },
           { type: 'custom', id: 'autoLikeSlot' },
 

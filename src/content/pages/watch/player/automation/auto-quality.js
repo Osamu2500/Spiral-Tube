@@ -64,7 +64,7 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
     }
 
     forceInitialQuality() {
-        if (!this.settings?.autoQuality || this.settings.autoQuality === 'off') return;
+        if (this.settings?.enableAutoQuality === false || this.settings?.autoQuality === 'off') return;
 
         try {
             const qualityPayload = JSON.stringify({
@@ -89,8 +89,47 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
 
     startEnforcer() {
         if (this._enforcerBound) return;
+        
+        // Listen for manual quality changes in the YouTube settings menu
+        this._manualQualityListener = (e) => {
+            const menuItem = e.target.closest('.ytp-menuitem');
+            if (menuItem) {
+                const label = menuItem.querySelector('.ytp-menuitem-label');
+                const panel = menuItem.closest('.ytp-panel');
+                const panelTitle = panel?.querySelector('.ytp-panel-title')?.textContent?.toLowerCase() || '';
+                
+                if (label && (panelTitle.includes('quality') || label.textContent.includes('p') || label.textContent.includes('4K'))) {
+                    const text = label.textContent.toLowerCase();
+                    let newQuality = null;
+                    
+                    if (text.includes('2160') || text.includes('4k')) newQuality = 'highres';
+                    else if (text.includes('1440')) newQuality = 'hd1440';
+                    else if (text.includes('1080')) newQuality = 'hd1080';
+                    else if (text.includes('720')) newQuality = 'hd720';
+                    else if (text.includes('480')) newQuality = 'large';
+                    else if (text.includes('360')) newQuality = 'medium';
+                    else if (text.includes('240')) newQuality = 'small';
+                    else if (text.includes('144')) newQuality = 'tiny';
+                    else if (text.includes('auto')) newQuality = 'auto';
+                    
+                    if (newQuality && newQuality !== this.settings.autoQuality) {
+                        this.utils?.log(`Detected manual quality change to ${newQuality}, remembering preference.`, this.name);
+                        
+                        // Emit event for state manager to pick up and save
+                        document.dispatchEvent(new CustomEvent('ypp-setting-update', {
+                            detail: { key: 'autoQuality', value: newQuality }
+                        }));
+                        
+                        // Update local reference immediately
+                        if (this.settings) this.settings.autoQuality = newQuality;
+                    }
+                }
+            }
+        };
+        this.addListener(document.body, 'click', this._manualQualityListener);
+
         this._enforcerBound = (e) => {
-            if (!this.settings?.autoQuality || this.settings.autoQuality === 'off') return;
+            if (this.settings?.enableAutoQuality === false || this.settings?.autoQuality === 'off') return;
             
             // Background Saver
             if (e && e.type === 'visibilitychange') {
@@ -146,6 +185,7 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
 
     stopEnforcer() {
         this._enforcerBound = null;
+        this._manualQualityListener = null;
     }
 
     applyAutoQuality(player) {

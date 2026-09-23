@@ -108,33 +108,6 @@ export function initvisualgrids(document, state, ui, updateSetting, notifyThemeC
       });
     }
 
-  function initPopupStyleGrid() {
-      const btns = document.querySelectorAll('.popup-style-btn');
-      const hiddenInput = document.getElementById('popupUiTheme');
-      if (!btns.length || !hiddenInput) return;
-  
-      const applyStyle = (styleVal) => {
-        hiddenInput.value = styleVal;
-        btns.forEach((b) => {
-          const isActive = b.dataset.style === styleVal;
-          b.classList.toggle('active', isActive);
-        });
-      };
-  
-      chrome.storage.local.get('settings', (data) => {
-        const styleVal = data.settings?.popupUiTheme || 'liquid-glass';
-        applyStyle(styleVal);
-      });
-  
-      btns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          applyStyle(btn.dataset.style);
-          const event = new Event('change', { bubbles: true });
-          hiddenInput.dispatchEvent(event);
-        });
-      });
-    }
-
   function initCustomCursorUploader() {
       const normalInput = document.getElementById('fileNormalCursor');
       const pointerInput = document.getElementById('filePointerCursor');
@@ -205,7 +178,6 @@ export function initvisualgrids(document, state, ui, updateSetting, notifyThemeC
     initGlobalBarGrid,
     initCardStyleGrid,
     initYoutubeStyleGrid,
-    initPopupStyleGrid,
     initCustomCursorUploader
   };
 }
