@@ -469,7 +469,7 @@ export class EqualiserUI {
       // Re-render UI to show new preset
       this.toggleEQPanel(ctx, video, anchorBtn);
       setTimeout(() => this.toggleEQPanel(ctx, video, anchorBtn), 50);
-    };
+    });
     presetsRow.appendChild(addPresetBtn);
 
     // We will append presetsRow to eqContentWrap later.
@@ -669,7 +669,7 @@ export class EqualiserUI {
         if (typeof activePresetBtn !== 'undefined') activePresetBtn = flatPreset;
       }
       EqualiserUI.saveVolumeSettings(ctx);
-    };
+    });
 
     footer.appendChild(resetBtn);
     panel.appendChild(footer);
@@ -725,7 +725,7 @@ export class EqualiserUI {
         btn.classList.add('active');
         activePresetBtn = btn;
         EqualiserUI.saveVolumeSettings(ctx);
-      };
+      });
     });
 
     if (typeof anime !== 'undefined') {

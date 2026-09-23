@@ -27,4 +27,7 @@ runCommand('npx vite build --config vite.config.external.js');
 // 5. Vite Build (Page Bridge)
 runCommand('npx vite build --config vite.config.page-bridge.js');
 
+// 6. Vite Build (Popup Engine)
+runCommand('npx vite build --config vite.config.popup-engine.js');
+
 console.log('\n--- Build Process Completed Successfully ---');

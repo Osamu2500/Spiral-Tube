@@ -12,6 +12,14 @@
                 {
                     "header": "content-security-policy",
                     "operation": "remove"
+                },
+                {
+                    "header": "cross-origin-resource-policy",
+                    "operation": "remove"
+                },
+                {
+                    "header": "cross-origin-embedder-policy",
+                    "operation": "remove"
                 }
             ]
         },

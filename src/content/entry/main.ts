@@ -15,7 +15,7 @@
     // across the web. We ONLY want to run in the top window or inside our
     // own Popup Player iframe (identified by ytpop_panel= URL param).
     if (window.self !== window.top) {
-        if (!window.location.search.includes('ytpop_panel=')) {
+        if (!window.location.search.includes('ytpop_panel=') && !window.location.search.includes('ytpop=')) {
             return;
         }
     }

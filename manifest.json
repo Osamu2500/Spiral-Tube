@@ -14,6 +14,15 @@
         "identity",
         "declarativeNetRequest"
     ],
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "ruleset_1",
+                "enabled": true,
+                "path": "declarative_net_request/ruleset_1.json"
+            }
+        ]
+    },
     "host_permissions": [
         "<all_urls>",
         "*://www.youtube.com/*"
@@ -134,9 +143,19 @@
                 "src/content/features/popup-player/popup-player.css"
             ],
             "js": [
-                "src/content/features/popup-player/engine.js",
-                "src/content/features/popup-player/custom-ui.js"
+                "dist/popup-engine.js"
             ]
+        },
+        {
+            "matches": [
+                "*://www.youtube.com/watch*",
+                "*://www.youtube.com/shorts/*"
+            ],
+            "js": [
+                "src/content/features/popup-player/popup-player-bridge.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
         }
     ],
     "web_accessible_resources": [
