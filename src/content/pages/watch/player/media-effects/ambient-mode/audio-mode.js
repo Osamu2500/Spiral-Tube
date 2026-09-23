@@ -194,7 +194,7 @@ export class AudioMode extends window.YPP.features.BaseFeature {
         `;
 
         // Handle clicks on overlay to toggle play/pause
-        overlay.onclick = (e) => {
+        overlay.addEventListener('click', (e) => {
             if (e.target.id !== 'ypp-audio-thumb') {
                 const video = window.YPP.DOMManager?.getVideo();
                 if (video) {
@@ -205,7 +205,7 @@ export class AudioMode extends window.YPP.features.BaseFeature {
                     }
                 }
             }
-        };
+        });
 
         player.prepend(overlay);
         this.overlay = overlay;

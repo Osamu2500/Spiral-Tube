@@ -21,13 +21,13 @@ export class SpatialTabUI {
         crossfeedBtn.innerHTML = 'Binaural Crossfeed';
         crossfeedBtn.title = 'Reduces headphone fatigue by blending left and right channels naturally';
         crossfeedBtn.style.flex = '1';
-        crossfeedBtn.onclick = () => {
+        crossfeedBtn.addEventListener('click', () => {
             if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
             const enable = !ctx._crossfeedEnabled;
             if (ctx.setCrossfeed) ctx.setCrossfeed(enable);
             crossfeedBtn.classList.toggle('active', enable);
             saveSettings(ctx);
-        };
+        });
         crossfeedRow.appendChild(crossfeedBtn);
         spaPanel.appendChild(crossfeedRow);
         
@@ -63,14 +63,14 @@ export class SpatialTabUI {
             btn.className = 'ypp-eq-preset-btn';
             btn.textContent = env;
             if (env === (ctx._reverbEnv || 'None')) { btn.classList.add('active'); activeEnvBtn = btn; }
-            btn.onclick = () => {
+            btn.addEventListener('click', () => {
                 if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
                 if (activeEnvBtn) activeEnvBtn.classList.remove('active');
                 btn.classList.add('active');
                 activeEnvBtn = btn;
                 if (ctx.setReverbEnvironment) ctx.setReverbEnvironment(env);
                 saveSettings(ctx);
-            };
+            });
             envRow.appendChild(btn);
         });
         spaPanel.appendChild(envRow);
@@ -91,23 +91,23 @@ export class SpatialTabUI {
         phaseLBtn.className = 'ypp-eq-comp-btn' + (ctx._invertL ? ' active' : '');
         phaseLBtn.innerHTML = 'Ø L';
         phaseLBtn.title = 'Invert Left Channel Phase (Fixes hollow audio)';
-        phaseLBtn.onclick = () => {
+        phaseLBtn.addEventListener('click', () => {
             if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
             ctx.setPhaseInvert('L', !ctx._invertL);
             phaseLBtn.classList.toggle('active', ctx._invertL);
             saveSettings(ctx);
-        };
+        });
 
         const phaseRBtn = document.createElement('button');
         phaseRBtn.className = 'ypp-eq-comp-btn' + (ctx._invertR ? ' active' : '');
         phaseRBtn.innerHTML = 'Ø R';
         phaseRBtn.title = 'Invert Right Channel Phase';
-        phaseRBtn.onclick = () => {
+        phaseRBtn.addEventListener('click', () => {
             if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
             ctx.setPhaseInvert('R', !ctx._invertR);
             phaseRBtn.classList.toggle('active', ctx._invertR);
             saveSettings(ctx);
-        };
+        });
         
         const phaseLbl = document.createElement('span');
         phaseLbl.style.cssText = 'color:rgba(255,255,255,0.7);font-size:11px; margin-right:8px; flex:1;';

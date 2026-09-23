@@ -65,14 +65,14 @@ export class PresetsTabUI {
                 <button class="ypp-star-btn" title="${isFav ? 'Remove from Favorites' : 'Add to Favorites'}" data-fav="${isFav}">${isFav ? starFilled : starOutline}</button>
             `;
             const starBtn = card.querySelector('.ypp-star-btn');
-            starBtn.onclick = (e) => {
+            starBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleFav(index);
                 renderFilteredList(searchInput.value);
-            };
+            });
             const trashBtn = card.querySelector('.ypp-trash-btn');
             if (trashBtn) {
-                trashBtn.onclick = (e) => {
+                trashBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     if (confirm(`Delete custom preset "${filter.name}"?`)) {
                         chrome.storage.local.get('ypp_custom_presets', (data) => {
@@ -83,10 +83,10 @@ export class PresetsTabUI {
                             });
                         });
                     }
-                };
+                });
             }
 
-            card.onclick = (e) => {
+            card.addEventListener('click', (e) => {
                 if (e.target.closest('.ypp-star-btn') || e.target.closest('.ypp-trash-btn')) return;
                 e.stopPropagation();
                 ctx._previewFilterIndex = undefined;
@@ -115,19 +115,19 @@ export class PresetsTabUI {
                 if (!card.querySelector('.ypp-card-check')) {
                     starBtn.insertAdjacentHTML('beforebegin', '<div class="ypp-card-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>');
                 }
-            };
-            card.onmouseenter = () => {
+            });
+            card.addEventListener('mouseenter', () => {
                 if (ctx.currentFilterIndex === index) return;
                 ctx._previewFilterIndex = ctx.currentFilterIndex;
                 ctx.currentFilterIndex = index;
                 ctx._applyComputedFilter(video);
-            };
-            card.onmouseleave = () => {
+            });
+            card.addEventListener('mouseleave', () => {
                 if (ctx._previewFilterIndex === undefined) return;
                 ctx.currentFilterIndex = ctx._previewFilterIndex;
                 ctx._previewFilterIndex = undefined;
                 ctx._applyComputedFilter(video);
-            };
+            });
             return card;
         };
 
@@ -192,7 +192,7 @@ export class PresetsTabUI {
             }
         };
 
-        searchInput.oninput = (e) => renderFilteredList(e.target.value);
+        searchInput.addEventListener('input', (e) => renderFilteredList(e.target.value));
         renderFilteredList();
 
         return wrap;

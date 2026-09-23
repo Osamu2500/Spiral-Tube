@@ -279,9 +279,9 @@ export class SnapshotButton extends window.YPP.features.BaseFeature {
         });
 
         const btn = toast.querySelector('.ypp-snapshot-download-btn');
-        btn.onmouseover = () => btn.style.transform = 'scale(1.05)';
-        btn.onmouseout = () => btn.style.transform = 'scale(1)';
-        btn.onclick = () => {
+        btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
+        btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
+        btn.addEventListener('click', () => {
             let title = document.title.replace(/ - YouTube$/, '').trim();
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-').split('T');
             const timeStr = `${timestamp[0]}_${timestamp[1].substring(0,6)}`;
@@ -291,7 +291,7 @@ export class SnapshotButton extends window.YPP.features.BaseFeature {
             link.href = canvas.toDataURL('image/png');
             link.click();
             btn.textContent = 'Downloaded!';
-        };
+        });
 
         setTimeout(() => {
             toast.style.opacity = '0';

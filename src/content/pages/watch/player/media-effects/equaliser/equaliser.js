@@ -24,6 +24,7 @@ export class Equaliser extends window.YPP.features.BaseFeature {
     static executionPhase = 'sequential-ui';
     static priority = 7;
     static targetPages = ['watch']; // Only run on player page
+    static _audioCache = new WeakMap();
 
     constructor() {
         super('Equaliser');
@@ -527,7 +528,7 @@ export class Equaliser extends window.YPP.features.BaseFeature {
         // Caller checks for this.
         if (!src) return 'pending';
 
-        if (src.startsWith('blob:') || src.startsWith('data:')) return true;
+        if (src.startsWith('blob:') || src.startsWith('data:') || src.startsWith('http')) return true;
         try {
             const url = new URL(src);
             if (url.origin === window.location.origin) return true;
@@ -536,6 +537,16 @@ export class Equaliser extends window.YPP.features.BaseFeature {
         }
         if (video.crossOrigin === 'anonymous' || video.crossOrigin === 'use-credentials') return true;
         return false;
+    }
+
+    _makeSoftClipperCurve() {
+        const amount = 44100;
+        const curve = new Float32Array(amount);
+        for (let i = 0; i < amount; ++i) {
+            const x = (i * 2) / amount - 1;
+            curve[i] = Math.tanh(x * 1.5);
+        }
+        return curve;
     }
 
     /**
@@ -593,19 +604,17 @@ export class Equaliser extends window.YPP.features.BaseFeature {
             if (this._audioConnected) return;
             try {
                 // Safely get or create AudioContext for this video.
-                // FIX Bug 3 (companion): Respect __ypp_ctx/__ypp_source set by AudioEQ
-                // or AudioCompressor so we don't call createMediaElementSource twice.
-                if (video.__ypp_ctx && video.__ypp_source) {
-                    this.ctx = video.__ypp_ctx;
-                    this.source = video.__ypp_source;
+                const cachedAudio = Equaliser._audioCache.get(video);
+                if (cachedAudio || (video.__ypp_ctx && video.__ypp_source)) {
+                    this.ctx = cachedAudio ? cachedAudio.ctx : video.__ypp_ctx;
+                    this.source = cachedAudio ? cachedAudio.source : video.__ypp_source;
                     // PREVENT AUDIO DOUBLING BUG: Disconnect source before rebuilding the graph
                     try { this.source.disconnect(); } catch (e) { /* Safe to ignore */ }
                 } else {
                     const AC = window.AudioContext || window.webkitAudioContext;
                     this.ctx = new AC();
                     this.source = this.ctx.createMediaElementSource(video);
-                    video.__ypp_ctx = this.ctx;
-                    video.__ypp_source = this.source;
+                    Equaliser._audioCache.set(video, { ctx: this.ctx, source: this.source });
                 }
 
                 this._buildAudioGraph();
@@ -789,6 +798,11 @@ export class Equaliser extends window.YPP.features.BaseFeature {
             this.limiterNode.attack.value = 0.002;
             this.limiterNode.release.value = 0.1;
 
+            // 4.5b. Soft Clipper
+            this.softClipper = this.ctx.createWaveShaper();
+            this.softClipper.curve = this._makeSoftClipperCurve();
+            this.softClipper.oversample = '2x';
+
             // 5. Analyser
             this.analyserNode = this.ctx.createAnalyser();
             this.analyserNode.fftSize = 128;
@@ -799,7 +813,8 @@ export class Equaliser extends window.YPP.features.BaseFeature {
             this.pannerNode.connect(this.agcNode);
             this.agcNode.connect(this.agcMakeup);
             this.agcMakeup.connect(this.gainNode);
-            this.gainNode.connect(this.limiterNode);
+            this.gainNode.connect(this.softClipper);
+            this.softClipper.connect(this.limiterNode);
             
             // 4.6. Native Volume Sync Gain
             this.nativeVolumeGain = this.ctx.createGain();

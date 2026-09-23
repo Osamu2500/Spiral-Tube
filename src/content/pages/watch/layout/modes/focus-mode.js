@@ -376,12 +376,12 @@ export class FocusMode extends window.YPP.features.BaseFeature {
             }
         };
 
-        submitBtn.onclick = validate;
-        cancelBtn.onclick = () => overlay.remove();
-        input.onkeydown = (e) => {
+        submitBtn.addEventListener('click', validate);
+        cancelBtn.addEventListener('click', () => overlay.remove());
+        input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') validate();
             if (e.key === 'Escape') overlay.remove();
-        };
+        });
     }
 };
 

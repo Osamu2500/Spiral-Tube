@@ -790,10 +790,10 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             <span class="ypp-domain-scope-label">D</span>
             <span class="ypp-domain-badge-indicator"></span>
         `;
-        btn.onclick = (e) => {
+        btn.addEventListener('click', (e) => {
             e.stopPropagation();
             this.togglePanel(this._getVideo(), btn);
-        };
+        });
         this._domainBtn = btn;
         this._updateButtonStatus();
         return btn;

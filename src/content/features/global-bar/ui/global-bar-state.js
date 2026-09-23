@@ -62,7 +62,7 @@ export function updateUIState(ctx) {
     }
 
     // Play/Pause
-    const playBtn = ctx.barElement.querySelector('#ypp-gpb-play');
+    const playBtn = ctx._uiElements?.playBtn || ctx.barElement.querySelector('#ypp-gpb-play');
     const isPaused = primary.paused;
     if (playBtn && ctx._uiStateCache.paused !== isPaused) {
         playBtn.innerHTML = !isPaused ? ctx.ICONS.pause : ctx.ICONS.play;
@@ -70,23 +70,45 @@ export function updateUIState(ctx) {
     }
 
     // Mute & Volume
-    const muteBtn = ctx.barElement.querySelector('#ypp-gpb-mute');
-    const volSlider = ctx.barElement.querySelector('#ypp-gpb-vol');
+    const muteBtn = ctx._uiElements?.muteBtn || ctx.barElement.querySelector('#ypp-gpb-mute');
+    const volSlider = ctx._uiElements?.volSlider || ctx.barElement.querySelector('#ypp-gpb-vol');
     if (muteBtn && volSlider) {
         if (ctx._uiStateCache.allMuted !== isAllMuted) {
             muteBtn.innerHTML = isAllMuted ? ctx.ICONS.mute : ctx.ICONS.volumeHigh;
             muteBtn.classList.toggle('active', isAllMuted);
             ctx._uiStateCache.allMuted = isAllMuted;
         }
-        const primaryVol = primary.muted ? 0 : primary.volume;
-        if (ctx._uiStateCache.volume !== primaryVol) {
-            volSlider.value = primaryVol;
-            ctx._uiStateCache.volume = primaryVol;
+        let actualVol = primary.muted ? 0 : primary.volume;
+        
+        // Proxy external context
+        if (primary._proxy && primary.volumeBoostGain > 1.0) {
+            actualVol = primary.volumeBoostGain;
+        }
+        
+        // Native internal context
+        const volFeature = window.YPP?.featureManager?.getFeature?.('volumeBoost');
+        if (volFeature && volFeature._volumeGain > 1.0) {
+            actualVol = volFeature._volumeGain;
+        }
+        
+        if (ctx._uiStateCache.volume !== actualVol) {
+            volSlider.value = actualVol;
+            ctx._uiStateCache.volume = actualVol;
+            const wrap = ctx._uiElements?.volWrap || ctx.barElement.querySelector('#ypp-gpb-vol-wrap');
+            if (wrap) {
+                if (actualVol > 1.0) {
+                    wrap.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(249, 115, 22, 0.25))';
+                    wrap.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+                } else {
+                    wrap.style.background = '';
+                    wrap.style.borderColor = '';
+                }
+            }
         }
     }
 
     // Time
-    const timeEl = ctx.barElement.querySelector('#ypp-gpb-time');
+    const timeEl = ctx._uiElements?.timeEl || ctx.barElement.querySelector('#ypp-gpb-time');
     if (timeEl) {
         const formatTime = (s) => {
             if (!s || isNaN(s) || s < 0) return "0:00";
@@ -135,8 +157,8 @@ export function updateUIState(ctx) {
     }
     
     // Speed
-    const speedBtn = ctx.barElement.querySelector('#ypp-gpb-speed');
-    const speedText = ctx.barElement.querySelector('#ypp-gpb-speed-text');
+    const speedBtn = ctx._uiElements?.speedBtn || ctx.barElement.querySelector('#ypp-gpb-speed');
+    const speedText = ctx._uiElements?.speedText || ctx.barElement.querySelector('#ypp-gpb-speed-text');
     if (speedText) {
         const rate = primary.playbackRate || 1;
         if (ctx._uiStateCache.speed !== rate) {
@@ -149,7 +171,7 @@ export function updateUIState(ctx) {
     }
 
     // Loop
-    const loopBtn = ctx.barElement.querySelector('#ypp-gpb-loop');
+    const loopBtn = ctx._uiElements?.loopBtn || ctx.barElement.querySelector('#ypp-gpb-loop');
     if (loopBtn && ctx._uiStateCache.loop !== primary.loop) {
         loopBtn.classList.toggle('active', primary.loop);
         loopBtn.style.opacity = primary.loop ? '1' : '0.5';
@@ -185,7 +207,7 @@ export function updateUIState(ctx) {
     }
     
     if (ctx._uiStateCache.fullscreen !== isFs) {
-        const fullscreenBtn = ctx.barElement.querySelector('#ypp-gpb-fullscreen');
+        const fullscreenBtn = ctx._uiElements?.fullscreenBtn || ctx.barElement.querySelector('#ypp-gpb-fullscreen');
         if (fullscreenBtn) {
             fullscreenBtn.innerHTML = isFs
                 ? `<svg viewBox="0 0 36 36" fill="currentColor"><path d="m 5.390625,8 v 18.179687 h 25.21875 V 8 Z m 2.019531,2.009765 H 28.589844 V 24.169922 H 7.410156 Z M 19.45325,22.331983 h 1.762511 V 19.688214 H 23.85953 V 17.925702 H 19.45325 Z M 14.784019,14.491472 H 12.14025 v 1.762512 h 4.406281 v -4.40628 h -1.762512 z m 0,5.196743 H 12.14025 v -1.762512 h 4.406281 v 4.40628 h -1.762512 z m 4.669231,-7.840512 h 1.762511 v 2.643769 h 2.643769 v 1.762512 h -4.40628 z"/></svg>`

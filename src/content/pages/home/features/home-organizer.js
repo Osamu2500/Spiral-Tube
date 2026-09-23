@@ -315,10 +315,10 @@ export class HomeOrganizer extends window.YPP.features.BaseFeature {
                 const isInFolder = this.channelTags[channelName] && this.channelTags[channelName].includes(folderName);
                 item.innerHTML = isInFolder ? `<strong style="color:var(--ypp-accent)">✓</strong> ${folderName}` : folderName;
                 
-                item.onclick = async () => {
+                item.addEventListener('click', async () => {
                     await this.toggleFolderForChannel(channelName, folderName);
                     this.removePopover();
-                };
+                });
                 popover.appendChild(item);
             });
         }

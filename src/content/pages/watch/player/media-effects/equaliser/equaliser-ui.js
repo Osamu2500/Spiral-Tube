@@ -108,11 +108,12 @@ export class EqualiserUI {
 
     if (anchorBtn && anchorBtn.classList) anchorBtn.classList.add('active');
 
-    const panel = document.createElement('div');
-    panel.id = 'ypp-eq-panel';
-
     // Check if opened from Global Bar
     const isGlobalBar = !!anchorBtn?.closest?.('.ypp-global-bar');
+
+    const panel = document.createElement('div');
+    panel.id = 'ypp-eq-panel';
+    if (isGlobalBar) panel.classList.add('ypp-eq-global');
     if (isGlobalBar) {
       // position:fixed is required — the panel is mounted into the popup portal
       // which is a fixed-positioned transparent overlay. Without this the offsets
@@ -187,14 +188,17 @@ export class EqualiserUI {
     // -- Draggable Panel Logic --
     let isDragging = false;
     let dragStartX, dragStartY, initialLeft, initialTop;
+    let dragController = null;
     header.style.cursor = 'grab';
 
     const onDragMove = (e) => {
       if (!isDragging) return;
       const dx = e.clientX - dragStartX;
       const dy = e.clientY - dragStartY;
-      panel.style.left = initialLeft + dx + 'px';
-      panel.style.top = initialTop + dy + 'px';
+      const maxL = window.innerWidth - panel.offsetWidth;
+      const maxT = window.innerHeight - panel.offsetHeight;
+      panel.style.left = Math.max(0, Math.min(initialLeft + dx, maxL)) + 'px';
+      panel.style.top = Math.max(0, Math.min(initialTop + dy, maxT)) + 'px';
       panel.style.bottom = 'auto';
       panel.style.right = 'auto';
     };
@@ -203,22 +207,26 @@ export class EqualiserUI {
       if (isDragging) {
         isDragging = false;
         header.style.cursor = 'grab';
-        document.removeEventListener('mousemove', onDragMove);
-        document.removeEventListener('mouseup', onDragEnd);
+        if (dragController) {
+          dragController.abort();
+          dragController = null;
+        }
       }
     };
 
     // Ensure drag listeners are always cleaned up when the panel is removed
     const dragCleanup = () => {
       isDragging = false;
-      document.removeEventListener('mousemove', onDragMove);
-      document.removeEventListener('mouseup', onDragEnd);
+      if (dragController) {
+        dragController.abort();
+        dragController = null;
+      }
     };
     panel.addEventListener('remove', dragCleanup, { once: true });
     // Also hook into the MutationObserver-free path: store cleanup on the panel
     panel._dragCleanup = dragCleanup;
 
-    header.onmousedown = (e) => {
+    header.addEventListener('mousedown', (e) => {
       if (e.target.closest('button')) return;
       isDragging = true;
       header.style.cursor = 'grabbing';
@@ -235,21 +243,21 @@ export class EqualiserUI {
       panel.style.right = 'auto';
       panel.style.margin = '0';
 
-      document.addEventListener('mousemove', onDragMove);
-      document.addEventListener('mouseup', onDragEnd);
+      dragController = new AbortController();
+      document.addEventListener('mousemove', onDragMove, { signal: dragController.signal });
+      document.addEventListener('mouseup', onDragEnd, { signal: dragController.signal });
       e.preventDefault();
-    };
+    });
 
     const abBtn = header.querySelector('.ypp-eq-ab-btn');
-    abBtn.onclick = () => {
+    abBtn.addEventListener('click', () => {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
       ctx.setBypass(!ctx._bypassed);
       abBtn.classList.toggle('active', ctx._bypassed);
       EqualiserUI.saveVolumeSettings(ctx);
-    };
+    });
 
-
-    header.querySelector('#ypp-eq-close').onclick = () => this.toggleEQPanel(ctx, video, anchorBtn);
+    header.querySelector('#ypp-eq-close').addEventListener('click', () => this.toggleEQPanel(ctx, video, anchorBtn));
 
     // -- Active Preset State Management --
     let activePresetBtn = null;
@@ -273,19 +281,18 @@ export class EqualiserUI {
     gainSlider.step = 0.05;
     gainSlider.value = ctx._volumeGain;
     gainSlider.className = 'ypp-eq-hslider';
-    gainSlider.oninput = (e) => {
+    gainSlider.addEventListener('input', (e) => {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
       const v = parseFloat(e.target.value);
       ctx.setVolume(v);
       gainValue.textContent = Math.round(v * 100) + '%';
-      anchorBtn.classList.toggle(
-        'active',
-        v > 1.01 || ctx._eqGains.some((g) => g !== 0) || ctx._balance !== 0
-      );
+      if (anchorBtn && anchorBtn.classList) {
+        anchorBtn.classList.toggle('active', v > 1.01 || ctx._eqGains.some((g) => g !== 0) || ctx._balance !== 0);
+      }
       clearActivePreset();
       EqualiserUI.saveVolumeSettings(ctx);
       this.updateGainTrack(gainSlider);
-    };
+    });
     gainRow.innerHTML = `<span class="ypp-eq-row-label">Equaliser</span>`;
     gainRow.appendChild(gainSlider);
     gainRow.appendChild(gainValue);
@@ -310,28 +317,26 @@ export class EqualiserUI {
     balanceSlider.step = 0.05;
     balanceSlider.value = ctx._balance;
     balanceSlider.className = 'ypp-eq-hslider ypp-eq-balance-slider';
-    balanceSlider.oninput = (e) => {
+    balanceSlider.addEventListener('input', (e) => {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
       const v = parseFloat(e.target.value);
       ctx.setBalance(v);
-      balanceValue.textContent =
-        v === 0 ? 'C' : v < 0 ? 'L' + Math.abs(Math.round(v * 100)) : 'R' + Math.round(v * 100);
-      anchorBtn.classList.toggle(
-        'active',
-        ctx._volumeGain > 1.01 || ctx._eqGains.some((g) => g !== 0) || v !== 0
-      );
+      balanceValue.textContent = v === 0 ? 'C' : v < 0 ? 'L' + Math.abs(Math.round(v * 100)) : 'R' + Math.round(v * 100);
+      if (anchorBtn && anchorBtn.classList) {
+        anchorBtn.classList.toggle('active', ctx._volumeGain > 1.01 || ctx._eqGains.some((g) => g !== 0) || v !== 0);
+      }
       clearActivePreset();
       this.updateBalanceTrack(balanceSlider);
       EqualiserUI.saveVolumeSettings(ctx);
-    };
-    balanceSlider.ondblclick = () => {
+    });
+    balanceSlider.addEventListener('dblclick', () => {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
       ctx.setBalance(0);
       balanceSlider.value = 0;
       balanceValue.textContent = 'C';
       this.updateBalanceTrack(balanceSlider);
       EqualiserUI.saveVolumeSettings(ctx);
-    };
+    });
     balanceRow.innerHTML = `<span class="ypp-eq-row-label">Balance</span>`;
     balanceRow.appendChild(balanceSlider);
     balanceRow.appendChild(balanceValue);
@@ -347,12 +352,12 @@ export class EqualiserUI {
       const pad = isGlobalBar ? '6px' : '10px';
       const fs = isGlobalBar ? '10px' : '12px';
       t.style.cssText = `flex:1;padding:${pad};background:transparent;border:none;color:${active ? '#fff' : 'rgba(255,255,255,0.45)'};font-size:${fs};font-weight:600;cursor:pointer;border-bottom:2px solid ${active ? 'rgba(255,255,255,0.7)' : 'transparent'};transition:all 0.2s;font-family:inherit;`;
-      t.onmouseenter = () => {
+      t.addEventListener('mouseenter', () => {
         if (!t.classList.contains('active')) t.style.color = 'rgba(255,255,255,0.75)';
-      };
-      t.onmouseleave = () => {
+      });
+      t.addEventListener('mouseleave', () => {
         if (!t.classList.contains('active')) t.style.color = 'rgba(255,255,255,0.45)';
-      };
+      });
       if (active) t.classList.add('active');
       return t;
     };
@@ -374,14 +379,14 @@ export class EqualiserUI {
         btn.classList.add('active');
         activePresetBtn = btn;
       }
-      btn.onclick = () => {
+      btn.addEventListener('click', () => {
         ctx.applyPreset(name);
         this.syncBandUI(ctx, panel, uiState.canvasEl);
         if (activePresetBtn) activePresetBtn.classList.remove('active');
         btn.classList.add('active');
         activePresetBtn = btn;
         EqualiserUI.saveVolumeSettings(ctx);
-      };
+      });
       const defaults = ['Flat', 'Bass Boost', 'Vocal Enhancer', 'Night Mode', 'Electronic'];
       if (!defaults.includes(name)) {
         btn.title = `Right-click to delete "${name}"`;
@@ -419,7 +424,7 @@ export class EqualiserUI {
     addPresetBtn.innerHTML = '+';
     addPresetBtn.title = 'Save Custom Preset';
     addPresetBtn.style.cssText = 'padding: 3px 8px; border-style: dashed;';
-    addPresetBtn.onclick = () => {
+    addPresetBtn.addEventListener('click', () => {
       const name = prompt('Enter a name for your custom preset (or overwrite existing):');
       if (!name) return;
 
@@ -467,7 +472,7 @@ export class EqualiserUI {
     };
     presetsRow.appendChild(addPresetBtn);
 
-    panel.appendChild(presetsRow);
+    // We will append presetsRow to eqContentWrap later.
 
     const mkDynRow = (label, min, max, step, val, unit, onChange) => {
       const row = document.createElement('div');
@@ -488,12 +493,12 @@ export class EqualiserUI {
       sl.value = val;
       sl.className = 'ypp-eq-hslider';
       sl.style.flex = '1';
-      sl.oninput = (e) => {
+      sl.addEventListener('input', (e) => {
         valEl.textContent = e.target.value + unit;
         onChange(parseFloat(e.target.value));
         clearActivePreset();
         EqualiserUI.saveVolumeSettings(ctx);
-      };
+      });
       row.append(lbl, sl, valEl);
       return row;
     };
@@ -515,6 +520,7 @@ export class EqualiserUI {
     };
 
     const eqContentWrap = EQTabUI.build(uiState);
+    eqContentWrap.appendChild(presetsRow);
     panel.appendChild(eqContentWrap);
 
     const dynPanel = DynamicsTabUI.build(uiState);
@@ -539,7 +545,7 @@ export class EqualiserUI {
     });
     const tabs = [tabEQ, tabDyn, tabSpa, tabFX];
     tabs.forEach((tab, i) => {
-      tab.onclick = () => {
+      tab.addEventListener('click', () => {
         if (tab.classList.contains('active')) return;
         tabs.forEach((t, j) => {
           const active = i === j;
@@ -564,7 +570,7 @@ export class EqualiserUI {
             tabPanels[j].style.display = 'none';
           }
         });
-      };
+      });
     });
 
     // ── Shared Footer ──
@@ -575,7 +581,7 @@ export class EqualiserUI {
     const resetBtn = document.createElement('button');
     resetBtn.className = 'ypp-eq-reset-btn';
     resetBtn.textContent = 'Reset All';
-    resetBtn.onclick = () => {
+    resetBtn.addEventListener('click', () => {
       if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(() => {});
 
       // Reset Audio State
@@ -683,14 +689,19 @@ export class EqualiserUI {
       document.body.appendChild(panel);
     }
     ctx._volumePopup = panel;
+    const scaleFactor = isGlobalBar ? 1.0 : 0.85;
     if (window.YPP?.Utils?.makePopupZoomInvariant) {
-      window.YPP.Utils.makePopupZoomInvariant(panel);
+      window.YPP.Utils.makePopupZoomInvariant(panel, scaleFactor); // Make it smaller only on YouTube
     }
+    // Fallback scaling if makePopupZoomInvariant doesn't support the second arg
+    panel.style.transform = `scale(${scaleFactor})`;
+    panel.style.transformOrigin = 'top right';
+    panel.style.setProperty('--ypp-auto-scale', scaleFactor.toString());
 
     // Re-bind preset clicks to update all UI (since some presets affect dynamics/spatial)
     Object.keys(ctx._presets).forEach((name, idx) => {
       const btn = presetsRow.children[idx];
-      btn.onclick = () => {
+      btn.addEventListener('click', () => {
         ctx.applyPreset(name);
         this.syncBandUI(ctx, panel, uiState.canvasEl);
 
@@ -954,21 +965,26 @@ export class EqualiserUI {
     top: 24px;
     right: 24px;
     width: 300px;
-    background-color: rgba(18, 18, 20, 0.65);
-    background-image: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(62, 166, 255, 0.15) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(255, 65, 108, 0.1) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 65, 108, 0.05) 0%, transparent 100%);
+    background-color: rgba(18, 18, 20, 0.55);
+    background-image: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(62, 166, 255, 0.2) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(255, 65, 108, 0.15) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 65, 108, 0.08) 0%, transparent 100%);
     border: 1px solid rgba(255,255,255,0.1);
     border-top: 1px solid rgba(255,255,255,0.25);
     border-radius: 20px;
     z-index: 2147483646;
     color: #fff;
     font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
-    -webkit-backdrop-filter: blur(64px) saturate(200%);
-    backdrop-filter: blur(64px) saturate(200%);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.8), 0 8px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+    -webkit-backdrop-filter: blur(80px) saturate(220%);
+    backdrop-filter: blur(80px) saturate(220%);
     user-select: none;
     overflow: hidden;
     animation: ypp-eq-in 0.28s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
+
+#ypp-eq-panel.ypp-eq-global {
+    width: 360px;
+}
+
 @keyframes ypp-eq-in {
     from { opacity:0; transform:translateY(12px) scale(calc(0.96 * var(--ypp-auto-scale, 1))); }
     to   { opacity:1; transform:translateY(0)   scale(var(--ypp-auto-scale, 1));    }
@@ -1106,10 +1122,29 @@ export class EqualiserUI {
     width: 10px; height: 10px; border-radius: 50%;
     background: var(--band-color, #ffffff);
     cursor: pointer;
-    box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    box-shadow: 0 0 10px var(--band-color, rgba(255,255,255,0.4)), 0 0 4px rgba(0,0,0,0.8);
     transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
 }
 .ypp-eq-vslider::-webkit-slider-thumb:hover { transform: scale(1.45); }
+
+/* Global overrides for larger UI */
+.ypp-eq-global .ypp-eq-band-track {
+    height: 120px;
+}
+.ypp-eq-global .ypp-eq-vslider {
+    width: 118px;
+}
+.ypp-eq-global .ypp-eq-band-freq {
+    font-size: 10px;
+    margin-top: 4px;
+}
+.ypp-eq-global .ypp-eq-band-db {
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+.ypp-eq-global .ypp-eq-canvas {
+    height: 120px;
+}
 
 /* Footer */
 .ypp-eq-footer {

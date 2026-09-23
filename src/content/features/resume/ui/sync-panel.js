@@ -47,12 +47,12 @@ export class SyncPanelUI {
                 </div>
             `;
             
-            panel.querySelector('#ypp-sync-cancel').onclick = () => {
+            panel.querySelector('#ypp-sync-cancel').addEventListener('click', () => {
                 clearInterval(interval);
                 panel.remove();
                 this.utils.log?.('Auto-resume cancelled by user', 'RESUMER', 'info');
                 if (onCancel) onCancel();
-            };
+            });
         };
         
         updateText();

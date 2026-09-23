@@ -365,10 +365,10 @@ export class ResumeTracker extends window.YPP.features.BaseFeature {
                 cursor: pointer;
             `;
             marker.title = `Bookmark at ${Math.floor(time)}s`;
-            marker.onclick = (e) => {
+            marker.addEventListener('click', (e) => {
                 e.stopPropagation();
                 this.videoElement.currentTime = time;
-            };
+            });
             progressList.appendChild(marker);
         });
     }

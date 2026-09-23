@@ -49,6 +49,7 @@ export function setupIframeBridge(bar, instances) {
                 paused: true,
                 muted: false,
                 volume: 1,
+                volumeBoostGain: 1,
                 currentTime: 0,
                 duration: 0,
                 playbackRate: 1,
@@ -107,6 +108,7 @@ export function setupIframeBridge(bar, instances) {
                     if (key === 'playbackRate') sendCommand('rate', value);
                     if (key === 'loop')         sendCommand('loop');
                     if (key === 'currentTime')  sendCommand('seek', value);
+                    if (key === 'volumeBoostGain') sendCommand('vb_setVolume', value);
                     if (typeof key === 'string' && key.startsWith('vb_')) {
                         sendCommand(key, value);
                     }
@@ -196,6 +198,7 @@ export function runIframeLogic(instances) {
                         paused: video.paused,
                         muted: video.muted,
                         volume: video.volume,
+                        volumeBoostGain: instances['volumeBoost'] ? instances['volumeBoost']._volumeGain : 1,
                         currentTime: video.currentTime,
                         duration: video.duration || 0,
                         playbackRate: video.playbackRate,
@@ -241,6 +244,17 @@ export function runIframeLogic(instances) {
             }
         });
         removalObserver.observe(document.documentElement, { childList: true, subtree: true });
+
+        if (instances['volumeBoost']) {
+            try {
+                if (typeof instances['volumeBoost'].initAudioContext === 'function') {
+                    instances['volumeBoost'].initAudioContext(video);
+                } else if (typeof instances['volumeBoost'].enable === 'function') {
+                    instances['volumeBoost']._boundVideo = video;
+                    instances['volumeBoost'].enable();
+                }
+            } catch (e) {}
+        }
 
         relay('video-detected');
     };

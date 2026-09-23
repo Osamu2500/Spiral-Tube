@@ -1,4 +1,4 @@
-export function makeDraggable(barElement) {
+export function makeDraggable(barElement, signal) {
     barElement.addEventListener('mousedown', (e) => {
         if (e.target.closest('button, input, .ypp-gpb-time-capsule, .ypp-gpb-vol-wrap')) return;
         e.preventDefault();
@@ -15,8 +15,18 @@ export function makeDraggable(barElement) {
         document.body.appendChild(shield);
 
         const onMouseMove = (moveEvent) => {
-            barElement.style.left = (moveEvent.clientX - offsetX) + 'px';
-            barElement.style.top = (moveEvent.clientY - offsetY) + 'px';
+            let newLeft = moveEvent.clientX - offsetX;
+            let newTop = moveEvent.clientY - offsetY;
+            
+            // Boundary clamping to ensure the bar remains visible and accessible
+            const maxLeft = Math.max(0, window.innerWidth - barElement.offsetWidth);
+            const maxTop = Math.max(0, window.innerHeight - barElement.offsetHeight);
+            
+            newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+            newTop = Math.max(0, Math.min(newTop, maxTop));
+
+            barElement.style.left = newLeft + 'px';
+            barElement.style.top = newTop + 'px';
             barElement.style.right = 'auto';
             barElement.style.bottom = 'auto';
             barElement.style.transform = 'none';
@@ -40,7 +50,7 @@ export function makeDraggable(barElement) {
             } catch(e){}
         };
 
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
-    });
+        document.addEventListener('mousemove', onMouseMove, { signal });
+        document.addEventListener('mouseup', onMouseUp, { signal });
+    }, { signal });
 }

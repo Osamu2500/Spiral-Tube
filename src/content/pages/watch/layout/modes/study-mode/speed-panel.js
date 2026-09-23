@@ -23,10 +23,10 @@ export class SpeedPanel {
         btn.className = 'ytp-button';
         btn.title = 'Study Mode Speed';
         btn.innerHTML = `<span style="font-size: 13px; font-weight: 500; color: #3ea6ff;">${this.parent.config.speed}x</span>`;
-        btn.onclick = (e) => {
+        btn.addEventListener('click', (e) => {
             e.stopPropagation();
             this.toggleSpeedPanel();
-        };
+        });
 
         rightControls.insertBefore(btn, rightControls.firstChild);
         this.controlBtn = btn;
@@ -105,7 +105,7 @@ export class SpeedPanel {
                 font-size: 12px;
                 transition: all 0.2s;
             `;
-            btn.onclick = () => this.setSpeed(speed);
+            btn.addEventListener('click', () => this.setSpeed(speed));
             presetsContainer.appendChild(btn);
         });
         panel.appendChild(presetsContainer);
@@ -130,11 +130,11 @@ export class SpeedPanel {
         speedValue.textContent = `${this.parent.config.speed}x`;
         speedValue.style.cssText = 'font-size: 12px; color: #3ea6ff; font-weight: 500; min-width: 40px;';
 
-        slider.oninput = (e) => {
+        slider.addEventListener('input', (e) => {
             const newSpeed = parseFloat(e.target.value);
             speedValue.textContent = `${newSpeed}x`;
             this.setSpeed(newSpeed);
-        };
+        });
 
         sliderRow.appendChild(slider);
         sliderRow.appendChild(speedValue);
@@ -155,13 +155,13 @@ export class SpeedPanel {
         toggleSwitch.type = 'checkbox';
         toggleSwitch.checked = this.parent.config.enableCaptions;
         toggleSwitch.style.cursor = 'pointer';
-        toggleSwitch.onchange = (e) => {
+        toggleSwitch.addEventListener('change', (e) => {
             this.parent.config.enableCaptions = e.target.checked;
             this.parent.saveConfig();
             if (this.parent.config.enableCaptions) {
                 this.parent._enableCaptions();
             }
-        };
+        });
 
         captionToggle.appendChild(captionLabel);
         captionToggle.appendChild(toggleSwitch);
@@ -183,7 +183,7 @@ export class SpeedPanel {
             line-height: 16px;
             padding: 0;
         `;
-        closeBtn.onclick = () => this.removeSpeedPanel();
+        closeBtn.addEventListener('click', () => this.removeSpeedPanel());
         panel.appendChild(closeBtn);
 
         const container = document.getElementById('movie_player') || document.body;

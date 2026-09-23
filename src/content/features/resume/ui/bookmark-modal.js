@@ -33,7 +33,7 @@ export class BookmarkModalUI {
         `;
         document.body.appendChild(modal);
 
-        modal.querySelector('#ypp-bm-close').onclick = () => modal.remove();
+        modal.querySelector('#ypp-bm-close').addEventListener('click', () => modal.remove());
 
         const allBookmarks = await ResumeDataManager.getAllBookmarks();
         
@@ -67,19 +67,19 @@ export class BookmarkModalUI {
                 <button class="ypp-bm-delete" style="background: #ff4e45; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">Delete</button>
             `;
 
-            el.querySelector('.ypp-bm-jump').onclick = (e) => {
+            el.querySelector('.ypp-bm-jump').addEventListener('click', (e) => {
                 if (videoId === item.videoId && videoElement) {
                     e.preventDefault();
                     videoElement.currentTime = item.time;
                     modal.remove();
                 }
-            };
+            });
 
-            el.querySelector('.ypp-bm-delete').onclick = async () => {
+            el.querySelector('.ypp-bm-delete').addEventListener('click', async () => {
                 await ResumeDataManager.removeBookmark(item.key);
                 el.remove();
                 if (onBookmarksUpdated) onBookmarksUpdated();
-            };
+            });
 
             listEl.appendChild(el);
         }

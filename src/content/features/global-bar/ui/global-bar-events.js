@@ -1,17 +1,15 @@
 export function bindEvents(ctx, signal) {
-    bindPlaybackControls(ctx);
-    bindVolumeControls(ctx);
-    bindSpeedControls(ctx);
-    bindWindowControls(ctx);
+    bindPlaybackControls(ctx, signal);
+    bindVolumeControls(ctx, signal);
+    bindSpeedControls(ctx, signal);
+    bindWindowControls(ctx, signal);
     bindKeyboardControls(ctx, signal);
     setupIdleTimer(ctx, signal);
 }
 
-function bindPlaybackControls(ctx) {
-    const bar = ctx.barElement;
-    
-    const playBtn = bar.querySelector('#ypp-gpb-play');
-    playBtn.onclick = (e) => { 
+function bindPlaybackControls(ctx, signal) {
+    const playBtn = ctx._uiElements?.playBtn || ctx.barElement.querySelector('#ypp-gpb-play');
+    playBtn.addEventListener('click', (e) => { 
         e.stopPropagation(); 
         const primary = ctx._getPrimaryVideo();
         if (!primary) return;
@@ -22,24 +20,22 @@ function bindPlaybackControls(ctx) {
             primary.pause();
         }
         ctx.updateUIState();
-    };
+    }, { signal });
 
-    const loopBtn = bar.querySelector('#ypp-gpb-loop');
-    loopBtn.onclick = (e) => { 
+    const loopBtn = ctx._uiElements?.loopBtn || ctx.barElement.querySelector('#ypp-gpb-loop');
+    loopBtn.addEventListener('click', (e) => { 
         e.stopPropagation(); 
         const primary = ctx._getPrimaryVideo();
         if (!primary) return;
         
         primary.loop = !primary.loop;
         ctx.updateUIState();
-    };
+    }, { signal });
 }
 
-function bindVolumeControls(ctx) {
-    const bar = ctx.barElement;
-
-    const muteBtn = bar.querySelector('#ypp-gpb-mute');
-    muteBtn.onclick = (e) => { 
+function bindVolumeControls(ctx, signal) {
+    const muteBtn = ctx._uiElements?.muteBtn || ctx.barElement.querySelector('#ypp-gpb-mute');
+    muteBtn.addEventListener('click', (e) => { 
         e.stopPropagation();
         let isAllMuted = true;
         for (const v of ctx.trackedVideos) {
@@ -49,26 +45,38 @@ function bindVolumeControls(ctx) {
             v.muted = !isAllMuted;
         }
         ctx.updateUIState();
-    };
+    }, { signal });
 
-    const volSlider = bar.querySelector('#ypp-gpb-vol');
-    volSlider.oninput = (e) => {
+    const volSlider = ctx._uiElements?.volSlider || ctx.barElement.querySelector('#ypp-gpb-vol');
+    volSlider.addEventListener('input', (e) => {
         e.stopPropagation();
         const val = parseFloat(e.target.value);
         for (const v of ctx.trackedVideos) {
-            v.volume = val;
-            v.muted = val === 0;
+            if (val <= 1.0) {
+                v.volume = val;
+                v.muted = val === 0;
+                if (v._proxy) v.volumeBoostGain = 1.0;
+            } else {
+                v.volume = 1.0;
+                v.muted = false;
+                if (v._proxy) v.volumeBoostGain = val;
+            }
+        }
+        
+        // Native context
+        const volFeature = window.YPP?.featureManager?.getFeature?.('volumeBoost');
+        if (volFeature) {
+            volFeature.setVolume(val <= 1.0 ? 1.0 : val);
         }
         ctx.updateUIState();
-    };
+    }, { signal });
 }
 
-function bindSpeedControls(ctx) {
-    const bar = ctx.barElement;
-    const speedBtn = bar.querySelector('#ypp-gpb-speed');
+function bindSpeedControls(ctx, signal) {
+    const speedBtn = ctx._uiElements?.speedBtn || ctx.barElement.querySelector('#ypp-gpb-speed');
     if (!speedBtn) return;
     
-    speedBtn.onclick = (e) => {
+    speedBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const primary = ctx._getPrimaryVideo();
         if (!primary) return;
@@ -85,9 +93,9 @@ function bindSpeedControls(ctx) {
         ctx.updateUIState();
         // Notify domain memory to persist the speed change
         window.YPP?.featureManager?.getFeature?.('domainMemory')?.recordChange?.('speed');
-    };
+    }, { signal });
 
-    speedBtn.onwheel = (e) => {
+    speedBtn.addEventListener('wheel', (e) => {
         e.preventDefault();
         e.stopPropagation();
         const primary = ctx._getPrimaryVideo();
@@ -104,50 +112,54 @@ function bindSpeedControls(ctx) {
         ctx.updateUIState();
         // Notify domain memory to persist the speed change (debounced)
         window.YPP?.featureManager?.getFeature?.('domainMemory')?.recordChange?.('speed');
-    };
+    }, { passive: false, signal });
 }
 
-function bindWindowControls(ctx) {
-    const bar = ctx.barElement;
+function bindWindowControls(ctx, signal) {
+    const pipBtn = ctx.barElement.querySelector('#ypp-gpb-pip');
+    if (pipBtn) {
+        pipBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            try {
+                if (document.pictureInPictureElement) {
+                    await document.exitPictureInPicture();
+                } else {
+                    const primary = ctx._getPrimaryVideo();
+                    if (primary) await primary.requestPictureInPicture();
+                }
+            } catch (_) {}
+        }, { signal });
+    }
 
-    const pipBtn = bar.querySelector('#ypp-gpb-pip');
-    pipBtn.onclick = async (e) => {
-        e.stopPropagation();
-        try {
-            if (document.pictureInPictureElement) {
-                await document.exitPictureInPicture();
-            } else {
-                const primary = ctx._getPrimaryVideo();
-                if (primary) await primary.requestPictureInPicture();
-            }
-        } catch (_) {}
-    };
+    const fullscreenBtn = ctx._uiElements?.fullscreenBtn || ctx.barElement.querySelector('#ypp-gpb-fullscreen');
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            try {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    const primary = ctx._getPrimaryVideo();
+                    if (primary) primary.requestFullscreen();
+                }
+            } catch (_) {}
+        }, { signal });
+    }
 
-    const fullscreenBtn = bar.querySelector('#ypp-gpb-fullscreen');
-    fullscreenBtn.onclick = (e) => {
-        e.stopPropagation();
-        try {
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            } else {
-                const primary = ctx._getPrimaryVideo();
-                if (primary) primary.requestFullscreen();
-            }
-        } catch (_) {}
-    };
-
-    const closeBtn = bar.querySelector('#ypp-gpb-close');
-    closeBtn.onclick = (e) => {
-        e.stopPropagation();
-        if (ctx.onDismiss) ctx.onDismiss();
-        ctx.removeAll();
-    };
+    const closeBtn = ctx.barElement.querySelector('#ypp-gpb-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (ctx.onDismiss) ctx.onDismiss();
+            ctx.removeAll();
+        }, { signal });
+    }
 }
 
 function bindKeyboardControls(ctx, signal) {
     document.addEventListener('keydown', (e) => {
         // Ignore if typing in an input
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+        if (e.target.closest('input, textarea, [contenteditable="true"]')) return;
         
         const primary = ctx._getPrimaryVideo();
         if (!primary) return;

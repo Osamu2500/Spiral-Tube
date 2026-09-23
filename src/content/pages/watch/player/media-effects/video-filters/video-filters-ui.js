@@ -173,19 +173,19 @@ export class VideoFiltersUI {
             }
         };
 
-        compareBtn.onclick = (e) => {
+        compareBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             ctx.isComparing = !ctx.isComparing;
             window.YPP?.Utils?.log(`A/B toggled to: ${ctx.isComparing}`, 'VideoFiltersUI');
             ctx._syncCompareUI(ctx.isComparing);
             ctx._applyComputedFilter(video);
-        };
+        });
         
         const closeBtn = document.createElement('button');
         closeBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
         Object.assign(closeBtn.style, { background: 'transparent', border: 'none', color: '#f1f1f1', cursor: 'pointer', padding: '0', display: 'flex' });
-        closeBtn.onclick = () => ctx._removeFilterPanel();
+        closeBtn.addEventListener('click', () => ctx._removeFilterPanel());
 
         header.querySelector('#ypp-header-actions').append(compareBtn, closeBtn);
         return header;
@@ -193,7 +193,7 @@ export class VideoFiltersUI {
 
     static _setupTabSwitching(btns, contents) {
         btns.forEach((btn, i) => {
-            btn.onclick = () => {
+            btn.addEventListener('click', () => {
                 if (btn.classList.contains('active')) return;
                 btns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
@@ -212,7 +212,7 @@ export class VideoFiltersUI {
                         }, 180);
                     }
                 });
-            };
+            });
         });
     }
 
@@ -229,10 +229,10 @@ export class VideoFiltersUI {
         const resetBtn = document.createElement('button');
         resetBtn.innerHTML = `<span>Reset All</span>`;
         Object.assign(resetBtn.style, { background: 'rgba(255,255,255,0.1)', border: 'none', color: '#ffffff', borderRadius: '12px', cursor: 'pointer', fontSize: '10.5px', fontWeight: '500', padding: '4px 8px' });
-        resetBtn.onmouseenter = () => resetBtn.style.background = 'rgba(255,255,255,0.2)';
-        resetBtn.onmouseleave = () => resetBtn.style.background = 'rgba(255,255,255,0.1)';
+        resetBtn.addEventListener('mouseenter', () => resetBtn.style.background = 'rgba(255,255,255,0.2)');
+        resetBtn.addEventListener('mouseleave', () => resetBtn.style.background = 'rgba(255,255,255,0.1)');
         
-        resetBtn.onclick = () => {
+        resetBtn.addEventListener('click', () => {
             ctx.currentFilterIndex = 0;
             ctx.filterIntensity = 100;
             ctx.filterAdjustments = { brightness: 100, contrast: 100, saturate: 100, hueRotate: 0, sepia: 0, grayscale: 0, invert: 0, blur: 0, opacity: 100, dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0, vibrance: 100, highlights: 0, shadows: 0, vignette: 0 };
@@ -241,7 +241,7 @@ export class VideoFiltersUI {
             if (btn) { btn.classList.remove('active'); btn.title = 'Cinema Filters'; }
             ctx._removeFilterPanel();
             this.createFilterPanel(ctx, video, btn);
-        };
+        });
         
         footer.append(activePill, resetBtn);
         return footer;

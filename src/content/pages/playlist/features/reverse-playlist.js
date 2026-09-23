@@ -82,8 +82,8 @@ export class ReversePlaylist extends window.YPP.features.BaseFeature {
             transition: 'background-color 0.2s'
         });
         
-        btn.onmouseover = () => btn.style.backgroundColor = 'var(--yt-spec-badge-chip-background)';
-        btn.onmouseleave = () => btn.style.backgroundColor = 'transparent';
+        btn.addEventListener('mouseover', () => btn.style.backgroundColor = 'var(--yt-spec-badge-chip-background)');
+        btn.addEventListener('mouseleave', () => btn.style.backgroundColor = 'transparent');
 
         this.addListener(btn, 'click', (e) => {
             e.preventDefault();

@@ -29,7 +29,7 @@ export const BAR_HTML = `
                 ${ICONS.volumeHigh}
             </button>
             <div id="ypp-gpb-vol-wrap" class="ypp-gpb-vol-wrap" title="Volume">
-                <input type="range" id="ypp-gpb-vol" min="0" max="1" step="0.02" value="1" class="ypp-gpb-vol-slider">
+                <input type="range" id="ypp-gpb-vol" min="0" max="3" step="0.02" value="1" class="ypp-gpb-vol-slider">
             </div>
             <button class="ypp-gpb-btn ypp-action-btn ypp-gpb-speed-pill" id="ypp-gpb-speed" title="Video Speed (Scroll to adjust, Click to cycle)">
                 <span class="ypp-gpb-speed-value" id="ypp-gpb-speed-text">1.00x</span>

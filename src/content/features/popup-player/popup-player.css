@@ -13,6 +13,8 @@
 .ytpop-screenshot-item,
 .ytpop-copy-btn,
 .ytpop-settings-btn,
+.ytpop-ratio-btn,
+.ytpop-size-btn,
 /* Pro / Trial UI */
 .ytpop-info-trial-btn,
 .ytpop-confirm-trial,
@@ -76,10 +78,6 @@
 
 /* ── 3. OVERLAY SHELL ───────────────────────────────────────────────────── */
 
-.ytpop-overlay {
-  /* Leave background/blur to the original JS which toggles it */
-}
-
 .ytpop-container {
   background: var(--pp-surface) !important;
   backdrop-filter: var(--pp-blur-bg) !important;
@@ -87,10 +85,9 @@
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-r-xl) !important;
   box-shadow: var(--pp-shadow-overlay) !important;
-  /* NO overflow: hidden here! It clips the toolbar which is top: -38px */
 }
 
-/* Add rounded corners to the iframe itself since we removed overflow: hidden from container */
+/* Add rounded corners to the iframe itself */
 .ytpop-container iframe {
   border-radius: var(--pp-r-xl) !important;
 }
@@ -105,23 +102,24 @@
   ) !important;
   backdrop-filter: var(--pp-blur-bar) !important;
   -webkit-backdrop-filter: var(--pp-blur-bar) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-md) !important;
+  border-bottom: 1px solid var(--pp-border) !important;
+  border-radius: var(--pp-r-xl) var(--pp-r-xl) 0 0 !important;
   padding: 5px 8px !important;
   gap: 3px !important;
   display: flex !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
-  height: auto !important;
   min-height: 40px !important;
+  /* Allow dropdowns to overflow */
+  overflow: visible !important;
 }
 
-/* ── Control Buttons (Watch page, Miniplayer, Music mode, PiP…) ── */
+/* ── Control Buttons ── */
 
 .ytpop-ctrl-btn {
   background: rgba(255, 255, 255, 0.04) !important;
   border: 1px solid transparent !important;
-  border-radius: var(--pp-r-md) !important;   /* squircle */
+  border-radius: var(--pp-r-md) !important;
   color: var(--pp-text-muted) !important;
   padding: 0 9px !important;
   font-size: 11.5px !important;
@@ -129,10 +127,7 @@
   font-family: var(--pp-font) !important;
   letter-spacing: 0.01em !important;
   cursor: pointer !important;
-  transition:
-    background var(--pp-t-fast),
-    color var(--pp-t-fast),
-    border-color var(--pp-t-fast) !important;
+  transition: background var(--pp-t-fast), color var(--pp-t-fast), border-color var(--pp-t-fast) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -183,18 +178,6 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   color: #fff !important;
 }
 
-/* ── Size / Ratio / Max / Mini / PiP buttons ── */
-
-.ytpop-max-btn,
-.ytpop-size-btn,
-.ytpop-ratio-btn,
-.ytpop-mini-btn,
-.ytpop-pip-btn,
-.ytpop-open-btn,
-.ytpop-openthis-btn {
-  border-radius: var(--pp-r-md) !important;   /* squircle */
-}
-
 /* ── Toolbar label expand button ── */
 
 .ytpop-label-toggle-btn {
@@ -226,137 +209,80 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   border: none !important;
 }
 
-/* ── 5. INFO PANEL ──────────────────────────────────────────────────────── */
+/* ── 5. CUSTOM DROPDOWNS ────────────────────────────────────────────────── */
 
-.ytpop-info-panel {
-  background: linear-gradient(
-    0deg,
-    rgba(12, 12, 18, 0.99) 0%,
-    rgba(14, 14, 20, 0.86) 100%
-  ) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-lg) !important;
-  padding: 10px 14px 12px !important;
-  backdrop-filter: var(--pp-blur-bar) !important;
-  -webkit-backdrop-filter: var(--pp-blur-bar) !important;
+.ytpop-custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
-.ytpop-info-header {
-  margin-bottom: 8px !important;
-}
-
-.ytpop-info-title {
+.ytpop-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: var(--pp-r-md) !important;
+  padding: 6px 12px;
+  color: var(--pp-text) !important;
   font-size: 13px !important;
-  font-weight: 600 !important;
-  color: var(--pp-text) !important;
-  font-family: var(--pp-font) !important;
-  letter-spacing: -0.01em !important;
-  line-height: 1.35 !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease !important;
 }
 
-.ytpop-info-channel {
-  font-size: 11px !important;
-  color: var(--pp-text-muted) !important;
-  font-family: var(--pp-font) !important;
-  margin-top: 2px !important;
+.ytpop-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-.ytpop-info-date,
-.ytpop-info-views,
-.ytpop-info-dot {
-  font-size: 11px !important;
-  color: var(--pp-text-muted) !important;
-  font-family: var(--pp-font) !important;
+.ytpop-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 6px 0;
+  min-width: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.95);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
 }
 
-/* ── Stats row ── */
-
-.ytpop-info-stats {
-  display: flex !important;
-  align-items: center !important;
-  gap: 4px !important;
-  flex-wrap: wrap !important;
-  margin-top: 6px !important;
+.ytpop-dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
 }
 
-.ytpop-info-stat {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-sm) !important;   /* squircle chips */
-  padding: 3px 9px !important;
-  font-size: 11px !important;
-  font-family: var(--pp-font) !important;
-  color: var(--pp-text-muted) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 4px !important;
-  transition: background var(--pp-t-fast), color var(--pp-t-fast) !important;
+.ytpop-dropdown-item {
+  padding: 8px 16px;
+  color: #ddd;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
 }
 
-/* ── Like / Dislike buttons ── */
-
-.ytpop-info-like-btn,
-.ytpop-info-dislike-btn {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-sm) !important;   /* squircle */
-  padding: 3px 10px !important;
-  color: var(--pp-text-muted) !important;
-  font-size: 11px !important;
-  font-family: var(--pp-font) !important;
-  gap: 4px !important;
-  cursor: pointer !important;
-  transition: all var(--pp-t-base) !important;
-  display: inline-flex !important;
-  align-items: center !important;
+.ytpop-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
-.ytpop-info-like-btn:hover {
-  background: rgba(255, 255, 255, 0.10) !important;
-  color: var(--pp-text) !important;
-  border-color: var(--pp-border-hover) !important;
-}
-
-.ytpop-info-dislike-btn:hover {
-  background: rgba(239, 68, 68, 0.12) !important;
-  color: rgba(255, 130, 130, 1) !important;
-  border-color: rgba(239, 68, 68, 0.28) !important;
-}
-
-.ytpop-info-like-btn.is-active,
-.ytpop-info-like-btn[data-active="true"] {
-  background: rgba(255, 68, 68, 0.14) !important;
-  border-color: var(--pp-border-accent) !important;
+.ytpop-dropdown-item.active {
   color: var(--pp-accent) !important;
-}
-
-/* ── Description / Comments / Icon action buttons ── */
-
-.ytpop-info-icon-btn,
-.ytpop-info-comments-btn,
-.ytpop-info-description-btn,
-.ytpop-info-button {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-sm) !important;   /* squircle */
-  color: var(--pp-text-muted) !important;
-  font-size: 11px !important;
-  font-family: var(--pp-font) !important;
-  padding: 3px 10px !important;
-  cursor: pointer !important;
-  transition: all var(--pp-t-base) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-}
-
-.ytpop-info-icon-btn:hover,
-.ytpop-info-comments-btn:hover,
-.ytpop-info-description-btn:hover,
-.ytpop-info-button:hover {
-  background: rgba(255, 255, 255, 0.09) !important;
-  color: var(--pp-text) !important;
-  border-color: var(--pp-border-hover) !important;
+  background: var(--pp-accent-muted) !important;
+  font-weight: 500;
 }
 
 /* ── 6. CONTEXT MENU ────────────────────────────────────────────────────── */
@@ -366,7 +292,7 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   backdrop-filter: blur(24px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-lg) !important;   /* squircle card */
+  border-radius: var(--pp-r-lg) !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
   padding: 5px !important;
   overflow: hidden !important;
@@ -378,7 +304,7 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   font-size: 12.5px !important;
   font-weight: 400 !important;
   font-family: var(--pp-font) !important;
-  border-radius: var(--pp-r-sm) !important;   /* squircle items */
+  border-radius: var(--pp-r-sm) !important;
   padding: 7px 11px !important;
   transition: background var(--pp-t-fast), color var(--pp-t-fast) !important;
   cursor: pointer !important;
@@ -405,64 +331,7 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   border-radius: 2px !important;
 }
 
-.ytpop-ctx-item svg {
-  opacity: 0.6 !important;
-  flex-shrink: 0 !important;
-  transition: opacity var(--pp-t-fast) !important;
-}
-
-.ytpop-ctx-item:hover svg {
-  opacity: 1 !important;
-}
-
-/* ── Ctx separator ── */
-
-.ytpop-ctx-sep,
-.ytpop-ctx-menu hr {
-  border: none !important;
-  height: 1px !important;
-  background: var(--pp-border) !important;
-  margin: 3px 6px !important;
-}
-
-/* ── 7. DROPDOWN MENUS ──────────────────────────────────────────────────── */
-
-.ytpop-dropdown-menu {
-  background: rgba(16, 16, 22, 0.98) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-lg) !important;   /* squircle */
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5) !important;
-  padding: 4px !important;
-  overflow: hidden !important;
-}
-
-.ytpop-dropdown-item {
-  font-size: 12px !important;
-  font-family: var(--pp-font) !important;
-  color: rgba(255, 255, 255, 0.72) !important;
-  border-radius: var(--pp-r-xs) !important;
-  padding: 6px 10px !important;
-  cursor: pointer !important;
-  transition: background var(--pp-t-fast) !important;
-  min-height: 32px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.ytpop-dropdown-item:hover {
-  background: rgba(255, 255, 255, 0.07) !important;
-  color: #fff !important;
-}
-
-.ytpop-dropdown-item--active,
-.ytpop-dropdown-item[aria-selected="true"] {
-  color: var(--pp-accent) !important;
-  background: var(--pp-accent-muted) !important;
-}
-
-/* ── 8. MINI PLAYER ─────────────────────────────────────────────────────── */
+/* ── 7. MINI PLAYER & MUSIC MODE ────────────────────────────────────────── */
 
 .ytpop-overlay--miniplayer .ytpop-container {
   border: 1px solid var(--pp-border) !important;
@@ -470,34 +339,6 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   background: rgba(12, 12, 18, 0.97) !important;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65) !important;
 }
-
-.ytpop-overlay--miniplayer .ytpop-ctrl-btn {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border-color: var(--pp-border) !important;
-  color: var(--pp-text) !important;
-}
-
-.ytpop-overlay--miniplayer .ytpop-ctrl-btn:hover {
-  background: rgba(255, 255, 255, 0.11) !important;
-}
-
-/* ── Mini tabs ── */
-
-.ytpop-mini-tabs-item {
-  font-size: 11px !important;
-  font-family: var(--pp-font) !important;
-  color: var(--pp-text-muted) !important;
-  border-radius: var(--pp-r-xs) !important;
-  transition: all var(--pp-t-base) !important;
-  padding: 2px 7px !important;
-}
-
-.ytpop-mini-tabs-item--active {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: var(--pp-text) !important;
-}
-
-/* ── 9. MUSIC MODE ──────────────────────────────────────────────────────── */
 
 .ytpop-overlay--music {
   background: transparent !important;
@@ -512,104 +353,12 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   box-shadow: 0 4px 18px var(--pp-accent-glow), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
 }
 
-.ytpop-music-max-bg {
-  background: linear-gradient(
-    135deg,
-    rgba(18, 18, 26, 0.99) 0%,
-    rgba(8, 8, 14, 1) 100%
-  ) !important;
-}
-
-.ytpop-music-prev-btn,
-.ytpop-music-pause-btn,
-.ytpop-music-next-btn,
-.ytpop-music-close-btn,
-.ytpop-music-dock-btn,
-.ytpop-music-like-btn,
-.ytpop-music-dislike-btn,
-.ytpop-music-comment-btn,
-.ytpop-music-desc-btn,
-.ytpop-music-max-ctrl-btn,
-.ytpop-music-max-action-btn {
-  border-radius: var(--pp-r-md) !important;   /* squircle */
-}
-
-/* ── 10. TOAST / NOTIFICATION ───────────────────────────────────────────── */
-
-.ytpop-toast {
-  background: rgba(20, 20, 28, 0.97) !important;
-  border: 1px solid var(--pp-border) !important;
-  border-radius: var(--pp-r-md) !important;   /* squircle */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-  color: var(--pp-text) !important;
-  font-size: 12px !important;
-  font-family: var(--pp-font) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  padding: 9px 14px !important;
-}
-
-/* ── 11. NATIVE PANEL (Comments / Description slide-in) ─────────────────── */
-
-.ytpop-native-panel-sheet {
-  background: rgba(14, 14, 20, 0.99) !important;
-  border-left: 1px solid var(--pp-border) !important;
-  border-radius: 0 var(--pp-r-xl) var(--pp-r-xl) 0 !important;
-}
-
-.ytpop-native-panel-header {
-  border-bottom: 1px solid var(--pp-border) !important;
-  background: rgba(16, 16, 24, 0.99) !important;
-}
-
-.ytpop-native-panel-heading {
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  font-family: var(--pp-font) !important;
-  color: var(--pp-text) !important;
-}
-
-/* ── 12. PROGRESS / TIME INDICATORS ────────────────────────────────────── */
-
-.ytpop-progress-elapsed {
-  color: var(--pp-accent) !important;
-}
-
-.ytpop-progress-remaining {
-  color: var(--pp-text-muted) !important;
-}
-
-/* ── 13. SPINNER / LOADER ───────────────────────────────────────────────── */
+/* ── 8. UTILITIES ───────────────────────────────────────────────────────── */
 
 .ytpop-spin::before,
 .ytpop-spin::after {
   border-radius: 50% !important;
 }
-
 .ytpop-spin::before {
   border-top-color: var(--pp-accent) !important;
-}
-
-/* ── 14. INLINE BUTTON (thumbnail hover open button) ────────────────────── */
-
-.ytpop-inline-btn {
-  border-radius: var(--pp-r-sm) !important;
-  background: rgba(12, 12, 18, 0.88) !important;
-  border: 1px solid var(--pp-border) !important;
-  color: var(--pp-text) !important;
-  backdrop-filter: blur(8px) !important;
-  font-family: var(--pp-font) !important;
-  font-size: 11px !important;
-  transition: background var(--pp-t-fast), border-color var(--pp-t-fast) !important;
-}
-
-.ytpop-inline-btn:hover {
-  background: rgba(22, 22, 32, 0.96) !important;
-  border-color: var(--pp-border-hover) !important;
-}
-
-/* ── 15. SHADOW WRAPPER (thumbnail overlay) ─────────────────────────────── */
-
-.ytpop-shadow-wrapper {
-  border-radius: var(--pp-r-sm) !important;
 }

@@ -9,16 +9,16 @@ export class EQTabUI {
 
         // ── Canvas Curve
         const canvasEl = document.createElement('canvas');
-        canvasEl.width  = isGlobalBar ? 268 : 308;
-        canvasEl.height = isGlobalBar ? 92  : 90;
+        canvasEl.width  = isGlobalBar ? 328 : 308;
+        canvasEl.height = isGlobalBar ? 120 : 90;
         canvasEl.className = 'ypp-eq-canvas';
         canvasEl.style.cursor = 'pointer';
         canvasEl.title = 'Click to cycle visualizer modes (Both, Curve, Bars, Waveform, Off)';
-        canvasEl.onclick = () => {
+        canvasEl.addEventListener('click', () => {
             ctx._visualizerMode = ((ctx._visualizerMode || 0) + 1) % 5;
             saveSettings(ctx);
             if (!ctx.analyserNode) EqualiserUI.drawCurve(ctx, canvasEl);
-        };
+        });
         wrap.appendChild(canvasEl);
 
         // ── 10-Band Vertical EQ Faders
@@ -50,7 +50,7 @@ export class EQTabUI {
             slider.className = 'ypp-eq-vslider';
             slider.style.setProperty('--band-color', band.color);
             slider.dataset.band = i;
-            slider.oninput = (e) => {
+            slider.addEventListener('input', (e) => {
                 if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
                 const db = parseFloat(e.target.value);
                 ctx._setEQBand(i, db);
@@ -58,8 +58,8 @@ export class EQTabUI {
                 EqualiserUI.drawCurve(ctx, canvasEl);
                 clearActivePreset();
                 saveSettings(ctx);
-            };
-            slider.ondblclick = () => {
+            });
+            slider.addEventListener('dblclick', () => {
                 if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
                 ctx._setEQBand(i, 0);
                 slider.value = 0;
@@ -67,7 +67,7 @@ export class EQTabUI {
                 EqualiserUI.drawCurve(ctx, canvasEl);
                 clearActivePreset();
                 saveSettings(ctx);
-            };
+            });
             sliderEls.push(slider);
 
             const freqLabel = document.createElement('div');

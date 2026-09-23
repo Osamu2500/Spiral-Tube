@@ -157,7 +157,7 @@ export class ChannelHealthScanner {
                             const exportBtn = overlay.querySelector('#ypp-health-export-btn');
                             if (exportBtn) {
                                 exportBtn.style.display = 'inline-block';
-                                exportBtn.onclick = () => {
+                                exportBtn.addEventListener('click', () => {
                                     const csvContent = "data:text/csv;charset=utf-8,"
                                         + "Channel Name,Channel URL,Last Upload Date,Status\n"
                                         + channels.map(c => `"${(c.name || '').replace(/"/g, '""')}","https://youtube.com/channel/${c.id}","${c.lastUploadText}","${c.status}"`).join("\n");
@@ -167,7 +167,7 @@ export class ChannelHealthScanner {
                                     document.body.appendChild(link);
                                     link.click();
                                     link.remove();
-                                };
+                                });
                             }
                         }
                     };

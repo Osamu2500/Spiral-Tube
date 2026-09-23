@@ -61,15 +61,18 @@ export class SessionTimer {
             <button id="ypp-break-dismiss" style="
                 width: 100%; padding: 12px; border-radius: 8px; border: none; background: rgba(74, 222, 128, 0.2);
                 color: #4ade80; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s;
-            " onmouseover="this.style.background='rgba(74, 222, 128, 0.3)'" onmouseout="this.style.background='rgba(74, 222, 128, 0.2)'">Resume Study Session</button>
+            ">Resume Study Session</button>
         `;
 
         overlay.appendChild(modal);
         this.parent.injectElement(overlay);
 
-        document.getElementById('ypp-break-dismiss').onclick = () => {
+        const dismissBtn = document.getElementById('ypp-break-dismiss');
+        dismissBtn.addEventListener('mouseover', () => dismissBtn.style.background = 'rgba(74, 222, 128, 0.3)');
+        dismissBtn.addEventListener('mouseout', () => dismissBtn.style.background = 'rgba(74, 222, 128, 0.2)');
+        dismissBtn.addEventListener('click', () => {
             overlay.remove();
-        };
+        });
     }
 
     stopSessionTimer() {

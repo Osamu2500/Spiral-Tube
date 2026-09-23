@@ -42,9 +42,9 @@ export class NotePanel {
         const exportBtn = document.createElement('button');
         exportBtn.textContent = 'Export';
         exportBtn.style.cssText = 'background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 500; transition: background 0.2s;';
-        exportBtn.onmouseover = () => exportBtn.style.background = 'rgba(255,255,255,0.2)';
-        exportBtn.onmouseout = () => exportBtn.style.background = 'rgba(255,255,255,0.1)';
-        exportBtn.onclick = () => this.exportNotes();
+        exportBtn.addEventListener('mouseover', () => exportBtn.style.background = 'rgba(255,255,255,0.2)');
+        exportBtn.addEventListener('mouseout', () => exportBtn.style.background = 'rgba(255,255,255,0.1)');
+        exportBtn.addEventListener('click', () => this.exportNotes());
 
         header.appendChild(title);
         header.appendChild(exportBtn);
@@ -60,13 +60,13 @@ export class NotePanel {
         const lookupInput = document.createElement('input');
         lookupInput.placeholder = 'Wikipedia Lookup...';
         lookupInput.style.cssText = 'flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 8px 12px; font-size: 13px; outline: none; transition: border-color 0.2s;';
-        lookupInput.onfocus = () => lookupInput.style.borderColor = 'rgba(62,166,255,0.5)';
-        lookupInput.onblur = () => lookupInput.style.borderColor = 'rgba(255,255,255,0.1)';
+        lookupInput.addEventListener('focus', () => lookupInput.style.borderColor = 'rgba(62,166,255,0.5)');
+        lookupInput.addEventListener('blur', () => lookupInput.style.borderColor = 'rgba(255,255,255,0.1)');
         
         const lookupResult = document.createElement('div');
         lookupResult.style.cssText = 'display: none; padding: 12px 16px; font-size: 13px; color: #ccc; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); max-height: 150px; overflow-y: auto; line-height: 1.5;';
         
-        lookupInput.onkeydown = async (e) => {
+        lookupInput.addEventListener('keydown', async (e) => {
             if (e.key === 'Enter') {
                 const query = lookupInput.value.trim();
                 if (!query) return;
@@ -84,7 +84,7 @@ export class NotePanel {
                     lookupResult.innerHTML = '<i>Error fetching lookup.</i>';
                 }
             }
-        };
+        });
 
         lookupContainer.appendChild(lookupInput);
         this.notesPanel.appendChild(lookupContainer);
@@ -96,8 +96,8 @@ export class NotePanel {
         const input = document.createElement('textarea');
         input.placeholder = 'Type a note and press Enter...';
         input.style.cssText = 'width: 100%; height: 60px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; padding: 10px; resize: none; font-family: inherit; font-size: 13px; outline: none; box-sizing: border-box; transition: border-color 0.2s;';
-        input.onfocus = () => input.style.borderColor = 'rgba(62,166,255,0.5)';
-        input.onblur = () => input.style.borderColor = 'rgba(255,255,255,0.1)';
+        input.addEventListener('focus', () => input.style.borderColor = 'rgba(62,166,255,0.5)');
+        input.addEventListener('blur', () => input.style.borderColor = 'rgba(255,255,255,0.1)');
         
         this.parent.addListener(input, 'keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
@@ -192,20 +192,20 @@ export class NotePanel {
         const timeBtn = document.createElement('button');
         timeBtn.textContent = note.formattedTime;
         timeBtn.style.cssText = 'background: rgba(62,166,255,0.1); border: none; color: #3ea6ff; cursor: pointer; padding: 2px 6px; border-radius: 4px; font-family: inherit; font-size: 11px; font-weight: bold; transition: background 0.2s;';
-        timeBtn.onmouseover = () => timeBtn.style.background = 'rgba(62,166,255,0.2)';
-        timeBtn.onmouseout = () => timeBtn.style.background = 'rgba(62,166,255,0.1)';
-        timeBtn.onclick = () => {
+        timeBtn.addEventListener('mouseover', () => timeBtn.style.background = 'rgba(62,166,255,0.2)');
+        timeBtn.addEventListener('mouseout', () => timeBtn.style.background = 'rgba(62,166,255,0.1)');
+        timeBtn.addEventListener('click', () => {
             const video = window.YPP.DOMManager?.getVideo();
             if (video) video.currentTime = note.timestamp;
-        };
+        });
 
         const deleteBtn = document.createElement('button');
         deleteBtn.innerHTML = '🗑️';
         deleteBtn.title = "Delete Note";
         deleteBtn.style.cssText = 'background: transparent; border: none; cursor: pointer; opacity: 0.5; transition: opacity 0.2s; padding: 0;';
-        deleteBtn.onmouseover = () => deleteBtn.style.opacity = '1';
-        deleteBtn.onmouseout = () => deleteBtn.style.opacity = '0.5';
-        deleteBtn.onclick = () => this._deleteNote(note.id, el);
+        deleteBtn.addEventListener('mouseover', () => deleteBtn.style.opacity = '1');
+        deleteBtn.addEventListener('mouseout', () => deleteBtn.style.opacity = '0.5');
+        deleteBtn.addEventListener('click', () => this._deleteNote(note.id, el));
 
         header.appendChild(timeBtn);
         header.appendChild(deleteBtn);

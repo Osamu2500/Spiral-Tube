@@ -351,20 +351,20 @@ export class DomainMemoryUI {
             alignItems: 'center',
             transition: 'all 0.15s'
         });
-        closeBtn.onmouseenter = () => { closeBtn.style.background = 'rgba(255,255,255,0.12)'; closeBtn.style.color = '#fff'; };
-        closeBtn.onmouseleave = () => { closeBtn.style.background = 'rgba(255,255,255,0.06)'; closeBtn.style.color = '#aaa'; };
-        closeBtn.onclick = () => {
+        closeBtn.addEventListener('mouseenter', () => { closeBtn.style.background = 'rgba(255,255,255,0.12)'; closeBtn.style.color = '#fff'; });
+        closeBtn.addEventListener('mouseleave', () => { closeBtn.style.background = 'rgba(255,255,255,0.06)'; closeBtn.style.color = '#aaa'; });
+        closeBtn.addEventListener('click', () => {
             this._animateClose(ctx._domainPanel, () => ctx._removePanel());
-        };
+        });
 
         const rightGroup = header.lastElementChild;
         rightGroup.appendChild(closeBtn);
         
         const editBtn = header.querySelector('#ypp-dm-edit-name');
         if (editBtn) {
-            editBtn.onmouseenter = () => editBtn.style.color = '#fff';
-            editBtn.onmouseleave = () => editBtn.style.color = 'rgba(255,255,255,0.4)';
-            editBtn.onclick = () => {
+            editBtn.addEventListener('mouseenter', () => editBtn.style.color = '#fff');
+            editBtn.addEventListener('mouseleave', () => editBtn.style.color = 'rgba(255,255,255,0.4)');
+            editBtn.addEventListener('click', () => {
                 const newName = prompt('Enter a custom name for this profile:', savedName || '');
                 if (newName !== null) {
                     if (!ctx._domainProfile) ctx._domainProfile = {};
@@ -375,7 +375,7 @@ export class DomainMemoryUI {
                     titleEl.textContent = finalLabel;
                     titleEl.title = finalLabel;
                 }
-            };
+            });
         }
         
         return header;
@@ -421,14 +421,14 @@ export class DomainMemoryUI {
             </button>
         `;
         scopeWrap.querySelectorAll('.ypp-scope-tab').forEach(btn => {
-            btn.onclick = async (e) => {
+            btn.addEventListener('click', async (e) => {
                 const mode = e.currentTarget.getAttribute('data-scope');
                 await ctx.setScopeMode(mode);
                 this._animateClose(ctx._domainPanel, () => {
                     ctx._domainPanel = null;
                     ctx.togglePanel(video, ctx._domainBtn);
                 });
-            };
+            });
         });
         body.appendChild(scopeWrap);
 
@@ -457,7 +457,7 @@ export class DomainMemoryUI {
         const sliderBg = toggleWrap.querySelector('#ypp-dm-slider-bg');
         const sliderThumb = toggleWrap.querySelector('#ypp-dm-slider-thumb');
 
-        checkbox.onchange = (e) => {
+        checkbox.addEventListener('change', (e) => {
             const val = e.target.checked;
             ctx.toggleDomainMemory(val);
             sliderBg.style.backgroundColor = val ? '#3b82f6' : 'rgba(255,255,255,0.18)';
@@ -467,7 +467,7 @@ export class DomainMemoryUI {
             if (statsContainer) {
                 statsContainer.innerHTML = this._buildStatsHTML(ctx, video, val);
             }
-        };
+        });
         body.appendChild(toggleWrap);
 
         // ── 3. Stats Rows — Bug 4 fix: full detail ──
@@ -590,11 +590,11 @@ export class DomainMemoryUI {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
             Snapshot as Default
         `;
-        saveBtn.onclick = () => {
+        saveBtn.addEventListener('click', () => {
             ctx.recordChange('manual');
             ctx._showRestoreToast(video);
             this._animateClose(ctx._domainPanel, () => ctx._removePanel());
-        };
+        });
 
         // ── 2. Import & Export Row ──
         const ioRow = document.createElement('div');
@@ -606,7 +606,7 @@ export class DomainMemoryUI {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
             Copy JSON
         `;
-        copyBtn.onclick = async () => {
+        copyBtn.addEventListener('click', async () => {
             try {
                 const jsonStr = ctx.exportProfileJSON();
                 await navigator.clipboard.writeText(jsonStr);
@@ -617,7 +617,7 @@ export class DomainMemoryUI {
                     copyBtn.style.color = '';
                 }, 2000);
             } catch (_) {}
-        };
+        });
 
         const pasteBtn = document.createElement('button');
         pasteBtn.className = 'ypp-domain-btn-action';
@@ -625,7 +625,7 @@ export class DomainMemoryUI {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
             Paste JSON
         `;
-        pasteBtn.onclick = async () => {
+        pasteBtn.addEventListener('click', async () => {
             try {
                 const input = prompt('Paste your saved Profile JSON:');
                 if (input && input.trim()) {
@@ -635,7 +635,7 @@ export class DomainMemoryUI {
                     }
                 }
             } catch (_) {}
-        };
+        });
 
         ioRow.append(copyBtn, pasteBtn);
 
@@ -696,10 +696,10 @@ export class DomainMemoryUI {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
             Reset ${displayLabel}
         `;
-        resetBtn.onclick = () => {
+        resetBtn.addEventListener('click', () => {
             ctx.resetDomainProfile();
             this._animateClose(ctx._domainPanel, () => ctx._removePanel());
-        };
+        });
 
         const exportAllBtn = document.createElement('button');
         exportAllBtn.className = 'ypp-domain-btn-action';
@@ -707,7 +707,7 @@ export class DomainMemoryUI {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             Export All Profiles
         `;
-        exportAllBtn.onclick = async () => {
+        exportAllBtn.addEventListener('click', async () => {
             try {
                 if (chrome?.storage?.local) {
                     const data = await chrome.storage.local.get('ypp_domain_profiles'); // Use the correct key
@@ -723,7 +723,7 @@ export class DomainMemoryUI {
             } catch (err) {
                 console.error('[YPP] Failed to export profiles:', err);
             }
-        };
+        });
 
         const bottomRow = document.createElement('div');
         bottomRow.className = 'ypp-domain-btn-row';

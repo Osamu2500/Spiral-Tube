@@ -200,8 +200,6 @@ export class GlobalBarUI {
         if (t.gpb_showSpeed === false) bar.querySelector('#ypp-gpb-speed').style.setProperty('display', 'none', 'important');
 
         this.barElement = bar;
-        
-        makeDraggable(this.barElement);
 
         let targetContainer = document.body;
         
@@ -240,6 +238,8 @@ export class GlobalBarUI {
         this._abortController = new AbortController();
         const signal = this._abortController.signal;
         
+        makeDraggable(this.barElement, signal);
+        
         document.addEventListener('play', this._boundUpdateUIState, { capture: true, signal });
         document.addEventListener('pause', this._boundUpdateUIState, { capture: true, signal });
         document.addEventListener('volumechange', this._boundUpdateUIState, { capture: true, signal });
@@ -251,6 +251,18 @@ export class GlobalBarUI {
         
         this.updateUIState();
         this._applyAdaptiveTheme();
+        
+        this._uiElements = {
+            playBtn: bar.querySelector('#ypp-gpb-play'),
+            muteBtn: bar.querySelector('#ypp-gpb-mute'),
+            volSlider: bar.querySelector('#ypp-gpb-vol'),
+            volWrap: bar.querySelector('#ypp-gpb-vol-wrap'),
+            timeEl: bar.querySelector('#ypp-gpb-time'),
+            speedBtn: bar.querySelector('#ypp-gpb-speed'),
+            speedText: bar.querySelector('#ypp-gpb-speed-text'),
+            loopBtn: bar.querySelector('#ypp-gpb-loop'),
+            fullscreenBtn: bar.querySelector('#ypp-gpb-fullscreen')
+        };
     }
 
     _applyAdaptiveTheme() {
@@ -305,6 +317,17 @@ export class GlobalBarUI {
         if (this.barElement) {
             this.barElement.remove();
             this.barElement = null;
+        }
+        if (this._intersectionObserver) {
+            this._intersectionObserver.disconnect();
+        }
+        if (this._intersectionThrottle) {
+            clearTimeout(this._intersectionThrottle);
+            this._intersectionThrottle = null;
+        }
+        if (this._idleTimeout) {
+            clearTimeout(this._idleTimeout);
+            this._idleTimeout = null;
         }
         this._currentPrimaryVideo = null;
     }

@@ -44,13 +44,13 @@ export class AdjustTabUI {
             intTooltip.textContent = v + '%';
         };
         updateIntTrack(intSlider.value);
-        intSlider.oninput = (e) => {
+        intSlider.addEventListener('input', (e) => {
             ctx.filterIntensity = Number(e.target.value);
             intensitySection.querySelector('#ypp-int-val').textContent = ctx.filterIntensity + '%';
             updateIntTrack(e.target.value);
             ctx._applyComputedFilter(video);
             VideoFiltersUI.saveFilterSettings(ctx);
-        };
+        });
         intensitySection.appendChild(intSliderContainer);
         wrap.appendChild(intensitySection);
 
@@ -60,17 +60,17 @@ export class AdjustTabUI {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'ypp-adj-cp-btn';
         copyBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy Settings`;
-        copyBtn.onclick = () => {
+        copyBtn.addEventListener('click', () => {
             const data = JSON.stringify({ adjustments: ctx.filterAdjustments, intensity: ctx.filterIntensity, filterIndex: ctx.currentFilterIndex }, null, 2);
             navigator.clipboard?.writeText(data).then(() => {
                 copyBtn.textContent = '✓ Copied!';
                 setTimeout(() => { copyBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy Settings`; }, 1500);
             });
-        };
+        });
         const pasteBtn = document.createElement('button');
         pasteBtn.className = 'ypp-adj-cp-btn';
         pasteBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg> Paste Settings`;
-        pasteBtn.onclick = async () => {
+        pasteBtn.addEventListener('click', async () => {
             try {
                 const text = await navigator.clipboard?.readText();
                 const parsed = JSON.parse(text);
@@ -87,11 +87,11 @@ export class AdjustTabUI {
                 }
             } catch { pasteBtn.textContent = '✗ Invalid'; }
             setTimeout(() => { pasteBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg> Paste Settings`; }, 2000);
-        };
+        });
         const saveBtn = document.createElement('button');
         saveBtn.className = 'ypp-adj-cp-btn';
         saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save Preset`;
-        saveBtn.onclick = () => {
+        saveBtn.addEventListener('click', () => {
             const name = prompt('Enter a name for your custom preset:');
             if (!name) return;
             const newPreset = {
@@ -117,12 +117,12 @@ export class AdjustTabUI {
                     });
                 });
             }
-        };
+        });
 
         const exportBtn = document.createElement('button');
         exportBtn.className = 'ypp-adj-cp-btn';
         exportBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Export`;
-        exportBtn.onclick = () => {
+        exportBtn.addEventListener('click', () => {
             if (chrome?.storage?.local) {
                 chrome.storage.local.get('ypp_custom_presets', (data) => {
                     const custom = data.ypp_custom_presets || [];
@@ -138,7 +138,7 @@ export class AdjustTabUI {
                     setTimeout(() => exportBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Export`, 2000);
                 });
             }
-        };
+        });
 
         const importBtn = document.createElement('button');
         importBtn.className = 'ypp-adj-cp-btn';
@@ -148,9 +148,9 @@ export class AdjustTabUI {
         fileInput.accept = '.json';
         fileInput.style.display = 'none';
         importBtn.appendChild(fileInput);
-        importBtn.onclick = () => fileInput.click();
+        importBtn.addEventListener('click', () => fileInput.click());
         
-        fileInput.onchange = (e) => {
+        fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
@@ -178,7 +178,7 @@ export class AdjustTabUI {
             };
             reader.readAsText(file);
             fileInput.value = ''; // reset
-        };
+        });
 
         const compareBtn = document.createElement('button');
         compareBtn.className = 'ypp-adj-cp-btn ypp-adj-cp-compare-btn';
@@ -194,12 +194,12 @@ export class AdjustTabUI {
             ctx._applyComputedFilter(video);
         };
 
-        compareBtn.onpointerdown = (e) => {
+        compareBtn.addEventListener('pointerdown', (e) => {
             e.preventDefault();
             pointerDownTime = Date.now();
             isHolding = true;
             updateCompareState(true);
-        };
+        });
         const restore = (e) => {
             if (e) e.preventDefault();
             if (!isHolding) return;
@@ -213,10 +213,10 @@ export class AdjustTabUI {
                 updateCompareState(false);
             }
         };
-        compareBtn.onpointerup = restore;
-        compareBtn.onpointerleave = restore;
-        compareBtn.onpointercancel = restore;
-        compareBtn.oncontextmenu = (e) => e.preventDefault();
+        compareBtn.addEventListener('pointerup', restore);
+        compareBtn.addEventListener('pointerleave', restore);
+        compareBtn.addEventListener('pointercancel', restore);
+        compareBtn.addEventListener('contextmenu', (e) => e.preventDefault());
 
         cpRow.appendChild(copyBtn);
         cpRow.appendChild(pasteBtn);
@@ -354,7 +354,7 @@ export class AdjustTabUI {
                 </div>
             `;
             hdr.querySelector('.ypp-adj-section-title').appendChild(dot);
-            hdr.onclick = () => { sec.classList.toggle('open'); };
+            hdr.addEventListener('click', () => { sec.classList.toggle('open'); });
 
             // Body (grid)
             const bodyWrapper = document.createElement('div');
@@ -420,7 +420,7 @@ export class AdjustTabUI {
                 };
                 updateTrack(currentValue);
 
-                slider.oninput = (e) => {
+                slider.addEventListener('input', (e) => {
                     const v = Number(e.target.value);
                     ctx.filterAdjustments[cfg.id] = v;
                     val.textContent = v + cfg.unit;
@@ -433,11 +433,11 @@ export class AdjustTabUI {
                         return Math.abs(sv - s.def) > 0.01;
                     }));
                     ctx._applyComputedFilter(video);
-                };
+                });
                 // Save to storage only on release (not on every drag tick)
-                slider.onchange = () => VideoFiltersUI.saveFilterSettings(ctx);
+                slider.addEventListener('change', () => VideoFiltersUI.saveFilterSettings(ctx));
 
-                resetBtn.onclick = (e) => {
+                resetBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     ctx.filterAdjustments[cfg.id] = cfg.def;
                     slider.value = cfg.def;
@@ -450,7 +450,7 @@ export class AdjustTabUI {
                     }));
                     ctx._applyComputedFilter(video);
                     VideoFiltersUI.saveFilterSettings(ctx);
-                };
+                });
 
                 valWrap.appendChild(val);
                 valWrap.appendChild(resetBtn);

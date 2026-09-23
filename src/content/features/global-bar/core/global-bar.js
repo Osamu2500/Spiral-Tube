@@ -67,15 +67,7 @@ export class GlobalBar extends window.YPP.features.BaseFeature {
                 this.scanForVideos();
             });
             
-            // Simple URL polling for SPAs that use pushState without triggering popstate
-            let lastUrl = location.href;
-            this._urlPoll = this.setInterval(() => {
-                if (location.href !== lastUrl) {
-                    lastUrl = location.href;
-                    this.isDismissed = false;
-                    this.scanForVideos();
-                }
-            }, 1000);
+            this._setupNavigationHooks();
         } catch (e) {
             this.utils?.log('Error enabling GlobalBar', 'GLOBAL', 'error', e);
         }
@@ -84,7 +76,7 @@ export class GlobalBar extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         this.stopObserver();
-        this.clearInterval(this._urlPoll);
+        this._teardownNavigationHooks();
         this.ui.removeAll();
         this.utils?.removeStyle('ypp-global-bar-css');
         
@@ -97,6 +89,41 @@ export class GlobalBar extends window.YPP.features.BaseFeature {
     // =========================================================================
     // OBSERVATION & SCANNING
     // =========================================================================
+    
+    _setupNavigationHooks() {
+        if (this._navHookActive) return;
+        this._navHookActive = true;
+
+        const self = this;
+        const notifyNav = () => {
+            self.isDismissed = false;
+            setTimeout(() => self.scanForVideos(), 300);
+        };
+
+        this._origPushState = history.pushState;
+        this._origReplaceState = history.replaceState;
+        
+        history.pushState = function (...args) {
+            const res = self._origPushState.apply(this, args);
+            notifyNav();
+            return res;
+        };
+        history.replaceState = function (...args) {
+            const res = self._origReplaceState.apply(this, args);
+            notifyNav();
+            return res;
+        };
+    }
+    
+    _teardownNavigationHooks() {
+        if (this._navHookActive) {
+            if (this._origPushState) history.pushState = this._origPushState;
+            if (this._origReplaceState) history.replaceState = this._origReplaceState;
+            this._navHookActive = false;
+            this._origPushState = null;
+            this._origReplaceState = null;
+        }
+    }
 
     startObserver() {
         if (this._isObserving) return;
@@ -135,8 +162,8 @@ export class GlobalBar extends window.YPP.features.BaseFeature {
         // Respect user's explicit close action for this view
         if (this.isDismissed) return;
 
-        const videos = document.querySelectorAll('video');
-        videos.forEach(video => {
+        const unprocessedVideos = document.querySelectorAll('video:not([data-ypp-processed])');
+        unprocessedVideos.forEach(video => {
             if (this.ui.hasVideo(video)) return;
             
             video.setAttribute('data-ypp-processed', 'true');

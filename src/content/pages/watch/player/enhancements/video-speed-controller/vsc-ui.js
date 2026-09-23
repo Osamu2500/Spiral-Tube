@@ -22,10 +22,15 @@ export class VscUI {
         const container = document.createElement('div');
         container.className = 'ypp-vsc-panel';
         
+        // Controls Row
+        const controlsRow = document.createElement('div');
+        controlsRow.className = 'ypp-vsc-controls-row';
+
         // Elements
         const display = document.createElement('span');
-        display.className = 'ypp-vsc-speed-display'; // Fix class name to match CSS!
+        display.className = 'ypp-vsc-speed-display';
         display.textContent = '1.00';
+        display.title = 'Click to reset to 1.0x (Drag to move)';
 
         const ICONS = {
             rewind: `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>`,
@@ -36,27 +41,61 @@ export class VscUI {
         };
 
         const formatKey = (key) => key ? key.replace('Shift+', '⇧') : '';
-        const step = this.vsc.settings?.vscSpeedStep ?? 0.25;
+        const defaultStep = this.vsc.settings?.vscSpeedStep ?? 0.25;
+        const fineStep = 0.05;
 
         const getShortcutKey = (action) => {
             const sc = this.vsc.shortcuts.getShortcuts().find(s => s.action === action);
             return sc ? sc.key : '';
         };
 
-        const btnRewind = this.createButton(ICONS.rewind, `Rewind 10s (${formatKey(getShortcutKey('rewind'))})`, () => { video.currentTime -= 10; });
-        const btnSlower = this.createButton(ICONS.slower, `Slower -${step}x (${formatKey(getShortcutKey('decrease'))})`, () => this.vsc.adjustSpeed(video, -step));
-        const btnFaster = this.createButton(ICONS.faster, `Faster +${step}x (${formatKey(getShortcutKey('increase'))})`, () => this.vsc.adjustSpeed(video, step));
-        const btnAdvance = this.createButton(ICONS.advance, `Advance 10s (${formatKey(getShortcutKey('advance'))})`, () => { video.currentTime += 10; });
-        const btnClose = this.createButton(ICONS.close, `Hide Controller (${formatKey(getShortcutKey('showHide'))})`, () => { controller.style.display = 'none'; });
+        const updateInteraction = () => {
+            const state = this.vsc.controllers.get(video);
+            if (state) state.lastInteraction = Date.now();
+        };
+
+        const btnRewind = this.createButton(ICONS.rewind, `Rewind 10s (${formatKey(getShortcutKey('rewind'))})`, (e) => { updateInteraction(); video.currentTime -= 10; });
+        const btnSlower = this.createButton(ICONS.slower, `Slower (Hold Shift for fine adjust)`, (e) => { 
+            updateInteraction(); 
+            this.vsc.adjustSpeed(video, -(e.shiftKey ? fineStep : defaultStep)); 
+        });
+        const btnFaster = this.createButton(ICONS.faster, `Faster (Hold Shift for fine adjust)`, (e) => { 
+            updateInteraction(); 
+            this.vsc.adjustSpeed(video, e.shiftKey ? fineStep : defaultStep); 
+        });
+        const btnAdvance = this.createButton(ICONS.advance, `Advance 10s (${formatKey(getShortcutKey('advance'))})`, (e) => { updateInteraction(); video.currentTime += 10; });
+        const btnClose = this.createButton(ICONS.close, `Hide Controller (${formatKey(getShortcutKey('showHide'))})`, (e) => { updateInteraction(); controller.style.display = 'none'; });
         btnClose.classList.add('ypp-vsc-close');
 
-        // Assemble
-        container.appendChild(display);
-        container.appendChild(btnRewind);
-        container.appendChild(btnSlower);
-        container.appendChild(btnFaster);
-        container.appendChild(btnAdvance);
-        container.appendChild(btnClose);
+        // Presets Row
+        const presetsRow = document.createElement('div');
+        presetsRow.className = 'ypp-vsc-presets-row';
+        const presetSpeeds = [1.0, 1.5, 2.0, 2.5, 3.0];
+        presetSpeeds.forEach(speed => {
+            const presetBtn = document.createElement('button');
+            presetBtn.className = 'ypp-vsc-preset-btn';
+            presetBtn.textContent = speed.toFixed(1) + 'x';
+            presetBtn.title = `Set speed to ${speed}x`;
+            this.vsc.addListener(presetBtn, 'click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                updateInteraction();
+                this.vsc.setSpeed(video, speed);
+                this.showOSDFlash(video, speed.toFixed(2) + 'x');
+            });
+            presetsRow.appendChild(presetBtn);
+        });
+
+        // Assemble Controls Row
+        controlsRow.appendChild(display);
+        controlsRow.appendChild(btnRewind);
+        controlsRow.appendChild(btnSlower);
+        controlsRow.appendChild(btnFaster);
+        controlsRow.appendChild(btnAdvance);
+        controlsRow.appendChild(btnClose);
+        
+        container.appendChild(controlsRow);
+        container.appendChild(presetsRow);
         
         // Apply Opacity
         const opacity = this.vsc.settings?.vscControllerOpacity ?? 0.3;
@@ -67,7 +106,6 @@ export class VscUI {
 
         controller.appendChild(container);
 
-        // Generate unique class name for this video's controller (instead of anchorName)
         const controllerClass = `ypp-vsc-${Math.random().toString(36).substr(2, 9)}`;
         controller.classList.add(controllerClass);
         
@@ -79,8 +117,14 @@ export class VscUI {
         const parent = video.parentElement || document.body;
         parent.insertBefore(controller, video.nextSibling || video);
         
+        // Load saved position
         let translateX = 0;
         let translateY = 0;
+        if (this.vsc.settings?.vscPositionX !== undefined) {
+            translateX = this.vsc.settings.vscPositionX;
+            translateY = this.vsc.settings.vscPositionY;
+        }
+        
         let isDragging = false;
         let startX, startY;
 
@@ -88,9 +132,14 @@ export class VscUI {
             controller.style.setProperty('--ypp-vsc-x', `${translateX}px`);
             controller.style.setProperty('--ypp-vsc-y', `${translateY}px`);
         };
+        updateTransform();
 
+        // Reset speed on clicking the number
+        let dragHasMoved = false;
+        
         this.vsc.addListener(display, 'mousedown', (e) => {
             isDragging = true;
+            dragHasMoved = false;
             startX = e.clientX - translateX;
             startY = e.clientY - translateY;
             e.preventDefault(); // prevent text selection
@@ -99,15 +148,29 @@ export class VscUI {
 
         const onMouseMove = (e) => {
             if (!isDragging) return;
+            dragHasMoved = true;
             translateX = e.clientX - startX;
             translateY = e.clientY - startY;
             updateTransform();
         };
 
-        const onMouseUp = () => {
+        const onMouseUp = (e) => {
             if (isDragging) {
                 isDragging = false;
                 controller.style.transition = ''; // Restore CSS transitions
+                
+                // Save position to memory
+                if (dragHasMoved) {
+                    chrome.runtime.sendMessage({ action: 'PATCH_SETTINGS', payload: { 
+                        vscPositionX: translateX, 
+                        vscPositionY: translateY 
+                    } }, () => {});
+                } else if (e.target === display) {
+                    // It was a click, not a drag. Reset speed.
+                    updateInteraction();
+                    this.vsc.setSpeed(video, 1.0);
+                    this.showOSDFlash(video, '1.00x');
+                }
             }
         };
 
@@ -151,9 +214,6 @@ export class VscUI {
         });
         this.vsc.addListener(video, 'pause', triggerShow);
         
-        // Listen to document for mouse events because video players often have complex overlays
-        // In iframes, moving the mouse anywhere should reveal the controls.
-        // Listen to the video container instead of document to prevent UI showing when reading other parts of the site
         const videoContainer = video.parentElement || video;
         if (videoContainer) {
             this.vsc.addListener(videoContainer, 'mousemove', triggerShow);
@@ -163,7 +223,6 @@ export class VscUI {
             });
         }
         
-        // Also listen to the controller itself so it doesn't hide while hovered
         this.vsc.addListener(controller, 'mouseenter', () => {
             this.showController(video);
             if (this.vsc.controllers.has(video)) {
@@ -192,9 +251,9 @@ export class VscUI {
         this.vsc.addListener(btn, 'click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            onClick();
+            onClick(e);
         });
-        btn.onmousedown = (e) => e.stopPropagation();
+        btn.addEventListener('mousedown', (e) => e.stopPropagation());
         return btn;
     }
 

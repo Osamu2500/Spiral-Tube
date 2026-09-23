@@ -293,11 +293,11 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         seekBar.addEventListener('input', () => {
             if (video.duration) video.currentTime = (parseInt(seekBar.value) / 10000) * video.duration;
         });
-        playBtn.onclick = () => video.paused ? video.play() : video.pause();
-        pipWindow.document.getElementById('pip-rewind').onclick = () => { video.currentTime = Math.max(0, video.currentTime - 5); };
-        pipWindow.document.getElementById('pip-fwd').onclick = () => { video.currentTime = Math.min(video.duration || 0, video.currentTime + 5); };
-        muteBtn.onclick = () => { video.muted = !video.muted; };
-        pipWindow.document.getElementById('pip-close').onclick = () => pipWindow.close();
+        playBtn.addEventListener('click', () => video.paused ? video.play() : video.pause());
+        pipWindow.document.getElementById('pip-rewind').addEventListener('click', () => { video.currentTime = Math.max(0, video.currentTime - 5); });
+        pipWindow.document.getElementById('pip-fwd').addEventListener('click', () => { video.currentTime = Math.min(video.duration || 0, video.currentTime + 5); });
+        muteBtn.addEventListener('click', () => { video.muted = !video.muted; });
+        pipWindow.document.getElementById('pip-close').addEventListener('click', () => pipWindow.close());
 
         // PIP-UP-4: Keyboard shortcuts
         pipWindow.document.addEventListener('keydown', e => {

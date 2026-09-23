@@ -101,11 +101,11 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         btn.innerHTML = icon;
         btn.title = 'Cinema Filters';
         btn.className = 'ypp-action-btn';
-        btn.onclick = (e) => {
+        btn.addEventListener('click', (e) => {
             e.stopPropagation();
             // Bug 2F fix: use the captured initialVideo, not a fresh _getVideo() query
             this.toggleFilterPanel(initialVideo || this._getVideo(), btn);
-        };
+        });
         this._filterBtn = btn;
         return btn;
     }

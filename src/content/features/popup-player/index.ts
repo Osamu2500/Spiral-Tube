@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @fileoverview
  * Popup Player Feature
  *
@@ -9,6 +9,8 @@
  *
  * Architecture:
  *  - popup-player.css        — UI overrides for glassmorphism theme and element hiding.
+ *  - custom-ui.js            — Custom drop-down sizes/ratios injected into popup-player.
+ *  - embed-bridge.js         — Feature sync (filters/volume/UI theme) for the youtube-nocookie embed.
  *  - vendor/popup-player-bundle.js  — Main minified overlay UI, injected into all YouTube frames.
  *  - vendor/popup-player-loader.js  — Minified iframe loader; native panel (comments).
  *  - src/content/features/popup-player/popup-player-embed.html — Self-hosted embed worker. Loaded

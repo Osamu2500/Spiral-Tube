@@ -27,13 +27,13 @@ export class DynamicsTabUI {
         autoGainBtn.className = 'ypp-eq-comp-btn' + (ctx._autoGain ? ' active' : '');
         autoGainBtn.style.margin = '0';
         autoGainBtn.textContent = ctx._autoGain ? 'ON' : 'OFF';
-        autoGainBtn.onclick = () => {
+        autoGainBtn.addEventListener('click', () => {
             if (ctx.ctx && ctx.ctx.state === 'suspended') ctx.ctx.resume().catch(()=>{});
             ctx.setAutoGain(!ctx._autoGain);
             autoGainBtn.classList.toggle('active', ctx._autoGain);
             autoGainBtn.textContent = ctx._autoGain ? 'ON' : 'OFF';
             saveSettings(ctx);
-        };
+        });
         autoGainRow.append(autoGainLbl, autoGainBtn);
         dynPanel.appendChild(autoGainRow);
         panel.addEventListener('ypp-eq-update', () => {

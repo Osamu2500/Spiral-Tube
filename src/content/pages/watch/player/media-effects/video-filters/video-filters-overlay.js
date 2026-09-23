@@ -102,9 +102,12 @@ export class VideoFiltersOverlay {
       }
       this._resizeObserver.observe(video);
       
-      window.addEventListener('scroll', sync, { passive: true });
-      window.addEventListener('resize', sync, { passive: true });
-      overlay._syncHandler = sync;
+      if (overlay._syncController) overlay._syncController.abort();
+      overlay._syncController = new AbortController();
+      const signal = overlay._syncController.signal;
+
+      window.addEventListener('scroll', sync, { passive: true, signal });
+      window.addEventListener('resize', sync, { passive: true, signal });
   }
 
   static _applyOverlayStyles(overlay, ctx, type, grainAmount) {
@@ -678,9 +681,9 @@ export class VideoFiltersOverlay {
         this._resizeObserver = null;
     }
     if (ctx._filterOverlay) {
-      if (ctx._filterOverlay._syncHandler) {
-          window.removeEventListener('scroll', ctx._filterOverlay._syncHandler);
-          window.removeEventListener('resize', ctx._filterOverlay._syncHandler);
+      if (ctx._filterOverlay._syncController) {
+          ctx._filterOverlay._syncController.abort();
+          ctx._filterOverlay._syncController = null;
       }
       ctx._filterOverlay.remove();
       ctx._filterOverlay = null;

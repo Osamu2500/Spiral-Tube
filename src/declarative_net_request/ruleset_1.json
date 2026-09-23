@@ -24,5 +24,30 @@
                 "youtube-nocookie.com"
             ]
         }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "modifyHeaders",
+            "responseHeaders": [
+                {
+                    "header": "Access-Control-Allow-Origin",
+                    "operation": "set",
+                    "value": "*"
+                },
+                {
+                    "header": "Access-Control-Allow-Methods",
+                    "operation": "set",
+                    "value": "GET, HEAD, OPTIONS"
+                }
+            ]
+        },
+        "condition": {
+            "resourceTypes": [
+                "media",
+                "xmlhttprequest"
+            ]
+        }
     }
 ]

@@ -61,67 +61,67 @@ export const FILTERS = [
   },
 
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: 'Retro',
     css: 'sepia(60%) hue-rotate(330deg) saturate(150%) contrast(120%)',
     overlay: null,
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '📺 CRT Classic',
     css: 'url(#ypp-crt-rgb) contrast(135%) brightness(110%) saturate(85%)',
     overlay: 'crt',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '📺 CRT Light',
     css: 'url(#ypp-crt-rgb) contrast(110%) brightness(105%) saturate(95%)',
     overlay: 'crt-light',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '🕹️ CRT Arcade',
     css: 'url(#ypp-crt-rgb) contrast(125%) brightness(115%) saturate(140%)',
     overlay: 'crt-arcade',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '📟 Terminal (Green)',
     css: 'url(#ypp-crt-rgb) grayscale(100%) sepia(100%) hue-rotate(80deg) saturate(300%) contrast(150%) brightness(120%)',
     overlay: 'crt-green',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '📠 Terminal (Amber)',
     css: 'url(#ypp-crt-rgb) grayscale(100%) sepia(100%) hue-rotate(30deg) saturate(300%) contrast(150%) brightness(120%)',
     overlay: 'crt-amber',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '📼 VHS Tape',
     css: 'contrast(90%) brightness(85%) saturate(60%) hue-rotate(5deg)',
     overlay: 'vhs',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '🎞 Old Film',
     css: 'sepia(70%) contrast(90%) brightness(85%) blur(0.3px)',
     overlay: 'oldfilm',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: 'Film Grain',
     css: 'contrast(110%) brightness(100%) saturate(100%)',
     overlay: 'oldfilm',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: '90s TV',
     css: 'contrast(85%) brightness(90%) saturate(75%) hue-rotate(5deg)',
     overlay: 'crt',
   },
   {
-    category: 'Retro & Analog',
+    category: 'Film & Retro',
     name: 'Polaroid',
     css: 'sepia(20%) contrast(105%) brightness(108%) saturate(110%)',
     overlay: null,
@@ -747,77 +747,77 @@ export const FILTERS = [
 
   // ── FujiFilm Recipes ──
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Classic Chrome',
     css: 'sepia(20%) saturate(85%) contrast(110%) brightness(105%)',
     preview: 'linear-gradient(135deg, #d3cbb8, #9a8c78)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Velvia (Vivid)',
     css: 'saturate(140%) contrast(115%) brightness(105%)',
     preview: 'linear-gradient(135deg, #ff0055, #00ffaa)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Astia (Soft)',
     css: 'saturate(110%) contrast(90%) brightness(110%)',
     preview: 'linear-gradient(135deg, #ffb6c1, #add8e6)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Provia (Std)',
     css: 'saturate(105%) contrast(105%)',
     preview: 'linear-gradient(135deg, #e0e0e0, #888888)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Kodachrome 64',
     css: 'sepia(25%) saturate(120%) contrast(120%) brightness(105%)',
     preview: 'linear-gradient(135deg, #ff4500, #ff8c00)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Portra 400',
     css: 'sepia(15%) saturate(110%) contrast(95%) brightness(115%)',
     preview: 'linear-gradient(135deg, #f5deb3, #d2b48c)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Acros (B&W)',
     css: 'grayscale(100%) contrast(125%) brightness(105%)',
     preview: 'linear-gradient(135deg, #ffffff, #000000)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Classic Negative',
     css: 'sepia(15%) saturate(80%) contrast(130%) brightness(95%) hue-rotate(5deg)',
     preview: 'linear-gradient(135deg, #4b5d67, #322f3d)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'Eterna (Cinema)',
     css: 'saturate(70%) contrast(85%) brightness(110%)',
     preview: 'linear-gradient(135deg, #9ca3af, #d1d5db)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'PRO Neg. Hi',
     css: 'saturate(95%) contrast(115%)',
     preview: 'linear-gradient(135deg, #c4aead, #e2d1c3)',
     overlay: null,
   },
   {
-    category: 'FujiFilm Recipes',
+    category: 'Film & Retro',
     name: 'PRO Neg. Std',
     css: 'saturate(90%) contrast(95%)',
     preview: 'linear-gradient(135deg, #dfd5c9, #f7f1e3)',
@@ -826,70 +826,64 @@ export const FILTERS = [
 
   // ── Anime Worlds ──
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Studio Ghibli',
     css: 'saturate(140%) contrast(110%) brightness(110%)',
     preview: 'linear-gradient(135deg, #74ebd5, #9face6)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Makoto Shinkai',
     css: 'saturate(145%) contrast(125%) brightness(115%)',
     preview: 'linear-gradient(135deg, #4facfe, #00f2fe)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
-    name: 'KyoAni Soft',
+    category: 'Anime & Animation',
+    name: 'Kyoto Animation (Soft)',
     css: 'saturate(110%) contrast(90%) brightness(115%)',
     preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Ufotable Night',
     css: 'saturate(120%) contrast(135%) brightness(95%)',
     preview: 'linear-gradient(135deg, #30cfd0, #330867)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'MAPPA Dark',
     css: 'saturate(75%) contrast(130%) brightness(95%)',
     preview: 'linear-gradient(135deg, #434343, #000000)',
     overlay: null,
   },
+
   {
-    category: 'Anime Worlds',
-    name: '90s Retro Anime',
-    css: 'sepia(20%) saturate(110%) contrast(95%) brightness(105%)',
-    preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)',
-    overlay: null,
-  },
-  {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Pastel Shojo',
     css: 'saturate(115%) contrast(90%) brightness(120%)',
     preview: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Isekai Fantasy',
     css: 'saturate(135%) contrast(115%) brightness(110%)',
     preview: 'linear-gradient(135deg, #84fab0, #8fd3f4)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Cyberpunk Edgerunner',
     css: 'saturate(150%) contrast(130%) brightness(105%)',
     preview: 'linear-gradient(135deg, #f83600, #f9d423)',
     overlay: null,
   },
   {
-    category: 'Anime Worlds',
+    category: 'Anime & Animation',
     name: 'Shonen Pop',
     css: 'saturate(140%) contrast(115%) brightness(105%)',
     preview: 'linear-gradient(135deg, #f6d365, #fda085)',
@@ -1080,35 +1074,35 @@ export const FILTERS = [
 
   // ── Dreamcore & Weirdcore ──
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Liminal Space',
     css: 'url(#ypp-fx-technicolor) saturate(150%) contrast(90%) brightness(110%) blur(0.5px)',
     preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)',
     overlay: 'grain_custom',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Poolrooms',
     css: 'saturate(80%) contrast(110%) brightness(115%) hue-rotate(15deg)',
     preview: 'linear-gradient(135deg, #89f7fe, #66a6ff)',
     overlay: 'grain_custom',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Nostalgia Trip',
     css: 'sepia(30%) saturate(140%) contrast(100%) brightness(110%)',
     preview: 'linear-gradient(135deg, #fdfbfb, #ebedee)',
     overlay: 'grain_custom',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Weirdcore',
     css: 'url(#ypp-fx-colorize) contrast(150%) saturate(200%) brightness(90%)',
     preview: 'linear-gradient(135deg, #ff0844, #ffb199)',
     overlay: 'crt',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'True Dreamcore',
     css: 'url(#ypp-fx-glitch) saturate(180%) contrast(140%) sepia(40%) hue-rotate(-15deg) blur(0.5px)',
     preview: 'linear-gradient(135deg, #ff00cc, #333399)',
@@ -1116,42 +1110,42 @@ export const FILTERS = [
   },
 
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Soft Dreamcore',
     css: 'saturate(110%) contrast(85%) brightness(125%) sepia(15%) blur(0.8px)',
     preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)',
     overlay: 'grain_custom',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Lucid Dream',
     css: 'saturate(160%) contrast(95%) brightness(120%) hue-rotate(-10deg)',
     preview: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)',
     overlay: null,
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Fever Dream',
     css: 'url(#ypp-fx-dreamcolor) saturate(250%) contrast(130%) hue-rotate(60deg) blur(1px)',
     preview: 'linear-gradient(135deg, #ff5858, #f09819)',
     overlay: 'vhs',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'The Backrooms',
     css: 'sepia(80%) saturate(150%) hue-rotate(35deg) contrast(120%) brightness(90%)',
     preview: 'linear-gradient(135deg, #d4fc79, #96e6a1)',
     overlay: 'crt',
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'Ethereal Glow',
     css: 'saturate(70%) contrast(110%) brightness(130%) blur(1.5px)',
     preview: 'linear-gradient(135deg, #e0c3fc, #8ec5fc)',
     overlay: null,
   },
   {
-    category: 'Dreamcore',
+    category: 'Aesthetics & Weirdcore',
     name: 'False Memory',
     css: 'grayscale(40%) sepia(20%) contrast(90%) brightness(115%) blur(0.3px)',
     preview: 'linear-gradient(135deg, #d5d4d0, #eeeeec)',
@@ -1159,50 +1153,20 @@ export const FILTERS = [
   },
 
   // ── Anime Styles ──
+
+
+
+
+
   {
-    category: 'Anime',
-    name: 'Studio Ghibli',
-    css: 'saturate(140%) contrast(110%) brightness(105%) hue-rotate(5deg)',
-    preview: 'linear-gradient(135deg, #a8e063, #56ab2f)',
-    overlay: null,
-  },
-  {
-    category: 'Anime',
-    name: 'Makoto Shinkai',
-    css: 'saturate(180%) contrast(120%) brightness(115%) hue-rotate(-15deg)',
-    preview: 'linear-gradient(135deg, #00c6ff, #0072ff)',
-    overlay: null,
-  },
-  {
-    category: 'Anime',
-    name: 'Kyoto Animation',
-    css: 'saturate(120%) contrast(95%) brightness(110%) blur(0.3px)',
-    preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)',
-    overlay: null,
-  },
-  {
-    category: 'Anime',
-    name: 'Ufotable (Night)',
-    css: 'saturate(160%) contrast(130%) brightness(90%) hue-rotate(-10deg)',
-    preview: 'linear-gradient(135deg, #1f1c2c, #928dab)',
-    overlay: null,
-  },
-  {
-    category: 'Anime',
-    name: 'Cyberpunk Neon',
-    css: 'saturate(200%) contrast(140%) brightness(95%) hue-rotate(-30deg)',
-    preview: 'linear-gradient(135deg, #f857a6, #ff5858)',
-    overlay: 'crt',
-  },
-  {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Titan Gritty',
     css: 'sepia(40%) saturate(70%) contrast(125%) brightness(95%)',
     preview: 'linear-gradient(135deg, #8b4513, #a0522d)',
     overlay: 'grain_custom',
   },
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: '90s Retro Cel',
     css: 'saturate(110%) contrast(90%) sepia(15%) brightness(110%)',
     preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)',
@@ -1474,7 +1438,7 @@ export const FILTERS = [
   // ── Legendary Film Stocks ──
   // Portra 160: very low grain, lifted shadows, warm neutral, renders skin tones beautifully
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Kodak Portra 160',
     css: 'saturate(108%) contrast(88%) brightness(112%) sepia(8%)',
     preview: 'linear-gradient(135deg, #fdfbfb, #ebedee)',
@@ -1482,7 +1446,7 @@ export const FILTERS = [
   },
   // Portra 800: same warmth but pushed — slightly more grain, slightly more contrast
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Kodak Portra 800',
     css: 'saturate(118%) contrast(102%) brightness(108%) sepia(14%)',
     preview: 'linear-gradient(135deg, #f6d365, #fda085)',
@@ -1490,7 +1454,7 @@ export const FILTERS = [
   },
   // Tri-X 400: the classic street photography B&W — punchy, gritty, deep shadows
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Kodak Tri-X 400',
     css: 'grayscale(100%) contrast(138%) brightness(102%)',
     preview: 'linear-gradient(135deg, #ffffff, #000000)',
@@ -1498,7 +1462,7 @@ export const FILTERS = [
   },
   // HP5 Plus: latitude king — softer B&W, high dynamic range, beautiful midtones
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Ilford HP5 Plus',
     css: 'grayscale(100%) contrast(95%) brightness(112%)',
     preview: 'linear-gradient(135deg, #e0e0e0, #888888)',
@@ -1506,7 +1470,7 @@ export const FILTERS = [
   },
   // Fuji Superia: slightly green in the shadows, punchy reds, pleasant everyday film
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Fuji Superia 400',
     css: 'saturate(125%) contrast(112%) brightness(105%) sepia(5%) hue-rotate(6deg)',
     preview: 'linear-gradient(135deg, #11998e, #38ef7d)',
@@ -1514,7 +1478,7 @@ export const FILTERS = [
   },
   // CineStill 800T: remjet-removed cinema film — tungsten-balanced (cooler shadows, warm highlights, RED halation)
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'CineStill 800T',
     css: 'saturate(115%) contrast(120%) brightness(105%) sepia(8%) hue-rotate(-5deg)',
     preview: 'linear-gradient(135deg, #00c6ff, #0072ff)',
@@ -1522,7 +1486,7 @@ export const FILTERS = [
   },
   // Polaroid 600 (Expired): washed out, warm magenta-yellow drift, low contrast
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Polaroid 600 (Expired)',
     css: 'saturate(75%) contrast(88%) brightness(122%) sepia(32%)',
     preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)',
@@ -1530,7 +1494,7 @@ export const FILTERS = [
   },
   // Agfa Vista 200: punchy reds and oranges, slightly warm, good saturation — a beloved EU film
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Agfa Vista 200',
     css: 'saturate(138%) contrast(115%) brightness(108%) sepia(10%)',
     preview: 'linear-gradient(135deg, #f09819, #edde5d)',
@@ -1538,7 +1502,7 @@ export const FILTERS = [
   },
   // Lomography Purple: cross-processed slide film — extreme purple/magenta shift (this one IS supposed to be weird)
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Lomography Purple',
     css: 'saturate(145%) contrast(118%) brightness(102%) hue-rotate(-15deg) sepia(20%)',
     preview: 'linear-gradient(135deg, #b224ef, #7579ff)',
@@ -1546,7 +1510,7 @@ export const FILTERS = [
   },
   // Kodachrome 64: the National Geographic stock — rich reds, warm but punchy, medium contrast
   {
-    category: 'Film Stocks',
+    category: 'Film & Retro',
     name: 'Kodachrome (1970s)',
     css: 'saturate(145%) contrast(128%) brightness(105%) sepia(18%)',
     preview: 'linear-gradient(135deg, #f12711, #f5af19)',
@@ -1556,7 +1520,7 @@ export const FILTERS = [
   // ── Animation & Anime ──
   // Evangelion: Anno's desaturated cel palette — pale skin, flat shadows, punchy isolated reds
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Evangelion (90s Cel)',
     css: 'saturate(82%) contrast(118%) brightness(112%) sepia(15%)',
     preview: 'linear-gradient(135deg, #ff0844, #ffb199)',
@@ -1564,7 +1528,7 @@ export const FILTERS = [
   },
   // Akira: Otomo's hyper-detailed Tokyo — neon city lights, vivid reds against dark nights
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Akira (Neo-Tokyo)',
     css: 'saturate(155%) contrast(138%) brightness(93%)',
     preview: 'linear-gradient(135deg, #f83600, #f9d423)',
@@ -1572,7 +1536,7 @@ export const FILTERS = [
   },
   // Cowboy Bebop: desaturated jazz-noir — sepia-soaked, muted greens and purples, moody
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Cowboy Bebop (Noir)',
     css: 'saturate(80%) contrast(122%) brightness(95%) sepia(30%)',
     preview: 'linear-gradient(135deg, #5c258d, #4389a2)',
@@ -1580,7 +1544,7 @@ export const FILTERS = [
   },
   // Arcane Piltover: warm golden brass and amber, painterly high-detail aesthetic
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Arcane (Piltover)',
     css: 'saturate(132%) contrast(115%) brightness(112%) sepia(22%)',
     preview: 'linear-gradient(135deg, #f6d365, #fda085)',
@@ -1588,7 +1552,7 @@ export const FILTERS = [
   },
   // Arcane Zaun: grimy undercity — poisonous green-purple with low brightness and high grit
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Arcane (Zaun)',
     css: 'saturate(130%) contrast(125%) brightness(88%) sepia(8%) hue-rotate(10deg)',
     preview: 'linear-gradient(135deg, #02aab0, #00cdac)',
@@ -1596,7 +1560,7 @@ export const FILTERS = [
   },
   // Violet Evergarden: KyoAni's lush pastel watercolor — soft blur, lifted whites, warm greens
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Violet Evergarden',
     css: 'saturate(142%) contrast(102%) brightness(115%) sepia(10%) blur(0.25px)',
     preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)',
@@ -1604,7 +1568,7 @@ export const FILTERS = [
   },
   // AoT Paths: the golden sand/wheat sepia dream dimension — warm, ethereal, high contrast
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Attack on Titan (Paths)',
     css: 'url(#ypp-fx-anime-warm) contrast(110%) brightness(105%)',
     preview: 'linear-gradient(135deg, #e0b866, #c8943a)',
@@ -1612,7 +1576,7 @@ export const FILTERS = [
   },
   // Ghost in the Shell 1995: Oshii's rainy Hong Kong future — muted, slightly blue-green, clinical
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Ghost in the Shell (95)',
     css: 'url(#ypp-fx-anime-cold) contrast(110%) brightness(95%)',
     preview: 'linear-gradient(135deg, #00b4db, #0083b0)',
@@ -1620,7 +1584,7 @@ export const FILTERS = [
   },
   // Demon Slayer: Ufotable's ultra-vivid breathing art — brilliant warm oranges, ultra-high saturation
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Demon Slayer (Breathing)',
     css: 'saturate(150%) contrast(115%) brightness(105%)',
     preview: 'linear-gradient(135deg, #fceabb, #f8b500)',
@@ -1628,7 +1592,7 @@ export const FILTERS = [
   },
   // Retro 80s Anime: VHS tape degredation — soft, warm, chroma bleed, nostalgic
   {
-    category: 'Anime',
+    category: 'Anime & Animation',
     name: 'Retro 80s Anime (VHS)',
     css: 'url(#ypp-fx-vhs-pro) saturate(108%) contrast(98%) brightness(110%) sepia(18%)',
     preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)',
