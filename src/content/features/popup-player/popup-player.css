@@ -564,3 +564,97 @@ yt-lockup-thumbnail:hover .ytpop-hover-btn,
   border-color: rgba(255, 68, 68, 1);
   box-shadow: 0 4px 16px rgba(255, 68, 68, 0.4);
 }
+
+/* ── 11. MINIPLAYER & MUSIC DOCK HOVER OVERLAYS ── */
+
+.ytpop-mini-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  border-radius: var(--pp-r-xl);
+}
+
+.is-miniplayer:hover .ytpop-mini-hover-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ytpop-mini-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ytpop-mini-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.ytpop-mini-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ytpop-music-dock-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  border-radius: 12px;
+}
+
+.ytpop-music-dock:hover .ytpop-music-dock-hover-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ytpop-dock-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ytpop-dock-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.ytpop-dock-btn svg {
+  width: 18px;
+  height: 18px;
+}

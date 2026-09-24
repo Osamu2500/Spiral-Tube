@@ -37,6 +37,13 @@ export const PopupState = {
 
     _enterMiniplayer() {
         if (!this.container || !this.overlay) return;
+        this.state.isMiniplayer = true;
+        this.container.classList.add('is-miniplayer');
+        
+        // Save previous size to restore later
+        this._prevWidth = this.state.width || 640;
+        this._prevHeight = this.state.height || 360;
+
         // Collapse to a small corner window (bottom-right, 320x180)
         const W = 320, H = 180;
         this.state.width  = W;
@@ -61,6 +68,9 @@ export const PopupState = {
 
     _exitMiniplayer() {
         if (!this.overlay || !this.topBar) return;
+        this.state.isMiniplayer = false;
+        this.container.classList.remove('is-miniplayer');
+        
         // Restore backdrop
         this.overlay.style.background = 'radial-gradient(circle at center, rgba(12,12,18,0.4) 0%, rgba(2,2,6,0.85) 100%)';
         this.overlay.style.backdropFilter = 'blur(24px) saturate(200%)';
@@ -69,14 +79,17 @@ export const PopupState = {
         this.container.style.pointerEvents = '';
         this.topBar.style.display = '';
         if (this.bottomBar) this.bottomBar.style.display = '';
+        
         // Center and restore size
-        this.state.width  = 640;
-        this.state.height = 360;
-        this.state.x = Math.round((window.innerWidth  - 640) / 2);
-        this.state.y = Math.round((window.innerHeight - 360) / 2);
+        this.state.width  = this._prevWidth || 640;
+        this.state.height = this._prevHeight || 360;
+        this.state.x = Math.round((window.innerWidth  - this.state.width) / 2);
+        this.state.y = Math.round((window.innerHeight - this.state.height) / 2);
         this.container.style.width  = `${this.state.width}px`;
         this.container.style.height = `${this.state.height}px`;
         this._applyTransform();
+        this._sendToIframe({ command: 'reflow' });
+        this._saveState();
     },
 
     _enterMusicMode() {

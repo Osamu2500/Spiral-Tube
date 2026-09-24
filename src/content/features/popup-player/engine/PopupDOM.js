@@ -253,10 +253,28 @@ export const PopupDOM = {
         // Fetch metadata async
         this._fetchMetadata(videoId);
 
+        // ── Miniplayer Hover Overlay ──
+        this.miniHoverOverlay = document.createElement('div');
+        this.miniHoverOverlay.className = 'ytpop-mini-hover-overlay';
+        
+        const miniExpandBtn = document.createElement('button');
+        miniExpandBtn.className = 'ytpop-mini-btn';
+        miniExpandBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`;
+        miniExpandBtn.onclick = (e) => { e.stopPropagation(); this._exitMiniplayer(); };
+
+        const miniMusicBtn = document.createElement('button');
+        miniMusicBtn.className = 'ytpop-mini-btn';
+        miniMusicBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`;
+        miniMusicBtn.onclick = (e) => { e.stopPropagation(); this._enterMusicMode(); };
+
+        this.miniHoverOverlay.appendChild(miniExpandBtn);
+        this.miniHoverOverlay.appendChild(miniMusicBtn);
+
         // ── Assemble ──
         this.container.appendChild(this.topBar);
         this.container.appendChild(this.iframe);
         this.container.appendChild(this.bottomBar);
+        this.container.appendChild(this.miniHoverOverlay);
         this.container.appendChild(this.musicModeUI.dockRoot);
         this.container.appendChild(this.musicModeUI.maxPanelRoot);
         this._buildResizeHandles();
