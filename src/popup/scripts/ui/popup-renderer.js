@@ -415,23 +415,133 @@ function renderSelect(item, state) {
     headerRow.appendChild(info);
     wrap.appendChild(headerRow);
 
-    const select = document.createElement('select');
-    select.id = item.id;
-    select.className = 'theme-select';
-    select.style.padding = '4px 10px';
-    select.style.fontSize = '11px';
-    select.style.maxWidth = '100px';
-    select.style.flexShrink = '0';
-    
-    (item.options || []).forEach(opt => {
-        const o = document.createElement('option');
-        o.value = opt.value;
-        o.textContent = opt.label;
-        select.appendChild(o);
-    });
-    wrap.appendChild(select);
+    if (!document.getElementById('custom-dropdown-styles')) {
+        const style = document.createElement('style');
+        style.id = 'custom-dropdown-styles';
+        style.textContent = `
+            .aq-dropdown-container { position: relative; flex-shrink: 0; min-width: 140px; margin-left: 12px; }
+            .aq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 8px; font-size: 11px; outline: none; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+            .aq-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.2); }
+            .aq-menu { display: none; background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; max-height: 200px; overflow-y: auto; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(0,0,0,0.5); padding: 4px; font-family: inherit; }
+            .aq-menu.open { display: block; animation: aq-fade-in 0.15s ease; }
+            .aq-item { padding: 8px 12px; font-size: 11px; cursor: pointer; transition: all 0.2s; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; color: #aaa; white-space: nowrap; font-family: inherit; }
+            .aq-item:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+            .aq-item.active { background: rgba(99, 102, 241, 0.2); color: #fff; }
+            @keyframes aq-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+        `;
+        document.head.appendChild(style);
+    }
 
-    _registerInput(select, state);
+    const dropdownWrap = document.createElement('div');
+    dropdownWrap.className = 'aq-dropdown-container';
+
+    const hiddenSelect = document.createElement('input');
+    hiddenSelect.type = 'hidden';
+    hiddenSelect.id = item.id;
+    
+    const initialVal = (state?.settings && state.settings[item.id] !== undefined) 
+        ? state.settings[item.id] 
+        : (item.options?.[0]?.value || '');
+    hiddenSelect.value = initialVal;
+    
+    const initialLabel = (item.options || []).find(o => o.value == initialVal)?.label || initialVal;
+
+    const btn = document.createElement('button');
+    btn.className = 'aq-btn';
+    btn.type = 'button';
+    btn.innerHTML = `<span class="aq-text">${initialLabel}</span>
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; margin-left: 8px;"><path d="M6 9l6 6 6-6"/></svg>`;
+    
+    const menu = document.createElement('div');
+    menu.className = 'aq-menu';
+
+    const itemsElements = [];
+    (item.options || []).forEach(opt => {
+        const o = document.createElement('div');
+        o.className = 'aq-item' + (opt.value == initialVal ? ' active' : '');
+        o.dataset.value = opt.value;
+        o.textContent = opt.label;
+        menu.appendChild(o);
+        itemsElements.push(o);
+        
+        o.addEventListener('click', (e) => {
+            e.stopPropagation();
+            itemsElements.forEach(i => i.classList.remove('active'));
+            o.classList.add('active');
+            btn.querySelector('.aq-text').textContent = opt.label;
+            hiddenSelect.value = opt.value;
+            menu.classList.remove('open');
+            hiddenSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    });
+
+    dropdownWrap.appendChild(hiddenSelect);
+    dropdownWrap.appendChild(btn);
+    wrap.appendChild(dropdownWrap);
+
+    wrap.style.position = 'relative';
+    wrap.style.zIndex = '1';
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('open');
+        document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+        if (!isOpen) {
+            wrap.style.zIndex = '50';
+            const tabContent = wrap.closest('.tab-content') || document.body;
+            tabContent.style.position = 'relative';
+            
+            if (menu.parentElement !== tabContent) {
+                tabContent.appendChild(menu);
+            }
+
+            let top = btn.offsetHeight + 4;
+            let left = 0;
+            let el = btn;
+            
+            while (el && el !== tabContent && el !== document.body) {
+                top += el.offsetTop;
+                left += el.offsetLeft;
+                el = el.offsetParent;
+            }
+
+            menu.style.position = 'absolute';
+            menu.style.top = top + 'px';
+            menu.style.left = left + 'px';
+            menu.style.width = Math.max(btn.offsetWidth, 140) + 'px';
+            menu.style.zIndex = '999999';
+            menu.classList.add('open');
+        } else {
+            wrap.style.zIndex = '1';
+        }
+    });
+
+    if (!window._globalDropdownListenerAdded) {
+        window._globalDropdownListenerAdded = true;
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.aq-btn') && !e.target.closest('.aq-menu')) {
+                document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+                document.querySelectorAll('.toggle-card').forEach(c => {
+                    if(c.style.zIndex === '50') c.style.zIndex = '1';
+                });
+            }
+        });
+    }
+
+    const originalValueDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+    Object.defineProperty(hiddenSelect, 'value', {
+        get: function() { return originalValueDesc.get.call(this); },
+        set: function(val) {
+            originalValueDesc.set.call(this, val);
+            const label = (item.options || []).find(o => o.value == val)?.label || val;
+            btn.querySelector('.aq-text').textContent = label;
+            itemsElements.forEach(i => {
+                i.classList.toggle('active', i.dataset.value == val);
+            });
+        }
+    });
+
+    _registerInput(hiddenSelect, state);
     return wrap;
 }
 
