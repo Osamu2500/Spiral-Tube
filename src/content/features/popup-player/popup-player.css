@@ -328,36 +328,32 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(20, 20, 30, 0.4);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-radius: var(--pp-r-xl);
+  background: rgba(18, 18, 22, 0.9);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 40px;
   z-index: 1000 !important;
-  overflow: hidden;
   align-items: center;
-  padding: 12px;
-  cursor: pointer;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  padding: 8px 16px 8px 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.08);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  gap: 12px;
 }
 
-.ytpop-music-dock:hover {
-  background: rgba(30, 30, 45, 0.5);
-}
-
-.ytpop-music-dock-controls {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
+.ytpop-music-dock-thumb-wrap {
+  width: 64px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .ytpop-music-dock-thumb {
-  width: 56px;
-  height: 56px;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .ytpop-music-dock-body {
@@ -365,161 +361,57 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  min-width: 0;
+  gap: 6px;
 }
 
 .ytpop-music-dock-title {
   color: #fff;
   font-family: var(--pp-font);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 250px;
+  padding-right: 8px;
 }
 
-/* MAX PANEL */
-.ytpop-music-max-panel {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 20, 0.6);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  backdrop-filter: blur(30px) saturate(200%);
-  border-radius: var(--pp-r-xl);
-  display: none; /* hidden by default */
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 100;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-.ytpop-music-max-panel.active {
-  display: flex;
-}
-
-.ytpop-music-max-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(255, 68, 68, 0.15), transparent 60%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.ytpop-music-max-header {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-}
-
-.ytpop-music-max-header-left, .ytpop-music-max-header-right {
+.ytpop-music-dock-controls {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
-.ytpop-music-max-minimize, .ytpop-music-max-exit {
-  background: rgba(255, 255, 255, 0.1);
+.ytpop-dock-ctrl-btn {
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   transition: all 0.2s ease;
+  padding: 0;
 }
 
-.ytpop-music-max-minimize:hover, .ytpop-music-max-exit:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  transform: scale(1.05);
-}
-
-.ytpop-music-max-switch {
-  display: flex;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
-  padding: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.ytpop-music-max-switch-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 6px 16px;
-  border-radius: 16px;
-  font-family: var(--pp-font);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.ytpop-music-max-switch-btn.is-active {
+.ytpop-dock-ctrl-btn:hover {
   background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }
 
-.ytpop-music-max-main {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+.ytpop-dock-ctrl-btn svg {
+  width: 15px;
+  height: 15px;
 }
 
-.ytpop-music-max-media {
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-}
-
-.ytpop-media--video {
-  aspect-ratio: 16/9;
-  max-width: 100%;
-}
-
-.ytpop-music-max-art {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.ytpop-music-max-details {
-  text-align: center;
-  width: 100%;
-}
-
-.ytpop-music-max-title {
-  font-family: var(--pp-font);
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 8px 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.ytpop-music-max-artist {
-  font-family: var(--pp-font);
-  font-size: 16px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+.ytpop-dock-separator {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 4px;
 }
 
 /* ── 10. HOVER BUTTON OVERLAY ── */
@@ -565,7 +457,7 @@ yt-lockup-thumbnail:hover .ytpop-hover-btn,
   box-shadow: 0 4px 16px rgba(255, 68, 68, 0.4);
 }
 
-/* ── 11. MINIPLAYER & MUSIC DOCK HOVER OVERLAYS ── */
+/* ── 11. MINIPLAYER HOVER OVERLAYS ── */
 
 .ytpop-mini-hover-overlay {
   position: absolute;
@@ -611,50 +503,4 @@ yt-lockup-thumbnail:hover .ytpop-hover-btn,
 .ytpop-mini-btn svg {
   width: 20px;
   height: 20px;
-}
-
-.ytpop-music-dock-hover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  border-radius: 12px;
-}
-
-.ytpop-music-dock:hover .ytpop-music-dock-hover-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.ytpop-dock-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.ytpop-dock-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.1);
-}
-
-.ytpop-dock-btn svg {
-  width: 18px;
-  height: 18px;
 }

@@ -8,19 +8,22 @@ export class PopupMusicMode {
         this.buildDock();
     }
     
-    // Builds the small mini-dock (e.g., bottom left)
     buildDock() {
         this.dockRoot = document.createElement('div');
         this.dockRoot.className = 'ytpop-music-dock';
         this.dockRoot.style.display = 'none'; // Hidden by default
 
-        const controls = document.createElement('div');
-        controls.className = 'ytpop-music-dock-controls';
+        // Left: Thumbnail
+        const thumbWrap = document.createElement('div');
+        thumbWrap.className = 'ytpop-music-dock-thumb-wrap';
         
         const thumb = document.createElement('img');
         thumb.className = 'ytpop-music-dock-thumb';
         thumb.alt = 'Thumbnail';
         
+        thumbWrap.appendChild(thumb);
+        
+        // Right: Info & Controls
         const body = document.createElement('div');
         body.className = 'ytpop-music-dock-body';
         
@@ -28,36 +31,69 @@ export class PopupMusicMode {
         title.className = 'ytpop-music-dock-title';
         title.textContent = 'Loading...';
         
-        // Removed maximize click listener from dockRoot
+        const controls = document.createElement('div');
+        controls.className = 'ytpop-music-dock-controls';
         
+        // Playback Buttons
+        const createCtrlBtn = (icon, titleText, onClick) => {
+            const btn = document.createElement('button');
+            btn.className = 'ytpop-dock-ctrl-btn';
+            btn.title = titleText;
+            btn.innerHTML = icon;
+            btn.onclick = (e) => { e.stopPropagation(); onClick(); };
+            return btn;
+        };
+
+        const btnPrev = createCtrlBtn(
+            `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>`,
+            "Previous",
+            () => this.engine._sendToIframe({ command: 'prevVideo' })
+        );
+        
+        const btnPlayPause = createCtrlBtn(
+            `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`, // We can't know play state easily, but a play/pause icon works.
+            "Play/Pause",
+            () => this.engine._sendToIframe({ command: 'togglePlay' })
+        );
+        
+        const btnNext = createCtrlBtn(
+            `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>`,
+            "Next",
+            () => this.engine._sendToIframe({ command: 'nextVideo' })
+        );
+        
+        // Separator
+        const separator = document.createElement('div');
+        separator.className = 'ytpop-dock-separator';
+        
+        // State Buttons
+        const btnMiniplayer = createCtrlBtn(
+            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="11" y="11" width="8" height="8" rx="1"/></svg>`,
+            "Switch to Miniplayer",
+            () => this.engine._enterMiniplayer()
+        );
+
+        const btnExpand = createCtrlBtn(
+            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+            "Expand to Full Player",
+            () => this.engine._exitMusicMode()
+        );
+        
+        controls.appendChild(btnPrev);
+        controls.appendChild(btnPlayPause);
+        controls.appendChild(btnNext);
+        controls.appendChild(separator);
+        controls.appendChild(btnMiniplayer);
+        controls.appendChild(btnExpand);
+
         body.appendChild(title);
-        controls.appendChild(thumb);
-        controls.appendChild(body);
-        this.dockRoot.appendChild(controls);
+        body.appendChild(controls);
         
-        // Hover Overlay for Music Dock
-        const hoverOverlay = document.createElement('div');
-        hoverOverlay.className = 'ytpop-music-dock-hover-overlay';
-
-        const btnMiniplayer = document.createElement('button');
-        btnMiniplayer.className = 'ytpop-dock-btn ytpop-dock-btn-mini';
-        btnMiniplayer.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="11" y="11" width="8" height="8" rx="1"/></svg>`;
-        btnMiniplayer.title = "Back to Miniplayer";
-        btnMiniplayer.onclick = (e) => { e.stopPropagation(); this.engine._enterMiniplayer(); };
-
-        const btnExpand = document.createElement('button');
-        btnExpand.className = 'ytpop-dock-btn ytpop-dock-btn-expand';
-        btnExpand.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`;
-        btnExpand.title = "Expand to Full Player";
-        btnExpand.onclick = (e) => { e.stopPropagation(); this.engine._exitMusicMode(); };
-
-        hoverOverlay.appendChild(btnMiniplayer);
-        hoverOverlay.appendChild(btnExpand);
-
-        this.dockRoot.appendChild(hoverOverlay);
+        this.dockRoot.appendChild(thumbWrap);
+        this.dockRoot.appendChild(body);
         
         // Provide references for updating
-        this.dockElements = { thumb, title };
+        this.dockElements = { thumb, title, btnPlayPause };
     }
 
     updateMetadata(data) {

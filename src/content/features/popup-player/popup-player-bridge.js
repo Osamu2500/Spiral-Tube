@@ -257,6 +257,21 @@
                     if (likeBtn) likeBtn.click();
                 } catch (_) {}
                 break;
+            case 'togglePlay':
+                if (vid) {
+                    if (vid.paused) {
+                        player?.playVideo?.() || vid?.play?.().catch(() => {});
+                    } else {
+                        player?.pauseVideo?.() || vid?.pause?.();
+                    }
+                }
+                break;
+            case 'nextVideo':
+                try { document.querySelector('.ytp-next-button')?.click(); } catch (_) {}
+                break;
+            case 'prevVideo':
+                try { document.querySelector('.ytp-prev-button')?.click(); } catch (_) {}
+                break;
         }
     });
 

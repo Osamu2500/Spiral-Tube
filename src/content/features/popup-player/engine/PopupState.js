@@ -37,13 +37,21 @@ export const PopupState = {
 
     _enterMiniplayer() {
         if (!this.container || !this.overlay) return;
+        
+        if (!this.state.isMiniplayer && !this.state.isMusicMode) {
+            this.savedFullWidth = this.state.width || 640;
+            this.savedFullHeight = this.state.height || 360;
+        }
+
+        // Clean up Music Mode UI if transitioning from it
+        if (this.state.isMusicMode) {
+            this.state.isMusicMode = false;
+            if (this.musicModeUI) this.musicModeUI.dockRoot.style.display = 'none';
+        }
+
         this.state.isMiniplayer = true;
         this.container.classList.add('is-miniplayer');
         
-        // Save previous size to restore later
-        this._prevWidth = this.state.width || 640;
-        this._prevHeight = this.state.height || 360;
-
         // Collapse to a small corner window (bottom-right, 320x180)
         const W = 320, H = 180;
         this.state.width  = W;
@@ -52,9 +60,19 @@ export const PopupState = {
         this.state.y = window.innerHeight - H - 20;
         this.container.style.width  = `${W}px`;
         this.container.style.height = `${H}px`;
+        
         // Hide top bar in miniplayer
         if (this.topBar) this.topBar.style.display = 'none';
         if (this.bottomBar) this.bottomBar.style.display = 'none';
+        
+        // Show standard iframe (just in case we came from music mode)
+        if (this.iframe) {
+            this.iframe.style.display = 'block';
+            this.iframe.style.position = '';
+            this.iframe.style.width = '100%';
+            this.iframe.style.height = ''; 
+        }
+
         // Remove backdrop from overlay
         this.overlay.style.background = 'transparent';
         this.overlay.style.backdropFilter = 'none';
@@ -81,8 +99,8 @@ export const PopupState = {
         if (this.bottomBar) this.bottomBar.style.display = '';
         
         // Center and restore size
-        this.state.width  = this._prevWidth || 640;
-        this.state.height = this._prevHeight || 360;
+        this.state.width  = this.savedFullWidth || 640;
+        this.state.height = this.savedFullHeight || 360;
         this.state.x = Math.round((window.innerWidth  - this.state.width) / 2);
         this.state.y = Math.round((window.innerHeight - this.state.height) / 2);
         this.container.style.width  = `${this.state.width}px`;
@@ -94,13 +112,20 @@ export const PopupState = {
 
     _enterMusicMode() {
         if (!this.container) return;
-        this.state.isMusicMode = true;
-        this.state.isMusicMaximized = false;
         
-        // Save previous size to restore later
-        this._prevWidth = this.state.width || 640;
-        this._prevHeight = this.state.height || 360;
+        if (!this.state.isMiniplayer && !this.state.isMusicMode) {
+            this.savedFullWidth = this.state.width || 640;
+            this.savedFullHeight = this.state.height || 360;
+        }
 
+        // Clean up Miniplayer UI if transitioning from it
+        if (this.state.isMiniplayer) {
+            this.state.isMiniplayer = false;
+            this.container.classList.remove('is-miniplayer');
+        }
+
+        this.state.isMusicMode = true;
+        
         // Collapse to a thin audio bar (dock)
         const W = 360, H = 80;
         this.state.width  = W;
@@ -123,9 +148,6 @@ export const PopupState = {
         // Show Music Dock
         if (this.musicModeUI) {
             this.musicModeUI.dockRoot.style.display = 'flex';
-            if (this.musicModeUI.maxPanelRoot) {
-                this.musicModeUI.maxPanelRoot.style.display = 'none';
-            }
         }
         
         // Position at bottom right
@@ -146,7 +168,6 @@ export const PopupState = {
     _exitMusicMode() {
         if (!this.container) return;
         this.state.isMusicMode = false;
-        this.state.isMusicMaximized = false;
         
         // Restore backdrop
         if (this.overlay) {
@@ -160,28 +181,21 @@ export const PopupState = {
         // Hide Music UI
         if (this.musicModeUI) {
             this.musicModeUI.dockRoot.style.display = 'none';
-            if (this.musicModeUI.maxPanelRoot) {
-                this.musicModeUI.maxPanelRoot.style.display = 'none';
-            }
         }
         
         // Show standard UI
         if (this.iframe) {
             this.iframe.style.display = 'block';
             this.iframe.style.position = '';
-            this.iframe.style.top = '';
-            this.iframe.style.left = '';
             this.iframe.style.width = '100%';
-            this.iframe.style.height = ''; // Let CSS flex handle height
-            this.iframe.style.zIndex = '';
-            this.iframe.style.borderRadius = '';
+            this.iframe.style.height = ''; 
         }
         if (this.topBar) this.topBar.style.display = 'flex';
         if (this.bottomBar) this.bottomBar.style.display = 'flex';
         
         // Center and restore size
-        this.state.width  = this._prevWidth || 640;
-        this.state.height = this._prevHeight || 360;
+        this.state.width  = this.savedFullWidth || 640;
+        this.state.height = this.savedFullHeight || 360;
         this.state.x = Math.round((window.innerWidth  - this.state.width) / 2);
         this.state.y = Math.round((window.innerHeight - this.state.height) / 2);
         this.container.style.width  = `${this.state.width}px`;
