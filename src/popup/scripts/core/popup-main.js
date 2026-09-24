@@ -529,7 +529,6 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         autoCinema: 'Toggle Auto Cinema',
         // --- Player Controls ---
         pip: 'Auto PiP',
-        zenMode: 'Toggle Zen Mode',
         seamlessMode: 'Toggle Seamless Mode',
         snapshot: 'Take Video Snapshot',
         loop: 'Toggle Loop',
@@ -581,97 +580,89 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             row.onmouseover = () => { row.style.background = 'rgba(255,255,255,0.06)'; row.style.borderColor = 'rgba(255,255,255,0.1)'; };
             row.onmouseout = () => { row.style.background = 'rgba(255,255,255,0.03)'; row.style.borderColor = 'rgba(255,255,255,0.06)'; };
 
-            // Custom Masonry Select
+            // Custom Animated Dropdown
             const selectContainer = document.createElement('div');
             selectContainer.className = 'custom-select-wrapper';
             selectContainer.style.position = 'relative';
             selectContainer.style.flex = '2';
-              selectContainer.style.minWidth = '0';
+            selectContainer.style.minWidth = '0';
+            
+            const hiddenSelect = document.createElement('input');
+            hiddenSelect.type = 'hidden';
+            hiddenSelect.value = sc.action;
+
+            const initialLabel = ACTIONS[sc.action] || sc.action;
             
             const trigger = document.createElement('button');
             trigger.className = 'aq-btn custom-select-trigger';
             trigger.type = 'button';
             trigger.style.padding = '6px 8px';
             trigger.style.width = '100%';
-            trigger.innerHTML = `<span class="label aq-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; text-align: left;">${ACTIONS[sc.action] || 'Select Action'}</span>
+            trigger.innerHTML = `<span class="label aq-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; text-align: left;">${initialLabel}</span>
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; flex-shrink: 0;"><path d="M6 9l6 6 6-6"/></svg>`;
             
-            const popover = document.createElement('div');
-            popover.className = 'custom-select-popover';
-            popover.style.display = 'none';
-            popover.style.position = 'absolute';
-            popover.style.width = '560px';
-            popover.style.background = '#1a1a1a';
-            popover.style.border = '1px solid rgba(255,255,255,0.1)';
-            popover.style.borderRadius = '8px';
-            popover.style.padding = '8px';
-            popover.style.zIndex = '10000';
-            popover.style.boxShadow = '0 8px 32px rgba(0,0,0,0.7)';
-            // True masonry grid
-            popover.style.columnCount = '4';
-            popover.style.columnGap = '8px';
-            
-            
+            const menu = document.createElement('div');
+            menu.className = 'aq-menu';
+
+            const itemsElements = [];
             for (const [val, label] of Object.entries(ACTIONS)) {
-                const opt = document.createElement('div');
-                opt.textContent = label;
-                opt.style.padding = '6px 8px';
-                opt.style.fontSize = '11px';
-                opt.style.color = sc.action === val ? '#fff' : 'rgba(255,255,255,0.7)';
-                opt.style.background = sc.action === val ? 'rgba(255,255,255,0.1)' : 'transparent';
-                opt.style.border = '1px solid rgba(255,255,255,0.1)';
-                opt.style.borderRadius = '4px';
-                opt.style.cursor = 'pointer';
-                opt.style.marginBottom = '8px';
-                opt.style.breakInside = 'avoid';
+                const o = document.createElement('div');
+                o.className = 'aq-item' + (sc.action === val ? ' active' : '');
+                o.dataset.value = val;
+                o.textContent = label;
+                menu.appendChild(o);
+                itemsElements.push(o);
                 
-                opt.addEventListener('mouseenter', () => { if (sc.action !== val) opt.style.background = 'rgba(255,255,255,0.05)'; });
-                opt.addEventListener('mouseleave', () => { if (sc.action !== val) opt.style.background = 'transparent'; });
-                
-                opt.addEventListener('click', (e) => {
+                o.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    sc.action = val;
-                    trigger.querySelector('.label').textContent = label;
-                    popover.style.display = 'none';
-                    save();
-                    renderList(shortcuts);
+                    itemsElements.forEach(i => i.classList.remove('active'));
+                    o.classList.add('active');
+                    trigger.querySelector('.aq-text').textContent = label;
+                    hiddenSelect.value = val;
+                    menu.classList.remove('open');
+                    hiddenSelect.dispatchEvent(new Event('change', { bubbles: true }));
                 });
-                popover.appendChild(opt);
             }
-            
-            // Append popover to body to escape any overflow: hidden/auto containers
-            document.body.appendChild(popover);
-            
+
+            selectContainer.appendChild(hiddenSelect);
+            selectContainer.appendChild(trigger);
+
             trigger.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const isVisible = popover.style.display === 'block';
-                document.querySelectorAll('.custom-select-popover').forEach(p => p.style.display = 'none');
-                
-                if (!isVisible) {
-                    const rect = selectContainer.getBoundingClientRect();
-                    // Render first at 0,0 to accurately measure height without viewport constraints affecting it
-                    popover.style.top = '0px';
-                    popover.style.left = (rect.left + window.scrollX) + 'px';
-                    popover.style.display = 'block';
+                const isOpen = menu.classList.contains('open');
+                document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+                if (!isOpen) {
+                    const tabContent = selectContainer.closest('.tab-content') || document.body;
+                    tabContent.style.position = 'relative';
                     
-                    const popRect = popover.getBoundingClientRect();
-                    let finalTop = rect.bottom + window.scrollY + 4;
-                    
-                    // Smart upward/clamped logic
-                    if (finalTop + popRect.height > window.innerHeight) {
-                        // Try upward
-                        finalTop = rect.top + window.scrollY - popRect.height - 4;
-                        // If it also overflows top, clamp to viewport top
-                        if (finalTop < 8) {
-                            finalTop = 8;
-                        }
+                    if (menu.parentElement !== tabContent) {
+                        tabContent.appendChild(menu);
                     }
+
+                    let top = trigger.offsetHeight + 4;
+                    let left = 0;
+                    let el = trigger;
                     
-                    popover.style.top = finalTop + 'px';
+                    while (el && el !== tabContent && el !== document.body) {
+                        top += el.offsetTop;
+                        left += el.offsetLeft;
+                        el = el.offsetParent;
+                    }
+
+                    menu.style.position = 'absolute';
+                    menu.style.top = top + 'px';
+                    menu.style.left = left + 'px';
+                    menu.style.width = trigger.offsetWidth + 'px';
+                    menu.style.zIndex = '999999';
+                    menu.classList.add('open');
                 }
             });
-            
-            selectContainer.appendChild(trigger);
+
+            hiddenSelect.addEventListener('change', (e) => {
+                sc.action = e.target.value;
+                errorMsg.textContent = '';
+                save();
+            });
             
             const keyInput = document.createElement('input');
             keyInput.type = 'text';
@@ -778,10 +769,9 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             // Migrate old ones if any
             const defaults = [
                 { action: 'zenMode', key: s.shortcut_zenMode || 'Shift+Z' },
-                { action: 'zenMode', key: s.shortcut_zenMode || 'Shift+Z' },
                 { action: 'seamlessMode', key: s.shortcut_seamlessMode || 'Shift+S' },
                 { action: 'cinemaMode', key: s.shortcut_cinemaMode || 'Shift+C' },
-                { action: 'snapshot', key: s.shortcut_snapshot || 'Shift+S' },
+                { action: 'snapshot', key: s.shortcut_snapshot || 'Shift+T' },
                 { action: 'loop', key: s.shortcut_loop || 'Shift+L' },
                 { action: 'pip', key: s.shortcut_pip || 'Shift+P' },
                 { action: 'ambientMode', key: s.shortcut_ambientMode || 'Shift+M' }
@@ -794,8 +784,8 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
 
     addBtn.addEventListener('click', () => {
         currentShortcuts.push({ action: 'zenMode', key: '' });
-        currentShortcuts.push({ action: 'seamlessMode', key: '' });
-        currentShortcuts.push({ action: 'cinemaMode', key: '' });
+        save();
+        renderList(currentShortcuts);
     });
 });
 
