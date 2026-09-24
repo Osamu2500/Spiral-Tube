@@ -10,7 +10,9 @@
 body.ypp-search-grid-mode .ypp-flattened-container yt-shelf-header-layout,
 body.ypp-search-grid-mode .ypp-flattened-container #header,
 body.ypp-search-grid-mode .ypp-flattened-container #title-container,
-body.ypp-search-grid-mode .ypp-flattened-container .ytShelfHeaderLayoutTitleRow {
+body.ypp-search-grid-mode .ypp-flattened-container #spinner-container,
+body.ypp-search-grid-mode .ypp-flattened-container .ytShelfHeaderLayoutTitleRow,
+body.ypp-search-grid-mode ytd-item-section-renderer:not([hidden]) > *:not(#contents) {
     display: none !important;
 }
 
@@ -136,6 +138,9 @@ body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary {
 
 body.ypp-search-grid-mode ytd-section-list-renderer {
   padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 100% !important;
 }
 
 body.ypp-search-grid-mode ytd-section-list-renderer > #contents,

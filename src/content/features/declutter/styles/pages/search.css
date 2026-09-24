@@ -28,7 +28,12 @@ body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(yt-badge-view-
 body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(yt-badge-view-model[aria-label="Music" i]),
 body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(a[href*='music.youtube.com']),
 body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has([aria-label*="Official Music Video" i]),
-body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has([aria-label*="Official Audio" i]) {
+body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has([aria-label*="Official Audio" i]),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has(yt-badge-view-model[aria-label*="Official Artist" i]),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has(yt-badge-view-model[aria-label="Music" i]),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has(a[href*='music.youtube.com']),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has([aria-label*="Official Music Video" i]),
+body.ypp-hide-search-music.ypp-search-page yt-lockup-view-model:has([aria-label*="Official Audio" i]) {
     display: none !important;
 }
 
@@ -39,7 +44,8 @@ body.ypp-hide-search-shelves.ypp-search-page ytd-shelf-renderer,
 body.ypp-hide-search-shelves.ypp-search-page ytd-horizontal-card-list-renderer,
 body.ypp-hide-search-shelves.ypp-search-page yt-horizontal-list-renderer,
 body.ypp-hide-search-shelves.ypp-search-page ytd-rich-shelf-renderer,
-body.ypp-hide-search-shelves.ypp-search-page ytd-rich-section-renderer {
+body.ypp-hide-search-shelves.ypp-search-page ytd-rich-section-renderer,
+body.ypp-hide-search-shelves.ypp-search-page ytd-rich-item-renderer:has(yt-lockup-view-model) {
     display: none !important;
 }
 
@@ -49,7 +55,9 @@ body.ypp-hide-search-mixes.ypp-search-page ytd-radio-renderer,
 body.ypp-hide-search-mixes.ypp-search-page ytd-video-renderer:has(a[href*='start_radio']),
 body.ypp-hide-search-mixes.ypp-search-page ytd-video-renderer:has(a[href*='list=RD']),
 body.ypp-hide-search-mixes.ypp-search-page ytd-compact-video-renderer:has(a[href*='start_radio']),
-body.ypp-hide-search-mixes.ypp-search-page ytd-compact-video-renderer:has(a[href*='list=RD']) {
+body.ypp-hide-search-mixes.ypp-search-page ytd-compact-video-renderer:has(a[href*='list=RD']),
+body.ypp-hide-search-mixes.ypp-search-page yt-lockup-view-model:has(a[href*='start_radio']),
+body.ypp-hide-search-mixes.ypp-search-page yt-lockup-view-model:has(a[href*='list=RD']) {
   display: none !important;
 }
 
@@ -57,21 +65,48 @@ body.ypp-hide-search-mixes.ypp-search-page ytd-compact-video-renderer:has(a[href
 body.ypp-hide-search-playlists.ypp-search-page ytd-item-section-renderer.ypp-playlist-section,
 body.ypp-hide-search-playlists.ypp-search-page ytd-playlist-renderer,
 body.ypp-hide-search-playlists.ypp-search-page ytd-video-renderer:has(a[href*='list=PL']),
-body.ypp-hide-search-playlists.ypp-search-page ytd-compact-video-renderer:has(a[href*='list=PL']) {
+body.ypp-hide-search-playlists.ypp-search-page ytd-compact-video-renderer:has(a[href*='list=PL']),
+body.ypp-hide-search-playlists.ypp-search-page yt-lockup-view-model:has(a[href*='list=PL']) {
   display: none !important;
 }
 
 /* 8. Podcasts */
-body.ypp-hide-search-podcasts.ypp-search-page ytd-video-renderer:has(a[href*='/podcast/']) {
+body.ypp-hide-search-podcasts.ypp-search-page ytd-video-renderer:has(a[href*='/podcast/']),
+body.ypp-hide-search-podcasts.ypp-search-page yt-lockup-view-model:has(a[href*='/podcast/']) {
   display: none !important;
 }
 
 /* 9. Shorts */
-body.ypp-hide-shorts.ypp-search-page ytd-item-section-renderer.ypp-shorts-section,
+body.ypp-feature-hide-shorts.ypp-search-page .ypp-shorts-section,
+body.ypp-hide-shorts.ypp-search-page .ypp-shorts-section,
+body.ypp-nuke-shorts.ypp-search-page .ypp-shorts-section,
+body.ypp-feature-hide-shorts.ypp-search-page ytd-reel-shelf-renderer,
 body.ypp-hide-shorts.ypp-search-page ytd-reel-shelf-renderer,
-body.ypp-hide-shorts.ypp-search-page ytd-reel-item-renderer,
+body.ypp-feature-hide-shorts.ypp-search-page ytd-reel-item-renderer,
+body.ypp-feature-hide-shorts.ypp-search-page yt-collection-shelf-view-model:has(a[href*="/shorts/"]),
 body.ypp-hide-shorts.ypp-search-page yt-collection-shelf-view-model:has(a[href*="/shorts/"]),
-body.ypp-hide-shorts.ypp-search-page ytd-shelf-renderer:has(a[href*="/shorts/"]),
-body.ypp-hide-shorts.ypp-search-page ytd-video-renderer:has(a[href*="/shorts/"]) {
+body.ypp-feature-hide-shorts.ypp-search-page yt-horizontal-list-renderer:has(a[href*="/shorts/"]),
+body.ypp-feature-hide-shorts.ypp-search-page ytd-shelf-renderer:has(a[href*="/shorts/"]),
+body.ypp-feature-hide-shorts.ypp-search-page ytd-rich-shelf-renderer:has(a[href*="/shorts/"]),
+body.ypp-feature-hide-shorts.ypp-search-page ytd-video-renderer:has(a[href*="/shorts/"]),
+body.ypp-feature-hide-shorts.ypp-search-page ytm-shorts-lockup-view-model,
+body.ypp-hide-shorts.ypp-search-page ytm-shorts-lockup-view-model,
+body.ypp-feature-hide-shorts.ypp-search-page ytm-reel-item-renderer,
+body.ypp-feature-hide-shorts.ypp-search-page ytm-reel-shelf-renderer,
+body.ypp-hide-shorts.ypp-search-page ytm-reel-shelf-renderer,
+body.ypp-feature-hide-shorts.ypp-search-page grid-shelf-view-model:has(a[href*="/shorts/"]),
+body.ypp-hide-shorts.ypp-search-page grid-shelf-view-model:has(a[href*="/shorts/"]),
+body.ypp-nuke-shorts.ypp-search-page grid-shelf-view-model:has(a[href*="/shorts/"]),
+body.ypp-feature-hide-shorts.ypp-search-page grid-shelf-view-model:has(yt-icon[icon*="shorts" i]),
+body.ypp-hide-shorts.ypp-search-page grid-shelf-view-model:has(yt-icon[icon*="shorts" i]),
+body.ypp-nuke-shorts.ypp-search-page grid-shelf-view-model:has(yt-icon[icon*="shorts" i]),
+body.ypp-feature-hide-shorts.ypp-search-page grid-shelf-view-model:has([aria-label*="shorts" i]),
+body.ypp-hide-shorts.ypp-search-page grid-shelf-view-model:has([aria-label*="shorts" i]),
+body.ypp-nuke-shorts.ypp-search-page grid-shelf-view-model:has([aria-label*="shorts" i]),
+body.ypp-feature-hide-shorts.ypp-search-page yt-lockup-view-model:has(a[href*="/shorts/"]),
+body.ypp-hide-shorts.ypp-search-page yt-lockup-view-model:has(a[href*="/shorts/"]),
+body.ypp-feature-hide-shorts.ypp-search-page yt-lockup-view-model:has([overlay-style="SHORTS"]),
+body.ypp-feature-hide-shorts.ypp-search-page yt-lockup-view-model:has(yt-icon[icon*="shorts" i]),
+body.ypp-feature-hide-shorts.ypp-search-page yt-lockup-view-model:has([aria-label="Shorts" i]) {
   display: none !important;
 }

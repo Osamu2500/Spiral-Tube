@@ -24,6 +24,11 @@ const CSS_RULES = {
     // Only hide a shelf if EVERY lockup inside is a Short (avoids killing mixed-content shelves)
     'ytd-shelf-renderer:has(ytd-reel-item-renderer):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
     'ytd-horizontal-card-list-renderer:has(ytd-reel-item-renderer):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    'yt-horizontal-list-renderer:has(ytd-reel-item-renderer):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    'ytd-shelf-renderer:has(yt-lockup-view-model:has(a[href*="/shorts/"])):not(:has(yt-lockup-view-model:not(:has(a[href*="/shorts/"])))):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    'ytd-horizontal-card-list-renderer:has(yt-lockup-view-model:has(a[href*="/shorts/"])):not(:has(yt-lockup-view-model:not(:has(a[href*="/shorts/"])))):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    'yt-horizontal-list-renderer:has(yt-lockup-view-model:has(a[href*="/shorts/"])):not(:has(yt-lockup-view-model:not(:has(a[href*="/shorts/"])))):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    'yt-collection-shelf-view-model:has(yt-lockup-view-model:has(a[href*="/shorts/"])):not(:has(yt-lockup-view-model:not(:has(a[href*="/shorts/"])))):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
     // Item-level rules — safe, target the individual card not the container
     'ytd-rich-item-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"])',
     'ytd-rich-item-renderer:has(a[href*="/shorts/"])',
@@ -31,9 +36,17 @@ const CSS_RULES = {
     'ytd-video-renderer:has(a[href*="/shorts/"])',
     'ytd-grid-video-renderer:has(a[href*="/shorts/"])',
     'ytd-compact-video-renderer:has(a[href*="/shorts/"])',
+    'ytm-shorts-lockup-view-model',
+    'ytm-reel-item-renderer',
+    'ytm-reel-shelf-renderer',
+    'grid-shelf-view-model:has(a[href*="/shorts/"])',
+    'grid-shelf-view-model:has(yt-icon[icon*="shorts" i])',
+    'grid-shelf-view-model:has([aria-label*="shorts" i])',
     'yt-lockup-view-model:has(a[href*="/shorts/"])',
     'yt-lockup-view-model:has([overlay-style="SHORTS"])',
-    'ytd-item-section-renderer.ypp-shorts-section',
+    'yt-lockup-view-model:has(yt-icon[icon*="shorts" i])',
+    'yt-lockup-view-model:has([aria-label="Shorts" i])',
+    '.ypp-shorts-section',
     '[data-ypp-shelf-type="shorts"]',
   ],
   'hide-mixes': [
@@ -221,7 +234,7 @@ export function injectZeroJSCSS() {
 
   const currentPath = window.location.pathname;
 
-  applyFeatureClass('hide-shorts',   prefs.hideShortsEnabled   && shouldHideShorts(currentPath),   prefs.hideShortsMode);
+  applyFeatureClass('hide-shorts',   shouldHideShorts(currentPath),   prefs.hideShortsMode);
   applyFeatureClass('hide-mixes',    prefs.hideMixesEnabled    && shouldHideMixes(currentPath),    prefs.hideMixesMode);
   applyFeatureClass('hide-playlists',prefs.hidePlaylistsEnabled&& shouldHidePlaylists(currentPath),prefs.hidePlaylistsMode);
   applyFeatureClass('hide-lives',    prefs.hideLivesEnabled    && shouldHideLives(currentPath),    prefs.hideLivesMode);

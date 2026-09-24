@@ -16,6 +16,6 @@ export function hideBlacklistedShorts() {
 }
 
 export function shouldHideShorts(pathname) {
-  if (!prefs.hideShortsEnabled) return false;
+  if (prefs.hideShortsEnabled) return true;
   return isFeatureEnabledForPath('hideShorts', pathname, prefs);
 }

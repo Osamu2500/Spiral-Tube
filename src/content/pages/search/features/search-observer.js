@@ -158,15 +158,18 @@ export class SearchObserver {
 
     _processSection(section) {
         let contents = section.querySelector('#contents');
+        let children = [];
         if (!contents) {
             if (section.tagName === 'YT-COLLECTION-SHELF-VIEW-MODEL') {
                 contents = section; // Fallback to the section itself for newer layouts
+                children = Array.from(section.querySelectorAll(SearchUtils.SELECTORS.RENDERERS));
             } else {
                 return;
             }
+        } else {
+            children = Array.from(contents.children);
         }
 
-        const children = Array.from(contents.children);
         if (children.length === 0) return;
 
         // Use fastdom pattern to strictly separate DOM reads and writes.
@@ -379,7 +382,7 @@ export class SearchObserver {
                 hasStandardVideos = true; // Unknown elements treated as standard to avoid accidental hiding
             } else {
                 // Noise tags
-                if (tag === 'ytd-reel-shelf-renderer' || SearchUtils.isShorts(node)) {
+                if (tag === 'ytd-reel-shelf-renderer' || tag === 'grid-shelf-view-model' || tag === 'yt-collection-shelf-view-model' || SearchUtils.isShorts(node)) {
                     hasShorts = true;
                 } else {
                     hasShelves = true;

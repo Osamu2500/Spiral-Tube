@@ -15,16 +15,34 @@ import { isChannelPagePath } from './channel-utils.js';
  * @returns {boolean} True if the feature is enabled for this path
  */
 export function isFeatureEnabledForPath(featurePrefix, pathname, prefs) {
-  // Map internal prefixes to settings schema prefixes
-  let schemaPrefix = featurePrefix;
-  if (featurePrefix === 'hideShorts') schemaPrefix = 'shortsFilter';
-  if (featurePrefix === 'hideViews') schemaPrefix = 'viewsFilter';
-  
+  let homeKey, channelKey, searchKey, watchKey, subsKey;
+
+  if (featurePrefix === 'viewsFilter' || featurePrefix === 'hideViews') {
+    homeKey = 'viewsHideHomeEnabled';
+    channelKey = 'viewsHideChannelEnabled';
+    searchKey = 'viewsHideSearchEnabled';
+    watchKey = 'viewsHideCorrEnabled';
+    subsKey = 'viewsHideSubsEnabled';
+  } else if (featurePrefix === 'dateFilter' || featurePrefix === 'hideDate') {
+    homeKey = 'dateFilterHomeEnabled';
+    channelKey = 'dateFilterChannelEnabled';
+    searchKey = 'dateFilterSearchEnabled';
+    watchKey = 'dateFilterCorrEnabled';
+    subsKey = 'dateFilterSubsEnabled';
+  } else {
+    // For hideShorts, hideMixes, hidePlaylists, hidePodcasts, hidePosts
+    homeKey = `${featurePrefix}Home`;
+    channelKey = `${featurePrefix}Channel`;
+    searchKey = `${featurePrefix}Search`;
+    watchKey = `${featurePrefix}Related`;
+    subsKey = `${featurePrefix}Subs`;
+  }
+
   return (
-    (pathname === '/' && prefs[`${schemaPrefix}Home`]) ||
-    (isChannelPagePath(pathname) && prefs[`${schemaPrefix}Channel`]) ||
-    (pathname === '/results' && prefs[`${schemaPrefix}Search`]) ||
-    (pathname === '/watch' && prefs[`${schemaPrefix}Related`]) ||
-    (pathname === '/feed/subscriptions' && prefs[`${schemaPrefix}Subs`])
+    (pathname === '/' && prefs[homeKey]) ||
+    (isChannelPagePath(pathname) && prefs[channelKey]) ||
+    (pathname === '/results' && prefs[searchKey]) ||
+    (pathname === '/watch' && prefs[watchKey]) ||
+    (pathname === '/feed/subscriptions' && prefs[subsKey])
   );
 }

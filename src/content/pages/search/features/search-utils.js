@@ -20,7 +20,8 @@ export const SearchUtils = {
         'ytd-rich-shelf-renderer',
         'ytd-rich-section-renderer',
         'yt-horizontal-list-renderer',
-        'yt-collection-shelf-view-model'
+        'yt-collection-shelf-view-model',
+        'grid-shelf-view-model'
     ]),
 
     VIDEO_TAGS: new Set([
@@ -30,7 +31,8 @@ export const SearchUtils = {
         'ytd-radio-renderer',
         'ytd-channel-renderer',
         'yt-lockup-view-model',
-        'ytd-lockup-view-model'
+        'ytd-lockup-view-model',
+        'ytm-shorts-lockup-view-model'
     ]),
 
     SELECTORS: {
@@ -66,9 +68,14 @@ export const SearchUtils = {
         const tag = node.tagName.toLowerCase();
         
         if (tag === 'ytd-reel-shelf-renderer') return true;
+        if (tag === 'ytm-shorts-lockup-view-model') return true;
         if (tag === 'ytd-rich-shelf-renderer' && node.hasAttribute('is-shorts')) return true;
         if (node.querySelector(SELECTORS.SHORTS_LINK)) return true;
         if (node.querySelector(SELECTORS.SHORTS_OVERLAY)) return true;
+        
+        // YouTube often uses a shorts icon on the thumbnail now
+        if (node.querySelector('yt-icon[icon*="shorts" i]')) return true;
+        if (node.querySelector('[aria-label="Shorts" i]')) return true;
 
         const title = node.querySelector(SELECTORS.TITLE)?.textContent?.trim() || '';
         if (/shorts/i.test(title)) return true;
@@ -104,7 +111,8 @@ export const SearchUtils = {
             tag === 'ytd-vertical-list-renderer'        ||
             tag === 'ytd-shelf-renderer'                ||
             tag === 'ytd-rich-shelf-renderer'           ||
-            tag === 'yt-collection-shelf-view-model'
+            tag === 'yt-collection-shelf-view-model'    ||
+            tag === 'grid-shelf-view-model'
         ) {
             if (!this.isShortsShelf(node)) {
                 // ytd-compact-video-renderer covers music/song results in shelves —
