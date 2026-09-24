@@ -32,12 +32,13 @@ registerSlot('popupScaleSlot', renderPopupScaleSlot);
 
 registerSlot('autoQualitySlot', (container, state) => {
     container.className = 'setting-item toggle-card';
-    container.style.cssText = 'grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding: 10px 14px;';
+    container.style.cssText = 'grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding: 10px 14px; position: relative; z-index: 50;';
+    container.innerHTML = `
         <style>
             .auto-quality-dropdown { position: relative; width: 100%; }
             .aq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 8px; font-size: 12px; outline: none; cursor: pointer; transition: all 0.2s; }
             .aq-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.2); }
-            .aq-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; z-index: 100; max-height: 200px; overflow-y: auto; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(0,0,0,0.5); padding: 4px; }
+            .aq-menu { display: none; background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; max-height: 200px; overflow-y: auto; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(0,0,0,0.5); padding: 4px; }
             .aq-menu.open { display: block; animation: aq-fade-in 0.15s ease; }
             .aq-item { padding: 8px 12px; font-size: 12px; cursor: pointer; transition: all 0.2s; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; color: #aaa; }
             .aq-item:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
@@ -83,7 +84,12 @@ registerSlot('autoQualitySlot', (container, state) => {
     const menu = container.querySelector('.aq-menu');
     const text = container.querySelector('.aq-text');
     const hidden = container.querySelector('#autoQuality');
-    const items = container.querySelectorAll('.aq-item');
+    const items = menu.querySelectorAll('.aq-item');
+
+    // Find the scrolling container for this tab
+    const tabContent = container.closest('.tab-content') || document.body;
+    tabContent.style.position = 'relative'; // Ensure it acts as containing block
+    tabContent.appendChild(menu);
 
     // Initialize UI from current state
     const currentVal = hidden.value;
@@ -98,7 +104,25 @@ registerSlot('autoQualitySlot', (container, state) => {
         e.stopPropagation();
         const isOpen = menu.classList.contains('open');
         document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
-        if (!isOpen) menu.classList.add('open');
+        if (!isOpen) {
+            // Calculate absolute position relative to tabContent (immune to CSS zoom scaling bugs)
+            let top = btn.offsetHeight + 4;
+            let left = 0;
+            let el = btn;
+            
+            while (el && el !== tabContent && el !== document.body) {
+                top += el.offsetTop;
+                left += el.offsetLeft;
+                el = el.offsetParent;
+            }
+
+            menu.style.position = 'absolute';
+            menu.style.top = top + 'px';
+            menu.style.left = left + 'px';
+            menu.style.width = btn.offsetWidth + 'px';
+            menu.style.zIndex = '999999';
+            menu.classList.add('open');
+        }
     });
 
     items.forEach(item => {
@@ -113,15 +137,20 @@ registerSlot('autoQualitySlot', (container, state) => {
         });
     });
 
-    // We can't attach an unmanaged global listener to document directly without risking memory leaks
-    // if the popup re-renders, but popups are short-lived. We'll attach it safely.
+    // Close on click outside
     if (!window._aqListenerAdded) {
         window._aqListenerAdded = true;
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.auto-quality-dropdown')) {
+            if (!e.target.closest('.auto-quality-dropdown') && !e.target.closest('.aq-menu')) {
                 document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
             }
         });
+        // Close on scroll of any scrolling container to prevent detachment
+        document.addEventListener('scroll', (e) => {
+            if (e.target.classList && e.target.classList.contains('tab-content')) {
+                document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+            }
+        }, true); // use capture phase to catch scroll events from children
     }
 });
 registerSlot('intentionalDelaySlot', (container, state) => {
