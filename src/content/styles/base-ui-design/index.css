@@ -23,23 +23,23 @@
 @import './global/layouts/scrollbar.css';       /* Global premium scrollbar system */
 
 /* --- GROUP 3: BASE COMPONENTS --- */
-@import './global/components/badges.css';
-@import './global/components/buttons.css';
-@import './global/components/cards.css';
-@import './global/components/pills.css';
-@import './global/components/tags.css';
-@import './global/components/separators.css';
-@import './global/components/dialogs.css';
-@import './global/components/icons.css';
-@import './global/components/menus.css';
-@import './global/components/panels.css';
-@import './global/components/account-menus.css';
-@import './global/components/notifications.css';
+@import './components/badges.css';
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/pills.css';
+@import './components/tags.css';
+@import './components/separators.css';
+@import './components/dialogs.css';
+@import './components/icons.css';
+@import './components/menus.css';
+@import './components/panels.css';
+@import './components/account-menus.css';
+@import './components/notifications.css';
 @import './components/feed-filter-bar.css';
 @import './components/popups.css';
 @import './components/menus.css';
 @import '../../components/native-dropdown-filters/style.css';
-@import './global/components/posts.css';
+@import './components/posts.css';
 
 /* --- GROUP 4: PAGE-SPECIFIC BASE GRIDS & CONTEXTS --- */
 @import './pages/home/home-layout.css';

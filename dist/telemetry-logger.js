@@ -1,1 +1,0 @@
-class e{constructor(e){this.prefix=e,this.enabled=!1}info(e,r={}){this.enabled}warn(e,r=null){this.enabled}error(e,r){this.enabled}measure(e,r){if(!this.enabled)return r();performance.now();const n=r();performance.now();return n}}export{e as TelemetryLogger};

@@ -1,4 +1,4 @@
-import { storage } from '../../shared/utils/modules/chrome-storage.js';
+import { storage } from '../../shared/utils/storage/chrome-storage.js';
 import { idbApi } from './idb-service.js';
 
 const CONFIG = {

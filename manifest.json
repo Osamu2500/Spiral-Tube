@@ -2,7 +2,6 @@
     "manifest_version": 3,
     "name": "Spiral Tube",
     "version": "2.3.0",
-    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyPwrkjibvAJlqaaDhlhut/h1q1Nkoe2T31SRa2uHAG8fVduxWJNxcQ2uey8RBDo1J9uewEPbNd4o9Gzv9zIhh/LPCoODc5bb1FvDU/z7/wEGNVOXRXSYrXXj6lpM173UDylXZcjH5Z+5bDWmc5IfCXbHdp1NZMiiiteNn5r8SQW/NRnFfsVOuXdR+xHn5OuemoFSDkeOOSvSoIImDls99c+I3RVcb+tpo1izIJ3P+oV4JQ/ACBP4y0u6nMRntuWBIvFAh+DhJqSvFIgbsJgJNlEK4tnwa99CnZVIZUGbabr7WQLUa/qWZYPobvJYOGVZ6sJGzsaKB4hcGuUUoAAmiwIDAQAB",
     "default_locale": "en",
     "description": "Transform YouTube with 50+ features: glassmorphism themes, 600% equaliser with custom EQ, cinema filters, SponsorBlock integration, focus & zen modes, custom speed controller, ambient mode, screenshot tool, subscription groups, watch history analytics, and a redesigned glassmorphic popup UI.",
     "permissions": [
@@ -19,7 +18,7 @@
             {
                 "id": "ruleset_1",
                 "enabled": true,
-                "path": "declarative_net_request/ruleset_1.json"
+                "path": "src/declarative_net_request/ruleset_1.json"
             }
         ]
     },
@@ -81,15 +80,6 @@
     "background": {
         "service_worker": "dist/service-worker.js",
         "type": "module"
-    },
-    "declarative_net_request": {
-        "rule_resources": [
-            {
-                "id": "ruleset_1",
-                "enabled": true,
-                "path": "src/declarative_net_request/ruleset_1.json"
-            }
-        ]
     },
     "content_security_policy": {
         "extension_pages": "script-src 'self'; object-src 'self';"
@@ -164,7 +154,8 @@
                 "src/assets/*",
                 "src/assets/icons/*",
                 "src/assets/fonts/*",
-                "src/inject/*", "src/content/features/popup-player/popup-player-embed.html",
+                "src/inject/*",
+                "src/content/features/popup-player/popup-player-embed.html",
                 "src/popup/*",
                 "dist/*-bundle.css"
             ],

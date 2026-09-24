@@ -1,4 +1,4 @@
-import { signIn, signOut, checkAuthStatus } from '../../../shared/utils/modules/google-auth.js';
+import { signIn, signOut, checkAuthStatus } from '../../../shared/utils/auth/google-auth.js';
 
 // ─── SVG Icons ───────────────────────────────────────────────────────────────
 const SPIN_SVG  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 0.8s linear infinite;flex-shrink:0"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`;

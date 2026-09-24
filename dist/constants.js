@@ -1,1 +1,0 @@
-const I={HOME_PATHS:["/","/index.html","/feed/subscriptions"]},N={INITIALIZING:"INITIALIZING",IDLE:"IDLE",AUTO_PLAYING:"AUTO_PLAYING",USER_HOVERING:"USER_HOVERING"};export{I as CONFIG,N as STATES};
