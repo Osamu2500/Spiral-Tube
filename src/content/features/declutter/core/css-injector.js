@@ -7,24 +7,24 @@
 import { prefs } from './state-manager.js';
 import { shouldHideShorts } from '../filters/modules/shorts-filter.js';
 import { shouldHideMixes, shouldHidePlaylists } from '../filters/modules/mixes-playlists-filter.js';
-import { shouldHideLives, shouldHideUpcoming } from '../filters/modules/lives-upcoming-filter.js';
+import { shouldHideLives, shouldHideUpcoming, isCoreFilterPath } from '../filters/modules/lives-upcoming-filter.js';
 import { shouldHidePodcasts, shouldHidePosts, shouldHidePromos } from '../filters/modules/misc-filters.js';
 
 let isStaticCSSInjected = false;
 
 const CSS_RULES = {
   'hide-shorts': [
+    // Dedicated Shorts shelf renderers — definitive, never used for other content
     'ytd-reel-shelf-renderer',
     'ytm-reel-shelf-renderer',
     'ytd-reel-item-renderer',
     'ytd-rich-shelf-renderer[is-shorts]',
     'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
     'ytd-rich-section-renderer:has(ytd-reel-shelf-renderer)',
-    'ytd-rich-section-renderer:has(yt-lockup-view-model:has(a[href*="/shorts/"]))',
-    'ytd-shelf-renderer:has(ytd-reel-item-renderer)',
-    'ytd-shelf-renderer:has(yt-lockup-view-model:has(a[href*="/shorts/"]))',
-    'ytd-horizontal-card-list-renderer:has(ytd-reel-item-renderer)',
-    'ytd-horizontal-card-list-renderer:has(yt-lockup-view-model:has(a[href*="/shorts/"]))',
+    // Only hide a shelf if EVERY lockup inside is a Short (avoids killing mixed-content shelves)
+    'ytd-shelf-renderer:has(ytd-reel-item-renderer):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    'ytd-horizontal-card-list-renderer:has(ytd-reel-item-renderer):not(:has(ytd-video-renderer:not(:has(a[href*="/shorts/"]))))',
+    // Item-level rules — safe, target the individual card not the container
     'ytd-rich-item-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"])',
     'ytd-rich-item-renderer:has(a[href*="/shorts/"])',
     'ytd-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"])',
@@ -64,15 +64,15 @@ const CSS_RULES = {
     'ytd-playlist-renderer',
     'ytd-compact-playlist-renderer',
     'ytd-grid-playlist-renderer',
-    // Rich-item with playlist thumbnail panel
-    'ytd-rich-item-renderer:has(ytd-thumbnail-overlay-bottom-panel-renderer)',
+    // Rich-item with playlist thumbnail panel — exclude Mixes (list=RD) which share the same renderer
+    'ytd-rich-item-renderer:has(ytd-thumbnail-overlay-bottom-panel-renderer):not(:has(a[href*="list=RD"]))',
     'ytd-rich-item-renderer:has(ytd-playlist-thumbnail)',
-    'ytd-video-renderer:has(ytd-thumbnail-overlay-bottom-panel-renderer)',
-    'ytd-compact-video-renderer:has(ytd-thumbnail-overlay-bottom-panel-renderer)',
+    'ytd-video-renderer:has(ytd-thumbnail-overlay-bottom-panel-renderer):not(:has(a[href*="list=RD"]))',
+    'ytd-compact-video-renderer:has(ytd-thumbnail-overlay-bottom-panel-renderer):not(:has(a[href*="list=RD"]))',
     // New lockup format (YT 2024+)
-    'yt-lockup-view-model:has(ytd-thumbnail-overlay-bottom-panel-renderer)',
+    'yt-lockup-view-model:has(ytd-thumbnail-overlay-bottom-panel-renderer):not(:has(a[href*="list=RD"]))',
     'yt-lockup-view-model:has(.ytLockupViewModelHostPlaylistMetadataContainer)',
-    'ytd-rich-item-renderer:has(yt-lockup-view-model:has(ytd-thumbnail-overlay-bottom-panel-renderer))',
+    'ytd-rich-item-renderer:has(yt-lockup-view-model:has(ytd-thumbnail-overlay-bottom-panel-renderer)):not(:has(a[href*="list=RD"]))',
   ],
   'hide-lives': [
     // Legacy overlay badge
@@ -86,10 +86,10 @@ const CSS_RULES = {
     'ytd-rich-item-renderer:has(badge-shape.ytBadgeShapeThumbnailLive)',
     'ytd-video-renderer:has(badge-shape.yt-badge-shape--thumbnail-live)',
     'ytd-compact-video-renderer:has(badge-shape.yt-badge-shape--thumbnail-live)',
-    // New lockup format
+    // New lockup format — use thumbnail badge only, NOT .yt-spec-avatar-shape--live-ring
+    // (the live ring marks the *channel* as live, not this specific video)
     'yt-lockup-view-model:has([overlay-style="LIVE"])',
     'yt-lockup-view-model:has(badge-shape.yt-badge-shape--thumbnail-live)',
-    'yt-lockup-view-model:has(.yt-spec-avatar-shape--live-ring)',
     'ytd-rich-item-renderer:has(yt-lockup-view-model:has([overlay-style="LIVE"]))',
   ],
   'hide-upcoming': [
@@ -126,8 +126,10 @@ const CSS_RULES = {
     'ytd-backstage-post-thread-renderer',
     'ytd-rich-item-renderer:has(ytd-post-renderer)',
     'ytd-rich-item-renderer:has(ytd-backstage-post-thread-renderer)',
-    'ytd-item-section-renderer:has(ytd-post-renderer)',
-    'ytd-rich-section-renderer:has(ytd-post-renderer)',
+    // Removed: 'ytd-item-section-renderer:has(ytd-post-renderer)' — on search/channel pages this
+    // single wrapper holds the entire results list; one post inside hides every video in it.
+    // Only hide section-level wrappers if they contain ONLY posts (no other rich items).
+    'ytd-rich-section-renderer:has(ytd-post-renderer):not(:has(ytd-rich-item-renderer:not(:has(ytd-post-renderer))))',
     'ytd-rich-section-renderer:has(ytd-backstage-post-thread-renderer)',
   ],
   'hide-trending': [
@@ -139,23 +141,17 @@ const CSS_RULES = {
     'ytd-guide-entry-renderer:has(a[href*="/feed/explore"])',
   ],
   'hide-promos': [
-    // Sponsored / promoted content
+    // Positive ad markers only — never catch-all shelves, which leak into Posts/Trending/Topics
     'ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer)',
     'ytd-rich-section-renderer:has(ytd-statement-banner-renderer)',
     'ytd-rich-section-renderer:has(ytd-compact-promoted-video-renderer)',
     'ytd-rich-section-renderer:has(ytd-promoted-sparkles-web-renderer)',
     'ytd-rich-section-renderer:has(.badge-style-type-ad)',
-    'ytd-rich-section-renderer:has(ytd-horizontal-card-list-renderer)',
     'ytd-rich-section-renderer:has(ytd-game-card-renderer)',
-    // Topics / chip clouds
-    'ytd-rich-section-renderer:has(yt-chip-cloud-renderer)',
-    'ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer)',
-    'ytd-rich-section-renderer:has(yt-related-chip-cloud-renderer)',
-    'ytd-rich-section-renderer:has(ytd-search-query-renderer)',
-    'ytd-rich-section-renderer:has([class*="ytChipsShelfViewModel"])',
-    // Generic non-shorts shelves (safe with exclusions)
-    'ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media))',
-    'ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)):has(ytd-shelf-renderer)',
+    'ytd-rich-section-renderer:has(ytd-brand-video-shelf-renderer)',
+    // Removed: ytd-horizontal-card-list-renderer (generic wrapper used by non-promo sections)
+    // Removed: chip/topic cloud rules — those belong to the separate Topics Bar toggle
+    // Removed: catch-all shelf rules (ytd-rich-shelf-renderer:not([is-shorts])...) — too broad
   ],
   'hide-memberships': [
     'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer):has([aria-label*="memberships" i])',
@@ -232,8 +228,10 @@ export function injectZeroJSCSS() {
   applyFeatureClass('hide-upcoming', prefs.hideUpcomingEnabled && shouldHideUpcoming(currentPath), prefs.hideUpcomingMode);
   applyFeatureClass('hide-podcasts', prefs.hidePodcastsEnabled && shouldHidePodcasts(currentPath), prefs.hidePodcastsMode);
   applyFeatureClass('hide-posts',    prefs.hidePostsEnabled    && shouldHidePosts(currentPath),    prefs.hidePostsMode);
-  applyFeatureClass('hide-promos',   prefs.hidePromosEnabled   && shouldHidePromos(currentPath),   prefs.hidePromosMode);
-  applyFeatureClass('hide-trending', prefs.hideTrendingEnabled && shouldHidePromos(currentPath),   prefs.hideTrendingMode);
-  applyFeatureClass('hide-memberships', prefs.hideMembershipsEnabled && shouldHidePromos(currentPath), prefs.hideMembershipsMode);
-  applyFeatureClass('hide-membersonly', prefs.hideMembersOnlyEnabled, prefs.hideMembersOnlyMode);
+  applyFeatureClass('hide-promos',      prefs.hidePromosEnabled      && shouldHidePromos(currentPath),    prefs.hidePromosMode);
+  // hide-trending and hide-memberships previously shared shouldHidePromos() as their path guard,
+  // meaning they only activated when Promos was also enabled. Each now uses its own path check.
+  applyFeatureClass('hide-trending',    prefs.hideTrendingEnabled    && isCoreFilterPath(currentPath),    prefs.hideTrendingMode);
+  applyFeatureClass('hide-memberships', prefs.hideMembershipsEnabled && isCoreFilterPath(currentPath),    prefs.hideMembershipsMode);
+  applyFeatureClass('hide-membersonly', prefs.hideMembersOnlyEnabled,                                     prefs.hideMembersOnlyMode);
 }

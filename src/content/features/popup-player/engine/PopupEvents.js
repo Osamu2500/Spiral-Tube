@@ -151,79 +151,8 @@ export const PopupEvents = {
     },
 
     _initHoverButtonListener() {
-        document.addEventListener('mouseover', (e) => {
-            if (!this._isEnabled || this._openTrigger === 'double-click') return;
-            
-            const card = e.target.closest('ytd-thumbnail, yt-lockup-view-model, ytm-shorts-lockup-view-model');
-            if (!card) return;
-            
-            // Check if we already injected the button
-            if (card.querySelector('.ytpop-hover-btn')) return;
-            
-            const thumbLink = card.querySelector('a#thumbnail, a.ytd-thumbnail, a[href*="/watch?v="], a[href*="/shorts/"]');
-            if (!thumbLink || !thumbLink.href) return;
-            
-            // Inject the button
-            const btn = document.createElement('button');
-            btn.className = 'ytpop-hover-btn';
-            btn.title = 'Open in Popup Player';
-            // Upward pointing triangle
-            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,7 21,17 3,17"></polygon></svg>`; 
-            
-            btn.style.cssText = `
-                position: absolute;
-                top: 8px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 44px;
-                height: 28px;
-                background: rgba(0, 0, 0, 0.75);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 8px;
-                color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                opacity: 0;
-                transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-                z-index: 99;
-                pointer-events: auto;
-                backdrop-filter: blur(4px);
-                -webkit-backdrop-filter: blur(4px);
-            `;
-            
-            btn.onclick = (evt) => {
-                evt.preventDefault();
-                evt.stopPropagation();
-                this.spawn(thumbLink.href);
-            };
-            
-            // Append to card. We need a relative container.
-            const overlays = card.querySelector('#overlays') || card;
-            overlays.appendChild(btn);
-        });
-        
-        // Inject global CSS for hover behavior
-        if (!document.getElementById('ytpop-hover-style')) {
-            const style = document.createElement('style');
-            style.id = 'ytpop-hover-style';
-            style.textContent = `
-                ytd-thumbnail:hover .ytpop-hover-btn,
-                yt-lockup-view-model:hover .ytpop-hover-btn,
-                ytm-shorts-lockup-view-model:hover .ytpop-hover-btn {
-                    opacity: 1 !important;
-                }
-                .ytpop-hover-btn:hover {
-                    background: rgba(0, 0, 0, 0.9) !important;
-                    transform: translateX(-50%) scale(1.1) !important;
-                }
-                .ytpop-hover-btn svg {
-                    width: 20px;
-                    height: 20px;
-                }
-            `;
-            document.head.appendChild(style);
-        }
+        // Hover button removed — it was causing a ghost element to appear
+        // in the top-left of the homepage on load. The popup player can still
+        // be opened via double-click on any thumbnail (when trigger is 'both' or 'double-click').
     }
 };

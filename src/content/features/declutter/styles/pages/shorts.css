@@ -107,7 +107,8 @@ html body [data-ypp-hidden="1"] {
 
 body.ypp-shorts-page.ypp-nuke-shorts :is(
   ytd-rich-section-renderer[is-shorts],
-  ytd-rich-section-renderer:has(:is(ytd-rich-shelf-renderer, ytd-rich-grid-slim-media, ytd-reel-item-renderer)),
+  /* Do NOT include bare ytd-rich-shelf-renderer — it wraps Posts, Promos, Trending too */
+  ytd-rich-section-renderer:has(:is(ytd-rich-grid-slim-media, ytd-reel-item-renderer)),
   ytd-rich-item-renderer:has(:is(ytd-reel-item-renderer, ytd-rich-grid-slim-media, a[href*="/shorts"])),
   yt-lockup-view-model:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media)),
   ytd-reel-shelf-renderer,
@@ -129,7 +130,8 @@ body.ypp-shorts-page.ypp-nuke-shorts :is(
   yt-lockup-view-model:has(:is(a[href*="/shorts"], ytd-rich-grid-slim-media)),
   ytd-reel-shelf-renderer,
   ytd-rich-shelf-renderer[is-shorts],
-  ytd-rich-section-renderer:has(:is(ytd-rich-shelf-renderer, ytd-rich-grid-slim-media)),
+  /* Do NOT include bare ytd-rich-shelf-renderer — it wraps Posts, Promos, Trending too */
+  ytd-rich-section-renderer:has(:is(ytd-rich-grid-slim-media, ytd-reel-shelf-renderer)),
   ytm-reel-shelf-renderer,
   ytd-guide-entry-renderer:has(a[title="Shorts"]),
   ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),

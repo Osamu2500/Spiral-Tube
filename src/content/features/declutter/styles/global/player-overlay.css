@@ -9,8 +9,9 @@ body.ypp-hide-shorts-interaction ytd-reel-player-overlay-renderer #actions.ytd-r
 body.ypp-hide-podcasts :is(
   tp-yt-paper-tab:has([title*="Podcast"], [title*="podcast"]),
   [data-ypp-is-podcast='true'],
-  ytd-rich-section-renderer:has([href*='podcast']),
-  ytd-shelf-renderer:has([href*='podcast'])
+  /* Use /podcast/ path to avoid matching channel handles like /@somethingpodcast */
+  ytd-rich-section-renderer:has(a[href*='/podcast/']),
+  ytd-shelf-renderer:has(a[href*='/podcast/'])
 ) {
   display: none !important;
 }
@@ -94,11 +95,17 @@ body.ypp-hide-playlists [data-ypp-is-playlist="true"] {
 }
 
 /* Shorts Hiding */
+/* Only hide section wrappers that contain definitively-Shorts-specific markers.
+   ytd-rich-shelf-renderer is a generic wrapper for Posts, Promos and Trending — do NOT use it here. */
 body.ypp-hide-shorts :is(
   ytd-reel-shelf-renderer,
   ytd-rich-shelf-renderer[is-shorts],
   ytd-rich-section-renderer[is-shorts],
-  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer, ytd-rich-grid-slim-media, ytd-reel-item-renderer, a[href*="/shorts"], yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"]),
+  ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+  ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
+  ytd-rich-section-renderer:has(ytd-reel-item-renderer),
+  ytd-rich-section-renderer:has(yt-icon[icon="yt-icons:shorts"]),
+  ytd-rich-section-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
   ytd-shelf-renderer[is-shorts],
   [is-shorts],
   ytm-reel-shelf-renderer
@@ -116,7 +123,10 @@ body.ypp-nuke-shorts :is(
 }
 
 /* Hover Overlays on Video Cards (Save to playlist, Watch Later) */
-ytd-thumbnail-overlay-toggle-button-renderer,
-ytd-thumbnail-overlay-button-renderer {
+/* Gated behind a body class so this only fires when the user enables it */
+body.ypp-hide-card-buttons :is(
+  ytd-thumbnail-overlay-toggle-button-renderer,
+  ytd-thumbnail-overlay-button-renderer
+) {
   display: none !important;
 }
