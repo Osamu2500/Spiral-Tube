@@ -616,6 +616,13 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
                 o.className = 'aq-item' + (sc.action === val ? ' active' : '');
                 o.dataset.value = val;
                 o.textContent = label;
+                
+                // Masonry Item Styling
+                o.style.breakInside = 'avoid';
+                o.style.marginBottom = '4px';
+                o.style.fontSize = '12px';
+                o.style.padding = '6px 8px';
+                
                 menu.appendChild(o);
                 itemsElements.push(o);
                 
@@ -655,10 +662,20 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
                         el = el.offsetParent;
                     }
 
+                    const menuWidth = 520;
+                    let adjustedLeft = left;
+                    if (adjustedLeft + menuWidth > tabContent.offsetWidth) {
+                        adjustedLeft = tabContent.offsetWidth - menuWidth - 12;
+                    }
+                    if (adjustedLeft < 12) adjustedLeft = 12;
+
                     menu.style.position = 'absolute';
                     menu.style.top = top + 'px';
-                    menu.style.left = left + 'px';
-                    menu.style.width = trigger.offsetWidth + 'px';
+                    menu.style.left = adjustedLeft + 'px';
+                    menu.style.width = menuWidth + 'px';
+                    menu.style.columnCount = '3';
+                    menu.style.columnGap = '8px';
+                    menu.style.maxHeight = '340px';
                     menu.style.zIndex = '999999';
                     menu.classList.add('open');
                 }
