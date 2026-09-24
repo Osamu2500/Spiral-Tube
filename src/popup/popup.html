@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/core/variables.css" />
     <link rel="stylesheet" href="styles/core/popup-extracted.css" />
     <link rel="stylesheet" href="styles/components/popup-chips.css" />
     <link rel="stylesheet" href="styles/components/declutter.css" />
@@ -877,7 +876,7 @@
                     <div id="sync-settings-popover" class="sync-settings-popover hidden">
                       <div class="sync-settings-header">
                         <span>Sync Preferences</span>
-                        <button id="btnSyncSettingsClose" class="sync-settings-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+                        <button id="btnSyncSettingsClose" class="sync-settings-close" title="Close" aria-label="Close sync settings"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
                       </div>
                       
                       <div class="sync-opt-item">
@@ -885,7 +884,7 @@
                           <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span>General Settings</span>
                           <span class="sync-opt-desc">Core extension behavior & configs</span>
                         </div>
-                        <label class="sync-toggle"><input type="checkbox" id="syncOptSettings" checked><span class="sync-slider"></span></label>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptSettings" title="Sync General Settings" aria-label="Sync General Settings" checked><span class="sync-slider"></span></label>
                       </div>
                       
                       <div class="sync-opt-item">
@@ -893,7 +892,7 @@
                           <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></span>Subscriptions</span>
                           <span class="sync-opt-desc">Custom channel folders & feeds</span>
                         </div>
-                        <label class="sync-toggle"><input type="checkbox" id="syncOptSubs" checked><span class="sync-slider"></span></label>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptSubs" title="Sync Subscriptions" aria-label="Sync Subscriptions" checked><span class="sync-slider"></span></label>
                       </div>
 
                       <div class="sync-opt-item">
@@ -901,7 +900,7 @@
                           <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F472B6" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.66 0 3-1.34 3-3 0-.74-.29-1.42-.76-1.92a2.44 2.44 0 0 1-.36-1.08c0-1.1.9-2 2-2h1.12c2.76 0 5-2.24 5-5 0-4.42-4.48-8-10-8zm-4.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path></svg></span>Popup Design</span>
                           <span class="sync-opt-desc">Theme, scale, and colors</span>
                         </div>
-                        <label class="sync-toggle"><input type="checkbox" id="syncOptDesign" checked><span class="sync-slider"></span></label>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptDesign" title="Sync Popup Design" aria-label="Sync Popup Design" checked><span class="sync-slider"></span></label>
                       </div>
 
                       <div class="sync-opt-item">
@@ -909,7 +908,7 @@
                           <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>Bookmarks</span>
                           <span class="sync-opt-desc">Saved YouTube videos</span>
                         </div>
-                        <label class="sync-toggle"><input type="checkbox" id="syncOptBookmarks" checked><span class="sync-slider"></span></label>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptBookmarks" title="Sync Bookmarks" aria-label="Sync Bookmarks" checked><span class="sync-slider"></span></label>
                       </div>
 
                       <div class="sync-opt-item">
@@ -917,7 +916,7 @@
                           <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>Watched History</span>
                           <span class="sync-opt-desc">Local watched videos database</span>
                         </div>
-                        <label class="sync-toggle"><input type="checkbox" id="syncOptHistory" checked><span class="sync-slider"></span></label>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptHistory" title="Sync Watched History" aria-label="Sync Watched History" checked><span class="sync-slider"></span></label>
                       </div>
 
                       <div class="sync-opt-item">
@@ -925,7 +924,7 @@
                           <span class="sync-opt-title"><span class="opt-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M21.5 2v6h-6M2.13 15.57a9 9 0 1 0 3.09-10.2M21.5 8l-6-6"></path></svg></span>Auto Backup</span>
                           <span class="sync-opt-desc">Automatically sync in background</span>
                         </div>
-                        <label class="sync-toggle"><input type="checkbox" id="syncOptAuto"><span class="sync-slider"></span></label>
+                        <label class="sync-toggle"><input type="checkbox" id="syncOptAuto" title="Auto Backup" aria-label="Auto Backup"><span class="sync-slider"></span></label>
                       </div>
                     </div>
                   </div>
@@ -1015,27 +1014,8 @@
     </div>
 
     <script src="lib/anime.min.js"></script>
-    <script>
-        window.addEventListener('error', (e) => {
-            document.body.innerHTML = `<div class="ypp-inline-392">Global Error: ${e.message}<br>File: ${e.filename}<br>Line: ${e.lineno}</div>`;
-        });
-        window.addEventListener('unhandledrejection', (e) => {
-            document.body.innerHTML = `<div class="ypp-inline-393">Promise Rejection: ${e.reason}</div>`;
-        });
-    </script>
+    <script src="scripts/core/popup-error-handler.js"></script>
     <script src="scripts/ui/popup-glow.js"></script>
     <script type="module" src="scripts/core/popup-main.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-<!-- UI Changes Restored -->
-
-
-
-
-

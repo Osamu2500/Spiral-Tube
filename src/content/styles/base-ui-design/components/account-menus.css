@@ -1,0 +1,354 @@
+/* ==========================================================================
+   ACCOUNT MENUS COMPONENT
+   Handles account menu styling, cloaking, and switch-account logic.
+   Scope: Does not affect outside scope.
+   ========================================================================== */
+
+/* ── 1. Hard Containment & Cloaking ─────────────────────────────────────── */
+
+/* When our menu is active, clip all overflowing content so native backgrounds don't bleed. */
+ytd-multi-page-menu-renderer[data-ypp-cloaked],
+ytd-multi-page-menu-renderer[data-ypp-redesigned] {
+  overflow: hidden !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Nuclear Child Suppression: Hide all direct children except our custom panel. */
+ytd-multi-page-menu-renderer[data-ypp-cloaked] > :not(.ypp-account-menu),
+ytd-multi-page-menu-renderer[data-ypp-redesigned] > :not(.ypp-account-menu) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  z-index: -9999 !important;
+}
+
+/* Allow our custom injected panel to be visible. */
+ytd-multi-page-menu-renderer .ypp-account-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  z-index: auto !important;
+}
+
+/* Dropdown Host Transparency */
+:is(html, html[data-ypp-theme]) :is(tp-yt-iron-dropdown, ytd-popup-container):has(ytd-multi-page-menu-renderer:is([data-ypp-cloaked], [data-ypp-redesigned])) {
+  overflow: visible !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ── 2. Custom Extension Menu (.ypp-account-menu) ───────────────────────── */
+
+.ypp-account-menu {
+  width: 320px;
+  background: var(--ypp-menu-bg, rgba(20, 20, 20, 0.65)) !important;
+  -webkit-backdrop-filter: var(--ypp-glass-blur, blur(20px)) saturate(150%) !important;
+  backdrop-filter: var(--ypp-glass-blur, blur(20px)) saturate(150%) !important;
+  border-radius: var(--ypp-menu-radius, var(--ypp-shape-lg, 16px)) !important;
+  border: 1px solid var(--ypp-border-color, rgba(255, 255, 255, 0.1)) !important;
+  box-shadow: var(--ypp-shadow-float, 0 24px 64px rgba(0, 0, 0, 0.6)) !important;
+  overflow: hidden !important;
+  font-family: var(--ypp-font-primary, 'Roboto', Arial, sans-serif) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  position: relative !important;
+}
+
+/* Menu Item Styles */
+.ypp-menu-item {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 10px 14px !important;
+  border-radius: var(--ypp-shape-md, 10px) !important;
+  background: transparent !important;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 13.5px !important;
+  font-family: var(--ypp-font-primary, 'Roboto', Arial, sans-serif) !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s var(--ypp-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
+  gap: 8px !important;
+}
+.ypp-menu-item:hover {
+  background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+  transform: translateX(4px) scale(1.01) !important;
+}
+.ypp-menu-item:active {
+  transform: translateX(2px) scale(0.98) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ── 3. Sign-Out Confirm Dialog ─────────────────────────────────────────── */
+
+.ypp-signout-confirm {
+  display: none;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  z-index: var(--ypp-z-dropdown)!important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: inherit !important;
+}
+
+.ypp-confirm-box {
+  background: rgba(28, 28, 32, 0.98) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 24px 20px !important;
+  text-align: center !important;
+  width: 220px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+.ypp-confirm-box p {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  margin: 0 0 16px !important;
+}
+
+.ypp-confirm-actions {
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: center !important;
+}
+.ypp-confirm-actions button {
+  padding: 8px 18px !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+  transition: background 0.15s !important;
+}
+.ypp-confirm-actions button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+.ypp-confirm-actions button.danger {
+  background: rgba(255, 78, 69, 0.2) !important;
+  border-color: rgba(255, 78, 69, 0.5) !important;
+  color: #ff4e45 !important;
+}
+.ypp-confirm-actions button.danger:hover {
+  background: rgba(255, 78, 69, 0.35) !important;
+}
+
+/* ==========================================================================
+   NATIVE SWITCH-ACCOUNT PAGE STYLING — COMPLETE OVERRIDE
+   ========================================================================== */
+
+/* ── STEP 1: Override YouTube's Native Background Variables ─────────────── */
+
+ytd-multi-page-menu-renderer,
+ytd-account-section-list-renderer,
+ytd-account-item-section-renderer,
+ytd-account-item-renderer,
+ytd-account-item,
+ytd-active-account-header-renderer {
+  --yt-spec-menu-background:             transparent !important;
+  --yt-spec-base-background:             transparent !important;
+  --yt-spec-raised-background:           transparent !important;
+  --yt-spec-brand-background-primary:    transparent !important;
+  --yt-spec-brand-background-secondary:  transparent !important;
+  --yt-spec-brand-background-solid:      transparent !important;
+  --yt-spec-general-background-a:        transparent !important;
+  --yt-spec-general-background-b:        transparent !important;
+  --yt-spec-general-background-c:        transparent !important;
+  --paper-menu-background-color:         transparent !important;
+  --paper-listbox-background-color:      transparent !important;
+  --paper-item-focused-before-background: transparent !important;
+  --yt-spec-10-percent-layer:            rgba(255, 255, 255, 0.05) !important;
+  --yt-spec-badge-chip-background:       rgba(255, 255, 255, 0.06) !important;
+  --yt-spec-text-primary:                rgba(255, 255, 255, 0.92) !important;
+  --yt-spec-text-secondary:              rgba(255, 255, 255, 0.55) !important;
+  --yt-spec-icon-inactive:               rgba(255, 255, 255, 0.55) !important;
+  --yt-spec-icon-active-other:           #3ea6ff !important;
+}
+
+/* ── STEP 2: Main Menu Glassmorphism ────────────────────────────────────── */
+
+ytd-multi-page-menu-renderer {
+  background: var(--ypp-menu-bg, rgba(20, 20, 20, 0.75)) !important;
+  -webkit-backdrop-filter: var(--ypp-glass-blur, blur(20px)) saturate(150%) !important;
+  backdrop-filter: var(--ypp-glass-blur, blur(20px)) saturate(150%) !important;
+  border-radius: var(--ypp-menu-radius, var(--ypp-shape-lg, 16px)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: var(--ypp-shadow-float, 0 20px 50px rgba(0, 0, 0, 0.65)) !important;
+}
+
+/* ── STEP 3: Transparent Section Overrides ──────────────────────────────── */
+
+ytd-account-section-list-renderer,
+ytd-account-item-section-renderer,
+ytd-account-section-list-renderer #header,
+ytd-account-section-list-renderer #footer,
+ytd-account-section-list-renderer #contents,
+ytd-account-item-section-renderer #header,
+ytd-account-item-section-renderer #contents,
+ytd-active-account-header-renderer,
+ytd-multi-page-menu-renderer > div:not(.ypp-account-menu),
+ytd-account-section-list-renderer > div,
+ytd-account-item-section-renderer > div,
+ytd-account-item-renderer > div,
+ytd-active-account-header-renderer > div {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ── STEP 4: Section Headings & Active Headers ──────────────────────────── */
+
+ytd-account-section-list-renderer #header yt-formatted-string,
+ytd-account-section-list-renderer #header span,
+ytd-account-item-section-renderer #header yt-formatted-string,
+ytd-account-item-section-renderer #header span {
+  color: rgba(255, 255, 255, 0.42) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+ytd-active-account-header-renderer #account-name,
+ytd-active-account-header-renderer #channel-name {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 500 !important;
+}
+ytd-active-account-header-renderer #account-email,
+ytd-active-account-header-renderer #email {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 12px !important;
+}
+
+/* ── STEP 5: Individual Account Rows ────────────────────────────────────── */
+
+ytd-account-item-renderer,
+ytd-account-item {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  margin: 1px 6px !important;
+  transition: background 0.15s ease !important;
+}
+ytd-account-item-renderer:hover,
+ytd-account-item:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+}
+
+tp-yt-paper-item.ytd-account-item-renderer,
+tp-yt-paper-item.ytd-account-item {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+ytd-account-item-renderer #channel-title,
+ytd-account-item-renderer #account-name,
+ytd-account-item-renderer #channel-name,
+ytd-account-item #channel-title,
+ytd-account-item #account-name {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 500 !important;
+}
+
+ytd-account-item-renderer #account-byline,
+ytd-account-item-renderer #channel-handle,
+ytd-account-item-renderer #byline,
+ytd-account-item #account-byline,
+ytd-account-item #channel-handle {
+  color: rgba(255, 255, 255, 0.48) !important;
+  font-size: 12px !important;
+}
+
+ytd-account-item-renderer #subscriber-count,
+ytd-account-item #subscriber-count {
+  color: rgba(255, 255, 255, 0.38) !important;
+  font-size: 11px !important;
+}
+
+ytd-account-item-renderer #check-icon,
+ytd-account-item #check-icon,
+ytd-account-item-renderer yt-icon[icon="checked"] {
+  color: var(--ypp-accent-primary, #3ea6ff) !important;
+  fill: var(--ypp-accent-primary, #3ea6ff) !important;
+}
+
+ytd-account-item-renderer yt-img-shadow,
+ytd-account-item yt-img-shadow,
+ytd-active-account-header-renderer yt-img-shadow {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: var(--r-lg, 16px) !important;
+  overflow: hidden !important;
+}
+
+/* ── STEP 6: Separators & View All Buttons ──────────────────────────────── */
+
+ytd-account-section-list-renderer #separator,
+ytd-account-item-section-renderer #separator,
+ytd-multi-page-menu-renderer tp-yt-iron-list + * {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: none !important;
+  height: 1px !important;
+  margin: 4px 12px !important;
+}
+
+ytd-account-section-list-renderer tp-yt-paper-button,
+ytd-account-section-list-renderer ytd-button-renderer,
+ytd-account-section-list-renderer yt-button-shape button {
+  color: var(--ypp-accent-primary, #3ea6ff) !important;
+  background: rgba(62, 166, 255, 0.08) !important;
+  border-radius: var(--ypp-squircle-radius, 8px) !important;
+  font-weight: 500 !important;
+  transition: background 0.15s ease !important;
+}
+ytd-account-section-list-renderer tp-yt-paper-button:hover,
+ytd-account-section-list-renderer yt-button-shape button:hover {
+  background: rgba(62, 166, 255, 0.15) !important;
+}
+
+/* ── STEP 7: Back Button & Text Formats ─────────────────────────────────── */
+
+ytd-multi-page-menu-renderer #header-container {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+ytd-multi-page-menu-renderer #title,
+ytd-multi-page-menu-renderer #back-button,
+ytd-multi-page-menu-renderer #back-button yt-icon {
+  color: rgba(255, 255, 255, 0.9) !important;
+  fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+ytd-multi-page-menu-renderer yt-formatted-string,
+ytd-multi-page-menu-renderer span:not([class*="style-scope ytd-thumbnail"]),
+ytd-account-section-list-renderer yt-formatted-string,
+ytd-account-item-section-renderer yt-formatted-string {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* ── STEP 8: Kill Remaining Paper Overlays ──────────────────────────────── */
+
+ytd-multi-page-menu-renderer tp-yt-paper-item::before,
+ytd-multi-page-menu-renderer tp-yt-paper-item::after,
+ytd-account-item-renderer tp-yt-paper-item::before,
+ytd-account-item-renderer tp-yt-paper-item::after {
+  background: transparent !important;
+  opacity: 0 !important;
+}

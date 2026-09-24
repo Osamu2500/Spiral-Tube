@@ -1,4 +1,4 @@
-window.addEventListener("error", (e) => { alert("JS Error: " + e.message + " at " + e.filename + ":" + e.lineno); });
+// popup-main.js — Spiral Tube Popup Entry Point
 import '../../../shared/config/constants/index.js';
 import '../../../shared/config/settings-schema.js';
 import '../../../shared/utils/index.js';
@@ -10,7 +10,7 @@ import { convertStaticDescriptionsToHelpButtons, registerSlot, renderSchema } fr
 import * as UI from '../ui/popup-ui.js';
 import { initStorage, loadSettings, notifyThemeChange, saveSettings, state, updateSetting } from './popup-state.js';
 import { initPopupDesignScale } from './popup-design-handler.js';
-import { renderAccentColorSlot, renderPopupScaleSlot } from '../schema/tabs/tab-popup-design.js';
+import { renderAccentColorSlot, renderPopupScaleSlot } from '../schema/tabs/ui/tab-popup-design.js';
 import { initResumeDashboard } from '../components/resume-dashboard.js';
 import { initCommandPalette } from '../ui/command-palette.js';
 import { initAmbientBackground } from '../ui/popup-ambient.js';
@@ -1301,7 +1301,6 @@ const initApp = async () => {
         safeInit(components.initGlobalBarGrid);
         safeInit(components.initCardStyleGrid);
         safeInit(components.initYoutubeStyleGrid);
-        safeInit(components.initPopupStyleGrid);
         safeInit(components.initCustomCursorUploader);
         safeInit(components.initAccentColorSwatches);
         safeInit(components.initCustomThemeBuilder);
