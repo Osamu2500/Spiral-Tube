@@ -80,6 +80,22 @@ export const PopupBottomBar = {
             if (engine._recalculateHeight) engine._recalculateHeight();
         });
 
+        makeClickable(likesPill, () => {
+            engine._sendToIframe({ command: 'toggleLike' });
+            
+            // Give visual feedback that it was clicked
+            const svg = likesPill.querySelector('svg');
+            if (svg) {
+                if (svg.getAttribute('fill') === 'currentColor') {
+                    svg.setAttribute('fill', 'none');
+                    svg.style.color = 'inherit';
+                } else {
+                    svg.setAttribute('fill', 'currentColor');
+                    svg.style.color = '#fff';
+                }
+            }
+        });
+
         makeClickable(commentsPill, () => {
             engine.destroy();
             window.location.href = `/watch?v=${videoId}`;

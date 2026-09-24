@@ -249,6 +249,14 @@
                     // Volume booster removed.
                 }
                 break;
+            case 'toggleLike':
+                try {
+                    const likeBtn = document.querySelector('like-button-view-model button') || 
+                                    document.querySelector('ytd-menu-renderer ytd-toggle-button-renderer a button') ||
+                                    document.querySelector('ytd-segmented-like-dislike-button-renderer button');
+                    if (likeBtn) likeBtn.click();
+                } catch (_) {}
+                break;
         }
     });
 
