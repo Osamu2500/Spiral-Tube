@@ -3,18 +3,20 @@ export const PopupEvents = {
     _openTrigger: 'both',
 
     _initSettingsListener() {
-        chrome.storage.local.get({ floatingPlayer: false, popupOpenTrigger: 'both' }, (data) => {
-            this._isEnabled = data.floatingPlayer;
-            this._openTrigger = data.popupOpenTrigger;
+        chrome.storage.local.get('settings', (data) => {
+            const settings = data.settings || {};
+            this._isEnabled = settings.floatingPlayer ?? false;
+            this._openTrigger = settings.popupOpenTrigger ?? 'both';
         });
 
         chrome.storage.onChanged.addListener((changes, namespace) => {
-            if (namespace === 'local') {
-                if (changes.floatingPlayer !== undefined) {
-                    this._isEnabled = changes.floatingPlayer.newValue;
+            if (namespace === 'local' && changes.settings) {
+                const newSettings = changes.settings.newValue || {};
+                if (newSettings.floatingPlayer !== undefined) {
+                    this._isEnabled = newSettings.floatingPlayer;
                 }
-                if (changes.popupOpenTrigger !== undefined) {
-                    this._openTrigger = changes.popupOpenTrigger.newValue;
+                if (newSettings.popupOpenTrigger !== undefined) {
+                    this._openTrigger = newSettings.popupOpenTrigger;
                 }
             }
         });
@@ -27,6 +29,29 @@ export const PopupEvents = {
                 if (!this._isEnabled) return;
                 this.spawn(request.sourceUrl);
                 sendResponse({ success: true });
+            }
+        });
+
+        window.addEventListener('message', (e) => {
+            if (!e.data || !e.data._ytpopBridge) return;
+            
+            if (e.data.type === 'timeUpdate' && this.currentVideoId) {
+                chrome.storage.local.get('settings', (data) => {
+                    const settings = data.settings || {};
+                    if (settings.videoResumer && e.data.currentTime > 5 && chrome.storage.sync) {
+                        const key = 'ypp_resume_' + this.currentVideoId;
+                        const saveData = JSON.stringify({ 
+                            time: e.data.currentTime, 
+                            duration: e.data.duration || 0, 
+                            savedAt: Date.now(),
+                            title: 'Popup Video',
+                            channel: 'YouTube',
+                            thumbnail: `https://i.ytimg.com/vi/${this.currentVideoId}/mqdefault.jpg`,
+                            categoryId: null
+                        });
+                        chrome.storage.sync.set({ [key]: saveData });
+                    }
+                });
             }
         });
     },
@@ -135,8 +160,9 @@ export const PopupEvents = {
 
             this.scrollObserver = new IntersectionObserver((entries) => {
                 const entry = entries[0];
-                chrome.storage.local.get({ autoMiniOnScroll: false }, (data) => {
-                    if (data.autoMiniOnScroll && !entry.isIntersecting && !this.overlay) {
+                chrome.storage.local.get('settings', (data) => {
+                    const settings = data.settings || {};
+                    if (settings.autoMiniOnScroll && !entry.isIntersecting && !this.overlay) {
                         const vid = document.querySelector('video');
                         if (vid && vid.readyState > 1 && !vid.paused) {
                             this.spawn(window.location.href);
@@ -150,9 +176,48 @@ export const PopupEvents = {
         tryObserve();
     },
 
+
     _initHoverButtonListener() {
-        // Hover button removed — it was causing a ghost element to appear
-        // in the top-left of the homepage on load. The popup player can still
-        // be opened via double-click on any thumbnail (when trigger is 'both' or 'double-click').
+        const injectButtons = () => {
+            if (!this._isEnabled || this._openTrigger === 'double-click') return;
+
+            const thumbs = document.querySelectorAll('ytd-thumbnail, ytm-shorts-lockup-view-model, ytd-reel-item-renderer, yt-lockup-view-model, yt-lockup-thumbnail');
+            thumbs.forEach(container => {
+                // Find the target to append to
+                let targetAppend = container;
+                if (container.tagName === 'YTD-REEL-ITEM-RENDERER') {
+                    targetAppend = container.querySelector('ytd-thumbnail, #thumbnail-container') || container;
+                } else if (container.tagName === 'YT-LOCKUP-VIEW-MODEL') {
+                    targetAppend = container.querySelector('yt-lockup-thumbnail') || container;
+                }
+
+                if (targetAppend.querySelector('.ytpop-hover-btn')) return; // Already injected
+
+                // Ensure there's a valid video link
+                const anchor = container.querySelector('a#thumbnail, a[href*="/watch?v="], a[href*="/shorts/"]') || container.closest('a[href*="/watch?v="], a[href*="/shorts/"]');
+                if (!anchor || !anchor.href) return;
+
+                const hoverBtn = document.createElement('div');
+                hoverBtn.className = 'ytpop-hover-btn';
+                hoverBtn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 7 L4 17 L20 17 Z" /></svg>`;
+                
+                hoverBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.spawn(anchor.href);
+                });
+
+                if (getComputedStyle(targetAppend).position === 'static') {
+                    targetAppend.style.position = 'relative';
+                }
+
+                targetAppend.appendChild(hoverBtn);
+            });
+        };
+
+        // Run injection periodically to catch new cards
+        setInterval(injectButtons, 1500);
+        document.addEventListener('yt-page-data-updated', injectButtons);
+        document.addEventListener('yt-navigate-finish', injectButtons);
     }
 };

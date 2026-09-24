@@ -430,6 +430,10 @@ window.YPP.SettingsSchema = {
 
         // --- Missing Global Layout Toggles ---
         floatingPlayer:               { type: 'boolean', default: false },
+        popupOpenTrigger:             { type: 'string',  default: 'both', values: ['both', 'double-click', 'hover'] },
+        closeOnBackdropClick:         { type: 'string',  default: 'none', values: ['none', 'miniplayer', 'always'] },
+        autoMiniOnScroll:             { type: 'boolean', default: false },
+        openShortsInPopup:            { type: 'boolean', default: false },
 
         hideSearchMusic:              { type: 'boolean', default: false },
         hideShortsInteraction:        { type: 'boolean', default: false },

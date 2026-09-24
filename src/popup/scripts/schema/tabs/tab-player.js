@@ -79,6 +79,7 @@ export const getPlayerTab = (t) => ({
           {
             type: 'toggle',
             id: 'floatingPlayer',
+            class: 'span-2',
             label: 'Popup Player',
             desc: 'Open YouTube videos in a floating popup overlay.',
             icon: ICONS.player,
@@ -110,8 +111,8 @@ export const getPlayerTab = (t) => ({
           {
             type: 'toggle',
             id: 'autoMiniOnScroll',
-            label: 'Auto-Miniplayer on Scroll',
-            desc: 'Shrink to miniplayer when you scroll away.',
+            label: 'Miniplayer on Scroll',
+            desc: 'Shrink to miniplayer when scrolled away.',
             icon: ICONS.minimize,
           },
           {
@@ -190,13 +191,7 @@ export const getPlayerTab = (t) => ({
             desc: t('visual_effects_panel'),
             icon: ICONS.cinemaFilters,
           },
-          {
-            type: 'toggle',
-            id: 'enableVolumeBoost',
-            label: t('volume_booster'),
-            desc: t('increase_past_100'),
-            icon: ICONS.volumeUp,
-          },
+
           {
             type: 'toggle',
             id: 'enableRemainingTime',

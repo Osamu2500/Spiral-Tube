@@ -21,8 +21,9 @@ export const PopupDOM = {
         // Close on background click — respect user setting
         this.overlay.addEventListener('click', async (e) => {
             if (e.target === this.overlay) {
-                const data = await chrome.storage.local.get({ closeOnBackdropClick: 'none' });
-                if (data.closeOnBackdropClick === 'always' || (data.closeOnBackdropClick === 'miniplayer' && this.state.width === 320)) {
+                const data = await chrome.storage.local.get('settings');
+                const closePref = data.settings?.closeOnBackdropClick || 'none';
+                if (closePref === 'always' || (closePref === 'miniplayer' && this.state.width === 320)) {
                     this.destroy();
                 }
             }

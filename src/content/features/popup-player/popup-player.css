@@ -521,3 +521,46 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
 }
+
+/* ── 10. HOVER BUTTON OVERLAY ── */
+.ytpop-hover-btn {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: rgba(0, 0, 0, 0.65);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  width: 44px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+ytd-thumbnail:hover .ytpop-hover-btn,
+ytm-shorts-lockup-view-model:hover .ytpop-hover-btn,
+ytd-reel-item-renderer:hover .ytpop-hover-btn,
+yt-lockup-view-model:hover .ytpop-hover-btn,
+yt-lockup-thumbnail:hover .ytpop-hover-btn,
+.ytpop-hover-btn:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+
+.ytpop-hover-btn:hover {
+  background: rgba(255, 68, 68, 0.9);
+  color: white;
+  border-color: rgba(255, 68, 68, 1);
+  box-shadow: 0 4px 16px rgba(255, 68, 68, 0.4);
+}
