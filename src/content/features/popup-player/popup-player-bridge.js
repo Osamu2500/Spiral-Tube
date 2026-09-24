@@ -194,9 +194,8 @@
         ].join(' ');
     }
 
-    // ── Step 5: Player State Events → Host ───────────────────────────────────
-
     function startStateReporter(videoEl) {
+        // We report state based on the HTML5 video events because they are always reliable
         videoEl.addEventListener('play', () => postToHost({ type: 'playerState', state: 'playing' }));
         videoEl.addEventListener('pause', () => postToHost({ type: 'playerState', state: 'paused' }));
         videoEl.addEventListener('ended', () => postToHost({ type: 'playerState', state: 'ended' }));
@@ -207,6 +206,12 @@
                 duration: videoEl.duration || 0,
             });
         });
+        
+        // Let's also sync initial state after a tiny delay
+        setTimeout(() => {
+            if (!videoEl.paused) postToHost({ type: 'playerState', state: 'playing' });
+            else postToHost({ type: 'playerState', state: 'paused' });
+        }, 1000);
     }
 
     // ── Step 6: Command Handler (from host engine.js) ─────────────────────────
@@ -255,19 +260,27 @@
                 } catch (_) {}
                 break;
             case 'togglePlay':
-                if (vid) {
-                    if (vid.paused) {
-                        player?.playVideo?.() || vid?.play?.().catch(() => {});
-                    } else {
-                        player?.pauseVideo?.() || vid?.pause?.();
+                try {
+                    const v = document.querySelector('video');
+                    if (v) {
+                        if (v.paused) v.play().catch(()=>{});
+                        else v.pause();
                     }
-                }
+                } catch (_) {}
                 break;
             case 'nextVideo':
-                try { document.querySelector('.ytp-next-button')?.click(); } catch (_) {}
+                try {
+                    const p = document.getElementById('movie_player');
+                    if (p && p.nextVideo) p.nextVideo();
+                    else document.querySelector('.ytp-next-button')?.click();
+                } catch (_) {}
                 break;
             case 'prevVideo':
-                try { document.querySelector('.ytp-prev-button')?.click(); } catch (_) {}
+                try {
+                    const p = document.getElementById('movie_player');
+                    if (p && p.previousVideo) p.previousVideo();
+                    else document.querySelector('.ytp-prev-button')?.click();
+                } catch (_) {}
                 break;
         }
     });

@@ -62,8 +62,10 @@ export const PopupState = {
         this.state.isMiniplayer = true;
         this.container.classList.add('is-miniplayer');
         
-        // Collapse to a small corner window (bottom-right, 320x180)
-        const W = 320, H = 180;
+        // Use miniSize modifier
+        const miniScale = this.state.miniSize || 1;
+        const W = Math.round(320 * miniScale);
+        const H = Math.round(180 * miniScale);
         this.state.width  = W;
         this.state.height = H;
         this.state.x = window.innerWidth  - W - 20;
@@ -89,6 +91,11 @@ export const PopupState = {
         this.overlay.style.webkitBackdropFilter = 'none';
         this.overlay.style.pointerEvents = 'none';
         this.container.style.pointerEvents = 'auto';
+        
+        // Allow external hover UI to break out of container bounds
+        this.container.style.overflow = 'visible';
+        if (this.iframe) this.iframe.style.borderRadius = '16px';
+
         this._applyTransform();
         this._sendToIframe({ command: 'reflow' });
         this._saveState();
@@ -105,8 +112,13 @@ export const PopupState = {
         this.overlay.style.webkitBackdropFilter = 'blur(24px) saturate(200%)';
         this.overlay.style.pointerEvents = '';
         this.container.style.pointerEvents = '';
-        this.topBar.style.display = '';
-        if (this.bottomBar) this.bottomBar.style.display = '';
+        
+        // Restore container overflow and iframe border radius
+        this.container.style.overflow = 'hidden';
+        if (this.iframe) this.iframe.style.borderRadius = '';
+
+        this.topBar.style.display = 'flex';
+        if (this.bottomBar) this.bottomBar.style.display = 'flex';
         
         // Center and restore size
         this.state.width  = this.savedFullWidth || 640;
@@ -135,9 +147,10 @@ export const PopupState = {
         }
 
         this.state.isMusicMode = true;
+        this.container.classList.add('is-music-mode');
         
         // Collapse to a thin audio bar (dock)
-        const W = 360, H = 80;
+        const W = 480, H = 112;
         this.state.width  = W;
         this.state.height = H;
         
@@ -178,6 +191,7 @@ export const PopupState = {
     _exitMusicMode() {
         if (!this.container) return;
         this.state.isMusicMode = false;
+        this.container.classList.remove('is-music-mode');
         
         // Restore backdrop
         if (this.overlay) {
@@ -227,6 +241,21 @@ export const PopupState = {
     },
 
     _applyCustomResize() {
+        if (this.state.isMiniplayer) {
+            const miniScale = this.state.miniSize || 1;
+            const W = Math.round(320 * miniScale);
+            const H = Math.round(180 * miniScale);
+            this.state.width = W;
+            this.state.height = H;
+            this.state.x = window.innerWidth - W - 20;
+            this.state.y = window.innerHeight - H - 20;
+            this.container.style.width = `${W}px`;
+            this.container.style.height = `${H}px`;
+            this._applyTransform();
+            this._saveState();
+            return;
+        }
+
         if (!this.state.ratio) this.state.ratio = '16:9';
         if (!this.state.size) this.state.size = 1.5;
         

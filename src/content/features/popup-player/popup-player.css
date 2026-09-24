@@ -43,9 +43,9 @@
   --pp-accent:           #ff4444;
   --pp-accent-muted:     rgba(255, 68, 68, 0.15);
   --pp-accent-glow:      rgba(255, 68, 68, 0.25);
-  --pp-surface:          rgba(12, 12, 16, 0.94);
-  --pp-surface-2:        rgba(20, 20, 28, 0.96);
-  --pp-surface-3:        rgba(30, 30, 42, 0.97);
+  --pp-surface:          rgba(12, 12, 16, 0.35);
+  --pp-surface-2:        rgba(20, 20, 28, 0.35);
+  --pp-surface-3:        rgba(30, 30, 42, 0.4);
   --pp-border:           rgba(255, 255, 255, 0.07);
   --pp-border-hover:     rgba(255, 255, 255, 0.16);
   --pp-border-accent:    rgba(255, 68, 68, 0.25);
@@ -95,11 +95,8 @@
 /* ── 4. TOOLBAR ─────────────────────────────────────────────────────────── */
 
 .ytpop-top-bar {
-  background: linear-gradient(
-    180deg,
-    rgba(12, 12, 18, 0.99) 0%,
-    rgba(14, 14, 20, 0.92) 100%
-  ) !important;
+  display: flex;
+  background: rgba(12, 12, 18, 0.25) !important;
   -webkit-backdrop-filter: var(--pp-blur-bar) !important;
   backdrop-filter: var(--pp-blur-bar) !important;
   border-bottom: 1px solid var(--pp-border) !important;
@@ -243,9 +240,9 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  background: rgba(20, 20, 20, 0.85);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background: rgba(20, 20, 25, 0.45);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  backdrop-filter: blur(24px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 6px 0;
@@ -293,8 +290,14 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
 .ytpop-overlay--miniplayer .ytpop-container {
   border: 1px solid var(--pp-border) !important;
   border-radius: var(--pp-r-lg) !important;
-  background: rgba(12, 12, 18, 0.97) !important;
+  background: rgba(12, 12, 18, 0.45) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65) !important;
+}
+
+.ytpop-container.is-miniplayer iframe {
+  pointer-events: none !important;
 }
 
 .ytpop-overlay--music {
@@ -322,32 +325,37 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
 
 /* ── 9. NEW MUSIC MODE (GLASSMORPHIC) ───────────────────────────────────── */
 
+.ytpop-container.is-music-mode {
+  background: rgba(18, 18, 22, 0.45) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6) !important;
+}
+
 .ytpop-music-dock {
   display: flex;
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(18, 18, 22, 0.9);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  backdrop-filter: blur(24px) saturate(180%);
-  border-radius: 40px;
+  background: transparent;
+  border-radius: 16px;
   z-index: 1000 !important;
   align-items: center;
-  padding: 8px 16px 8px 8px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.08);
+  padding: 12px 24px 12px 12px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  gap: 12px;
+  gap: 20px;
 }
 
 .ytpop-music-dock-thumb-wrap {
-  width: 64px;
-  height: 40px;
+  width: 156px;
+  height: 88px;
   flex-shrink: 0;
-  border-radius: 6px;
+  border-radius: 10px; /* Squircle */
   overflow: hidden;
   position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .ytpop-music-dock-thumb {
@@ -362,32 +370,32 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
   justify-content: center;
   flex: 1;
   min-width: 0;
-  gap: 6px;
 }
 
 .ytpop-music-dock-title {
   color: #fff;
   font-family: var(--pp-font);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding-right: 8px;
+  margin-bottom: 10px;
 }
 
 .ytpop-music-dock-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .ytpop-dock-ctrl-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px; /* Squircle */
+  width: 36px;
+  height: 36px;
   color: #fff;
   display: flex;
   align-items: center;
@@ -398,20 +406,20 @@ button[aria-label="Close"].ytpop-ctrl-btn:hover {
 }
 
 .ytpop-dock-ctrl-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
 }
 
 .ytpop-dock-ctrl-btn svg {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
 }
 
 .ytpop-dock-separator {
   width: 1px;
-  height: 16px;
+  height: 20px;
   background: rgba(255, 255, 255, 0.15);
-  margin: 0 4px;
+  margin: 0 8px;
 }
 
 /* ── 10. HOVER BUTTON OVERLAY ── */
@@ -459,40 +467,19 @@ yt-lockup-thumbnail:hover .ytpop-hover-btn,
 
 /* ── 11. MINIPLAYER HOVER OVERLAYS ── */
 
-.ytpop-mini-hover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  border-radius: var(--pp-r-xl);
-}
-
-.is-miniplayer:hover .ytpop-mini-hover-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .ytpop-mini-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px; /* Squircle */
+  color: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
+  padding: 0;
 }
 
 .ytpop-mini-btn:hover {
@@ -501,6 +488,72 @@ yt-lockup-thumbnail:hover .ytpop-hover-btn,
 }
 
 .ytpop-mini-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
+
+.ytpop-mini-hover-top {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  background: rgba(12, 12, 18, 0.7);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  padding: 8px;
+  border-radius: 16px; /* Squircle */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 50;
+  top: 10px;
+}
+
+.ytpop-mini-hover-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(12, 12, 18, 0.7);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  padding: 8px;
+  border-radius: 16px; /* Squircle */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 50;
+  left: 10px;
+}
+
+/* Expand hover area so moving mouse to buttons doesn't lose hover state */
+.ytpop-container.is-miniplayer::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  right: -30px;
+  bottom: -30px;
+  z-index: -1;
+  /* invisible but catches pointer events */
+}
+
+.is-miniplayer:hover .ytpop-mini-hover-top {
+  top: -65px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.is-miniplayer:hover .ytpop-mini-hover-left {
+  left: -65px;
+  opacity: 1;
+  pointer-events: auto;
+}
+

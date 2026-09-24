@@ -100,12 +100,13 @@ class SpiralPopupEngine {
             this.destroy();
 
             // Load persisted position/size
-            const data = await chrome.storage.local.get(['ytpopState', 'popupRatio', 'popupSize']);
+            const data = await chrome.storage.local.get(['ytpopState', 'popupRatio', 'popupSize', 'popupMiniSize']);
             const saved = data.ytpopState;
 
             // Always start from a known-good width based on popupSize setting
             const baseWidth = 400;
             const sizeMultiplier = data.popupSize ? parseFloat(data.popupSize) : 1.5;
+            this.state.miniSize = data.popupMiniSize ? parseFloat(data.popupMiniSize) : 1.0;
             const ratio = this._parseRatio(data.popupRatio || '16:9');
             
             if (saved && saved.hasBeenMoved && saved.width && saved.height && saved.x !== undefined) {
@@ -132,7 +133,10 @@ class SpiralPopupEngine {
 
             this.state.isMaximized = false;
             this.state.isMusicMode = false;
-            this.state.isMusicMaximized = false;
+            
+            // Initialize savedFull sizes for correct restoration from miniplayer/music mode
+            this.savedFullWidth = this.state.width;
+            this.savedFullHeight = this.state.height;
 
             this._buildDOM(videoId);
             this._attachPhysics();

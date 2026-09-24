@@ -61,6 +61,22 @@ export const PopupEvents = {
                         chrome.storage.sync.set({ [key]: saveData });
                     }
                 });
+            } else if (e.data.type === 'playerState') {
+                // Update play/pause buttons
+                const isPlaying = e.data.state === 'playing';
+                const playIcon = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+                const pauseIcon = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+                const iconHTML = isPlaying ? pauseIcon : playIcon;
+
+                // Update Miniplayer button if available
+                if (this.miniElements && this.miniElements.btnPlayPause) {
+                    this.miniElements.btnPlayPause.innerHTML = iconHTML;
+                }
+                
+                // Update Music Mode button if available
+                if (this.musicModeUI && this.musicModeUI.dockElements && this.musicModeUI.dockElements.btnPlayPause) {
+                    this.musicModeUI.dockElements.btnPlayPause.innerHTML = iconHTML;
+                }
             }
         });
     },

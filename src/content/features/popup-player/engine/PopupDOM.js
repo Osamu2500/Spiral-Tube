@@ -66,6 +66,7 @@ export const PopupDOM = {
         this.topBar.className = 'ytpop-top-bar';
         this.topBar.style.cssText = [
             'display:flex',
+            'flex-wrap:nowrap',
             'align-items:center',
             'gap:6px',
             'padding:0 8px',
@@ -94,7 +95,7 @@ export const PopupDOM = {
                 'background:rgba(255,255,255,0.06)',
                 'backdrop-filter:blur(12px)',
                 'border:1px solid rgba(255,255,255,0.1)',
-                'border-radius:20px', // Pill shape
+                'border-radius:8px', // Squircle shape
                 'color:rgba(255,255,255,0.85)',
                 'font-size:12px',
                 'font-weight:500',
@@ -140,7 +141,7 @@ export const PopupDOM = {
             'flex-shrink:0',
             'background:rgba(220,38,38,0.1)',
             'border:1px solid rgba(220,38,38,0.2)',
-            'border-radius:6px',
+            'border-radius:8px', // Squircle
             'color:rgba(255,100,100,0.7)',
             'cursor:pointer',
             'transition:background 0.15s,color 0.15s',
@@ -170,7 +171,7 @@ export const PopupDOM = {
             
             const btn = document.createElement('button');
             btn.className = 'ytpop-dropdown-btn ytpop-ctrl-btn';
-            btn.style.cssText = 'display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;color:rgba(255,255,255,0.85);font-size:12px;font-weight:500;cursor:pointer;';
+            btn.style.cssText = 'display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(255,255,255,0.85);font-size:12px;font-weight:500;cursor:pointer;';
             btn.innerHTML = `<span>${label}: </span><strong>${currentValue}</strong> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
             
             const menu = document.createElement('div');
@@ -263,28 +264,77 @@ export const PopupDOM = {
         // Fetch metadata async
         this._fetchMetadata(videoId);
 
-        // ── Miniplayer Hover Overlay ──
-        this.miniHoverOverlay = document.createElement('div');
-        this.miniHoverOverlay.className = 'ytpop-mini-hover-overlay';
+        // ── Miniplayer Hover UI ──
         
-        const miniExpandBtn = document.createElement('button');
-        miniExpandBtn.className = 'ytpop-mini-btn';
-        miniExpandBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`;
-        miniExpandBtn.onclick = (e) => { e.stopPropagation(); this._exitMiniplayer(); };
+        // 1. Top Bar (Above Miniplayer)
+        this.miniHoverTop = document.createElement('div');
+        this.miniHoverTop.className = 'ytpop-mini-hover-top';
+        
+        const createMiniBtn = (icon, action) => {
+            const btn = document.createElement('button');
+            btn.className = 'ytpop-mini-btn';
+            btn.innerHTML = icon;
+            btn.onclick = (e) => { e.stopPropagation(); action(); };
+            return btn;
+        };
 
-        const miniMusicBtn = document.createElement('button');
-        miniMusicBtn.className = 'ytpop-mini-btn';
-        miniMusicBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`;
-        miniMusicBtn.onclick = (e) => { e.stopPropagation(); this._enterMusicMode(); };
+        const miniExpandBtn = createMiniBtn(
+            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+            () => this._exitMiniplayer()
+        );
 
-        this.miniHoverOverlay.appendChild(miniExpandBtn);
-        this.miniHoverOverlay.appendChild(miniMusicBtn);
+        const miniMusicBtn = createMiniBtn(
+            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`,
+            () => this._enterMusicMode()
+        );
+
+        const miniCloseBtn = createMiniBtn(
+            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
+            () => this.destroy()
+        );
+        miniCloseBtn.style.color = 'rgba(255,100,100,0.8)';
+
+        const miniSizeDropdown = createDropdown('Scale', [0.75, 1.0, 1.25, 1.5, 1.75], this.state.miniSize || 1.0, (val) => {
+            this.state.miniSize = parseFloat(val);
+            chrome.storage.local.set({ popupMiniSize: val });
+            this._applyCustomResize();
+        });
+
+        this.miniHoverTop.appendChild(miniSizeDropdown);
+        this.miniHoverTop.appendChild(miniExpandBtn);
+        this.miniHoverTop.appendChild(miniMusicBtn);
+        this.miniHoverTop.appendChild(miniCloseBtn);
+
+        // 2. Left Bar (Beside Miniplayer) - Playback Controls
+        this.miniHoverLeft = document.createElement('div');
+        this.miniHoverLeft.className = 'ytpop-mini-hover-left';
+
+        const miniPrevBtn = createMiniBtn(
+            `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>`,
+            () => this._sendToIframe({ command: 'prevVideo' })
+        );
+        
+        const miniPlayBtn = createMiniBtn(
+            `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`,
+            () => this._sendToIframe({ command: 'togglePlay' })
+        );
+        this.miniElements = { btnPlayPause: miniPlayBtn };
+        
+        const miniNextBtn = createMiniBtn(
+            `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>`,
+            () => this._sendToIframe({ command: 'nextVideo' })
+        );
+
+        this.miniHoverLeft.appendChild(miniPrevBtn);
+        this.miniHoverLeft.appendChild(miniPlayBtn);
+        this.miniHoverLeft.appendChild(miniNextBtn);
 
         // ── Assemble ──
         this.container.appendChild(this.topBar);
         this.container.appendChild(this.iframe);
         this.container.appendChild(this.bottomBar);
-        this.container.appendChild(this.miniHoverOverlay);
+        this.container.appendChild(this.miniHoverTop);
+        this.container.appendChild(this.miniHoverLeft);
         this.container.appendChild(this.musicModeUI.dockRoot);
         this._buildResizeHandles();
         this.overlay.appendChild(this.container);

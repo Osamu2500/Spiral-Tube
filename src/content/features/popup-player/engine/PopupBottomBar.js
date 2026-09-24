@@ -52,7 +52,7 @@ export const PopupBottomBar = {
                 'padding:6px 12px',
                 'background:rgba(255,255,255,0.06)',
                 'border:1px solid rgba(255,255,255,0.1)',
-                'border-radius:20px',
+                'border-radius:8px', // Squircle
                 'color:rgba(255,255,255,0.85)',
                 'font-size:12px',
                 'font-weight:500',
