@@ -284,20 +284,74 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
     // =========================================================================
 
     _showToast(label) {
-        document.querySelector('.ypp-shortcut-toast')?.remove();
+        // Fallback or rename? Since _showToast is called by many functions, let's just override its implementation
+        // to show a native YouTube Player Bezel.
+        const player = document.querySelector('.html5-video-player');
+        const container = player || document.body;
 
-        const toast = document.createElement('div');
-        toast.className = 'ypp-shortcut-toast';
-        toast.textContent = label;
-        document.body.appendChild(toast);
+        const existing = container.querySelector('.ypp-bezel-wrapper');
+        if (existing) existing.remove();
 
-        requestAnimationFrame(() => {
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
-            }, 1800);
-        });
+        const wrapper = document.createElement('div');
+        wrapper.className = 'ypp-bezel-wrapper';
+        
+        if (!document.getElementById('ypp-bezel-styles')) {
+            const style = document.createElement('style');
+            style.id = 'ypp-bezel-styles';
+            style.textContent = `
+                .ypp-bezel-wrapper {
+                    position: absolute;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    pointer-events: none;
+                    z-index: 99999;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0, 0, 0, 0.65);
+                    color: white;
+                    border-radius: 40px;
+                    padding: 12px 24px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+                    white-space: nowrap;
+                    opacity: 1;
+                    backdrop-filter: blur(8px);
+                    -webkit-backdrop-filter: blur(8px);
+                    animation: ypp-bezel-fade 1.5s cubic-bezier(0.4, 0, 1, 1) forwards;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                }
+                .ypp-bezel-wrapper::before {
+                    content: '';
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 12px;
+                    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                @keyframes ypp-bezel-fade {
+                    0% { opacity: 0; transform: translate(-50%, -20px); }
+                    10% { opacity: 1; transform: translate(-50%, 0); }
+                    80% { opacity: 1; transform: translate(-50%, 0); }
+                    100% { opacity: 0; transform: translate(-50%, -10px); }
+                }
+                body > .ypp-bezel-wrapper {
+                    position: fixed;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        wrapper.textContent = label;
+        container.appendChild(wrapper);
+
+        setTimeout(() => {
+            if (wrapper.parentElement) wrapper.remove();
+        }, 1500);
     }
 }
 

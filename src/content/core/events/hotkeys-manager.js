@@ -13,8 +13,8 @@ export class HotkeysManager {
      */
     init() {
         if (this.isActive) return;
-        // Listen in capture phase to intercept before YouTube, but we only preventDefault if there is an EXACT match
-        document.addEventListener('keydown', this._boundHandler, true);
+        // Listen in capture phase on window to intercept before ANY YouTube logic (which often binds to body or window)
+        window.addEventListener('keydown', this._boundHandler, true);
         this.isActive = true;
     }
 
@@ -23,7 +23,7 @@ export class HotkeysManager {
      */
     destroy() {
         if (!this.isActive) return;
-        document.removeEventListener('keydown', this._boundHandler, true);
+        window.removeEventListener('keydown', this._boundHandler, true);
         this.isActive = false;
         this.registries.clear();
     }
@@ -64,6 +64,8 @@ export class HotkeysManager {
                         target.closest('paper-input') ||
                         target.closest('iron-input') ||
                         target.closest('[contenteditable="true"]') ||
+                        target.closest('#contenteditable-root') ||
+                        target.closest('yt-formatted-string[contenteditable="true"]') ||
                         target.getAttribute('role') === 'textbox';
         
         if (isInput) return;
