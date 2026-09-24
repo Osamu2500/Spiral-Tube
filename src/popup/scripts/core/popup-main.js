@@ -279,17 +279,81 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
             row.onmouseover = () => { row.style.background = 'rgba(255,255,255,0.06)'; row.style.borderColor = 'rgba(255,255,255,0.1)'; };
             row.onmouseout = () => { row.style.background = 'rgba(255,255,255,0.03)'; row.style.borderColor = 'rgba(255,255,255,0.06)'; };
 
-            const select = document.createElement('select');
-            select.className = 'vsc-select';
+            const selectContainer = document.createElement('div');
+            selectContainer.style.position = 'relative';
+            selectContainer.style.flex = '2';
+            selectContainer.style.minWidth = '140px';
+            
+            const hiddenSelect = document.createElement('input');
+            hiddenSelect.type = 'hidden';
+            hiddenSelect.value = sc.action;
+
+            const initialLabel = ACTIONS[sc.action] || sc.action;
+
+            const btn = document.createElement('button');
+            btn.className = 'aq-btn';
+            btn.type = 'button';
+            btn.innerHTML = `<span class="aq-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; text-align: left;">${initialLabel}</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; flex-shrink: 0;"><path d="M6 9l6 6 6-6"/></svg>`;
+            btn.style.padding = '6px 8px';
+            btn.style.width = '100%';
+            
+            const menu = document.createElement('div');
+            menu.className = 'aq-menu';
+
+            const itemsElements = [];
             for (const [val, label] of Object.entries(ACTIONS)) {
-                const opt = document.createElement('option');
-                opt.value = val;
-                opt.textContent = label;
-                opt.style.background = '#1a1a1a';
-                opt.style.color = '#ffffff';
-                if (sc.action === val) opt.selected = true;
-                select.appendChild(opt);
+                const o = document.createElement('div');
+                o.className = 'aq-item' + (sc.action === val ? ' active' : '');
+                o.dataset.value = val;
+                o.textContent = label;
+                menu.appendChild(o);
+                itemsElements.push(o);
+                
+                o.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    itemsElements.forEach(i => i.classList.remove('active'));
+                    o.classList.add('active');
+                    btn.querySelector('.aq-text').textContent = label;
+                    hiddenSelect.value = val;
+                    menu.classList.remove('open');
+                    hiddenSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                });
             }
+
+            selectContainer.appendChild(hiddenSelect);
+            selectContainer.appendChild(btn);
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = menu.classList.contains('open');
+                document.querySelectorAll('.aq-menu.open').forEach(m => m.classList.remove('open'));
+                if (!isOpen) {
+                    const tabContent = selectContainer.closest('.tab-content') || document.body;
+                    tabContent.style.position = 'relative';
+                    
+                    if (menu.parentElement !== tabContent) {
+                        tabContent.appendChild(menu);
+                    }
+
+                    let top = btn.offsetHeight + 4;
+                    let left = 0;
+                    let el = btn;
+                    
+                    while (el && el !== tabContent && el !== document.body) {
+                        top += el.offsetTop;
+                        left += el.offsetLeft;
+                        el = el.offsetParent;
+                    }
+
+                    menu.style.position = 'absolute';
+                    menu.style.top = top + 'px';
+                    menu.style.left = left + 'px';
+                    menu.style.width = btn.offsetWidth + 'px';
+                    menu.style.zIndex = '999999';
+                    menu.classList.add('open');
+                }
+            });
             
             const keyInput = document.createElement('input');
             keyInput.type = 'text';
@@ -376,7 +440,7 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
             };
             updateValDisabled();
 
-            select.addEventListener('change', (e) => {
+            hiddenSelect.addEventListener('change', (e) => {
                 sc.action = e.target.value;
                 updateValDisabled();
                 save();
@@ -399,7 +463,7 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
                 renderList(shortcuts);
             });
 
-            row.appendChild(select);
+            row.appendChild(selectContainer);
             row.appendChild(keyInput);
             row.appendChild(valInput);
             row.appendChild(rmBtn);
