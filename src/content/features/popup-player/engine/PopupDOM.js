@@ -276,7 +276,6 @@ export const PopupDOM = {
         this.container.appendChild(this.bottomBar);
         this.container.appendChild(this.miniHoverOverlay);
         this.container.appendChild(this.musicModeUI.dockRoot);
-        this.container.appendChild(this.musicModeUI.maxPanelRoot);
         this._buildResizeHandles();
         this.overlay.appendChild(this.container);
         document.body.appendChild(this.overlay);

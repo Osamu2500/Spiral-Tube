@@ -97,6 +97,10 @@ export const PopupState = {
         this.state.isMusicMode = true;
         this.state.isMusicMaximized = false;
         
+        // Save previous size to restore later
+        this._prevWidth = this.state.width || 640;
+        this._prevHeight = this.state.height || 360;
+
         // Collapse to a thin audio bar (dock)
         const W = 360, H = 80;
         this.state.width  = W;
@@ -107,10 +111,21 @@ export const PopupState = {
         if (this.topBar) this.topBar.style.display = 'none';
         if (this.bottomBar) this.bottomBar.style.display = 'none';
         
+        // Remove backdrop from overlay
+        if (this.overlay) {
+            this.overlay.style.background = 'transparent';
+            this.overlay.style.backdropFilter = 'none';
+            this.overlay.style.webkitBackdropFilter = 'none';
+            this.overlay.style.pointerEvents = 'none';
+        }
+        this.container.style.pointerEvents = 'auto';
+        
         // Show Music Dock
         if (this.musicModeUI) {
             this.musicModeUI.dockRoot.style.display = 'flex';
-            this.musicModeUI.maxPanelRoot.classList.remove('active');
+            if (this.musicModeUI.maxPanelRoot) {
+                this.musicModeUI.maxPanelRoot.style.display = 'none';
+            }
         }
         
         // Position at bottom right
@@ -123,29 +138,6 @@ export const PopupState = {
         this._saveState();
     },
 
-    _maximizeMusicMode() {
-        if (!this.container) return;
-        this.state.isMusicMaximized = true;
-        
-        // Show max panel, hide dock
-        if (this.musicModeUI) {
-            this.musicModeUI.dockRoot.style.display = 'none';
-            this.musicModeUI.maxPanelRoot.classList.add('active');
-        }
-        
-        // Make container full screen or large centered box
-        const W = Math.min(800, window.innerWidth - 48);
-        const H = Math.min(600, window.innerHeight - 48);
-        this.state.width = W;
-        this.state.height = H;
-        this.state.x = Math.round((window.innerWidth - W) / 2);
-        this.state.y = Math.round((window.innerHeight - H) / 2);
-        
-        this.container.style.width  = `${W}px`;
-        this.container.style.height = `${H}px`;
-        this._applyTransform();
-    },
-
     _minimizeMusicMode() {
         if (!this.container) return;
         this._enterMusicMode();
@@ -156,10 +148,21 @@ export const PopupState = {
         this.state.isMusicMode = false;
         this.state.isMusicMaximized = false;
         
+        // Restore backdrop
+        if (this.overlay) {
+            this.overlay.style.background = 'radial-gradient(circle at center, rgba(12,12,18,0.4) 0%, rgba(2,2,6,0.85) 100%)';
+            this.overlay.style.backdropFilter = 'blur(24px) saturate(200%)';
+            this.overlay.style.webkitBackdropFilter = 'blur(24px) saturate(200%)';
+            this.overlay.style.pointerEvents = '';
+        }
+        this.container.style.pointerEvents = '';
+
         // Hide Music UI
         if (this.musicModeUI) {
             this.musicModeUI.dockRoot.style.display = 'none';
-            this.musicModeUI.maxPanelRoot.classList.remove('active');
+            if (this.musicModeUI.maxPanelRoot) {
+                this.musicModeUI.maxPanelRoot.style.display = 'none';
+            }
         }
         
         // Show standard UI
@@ -176,8 +179,16 @@ export const PopupState = {
         if (this.topBar) this.topBar.style.display = 'flex';
         if (this.bottomBar) this.bottomBar.style.display = 'flex';
         
-        // Restore standard dimensions
-        this._applyCustomResize();
+        // Center and restore size
+        this.state.width  = this._prevWidth || 640;
+        this.state.height = this._prevHeight || 360;
+        this.state.x = Math.round((window.innerWidth  - this.state.width) / 2);
+        this.state.y = Math.round((window.innerHeight - this.state.height) / 2);
+        this.container.style.width  = `${this.state.width}px`;
+        this.container.style.height = `${this.state.height}px`;
+        this._applyTransform();
+        this._sendToIframe({ command: 'reflow' });
+        this._saveState();
     },
 
     _enterPiP() {
