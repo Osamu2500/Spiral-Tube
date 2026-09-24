@@ -37,9 +37,15 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             focusMode:   { label: 'Toggle Focus Mode',   fn: () => this._toggleSetting('enableFocusMode') },
             cinemaMode:  { label: 'Toggle Cinema / Theater',  fn: () => this._toggleCinema() },
             snapshot:    { label: 'Take Snapshot',    fn: () => this._triggerSnapshot() },
+            downloadThumbnail: { label: 'Download Thumbnail', fn: () => this._downloadThumbnail() },
             loop:        { label: 'Toggle Loop',        fn: () => this._toggleLoop() },
             pip:         { label: 'Picture-in-Picture',         fn: () => this._togglePiP() },
             ambientMode: { label: 'Toggle Ambient Mode', fn: () => this._toggleSetting('ambientMode') },
+            copyVideoUrl: { label: 'Copy Video URL', fn: () => this._copyUrl() },
+            copyVideoUrlAtTime: { label: 'Copy URL at Time', fn: () => this._copyUrlAtTime() },
+            togglePlay: { label: 'Toggle Play/Pause', fn: () => this._togglePlay() },
+            toggleMute: { label: 'Toggle Mute', fn: () => this._toggleMute() },
+            toggleFullscreen: { label: 'Toggle Fullscreen', fn: () => this._toggleFullscreen() }
         };
         
         // Human-readable labels for toast notifications for all generic settings
@@ -195,6 +201,82 @@ export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
                 await video.requestPictureInPicture();
             }
         } catch (e) { /* ignore */ }
+    }
+
+    // =========================================================================
+    // NEW UTILITY ACTIONS
+    // =========================================================================
+
+    _copyUrl() {
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('t');
+            navigator.clipboard.writeText(url.toString());
+        } catch (e) { /* ignore */ }
+    }
+
+    _copyUrlAtTime() {
+        const video = document.querySelector('video');
+        if (!video) return;
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('t', Math.floor(video.currentTime) + 's');
+            navigator.clipboard.writeText(url.toString());
+        } catch (e) { /* ignore */ }
+    }
+
+    _downloadThumbnail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('v');
+        if (!videoId) return;
+        
+        const imgUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        const a = document.createElement('a');
+        a.href = imgUrl;
+        a.target = '_blank';
+        
+        fetch(imgUrl)
+            .then(res => res.blob())
+            .then(blob => {
+                const blobUrl = URL.createObjectURL(blob);
+                a.href = blobUrl;
+                a.download = `thumbnail-${videoId}.jpg`;
+                a.click();
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+            })
+            .catch(() => {
+                a.click(); // Fallback to opening in new tab
+            });
+    }
+
+    _togglePlay() {
+        const video = document.querySelector('video');
+        if (!video) return;
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    _toggleMute() {
+        const video = document.querySelector('video');
+        if (!video) return;
+        video.muted = !video.muted;
+    }
+
+    _toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            // YouTube typically prefers #movie_player for fullscreen
+            const player = document.querySelector('#movie_player') || document.documentElement;
+            if (player.requestFullscreen) {
+                player.requestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
     }
 
     // =========================================================================

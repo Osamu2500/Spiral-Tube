@@ -531,7 +531,11 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         pip: 'Auto PiP',
         seamlessMode: 'Toggle Seamless Mode',
         snapshot: 'Take Video Snapshot',
+        downloadThumbnail: 'Download Thumbnail',
         loop: 'Toggle Loop',
+        togglePlay: 'Toggle Play/Pause',
+        toggleMute: 'Toggle Mute',
+        toggleFullscreen: 'Toggle Fullscreen',
         enableGlobalBar: 'Toggle Player Bar',
         enableVolumeBoost: 'Toggle Equaliser',
         enableCinemaFilters: 'Toggle Video Filters',
@@ -564,6 +568,8 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         autoPlayNext: 'Toggle Auto Play Next',
         sponsorBlock: 'Toggle SponsorBlock',
         // --- Misc ---
+        copyVideoUrl: 'Copy Video URL',
+        copyVideoUrlAtTime: 'Copy URL at Current Time',
         intentionalDelay: 'Toggle Intentional Delay',
         watchTimeAlert: 'Toggle Watch Time Alert'
     };
