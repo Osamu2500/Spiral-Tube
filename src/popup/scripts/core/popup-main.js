@@ -673,8 +673,10 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
                     menu.style.top = top + 'px';
                     menu.style.left = adjustedLeft + 'px';
                     menu.style.width = menuWidth + 'px';
-                    menu.style.columnCount = '3';
-                    menu.style.columnGap = '8px';
+                    // Use a true CSS grid to avoid masonry column-count overflow bugs
+                    menu.style.display = 'grid';
+                    menu.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                    menu.style.gap = '4px';
                     menu.style.maxHeight = '340px';
                     menu.style.zIndex = '999999';
                     menu.classList.add('open');

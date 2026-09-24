@@ -15,6 +15,7 @@ export const getHotkeyTab = (t) => ({
           {
             type: 'toggle',
             id: 'keyboardShortcuts',
+            class: 'span-4 force-inline-slot',
             label: t('enable_hotkeys'),
             icon: P(
               'M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10'
