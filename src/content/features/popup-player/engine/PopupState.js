@@ -113,8 +113,8 @@ export const PopupState = {
             this.musicModeUI.maxPanelRoot.classList.remove('active');
         }
         
-        // Position at bottom left
-        this.state.x = 24;
+        // Position at bottom right
+        this.state.x = window.innerWidth - W - 24;
         this.state.y = window.innerHeight - H - 24;
         
         this.container.style.width  = `${W}px`;
