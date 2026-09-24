@@ -185,19 +185,50 @@ export class PopupMusicMode {
             this.maxElements.art.style.display = 'block';
             this.maxElements.mediaWrap.classList.remove('ytpop-media--video');
             if (this.engine.iframe) {
-                this.engine.container.appendChild(this.engine.iframe);
                 this.engine.iframe.style.display = 'none';
             }
         } else {
             this.maxElements.art.style.display = 'none';
             this.maxElements.mediaWrap.classList.add('ytpop-media--video');
             if (this.engine.iframe) {
-                this.maxElements.mediaWrap.appendChild(this.engine.iframe);
                 this.engine.iframe.style.display = 'block';
-                this.engine.iframe.style.width = '100%';
-                this.engine.iframe.style.height = '100%';
+                this._syncIframePosition();
             }
         }
+    }
+
+    _syncIframePosition() {
+        if (!this.engine.iframe || this.viewMode !== 'video' || !this.engine.state.isMusicMaximized) return;
+        
+        // Use ResizeObserver to continuously track the placeholder box
+        if (!this.resizeObserver) {
+            this.resizeObserver = new ResizeObserver(() => {
+                if (this.viewMode === 'video' && this.engine.state.isMusicMaximized) {
+                    const rect = this.maxElements.mediaWrap.getBoundingClientRect();
+                    const containerRect = this.engine.container.getBoundingClientRect();
+                    
+                    this.engine.iframe.style.position = 'absolute';
+                    this.engine.iframe.style.top = (rect.top - containerRect.top) + 'px';
+                    this.engine.iframe.style.left = (rect.left - containerRect.left) + 'px';
+                    this.engine.iframe.style.width = rect.width + 'px';
+                    this.engine.iframe.style.height = rect.height + 'px';
+                    this.engine.iframe.style.zIndex = '150';
+                    this.engine.iframe.style.borderRadius = '24px'; // match mediaWrap
+                }
+            });
+            this.resizeObserver.observe(this.maxElements.mediaWrap);
+        }
+        
+        // Trigger an immediate sync
+        const rect = this.maxElements.mediaWrap.getBoundingClientRect();
+        const containerRect = this.engine.container.getBoundingClientRect();
+        this.engine.iframe.style.position = 'absolute';
+        this.engine.iframe.style.top = (rect.top - containerRect.top) + 'px';
+        this.engine.iframe.style.left = (rect.left - containerRect.left) + 'px';
+        this.engine.iframe.style.width = rect.width + 'px';
+        this.engine.iframe.style.height = rect.height + 'px';
+        this.engine.iframe.style.zIndex = '150';
+        this.engine.iframe.style.borderRadius = '24px';
     }
 
     updateMetadata(data) {

@@ -160,18 +160,18 @@ export const PopupState = {
         if (this.musicModeUI) {
             this.musicModeUI.dockRoot.style.display = 'none';
             this.musicModeUI.maxPanelRoot.classList.remove('active');
-            
-            // Ensure iframe is back in container before bottom bar
-            if (this.iframe && this.iframe.parentNode !== this.container) {
-                this.container.insertBefore(this.iframe, this.bottomBar);
-            }
         }
         
         // Show standard UI
         if (this.iframe) {
             this.iframe.style.display = 'block';
+            this.iframe.style.position = '';
+            this.iframe.style.top = '';
+            this.iframe.style.left = '';
             this.iframe.style.width = '100%';
             this.iframe.style.height = ''; // Let CSS flex handle height
+            this.iframe.style.zIndex = '';
+            this.iframe.style.borderRadius = '';
         }
         if (this.topBar) this.topBar.style.display = 'flex';
         if (this.bottomBar) this.bottomBar.style.display = 'flex';
