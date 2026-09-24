@@ -111,7 +111,13 @@ export function switchTab(document, tabId) {
     };
 
     if (document.startViewTransition) {
-        document.startViewTransition(updateDOM);
+        try {
+            document.startViewTransition(updateDOM);
+        } catch (_) {
+            // InvalidStateError: Transition was aborted because of invalid data.
+            // Document hidden — happens when popup opens during a page navigation.
+            requestAnimationFrame(updateDOM);
+        }
     } else {
         requestAnimationFrame(updateDOM);
     }

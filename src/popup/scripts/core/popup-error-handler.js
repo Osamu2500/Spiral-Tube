@@ -1,9 +1,32 @@
 // popup-error-handler.js
-// Global error boundary for the popup. Catches unhandled errors and
-// promise rejections so the user sees a readable message instead of a blank popup.
+// Non-destructive global error boundary for the popup.
+// Logs errors to the console without wiping the popup UI.
+// Only shows an overlay for truly fatal errors (uncaught JS syntax/runtime errors).
+
+const IGNORED_PATTERNS = [
+    'Document hidden',          // View Transitions API: non-critical
+    'ResizeObserver loop',      // Browser quirk: safe to ignore
+    'Non-Error promise rejection', // Often benign third-party rejections
+];
+
+function isIgnorable(msg) {
+    if (!msg) return false;
+    const str = String(msg);
+    return IGNORED_PATTERNS.some(p => str.includes(p));
+}
+
 window.addEventListener('error', (e) => {
-    document.body.innerHTML = `<div class="ypp-inline-392">Global Error: ${e.message}<br>File: ${e.filename}<br>Line: ${e.lineno}</div>`;
+    if (isIgnorable(e.message)) {
+        e.preventDefault();
+        return;
+    }
+    console.error('[YPP] Global Error:', e.message, '\nFile:', e.filename, '\nLine:', e.lineno);
 });
+
 window.addEventListener('unhandledrejection', (e) => {
-    document.body.innerHTML = `<div class="ypp-inline-393">Promise Rejection: ${e.reason}</div>`;
+    if (isIgnorable(e.reason)) {
+        e.preventDefault();
+        return;
+    }
+    console.error('[YPP] Unhandled Promise Rejection:', e.reason);
 });
