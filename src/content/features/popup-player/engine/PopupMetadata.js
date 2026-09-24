@@ -1,3 +1,12 @@
+/**
+ * PopupMetadata.js
+ *
+ * Scope: Popup Player Metadata Fetcher
+ * Description: Scrapes watch page for title, views, likes, and description.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 export const PopupMetadata = {
     async _fetchMetadata(videoId) {
         try {

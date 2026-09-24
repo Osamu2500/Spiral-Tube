@@ -1,3 +1,12 @@
+/**
+ * PopupBottomBar.js
+ *
+ * Scope: Popup Player Bottom Metadata Bar
+ * Description: Creates the bottom bar with title, channel, and action pills.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 export const PopupBottomBar = {
     create(engine, videoId) {
         const container = document.createElement('div');

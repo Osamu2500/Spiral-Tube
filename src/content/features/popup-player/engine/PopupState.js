@@ -1,3 +1,13 @@
+/**
+ * PopupState.js
+ *
+ * Scope: Popup Player State & Transition Manager
+ * Description: Manages dimensions, storage state, and flawless transitions between
+ * normal player, miniplayer, and music mode.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 export const PopupState = {
     _saveState() {
         chrome.storage.local.set({

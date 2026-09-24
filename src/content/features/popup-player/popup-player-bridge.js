@@ -35,9 +35,6 @@
 
     const state = {
         videoEl: null,
-        audioCtx: null,
-        source: null,
-        source: null,
         uiStripped: false,
         playForced: false,
     };

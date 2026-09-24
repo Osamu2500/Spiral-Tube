@@ -9,6 +9,9 @@
  *   - Double-click video or thumbnail to open
  *   - Real-time video title scraping
  *   - Auto-popup when video scrolls off screen (if setting enabled)
+ * 
+ * NOTE: This file is strictly scoped to the Popup Player feature.
+ * It does not affect any unrelated files or core functionality outside its scope.
  */
 
 import { PopupDOM } from './PopupDOM.js';
@@ -16,10 +19,7 @@ import { PopupPhysics } from './PopupPhysics.js';
 import { PopupEvents } from './PopupEvents.js';
 import { PopupMetadata } from './PopupMetadata.js';
 import { PopupState } from './PopupState.js';
-import { PopupBottomBar } from './PopupBottomBar.js';
 import { PopupMusicMode } from './PopupMusicMode.js';
-
-window.PopupBottomBar = PopupBottomBar;
 
 class SpiralPopupEngine {
     constructor() {

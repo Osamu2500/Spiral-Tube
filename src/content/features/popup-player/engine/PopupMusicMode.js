@@ -1,3 +1,12 @@
+/**
+ * PopupMusicMode.js
+ *
+ * Scope: Popup Player Music Mode UI
+ * Description: Constructs the specialized Music Mode dock and handles its metadata updates.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 export class PopupMusicMode {
     constructor(engine) {
         this.engine = engine; // Reference to the main PopupPlayer instance

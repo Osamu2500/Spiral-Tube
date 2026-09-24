@@ -1,3 +1,12 @@
+/**
+ * PopupPhysics.js
+ *
+ * Scope: Popup Player Physics & Drag Engine
+ * Description: Manages dragging, resizing, aspect ratio locking, and pointer events.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 export const PopupPhysics = {
     _attachPhysics() {
         // Top bar: drag

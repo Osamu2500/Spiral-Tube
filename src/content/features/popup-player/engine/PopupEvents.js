@@ -1,3 +1,12 @@
+/**
+ * PopupEvents.js
+ *
+ * Scope: Popup Player Events Listener
+ * Description: Intercepts click events, scroll events, and message passes to spawn popup.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 export const PopupEvents = {
     _isEnabled: false,
     _openTrigger: 'both',

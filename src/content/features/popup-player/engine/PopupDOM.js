@@ -1,4 +1,14 @@
+/**
+ * PopupDOM.js
+ *
+ * Scope: Popup Player DOM builder
+ * Description: Constructs the main DOM elements, containers, dropdowns, and overlays.
+ * 
+ * NOTE: strictly scoped to the Popup Player feature. It does not affect any
+ * unrelated files or core functionality outside its scope.
+ */
 import { PopupMusicMode } from './PopupMusicMode.js';
+import { PopupBottomBar } from './PopupBottomBar.js';
 
 export const PopupDOM = {
     _buildDOM(videoId) {
@@ -245,7 +255,7 @@ export const PopupDOM = {
         }
 
         // ── Bottom Metadata Bar ──
-        this.bottomBar = window.PopupBottomBar.create(this, videoId);
+        this.bottomBar = PopupBottomBar.create(this, videoId);
 
         // ── Music Mode UI ──
         this.musicModeUI = new PopupMusicMode(this);
