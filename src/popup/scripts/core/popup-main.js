@@ -498,7 +498,7 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
 registerSlot('advanced_shortcuts_manager', (container, state) => {
     container.innerHTML = `
         <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
-            <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700; font-size:13px; opacity:0.8; padding: 0 4px;">
+            <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; gap:8px; margin-bottom:8px; font-weight:700; font-size:13px; opacity:0.8; padding: 0 4px;">
                 <span style="flex:2">Action</span>
                 <span style="flex:1; text-align:center;">Key</span>
                 <span style="width:28px"></span>
@@ -588,16 +588,13 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             selectContainer.style.flex = '2';
               selectContainer.style.minWidth = '0';
             
-            const trigger = document.createElement('div');
-            trigger.className = 'vsc-select custom-select-trigger';
-            trigger.style.display = 'flex';
-            trigger.style.justifyContent = 'space-between';
-            trigger.style.alignItems = 'center';
-            trigger.style.cursor = 'pointer';
-            trigger.style.userSelect = 'none';
-            trigger.style.padding = '0 8px';
-            trigger.style.height = '100%';
-            trigger.innerHTML = `<span class="label" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${ACTIONS[sc.action] || 'Select Action'}</span><span style="opacity:0.5; font-size:10px; margin-left:4px;">▼</span>`;
+            const trigger = document.createElement('button');
+            trigger.className = 'aq-btn custom-select-trigger';
+            trigger.type = 'button';
+            trigger.style.padding = '6px 8px';
+            trigger.style.width = '100%';
+            trigger.innerHTML = `<span class="label aq-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; text-align: left;">${ACTIONS[sc.action] || 'Select Action'}</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; flex-shrink: 0;"><path d="M6 9l6 6 6-6"/></svg>`;
             
             const popover = document.createElement('div');
             popover.className = 'custom-select-popover';
