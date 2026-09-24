@@ -41,6 +41,27 @@ ENTRY_POINTS.forEach(ep => {
     referencedFiles.add(fullPath);
 });
 
+// Vite Glob Patterns (from src/content/entry/index.ts)
+const GLOB_PATTERNS = [
+    '/src/content/features/',
+    '/src/content/layouts/',
+    '/src/content/components/',
+    '/src/content/pages/'
+];
+
+allFiles.forEach(file => {
+    if (GLOB_PATTERNS.some(pattern => file.includes(pattern))) {
+        // Exclude external feature files specifically ignored in the glob
+        if (!file.includes('/features/global-bar/external/')) {
+            referencedFiles.add(file);
+        }
+    }
+    // Themes and UI Styles are injected via manifest / dynamically
+    if (file.includes('/src/content/styles/themes/') || file.includes('/src/content/styles/ui-styles/') || file.includes('/src/content/styles/card-styles/')) {
+        referencedFiles.add(file);
+    }
+});
+
 // Regex to find imports
 const importRegex = /(?:import|export)\s+(?:.*?from\s+)?['"]([^'"]+)['"]|require\s*\(\s*['"]([^'"]+)['"]\s*\)|@import\s+['"]?([^'"\)]+)['"]?|<script.*?src=['"]([^'"]+)['"].*?>|<link.*?href=['"]([^'"]+)['"].*?>/g;
 
@@ -61,11 +82,20 @@ function processFile(filePath) {
     if (!importPath.startsWith('/') || importPath.startsWith('./') || importPath.startsWith('../')) {
       let resolved = path.resolve(path.dirname(filePath), importPath).replace(/\\/g, '/');
       
+      // Handle TS extension replacement
+      if (!fs.existsSync(resolved) && resolved.endsWith('.js')) {
+          const tsPath = resolved.slice(0, -3) + '.ts';
+          if (fs.existsSync(tsPath)) {
+              resolved = tsPath;
+          }
+      }
+
       // If it's a CSS file imported without extension? usually has it.
       if (!fs.existsSync(resolved) && fs.existsSync(resolved + '.js')) resolved += '.js';
       if (!fs.existsSync(resolved) && fs.existsSync(resolved + '.ts')) resolved += '.ts';
       if (!fs.existsSync(resolved) && fs.existsSync(resolved + '/index.js')) resolved += '/index.js';
-      
+      if (!fs.existsSync(resolved) && fs.existsSync(resolved + '/index.ts')) resolved += '/index.ts';
+
       if (fs.existsSync(resolved)) {
         if (!referencedFiles.has(resolved)) {
           referencedFiles.add(resolved);

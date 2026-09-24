@@ -1736,7 +1736,7 @@ backdrop-filter: blur(12px);
 /* ─── Experimental Glowing Tiles UI ─── */
 body .feature-grid {
     grid-template-columns: repeat(var(--feature-grid-cols, 5), 1fr);
-    grid-auto-flow: row dense;
+    grid-auto-flow: row;
     gap: calc(8px * var(--ui-density, 1));
 }
 

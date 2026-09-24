@@ -1067,6 +1067,15 @@ function renderButtonGroup(item, state) {
     return wrap;
 }
 
+function renderSubtitle(item) {
+    if (item.hidden) return null;
+    const wrap = document.createElement('div');
+    wrap.className = 'section-subtitle-divider';
+    wrap.style.cssText = 'grid-column: 1 / -1; width: 100%; margin-top: 16px; margin-bottom: 4px; padding-bottom: 4px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255, 255, 255, 0.4);';
+    wrap.textContent = item.label;
+    return wrap;
+}
+
 export const ITEM_RENDERERS = {
     toggle: renderToggle,
     inlineToggle: renderInlineToggle,
@@ -1076,6 +1085,7 @@ export const ITEM_RENDERERS = {
     layoutToggle: renderLayoutToggle,
     custom: renderCustomSlot,
     'button-group': renderButtonGroup,
+    subtitle: renderSubtitle,
 };
 
 
@@ -1176,9 +1186,9 @@ function buildSection(section, state) {
     const nonChildren = section.items.filter(i => !i.parent && !i.hidden);
     const children    = section.items.filter(i => i.parent && !i.hidden);
 
-    const gridItems  = nonChildren.filter(i => i.type === 'toggle' || i.type === 'button-group' || i.type === 'range' || i.type === 'select' || i.type === 'custom');
+    const gridItems  = nonChildren.filter(i => i.type === 'toggle' || i.type === 'button-group' || i.type === 'range' || i.type === 'select' || i.type === 'custom' || i.type === 'subtitle');
     const inlineToggleItems = nonChildren.filter(i => i.type === 'inlineToggle');
-    const otherItems  = nonChildren.filter(i => i.type !== 'toggle' && i.type !== 'button-group' && i.type !== 'inlineToggle' && i.type !== 'range' && i.type !== 'select' && i.type !== 'custom');
+    const otherItems  = nonChildren.filter(i => i.type !== 'toggle' && i.type !== 'button-group' && i.type !== 'inlineToggle' && i.type !== 'range' && i.type !== 'select' && i.type !== 'custom' && i.type !== 'subtitle');
 
     const renderedElements = {};
 

@@ -18,13 +18,7 @@ export const getModesTab = (t) => ({
             desc: t('cinematic_styling_for_homepage'),
             icon: ICONS.cinematic,
           },
-          {
-            type: 'toggle',
-            id: 'premiumTheme',
-            label: 'Premium Theme',
-            desc: 'Custom colors and styling',
-            icon: ICONS.cinema,
-          },
+
         ],
       },
       {
@@ -55,13 +49,7 @@ export const getModesTab = (t) => ({
             icon: ICONS.cinema,
           },
 
-          {
-            type: 'toggle',
-            id: 'playlistRedesign',
-            label: 'Playlist Redesign',
-            desc: 'Immersive playlist UI',
-            icon: ICONS.cinema,
-          },
+
           {
             type: 'toggle',
             id: 'ambientMode',

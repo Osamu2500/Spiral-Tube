@@ -23,11 +23,14 @@ Issues related to browser performance, memory management, SPA navigations, and S
 - **`race-conditions-and-initialization.md`**: Features fail to load on first launch but work on refresh.
 - **`mv3-service-worker-lifecycle.md`**: Background processes die unexpectedly.
 - **`manifest-v3-permissions-and-security.md`**: CSP violations, permissions errors.
+- **`dead-code-elimination.md`**: Strict protocol for dependency graph sweeping and orphan file removal.
 - **`devtools-profiling-and-memory-snapshots.md`**: Using Chrome DevTools to trace memory leaks.
 
 ### `ui-and-layout/`
 Issues related to DOM injection, CSS layout thrashing, and page-specific UI quirks.
 - **`css-layout-thrashing-and-conflicts.md`**: UI elements jump around or duplicate.
+- **`css-grid-dense-flow-ordering.md`**: Items rendering out of DOM order due to grid backfilling.
+- **`feature-based-colocation.md`**: Architectural rules against massive global CSS folders and for feature grouping.
 - **`global_design_system_and_animations.md`**: Global design and animation guidelines.
 - **`shorts_and_subscriptions_layouts.md`**: Quirks specific to Shorts and Subscriptions pages.
 - **`watch_page_action_buttons.md`**: Handling action buttons on the watch page.
@@ -36,6 +39,7 @@ Issues related to DOM injection, CSS layout thrashing, and page-specific UI quir
 
 ### `api-and-state/`
 Issues related to YouTube's internal APIs, data synchronization, and messaging.
+- **`popup-state-binding.md`**: Automatic state binding and saving for custom HTML tabs in the popup.
 - **`youtube-player-api-sync.md`**: Player features fall out of sync with actual video state.
 - **`chrome-storage-and-messaging-failures.md`**: Settings not syncing or large datasets failing to save.
 - **`network-request-interception-failures.md`**: Issues intercepting YouTube's XHR/Fetch requests.

@@ -66,7 +66,7 @@ export default {
     "expand_player_on_load": "Automatically switch the video player to theater mode whenever a watch page opens",
     "compactPlayerUI": "Compact Player Controls",
     "compactPlayerUI_desc": "Reduce the height of video player controls so they obscure less of the video frame",
-    "real_cinema_mode": "Real Cinema Mode (Watch Page)",
+    "real_cinema_mode": "Real Cinema Mode",
     "real_cinema_mode_desc": "Stretch the video player to 100% window width and auto-hide the top header",
     "show_live_stream_time": "Live Stream Elapsed Time",
     "show_live_stream_time_desc": "Display an accurate real-time elapsed duration counter on active live streams",

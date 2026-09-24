@@ -285,6 +285,7 @@ export const DEFAULT_SETTINGS = {
 
   enableSnapshot: true,
   enableLoop: true,
+  enableEqualiser: false,
   enableRemainingTime: true,
   enableVolumeBoost: true,
   volumeLevel: 1,

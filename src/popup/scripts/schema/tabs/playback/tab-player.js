@@ -42,7 +42,7 @@ export const getPlayerTab = (t) => ({
           {
             type: 'toggle',
             id: 'autoPiP',
-            label: 'Auto PiP',
+            label: 'PIP',
             desc: t('auto_pip_desc'),
             icon: P('M3 3h18v14H3zM12 14h7v5h-7z'),
           },
@@ -186,6 +186,13 @@ export const getPlayerTab = (t) => ({
           },
           {
             type: 'toggle',
+            id: 'enableEqualiser',
+            label: 'Equaliser',
+            desc: 'Toggle audio equalizer panel',
+            icon: ICONS.volumeUp,
+          },
+          {
+            type: 'toggle',
             id: 'enableCinemaFilters',
             label: t('video_filters'),
             desc: t('visual_effects_panel'),
@@ -215,6 +222,7 @@ export const getPlayerTab = (t) => ({
         icon: ICONS.placement,
         color: '#f59e0b',
         items: [
+          { type: 'subtitle', label: 'Extension Features' },
           {
             type: 'button-group',
             id: 'pb_snapshot',
@@ -266,7 +274,7 @@ export const getPlayerTab = (t) => ({
           {
             type: 'button-group',
             id: 'pb_pip',
-            label: 'Auto PiP',
+            label: 'PIP',
             desc: t('extension_feature'),
             icon: P('M3 3h18v14H3zM12 14h7v5h-7z'),
             options: [
@@ -278,7 +286,7 @@ export const getPlayerTab = (t) => ({
           {
             type: 'button-group',
             id: 'pb_volume',
-            label: t('volume_booster'),
+            label: 'Equaliser',
             desc: t('extension_feature'),
             icon: ICONS.volumeUp,
             options: [
@@ -299,6 +307,7 @@ export const getPlayerTab = (t) => ({
               { value: 'hidden', label: t('hidden') },
             ],
           },
+          { type: 'subtitle', label: 'Native Features' },
           {
             type: 'button-group',
             id: 'pb_native_play',
