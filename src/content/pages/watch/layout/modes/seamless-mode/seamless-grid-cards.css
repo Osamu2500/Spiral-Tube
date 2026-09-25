@@ -1,0 +1,265 @@
+/* ========================================================
+   SEAMLESS MODE GRID CARDS
+   Extracting dynamic grid generation into a dedicated CSS file
+   to perfectly mimic search-grid-cards.css and cards.css
+   ======================================================== */
+
+/* ── 1. Destroy Horizontal Layouts (Force Flex Column) ── */
+/* Applying extreme specificity to overpower YouTube's watch page native rules */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model .yt-lockup-view-model-wiz,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model .yt-lockup-view-model-wiz,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model .yt-lockup-view-model-wiz--horizontal,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model .yt-lockup-view-model-wiz--horizontal,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer #dismissible,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model > *:not(.ypp-ms-checkbox):not(.ypp-ms-card-overlay),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model > *:not(.ypp-ms-checkbox):not(.ypp-ms-card-overlay) {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+/* ── 2. Thumbnail (Top of Flex Column) ── */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer ytd-thumbnail,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model a:has(img),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model a:has(yt-image),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model a:has(img) {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    padding: 0 !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    margin: 0 0 10px 0 !important;
+    border-radius: var(--ypp-thumbnail-radius, 12px) !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    transition: box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer ytd-thumbnail img,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model a:has(img) img,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model a:has(yt-image) img,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model a:has(img) img {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    min-width: 100% !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: var(--ypp-thumbnail-radius, 12px) !important;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer:hover ytd-thumbnail img,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model:hover a:has(img) img,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model:hover a:has(yt-image) img {
+    transform: scale(1.05) !important;
+}
+
+/* ── 3. Meta Text Area (Matches homepage cards.css) ── */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model > div:not(:has(img)),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model > div:not(:has(img)),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model > a:not(:has(img)),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer .details {
+    margin-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    padding: 0 4px 10px 4px !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Force titles to use full width */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model h3,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model h3 a,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model .yt-core-attributed-string--white-space-pre-wrap,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer #video-title {
+    font-size: 1.4rem !important;
+    font-weight: 500 !important;
+    line-height: 2.2rem !important;
+    color: var(--yt-spec-text-primary) !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    overflow: hidden !important;
+    margin: 0 0 2px 0 !important;
+    width: 100% !important;
+    font-family: 'Inter', 'Roboto', sans-serif !important;
+}
+
+/* Container for channel and views/date */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model .ytLockupMetadataViewModelMetadata,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model yt-content-metadata-view-model,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer #metadata,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer .metadata-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 4px 6px !important;
+    width: 100% !important;
+}
+
+/* Make the individual rows (channel row, views row) display inline side-by-side */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model yt-content-metadata-view-model .ytContentMetadataViewModelMetadataRow,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer #metadata > * {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+/* Secondary metadata text styles (channel name, views, date) */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model yt-content-metadata-view-model .ytContentMetadataViewModelMetadataText,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer #metadata-line span,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer #byline-container {
+    font-size: 1.25rem !important;
+    color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.55)) !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    width: auto !important;
+    display: inline-block !important;
+    transition: color 0.2s ease !important;
+}
+
+
+
+/* Fix any weird white-space issues on text */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model yt-content-metadata-view-model .ytAttributedStringWhiteSpacePreWrap {
+    white-space: normal !important;
+}
+
+/* ── 4. Card Background & Hover Aesthetics ── */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model > *:not(.ypp-ms-checkbox):not(.ypp-ms-card-overlay),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model > *:not(.ypp-ms-checkbox):not(.ypp-ms-card-overlay) {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+}
+
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model:hover,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model:hover,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* ── 5. Hide Badges (Red overlay) & Unused elements ── */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy .ytContentMetadataViewModelMetadataRow:has(.ytBadgeViewModelHost),
+body.ypp-seamless-mode #page-manager ytd-watch-flexy .ytBadgeViewModelHost,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-badge-supported-renderer,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model ytd-badge-supported-renderer,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model .badge-shape-wiz {
+    display: none !important;
+}
+
+/* ── 6. Suppress Popup Player Hover Buttons on Watch Page ── */
+/* Use opacity+pointer-events (not display:none) to beat popup-player.css opacity transitions */
+body.ypp-seamless-mode ytd-watch-flexy .ytpop-hover-btn,
+body.ypp-seamless-mode ytd-watch-flexy yt-lockup-view-model:hover .ytpop-hover-btn,
+body.ypp-seamless-mode ytd-watch-flexy yt-lockup-thumbnail:hover .ytpop-hover-btn,
+body.ypp-seamless-mode ytd-watch-flexy ytd-thumbnail:hover .ytpop-hover-btn,
+body.ypp-seamless-mode ytd-watch-flexy .ytpop-mini-hover-top,
+body.ypp-seamless-mode ytd-watch-flexy .is-miniplayer:hover .ytpop-mini-hover-top,
+body.ypp-seamless-mode ytd-watch-flexy .ytpop-mini-hover-left,
+body.ypp-seamless-mode ytd-watch-flexy .is-miniplayer:hover .ytpop-mini-hover-left {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* ── 7. Multi-Select Checkbox — Absolute Overlay on Thumbnail ── */
+/* The checkbox MUST break out of the flex column and sit absolutely over the thumbnail.
+   We undo the forced flex/position:relative for .ypp-ms-checkbox and .ypp-ms-card-overlay
+   so they behave as true absolute-positioned overlays anchored to the card's position:relative. */
+
+/* The card itself is the positioning anchor */
+body.ypp-seamless-mode ytd-watch-flexy yt-lockup-view-model,
+body.ypp-seamless-mode ytd-watch-flexy ytd-lockup-view-model,
+body.ypp-seamless-mode ytd-watch-flexy ytd-compact-video-renderer {
+    position: relative !important;
+    isolation: isolate !important;
+}
+
+/* Checkbox: absolutely placed in top-left of thumbnail area */
+/* NOTE: #page-manager is intentional — raises specificity above the width:100% flex rule in section 1 */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy yt-lockup-view-model .ypp-ms-checkbox,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-lockup-view-model .ypp-ms-checkbox,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-compact-video-renderer .ypp-ms-checkbox {
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    /* Lock exact dimensions — override width:100% from flex column rule */
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    /* Reset flex sizing so it can't be stretched */
+    flex: none !important;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    flex-basis: 28px !important;
+    /* Inner layout */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 2147483646 !important;
+    pointer-events: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: content-box !important;
+}
+
+/* Card overlay: full-card clickable layer for multi-select active mode */
+body.ypp-seamless-mode ytd-watch-flexy yt-lockup-view-model .ypp-ms-card-overlay,
+body.ypp-seamless-mode ytd-watch-flexy ytd-lockup-view-model .ypp-ms-card-overlay,
+body.ypp-seamless-mode ytd-watch-flexy ytd-compact-video-renderer .ypp-ms-card-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 90 !important;
+}
+
+/* ── 8. Grid Container Padding Reduction ── */
+body.ypp-seamless-mode #page-manager ytd-watch-flexy #secondary,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy #secondary-inner,
+body.ypp-seamless-mode #page-manager ytd-watch-flexy ytd-watch-next-secondary-results-renderer {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+

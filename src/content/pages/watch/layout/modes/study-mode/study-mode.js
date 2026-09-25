@@ -14,6 +14,7 @@ export class StudyMode extends window.YPP.features.BaseFeature {
     static featureId = 'studyMode';
     static executionPhase = 'idle';
     static priority = 999;
+    static isManagedExternally = true;
 
     getConfigKey() { return 'studyMode'; }
     
@@ -22,8 +23,8 @@ export class StudyMode extends window.YPP.features.BaseFeature {
         
         // Configuration
         this.config = {
-            speed: this.settings?.studySpeed || 1.0,
-            enableCaptions: this.settings?.studyCaptions || false
+            speed: 1.0,
+            enableCaptions: false
         };
         
         this.SPEED_PRESETS = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
@@ -35,11 +36,13 @@ export class StudyMode extends window.YPP.features.BaseFeature {
         this.notePanel = new NotePanel(this);
         
         this._visibilityHandler = this._onVisibilityChange.bind(this);
-        
-        this.loadConfig();
     }
 
-    enable() {
+    async enable() {
+        await super.enable(); // Mark as enabled to allow router hooks
+        
+        this._syncConfigFromSettings();
+        
         try {
             this.utils?.createToast(`Study Mode: ${this.config.speed}x Speed ${this.config.enableCaptions ? '+ Captions' : ''}`);
 
@@ -67,8 +70,6 @@ export class StudyMode extends window.YPP.features.BaseFeature {
     }
 
     async disable() {
-        await super.disable();
-
         try {
             if (window.YPP && window.YPP.sharedObserver) {
                 window.YPP.sharedObserver.unregister('study-mode-video');
@@ -83,7 +84,7 @@ export class StudyMode extends window.YPP.features.BaseFeature {
 
             this.speedPanel.removeUI();
 
-            if (video?.playbackRate === this.config.speed) {
+            if (video && video.playbackRate === this.config.speed) {
                 video.playbackRate = 1.0;
                 this.utils?.createToast('Study Mode Disabled');
             }
@@ -93,6 +94,9 @@ export class StudyMode extends window.YPP.features.BaseFeature {
         } catch (error) {
             this.utils?.log(`Error disabling study mode: ${error.message}`, 'STUDY', 'error');
         }
+        
+        // Disable base feature at the end so this.isEnabled is accurate during cleanup
+        await super.disable();
     }
 
     async onVideoChange(videoId) {
@@ -115,10 +119,26 @@ export class StudyMode extends window.YPP.features.BaseFeature {
             if (this.notePanel.notesPanel) {
                 this.notePanel.loadNotes();
             }
-        } catch (e) {}
+        } catch (e) {
+            this.utils?.log(`Error in onVideoChange: ${e.message}`, 'STUDY', 'warn');
+        }
+    }
+    
+    async onUpdate() {
+        if (!this.isEnabled) return;
+        this._syncConfigFromSettings();
+        this._enforceState();
+    }
+
+    _syncConfigFromSettings() {
+        if (this.settings) {
+            this.config.speed = this.settings.studySpeed || this.config.speed;
+            this.config.enableCaptions = this.settings.studyCaptions || this.config.enableCaptions;
+        }
     }
 
     _enforceState() {
+        if (!this.isEnabled) return;
         try {
             const video = window.YPP.DOMManager?.getVideo();
             if (video) {
@@ -129,7 +149,9 @@ export class StudyMode extends window.YPP.features.BaseFeature {
                     this._enableCaptions();
                 }
             }
-        } catch (error) {}
+        } catch (error) {
+            this.utils?.log(`Failed to enforce state: ${error.message}`, 'STUDY', 'warn');
+        }
     }
 
     _enableCaptions() {
@@ -142,6 +164,7 @@ export class StudyMode extends window.YPP.features.BaseFeature {
     }
 
     async loadConfig() {
+        // Obsolete: Replaced by centralized settings sync, kept for backward compatibility with sub-managers
         try {
             const configData = await window.YPP.StorageManager.get('ypp_study_mode');
             if (configData) {
@@ -153,8 +176,16 @@ export class StudyMode extends window.YPP.features.BaseFeature {
     }
 
     async saveConfig() {
+        // Used by sub-managers (like speed-panel) to persist local tweaks
         try {
             await window.YPP.StorageManager.set('ypp_study_mode', this.config);
+            // Optionally dispatch a patch to global settings so popup reflects it
+            if (chrome?.runtime?.sendMessage) {
+                chrome.runtime.sendMessage({ 
+                    action: 'PATCH_SETTINGS', 
+                    payload: { studySpeed: this.config.speed, studyCaptions: this.config.enableCaptions } 
+                }).catch(() => {});
+            }
         } catch (error) {
             this.utils?.log('Failed to save config: ' + error.message, 'STUDY', 'error');
         }

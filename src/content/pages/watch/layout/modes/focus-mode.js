@@ -1,4 +1,5 @@
 import '../../../../core/system/base-feature.js';
+
 /**
  * @fileoverview
  * Focus Mode Feature
@@ -7,19 +8,11 @@ import '../../../../core/system/base-feature.js';
  * Purpose: Reduces visual distractions, manages strict-mode timers, and handles dopamine detox grayscale modes.
  */
 
-// Helpers
-const waitForElement = (selector, timeout = 5000) => {
-    return window.YPP.Utils.waitForElement(selector, timeout);
-};
-
-/**
- * Focus Mode
- * @class FocusMode
- */
 export class FocusMode extends window.YPP.features.BaseFeature {
     static featureId = 'focusMode';
     static executionPhase = 'idle';
     static priority = 999;
+    static isManagedExternally = true;
 
     /**
      * Initialize Focus Mode
@@ -28,6 +21,7 @@ export class FocusMode extends window.YPP.features.BaseFeature {
     constructor() {
         super('FocusMode');
         this._initConstants();
+        this.strictModeEndTime = null;
     }
 
     /**
@@ -44,15 +38,28 @@ export class FocusMode extends window.YPP.features.BaseFeature {
     }
 
     async enable() {
+        // Load persisted strict mode state to prevent reload bypass
+        try {
+            if (chrome?.storage?.local) {
+                const data = await chrome.storage.local.get('ypp_strictModeEndTime');
+                if (data.ypp_strictModeEndTime) {
+                    this.strictModeEndTime = data.ypp_strictModeEndTime;
+                }
+            }
+        } catch (e) {
+            this.utils.log?.('Failed to load strict mode state', 'FOCUS', 'warn');
+        }
+
         this.observer.register(
             'focus-mode',
-            '#contents, ytd-watch-flexy', 
+            '#contents, ytd-watch-flexy, ytd-comments', 
             () => {
-                if (this.isEnabled && this.settings) {
-                    this._applyFocusState();
+                // Dynamically eject comments/related if YouTube injects them later
+                if (this.isEnabled && this.settings?.enableFocusMode) {
+                    this._ejectDistractions();
                 }
             },
-            false // Initial apply is done in onUpdate()
+            false
         );
         await super.enable();
         this._run();
@@ -60,7 +67,6 @@ export class FocusMode extends window.YPP.features.BaseFeature {
 
     async disable() {
         this.observer.unregister('focus-mode');
-        // Disable all features
         this._toggleDetox(false);
         this._toggleFocus(false);
         await super.disable();
@@ -94,22 +100,28 @@ export class FocusMode extends window.YPP.features.BaseFeature {
 
         try {
             this._toggleDetox(this.settings.dopamineDetox);
-            this._toggleFocus(this.settings.enableFocusMode);
-            this._applyFocusState();
+            
+            let shouldEnableFocus = this.settings.enableFocusMode;
+            
+            // Prevent circumventing Strict Mode via popup settings sync
+            if (!shouldEnableFocus && this._isStrictModeActive()) {
+                shouldEnableFocus = true;
+                this.utils.createToast?.('Strict Mode Active! Solve math to disable.', 5000);
+                this._promptStrictMathUnlock();
+                
+                // Re-sync blocked state to popup immediately
+                if (chrome?.runtime?.sendMessage) {
+                    chrome.runtime.sendMessage({ 
+                        action: 'PATCH_SETTINGS', 
+                        payload: { enableFocusMode: true } 
+                    }).catch(() => {});
+                }
+            }
+            
+            this._toggleFocus(shouldEnableFocus);
         } catch (error) {
             this.utils.log?.(`Error running focus mode: ${error.message}`, 'FOCUS', 'error');
         }
-    }
-
-    /**
-     * Apply current focus state to DOM
-     * @private
-     */
-    _applyFocusState() {
-        const settings = this.settings;
-        if (!settings) return;
-
-        // The Focus layout is applied inside _toggleFocus using DistractionFreeBase
     }
 
     // =========================================================================
@@ -122,31 +134,9 @@ export class FocusMode extends window.YPP.features.BaseFeature {
      * @param {boolean} enable
      */
     _toggleDetox(enable) {
-        document.body.classList.toggle(this._CSS_CLASSES.DOPAMINE_DETOX, enable);
-
-        if (enable) {
-            this._applyDetoxStyle();
-        } else {
-            this._removeDetoxStyle();
-        }
-
+        const detoxClass = this._CSS_CLASSES.DOPAMINE_DETOX || 'ypp-dopamine-detox';
+        document.body.classList.toggle(detoxClass, enable);
         this.utils.log?.(`Dopamine detox ${enable ? 'enabled' : 'disabled'}`, 'FOCUS');
-    }
-
-    /**
-     * Apply detox grayscale style
-     * @private
-     */
-    _applyDetoxStyle() {
-        // Detox styles are now handled globally in styles.css via the ypp-dopamine-detox class
-    }
-
-    /**
-     * Remove detox style
-     * @private
-     */
-    _removeDetoxStyle() {
-        // Detox styles are now handled globally in styles.css via the ypp-dopamine-detox class
     }
 
     // =========================================================================
@@ -160,23 +150,14 @@ export class FocusMode extends window.YPP.features.BaseFeature {
      */
     _toggleFocus(enable) {
         if (enable) {
-            // WatchPageManager handles adding/removing body.ypp-focus-mode class.
-            
-            // Focus Mode hides chat
             if (this.settings?.hideChat) document.body.classList.add('ypp-hide-chat');
             if (this.settings?.hideLiveChat) document.body.classList.add('ypp-hide-live-chat');
             
-            // Actively eject DOM nodes
             this._ejectDistractions();
-            
             this.utils.log?.('Focus mode enabled', 'FOCUS');
         } else {
-            document.body.classList.remove('ypp-hide-chat');
-            document.body.classList.remove('ypp-hide-live-chat');
-            
-            // Restore DOM nodes
+            document.body.classList.remove('ypp-hide-chat', 'ypp-hide-live-chat');
             this._restoreDistractions();
-            
             this.utils.log?.('Focus mode disabled', 'FOCUS');
         }
     }
@@ -188,20 +169,23 @@ export class FocusMode extends window.YPP.features.BaseFeature {
     _ejectDistractions() {
         if (!this.ejectedNodes) this.ejectedNodes = new Map();
 
-        // Target containers
         const targets = {
-            'comments': document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]),
+            'comments': document.querySelector(this._CONSTANTS?.SELECTORS?.COMMENTS_SECTION?.[1] || '#comments'),
             'related': document.querySelector('ytd-watch-next-secondary-results-renderer, #secondary #related')
         };
 
         for (const [key, container] of Object.entries(targets)) {
-            if (container && container.children.length > 0) {
-                // Save children in a document fragment to preserve Polymer bindings
-                const fragment = document.createDocumentFragment();
-                while (container.firstChild) {
-                    fragment.appendChild(container.firstChild);
+            if (container && container.hasChildNodes()) {
+                let data = this.ejectedNodes.get(key);
+                if (!data) {
+                    data = { container, fragment: document.createDocumentFragment() };
+                    this.ejectedNodes.set(key, data);
                 }
-                this.ejectedNodes.set(key, { container, fragment });
+                
+                // Idempotently sweep new dynamically loaded children into the fragment
+                while (container.firstChild) {
+                    data.fragment.appendChild(container.firstChild);
+                }
             }
         }
     }
@@ -239,13 +223,10 @@ export class FocusMode extends window.YPP.features.BaseFeature {
                 if (!enable && this._isStrictModeActive()) {
                     this.utils.createToast?.('Strict Mode Active! Solve math to disable.', 5000);
                     this._promptStrictMathUnlock();
-                    // Revert UI toggle since we blocked it
-                    // The toggle button will need its own sync, but for now we just block internal disable
                     return;
                 }
                 this._toggleFocus(enable);
                 break;
-
         }
     }
 
@@ -260,12 +241,22 @@ export class FocusMode extends window.YPP.features.BaseFeature {
 
     activateStrictMode(minutes = 30) {
         this.strictModeEndTime = Date.now() + (minutes * 60 * 1000);
+        
+        // Persist to prevent page reload bypass
+        try {
+            if (chrome?.storage?.local) {
+                chrome.storage.local.set({ ypp_strictModeEndTime: this.strictModeEndTime });
+            }
+        } catch (e) {}
+
         this.utils.createToast?.(`Strict Mode Locked for ${minutes}m`);
         this.toggleFeature('enableFocusMode', true);
         this.toggleFeature('dopamineDetox', true);
     }
 
     _promptStrictMathUnlock() {
+        if (document.getElementById('ypp-strict-modal')) return;
+
         const num1 = Math.floor(Math.random() * 50) + 15;
         const num2 = Math.floor(Math.random() * 50) + 15;
         const answer = num1 * num2;
@@ -274,8 +265,6 @@ export class FocusMode extends window.YPP.features.BaseFeature {
     }
 
     _createMathModal(num1, num2, answer) {
-        if (document.getElementById('ypp-strict-modal')) return;
-
         const overlay = document.createElement('div');
         overlay.id = 'ypp-strict-modal';
         overlay.style.cssText = `
@@ -288,7 +277,6 @@ export class FocusMode extends window.YPP.features.BaseFeature {
         const modal = document.createElement('div');
         modal.style.cssText = `
             background: rgba(25, 25, 30, 0.7); backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px; padding: 40px; width: 380px; text-align: center;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -300,21 +288,21 @@ export class FocusMode extends window.YPP.features.BaseFeature {
             <div style="font-size: 40px; margin-bottom: 16px;">🔒</div>
             <div style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">Strict Mode Active</div>
             <div style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 32px;">Solve the equation to unlock Focus Mode:</div>
-            <div style="font-size: 36px; font-weight: 800; margin-bottom: 32px; color: #ff4e45; text-shadow: 0 4px 12px rgba(255, 78, 69, 0.3);">${num1} × ${num2}</div>
+            <div style="font-size: 36px; font-weight: 800; margin-bottom: 32px; color: #ff4e45; text-shadow: 0 4px 12px rgba(255, 78, 69, 0.3);">${num1} &times; ${num2}</div>
             <input type="number" id="ypp-strict-input" placeholder="Your Answer" style="
                 width: 100%; padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15);
                 background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 20px; text-align: center;
                 box-sizing: border-box; outline: none; margin-bottom: 20px; transition: border-color 0.2s, box-shadow 0.2s;
-            " autocomplete="off" onfocus="this.style.borderColor='#ff4e45'; this.style.boxShadow='0 0 0 3px rgba(255, 78, 69, 0.2)';" onblur="this.style.borderColor='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='none';" />
+            " autocomplete="off" />
             <div style="display: flex; gap: 16px;">
                 <button id="ypp-strict-cancel" style="
                     flex: 1; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05);
                     color: #fff; cursor: pointer; font-size: 15px; font-weight: 600; transition: background 0.2s;
-                " onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">Cancel</button>
+                ">Cancel</button>
                 <button id="ypp-strict-submit" style="
                     flex: 1; padding: 14px; border-radius: 12px; border: none; background: #ff4e45;
                     color: #fff; cursor: pointer; font-size: 15px; font-weight: 600; transition: background 0.2s; box-shadow: 0 4px 12px rgba(255, 78, 69, 0.3);
-                " onmouseover="this.style.background='#ff665e'" onmouseout="this.style.background='#ff4e45'">Unlock</button>
+                ">Unlock</button>
             </div>
             <div id="ypp-strict-error" style="color: #ff4e45; font-size: 13px; margin-top: 16px; min-height: 20px; font-weight: 500;"></div>
         `;
@@ -322,7 +310,6 @@ export class FocusMode extends window.YPP.features.BaseFeature {
         overlay.appendChild(modal);
         this.injectElement(overlay);
         
-        // Trigger entrance animation
         requestAnimationFrame(() => {
             overlay.style.opacity = '1';
             modal.style.transform = 'scale(1) translateY(0)';
@@ -333,45 +320,55 @@ export class FocusMode extends window.YPP.features.BaseFeature {
         const cancelBtn = document.getElementById('ypp-strict-cancel');
         const errorDiv = document.getElementById('ypp-strict-error');
 
+        // Enhance input/button styles dynamically to keep innerHTML cleaner
+        input.onfocus = () => { input.style.borderColor = '#ff4e45'; input.style.boxShadow = '0 0 0 3px rgba(255, 78, 69, 0.2)'; };
+        input.onblur = () => { input.style.borderColor = 'rgba(255, 255, 255, 0.15)'; input.style.boxShadow = 'none'; };
+        cancelBtn.onmouseover = () => cancelBtn.style.background = 'rgba(255,255,255,0.1)';
+        cancelBtn.onmouseout = () => cancelBtn.style.background = 'rgba(255,255,255,0.05)';
+        submitBtn.onmouseover = () => submitBtn.style.background = '#ff665e';
+        submitBtn.onmouseout = () => submitBtn.style.background = '#ff4e45';
+
         input.focus();
 
         const validate = () => {
-            if (parseInt(input.value.trim()) === answer) {
+            if (parseInt(input.value.trim(), 10) === answer) {
+                // Unlock successful
                 this.strictModeEndTime = null;
+                try { if (chrome?.storage?.local) chrome.storage.local.remove('ypp_strictModeEndTime'); } catch(e) {}
+                
                 this.toggleFeature('enableFocusMode', false);
                 this.toggleFeature('dopamineDetox', false);
                 this.utils.createToast?.('Strict Mode Unlocked!');
                 overlay.remove();
                 
-                // Fire a click event on the toggle in the popup if it's open
-                const focusToggle = document.querySelector('#enableFocusMode');
-                if (focusToggle) focusToggle.checked = false;
+                // Sync globally instead of querying popup DOM
+                if (chrome?.runtime?.sendMessage) {
+                    chrome.runtime.sendMessage({ 
+                        action: 'PATCH_SETTINGS', 
+                        payload: { enableFocusMode: false, dopamineDetox: false } 
+                    }).catch(() => {});
+                }
             } else {
+                // Unlock failed
                 errorDiv.textContent = 'Incorrect. Try again.';
                 input.value = '';
                 input.focus();
                 
-                // Shake animation (Anime.js style via CSS transition manipulation)
                 if (window.anime) {
                     window.anime({
                         targets: modal,
-                        translateX: [
-                            { value: -10, duration: 50 },
-                            { value: 10, duration: 50 },
-                            { value: -10, duration: 50 },
-                            { value: 10, duration: 50 },
-                            { value: 0, duration: 50 }
-                        ],
+                        translateX: [{value: -10, duration: 50}, {value: 10, duration: 50}, {value: -10, duration: 50}, {value: 10, duration: 50}, {value: 0, duration: 50}],
                         easing: 'easeInOutSine'
                     });
-                } else {
-                    modal.style.transition = 'transform 0.1s ease';
-                    modal.style.transform = 'scale(1) translateX(-15px)';
-                    setTimeout(() => modal.style.transform = 'scale(1) translateX(15px)', 50);
-                    setTimeout(() => modal.style.transform = 'scale(1) translateX(-15px)', 100);
-                    setTimeout(() => modal.style.transform = 'scale(1) translateX(15px)', 150);
-                    setTimeout(() => modal.style.transform = 'scale(1) translateX(0)', 200);
-                    setTimeout(() => modal.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)', 300);
+                } else if (typeof modal.animate === 'function') {
+                    modal.animate([
+                        { transform: 'scale(1) translateX(0)' },
+                        { transform: 'scale(1) translateX(-15px)', offset: 0.2 },
+                        { transform: 'scale(1) translateX(15px)', offset: 0.4 },
+                        { transform: 'scale(1) translateX(-15px)', offset: 0.6 },
+                        { transform: 'scale(1) translateX(15px)', offset: 0.8 },
+                        { transform: 'scale(1) translateX(0)' }
+                    ], { duration: 300, easing: 'ease-in-out' });
                 }
             }
         };
@@ -383,7 +380,7 @@ export class FocusMode extends window.YPP.features.BaseFeature {
             if (e.key === 'Escape') overlay.remove();
         });
     }
-};
+}
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};

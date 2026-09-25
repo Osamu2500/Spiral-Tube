@@ -1,56 +1,143 @@
 /* ========================================================
-   SEAMLESS MODE (Sidebar Comments)
+   SEAMLESS MODE (Sidebar Comments / Delhi Layout)
    ======================================================== */
 
+@import "seamless-grid-cards.css";
+
 /* Decrease gap between player/sidebar and topbar */
-body.ypp-seamless-mode ytd-watch-flexy[flexy] {
+body.ypp-seamless-mode ytd-watch-flexy {
     padding-top: 8px !important;
     margin-top: 0 !important;
 }
 
-/* Ensure #below takes full width of the sidebar */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #below {
+/* ========================================================
+   LEGACY LAYOUT (ytd-watch-flexy) GRID OVERRIDE
+   ======================================================== */
+
+/* Enable CSS Grid on the main columns wrapper to override default Flexbox */
+body.ypp-seamless-mode ytd-watch-flexy #columns {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) var(--ytd-watch-flexy-sidebar-width, 420px) !important;
+    gap: 0 24px !important;
+    max-width: calc(var(--ytd-watch-flexy-max-player-width, 1280px) + var(--ytd-watch-flexy-sidebar-width, 420px) + 24px) !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+    box-sizing: border-box !important;
+    align-items: start !important;
+}
+
+/* Unwrap primary and secondary so their children can be placed in the grid directly */
+body.ypp-seamless-mode ytd-watch-flexy #primary,
+body.ypp-seamless-mode ytd-watch-flexy #primary-inner,
+body.ypp-seamless-mode ytd-watch-flexy #secondary,
+body.ypp-seamless-mode ytd-watch-flexy #secondary-inner {
+    display: contents !important;
+}
+
+/* By default, force all unwrapped children to column 1 to prevent 3rd column auto-placement */
+body.ypp-seamless-mode ytd-watch-flexy #columns > *,
+body.ypp-seamless-mode ytd-watch-flexy #primary-inner > *,
+body.ypp-seamless-mode ytd-watch-flexy #secondary-inner > * {
+    grid-column: 1 / 2 !important;
+}
+
+/* 1. Video Player: Top Left */
+body.ypp-seamless-mode ytd-watch-flexy #player {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
     width: 100% !important;
+    margin-bottom: 24px !important;
 }
 
-/* Move Related Videos under the Video */
-body.ypp-seamless-mode #primary-inner #related {
-    margin-top: 24px !important;
-    padding: 0 !important;
+/* 2. Metadata (Title, Channel, Buttons, Comments): Top Right */
+body.ypp-seamless-mode ytd-watch-flexy #below {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 100 !important; /* Spans top to bottom on the right */
+    width: 100% !important;
+    padding: 20px !important;
+    border-radius: var(--ypp-shape-xl, 24px) !important;
+    background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.65)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    height: fit-content !important;
 }
 
-/* Typography for Related Videos */
-body.ypp-seamless-mode #related .ytLockupMetadataViewModelTitle,
-body.ypp-seamless-mode #related #video-title {
-    font-size: 13px !important;
-    line-height: 18px !important;
+/* 3. Related Videos: Bottom Left */
+body.ypp-seamless-mode ytd-watch-flexy #related,
+body.ypp-seamless-mode ytd-watch-flexy ytd-watch-next-secondary-results-renderer {
+    grid-column: 1 / 2 !important;
+    grid-row: 2 / 3 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    padding: 0 24px !important;
+    box-sizing: border-box !important;
+}
+
+
+
+/* Typography for Related Videos Grid */
+body.ypp-seamless-mode ytd-watch-next-secondary-results-renderer .ytLockupMetadataViewModelTitle,
+body.ypp-seamless-mode ytd-watch-next-secondary-results-renderer #video-title {
+    font-size: 14px !important;
+    line-height: 20px !important;
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
 }
-body.ypp-seamless-mode #related .ytAttributedStringLink,
-body.ypp-seamless-mode #related ytd-channel-name {
-    font-size: 11px !important;
-    line-height: 14px !important;
-}
-body.ypp-seamless-mode #related .ytContentMetadataViewModelMetadataRow,
-body.ypp-seamless-mode #related .ytContentMetadataViewModelMetadataText,
-body.ypp-seamless-mode #related #metadata-line {
-    font-size: 11px !important;
-    line-height: 13px !important;
-}
 
-/* Custom scrollbar for sidebar comments */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar {
+/* Custom scrollbar for sidebar comments (legacy layout) */
+body.ypp-seamless-mode ytd-watch-flexy #below #comments::-webkit-scrollbar {
     width: 6px;
 }
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar-thumb {
+body.ypp-seamless-mode ytd-watch-flexy #below #comments::-webkit-scrollbar-thumb {
     background: var(--ypp-surface-bg-hover, var(--yt-spec-20-percent-layer));
     border-radius: 3px;
 }
 
-/* Action Buttons Controller (Seamless Mode) */
+/* ========================================================
+   SPLIT SCROLLING INTEGRATION
+   ======================================================== */
+body.ypp-seamless-mode.ypp-split-scrolling-enabled ytd-watch-flexy #below {
+    position: sticky !important;
+    top: calc(var(--ytd-masthead-height, 56px) + 24px) !important;
+    max-height: calc(100vh - var(--ytd-masthead-height, 56px) - 24px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
+    -ms-overflow-style: none !important;
+}
+body.ypp-seamless-mode.ypp-split-scrolling-enabled ytd-watch-flexy #below::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* ========================================================
+   UI/UX COMPONENT STYLING (Applies to both Layouts)
+   ======================================================== */
+
+/* Video Title Typography */
+body.ypp-seamless-mode ytd-watch-metadata h1.ytd-watch-metadata,
+body.ypp-seamless-mode ytd-watch-metadata #title h1 {
+    font-family: 'Inter', 'Roboto', system-ui, sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+}
+
+/* Channel Bar & Action Buttons Layout */
 body.ypp-seamless-actions-active ytd-watch-metadata #top-row {
     display: flex !important;
     flex-direction: column !important;
@@ -59,20 +146,43 @@ body.ypp-seamless-actions-active ytd-watch-metadata #top-row {
     width: 100% !important;
     overflow: visible !important;
     max-height: none !important;
+    gap: 16px !important;
 }
+
+/* Channel Bar Styling */
 body.ypp-seamless-actions-active ytd-watch-metadata #owner {
     width: 100% !important;
-    display: block !important;
-    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0 !important;
 }
+
+body.ypp-seamless-actions-active ytd-watch-metadata #owner > * {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+/* Subscribe Button */
+body.ypp-seamless-actions-active ytd-watch-metadata #subscribe-button button {
+    background: #fff !important;
+    color: #000 !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    padding: 0 16px !important;
+}
+
+/* Action Buttons (Like, Share, etc.) */
 body.ypp-seamless-actions-active ytd-watch-metadata #actions {
-    margin-top: 12px !important;
+    margin-top: 0 !important;
     padding-top: 0 !important;
     width: 100% !important;
     display: block !important;
     overflow: visible !important;
     max-width: none !important;
 }
+
 body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -82,3 +192,90 @@ body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner {
     width: 100% !important;
     gap: 8px !important;
 }
+
+/* Action Buttons Pill Design */
+body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner ytd-button-renderer yt-button-shape button,
+body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner ytd-toggle-button-renderer yt-button-shape button {
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    transition: background 0.2s ease !important;
+    margin: 0 !important;
+}
+
+body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner ytd-button-renderer yt-button-shape button:hover,
+body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner ytd-toggle-button-renderer yt-button-shape button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Description Box */
+body.ypp-seamless-mode ytd-watch-metadata #description {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    margin-top: 20px !important;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* Comments Section Separation */
+body.ypp-seamless-mode ytd-comments {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 8px !important;
+    padding-top: 24px !important;
+}
+
+
+/* ========================================================
+   DELHI LAYOUT OVERRIDES (ytd-watch-grid)
+   ======================================================== */
+
+/* The new secondary panel on the right (contains description and comments) */
+body.ypp-seamless-mode ytd-watch-grid #secondary-inner {
+    border-radius: var(--ypp-shape-xl, 24px) !important;
+    background: var(--ypp-surface-bg, rgba(20, 20, 20, 0.65)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    padding: 20px !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    height: fit-content !important;
+}
+
+/* Ensure panels inside the new right-hand secondary are seamless */
+body.ypp-seamless-mode ytd-watch-grid #secondary-inner ytd-engagement-panel-section-list-renderer {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+body.ypp-seamless-mode ytd-watch-grid #secondary-inner ytd-comments-header-renderer[engagement-panel] {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
+/* Bottom grid for recommendations */
+body.ypp-seamless-mode ytd-watch-grid #bottom-grid {
+    margin-top: 24px !important;
+    padding-top: 24px !important;
+}
+
+/* Adjust the player container for the new grid layout */
+body.ypp-seamless-mode ytd-watch-grid #player-container {
+    border-radius: var(--ypp-shape-xl, 24px) !important;
+    overflow: hidden !important;
+}
+
+
+/* Channel Bar Overrides */
+body.ypp-seamless-channel-active ytd-watch-metadata #owner { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: flex-start !important; gap: 8px !important; min-width: 0 !important; flex: 1 1 auto !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata ytd-video-owner-renderer { flex: 1 1 auto !important; min-width: 150px !important; margin-right: 4px !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata #subscribe-button { display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-end !important; flex-wrap: nowrap !important; flex: 0 1 auto !important; gap: 4px !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata ytd-subscribe-button-renderer { display: flex !important; flex-direction: row !important; align-items: center !important; flex-wrap: nowrap !important; gap: 4px !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata #sponsor-button { margin: 0 !important; flex-shrink: 1 !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata #sponsor-button button, body.ypp-seamless-channel-active ytd-watch-metadata #sponsor-button tp-yt-paper-button { padding: 0 8px !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata ytd-subscribe-button-renderer tp-yt-paper-button, body.ypp-seamless-channel-active ytd-watch-metadata ytd-subscribe-button-renderer button { margin: 0 !important; flex-shrink: 1 !important; padding: 0 8px !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer { margin: 0 !important; flex-shrink: 0 !important; }
+body.ypp-seamless-channel-active ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer button, body.ypp-seamless-channel-active ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer yt-icon-button { padding: 4px !important; }

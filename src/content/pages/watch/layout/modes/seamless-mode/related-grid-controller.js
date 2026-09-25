@@ -8,11 +8,16 @@ import { QuadObserverSystem } from './quad-observer-system.js';
  * Related Grid Controller
  * Analyzes the DOM in real-time to discover asynchronous video cards,
  * traces their origin, and mathematically computes a grid structure.
+ * Refactored to eliminate layout thrashing by batching DOM writes.
  */
 export class RelatedGridController {
-    constructor(logger) {
-        this.logger = logger;
-        this.enabled = false;
+    /**
+     * @param {Object} parentFeature - The parent seamless mode feature instance
+     */
+    constructor(parentFeature) {
+        this.utils = parentFeature.utils;
+        this.parentFeature = parentFeature;
+        this.isEnabled = false;
         this.enforcementInterval = null;
         this.knownGridContainers = new Set();
         this.virtualDOMRegistry = new WeakMap();
@@ -23,20 +28,20 @@ export class RelatedGridController {
         };
         
         // Initialize the engines
-        this.cssEngine = new DynamicCSSMatrixEngine(logger);
-        this.shadowPiercer = new ShadowDOMPiercingEngine(logger);
-        this.polymerOverrider = new PolymerDataOverrider(logger);
-        this.quadObserver = new QuadObserverSystem(logger, () => this.enforceGrid());
+        this.cssEngine = new DynamicCSSMatrixEngine(this.utils);
+        this.shadowPiercer = new ShadowDOMPiercingEngine(this.utils);
+        this.polymerOverrider = new PolymerDataOverrider(this.utils);
+        this.quadObserver = new QuadObserverSystem(this.utils, () => this.enforceGrid());
     }
 
     enable() {
-        if (this.enabled) return;
-        this.enabled = true;
+        if (this.isEnabled) return;
+        this.isEnabled = true;
         
         const cols = this.getColumnsSetting();
         this.cssEngine.inject(cols);
         
-        if (window.YPP.sharedObserver) {
+        if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.register('seamless-grid-container', 'ytd-watch-flexy', (elements) => {
                 const watchFlexy = elements[0];
                 if (watchFlexy) {
@@ -45,41 +50,52 @@ export class RelatedGridController {
             }, true);
         }
         
-        this.logger.info('RelatedGridController Enabled');
+        this.utils.log('RelatedGridController Enabled', 'seamlessMode', 'info');
     }
 
     disable() {
-        if (!this.enabled) return;
-        this.enabled = false;
+        if (!this.isEnabled) return;
+        this.isEnabled = false;
         
-        if (window.YPP.sharedObserver) {
+        if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.unregister('seamless-grid-container');
         }
         
         this.quadObserver.stop();
         this.cssEngine.remove();
         this.cleanup();
-        this.logger.info('RelatedGridController Disabled');
+        this.utils.log('RelatedGridController Disabled', 'seamlessMode', 'info');
     }
 
     getColumnsSetting() {
         try {
-            if (window.YPP && window.YPP.settings && window.YPP.settings.seamlessModeGridCols) {
-                return window.YPP.settings.seamlessModeGridCols;
+            if (this.parentFeature?.settings?.seamlessModeGridCols) {
+                return parseInt(this.parentFeature.settings.seamlessModeGridCols, 10) || 4;
             }
-        } catch (e) {
-            this.logger.warn('Failed to read seamlessModeGridCols setting, defaulting to 4');
+        } catch (error) {
+            this.utils.log('Failed to read seamlessModeGridCols setting', 'seamlessMode', 'warn');
         }
         return 4; // default
     }
 
-    processVideoCard(item, cols) {
-        try {
-            const state = this.virtualDOMRegistry.get(item);
-            if (state && state.restructured === true && state.lastCheck > Date.now() - 1000) {
-                return; // Skip if recently processed
-            }
+    /**
+     * Reads all necessary DOM elements for a video card before any writes occur.
+     */
+    readVideoCardState(item) {
+        return {
+            innerDiv: item.querySelector('#dismissible') || item.querySelector('.details')?.parentElement,
+            thumbnail: item.querySelector('ytd-thumbnail'),
+            details: item.querySelector('.details') || item.querySelector('.metadata'),
+            meta: item.querySelector('.secondary-metadata') || item.querySelector('#metadata'),
+            title: item.querySelector('#video-title') || item.querySelector('.video-title')
+        };
+    }
 
+    /**
+     * Applies DOM modifications in a batched manner to prevent layout thrashing.
+     */
+    writeVideoCardState(item, nodes, cols) {
+        try {
             this.polymerOverrider.hackNode(item);
             this.shadowPiercer.pierceAndDestroy(item);
 
@@ -91,68 +107,65 @@ export class RelatedGridController {
             item.style.setProperty('font-size', '14px', 'important');
             item.style.setProperty('float', 'none', 'important');
             
-            const innerDiv = item.querySelector('#dismissible') || item.querySelector('.details')?.parentElement;
-            if (innerDiv) {
-                innerDiv.style.setProperty('display', 'block', 'important');
-                innerDiv.style.setProperty('width', '100%', 'important');
-                innerDiv.style.setProperty('height', 'auto', 'important');
+            if (nodes.innerDiv) {
+                nodes.innerDiv.style.setProperty('display', 'block', 'important');
+                nodes.innerDiv.style.setProperty('width', '100%', 'important');
+                nodes.innerDiv.style.setProperty('height', 'auto', 'important');
             }
 
-            const thumbnail = item.querySelector('ytd-thumbnail');
-            if (thumbnail) {
-                thumbnail.style.setProperty('position', 'relative', 'important');
-                thumbnail.style.setProperty('width', '100%', 'important');
-                thumbnail.style.setProperty('min-width', '100%', 'important');
-                thumbnail.style.setProperty('max-width', '100%', 'important');
-                thumbnail.style.setProperty('height', 'auto', 'important');
-                thumbnail.style.setProperty('aspect-ratio', '16/9', 'important');
-                thumbnail.style.setProperty('margin-right', '0', 'important');
-                thumbnail.style.setProperty('margin-bottom', '8px', 'important');
-                thumbnail.style.setProperty('display', 'block', 'important');
-                thumbnail.style.setProperty('flex', 'none', 'important');
+            if (nodes.thumbnail) {
+                nodes.thumbnail.style.setProperty('position', 'relative', 'important');
+                nodes.thumbnail.style.setProperty('width', '100%', 'important');
+                nodes.thumbnail.style.setProperty('min-width', '100%', 'important');
+                nodes.thumbnail.style.setProperty('max-width', '100%', 'important');
+                nodes.thumbnail.style.setProperty('height', 'auto', 'important');
+                nodes.thumbnail.style.setProperty('aspect-ratio', '16/9', 'important');
+                nodes.thumbnail.style.setProperty('margin-right', '0', 'important');
+                nodes.thumbnail.style.setProperty('margin-bottom', '8px', 'important');
+                nodes.thumbnail.style.setProperty('display', 'block', 'important');
+                nodes.thumbnail.style.setProperty('flex', 'none', 'important');
             }
 
-            const details = item.querySelector('.details') || item.querySelector('.metadata');
-            if (details) {
-                details.style.setProperty('position', 'relative', 'important');
-                details.style.setProperty('padding-top', '4px', 'important');
-                details.style.setProperty('padding-right', '0', 'important');
-                details.style.setProperty('padding-left', '0', 'important');
-                details.style.setProperty('width', '100%', 'important');
-                details.style.setProperty('min-width', '100%', 'important');
-                details.style.setProperty('display', 'block', 'important');
-                details.style.setProperty('flex', 'none', 'important');
+            if (nodes.details) {
+                nodes.details.style.setProperty('position', 'relative', 'important');
+                nodes.details.style.setProperty('padding-top', '4px', 'important');
+                nodes.details.style.setProperty('padding-right', '0', 'important');
+                nodes.details.style.setProperty('padding-left', '0', 'important');
+                nodes.details.style.setProperty('width', '100%', 'important');
+                nodes.details.style.setProperty('min-width', '100%', 'important');
+                nodes.details.style.setProperty('display', 'block', 'important');
+                nodes.details.style.setProperty('flex', 'none', 'important');
             }
 
-            const meta = item.querySelector('.secondary-metadata') || item.querySelector('#metadata');
-            if (meta) {
-                meta.style.setProperty('display', 'block', 'important');
-                meta.style.setProperty('width', '100%', 'important');
-                meta.style.setProperty('white-space', 'normal', 'important');
+            if (nodes.meta) {
+                nodes.meta.style.setProperty('display', 'block', 'important');
+                nodes.meta.style.setProperty('width', '100%', 'important');
+                nodes.meta.style.setProperty('white-space', 'normal', 'important');
             }
             
-            const title = item.querySelector('#video-title') || item.querySelector('.video-title');
-            if (title) {
-                title.style.setProperty('white-space', 'normal', 'important');
-                title.style.setProperty('display', '-webkit-box', 'important');
-                title.style.setProperty('-webkit-line-clamp', '2', 'important');
-                title.style.setProperty('-webkit-box-orient', 'vertical', 'important');
-                title.style.setProperty('overflow', 'hidden', 'important');
-                title.style.setProperty('width', '100%', 'important');
-                title.style.setProperty('margin-right', '0', 'important');
+            if (nodes.title) {
+                nodes.title.style.setProperty('white-space', 'normal', 'important');
+                nodes.title.style.setProperty('display', '-webkit-box', 'important');
+                nodes.title.style.setProperty('-webkit-line-clamp', '2', 'important');
+                nodes.title.style.setProperty('-webkit-box-orient', 'vertical', 'important');
+                nodes.title.style.setProperty('overflow', 'hidden', 'important');
+                nodes.title.style.setProperty('width', '100%', 'important');
+                nodes.title.style.setProperty('margin-right', '0', 'important');
             }
             
-            if (innerDiv && thumbnail && details) {
-                const innerChildren = Array.from(innerDiv.children);
-                if (innerChildren.indexOf(details) < innerChildren.indexOf(thumbnail)) {
-                    innerDiv.insertBefore(thumbnail, details);
+            // Re-order DOM nodes if necessary (moving thumbnail above details)
+            if (nodes.innerDiv && nodes.thumbnail && nodes.details) {
+                const innerChildren = Array.from(nodes.innerDiv.children);
+                if (innerChildren.indexOf(nodes.details) < innerChildren.indexOf(nodes.thumbnail)) {
+                    nodes.innerDiv.insertBefore(nodes.thumbnail, nodes.details);
                 }
             }
+            
             this.virtualDOMRegistry.set(item, { restructured: true, lastCheck: Date.now() });
             this.metrics.videosRestructured++;
             
         } catch (error) {
-            this.logger.error('Failed to deeply process video card', error);
+            this.utils.log(`Failed to deeply process video card: ${error.message}`, 'seamlessMode', 'error');
         }
     }
 
@@ -170,31 +183,59 @@ export class RelatedGridController {
 
             if (compactItems.length === 0) return;
 
+            // PRE-CALCULATE (READ PHASE)
             const parentContainers = new Set();
+            const itemsToProcess = [];
+            
             compactItems.forEach(item => {
                 if (item.parentElement && item.parentElement.tagName !== 'YTD-COMPACT-VIDEO-RENDERER') {
                     parentContainers.add(item.parentElement);
                 }
+                
+                const state = this.virtualDOMRegistry.get(item);
+                if (state && state.restructured === true && state.lastCheck > Date.now() - 1000) {
+                    return; // Skip if recently processed
+                }
+                
+                // Read all DOM state before modifying any styles
+                const nodes = this.readVideoCardState(item);
+                itemsToProcess.push({ item, nodes });
             });
+
+            if (itemsToProcess.length === 0 && parentContainers.size === 0) return;
 
             const cols = this.getColumnsSetting();
             this.cssEngine.inject(cols); // Make sure CSS matches setting
 
-            parentContainers.forEach(container => {
-                this.knownGridContainers.add(container);
-                container.style.setProperty('display', 'block', 'important');
-                container.style.setProperty('width', '100%', 'important');
-                container.style.setProperty('padding', '0', 'important');
-                container.style.setProperty('margin', '0', 'important');
-                container.style.setProperty('font-size', '0', 'important');
-                container.style.setProperty('text-align', 'left', 'important');
-            });
+            // BATCH MUTATIONS (WRITE PHASE)
+            window.requestAnimationFrame(() => {
+                parentContainers.forEach(container => {
+                    // Check if node is still attached to DOM
+                    if (!container.isConnected) return;
+                    this.knownGridContainers.add(container);
+                    container.style.setProperty('display', 'block', 'important');
+                    container.style.setProperty('width', '100%', 'important');
+                    container.style.setProperty('padding', '0', 'important');
+                    container.style.setProperty('margin', '0', 'important');
+                    container.style.setProperty('font-size', '0', 'important');
+                    container.style.setProperty('text-align', 'left', 'important');
+                });
 
-            for (let i = 0; i < compactItems.length; i++) {
-                this.processVideoCard(compactItems[i], cols);
+                itemsToProcess.forEach(({ item, nodes }) => {
+                    if (!item.isConnected) return; // Prevent memory leaks for detached items
+                    this.writeVideoCardState(item, nodes, cols);
+                });
+            });
+            
+            // Periodically clean up Set to avoid memory leaks
+            if (this.metrics.totalEnforcementCycles % 50 === 0) {
+                this.knownGridContainers.forEach(container => {
+                    if (!container.isConnected) this.knownGridContainers.delete(container);
+                });
             }
+
         } catch (error) {
-            this.logger.error('Fatal error during Related Grid style enforcement', error);
+            this.utils.log(`Fatal error during Related Grid style enforcement: ${error.message}`, 'seamlessMode', 'error');
         } finally {
             this.metrics.lastCycleTime = performance.now() - startTime;
         }
@@ -206,7 +247,7 @@ export class RelatedGridController {
             this.quadObserver.stop();
             
             this.knownGridContainers.forEach(container => {
-                if (container) container.removeAttribute('style');
+                if (container && container.isConnected) container.removeAttribute('style');
             });
             this.knownGridContainers.clear();
 
@@ -230,7 +271,7 @@ export class RelatedGridController {
                 });
             }
         } catch (error) {
-            this.logger.error('Failed to cleanup RelatedGridController styles', error);
+            this.utils.log(`Failed to cleanup RelatedGridController styles: ${error.message}`, 'seamlessMode', 'error');
         }
     }
 }

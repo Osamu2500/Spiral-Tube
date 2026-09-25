@@ -1,89 +1,49 @@
 /**
  * @fileoverview
  * Channel Bar Controller
- * Responsible for maintaining the alignment of the Avatar, Channel Name,
+ * 
+ * Scope: Responsible for maintaining the alignment of the Avatar, Channel Name,
  * Join Button, Subscribe Button, and Bell Icon on a single horizontal line.
+ * Does not affect unrelated files/functionality outside its scope.
  */
 export class ChannelBarController {
-    constructor(logger) {
-        this.logger = logger;
-        this.enabled = false;
-        this.styleElement = null;
+    static CLASSES = {
+        CHANNEL_ACTIVE: 'ypp-seamless-channel-active'
+    };
+
+    /**
+     * @param {Object} parentFeature - The parent seamless mode feature instance
+     */
+    constructor(parentFeature) {
+        this.utils = parentFeature.utils;
+        this.isEnabled = false;
     }
 
+    /**
+     * Enables the channel bar layout override
+     */
     enable() {
-        if (this.enabled) return;
-        this.enabled = true;
-        if (!this.styleElement) {
-            this.styleElement = document.createElement("style");
-            this.styleElement.id = "seamless-channel-bar-enforcer";
-            this.styleElement.textContent = `
-                ytd-watch-metadata #owner {
-                    display: flex !important;
-                    flex-direction: row !important;
-                    flex-wrap: nowrap !important;
-                    align-items: center !important;
-                    justify-content: flex-start !important;
-                    gap: 8px !important;
-                    min-width: 0 !important;
-                    flex: 1 1 auto !important;
-                }
-                ytd-watch-metadata ytd-video-owner-renderer {
-                    flex: 1 1 auto !important;
-                    min-width: 150px !important;
-                    margin-right: 4px !important;
-                }
-                ytd-watch-metadata #subscribe-button {
-                    display: flex !important;
-                    flex-direction: row !important;
-                    align-items: center !important;
-                    justify-content: flex-end !important;
-                    flex-wrap: nowrap !important;
-                    flex: 0 1 auto !important;
-                    gap: 4px !important;
-                }
-                ytd-watch-metadata ytd-subscribe-button-renderer {
-                    display: flex !important;
-                    flex-direction: row !important;
-                    align-items: center !important;
-                    flex-wrap: nowrap !important;
-                    gap: 4px !important;
-                }
-                ytd-watch-metadata #sponsor-button {
-                    margin: 0 !important;
-                    flex-shrink: 1 !important;
-                }
-                ytd-watch-metadata #sponsor-button button, 
-                ytd-watch-metadata #sponsor-button tp-yt-paper-button {
-                    padding: 0 8px !important;
-                }
-                ytd-watch-metadata ytd-subscribe-button-renderer tp-yt-paper-button, 
-                ytd-watch-metadata ytd-subscribe-button-renderer button {
-                    margin: 0 !important;
-                    flex-shrink: 1 !important;
-                    padding: 0 8px !important;
-                }
-                ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer {
-                    margin: 0 !important;
-                    flex-shrink: 0 !important;
-                }
-                ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer button,
-                ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer yt-icon-button {
-                    padding: 4px !important;
-                }
-            `;
-            document.head.appendChild(this.styleElement);
+        try {
+            if (this.isEnabled) return;
+            this.isEnabled = true;
+            document.body.classList.add(ChannelBarController.CLASSES.CHANNEL_ACTIVE);
+            this.utils.log('ChannelBarController Enabled', 'seamlessMode', 'info');
+        } catch (error) {
+            this.utils.log(error.message, 'seamlessMode', 'error');
         }
-        this.logger.info("ChannelBarController Enabled");
     }
 
+    /**
+     * Disables the channel bar layout override
+     */
     disable() {
-        if (!this.enabled) return;
-        this.enabled = false;
-        if (this.styleElement) {
-            this.styleElement.remove();
-            this.styleElement = null;
+        try {
+            if (!this.isEnabled) return;
+            this.isEnabled = false;
+            document.body.classList.remove(ChannelBarController.CLASSES.CHANNEL_ACTIVE);
+            this.utils.log('ChannelBarController Disabled', 'seamlessMode', 'info');
+        } catch (error) {
+            this.utils.log(error.message, 'seamlessMode', 'error');
         }
-        this.logger.info("ChannelBarController Disabled");
     }
 }

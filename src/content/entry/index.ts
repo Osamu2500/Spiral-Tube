@@ -20,6 +20,7 @@ if (window.YPP?.FeatureManager) {
 function registerModule(module: any) {
     Object.values(module).forEach((exportedItem: any) => {
         if (typeof exportedItem === 'function' && exportedItem.name !== 'BaseFeature') {
+            if (exportedItem.isManagedExternally) return;
             if (window.YPP?.FeatureManager) {
                 if (exportedItem.prototype && (exportedItem.prototype.run || exportedItem.prototype.update || exportedItem.prototype.enable)) {
                     window.YPP.FeatureManager.register(exportedItem);

@@ -14,15 +14,16 @@ export class ZenMode extends window.YPP.features.BaseFeature {
     static featureId = 'zenMode';
     static executionPhase = 'idle';
     static priority = 999;
+    static isManagedExternally = true;
 
     getConfigKey() { return 'zenMode'; }
+    
     constructor() {
         super('zenMode');
         this.CONSTANTS = window.YPP.CONSTANTS || {};
         this.Utils = window.YPP.Utils || {};
         
         // State
-        this.isEnabled = false;
         this.zenToastShown = false;
         this.ambientActive = false;
         this.animationFrame = null;
@@ -45,44 +46,13 @@ export class ZenMode extends window.YPP.features.BaseFeature {
 
         // Bindings
         this._loop = this._loop.bind(this);
-        this._handleNavigation = this._handleNavigation.bind(this);
     }
 
-    enable() {
-        this.toggleZen(true);
-    }
-
-    disable() {
-        this.toggleZen(false);
-        super.disable();
-    }
-
-    onPageChange() {
-        // Re-acquire elements after navigation
-        this._clearCache();
-        const isWatchPage = location.pathname === '/watch';
+    async enable() {
+        await super.enable();
         
-        if (isWatchPage && this.isEnabled) {
-            this._applyAmbientMode(); // Restart/Refresh loop
-            this._enableAudioSpatialization();
-        } else {
-            this._disableAudioSpatialization();
-            this._removeAmbientMode();
-        }
-    }
-
-    _clearCache() {
-        this.videoElement = null;
-        this.playerElement = null;
-    }
-
-    toggleZen(enable) {
         const isWatchPage = location.pathname === '/watch';
-        this.isEnabled = enable;
-        
-        // WatchPageManager handles adding/removing body.ypp-zen-mode class.
-        // We only handle ambient mode and audio.
-        if (enable && isWatchPage) {
+        if (isWatchPage) {
             this._applyAmbientMode();
             
             // Show toast notification once per session
@@ -91,39 +61,48 @@ export class ZenMode extends window.YPP.features.BaseFeature {
                 this.zenToastShown = true;
             }
             this._enableAudioSpatialization();
+        }
+    }
+
+    async disable() {
+        this.zenToastShown = false;
+        this._disableAudioSpatialization();
+        this._removeAmbientMode();
+        
+        await super.disable();
+    }
+
+    async onPageChange() {
+        if (!this.isEnabled) return;
+        
+        // Re-acquire elements after navigation
+        this._clearCache();
+        const isWatchPage = location.pathname === '/watch';
+        
+        if (isWatchPage) {
+            this._applyAmbientMode(); // Restart/Refresh loop
+            this._enableAudioSpatialization();
         } else {
-            this.zenToastShown = false;
             this._disableAudioSpatialization();
             this._removeAmbientMode();
         }
     }
+    
+    async onUpdate() {
+        if (this.isEnabled && location.pathname === '/watch') {
+            this._applyAmbientMode();
+            this._enableAudioSpatialization();
+        }
+    }
+
+    _clearCache() {
+        this.videoElement = null;
+        this.playerElement = null;
+    }
 
     async autoCinema() {
-        try {
-            const btn = await this.Utils.waitForElement?.('.ytp-size-button, [aria-label="Cinema mode"]', 5000);
-            if (!btn) return;
-
-            const checkAndEnableTheater = () => {
-                // Only click if not already in theater mode
-                const isTheater = document.querySelector('ytd-watch-flexy[theater]');
-                if (!isTheater) {
-                    btn.click();
-                }
-            };
-
-            // Attempt immediately
-            checkAndEnableTheater();
-            
-            // Re-verify after DOM settles without using setTimeout
-            if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.register('zen-cinema-check', 'ytd-watch-flexy', () => {
-                    checkAndEnableTheater();
-                    window.YPP.sharedObserver.unregister('zen-cinema-check');
-                });
-            }
-        } catch (e) {
-            // Silent fail if button not found or page not ready
-        }
+        // Obsolete legacy function
+        // watch-manager.js now explicitly handles the theater-mode override css class
     }
 
     async _applyAmbientMode() {
@@ -223,15 +202,16 @@ export class ZenMode extends window.YPP.features.BaseFeature {
             window.YPP.sharedObserver.unregister('zen-mode-player');
         }
 
-        // Clean up canvas
+        // Clean up canvas robustly
         if (this.canvas) {
             this.canvas.style.opacity = '0';
+            const canvasToRemove = this.canvas;
+            this.canvas = null;
+            this.ctx = null;
             setTimeout(() => {
-                if (this.canvas && this.canvas.parentNode) {
-                    this.canvas.remove();
+                if (canvasToRemove && canvasToRemove.parentNode) {
+                    canvasToRemove.remove();
                 }
-                this.canvas = null;
-                this.ctx = null;
             }, 500);
         }
         
@@ -293,13 +273,11 @@ export class ZenMode extends window.YPP.features.BaseFeature {
             window.YPP.zenAudioInitialized = false;
         }
         
-        if (this.audioContext && this.audioContext.state !== 'closed') {
-            try {
-                this.audioContext.suspend();
-            } catch(e) {}
-        }
+        // IMPORTANT FIX: Never suspend the GLOBAL audio context as it breaks other features!
+        // Instead, just disconnect our nodes (handled above).
+        this.audioContext = null; 
     }
-};
+}
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};

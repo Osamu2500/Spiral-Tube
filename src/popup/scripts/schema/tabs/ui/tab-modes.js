@@ -82,6 +82,7 @@ export const getModesTab = (t) => ({
           {
             type: 'toggle',
             id: 'seamlessMode',
+            class: 'span-2 force-inline-slot',
             label: t('seamless_mode'),
             desc: t('sidebar_comments'),
             icon: ICONS.sidebar,

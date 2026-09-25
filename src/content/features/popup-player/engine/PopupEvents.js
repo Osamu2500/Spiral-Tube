@@ -206,6 +206,12 @@ export const PopupEvents = {
         const injectButtons = () => {
             if (!this._isEnabled || this._openTrigger === 'double-click') return;
 
+            // ── DO NOT inject hover buttons on the watch/player page ──
+            // The seamless mode grid on watch pages handles its own UX.
+            // Hover buttons on related video cards would conflict with the
+            // multi-select feature and the grid card layout.
+            if (window.location.pathname.startsWith('/watch')) return;
+
             const thumbs = document.querySelectorAll('ytd-thumbnail, ytm-shorts-lockup-view-model, ytd-reel-item-renderer, yt-lockup-view-model, yt-lockup-thumbnail');
             thumbs.forEach(container => {
                 // Find the target to append to

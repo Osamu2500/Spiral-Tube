@@ -4,25 +4,46 @@
  * 
  * Scope: Responsible for maintaining the stacking and structural layout
  * of the Like/Share buttons when Seamless Mode is toggled.
+ * Does not affect unrelated files/functionality outside its scope.
  */
 export class ActionButtonsController {
-    constructor(logger) {
-        this.logger = logger;
-        this.enabled = false;
-        this.styleElement = null;
+    static CLASSES = {
+        ACTIONS_ACTIVE: 'ypp-seamless-actions-active'
+    };
+
+    /**
+     * @param {Object} parentFeature - The parent seamless mode feature instance
+     */
+    constructor(parentFeature) {
+        this.utils = parentFeature.utils;
+        this.isEnabled = false;
     }
 
+    /**
+     * Enables the action buttons layout override
+     */
     enable() {
-        if (this.enabled) return;
-        this.enabled = true;
-        document.body.classList.add('ypp-seamless-actions-active');
-        this.logger.info("ActionButtonsController Enabled");
+        try {
+            if (this.isEnabled) return;
+            this.isEnabled = true;
+            document.body.classList.add(ActionButtonsController.CLASSES.ACTIONS_ACTIVE);
+            this.utils.log('ActionButtonsController Enabled', 'seamlessMode', 'info');
+        } catch (error) {
+            this.utils.log(error.message, 'seamlessMode', 'error');
+        }
     }
 
+    /**
+     * Disables the action buttons layout override
+     */
     disable() {
-        if (!this.enabled) return;
-        this.enabled = false;
-        document.body.classList.remove('ypp-seamless-actions-active');
-        this.logger.info("ActionButtonsController Disabled");
+        try {
+            if (!this.isEnabled) return;
+            this.isEnabled = false;
+            document.body.classList.remove(ActionButtonsController.CLASSES.ACTIONS_ACTIVE);
+            this.utils.log('ActionButtonsController Disabled', 'seamlessMode', 'info');
+        } catch (error) {
+            this.utils.log(error.message, 'seamlessMode', 'error');
+        }
     }
 }

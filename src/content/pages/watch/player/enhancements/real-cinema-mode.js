@@ -9,6 +9,7 @@ export class RealCinemaMode extends window.YPP.features.BaseFeature {
     static featureId = 'realCinemaMode';
     static executionPhase = 'idle';
     static priority = 15;
+    static isManagedExternally = true;
 
     constructor() {
         super('RealCinemaMode');

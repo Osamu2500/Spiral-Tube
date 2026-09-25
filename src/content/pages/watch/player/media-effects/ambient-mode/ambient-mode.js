@@ -8,6 +8,7 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
     static featureId = 'ambientMode';
     static executionPhase = 'idle';
     static priority = 13;
+    static isManagedExternally = true;
 
     constructor() {
         super('AmbientMode');
@@ -47,16 +48,16 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
     async onPageChange(url) {
         if (!this.isEnabled) return;
         if (this.utils.isWatchPage()) {
-            // watch→watch: onVideoChange() already updates the ambient styles.
-            // Only run a full re-init if we were coming from a non-watch page.
-            if (!document.body.classList.contains('ypp-ambient-mode-active')) {
-                await this.disable();
-                this.isEnabled = true;
-                await this.enable();
-            }
+            document.body.classList.add('ypp-ambient-mode-active');
+            this.applyNextAmbientStyles();
         } else {
-            await this.disable();
-            this.isEnabled = true;
+            document.body.classList.remove('ypp-ambient-mode-active');
+            if (this.styleNode && this.styleNode.parentNode) {
+                this.styleNode.remove();
+                this.styleNode = null;
+            }
+            const existingNode = document.getElementById('ypp-next-ambient-style');
+            if (existingNode) existingNode.remove();
         }
     }
 
@@ -78,7 +79,7 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
         }
 
         styleNode.textContent = `
-            body.ypp-ambient-mode-active html[dark="true"] #cinematics.ytd-watch-flexy,
+            html[dark="true"] body.ypp-ambient-mode-active #cinematics.ytd-watch-flexy,
             body.ypp-ambient-mode-active #cinematics.ytd-watch-flexy { 
                 /* Removed width/height 100% to let YouTube calculate the correct aspect ratio */
                 pointer-events: none !important;
@@ -117,3 +118,5 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
 }
 
 window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
+window.YPP.features.AmbientMode = AmbientMode;

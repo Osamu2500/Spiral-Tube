@@ -119,9 +119,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
         zenMode: window.YPP.features.ZenMode ? new window.YPP.features.ZenMode() : null,
         studyMode: window.YPP.features.StudyMode ? new window.YPP.features.StudyMode() : null,
         focusMode: window.YPP.features.FocusMode ? new window.YPP.features.FocusMode() : null,
-        seamlessMode: window.YPP.features.SeamlessMode
-          ? new window.YPP.features.SeamlessMode()
-          : null,
+        seamlessMode: window.YPP.features.SeamlessMode ? new window.YPP.features.SeamlessMode() : null,
+        ambientMode: window.YPP.features.AmbientMode ? new window.YPP.features.AmbientMode() : null,
+        realCinemaMode: window.YPP.features.RealCinemaMode ? new window.YPP.features.RealCinemaMode() : null,
       };
       this._featuresInitialized = true;
       this._featuresInitializing = false;
@@ -181,6 +181,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
     if (this.settings.studyMode) newMode = 'study';
     else if (this.settings.enableFocusMode) newMode = 'focus';
     else if (this.settings.zenMode) newMode = 'zen';
+    else if (this.settings.realCinemaMode) newMode = 'realcinema';
     else if (this.settings.cinemaMode) newMode = 'cinema';
     else if (this.settings.minimalMode) newMode = 'minimal';
     else if (this.settings.seamlessMode) newMode = 'seamless';
@@ -190,19 +191,22 @@ class WatchPageManager extends window.YPP.BasePageManager {
       viewMode: newMode,
     });
 
-    // Handle specific mode feature JS logic
+    // Handle specific mode feature JS logic using BaseFeature's update() to ensure correct lifecycle
     if (this.features) {
-      if (newMode === 'zen') this.features.zenMode?.enable();
-      else this.features.zenMode?.disable();
+      const modeSettings = { ...this.settings };
+      // Force mutual exclusivity for layout modes, but keep ambientMode independent
+      modeSettings.zenMode = (newMode === 'zen');
+      modeSettings.studyMode = (newMode === 'study');
+      modeSettings.enableFocusMode = (newMode === 'focus');
+      modeSettings.seamlessMode = (newMode === 'seamless');
+      modeSettings.realCinemaMode = (newMode === 'realcinema');
+      // ambientMode remains as it was in this.settings
 
-      if (newMode === 'study') this.features.studyMode?.enable();
-      else this.features.studyMode?.disable();
-
-      if (newMode === 'focus') this.features.focusMode?.enable();
-      else this.features.focusMode?.disable();
-
-      if (newMode === 'seamless') this.features.seamlessMode?.enable();
-      else this.features.seamlessMode?.disable();
+      Object.values(this.features).forEach(feature => {
+        if (feature && typeof feature.update === 'function') {
+          feature.update(modeSettings);
+        }
+      });
     }
   }
   setState(newState) {
@@ -239,40 +243,47 @@ class WatchPageManager extends window.YPP.BasePageManager {
       'ypp-focus-mode',
       'ypp-study-mode',
       'ypp-seamless-mode',
+      'ypp-theater-mode-override',
+      'ypp-real-cinema-mode'
     ];
     body.classList.remove(...classesToRemove);
 
     // 2. Apply Sidebar
     const isCustomSidebarEnabled = String(this.settings.enableCustomSidebar) === 'true';
 
-    if (isCustomSidebarEnabled) {
-      // Custom sidebar is ON — apply chosen layout
-      if (this.state.sidebar === 'dense') {
-        body.setAttribute("data-ypp-sidebar-size", "dense");
-      } else if (this.state.sidebar === 'macro') {
-        body.setAttribute("data-ypp-sidebar-size", "macro");
-      } else if (this.state.sidebar === 'mini') {
-        body.setAttribute("data-ypp-sidebar-size", "mini");
-      } else if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
-        body.setAttribute("data-ypp-sidebar-size", "compact");
-      } else if (this.state.sidebar === 'regular') {
-        body.setAttribute("data-ypp-sidebar-size", "regular");
-      } else if (this.state.sidebar === 'spacious') {
-        body.setAttribute("data-ypp-sidebar-size", "spacious");
-      } else if (this.state.sidebar === 'huge') {
-        body.setAttribute("data-ypp-sidebar-size", "huge");
-      } else if (this.state.sidebar === 'expanded') {
-        body.setAttribute("data-ypp-sidebar-size", "expanded");
-      } else if (this.state.sidebar === 'grid') {
-        body.setAttribute("data-ypp-sidebar-size", "grid");
-      }
-    } else {
-      // If custom sidebar is off, remove the attribute to revert to YouTube default
+    if (this.state.viewMode === 'seamless') {
+      // Seamless mode handles its own layout, so strip any custom sidebar size
       body.removeAttribute("data-ypp-sidebar-size");
-    }
+    } else {
+      if (isCustomSidebarEnabled) {
+        // Custom sidebar is ON — apply chosen layout
+        if (this.state.sidebar === 'dense') {
+          body.setAttribute("data-ypp-sidebar-size", "dense");
+        } else if (this.state.sidebar === 'macro') {
+          body.setAttribute("data-ypp-sidebar-size", "macro");
+        } else if (this.state.sidebar === 'mini') {
+          body.setAttribute("data-ypp-sidebar-size", "mini");
+        } else if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
+          body.setAttribute("data-ypp-sidebar-size", "compact");
+        } else if (this.state.sidebar === 'regular') {
+          body.setAttribute("data-ypp-sidebar-size", "regular");
+        } else if (this.state.sidebar === 'spacious') {
+          body.setAttribute("data-ypp-sidebar-size", "spacious");
+        } else if (this.state.sidebar === 'huge') {
+          body.setAttribute("data-ypp-sidebar-size", "huge");
+        } else if (this.state.sidebar === 'expanded') {
+          body.setAttribute("data-ypp-sidebar-size", "expanded");
+        } else if (this.state.sidebar === 'grid') {
+          body.setAttribute("data-ypp-sidebar-size", "grid");
+        }
+      } else {
+        // If custom sidebar is off, remove the attribute to revert to YouTube default
+        body.removeAttribute("data-ypp-sidebar-size");
+      }
 
-    if (this.state.sidebar === 'hidden' || ['zen', 'focus'].includes(this.state.viewMode)) {
-      body.setAttribute("data-ypp-sidebar-size", "hidden"); // Force hide sidebar in extreme modes
+      if (this.state.sidebar === 'hidden' || ['zen', 'focus'].includes(this.state.viewMode)) {
+        body.setAttribute("data-ypp-sidebar-size", "hidden"); // Force hide sidebar in extreme modes
+      }
     }
 
     // Force YouTube player to recalculate layout without blocking the main thread
@@ -313,7 +324,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
       'ypp-zen-mode',
       'ypp-focus-mode',
       'ypp-study-mode',
+      'ypp-seamless-mode',
       'ypp-theater-mode-override',
+      'ypp-real-cinema-mode'
     ];
     document.body.classList.remove(...classesToRemove);
     document.body.removeAttribute("data-ypp-sidebar-size");

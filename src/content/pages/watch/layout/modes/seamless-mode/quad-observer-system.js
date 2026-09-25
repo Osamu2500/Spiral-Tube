@@ -4,14 +4,17 @@
  * Constantly guards the layout against any interference.
  */
 export class QuadObserverSystem {
-    constructor(logger, callback) {
-        this.logger = logger;
+    constructor(utils, callback) {
+        this.utils = utils;
         this.callback = callback;
         this.resizeObserver = null;
         this.enabled = false;
         this._debounceTimer = null;
     }
     
+    /**
+     * Debounces the layout enforcement to prevent thrashing
+     */
     _debouncedCallback() {
         if (!this.enabled) return;
         if (this._debounceTimer) clearTimeout(this._debounceTimer);
@@ -21,10 +24,16 @@ export class QuadObserverSystem {
     }
     
     start(target) {
-        this.stop(); // Clean up previous instances to prevent memory leaks
+        if (this.enabled) this.stop(); // Clean up previous instances to prevent memory leaks
+        
+        if (!target) {
+            this.utils.log('QuadObserverSystem: No target provided for ResizeObserver.', 'seamlessMode', 'warn');
+            return;
+        }
+
         this.enabled = true;
         
-        if (window.YPP.sharedObserver) {
+        if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.register('seamless-quad-observer', 'ytd-watch-flexy ytd-compact-video-renderer, ytd-watch-flexy ytd-rich-item-renderer, ytd-watch-flexy', () => {
                 this._debouncedCallback();
             }, true);
@@ -34,16 +43,24 @@ export class QuadObserverSystem {
         this.resizeObserver = new ResizeObserver(() => {
             this._debouncedCallback();
         });
-        this.resizeObserver.observe(target);
         
-        this.logger.info('Quad-Observer System Armed and Guarding via sharedObserver.');
+        try {
+            this.resizeObserver.observe(target);
+            this.utils.log('Quad-Observer System Armed and Guarding.', 'seamlessMode', 'info');
+        } catch (error) {
+            this.utils.log(`QuadObserverSystem: Failed to observe target - ${error.message}`, 'seamlessMode', 'error');
+        }
     }
     
     stop() {
         this.enabled = false;
-        if (this._debounceTimer) clearTimeout(this._debounceTimer);
         
-        if (window.YPP.sharedObserver) {
+        if (this._debounceTimer) {
+            clearTimeout(this._debounceTimer);
+            this._debounceTimer = null;
+        }
+        
+        if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.unregister('seamless-quad-observer');
         }
 
@@ -51,5 +68,7 @@ export class QuadObserverSystem {
             this.resizeObserver.disconnect();
             this.resizeObserver = null;
         }
+        
+        this.utils.log('Quad-Observer System Disarmed.', 'seamlessMode', 'info');
     }
 }

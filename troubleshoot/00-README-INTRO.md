@@ -29,6 +29,7 @@ Issues related to browser performance, memory management, SPA navigations, and S
 - **`manifest-v3-permissions-and-security.md`**: CSP violations, permissions errors.
 - **`dead-code-elimination.md`**: Strict protocol for dependency graph sweeping and orphan file removal.
 - **`devtools-profiling-and-memory-snapshots.md`**: Using Chrome DevTools to trace memory leaks.
+- **`dynamic-css-injection.md`**: Safely injecting dynamic styles without causing layout thrashing.
 
 ### `ui-and-layout/`
 
@@ -42,6 +43,8 @@ Issues related to DOM injection, CSS layout thrashing, and page-specific UI quir
 - **`watch_page_action_buttons.md`**: Handling action buttons on the watch page.
 - **`youtube-theme-synchronization.md`**: Syncing custom UI with YouTube's Light/Dark mode.
 - **`youtube-miniplayer-integration.md`**: Quirks related to YouTube's persistent miniplayer.
+- **`fullscreen-api-layout-conflicts.md`**: Handling layout breakages when the browser enters native fullscreen.
+- **`css-scoping-and-specificity-leaks.md`**: Preventing feature-specific CSS from leaking globally.
 
 ### `api-and-state/`
 
@@ -52,6 +55,7 @@ Issues related to YouTube's internal APIs, data synchronization, and messaging.
 - **`chrome-storage-and-messaging-failures.md`**: Settings not syncing or large datasets failing to save.
 - **`network-request-interception-failures.md`**: Issues intercepting YouTube's XHR/Fetch requests.
 - **`youtube-redux-store-interception.md`**: Parsing ytInitialData and intercepting internal state.
+- **`settings-caching-and-throttling.md`**: Using an in-memory cache to prevent Chrome Storage API bottlenecks.
 
 ---
 
