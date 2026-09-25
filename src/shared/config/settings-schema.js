@@ -344,6 +344,7 @@ window.YPP.SettingsSchema = {
         pb_native_cast:      { type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
         pb_native_autoplay:  { type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
         pb_native_cc:        { type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
+        pb_native_settings:  { type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
         pb_native_miniplayer:{ type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
         pb_native_theater:   { type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
         pb_native_fullscreen:{ type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },

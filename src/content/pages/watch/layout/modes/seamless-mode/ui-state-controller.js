@@ -1,13 +1,14 @@
 /**
  * @fileoverview
- * Channel Bar Controller
+ * UI State Controller (Seamless Mode)
  * 
- * Scope: Responsible for maintaining the alignment of the Avatar, Channel Name,
- * Join Button, Subscribe Button, and Bell Icon on a single horizontal line.
+ * Scope: Consolidates the toggling of layout CSS classes for the 
+ * Channel Bar and Action Buttons (Like/Share) when Seamless Mode is active.
  * Does not affect unrelated files/functionality outside its scope.
  */
-export class ChannelBarController {
+export class UIStateController {
     static CLASSES = {
+        ACTIONS_ACTIVE: 'ypp-seamless-actions-active',
         CHANNEL_ACTIVE: 'ypp-seamless-channel-active'
     };
 
@@ -20,28 +21,30 @@ export class ChannelBarController {
     }
 
     /**
-     * Enables the channel bar layout override
+     * Enables the UI layout overrides
      */
     enable() {
         try {
             if (this.isEnabled) return;
             this.isEnabled = true;
-            document.body.classList.add(ChannelBarController.CLASSES.CHANNEL_ACTIVE);
-            this.utils.log('ChannelBarController Enabled', 'seamlessMode', 'info');
+            document.body.classList.add(UIStateController.CLASSES.ACTIONS_ACTIVE);
+            document.body.classList.add(UIStateController.CLASSES.CHANNEL_ACTIVE);
+            this.utils.log('UIStateController Enabled', 'seamlessMode', 'info');
         } catch (error) {
             this.utils.log(error.message, 'seamlessMode', 'error');
         }
     }
 
     /**
-     * Disables the channel bar layout override
+     * Disables the UI layout overrides
      */
     disable() {
         try {
             if (!this.isEnabled) return;
             this.isEnabled = false;
-            document.body.classList.remove(ChannelBarController.CLASSES.CHANNEL_ACTIVE);
-            this.utils.log('ChannelBarController Disabled', 'seamlessMode', 'info');
+            document.body.classList.remove(UIStateController.CLASSES.ACTIONS_ACTIVE);
+            document.body.classList.remove(UIStateController.CLASSES.CHANNEL_ACTIVE);
+            this.utils.log('UIStateController Disabled', 'seamlessMode', 'info');
         } catch (error) {
             this.utils.log(error.message, 'seamlessMode', 'error');
         }

@@ -1,8 +1,7 @@
 import '../../../../../core/system/base-feature.js';
 import './seamless-mode.css';
 import './seamless-grid-cards.css';
-import { ActionButtonsController } from './action-buttons-controller.js';
-import { ChannelBarController } from './channel-bar-controller.js';
+import { UIStateController } from './ui-state-controller.js';
 import { RelatedGridController } from './related-grid-controller.js';
 
 /**
@@ -22,8 +21,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
     constructor() {
         super('seamlessMode');
         
-        this.actionController = new ActionButtonsController(this);
-        this.channelBarController = new ChannelBarController(this);
+        this.uiStateController = new UIStateController(this);
         this.gridController = new RelatedGridController(this);
         
         this.isWatchPage = false;
@@ -95,8 +93,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         this.gridController.enable();
         
         if (this.settings?.seamlessMode) {
-            this.actionController.enable();
-            this.channelBarController.enable();
+            this.uiStateController.enable();
         }
 
         setTimeout(() => {
@@ -125,8 +122,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
 
     _deactivateEngines() {
         document.body.classList.remove('ypp-seamless-mode');
-        this.actionController.disable();
-        this.channelBarController.disable();
+        this.uiStateController.disable();
         this.gridController.disable();
     }
 }

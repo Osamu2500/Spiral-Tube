@@ -158,3 +158,13 @@ ytd-item-section-renderer {
   max-width: 100% !important;
   box-sizing: border-box !important;
 }
+
+/* ==========================================================================
+   7. WATCH PAGE LEFT EDGE PADDING FIX (DEFAULT UI)
+   Prevents video, title, and description from being flush against the screen
+   ========================================================================== */
+html ytd-watch-flexy #primary-inner {
+  padding-left: 16px !important;
+  box-sizing: border-box !important;
+}
+

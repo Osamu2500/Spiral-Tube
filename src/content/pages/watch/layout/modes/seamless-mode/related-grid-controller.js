@@ -1,7 +1,9 @@
-import { DynamicCSSMatrixEngine } from './dynamic-css-matrix-engine.js';
-import { ShadowDOMPiercingEngine } from './shadow-dom-piercing-engine.js';
-import { PolymerDataOverrider } from './polymer-data-overrider.js';
-import { QuadObserverSystem } from './quad-observer-system.js';
+import { 
+    DynamicCSSMatrixEngine, 
+    ShadowDOMPiercingEngine, 
+    PolymerDataOverrider, 
+    QuadObserverSystem 
+} from './engines/index.js';
 
 /**
  * @fileoverview
@@ -11,6 +13,8 @@ import { QuadObserverSystem } from './quad-observer-system.js';
  * Refactored to eliminate layout thrashing by batching DOM writes.
  */
 export class RelatedGridController {
+    static TARGET_SELECTORS = 'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer, ytd-rich-item-renderer';
+
     /**
      * @param {Object} parentFeature - The parent seamless mode feature instance
      */
@@ -177,9 +181,7 @@ export class RelatedGridController {
             const watchFlexy = document.querySelector('ytd-watch-flexy');
             if (!watchFlexy) return;
 
-            const compactItems = Array.from(watchFlexy.querySelectorAll(
-                'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer, ytd-rich-item-renderer'
-            ));
+            const compactItems = Array.from(watchFlexy.querySelectorAll(RelatedGridController.TARGET_SELECTORS));
 
             if (compactItems.length === 0) return;
 
@@ -253,21 +255,22 @@ export class RelatedGridController {
 
             const watchFlexy = document.querySelector('ytd-watch-flexy');
             if (watchFlexy) {
-                const compactItems = watchFlexy.querySelectorAll(
-                    'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer, ytd-rich-item-renderer'
-                );
-                compactItems.forEach(item => {
-                    item.removeAttribute('style');
-                    const innerDiv = item.querySelector('#dismissible');
-                    if (innerDiv) innerDiv.removeAttribute('style');
-                    const thumbnail = item.querySelector('ytd-thumbnail');
-                    if (thumbnail) thumbnail.removeAttribute('style');
-                    const details = item.querySelector('.details');
-                    if (details) details.removeAttribute('style');
-                    const title = item.querySelector('#video-title');
-                    if (title) title.removeAttribute('style');
-                    const meta = item.querySelector('.secondary-metadata');
-                    if (meta) meta.removeAttribute('style');
+                const compactItems = watchFlexy.querySelectorAll(RelatedGridController.TARGET_SELECTORS);
+                
+                window.requestAnimationFrame(() => {
+                    compactItems.forEach(item => {
+                        item.removeAttribute('style');
+                        const innerDiv = item.querySelector('#dismissible');
+                        if (innerDiv) innerDiv.removeAttribute('style');
+                        const thumbnail = item.querySelector('ytd-thumbnail');
+                        if (thumbnail) thumbnail.removeAttribute('style');
+                        const details = item.querySelector('.details');
+                        if (details) details.removeAttribute('style');
+                        const title = item.querySelector('#video-title');
+                        if (title) title.removeAttribute('style');
+                        const meta = item.querySelector('.secondary-metadata');
+                        if (meta) meta.removeAttribute('style');
+                    });
                 });
             }
         } catch (error) {

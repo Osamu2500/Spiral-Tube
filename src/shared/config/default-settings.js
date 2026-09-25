@@ -345,6 +345,7 @@ export const DEFAULT_SETTINGS = {
   pb_native_cast: 'front',
   pb_native_autoplay: 'front',
   pb_native_cc: 'front',
+  pb_native_settings: 'front',
   pb_native_miniplayer: 'front',
   pb_native_theater: 'front',
   pb_native_fullscreen: 'front',
