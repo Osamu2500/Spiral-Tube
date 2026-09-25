@@ -27,6 +27,15 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         this.gridController = new RelatedGridController(this);
         
         this.isWatchPage = false;
+        
+        this._fullscreenListener = () => {
+            if (!this.isEnabled || !this.isWatchPage) return;
+            if (document.fullscreenElement) {
+                document.body.classList.remove('ypp-seamless-mode');
+            } else {
+                document.body.classList.add('ypp-seamless-mode');
+            }
+        };
     }
 
     async enable() {
@@ -34,6 +43,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
             await super.enable();
             this.utils.log('Initializing Seamless CSS Grid Layout Engine...', 'seamlessMode', 'info');
             this._checkPageContext();
+            document.addEventListener('fullscreenchange', this._fullscreenListener);
             if (this.isWatchPage) {
                 this._activateEngines();
             }
@@ -45,6 +55,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
     async disable() {
         try {
             this.utils.log('Shutting down Seamless Engine...', 'seamlessMode', 'info');
+            document.removeEventListener('fullscreenchange', this._fullscreenListener);
             this._deactivateEngines();
             await super.disable();
         } catch (error) {
@@ -54,8 +65,14 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
 
     async onPageChange() {
         if (!this.isEnabled) return;
+        const wasOnWatchPage = this.isWatchPage;
         this._checkPageContext();
         if (this.isWatchPage) {
+            if (wasOnWatchPage) {
+                // SPA optimization: skip full teardown/activate if already on watch page
+                // QuadObserverSystem handles mutations safely in the background
+                return;
+            }
             this._activateEngines();
         } else {
             this._deactivateEngines();

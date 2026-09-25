@@ -168,7 +168,7 @@ body.ypp-seamless-actions-active ytd-watch-metadata #owner > * {
 body.ypp-seamless-actions-active ytd-watch-metadata #subscribe-button button {
     background: #fff !important;
     color: #000 !important;
-    border-radius: 20px !important;
+    border-radius: var(--ypp-squircle-radius, 16px) !important;
     font-weight: 600 !important;
     padding: 0 16px !important;
 }
@@ -196,7 +196,7 @@ body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner {
 /* Action Buttons Pill Design */
 body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner ytd-button-renderer yt-button-shape button,
 body.ypp-seamless-actions-active ytd-watch-metadata #actions-inner ytd-toggle-button-renderer yt-button-shape button {
-    border-radius: 20px !important;
+    border-radius: var(--ypp-squircle-radius, 16px) !important;
     background: rgba(255, 255, 255, 0.1) !important;
     transition: background 0.2s ease !important;
     margin: 0 !important;

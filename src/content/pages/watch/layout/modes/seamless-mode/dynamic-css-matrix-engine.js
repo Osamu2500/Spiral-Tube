@@ -23,9 +23,12 @@ export class DynamicCSSMatrixEngine {
         const safeCols = Math.max(1, Math.min(12, parseInt(cols, 10) || 4));
 
         if (!this.styleElement) {
-            this.styleElement = document.createElement('style');
-            this.styleElement.id = 'seamless-massive-grid-enforcer';
-            document.head.appendChild(this.styleElement);
+            this.styleElement = document.getElementById('seamless-massive-grid-enforcer');
+            if (!this.styleElement) {
+                this.styleElement = document.createElement('style');
+                this.styleElement.id = 'seamless-massive-grid-enforcer';
+                document.head.appendChild(this.styleElement);
+            }
         }
         
         // We define the structural CSS Grid architecture for watch page cards
@@ -54,8 +57,10 @@ export class DynamicCSSMatrixEngine {
             }
         `;
         
-        this.styleElement.textContent = css;
-        this.utils.log(`Injected elegant CSS Grid rule blocks for ${safeCols} columns.`, 'seamlessMode', 'info');
+        if (this.styleElement.textContent !== css) {
+            this.styleElement.textContent = css;
+            this.utils.log(`Injected elegant CSS Grid rule blocks for ${safeCols} columns.`, 'seamlessMode', 'info');
+        }
     }
     
     remove() {
