@@ -136,8 +136,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
                     document.querySelectorAll(selector).forEach(video => {
                         if (Math.abs(video.playbackRate - newSpeed) > 0.01) {
                             video.playbackRate = newSpeed;
-                            const state = this.controllers.get(video);
-                            if (state) state.display.textContent = newSpeed.toFixed(2);
+                            this.ui.updateSpeedDisplay(video, newSpeed);
                         }
                     });
                 }
@@ -234,7 +233,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         const targetSpeed = this.settings.vscLastSpeed || 1.0;
 
         if (Math.abs(actualSpeed - targetSpeed) < 0.01) {
-            state.display.textContent = actualSpeed.toFixed(2);
+            this.ui.updateSpeedDisplay(video, actualSpeed);
             return;
         }
 
@@ -252,7 +251,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
             // or our UI but without origin set for some reason)
             this._debouncedSaveSpeed(actualSpeed);
             this.settings.vscLastSpeed = actualSpeed;
-            state.display.textContent = actualSpeed.toFixed(2);
+            this.ui.updateSpeedDisplay(video, actualSpeed);
             return;
         }
         
@@ -263,7 +262,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
             e.stopImmediatePropagation();
         } else {
             // If we aren't forcing speed, just accept the external change
-            state.display.textContent = actualSpeed.toFixed(2);
+            this.ui.updateSpeedDisplay(video, actualSpeed);
         }
     }
 
@@ -283,7 +282,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
             }));
         }
         
-        state.display.textContent = speed.toFixed(2);
+        this.ui.updateSpeedDisplay(video, speed);
         this.ui.showController(video);
         this.ui.hideControllerDelay(video);
 

@@ -22,23 +22,22 @@ ypp-vsc-controller.ypp-vsc-hidden {
 .ypp-vsc-panel {
   display: flex;
   flex-direction: column;
-  background: rgba(15, 15, 20, 0.65);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(30, 30, 35, 0.75), rgba(15, 15, 20, 0.85));
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 8px 10px;
   color: white;
   font-family: 'Inter', 'Roboto', sans-serif;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
 }
 
 .ypp-vsc-panel:hover {
-  background: rgba(25, 25, 30, 0.8);
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(40, 40, 45, 0.85), rgba(20, 20, 25, 0.95));
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .ypp-vsc-controls-row {
@@ -53,11 +52,13 @@ ypp-vsc-controller.ypp-vsc-hidden {
   gap: 4px;
   margin-top: 0;
   padding-top: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   justify-content: space-between;
   max-height: 0;
   opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
 }
 
@@ -65,6 +66,7 @@ ypp-vsc-controller.ypp-vsc-hidden {
 .ypp-vsc-panel:hover .ypp-vsc-presets-row {
   max-height: 40px;
   opacity: 1;
+  transform: translateY(0);
   margin-top: 8px;
   padding-top: 8px;
   pointer-events: auto;
@@ -103,34 +105,66 @@ ypp-vsc-controller.ypp-vsc-hidden {
   font-size: 12px !important;
   font-weight: 600;
   padding: 4px 6px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
   border-radius: 4px !important;
   letter-spacing: 0.5px;
   flex: 1;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 .ypp-vsc-preset-btn:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+.ypp-vsc-preset-btn.ypp-vsc-active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #fff !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+}
+
+.ypp-vsc-display-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin-right: 4px;
+  transition: background 0.2s ease;
+}
+.ypp-vsc-display-wrapper:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ypp-vsc-display-wrapper:active {
+  cursor: grabbing;
+}
+
+.ypp-vsc-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  margin-right: 2px;
+  transition: color 0.2s ease;
+}
+.ypp-vsc-display-wrapper:hover .ypp-vsc-drag-handle {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .ypp-vsc-speed-display {
-  min-width: 44px;
+  min-width: 40px;
   text-align: center;
-  padding: 0 6px;
+  padding: 0 2px;
   background: transparent;
   color: rgba(255, 255, 255, 0.95);
   font-size: 15px;
   font-weight: 600;
-  cursor: grab;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.5px;
   transition: color 0.2s ease, text-shadow 0.2s ease;
 }
-.ypp-vsc-speed-display:hover {
+.ypp-vsc-speed-display:hover,
+.ypp-vsc-display-wrapper:hover .ypp-vsc-speed-display {
   color: #fff;
   text-shadow: 0 0 8px rgba(255,255,255,0.6);
-}
-.ypp-vsc-speed-display:active {
-  cursor: grabbing;
 }
 
 /* Close button custom styling */
@@ -197,4 +231,39 @@ ypp-vsc-controller.ypp-vsc-hidden {
 .ypp-speed-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* Tooltip styling */
+[data-ypp-tooltip] {
+  position: relative;
+}
+
+[data-ypp-tooltip]::after {
+  content: attr(data-ypp-tooltip);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(10, 10, 12, 0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+[data-ypp-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }

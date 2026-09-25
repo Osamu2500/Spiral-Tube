@@ -27,18 +27,29 @@ export class VscUI {
         controlsRow.className = 'ypp-vsc-controls-row';
 
         // Elements
-        const display = document.createElement('span');
-        display.className = 'ypp-vsc-speed-display';
-        display.textContent = '1.00';
-        display.title = 'Click to reset to 1.0x (Drag to move)';
+        const displayWrapper = document.createElement('div');
+        displayWrapper.className = 'ypp-vsc-display-wrapper';
+        displayWrapper.setAttribute('data-ypp-tooltip', 'Click to reset to 1.0x (Drag to move)');
 
         const ICONS = {
+            grip: `<svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>`,
             rewind: `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>`,
             slower: `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 13H5v-2h14v2z"/></svg>`,
-            faster: `<svg viewBox="0 24 24" fill="currentColor" width="18" height="18"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>`,
+            faster: `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>`,
             advance: `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>`,
             close: `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>`
         };
+
+        const dragHandle = document.createElement('span');
+        dragHandle.className = 'ypp-vsc-drag-handle';
+        dragHandle.innerHTML = ICONS.grip;
+
+        const display = document.createElement('span');
+        display.className = 'ypp-vsc-speed-display';
+        display.textContent = '1.00';
+
+        displayWrapper.appendChild(dragHandle);
+        displayWrapper.appendChild(display);
 
         const formatKey = (key) => key ? key.replace('Shift+', '⇧') : '';
         const defaultStep = this.vsc.settings?.vscSpeedStep ?? 0.25;
@@ -71,11 +82,14 @@ export class VscUI {
         const presetsRow = document.createElement('div');
         presetsRow.className = 'ypp-vsc-presets-row';
         const presetSpeeds = [1.0, 1.5, 2.0, 2.5, 3.0];
+        const presetElements = [];
+        
         presetSpeeds.forEach(speed => {
             const presetBtn = document.createElement('button');
             presetBtn.className = 'ypp-vsc-preset-btn';
             presetBtn.textContent = speed.toFixed(1) + 'x';
-            presetBtn.title = `Set speed to ${speed}x`;
+            presetBtn.dataset.speed = speed;
+            presetBtn.setAttribute('data-ypp-tooltip', `Set speed to ${speed}x`);
             this.vsc.addListener(presetBtn, 'click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -83,11 +97,12 @@ export class VscUI {
                 this.vsc.setSpeed(video, speed);
                 this.showOSDFlash(video, speed.toFixed(2) + 'x');
             });
+            presetElements.push(presetBtn);
             presetsRow.appendChild(presetBtn);
         });
 
         // Assemble Controls Row
-        controlsRow.appendChild(display);
+        controlsRow.appendChild(displayWrapper);
         controlsRow.appendChild(btnRewind);
         controlsRow.appendChild(btnSlower);
         controlsRow.appendChild(btnFaster);
@@ -137,7 +152,7 @@ export class VscUI {
         // Reset speed on clicking the number
         let dragHasMoved = false;
         
-        this.vsc.addListener(display, 'mousedown', (e) => {
+        this.vsc.addListener(displayWrapper, 'mousedown', (e) => {
             isDragging = true;
             dragHasMoved = false;
             startX = e.clientX - translateX;
@@ -165,7 +180,7 @@ export class VscUI {
                         vscPositionX: translateX, 
                         vscPositionY: translateY 
                     } }, () => {});
-                } else if (e.target === display) {
+                } else if (e.target === display || e.target === displayWrapper || e.target === dragHandle || dragHandle.contains(e.target)) {
                     // It was a click, not a drag. Reset speed.
                     updateInteraction();
                     this.vsc.setSpeed(video, 1.0);
@@ -181,6 +196,7 @@ export class VscUI {
         this.vsc.controllers.set(video, {
             element: controller,
             display: display,
+            presets: presetElements,
             manualHide: false,
             hideTimeout: null,
             fightbackCount: 0,
@@ -247,7 +263,7 @@ export class VscUI {
         const btn = document.createElement('button');
         btn.className = 'ypp-vsc-btn';
         btn.innerHTML = html;
-        btn.title = title;
+        btn.setAttribute('data-ypp-tooltip', title);
         this.vsc.addListener(btn, 'click', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -255,6 +271,23 @@ export class VscUI {
         });
         btn.addEventListener('mousedown', (e) => e.stopPropagation());
         return btn;
+    }
+
+    updateSpeedDisplay(video, speed) {
+        const state = this.vsc.controllers.get(video);
+        if (!state) return;
+        
+        state.display.textContent = speed.toFixed(2);
+        
+        if (state.presets) {
+            state.presets.forEach(btn => {
+                if (parseFloat(btn.dataset.speed) === parseFloat(speed.toFixed(1))) {
+                    btn.classList.add('ypp-vsc-active');
+                } else {
+                    btn.classList.remove('ypp-vsc-active');
+                }
+            });
+        }
     }
 
     showOSDFlash(video, text) {

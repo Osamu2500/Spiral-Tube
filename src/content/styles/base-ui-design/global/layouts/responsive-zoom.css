@@ -94,6 +94,24 @@ ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
   box-sizing: border-box !important;
 }
 
+/* --- BULLETPROOF SECONDARY PADDING OVERRIDE (GOD MODE) --- */
+/* By chaining the ID multiple times, we create an astronomical specificity score 
+   that absolutely guarantees we beat YouTube's native !important rules, even if they 
+   use attributes or multiple classes. */
+#secondary#secondary#secondary#secondary#secondary {
+  padding-top: 0 !important;
+}
+
+#secondary-inner#secondary-inner#secondary-inner#secondary-inner#secondary-inner {
+  padding-top: 12px !important;
+}
+
+/* Fallback for the unnamed wrapper just in case */
+#secondary#secondary#secondary#secondary#secondary > div.style-scope.ytd-watch-flexy:not([hidden]):not(#secondary-inner) {
+  padding-top: 12px !important;
+}
+
+
 /* When zoom is extreme and secondary wraps to its own row */
 @media (max-width: 960px) {
   ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
